@@ -318,6 +318,8 @@ namespace FortifiedCE
                             compositeExplosion.postExplosionSpawnChance,
                             compositeExplosion.postExplosionSpawnThingCount,
                             postExplosionGasType: null,
+                            postExplosionGasRadiusOverride: null,
+                            postExplosionGasAmount: 255,
                             applyDamageToExplosionCellsNeighbors: false,
                             compositeExplosion.preExplosionSpawnThingDef,
                             compositeExplosion.preExplosionSpawnChance,

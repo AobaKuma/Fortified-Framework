@@ -6,7 +6,7 @@ using Verse;
 using Fortified;
 namespace FortifiedCE
 {
-    [HarmonyPatch(typeof(Building_TurretGunCE), "CanSetForcedTarget", (MethodType)1)]
+    [HarmonyPatch(typeof(Building_TurretGunCE), "CanSetForcedTarget", MethodType.Getter)]
     internal static class Harmony_TurretGunCE
     {
         public static void Postfix(ref bool __result, Building_TurretGunCE __instance)

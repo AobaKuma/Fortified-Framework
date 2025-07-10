@@ -48,6 +48,8 @@ namespace FortifiedCE
                                 explosion.postExplosionSpawnChance,
                                 explosion.postExplosionSpawnThingCount,
                                 explosion.postExplosionGasType,
+                                postExplosionGasRadiusOverride: null,
+                                postExplosionGasAmount: 255,
                                 false,
                                 explosion.preExplosionSpawnThingDef,
                                 explosion.preExplosionSpawnChance,
