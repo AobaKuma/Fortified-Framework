@@ -55,8 +55,13 @@ namespace Fortified
         }
     }
 
-    public class MinifiedThingDeployable : MinifiedThing
-    {
+	public interface IGizmoGiver
+	{
+		Gizmo GetGizmoForPawn(Pawn pawn);
+	}
+
+	public class MinifiedThingDeployable : MinifiedThing, IGizmoGiver
+	{
         MinifiedThingDeployableGraphicExt ext;
 
         MinifiedThingDeployableGraphicExt Ext
@@ -80,7 +85,27 @@ namespace Fortified
             }
         }
 
-        public bool Deploy(IntVec3 cell, Pawn workerPawn)
+		public Gizmo GetGizmoForPawn(Pawn pawn)
+		{
+            if(pawn.RaceProps.intelligence < Intelligence.ToolUser)
+            {
+                return null;
+            }
+			Command_Target command_Target = new Command_Target
+			{
+				defaultLabel = this.InnerThing.Label,
+				targetingParams = CompPawnTurretDeployGizmo.TargetParam(pawn),
+				icon = this.InnerThing.def.GetUIIconForStuff(null),
+				action = delegate (LocalTargetInfo target)
+				{
+					this.Deploy(target.Cell, pawn);
+				}
+			};
+			if (!pawn.Drafted) command_Target.Disable("FFF.DisabledUndrafted".Translate());
+			return command_Target;
+		}
+
+		public bool Deploy(IntVec3 cell, Pawn workerPawn)
         {
             workerPawn.rotationTracker.Face(cell.ToVector3Shifted());
 

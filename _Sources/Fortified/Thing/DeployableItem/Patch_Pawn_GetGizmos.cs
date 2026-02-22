@@ -8,60 +8,31 @@ using System.Linq;
 
 namespace Fortified
 {
-    [HarmonyPatch(typeof(Pawn), "GetGizmos")]
+    [HarmonyPatch(typeof(Pawn_InventoryTracker), nameof(Pawn_InventoryTracker.GetGizmos))]
     internal static class Patch_Pawn_GetGizmos
     {
-        static List<IntVec3> AcceptedCell(Pawn pawn)
+        public static IEnumerable<Gizmo> Postfix(IEnumerable<Gizmo> __result, Pawn_InventoryTracker __instance)
         {
-            return new List<IntVec3>() { pawn.Position + IntVec3.South, pawn.Position + IntVec3.North, pawn.Position + IntVec3.East, pawn.Position + IntVec3.West };
-        }
-
-        public static TargetingParameters TargetParam(Pawn pawn)
-        {
-            return new TargetingParameters
+            foreach (Gizmo g in __result) yield return g;
+            Pawn pawn = __instance.pawn;
+			if (pawn.Spawned && Find.Selector.SingleSelectedThing == pawn && pawn.Faction == Faction.OfPlayerSilentFail)
             {
-                canTargetLocations = true,
-                canTargetSelf = false,
-                canTargetPawns = false,
-                canTargetFires = false,
-                canTargetBuildings = false,
-                canTargetItems = false,
-                validator = (TargetInfo x) => AcceptedCell(pawn).Contains(x.Cell) && x.Cell.GetEdifice(pawn.Map) == null
-            };
-        }
-        public static Gizmo GenGizmoForThing(Thing thing, Pawn pawn)
-        {
-            if (thing is not MinifiedThingDeployable deployable) return null;
-
-            Command_Target command_Target = new Command_Target
-            {
-                defaultLabel = deployable.InnerThing.Label,
-                targetingParams = TargetParam(pawn),
-                icon = deployable.InnerThing.def.GetUIIconForStuff(null),
-                action = delegate (LocalTargetInfo target)
+                foreach (Thing thing in __instance.innerContainer)
                 {
-                    deployable.Deploy(target.Cell, pawn);
+                    if(thing is IGizmoGiver giver1)
+                    {
+						Gizmo gizmo1 = giver1.GetGizmoForPawn(pawn);
+						if (gizmo1 != null) yield return gizmo1;
+					}
                 }
-            };
-
-            if (!pawn.Drafted) command_Target.Disable("FFF.DisabledUndrafted".Translate());
-            return command_Target;
-        }
-        public static IEnumerable<Gizmo> Postfix(IEnumerable<Gizmo> __result, Pawn __instance)
-        {
-            foreach (Gizmo command in __result) yield return command;
-            if (__instance.Spawned && Find.Selector.SingleSelectedThing == __instance && __instance.RaceProps.Humanlike)
-            {
-                foreach (Thing thing in __instance.inventory.innerContainer)
+                foreach (Thing thing in pawn.equipment.AllEquipmentListForReading)
                 {
-                    Gizmo g = GenGizmoForThing(thing, __instance);
-                    if (g != null) yield return g;
-                }
-                foreach (Thing thing in __instance.equipment.AllEquipmentListForReading)
-                {
-                    Gizmo g = GenGizmoForThing(thing, __instance);
-                    if (g != null) yield return g;
-                }
+					if (thing is IGizmoGiver giver2)
+					{
+						Gizmo gizmo2 = giver2.GetGizmoForPawn(pawn);
+						if (gizmo2 != null) yield return gizmo2;
+					}
+				}
             }
         }
     }

@@ -50,4 +50,33 @@ namespace Fortified
             }
 		}
 	}
+
+	[HarmonyPatch]
+	public static class CombatExtended_Utility_Loadouts_IsItemMechanoidWeapon
+	{
+		public static MethodBase TargetMethod()
+		{
+			return AccessTools.Method("CombatExtended.Utility_Loadouts:IsItemMechanoidWeapon");
+		}
+
+		public static bool Prepare(MethodBase method)
+		{
+			return AccessTools.Method("CombatExtended.Utility_Loadouts:IsItemMechanoidWeapon") != null;
+		}
+
+
+		[HarmonyPostfix]
+		public static void Postfix(Pawn pawn, Thing thing, ref bool __result)
+		{
+			if (__result == false)
+			{
+				return;
+			}
+			if (pawn is IWeaponUsable && pawn.Faction != null && pawn.Faction.IsPlayer && (!pawn.TryGetComp<CompVehicleWeapon>(out var comp) || comp.Props.defaultWeapon == null))
+			{
+				__result = false;
+			}
+			else if (pawn.TryGetComp<CompDrone>(out var d) == true && d.CanDraft) __result = false;
+		}
+	}
 }
