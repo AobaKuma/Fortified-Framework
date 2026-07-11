@@ -5,6 +5,13 @@
        Callers may set RaidWaveDef.quest to a different QuestScriptDef to override. -->
   <QuestScriptDef>
     <defName>FFF_RaidWave_Default</defName>
+    <!-- 隱藏任務：跳過任務名稱／描述的 Grammar 解析（此任務僅作為戰鬥控制器，
+         沒有 questNameRules/questDescriptionRules，不隱藏會報 Grammar unresolvable）。
+         Hidden quest: skips quest name/description grammar resolution. This quest
+         is only a combat controller and defines no name/description rules; leaving
+         it visible causes "Grammar unresolvable. Root 'questName'" errors. -->
+    <defaultHidden>true</defaultHidden>
+    <autoAccept>true</autoAccept>
     <root Class="Fortified.QuestNode_Root_RaidWave" />
   </QuestScriptDef>
 

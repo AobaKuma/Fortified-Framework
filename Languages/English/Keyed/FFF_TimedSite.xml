@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <FFF_TimedSite_AlreadyActive>an operation of this kind is already underway</FFF_TimedSite_AlreadyActive>
+  <FFF_TimedSite_CannotFindSite>Unable to locate a target: no valid site could be found on the world map.</FFF_TimedSite_CannotFindSite>
+
+  <FFF_TimedSite_ExpiredLabel>Target site lost</FFF_TimedSite_ExpiredLabel>
+  <FFF_TimedSite_ExpiredText>The window of opportunity has closed. The target site has relocated and its position is lost.</FFF_TimedSite_ExpiredText>
+
+  <FFF_TimedSite_ClearedLabel>Site secured</FFF_TimedSite_ClearedLabel>
+  <FFF_TimedSite_ClearedText>All hostiles at the site have been neutralized. Whatever remains on-site is yours to claim.</FFF_TimedSite_ClearedText>
+
+  <FFF_TimedSite_EntryCountdownLabel>Hostile site: reinforcements inbound</FFF_TimedSite_EntryCountdownLabel>
+  <FFF_TimedSite_EntryCountdownText>You have entered a hostile installation and your presence has been flagged.\n\nEnemy reinforcements will arrive in {0}. Finish your business and get out — or dig in.</FFF_TimedSite_EntryCountdownText>
+</LanguageData>

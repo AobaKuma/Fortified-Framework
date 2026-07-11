@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <FFF_TimedSite_AlreadyActive>已有一项同类行动正在进行中</FFF_TimedSite_AlreadyActive>
+  <FFF_TimedSite_CannotFindSite>无法定位目标：在世界地图上找不到合适的地点。</FFF_TimedSite_CannotFindSite>
+
+  <FFF_TimedSite_ExpiredLabel>目标站点已失去踪迹</FFF_TimedSite_ExpiredLabel>
+  <FFF_TimedSite_ExpiredText>行动窗口已经关闭。目标站点已转移阵地，位置就此失去踪迹。</FFF_TimedSite_ExpiredText>
+
+  <FFF_TimedSite_ClearedLabel>站点已肃清</FFF_TimedSite_ClearedLabel>
+  <FFF_TimedSite_ClearedText>站点内的敌人已全数歼灭。站内剩余的一切现在任你取用。</FFF_TimedSite_ClearedText>
+
+  <FFF_TimedSite_EntryCountdownLabel>敌对站点：增援即将抵达</FFF_TimedSite_EntryCountdownLabel>
+  <FFF_TimedSite_EntryCountdownText>你已进入敌对设施，你的存在已被标记。\n\n敌方增援将于 {0} 后抵达。速战速决，尽快离开——或者就地固守。</FFF_TimedSite_EntryCountdownText>
+</LanguageData>
