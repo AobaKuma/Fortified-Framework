@@ -147,6 +147,8 @@ namespace Fortified
             cachedDormant = parent.GetComp<CompCanBeDormant>();
             nextCheckTick = Find.TickManager.TicksGame + Props.checkInterval;
             InvalidateScanCache();
+            // 登錄到地圖警戒計數器（供 Alert 判定「地圖存在相關警報建築」）
+            parent.Map?.GetComponent<MapComponent_AlertCounter>()?.RegisterScanner(this);
             // 強制刷新一次狀態 Effecter（讀檔後恢復正確視覺）
             currentEffecterState = ScannerState.None;
             UpdateStateEffecter();
@@ -155,6 +157,8 @@ namespace Fortified
         public override void PostDeSpawn(Map map, DestroyMode mode = DestroyMode.Vanish)
         {
             base.PostDeSpawn(map, mode);
+            // 自地圖警戒計數器登錄表移除
+            map?.GetComponent<MapComponent_AlertCounter>()?.UnregisterScanner(this);
             InvalidateScanCache();
             CleanupEffecters();
         }

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- Alert_FFF_AlertLevel：地图存在警报扫描建筑且警戒值被拉高时显示 -->
+  <FFF_Alert_AlertLevel_Label>警戒等级 {0}</FFF_Alert_AlertLevel_Label>
+  <FFF_Alert_AlertLevel_Label_Triggered>警戒已触发！</FFF_Alert_AlertLevel_Label_Triggered>
+  <FFF_Alert_AlertLevel_Desc>此地图上的警报侦测建筑已将安全警戒等级提升至 {0}。\n\n警戒值达到上限时将触发自动反制措施。肃清扫描器，让警戒值自然衰减。\n\n监控建筑数：{1}</FFF_Alert_AlertLevel_Desc>
+  <FFF_Alert_AlertLevel_Desc_Triggered>安全警戒等级已达上限，自动反制措施正在执行中。\n\n监控建筑数：{0}</FFF_Alert_AlertLevel_Desc_Triggered>
+
+</LanguageData>

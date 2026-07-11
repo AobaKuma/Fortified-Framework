@@ -55,12 +55,76 @@ namespace Fortified
         /// </summary>
         public List<AlertEffectWorker> effectWorkers = new List<AlertEffectWorker>();
 
+        /// <summary>
+        /// 本地圖已生成的警報掃描建築（<see cref="CompAlertScanner"/>）登錄表。
+        /// <para>
+        /// • 由 <see cref="CompAlertScanner.PostSpawnSetup"/> / <see cref="CompAlertScanner.PostDeSpawn"/>
+        ///   維護，供 <see cref="Alert_FFF_AlertLevel"/> 判定「地圖上是否存在相關警報建築」。<br/>
+        /// • 純執行期資料，不序列化；讀檔後各 Comp 於 PostSpawnSetup 重新登錄。<br/>
+        /// • 讀取時會就地剔除已失效（null / 未生成）的項目，避免殘留參照。
+        /// </para>
+        /// </summary>
+        private readonly List<CompAlertScanner> registeredScanners = new List<CompAlertScanner>();
+
         // ── 屬性 ────────────────────────────────────────────────
         public float AlertLevel => alertLevel;
         public float AlertLevelPct => alertLevel / MaxAlertLevel;
         public bool IsTriggered => triggered;
 
+        /// <summary>本地圖是否存在至少一個有效（已生成）的警報掃描建築。</summary>
+        public bool HasActiveScanners
+        {
+            get
+            {
+                for (int i = registeredScanners.Count - 1; i >= 0; i--)
+                {
+                    CompAlertScanner s = registeredScanners[i];
+                    if (s?.parent == null || !s.parent.Spawned)
+                    {
+                        registeredScanners.RemoveAt(i);   // 就地剔除失效項
+                        continue;
+                    }
+                    return true;
+                }
+                return false;
+            }
+        }
+
         public MapComponent_AlertCounter(Map map) : base(map) { }
+
+        // ── 掃描建築登錄 ────────────────────────────────────────
+        /// <summary>由 <see cref="CompAlertScanner"/> 生成時呼叫（防重複、防 null）。</summary>
+        public void RegisterScanner(CompAlertScanner scanner)
+        {
+            if (scanner == null) return;
+            if (!registeredScanners.Contains(scanner))
+                registeredScanners.Add(scanner);
+        }
+
+        /// <summary>由 <see cref="CompAlertScanner"/> 移除時呼叫。</summary>
+        public void UnregisterScanner(CompAlertScanner scanner)
+        {
+            if (scanner == null) return;
+            registeredScanners.Remove(scanner);
+        }
+
+        /// <summary>
+        /// 列舉目前有效的警報掃描建築（供 Alert 作為點擊跳轉目標）。
+        /// 列舉過程中就地剔除已失效的登錄項。
+        /// </summary>
+        public IEnumerable<Thing> GetScannerBuildings()
+        {
+            for (int i = registeredScanners.Count - 1; i >= 0; i--)
+            {
+                CompAlertScanner s = registeredScanners[i];
+                if (s?.parent == null || !s.parent.Spawned)
+                {
+                    registeredScanners.RemoveAt(i);
+                    continue;
+                }
+                yield return s.parent;
+            }
+        }
 
         // ── 公開介面 ────────────────────────────────────────────
         /// <summary>
@@ -98,15 +162,6 @@ namespace Fortified
             {
                 alertLevel = Mathf.Max(0f, alertLevel - DecayPerTick);
             }
-        }
-
-        public override void MapComponentOnGUI()
-        {
-            // 開發模式下於左上顯示警戒值（方便 debug）
-            if (!DebugSettings.godMode) return;
-            Rect rect = new Rect(10f, 300f, 200f, 24f);
-            string label = $"[AlertCounter] {alertLevel:F1}/{MaxAlertLevel}  {(triggered ? "TRIGGERED" : "")}";
-            Widgets.Label(rect, label.Colorize(triggered ? ColorLibrary.RedReadable : Color.yellow));
         }
 
         public override void ExposeData()

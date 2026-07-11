@@ -78,7 +78,7 @@
       </li>
       <!-- 压制抗性曲线 -->
       <li Class="Fortified.StatPart_StatToCurve" MayRequire="ceteam.combatextended">
-        <inputStat>SuppressionResistance</inputStat>
+        <inputStat>Suppressability</inputStat>
         <curve>
           <points>
             <li>(0.50, -0.30)</li>

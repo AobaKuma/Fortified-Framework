@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- Alert_FFF_AlertLevel : shown when alert-scanner buildings exist and the map alert level is raised -->
+  <FFF_Alert_AlertLevel_Label>Alert level {0}</FFF_Alert_AlertLevel_Label>
+  <FFF_Alert_AlertLevel_Label_Triggered>Alert triggered!</FFF_Alert_AlertLevel_Label_Triggered>
+  <FFF_Alert_AlertLevel_Desc>Alert-detection buildings on this map have raised the security alert level to {0}.\n\nIf the level reaches maximum, an automated countermeasure will be triggered. Neutralize the scanners to let it decay.\n\nMonitored buildings: {1}</FFF_Alert_AlertLevel_Desc>
+  <FFF_Alert_AlertLevel_Desc_Triggered>The security alert level has reached maximum and an automated countermeasure is now active.\n\nMonitored buildings: {0}</FFF_Alert_AlertLevel_Desc_Triggered>
+
+</LanguageData>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- Alert_FFF_AlertLevel：地圖存在警報掃描建築且警戒值被拉高時顯示 -->
+  <FFF_Alert_AlertLevel_Label>警戒等級 {0}</FFF_Alert_AlertLevel_Label>
+  <FFF_Alert_AlertLevel_Label_Triggered>警戒已觸發！</FFF_Alert_AlertLevel_Label_Triggered>
+  <FFF_Alert_AlertLevel_Desc>此地圖上的警報偵測建築已將安全警戒等級提升至 {0}。\n\n警戒值達到上限時將觸發自動反制措施。肅清掃描器，讓警戒值自然衰減。\n\n監控建築數：{1}</FFF_Alert_AlertLevel_Desc>
+  <FFF_Alert_AlertLevel_Desc_Triggered>安全警戒等級已達上限，自動反制措施正在執行中。\n\n監控建築數：{0}</FFF_Alert_AlertLevel_Desc_Triggered>
+
+</LanguageData>
