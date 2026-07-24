@@ -77,6 +77,8 @@ namespace Fortified
 
         public override IEnumerable<Thing> PotentialWorkThingsGlobal(Pawn pawn)
         {
+            if (pawn?.Map?.listerBuildings == null) yield break;
+
             List<Building> buildings = pawn.Map.listerBuildings.allBuildingsColonist;
             for (int i = 0; i < buildings.Count; i++)
             {
