@@ -75,7 +75,20 @@ namespace Fortified
     {
         private static ThingDef cachedDyeDef;
 
-        public override ThingRequest PotentialWorkThingRequest => ThingRequest.ForGroup(ThingRequestGroup.BuildingArtificial);
+        public override IEnumerable<Thing> PotentialWorkThingsGlobal(Pawn pawn)
+        {
+            List<Building> buildings = pawn.Map.listerBuildings.allBuildingsColonist;
+            for (int i = 0; i < buildings.Count; i++)
+            {
+                Building b = buildings[i];
+                var comp = b.TryGetComp<CompPaintable>();
+                if (comp != null && comp.activePaintRequest)
+                {
+                    yield return b;
+                }
+            }
+        }
+
         public override PathEndMode PathEndMode => PathEndMode.Touch;
 
         public override bool HasJobOnThing(Pawn pawn, Thing t, bool forced = false)
