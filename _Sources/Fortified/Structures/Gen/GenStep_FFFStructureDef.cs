@@ -35,7 +35,7 @@ namespace Fortified.Structures
             Rot4 rot = allowedRotation.Random();
             if(CellRect.WholeMap(map).ContractedBy(5).TryFindRandomInnerRect(def.GetSize(rot), out var rect))
             {
-				FFF_StructureUtility.Generate(def, rect.CenterCell, map, faction, rot);
+				FFF_StructureUtility.Generate(def, rect.CenterCell, map, faction, rot, reconnectPower: false);
 			}
         }
     }

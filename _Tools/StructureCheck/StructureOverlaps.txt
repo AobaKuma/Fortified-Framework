@@ -1,0 +1,71 @@
+FFF structure-layout overlap report
+==============================================================================
+
+Scanned roots:
+  /sessions/exciting-peaceful-maxwell/mnt/Dead-Man-Switch
+
+ThingDefs resolved: 309
+
+ERROR  two power transmitters on one cell : 0
+WARN   two edifices on one cell           : 15
+
+------------------------------------------------------------------------------
+ERRORS - power transmitters sharing a cell
+PowerNetGrid will log 'there can't be two transmitters on the same cell'.
+------------------------------------------------------------------------------
+  (none)
+
+------------------------------------------------------------------------------
+WARNINGS - edifices sharing a cell
+Silent at runtime: GenSpawn's WipeMode deletes the loser, leaving holes.
+Remember multi-cell things use their CENTRE cell as pos.
+Caveat: footprints for Core/DLC defs come from the hand-maintained VANILLA
+table in this script, so a wrong entry there can produce a false warning.
+------------------------------------------------------------------------------
+DMS_Ruin_B  cell (18, 12)  ->  Wall + DMS_Wreckage_Chunk
+        Dead-Man-Switch/1.6/NewContent/Defs/GenStructures/Ruin_ScatteredSmall.xml
+DMS_Ruin_B  cell (19, 12)  ->  Wall + DMS_Wreckage_Chunk
+        Dead-Man-Switch/1.6/NewContent/Defs/GenStructures/Ruin_ScatteredSmall.xml
+DMS_Ruin_E  cell (9, 9)  ->  DMS_Wreckage_Chunk + DMS_ChunkSlag_Old
+        Dead-Man-Switch/1.6/NewContent/Defs/GenStructures/Ruin_ScatteredSmall.xml
+DMS_Ruin_E  cell (20, 21)  ->  DMS_Wreckage_Chunk + DMS_ChunkSlag_Old
+        Dead-Man-Switch/1.6/NewContent/Defs/GenStructures/Ruin_ScatteredSmall.xml
+DMS_Ruin_E  cell (21, 11)  ->  DMS_Wreckage_Chunk + DMS_Wreckage_SentryGun
+        Dead-Man-Switch/1.6/NewContent/Defs/GenStructures/Ruin_ScatteredSmall.xml
+DMS_Ruin_F  cell (10, 13)  ->  DMS_ChunkSlag_Old + AncientRazorWire
+        Dead-Man-Switch/1.6/NewContent/Defs/GenStructures/Ruin_ScatteredSmall.xml
+DMS_Ruin_F  cell (19, 8)  ->  DMS_Building_MissileLauncherDestoryed + DMS_ChunkSlag_Old
+        Dead-Man-Switch/1.6/NewContent/Defs/GenStructures/Ruin_ScatteredSmall.xml
+DMS_Ruin_G  cell (10, 14)  ->  AncientMilitaryCrate + AncientMilitaryCrate
+        Dead-Man-Switch/1.6/NewContent/Defs/GenStructures/Ruin_ScatteredSmall.xml
+DMS_Ruin_G  cell (10, 15)  ->  AncientMilitaryCrate + AncientMilitaryCrate
+        Dead-Man-Switch/1.6/NewContent/Defs/GenStructures/Ruin_ScatteredSmall.xml
+DMS_Ruin_G  cell (11, 14)  ->  AncientMilitaryCrate + AncientMilitaryCrate
+        Dead-Man-Switch/1.6/NewContent/Defs/GenStructures/Ruin_ScatteredSmall.xml
+DMS_Ruin_G  cell (11, 15)  ->  AncientMilitaryCrate + AncientMilitaryCrate
+        Dead-Man-Switch/1.6/NewContent/Defs/GenStructures/Ruin_ScatteredSmall.xml
+DMS_Ruin_G  cell (12, 15)  ->  AncientMilitaryCrate + DMS_Building_Scanner_LargeDestoryed
+        Dead-Man-Switch/1.6/NewContent/Defs/GenStructures/Ruin_ScatteredSmall.xml
+DMS_Ruin_I  cell (26, 19)  ->  Sandbags + AncientMilitaryCrate
+        Dead-Man-Switch/1.6/NewContent/Defs/GenStructures/Ruin_ScatteredSmall.xml
+DMS_Ruin_K  cell (6, 5)  ->  Wall + Battery
+        Dead-Man-Switch/1.6/NewContent/Defs/GenStructures/Ruin_ScatteredSmall.xml
+DMS_Ruin_L  cell (13, 16)  ->  Wall + DMS_RollingDoor_Double
+        Dead-Man-Switch/1.6/NewContent/Defs/GenStructures/Ruin_ScatteredSmall.xml
+
+------------------------------------------------------------------------------
+UNRESOLVED defs (not found in any scanned mod, not in the vanilla table)
+Their footprint was assumed unknown and skipped - add them to VANILLA
+in this script if they matter.
+------------------------------------------------------------------------------
+  AncientConcreteBarrier
+  AncientCrate
+  AncientDisplayBank
+  AncientEquipmentBlocks
+  AncientLamp
+  AncientLargeContainer
+  AncientLongCrate
+  AncientRustedJeep
+  AncientSecurityTurret
+  AncientSmallCrate
+  ToxifierGenerator

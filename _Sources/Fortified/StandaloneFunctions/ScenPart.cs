@@ -86,7 +86,7 @@ namespace Fortified
 			}
 			GravshipPlacementUtility.ClearAreaForGravship(map, playerStartSpot, hashSet);
 			List<Thing> list = new List<Thing>();
-			FFF_StructureUtility.Generate(gravshipStructure, playerStartSpot, map, Faction.OfPlayer, rot);
+			FFF_StructureUtility.Generate(gravshipStructure, playerStartSpot, map, Faction.OfPlayer, rot, reconnectPower: false);
 			//sketch.Spawn(map, playerStartSpot, Faction.OfPlayer, Sketch.SpawnPosType.OccupiedCenter, Sketch.SpawnMode.Normal, wipeIfCollides: true, forceTerrainAffordance: true, clearEdificeWhereFloor: true, list, dormant: false, buildRoofsInstantly: true);
 			IntVec3 offset = playerStartSpot - sketch.OccupiedCenter;
 			CellRect cellRect = sketch.OccupiedRect.MovedBy(offset);

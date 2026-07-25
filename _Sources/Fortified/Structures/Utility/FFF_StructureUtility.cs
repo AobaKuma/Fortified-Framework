@@ -11,7 +11,21 @@ namespace Fortified.Structures
 {
     public static class FFF_StructureUtility
     {
-        public static void Generate(IFFF_Structure def, IntVec3 center, Map map, Faction faction = null, Rot4? rot = null)
+        /// <param name="reconnectPower">
+        /// 是否在結束時強制刷新電網。地圖生成期務必傳 false ——
+        /// 生成期間 GenSpawn 的 WipeMode 會摧毀帶 CompPower 的建物，此時強制跑
+        /// PowerNetManager.UpdatePowerNetsAndConnections_First()，它會對已 despawn 的
+        /// 連接器呼叫 TryConnectToAnyPowerNet，parent.Map 已是 null → NRE。
+        /// 生成結束後遊戲自己會把電網建好，只有執行期即時生成（除錯生成等）才需要 true。
+        ///
+        /// Whether to force a power-net refresh at the end. Pass false during map
+        /// generation: GenSpawn's WipeMode destroys CompPower buildings while generating,
+        /// and forcing UpdatePowerNetsAndConnections_First() then makes it call
+        /// TryConnectToAnyPowerNet on already-despawned connectors whose parent.Map is
+        /// null, throwing an NRE. The game builds the nets itself once generation ends;
+        /// only runtime spawning (debug placement and the like) needs true.
+        /// </param>
+        public static void Generate(IFFF_Structure def, IntVec3 center, Map map, Faction faction = null, Rot4? rot = null, bool reconnectPower = true)
         {
             if (def == null || map == null) return;
 
@@ -29,7 +43,25 @@ namespace Fortified.Structures
             SpawnPawns(def, finalRot, offset, map, faction);
             HandleRoofs(def, sketch, offset, map, finalRot);
             HandleLegacyLogic(def, offset, map, finalRot);
-            FinishGeneration(map, occupiedRect, def, finalRot, offset);
+            FinishGeneration(map, occupiedRect, def, finalRot, offset, reconnectPower);
+        }
+
+        /// <summary>
+        /// 算出結構若以 center 為中心、依 rot 旋轉後實際會占用的格子範圍。
+        /// 用 sketch 的 OccupiedRect 而非 def 宣告的 size —— Generate() 就是這樣定位的，
+        /// 且宣告的 size 常與實際元素範圍不一致（例如子結構讓 sketch 溢出宣告尺寸）。
+        ///
+        /// The cells a structure will actually occupy when centred on <paramref name="center"/>.
+        /// Derived from the sketch's OccupiedRect rather than the def's declared size, because
+        /// that is what Generate() uses to position it, and the two often disagree.
+        /// </summary>
+        public static CellRect FootprintAt(IFFF_Structure def, IntVec3 center, Rot4 rot)
+        {
+            if (def == null) return default;
+
+            Sketch sketch = def.GetSketch();
+            if (rot != Rot4.North) sketch.Rotate(rot);
+            return sketch.OccupiedRect.MovedBy(center - sketch.OccupiedRect.CenterCell);
         }
 
 		public static void ClearConflictArea(Map map, CellRect rect)
@@ -83,8 +115,37 @@ namespace Fortified.Structures
         {
             var sortedThings = sketch.Things.OrderBy(t => t.SpawnOrder).ToList();
 
+            // 導線／電池／發電機重疊檢查：同一格不能有兩個電力 transmitter，否則
+            // PowerNetGrid.RegisterTransmitter 會丟出 "there is already a power net here"。
+            // GenSpawn 的 WipeMode 幫不上忙 —— 導線不是 edifice，不會被覆寫掉。
+            //
+            // 刻意在「還沒生成任何東西」的階段先篩掉落敗者，而不是邊生成邊摧毀已放好的
+            // 導線：在生成期摧毀帶 CompPower 的物件，會讓後續的電網刷新對已 despawn 的
+            // 連接器呼叫 TryConnectToAnyPowerNet 而 NRE。這裡只動 sketch 清單，不動地圖。
+            //
+            // Transmitter overlap guard: two power transmitters may never share a cell, or
+            // PowerNetGrid.RegisterTransmitter throws "there is already a power net here".
+            // WipeMode does not help — conduits aren't edifices.
+            //
+            // Losers are filtered out before anything spawns rather than by destroying
+            // already-placed conduits mid-run: destroying CompPower things during
+            // generation makes a later power-net refresh call TryConnectToAnyPowerNet on
+            // despawned connectors and throw. This only edits the sketch list.
+            var transmitters = new List<(int index, ThingDef def, IntVec3 pos, Rot4 rot)>();
+            for (int i = 0; i < sortedThings.Count; i++)
+            {
+                var t = sortedThings[i];
+                if (t.def != null && t.def.EverTransmitsPower)
+                    transmitters.Add((i, t.def, t.pos + offset, t.rot));
+            }
+
+            HashSet<int> dropIndices = FindTransmitterConflicts(transmitters, map);
+            if (dropIndices.Count > 0)
+                sortedThings = sortedThings.Where((t, i) => !dropIndices.Contains(i)).ToList();
+
             if (Prefs.DevMode)
-                Log.Message($"[FFF] SpawnThings: trying to generate {sortedThings.Count} things");
+                Log.Message($"[FFF] SpawnThings: trying to generate {sortedThings.Count} things" +
+                            (dropIndices.Count > 0 ? $" ({dropIndices.Count} pruned by the transmitter overlap guard)" : ""));
 
             int spawnedCount = 0;
             foreach (var skThing in sortedThings)
@@ -117,6 +178,84 @@ namespace Fortified.Structures
 
             if (Prefs.DevMode)
                 Log.Message($"[FFF] SpawnThings: Successfully generated {spawnedCount} out of {sortedThings.Count} things");
+        }
+
+        /// <summary>
+        /// 從待生成清單中移除會造成「同格兩個 transmitter」的項目，回傳移除數量。
+        /// 完全不動地圖，只縮減傳入的清單。
+        ///
+        /// 優先度：實體 transmitter（電池、發電機）先占位，導線後占 —— 所以衝突時
+        /// 讓位的一定是導線，而不會因為 SpawnOrder 剛好讓導線先跑就犧牲掉電池。
+        /// 與地圖上既有 transmitter 衝突時一律放棄新的那個（不摧毀既有建物）。
+        ///
+        /// Removes entries that would put two power transmitters on one cell; returns how
+        /// many were dropped. Touches only the supplied list, never the map.
+        ///
+        /// Solid transmitters (batteries, generators) claim their cells before conduits do,
+        /// so a conflict always costs a conduit rather than sacrificing a battery just
+        /// because SpawnOrder happened to run the conduit first. Conflicts against
+        /// transmitters already on the map always drop the incoming one.
+        /// </summary>
+        private static HashSet<int> FindTransmitterConflicts(
+            List<(int index, ThingDef def, IntVec3 pos, Rot4 rot)> candidates, Map map)
+        {
+            HashSet<int> drop = new HashSet<int>();
+            if (candidates.NullOrEmpty()) return drop;
+
+            // 非導線優先占位。Solid transmitters claim their cells first.
+            candidates.Sort((a, b) => IsConduit(a.def).CompareTo(IsConduit(b.def)));
+
+            HashSet<IntVec3> claimed = new HashSet<IntVec3>();
+
+            foreach (var cand in candidates)
+            {
+                CellRect rect = GenAdj.OccupiedRect(cand.pos, cand.rot, cand.def.size);
+
+                IntVec3 clash = IntVec3.Invalid;
+                string clashWith = null;
+                foreach (IntVec3 c in rect)
+                {
+                    if (claimed.Contains(c))
+                    {
+                        clash = c; clashWith = "another transmitter in the same layout"; break;
+                    }
+                    if (MapHasTransmitter(map, c))
+                    {
+                        clash = c; clashWith = "a transmitter already on the map"; break;
+                    }
+                }
+
+                if (clashWith != null)
+                {
+                    drop.Add(cand.index);
+                    Log.Warning($"[FFF] Transmitter overlap at {clash}: dropped {cand.def.defName} — " +
+                                $"{clashWith} occupies that cell. Two transmitters can't share a cell; " +
+                                "fix the structure layout.");
+                    continue;
+                }
+
+                foreach (IntVec3 c in rect) claimed.Add(c);
+            }
+
+            return drop;
+        }
+
+        /// <summary>導線類（非 edifice）的 transmitter。Conduit-like, i.e. non-edifice, transmitter.</summary>
+        private static bool IsConduit(ThingDef def)
+        {
+            return def?.building != null && !def.building.isEdifice;
+        }
+
+        private static bool MapHasTransmitter(Map map, IntVec3 c)
+        {
+            if (!c.InBounds(map)) return false;
+
+            List<Thing> things = c.GetThingList(map);
+            for (int i = 0; i < things.Count; i++)
+            {
+                if (things[i].Spawned && things[i].def.EverTransmitsPower) return true;
+            }
+            return false;
         }
 
 		public static void SpawnPawns(IFFF_Structure def, Rot4 rot, IntVec3 offset, Map map, Faction faction)
@@ -178,14 +317,14 @@ namespace Fortified.Structures
                 ApplyLegacyTerrainColor(legacy, offset, map, rot);
         }
 
-        private static void FinishGeneration(Map map, CellRect rect, IFFF_Structure def, Rot4 rot, IntVec3 offset)
+        private static void FinishGeneration(Map map, CellRect rect, IFFF_Structure def, Rot4 rot, IntVec3 offset, bool reconnectPower)
         {
             foreach (IntVec3 c in rect)
             {
                 if (c.InBounds(map)) map.fogGrid.Unfog(c);
             }
 
-            ReconnectPower(map);
+            if (reconnectPower) ReconnectPower(map);
 
             var tasks = def.GetTasks(rot, offset);
             if (tasks != null)

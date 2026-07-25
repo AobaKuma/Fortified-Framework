@@ -108,6 +108,14 @@ Patch/整合：相關 Patch 補入 turret / pawn equipment 的 gizmo，使 UI �
 
 功能要點：自動工作台系統與環境帳單類型，自動化生產流程。
 
+### BuildingReplace（生成時機率替換建築）
+- 關鍵類別:
+  - ModExtension_ReplaceBuilding (StandaloneFunctions/BuildingReplace/) — 掛在 ThingDef 上，描述「這個建築生成時有多少機率換成清單中的另一個 ThingDef」；欄位含 replaceChance、replacements(thing/weight/stuff)、onlyDuringMapGen、requireSameSize、inheritFaction/Stuff/HitPointsPercent，並提供 TryPickReplacement 與 ValidationErrors。
+  - Patch_ReplaceBuilding — Prefix 攔 GenSpawn.Spawn(7 參數版)，改寫 ref newThing；預設僅在 MapGenerator.mapBeingGenerated == map 期間作用，非生成期以單一靜態欄位比較即早退，並快取 def→extension 查表。
+  - ReplaceBuildingUtility — 材質合法性判定 / ResolveStuff / TryMakeReplacement / 血量百分比沿用；任何步驟失敗一律回傳 null 保留原建築。
+  - ReplaceBuildingValidator — [StaticConstructorOnStartup]，啟動時建快取並輸出設定錯誤警告。
+- 與 PawnReplace 的差異：PawnReplace 依 Site 威脅點數的 FloatRange 對應 PawnKindDef；本子系統是對建築的權重機率替換。替換不連鎖。
+
 ### 其他小型子系統
 - Bossgroup（CompUseEffect_SummonRaid）、SignalAreaTrigger、ForceTargetable、PawnReplace 等，皆以 Comp / ModExtension / Patch 組合驅動特定互動或事件。
 

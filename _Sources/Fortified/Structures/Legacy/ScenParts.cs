@@ -30,7 +30,7 @@ namespace Fortified.Structures
             Rot4 rot = randomRotation ? Rot4.Random : Rot4.North;
             
             Faction fac = spawnPartOfEnemyFaction ? Find.FactionManager.RandomEnemyFaction() : Faction.OfPlayer;
-            FFF_StructureUtility.Generate(layout, pos, map, fac, rot);
+            FFF_StructureUtility.Generate(layout, pos, map, fac, rot, reconnectPower: false);
 
             NotifyAndMovePawns(map, pos);
         }

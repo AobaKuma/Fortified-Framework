@@ -79,7 +79,7 @@ namespace Fortified.Structures
             CellRect reservedRect = structRect.ExpandedBy(def.centerStructure.spaceAround);
             usedRects.Add(reservedRect);
 
-            FFF_StructureUtility.Generate(structure, center, map, faction, Rot4.North);
+            FFF_StructureUtility.Generate(structure, center, map, faction, Rot4.North, reconnectPower: false);
             return structRect;
         }
 
@@ -135,7 +135,7 @@ namespace Fortified.Structures
                 if (IsRectValid(reservedRect, settlementRect, usedRects, map))
                 {
                     usedRects.Add(reservedRect);
-                    FFF_StructureUtility.Generate(structure, candidate, map, faction, rotation);
+                    FFF_StructureUtility.Generate(structure, candidate, map, faction, rotation, reconnectPower: false);
                     return;
                 }
             }

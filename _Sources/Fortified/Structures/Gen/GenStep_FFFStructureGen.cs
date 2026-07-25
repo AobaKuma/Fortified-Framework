@@ -25,6 +25,22 @@ namespace Fortified.Structures
         public bool randomRotation = false;
         public IntRange randomOffset = new IntRange(0, 5);
 
+        // 本次生成的主结构落点，供子类（例如卫星散布）使用。
+        // Where the main structure landed this run, for subclasses such as satellite scatter.
+        protected IFFF_Structure lastStructureDef;
+        protected IntVec3 lastStructureCenter;
+        protected Rot4 lastStructureRot = Rot4.North;
+        protected CellRect lastStructureRect = default;
+
+        /// <summary>
+        /// lastStructureRect 是否有效。用旗標而不是檢查 rect 是否為空 ——
+        /// default(CellRect) 的四個邊界都是 0，看起來像一個位在原點的 1x1 合法範圍。
+        /// Whether lastStructureRect holds a real footprint. A flag rather than an
+        /// emptiness probe: default(CellRect) has all four edges at 0, which reads as a
+        /// legitimate 1x1 rect at the origin.
+        /// </summary>
+        protected bool hasLastStructure;
+
         public override void Generate(Map map, GenStepParams parms)
         {
             IntVec3 center = CalculateCenter(map);
@@ -43,7 +59,15 @@ namespace Fortified.Structures
             if (def == null) return;
 
             Rot4 rot = randomRotation ? Rot4.Random : Rot4.North;
-            FFF_StructureUtility.Generate(def, center, map, faction, rot);
+
+            lastStructureDef = def;
+            lastStructureCenter = center;
+            lastStructureRot = rot;
+            lastStructureRect = FFF_StructureUtility.FootprintAt(def, center, rot);
+            hasLastStructure = true;
+
+            // reconnectPower: false —— 生成期不強制刷新電網，見 Generate 的參數說明。
+            FFF_StructureUtility.Generate(def, center, map, faction, rot, reconnectPower: false);
             HandlePostScatter(def, center, map, rot);
         }
 
@@ -63,10 +87,7 @@ namespace Fortified.Structures
 
         private void HandlePostScatter(IFFF_Structure def, IntVec3 center, Map map, Rot4 rot)
         {
-            var sketch = def.GetSketch();
-            if (rot != Rot4.North) sketch.Rotate(rot);
-            
-            CellRect rect = sketch.OccupiedRect.MovedBy(center - sketch.OccupiedRect.CenterCell);
+            CellRect rect = FFF_StructureUtility.FootprintAt(def, center, rot);
 
             // 1. 处理污垢散射
             if (!filthTypes.NullOrEmpty())
@@ -90,20 +111,32 @@ namespace Fortified.Structures
             }
         }
 
-        private IFFF_Structure ResolveStructureDef()
+        protected IFFF_Structure ResolveStructureDef()
         {
             if (!useTag.NullOrEmpty())
-            {
-                var matches = DefDatabase<StructureLayoutDef>.AllDefs.Where(x => x.tags != null && x.tags.Contains(useTag)).Cast<IFFF_Structure>()
-                    .Concat(DefDatabase<FFF_StructureDef>.AllDefs.Where(x => x.tags != null && x.tags.Contains(useTag)).Cast<IFFF_Structure>())
-                    .Concat(DefDatabase<FFF_SettlementDef>.AllDefs.Where(x => x.tags != null && x.tags.Contains(useTag)).Cast<IFFF_Structure>());
-                return matches.RandomElementWithFallback();
-            }
+                return RandomStructureWithTag(useTag);
 
             if (!structureLayoutDefs.NullOrEmpty())
                 return structureLayoutDefs.RandomElementWithFallback();
 
             return null;
+        }
+
+        /// <summary>
+        /// 從所有結構庫（舊 StructureLayoutDef、FFF_StructureDef、FFF_SettlementDef）
+        /// 中按標籤隨機取一個。每次呼叫都重新擲骰，不快取。
+        ///
+        /// Random structure carrying <paramref name="tag"/>, across all three structure
+        /// databases. Rolled fresh on every call — deliberately not cached.
+        /// </summary>
+        public static IFFF_Structure RandomStructureWithTag(string tag)
+        {
+            if (tag.NullOrEmpty()) return null;
+
+            var matches = DefDatabase<StructureLayoutDef>.AllDefs.Where(x => x.tags != null && x.tags.Contains(tag)).Cast<IFFF_Structure>()
+                .Concat(DefDatabase<FFF_StructureDef>.AllDefs.Where(x => x.tags != null && x.tags.Contains(tag)).Cast<IFFF_Structure>())
+                .Concat(DefDatabase<FFF_SettlementDef>.AllDefs.Where(x => x.tags != null && x.tags.Contains(tag)).Cast<IFFF_Structure>());
+            return matches.RandomElementWithFallback();
         }
 
         private IntVec3 CalculateCenter(Map map)
