@@ -31,6 +31,10 @@ namespace Fortified
             if (BypassUsableWeapons.Contains(weapon.def.defName)) return true;
             if (EnableWeaponFilter)
             {
+                if (weapon.def.weaponTags.NullOrEmpty())
+                {
+                    return false;
+                }
                 if (UsableWeaponTags.NullOrEmpty()) Log.Warning("MechWeaponExtension has EnableWeaponFilter enabled but UsableWeaponTags is empty!");
                 bool tagMatch = false;
                 foreach (string tag in UsableWeaponTags)

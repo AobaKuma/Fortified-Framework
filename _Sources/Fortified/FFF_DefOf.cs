@@ -24,8 +24,11 @@ public static class FFF_DefOf
     public static JobDef FFF_EjectMechCapsule;
     public static JobDef FFF_Replenish;
     public static JobDef FFF_SwitchAmmo;
+    public static JobDef FFF_EquipTurret;
 
-    public static DutyDef FFF_DefendRoom;
+    public static StatCategoryDef FFF_Turrets;
+
+	public static DutyDef FFF_DefendRoom;
 
     public static MentalStateDef FFF_FleeInPlace;
 

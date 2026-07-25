@@ -12,12 +12,21 @@ namespace Fortified
 	{
 		public override Vector3 ScaleFor(PawnRenderNode node, PawnDrawParms parms)
 		{
+			if (node is PawnRenderNode_SubTurretGun a)
+			{
+				return a.subturret.turret.def.graphicData.drawSize.ToVector3();//.TurretProp.renderNodeProperty.drawSize.ToVector3();
+			}
+			return base.ScaleFor(node, parms);
+		}
+		/*public override Vector3 ScaleFor(PawnRenderNode node, PawnDrawParms parms)
+		{
             if (node is PawnRenderNode_SubTurretGun a)
             {
-				return a.subturret.TurretProp.renderNodeProperties[0].drawSize.ToVector3();
+				return a.subturret.turret?.DrawSize ?? Vector3.one;
             }
             return base.ScaleFor(node, parms);
-		}
+		}*/
+
         public override Quaternion RotationFor(PawnRenderNode node, PawnDrawParms parms)
 		{
 			Quaternion quaternion = base.RotationFor(node, parms);
@@ -27,6 +36,11 @@ namespace Fortified
             }
 			return quaternion;
 		}
+
+		/*public override bool CanDrawNow(PawnRenderNode node, PawnDrawParms parms)
+		{
+			return true;// base.CanDrawNow(node, parms);
+		}*/
 	}
 
 }

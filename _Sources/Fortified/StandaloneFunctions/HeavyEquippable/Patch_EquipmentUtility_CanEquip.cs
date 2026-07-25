@@ -16,7 +16,13 @@ namespace Fortified
         {
             if (!__result) return;//因為其他原因的不可行(生物鎖之類的)
             if (__0 is not Thing thing || __1 is not Pawn pawn) return;//天知道拿了個不知道啥的鬼東西，反正也跳過。
-            if (!thing.HasComp<CompEquippable>()) return; //沒有comp
+			if (__0.def.weaponTags?.Contains("FFF_NeverEquip") == true)
+            {
+                __result = false;
+				__2 = " " + "FFF.WeaponNotSupported".Translate();
+				return;
+            }
+			if (!thing.HasComp<CompEquippable>()) return; //沒有comp
 
             if (thing.def.HasModExtension<HeavyEquippableExtension>())
             {

@@ -101,4 +101,10 @@
     <reportString>Switching ammo</reportString>
   </JobDef>
 
+  <JobDef>
+    <defName>FFF_EquipTurret</defName>
+    <driverClass>Fortified.JobDriver_EquipTurret</driverClass>
+    <reportString>Equiping turret</reportString>
+  </JobDef>
+
 </Defs>	

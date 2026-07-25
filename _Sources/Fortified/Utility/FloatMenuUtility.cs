@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
-
+﻿using RimWorld;
+using System;
+using System.Collections.Generic;
+using System.Security.Principal;
 using Verse;
 using Verse.AI;
-using RimWorld;
-using System;
-using System.Security.Principal;
+using static UnityEngine.GraphicsBuffer;
 
 namespace Fortified
 {
@@ -20,14 +20,39 @@ namespace Fortified
             //武器相關
             if (tmp.TryGetComp<CompEquippable>() != null)
             {
-                if (CheckUtility.IsMechUseable(pawn, tmp))
+                if (tmp.def.weaponTags?.Contains("FFF_MountedWeapon") == true)
                 {
-                    yield return TryMakeFloatMenuForWeapon(pawn, tmp);
+                    if(pawn.TryGetComp(out CompMultipleTurretGun cmtg))
+                    {
+                        for (int i = 0; i < cmtg.turrets.Count; i++)
+                        {
+							SubTurret subTurret = cmtg.turrets[i];
+							if (subTurret.TurretProp.supportedWeaponTag.NullOrEmpty())
+							{
+								continue;
+							}
+							string label = "Equip".Translate(clickedThing.LabelShort, clickedThing);
+							label += "(" + "FFF.MultiTurret.WeaponSlot".Translate() + " " + (i + 1) + (subTurret.turret == null ? "" : ("Replaces".Translate() + ": " + subTurret.turret.LabelShort)) + ")";
+							new FloatMenuOption(label, delegate
+							{
+								Job job = JobMaker.MakeJob(FFF_DefOf.FFF_EquipTurret, tmp);
+								job.count = i + 1;
+								pawn.jobs.TryTakeOrderedJob(job, JobTag.Misc);
+							}, clickedThing, UnityEngine.Color.white);
+						}
+                    }
                 }
                 else
                 {
-                    yield return new FloatMenuOption("CannotEquip".Translate(tmp) + ": " + "FFF.Reason.WeaponNotSupported".Translate(), null);
-                }
+					if (CheckUtility.IsMechUseable(pawn, tmp))
+					{
+						yield return TryMakeFloatMenuForWeapon(pawn, tmp);
+					}
+					else
+					{
+						yield return new FloatMenuOption("CannotEquip".Translate(tmp) + ": " + "FFF.Reason.WeaponNotSupported".Translate(), null);
+					}
+				}
             }
             //裝備相關
             if (tmp.def?.apparel != null && pawn.TryGetComp<CompMechApparel>(out var comp))
