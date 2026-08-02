@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+
+  <!-- ═══ 預覽視窗 ═══ -->
+  <FFF_RimIgnore_Title>上傳創意工坊 — 排除內容預覽</FFF_RimIgnore_Title>
+  <FFF_RimIgnore_Subtitle>{0} — 依 {1} 過濾上傳內容</FFF_RimIgnore_Subtitle>
+  <FFF_RimIgnore_Summary>即將上傳：{0} 個檔案（{1}）\n\n已排除：{2} 個項目 / {3} 個檔案（{4}）</FFF_RimIgnore_Summary>
+  <FFF_RimIgnore_ColPath>項目</FFF_RimIgnore_ColPath>
+  <FFF_RimIgnore_ColSize>大小</FFF_RimIgnore_ColSize>
+  <FFF_RimIgnore_ColRule>命中規則</FFF_RimIgnore_ColRule>
+  <FFF_RimIgnore_DirSize>{0} 檔 / {1}</FFF_RimIgnore_DirSize>
+  <FFF_RimIgnore_NothingExcluded>沒有任何項目被排除。</FFF_RimIgnore_NothingExcluded>
+  <FFF_RimIgnore_OpenFile>開啟 .rimignore</FFF_RimIgnore_OpenFile>
+  <FFF_RimIgnore_Rescan>重新掃描</FFF_RimIgnore_Rescan>
+  <FFF_RimIgnore_Confirm>確認上傳</FFF_RimIgnore_Confirm>
+  <FFF_RimIgnore_CannotUpload>掃描結果不完整，或過濾後沒有任何檔案可上傳。</FFF_RimIgnore_CannotUpload>
+  <FFF_RimIgnore_RescanFailed>重新掃描失敗。</FFF_RimIgnore_RescanFailed>
+  <FFF_RimIgnore_FileMissing>找不到 .rimignore。</FFF_RimIgnore_FileMissing>
+  <FFF_RimIgnore_UploadAnyway>仍要完整上傳</FFF_RimIgnore_UploadAnyway>
+  <FFF_RimIgnore_ErrorTitle>忽略規則處理失敗</FFF_RimIgnore_ErrorTitle>
+  <FFF_RimIgnore_MoreWarnings>…（尚有 {0} 則）</FFF_RimIgnore_MoreWarnings>
+  <FFF_RimIgnore_RuleImplicit>[內建] {0}</FFF_RimIgnore_RuleImplicit>
+  <FFF_RimIgnore_RuleLine>L{0}: {1}</FFF_RimIgnore_RuleLine>
+  <FFF_RimIgnore_ModRootLabel>「模組根目錄」</FFF_RimIgnore_ModRootLabel>
+
+  <!-- ═══ 規則解析警告 ═══ -->
+  <FFF_RimIgnore_Warn_NoPatternAfterBang>第 {0} 行：'!' 之後沒有樣式，已忽略。</FFF_RimIgnore_Warn_NoPatternAfterBang>
+  <FFF_RimIgnore_Warn_SlashOnly>第 {0} 行：樣式僅有 '/'，已忽略。</FFF_RimIgnore_Warn_SlashOnly>
+  <FFF_RimIgnore_Warn_EmptyPattern>第 {0} 行：樣式為空，已忽略。</FFF_RimIgnore_Warn_EmptyPattern>
+  <FFF_RimIgnore_Warn_ParseFailed>第 {0} 行：樣式無法解析（{1}），已忽略。</FFF_RimIgnore_Warn_ParseFailed>
+  <FFF_RimIgnore_Warn_CompileFailed>第 {0} 行：樣式編譯失敗（{1}），已忽略。</FFF_RimIgnore_Warn_CompileFailed>
+  <FFF_RimIgnore_Warn_TooManyLines>{0} 超過 {1} 行，其餘內容已略過。</FFF_RimIgnore_Warn_TooManyLines>
+
+  <!-- ═══ 掃描警告 ═══ -->
+  <FFF_RimIgnore_Warn_DepthLimit>資料夾巢狀超過 {0} 層，已停止深入：{1}</FFF_RimIgnore_Warn_DepthLimit>
+  <FFF_RimIgnore_Warn_ListDirFailed>無法列出資料夾內容（{0}）：{1}</FFF_RimIgnore_Warn_ListDirFailed>
+  <FFF_RimIgnore_Warn_AttributeFailed>無法讀取項目屬性（{0}）：{1}</FFF_RimIgnore_Warn_AttributeFailed>
+  <FFF_RimIgnore_Warn_SkippedSymlink>已跳過符號連結／連結點：{0}</FFF_RimIgnore_Warn_SkippedSymlink>
+  <FFF_RimIgnore_Warn_EntryLimit>項目數超過 {0}，掃描已提前中止。請確認 {1} 的路徑設定是否正確。</FFF_RimIgnore_Warn_EntryLimit>
+
+  <!-- ═══ 錯誤訊息 ═══ -->
+  <FFF_RimIgnore_Err_LoadFailed>無法讀取 {0}，已中止上傳。詳情請見開發者主控台。</FFF_RimIgnore_Err_LoadFailed>
+  <FFF_RimIgnore_Err_ScanFailed>無法掃描模組資料夾，已中止上傳。詳情請見開發者主控台。</FFF_RimIgnore_Err_ScanFailed>
+  <FFF_RimIgnore_Err_Unexpected>套用忽略規則時發生未預期的錯誤，已中止上傳。詳情請見開發者主控台。</FFF_RimIgnore_Err_Unexpected>
+  <FFF_RimIgnore_Err_StagingFailed>建立暫存鏡像失敗，已中止上傳（模組原始檔案未被更動）。\n\n{0}</FFF_RimIgnore_Err_StagingFailed>
+  <FFF_RimIgnore_Err_PlanTruncated>掃描結果不完整（超出安全上限），已中止建立鏡像。</FFF_RimIgnore_Err_PlanTruncated>
+  <FFF_RimIgnore_Err_NothingToUpload>套用 {0} 之後沒有任何檔案會被上傳，已中止。</FFF_RimIgnore_Err_NothingToUpload>
+  <FFF_RimIgnore_Err_MirrorCountMismatch>鏡像檔案數不符（預期 {0}、實得 {1}）。</FFF_RimIgnore_Err_MirrorCountMismatch>
+  <FFF_RimIgnore_Err_StaleStagingLocked>無法清除既有的暫存鏡像：{0}</FFF_RimIgnore_Err_StaleStagingLocked>
+
+  <!-- ═══ 開發者模式除錯動作 ═══ -->
+  <FFF_RimIgnore_Dbg_NoLocalMods>找不到任何本機模組資料夾。</FFF_RimIgnore_Dbg_NoLocalMods>
+  <FFF_RimIgnore_Dbg_AllHaveIgnore>所有本機模組都已經有 {0} 了。</FFF_RimIgnore_Dbg_AllHaveIgnore>
+  <FFF_RimIgnore_Dbg_LoadFailed>無法讀取 {0}。</FFF_RimIgnore_Dbg_LoadFailed>
+  <FFF_RimIgnore_Dbg_ScanFailed>無法掃描模組資料夾。</FFF_RimIgnore_Dbg_ScanFailed>
+  <FFF_RimIgnore_Dbg_TemplateCreated>已建立 {0}</FFF_RimIgnore_Dbg_TemplateCreated>
+  <FFF_RimIgnore_Dbg_TemplateFailed>建立失敗，詳情請見主控台。</FFF_RimIgnore_Dbg_TemplateFailed>
+  <FFF_RimIgnore_Dbg_NoIgnoreSuffix>（無 {0}）</FFF_RimIgnore_Dbg_NoIgnoreSuffix>
+
+  <!-- ═══ 由除錯動作寫出的 .rimignore 範本內容 ═══ -->
+  <FFF_RimIgnore_Template># .rimignore — 上傳 Steam 創意工坊時要排除的檔案／資料夾
+#
+# 語法與 GitHub 的 .gitignore 完全相同：
+#   #        註解（\# 可轉義為字面井號）
+#   !xxx     反選（重新納入），後出現的規則覆蓋先出現的規則
+#   /xxx     錨定於模組根目錄
+#   xxx/     僅匹配目錄
+#   *        任意字元（不跨越 /）
+#   ?        單一字元（不跨越 /）
+#   [abc]    字元集，[!abc] 為排除
+#   **/xxx   任意深度；xxx/** 代表該目錄底下全部
+#
+# 注意：與 Git 相同，資料夾一旦被排除，其中的內容就無法再用 ! 重新納入。
+# 內建已自動排除：本檔案、.git/ .gitignore .gitattributes .svn/ .hg/
+#                 .vs/ .idea/ .vscode/ Thumbs.db desktop.ini .DS_Store
+# 這些內建規則同樣可以用 ! 覆寫，例如：!.rimignore 會讓本檔案一起上傳。
+
+# ── 原始碼與建置產物 ──
+/_Sources/
+/Source/
+**/obj/
+**/bin/
+*.pdb
+*.csproj.user
+*.sln
+*.suo
+
+# ── Unity 專案 ──
+/UnityProject/
+
+# ── 開發用工具與捷徑 ──
+/_Tools/
+*.lnk
+*.bat
+
+# ── 編輯器與備份雜訊 ──
+*.orig
+*.rej
+*.bak
+*~
+
+# ── 範例：排除整個資料夾但保留其中一個檔案 ──
+# 先排除「內容」而非資料夾本身，再反選要保留的檔案：
+# /Docs/*
+# !/Docs/Manual.md
+</FFF_RimIgnore_Template>
+
+</LanguageData>

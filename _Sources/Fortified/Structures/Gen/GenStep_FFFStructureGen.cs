@@ -52,7 +52,6 @@ namespace Fortified.Structures
             if (compoundDef != null)
             {
                 CompoundStructureUtility.Generate(compoundDef, center, map, faction);
-                ScatterSatellites(map, center, faction, null);
                 return;
             }
 
@@ -71,7 +70,6 @@ namespace Fortified.Structures
             // reconnectPower: false —— 生成期不強制刷新電網，見 Generate 的參數說明。
             FFF_StructureUtility.Generate(def, center, map, faction, rot, reconnectPower: false);
             HandlePostScatter(def, center, map, rot);
-            ScatterSatellites(map, center, faction, RectOf(center, def.Size, rot));
         }
 
         private FFF_CompoundStructureDef ResolveCompoundDef()

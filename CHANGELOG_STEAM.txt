@@ -1,0 +1,38 @@
+[h1]Update — 2026-08-03[/h1]
+[i]Changes since release-20260711[/i]
+
+[h2]New Features[/h2]
+[list]
+[*][b]Multi-turret system rewritten[/b] — sub-turrets are now a proper [i]SubTurret[/i] class implementing IAttackTargetSearcher, with their own targeting, warmup/cooldown, and save data. Fixes desync-prone state and makes each mounted turret behave like a real turret instead of a scripted effect.
+[*][b]Turret ammo (CompTurretProjectile)[/b] — mounted turrets can now hold and switch ammo via a ThingFilter, with a starting-ammo range, an ammo selection dialog, and auto-pickup settings. A [i]Turrets[/i] stat category was added so per-turret numbers show up in the info panel.
+[*][b]Turret weapon swapping in-game[/b] — weapons tagged [code]FFF_MountedWeapon[/code] can be hauled and installed into a specific turret slot through a new [i]FFF_EquipTurret[/i] job and float-menu entry, showing which slot and which weapon it replaces.
+[*][b]Building replacement extension[/b] — new [i]ModExtension_ReplaceBuilding[/i] lets a ThingDef roll a weighted chance to be swapped for another building at map generation. Supports stuff inheritance, faction inheritance, and a same-size requirement so replacements can't overlap or block corridors. Non-chaining by design, and map-gen-only by default so player construction is untouched.
+[*][b]Timed hostile site quest[/b] — a generic timed site framework: threat points drive garrison size and loot value, and entering the map starts a reinforcement countdown that shortens on higher difficulty. Includes a use-effect item to hand out the quest, site part worker, quest root node, and full English/Chinese keyed strings.
+[*][b]Garrisoned structure generation[/b] — new GenStep that spawns a defended structure with satellite ring scatter. Satellite radius scales off the map's short side with per-instance radius/angle jitter and minimum spacing, so the same spec reads correctly on 200x200 and 350x350 maps.
+[*][b]Satellite scatter parameters[/b] — [i]FFF_SatelliteScatterParms[/i] adds tag-based satellite placement to standard structure generation, generating each piece separately so the main sketch is never inflated.
+[*][b]Structure defence lords[/b] — new [i]LordJob_DefendCell[/i] and the [i]IStructureLord[/i] interface. Defenders hold a point, then escalate to assault when harmed or when a nearby turret is damaged, and propagate an attack signal to other structure lords within a configurable radius so a base wakes up as a whole rather than one room at a time.
+[*][b]Pawn group generation task[/b] — [i]Task_SpawnPawnGroup[/i] spawns a defined pawn kind list at an offset position under a defend-cell lord, with rotation-aware transforms for structure placement.
+[*][b]Verb_Shoot_AmmoSwitch[/b] — ammo-switching verb built on Verb_Shoot so pawn-equipped weapons still grant Shooting XP and record ShotsFired. The old Verb_LaunchProjectile variant remains correct for turrets and mech-only weapons.
+[/list]
+
+[h2]Combat Extended[/h2]
+[list]
+[*][b]CompTurretProjectilesCE[/b] — CE-side ammo comp for mounted turrets, with AmmoSetDef binding and a configurable default pickup amount.
+[*][b]CompExplosiveOnMelee cook-off[/b] — carried ammo is now launched at the melee target as real CE projectiles instead of being lumped into the inventory blast. Falls back to detonating at the target position when ammo has no linked projectile, and is capped at 10 items with exception guarding so a bad AmmoSetDef can't take down the game.
+[/list]
+
+[h2]Fixes[/h2]
+[list]
+[*][b]Raid wave quest spam[/b] — [i]FFF_RaidWave_Default[/i] is now hidden and auto-accepted. It's a combat controller with no name/description rules, so leaving it visible threw "Grammar unresolvable. Root 'questName'" errors.
+[*][b]Paint work givers[/b] — added a null check for [code]listerBuildings[/code] in PotentialWorkThingsGlobal, and WorkGiver_PaintBuilding now returns only actively paintable buildings instead of the full list, cutting wasted job scans.
+[*][b]Mech weapon filter[/b] — weapons with no weaponTags at all are now rejected outright when EnableWeaponFilter is on, rather than falling through the tag loop.
+[*][b]Multiplayer API[/b] — restored 0MultiplayerAPI.dll after it was briefly removed.
+[/list]
+
+[h2]Modding &amp; Tools[/h2]
+[list]
+[*][b]Random structure export tool[/b] — new debug spawnable for exporting randomised structures.
+[*][b]Pawn group export tool[/b] — now lets you pick the element type (FFF_Element_PawnGroup or any subclass) from a dropdown, with the layout widened to fit.
+[*][b]Structure overlap checker[/b] — Python script + batch runner that scans structure defs for overlapping placements.
+[*][b]Translation checker[/b] — Python script + batch runner that reports missing keyed translations across language folders.
+[/list]
