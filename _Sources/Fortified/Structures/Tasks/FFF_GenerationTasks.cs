@@ -285,6 +285,33 @@ namespace Fortified.Structures
         }
     }
 
+	public class Task_SpawnPawnGroup : IFFF_GenerationTask
+	{
+		public IntVec3 pos;
+		public Faction faction;
+		public List<PawnKindDef> pawns;
+		public string lordTag = "";
+		public float sendSignalRadius = -1f;
+		public void Execute(Map map, IntVec3 offset)
+		{
+			IntVec3 actualPos = pos + offset;
+			if (!actualPos.InBounds(map)) return;
+			List<Pawn> list = new List<Pawn>();
+			foreach (PawnKindDef item in pawns)
+			{
+				Pawn pawn = PawnGenerator.GeneratePawn(item, faction, map.Tile);
+				list.Add(pawn);
+				GenPlace.TryPlaceThing(pawn, CellFinder.RandomClosewalkCellNear(actualPos, map, 5, c => c.Standable(map)), map, ThingPlaceMode.Near);
+			}
+			LordMaker.MakeNewLord(faction, new LordJob_DefendCell(actualPos, lordTag) { sendSignalRadius = sendSignalRadius }, map, list);
+		}
+
+		public IFFF_GenerationTask Transformed(Rot4 rot, IntVec3 offset)
+		{
+			return new Task_SpawnPawnGroup { pos = pos.RotatedBy(rot) + offset, pawns = pawns, faction = faction, lordTag = lordTag, sendSignalRadius = sendSignalRadius };
+		}
+	}
+
 	public class Task_SpawnPawnGroupInRoom : IFFF_GenerationTask
 	{
 		public IntVec3 pos;

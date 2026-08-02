@@ -1,4 +1,5 @@
-﻿using RimWorld;
+﻿using LudeonTK;
+using RimWorld;
 using System;
 using System.Collections.Generic;
 using System.Drawing.Printing;
@@ -20,7 +21,7 @@ namespace Fortified.Structures
 	{
 		private Vector2 scrollPosition = Vector2.zero;
 
-		public override Vector2 InitialSize => new Vector2(320f, 500f);
+		public override Vector2 InitialSize => new Vector2(400f, 500f);
 
 		public ExportTool_PawnGroup tool;
 
@@ -41,7 +42,24 @@ namespace Fortified.Structures
 		public override void DoWindowContents(Rect inRect)
 		{
 			Text.Font = GameFont.Small;
-			if (Widgets.ButtonText(new Rect(inRect.x, inRect.y, 300f, 30f), tool.factionDef?.defName ?? "Null"))
+			if (Widgets.ButtonText(new Rect(inRect.x, inRect.y, 300f, 30f), tool.elementTypeName.NullOrEmpty() ? "None" : tool.elementTypeName))
+			{
+				List<FloatMenuOption> list = new List<FloatMenuOption>();
+				list.Add(new FloatMenuOption(typeof(FFF_Element_PawnGroup).FullName, delegate
+				{
+					tool.elementTypeName = typeof(FFF_Element_PawnGroup).FullName;
+				}));
+				foreach (Type item in typeof(FFF_Element_PawnGroup).AllSubclassesNonAbstract())
+				{
+					Type localType = item;
+					list.Add(new FloatMenuOption(localType.FullName, delegate
+					{
+						tool.elementTypeName = localType.FullName;
+					}));
+				}
+				Find.WindowStack.Add(new FloatMenu(list));
+			}
+			if (Widgets.ButtonText(new Rect(inRect.x, inRect.y + 30f, 300f, 30f), tool.factionDef?.defName ?? "Null"))
 			{
 				List<FloatMenuOption> list = new List<FloatMenuOption>();
 				foreach (FactionDef def in DefDatabase<FactionDef>.AllDefs)
@@ -55,9 +73,9 @@ namespace Fortified.Structures
 				}
 				Find.WindowStack.Add(new FloatMenu(list));
 			}
-			Widgets.FloatRange(new Rect(inRect.x, inRect.y + 30f, 300f, 30f), GetHashCode(), ref tool.pointsRange, 0f, 10000f, "Points range " + tool.pointsRange.ToString(), ToStringStyle.Integer, 1f, roundTo: 100f);
-			tool.lordTag = Widgets.TextField(new Rect(inRect.x, inRect.y + 60f, 200f, 30f), tool.lordTag, 20);
-			if(Widgets.ButtonImage(new Rect(inRect.x + 200f, inRect.y + 60f, 30f, 30f), TexButton.Copy))
+			Widgets.FloatRange(new Rect(inRect.x, inRect.y + 60f, 300f, 30f), GetHashCode(), ref tool.pointsRange, 0f, 10000f, "Points range " + tool.pointsRange.ToString(), ToStringStyle.Integer, 1f, roundTo: 100f);
+			tool.lordTag = Widgets.TextField(new Rect(inRect.x, inRect.y + 90f, 200f, 30f), tool.lordTag, 20);
+			if(Widgets.ButtonImage(new Rect(inRect.x + 200f, inRect.y + 90f, 30f, 30f), TexButton.Copy))
 			{
 				ExportTool_PawnGroup tool2 = (ExportTool_PawnGroup)Find.Selector.SelectedObjects.Where((object x) => x is ExportTool_PawnGroup t && t != tool).FirstOrDefault();
 				if(tool2 != null)
@@ -65,16 +83,16 @@ namespace Fortified.Structures
 					tool.CopyFrom(tool2);
 				}
 			}
-			if (Widgets.ButtonImage(new Rect(inRect.x + 230f, inRect.y + 60f, 30f, 30f), TexButton.Paste))
+			if (Widgets.ButtonImage(new Rect(inRect.x + 230f, inRect.y + 90f, 30f, 30f), TexButton.Paste))
 			{
 				foreach (ExportTool_PawnGroup t in Find.Selector.SelectedObjects.Where((object x) => x is ExportTool_PawnGroup t && t != tool))
 				{
 					t.CopyFrom(tool);
 				}
 			}
-			tool.sendSignalRadius = Widgets.HorizontalSlider(new Rect(inRect.x, inRect.y + 90f, inRect.width, 30f), tool.sendSignalRadius, -1f, 80, roundTo: 1, label: $"Signal radius ({tool.sendSignalRadius})");
-			Widgets.DrawLineHorizontal(inRect.x, inRect.y + 125f, 300f);
-			Rect outRect = new Rect(inRect.x, inRect.y + 130f, inRect.width, inRect.height - 35f - 5f - inRect.y);
+			tool.sendSignalRadius = Widgets.HorizontalSlider(new Rect(inRect.x, inRect.y + 120f, inRect.width, 30f), tool.sendSignalRadius, -1f, 80, roundTo: 1, label: $"Signal radius ({tool.sendSignalRadius})");
+			Widgets.DrawLineHorizontal(inRect.x, inRect.y + 155f, 300f);
+			Rect outRect = new Rect(inRect.x, inRect.y + 160f, inRect.width, inRect.height - 35f - 5f - inRect.y);
 			float width = outRect.width - 16f;
 			Rect viewRect = new Rect(0f, 0f, width, tool.options.Count * 30f);
 			Widgets.BeginScrollView(outRect, ref scrollPosition, viewRect);
@@ -212,6 +230,7 @@ namespace Fortified.Structures
 	{
 		public FactionDef factionDef;
 		public string lordTag = "";
+		public string elementTypeName = "Fortified.Structures.FFF_Element_PawnGroup";
 		public float sendSignalRadius = -1f;
 		private float minPoints = 1000;
 		private float maxPoints = 1000;
@@ -263,8 +282,7 @@ namespace Fortified.Structures
 			{
 				return;
 			}
-			string typeName = this.def.devNote; //Just free string field without translate
-			sb.AppendLine("      <li Class=\"" + typeName + "\">");
+			sb.AppendLine("      <li Class=\"" + elementTypeName + "\">");
 			sb.AppendLine($"        <factionDef>{factionDef.defName}</factionDef>");
 			sb.AppendLine($"        <sendSignalRadius>{sendSignalRadius}</sendSignalRadius>");
 			IntVec3 pos = Position - origin;
@@ -301,6 +319,7 @@ namespace Fortified.Structures
 			Scribe_Collections.Look(ref kindDefs, "kindDefs", LookMode.Def);
 			Scribe_Collections.Look(ref weights, "weights", LookMode.Value);
 			Scribe_Values.Look(ref lordTag, "lordTag");
+			Scribe_Values.Look(ref elementTypeName, "elementTypeName");
 			Scribe_Values.Look(ref sendSignalRadius, "sendSignalRadius", defaultValue: -1);
 			Scribe_Values.Look(ref minPoints, "minPoints", 1000);
 			Scribe_Values.Look(ref maxPoints, "maxPoints", 1000);
@@ -322,6 +341,69 @@ namespace Fortified.Structures
 					weights = null;
 				}
 			}
+		}
+	}
+
+	public class Dialog_RandomStructureExtractTool : Window
+	{
+		public override Vector2 InitialSize => new Vector2(500f, 150f);
+
+		public ExportTool_RandomStructure tool;
+
+		public Dialog_RandomStructureExtractTool(ExportTool_RandomStructure tool)
+		{
+			this.doCloseButton = true;
+			forcePause = false;
+			absorbInputAroundWindow = false;
+			onlyOneOfTypeAllowed = false;
+			this.draggable = true;
+			this.tool = tool;
+			this.closeOnClickedOutside = false;
+			this.preventCameraMotion = false;
+		}
+
+		public override void DoWindowContents(Rect inRect)
+		{
+			Text.Font = GameFont.Small;
+			tool.substructureTag = Widgets.TextField(new Rect(inRect.x, inRect.y, 500f, 30f), tool.substructureTag);
+		}
+	}
+
+	public class ExportTool_RandomStructure : ExportTool
+	{
+		public string substructureTag = "";
+
+		public override IEnumerable<Gizmo> GetGizmos()
+		{
+			yield return new Command_Action
+			{
+				defaultLabel = "DEV: change props",
+				action = delegate
+				{
+					if (!Find.WindowStack.Windows.Any((x) => x is Dialog_RandomStructureExtractTool dialog && dialog.tool == this))
+					{
+						Find.WindowStack.Add(new Dialog_RandomStructureExtractTool(this));
+					}
+				}
+			};
+		}
+
+		public override void ExportToXML(IntVec3 origin, StringBuilder sb)
+		{
+			if (substructureTag.NullOrEmpty())
+			{
+				return;
+			}
+			sb.AppendLine("      <li Class=\"Fortified.Structures.FFF_Element_RandomSubStructure\">");
+			sb.AppendLine($"        <tag>{substructureTag}</tag>");
+			sb.AppendLine($"        <chance>{1}</chance>");
+			sb.AppendLine("      </li>");
+		}
+
+		public override void ExposeData()
+		{
+			base.ExposeData();
+			Scribe_Values.Look(ref substructureTag, "substructureTag");
 		}
 	}
 }
