@@ -263,7 +263,8 @@ namespace Fortified.Structures
 			{
 				return;
 			}
-			sb.AppendLine("      <li Class=\"Fortified.Structures.FFF_Element_PawnGroup\">");
+			string typeName = this.def.devNote; //Just free string field without translate
+			sb.AppendLine("      <li Class=\"" + typeName + "\">");
 			sb.AppendLine($"        <factionDef>{factionDef.defName}</factionDef>");
 			sb.AppendLine($"        <sendSignalRadius>{sendSignalRadius}</sendSignalRadius>");
 			IntVec3 pos = Position - origin;
