@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+
+  <FFF.MultiTurret.WeaponSlot>Slot</FFF.MultiTurret.WeaponSlot>
+  
+  <FFF.SelectWeapon>Select turret</FFF.SelectWeapon>
+  
+  <FFF.MultiTurret.AttackRectTip>Select turret target, use {0} to set it for all turrets, use Right click to clear forced target ({0} for all turrets).</FFF.MultiTurret.AttackRectTip>
+  <FFF.MultiTurret.AutoAttackTip>Toggle auto attack mode, use {0} to set it for all turrets.</FFF.MultiTurret.AutoAttackTip>
+  <FFF.MultiTurret.DropWeaponTip>Drop turret weapon, use {0} to drop all weapons.</FFF.MultiTurret.DropWeaponTip>
+  <FFF.MultiTurret.SelectAmmoTypeTip>Select ammo type. Current: {0}</FFF.MultiTurret.SelectAmmoTypeTip>
+
+  <FFF.MultiTurret.CommandSetAmmoSettings>Ammo settings</FFF.MultiTurret.CommandSetAmmoSettings>
+  <FFF.MultiTurret.CommandSetAmmoSettingsDesc>Set auto pick up ammo settings.</FFF.MultiTurret.CommandSetAmmoSettingsDesc>
+
+</LanguageData>

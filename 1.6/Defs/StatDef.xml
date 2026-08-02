@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
+  <StatCategoryDef>
+    <defName>FFF_Turrets</defName>
+    <label>Turrets</label>
+    <displayOrder>115</displayOrder>
+  </StatCategoryDef>
+  
   <StatDef>
     <defName>FFF_MassCarryCapacity</defName>
     <label>mass carry capacity</label>

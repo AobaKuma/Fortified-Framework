@@ -11,7 +11,7 @@ namespace Fortified
     // 使用 PawnKindDef 中定义的 apparelMoney、apparelTags 和 apparelRequired 配置
     // 参考 RimWorld 的 PawnApparelGenerator 逻辑
 
-    #region Patch: GeneratePawn(PawnKindDef, Faction, PlanetTile?)
+    /*#region Patch: GeneratePawn(PawnKindDef, Faction, PlanetTile?)
 
     [HarmonyPatch(typeof(PawnGenerator), nameof(PawnGenerator.GeneratePawn),
         new Type[] { typeof(PawnKindDef), typeof(Faction), typeof(PlanetTile?) })]
@@ -26,7 +26,7 @@ namespace Fortified
         }
     }
 
-    #endregion
+    #endregion*/ //Removed because this method runs one below anyway
 
     #region Patch: GeneratePawn(PawnGenerationRequest)
 
@@ -51,7 +51,17 @@ namespace Fortified
     {
         public static void GenerateApparelForHumanlikeMech(Pawn pawn, PawnKindDef kindDef, Faction faction)
         {
-            if (pawn is not HumanlikeMech humanlikeMech || kindDef == null || humanlikeMech.apparel == null)
+            if(kindDef == null)
+            {
+                return;
+            }
+
+            if(pawn.TryGetComp(out CompMultipleTurretGun comp))
+            {
+                comp.PostGenInit(pawn);
+            }
+
+            if (pawn is not HumanlikeMech humanlikeMech || humanlikeMech.apparel == null)
             {
                 return;
             }
