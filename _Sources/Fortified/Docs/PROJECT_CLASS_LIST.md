@@ -170,22 +170,28 @@ Patch/整合：相關 Patch 補入 turret / pawn equipment 的 gizmo，使 UI �
 
 ## Thing / MechHolders / DeployableItem / Containers
 - Building_MechCapsule、Building_DeactivatedMech、MechCapsuleUtility、ModExtension_MechCapsule
-- CompMinifyToInventory、CompPawnTurretDeployGizmo、Building_ListedContainer、CompListedContainer、Building_SurplusContainer
+- CompMinifyToInventory、DeployUtility、MinifiedThingDeployable、Building_ListedContainer、CompListedContainer、Building_SurplusContainer
 詳細子系統 — Deployable（可部署物品）:
   - CompMinifyToInventory (Thing/DeployableItem/CompMinifyToInventory.cs)
     - 作為 CompUseEffect，將目標物件（建築或物品）最小化並嘗試放入使用者的裝備欄或背包；若可裝備且 pawn 無主要武器則會裝備，否則加入 inventory。
     - 會處理 minified building 的情形並播放互動音效。
-  - CompPawnTurretDeployGizmo / MinifiedThingDeployable (Thing/DeployableItem/CompPawnTurretDeployGizmo.cs)
+    - IWeaponUsable（機械體）額外套用 CheckUtility.IsMechUseable 武器白名單與 MassUtility 載重上限；收納失敗時以 GenPlace.TryPlaceThing 落地兜底，確保物件不會遺失。
+  - DeployUtility / MinifiedThingDeployable (Thing/DeployableItem/MinifiedThingDeployable.cs)
     - 提供 Pawn 在持有 MinifiedThing（MinifiedThingDeployable）時的 Gizmo/Command_Target 用於選定放置格。
-    - AcceptedCell 與 TargetParam 定義可放置的格子範圍/驗證（鄰近 pawn 的四格、該格沒有 edifice 等）。
-    - Deploy() 流程：檢查佔位、擦除現存物件(GenSpawn.WipeExistingThings)、調用 DeployCECompatHook 以支援兼容性，設置派系（若可），然後 GenSpawn.Spawn 實體，若 spawnedThing 可 Mannable 則自動使 pawn 開始 ManTurret 工作。
+    - DeployUtility.CanOperateDeployable 定義操作資格（IWeaponUsable 免除 ToolUser 智力門檻）；IsAcceptedDeployCell 與 TargetParam 定義可放置的格子範圍/驗證（與 pawn 四方相鄰、在地圖內、該格沒有 edifice）；CanAutoManTurret 決定部署後是否自動接手操作（機械體受 TurretMannableExtension 白名單限制）。
+    - Deploy() 流程：檢查佔位與地圖邊界、擦除現存物件(GenSpawn.WipeExistingThings)、調用 DeployCECompatHook 以支援兼容性，設置派系（若可），然後 GenSpawn.Spawn 實體；生成失敗時直接中止而不銷毀外殼，避免內容物遺失。
+    - Deploy 由 [SyncMethod] SyncedDeploy 包裝以支援多人模式；選取狀態變更僅在本地實際選中該 pawn 時執行。
     - MinifiedThingDeployable 提供 IGizmoGiver 接口，可為 pawn 返回可放置的 Gizmo（GetGizmoForPawn），並包含 MinifiedThingDeployableGraphicExt 以在未放置時自定義顯示資源。
+  - Patch_CompUsable_CanBeUsedBy (Thing/DeployableItem/Patch_CompUsable_CanBeUsedBy.cs)
+    - Transpiler：vanilla 的 CompUsable.CanBeUsedBy 以 RaceProps.IsFlesh 擋掉所有非血肉 pawn。此修補替換該次呼叫，僅對「IWeaponUsable + 目標掛有 CompMinifyToInventory」放行，不影響其他 CompUsable 物品。
+    - 找不到目標 IL 時會 Log.Warning 並原封退回，不產生壞 IL。
   - Patch_Pawn_GetGizmos (Thing/DeployableItem/Patch_Pawn_GetGizmos.cs)
-    - Harmony postfix：向 Pawn_InventoryTracker.GetGizmos 注入額外 Gizmo，若 inventory 或 equipment 中存在實作 IGizmoGiver 的項目，則呼叫其 GetGizmoForPawn 與界面顯示（只對 ToolUser 智力與玩家陣營有效且 pawn Spawned 且 被選中）。
+    - Harmony postfix：向 Pawn_InventoryTracker.GetGizmos 注入額外 Gizmo，若 inventory 或 equipment 中存在實作 IGizmoGiver 的項目，則呼叫其 GetGizmoForPawn 與界面顯示（資格判定走 DeployUtility.CanOperateDeployable，並要求玩家陣營、pawn Spawned 且被選中）。
 
 機制要點：
   - 玩家互動：持有可部署的 MinifiedThing 時，Pawn 會在選取時顯示 Command_Target gizmo，點選後會執行 Deploy()，並在成功後由 pawn 自動 man turret（若適用）與銷毀 minified 物件。
   - 可裝備/加入背包：CompMinifyToInventory 支援將物件直接裝備至 pawn 的 equipment（若條件允許）或放入 inventory。
+  - 機械體支援：vanilla 的 FloatMenuOptionProvider_FromThing 是 MechanoidCanDo => false，機械體看不到 CompUsable 選項，因此改由 FloatMenuOptionProvider_WeaponUsable → FloatMenuUtility 的「可回收的部署建築」分支補上。
   - 兼容鉤子：MinifiedThingDeployable.Deploy 會呼叫 DeployCECompatHook，供其他模組（例如 CE）注入兼容處理。
 
 功能要點：部署物品的 UI/互動、放置檢查、spawn 流程、與 inventory/equipment 的整合，以及對外的兼容擴充點。
