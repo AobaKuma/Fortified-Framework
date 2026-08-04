@@ -112,13 +112,23 @@ namespace Fortified
             }
         }
 
+        /// <summary>
+        /// 收起狀態的外觀。<see cref="MinifiedThingDeployableGraphicExt"/> 描述的是
+        /// 「這個可部署物件收起來時長什麼樣」，所以不論是拿在手上／背包裡（未 Spawned）
+        /// 還是躺在地上、堆疊區裡（已 Spawned）都該套用。
+        ///
+        /// 先前只在 !Spawned 時採用，導致落地的迷你化物件退回 InnerThing（建築）的貼圖；
+        /// 當該建築刻意把底座留白（例如只靠 turretTop 呈現的機槍陣地）時，
+        /// 地面上的物件就會變成一個看不見的空箱子。
+        /// </summary>
         public override Graphic Graphic
         {
             get
             {
-                if (!Spawned && Ext != null)
+                Graphic stowedGraphic = Ext?.graphicData?.Graphic;
+                if (stowedGraphic != null)
                 {
-                    return Ext.graphicData.Graphic;
+                    return stowedGraphic;
                 }
                 return base.Graphic;
             }
@@ -208,7 +218,11 @@ namespace Fortified
 
             GenSpawn.WipeExistingThings(cell, workerPawn.Rotation, createdThing.def, map, DestroyMode.Deconstruct);
 
-            DeployCECompatHook(this, createdThing);
+            // 掛上執行者 context，讓 CE 之類的兼容層知道轉換過程的溢出物該交給誰。
+            using (DeployContext.Push(workerPawn))
+            {
+                DeployCECompatHook(this, createdThing);
+            }
 
             if (createdThing.def.CanHaveFaction)
             {
