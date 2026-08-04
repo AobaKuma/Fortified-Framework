@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!-- 当白昼倾坠之时 -->
 <LanguageData>
 
@@ -24,5 +24,14 @@
   <!-- 骇入失败 -->
   <FFF.HackFailed>Hack Failed</FFF.HackFailed>
   <FFF.HackFailedDesc>{0} failed to hack the mech. The mech has awakened and is now hostile!</FFF.HackFailedDesc>
+
+
+  <!-- 原地封存技能（CompAbilityEffect_DeactivateToCapsule）-->
+  <FFF.Mothball.Reason.NotSpawned>Not deployed</FFF.Mothball.Reason.NotSpawned>
+  <FFF.Mothball.Reason.NotMech>Not a mechanoid</FFF.Mothball.Reason.NotMech>
+  <FFF.Mothball.Reason.NotPlayer>Not under your control</FFF.Mothball.Reason.NotPlayer>
+  <FFF.Mothball.Reason.Drafted>Cannot mothball while drafted</FFF.Mothball.Reason.Drafted>
+  <FFF.Mothball.Reason.Downed>Cannot mothball while downed</FFF.Mothball.Reason.Downed>
+  <FFF.Mothball.Reason.NoCapsule>No suitable storage frame for this chassis</FFF.Mothball.Reason.NoCapsule>
 
 </LanguageData>
