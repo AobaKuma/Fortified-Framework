@@ -151,7 +151,7 @@ namespace Fortified
 				Command_Action command_Action = new Command_Action
 				{
 					defaultLabel = "OrderActivation".Translate() + "...",
-					defaultDesc = "OrderActivationDesc".Translate(parent.Named("THING")),
+					defaultDesc = "OrderActivationDesc".Translate(parent.Named("THING")) + "\n\n" + "Requires".Translate() + ": " + Props.accessKeyDef.LabelCap + " x" + Props.accessKeyCount,
 					icon = UIIcon,
 					groupable = false,
 					action = delegate
