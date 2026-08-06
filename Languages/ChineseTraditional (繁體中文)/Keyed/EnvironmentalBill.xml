@@ -54,4 +54,49 @@
   <!-- EN: Requires pressure: {0} -->
   <FFF.PressureRestriction>需要壓力: {0}</FFF.PressureRestriction>
 
+  <!-- EN: the environment around the workbench cannot be determined. -->
+  <FFF.Cannot.TableEnvironmentUnknown>無法判定生產建築所處的環境</FFF.Cannot.TableEnvironmentUnknown>
+
+  <!-- ===== 連接設施提供的環境豁免 (CompEnvironmentExemption) ===== -->
+  <!-- EN: Environmental exemption -->
+  <FFF.EnvironmentExemption.Label>環境豁免</FFF.EnvironmentExemption.Label>
+  <!-- EN: While linked and active, this facility waives or relaxes the environmental requirements of recipes crafted at the connected workbench. -->
+  <FFF.EnvironmentExemption.Desc>當此設施連接並運作時，可豁免或放寬所連接生產建築上配方的環境需求。</FFF.EnvironmentExemption.Desc>
+  <!-- EN: inactive -->
+  <FFF.EnvironmentExemption.Inactive>未運作</FFF.EnvironmentExemption.Inactive>
+  <!-- EN: none -->
+  <FFF.EnvironmentExemption.NoneLabel>無</FFF.EnvironmentExemption.NoneLabel>
+  <!-- EN: Exempted: {0} -->
+  <FFF.EnvironmentExemption.StatusLine>已豁免: {0}</FFF.EnvironmentExemption.StatusLine>
+  <!-- EN: (may be waived by a linked facility) -->
+  <FFF.EnvironmentExemption.RecipeNote>（可由連接的設施豁免）</FFF.EnvironmentExemption.RecipeNote>
+
+  <!-- EN: cleanliness -->
+  <FFF.EnvironmentExemption.Cleanliness>清潔度</FFF.EnvironmentExemption.Cleanliness>
+  <!-- EN: temperature -->
+  <FFF.EnvironmentExemption.Temperature>溫度</FFF.EnvironmentExemption.Temperature>
+  <!-- EN: brightness -->
+  <FFF.EnvironmentExemption.Lightness>光照下限</FFF.EnvironmentExemption.Lightness>
+  <!-- EN: darkness -->
+  <FFF.EnvironmentExemption.Darkness>光照上限</FFF.EnvironmentExemption.Darkness>
+  <!-- EN: pressure -->
+  <FFF.EnvironmentExemption.Pressure>氣壓</FFF.EnvironmentExemption.Pressure>
+  <!-- EN: vacuum -->
+  <FFF.EnvironmentExemption.Vacuum>真空</FFF.EnvironmentExemption.Vacuum>
+  <!-- EN: microgravity -->
+  <FFF.EnvironmentExemption.MicroGravity>微重力</FFF.EnvironmentExemption.MicroGravity>
+
+  <!-- EN: cleanliness -{0} -->
+  <FFF.EnvironmentExemption.CleanlinessOffset>清潔度需求 -{0}</FFF.EnvironmentExemption.CleanlinessOffset>
+  <!-- EN: temperature ±{0} -->
+  <FFF.EnvironmentExemption.TemperatureOffset>溫度範圍 ±{0}</FFF.EnvironmentExemption.TemperatureOffset>
+  <!-- EN: brightness -{0} -->
+  <FFF.EnvironmentExemption.LightnessOffset>光照下限 -{0}</FFF.EnvironmentExemption.LightnessOffset>
+  <!-- EN: darkness +{0} -->
+  <FFF.EnvironmentExemption.DarknessOffset>光照上限 +{0}</FFF.EnvironmentExemption.DarknessOffset>
+  <!-- EN: pressure +{0} -->
+  <FFF.EnvironmentExemption.PressureOffset>真空上限 +{0}</FFF.EnvironmentExemption.PressureOffset>
+  <!-- EN: vacuum -{0} -->
+  <FFF.EnvironmentExemption.VacuumOffset>真空下限 -{0}</FFF.EnvironmentExemption.VacuumOffset>
+
 </LanguageData>

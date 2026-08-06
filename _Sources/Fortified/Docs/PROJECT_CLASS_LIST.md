@@ -105,8 +105,14 @@ Patch/整合：相關 Patch 補入 turret / pawn equipment 的 gizmo，使 UI �
 - Building_WorkTableAutonomous, WorkGiver_DoAutonomousBill
 - JobDriver_DoAutonomousBill / JobDriver_FinishAutonomousBill
 - ModExtension_AutoWorkTable, ModExtension_QualityChance
+- ModExt_EnvironmentalBill (掛 RecipeDef) — 宣告潔淨度/溫度/光照/真空/微重力需求；`allowFacilityExemption` 控制是否可被設施豁免。
+- Bill_Production_Environmental — 於 ShouldDoNow 檢查環境；不合格時 suspend 並發訊息，對 Building_WorkTableAutonomous 額外呼叫 Cancel()。以 StatusString 顯示目前生效的豁免。
+- Harmony_BillUtility — Postfix BillUtility.MakeNewBill，僅在原結果為純 Bill_Production 時替換為環境帳單（UFT/機甲孵化/Autonomous 等特化帳單改為警告並跳過）。
+- EnvironmentUtility — 各項環境探測，皆先確認 spawned + map 有效，範圍檢查一律用 TrueMin/TrueMax 正規化。
+- **CompEnvironmentExemption / CompProperties_EnvironmentExemption**（設施側）— 需與 CompFacility 並存。連接且啟用（供電 / 燃料 / 開關 / 未故障）時，對連接工作台上的配方提供「布林豁免」與「數值放寬」；支援 onlyForRecipes / onlyForWorkTables 白名單。
+- **EnvironmentExemptions**（struct）— 聚合工作台所有已連接設施的豁免：布林 OR、數值相加（負值 clamp 為 0），並提供 EffectiveXxx() 換算後的實際門檻。Bill 端以 game tick 為 key 快取一次。
 
-功能要點：自動工作台系統與環境帳單類型，自動化生產流程。
+功能要點：自動工作台系統與環境帳單類型，自動化生產流程；環境需求可由連接設施豁免或放寬。
 
 ### BuildingReplace（生成時機率替換建築）
 - 關鍵類別:
