@@ -107,4 +107,11 @@
     <reportString>Equiping turret</reportString>
   </JobDef>
 
+  <JobDef>
+    <defName>FFF_UseAccessKey</defName>
+    <driverClass>Fortified.JobDriver_UseAccessKey</driverClass>
+    <reportString>activating TargetA.</reportString>
+    <allowOpportunisticPrefix>true</allowOpportunisticPrefix>
+  </JobDef>
+
 </Defs>	

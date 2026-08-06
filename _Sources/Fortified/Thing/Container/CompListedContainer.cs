@@ -14,6 +14,8 @@ namespace Fortified
 	{
 		public ThingSetMakerDef lootMaker;
 
+		public FactionDef lootFaction;
+
 		public CompProperties_ListedContainer()
 		{
 			compClass = typeof(CompListedContainer);
@@ -29,7 +31,14 @@ namespace Fortified
 		{
 			base.PostPostMake();
 			ThingSetMakerParams parms = default(ThingSetMakerParams);
-			parms.makingFaction = parent.Faction;
+			if(Props.lootFaction == null)
+			{
+				parms.makingFaction = parent.Faction;
+			}
+			else
+			{
+				parms.makingFaction = Find.FactionManager.FirstFactionOfDef(Props.lootFaction);
+			}
 			Container.innerContainer.TryAddRangeOrTransfer(Props.lootMaker.root.Generate(parms));
 		}
 
