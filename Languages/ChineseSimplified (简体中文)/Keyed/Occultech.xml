@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- ==================== Occultech ==================== -->
+  <FFF_Occultech_SourceRemaining>可提取数据：剩余 {0} / {1}</FFF_Occultech_SourceRemaining>
+  <FFF_Occultech_SourceDepleted>已耗尽——剩余数据已完全损毁，无法提取</FFF_Occultech_SourceDepleted>
+  <FFF_Occultech_SourceStatLabel>数据存量</FFF_Occultech_SourceStatLabel>
+  <FFF_Occultech_SourceStatDesc>此数据源尚可被提取的封存技术数据量。</FFF_Occultech_SourceStatDesc>
+  <FFF_Occultech_ExtractorNoPower>停止运作：无电力</FFF_Occultech_ExtractorNoPower>
+  <FFF_Occultech_ExtractorNoSource>停止运作：需要面向数据源</FFF_Occultech_ExtractorNoSource>
+  <FFF_Occultech_ExtractorSourceDepleted>停止运作：数据源内的数据已完全损毁</FFF_Occultech_ExtractorSourceDepleted>
+  <FFF_Occultech_ExtractorNoResearch>停止运作：目前没有研究中的封存技术</FFF_Occultech_ExtractorNoResearch>
+  <FFF_Occultech_ExtractorWorking>正在提取 {0} 数据/日（尚余 {1}）</FFF_Occultech_ExtractorWorking>
+  <FFF_Occultech_ExtractorStatLabel>提取速率</FFF_Occultech_ExtractorStatLabel>
+  <FFF_Occultech_ExtractorStatDesc>运作时每日提取的数据点数。数据会归档进「{0}」类别，满溢后依研究分页顺序流向后续类别。</FFF_Occultech_ExtractorStatDesc>
+
+</LanguageData>
