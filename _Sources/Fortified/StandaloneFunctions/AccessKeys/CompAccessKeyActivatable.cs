@@ -116,6 +116,7 @@ namespace Fortified
 		public virtual void Activate(Pawn caster, bool force = false)
 		{
 			activated = true;
+			parent.BroadcastCompSignal("FFF_ActivatedByAccessKey");
 			if(Props.lootMaker != null)
 			{
 				ThingSetMakerParams parms = default(ThingSetMakerParams);
