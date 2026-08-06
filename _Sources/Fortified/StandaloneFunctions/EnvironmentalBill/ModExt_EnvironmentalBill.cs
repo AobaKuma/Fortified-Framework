@@ -28,6 +28,17 @@ public class ModExt_EnvironmentalBill : DefModExtension
 
     public bool OnlyInMicroGravity = false;
 
+    /// <summary>
+    /// When true (the default) a linked facility carrying <see cref="CompEnvironmentExemption"/>
+    /// can waive or relax these requirements. Set false to make the recipe unconditionally strict.
+    /// </summary>
+    public bool allowFacilityExemption = true;
+
+    /// <summary>True when at least one environmental requirement is actually declared.</summary>
+    public bool AnyRestriction =>
+        OnlyInCleanliness || OnlyInDarkness || LightnessRestricted ||
+        PressureRestricted || OnlyInVacuum || TemperatureRestricted || OnlyInMicroGravity;
+
     public IEnumerable<StatDrawEntry> SpecialDisplayStats()
     {
         List<string> reportTexts = new();
@@ -63,6 +74,9 @@ public class ModExt_EnvironmentalBill : DefModExtension
 
         if (OnlyInMicroGravity) reportTexts.Add("FFF.MicroGravity".Translate());
 
+        if (allowFacilityExemption && AnyRestriction)
+            reportTexts.Add("FFF.EnvironmentExemption.RecipeNote".Translate());
+
         yield return new StatDrawEntry(
             StatCategoryDefOf.Basics,
             "FFF.EnvironmentRestriction".Translate(),
@@ -71,13 +85,15 @@ public class ModExt_EnvironmentalBill : DefModExtension
     }
     public override IEnumerable<string> ConfigErrors()
     {
-        if (OnlyInDarkness && LightnessRestricted && DarknessRequirement > LightnessRequirement)
+        // When both bounds are declared they form a band; the checks normalise the ordering,
+        // so only a zero-width (unsatisfiable in practice) band is a real authoring mistake.
+        if (OnlyInDarkness && LightnessRestricted && DarknessRequirement == LightnessRequirement)
         {
-            yield return "DarknessRequirement is higher than LightnessRequirement.";
+            yield return "DarknessRequirement equals LightnessRequirement, producing a zero-width light band.";
         }
-        if (OnlyInVacuum && PressureRestricted && VacuumRequirement > PressureRequirement)
+        if (OnlyInVacuum && PressureRestricted && VacuumRequirement == PressureRequirement)
         {
-            yield return "VacuumRequirement is higher than PressureRequirement.";
+            yield return "VacuumRequirement equals PressureRequirement, producing a zero-width vacuum band.";
         }
         if (TemperatureRestricted && AllowedTemperatureRange.min >= AllowedTemperatureRange.max)
         {

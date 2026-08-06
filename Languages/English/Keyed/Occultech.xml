@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- ==================== Occultech knowledge extraction ==================== -->
+  <!-- Source (font) inspect -->
+  <FFF_Occultech_SourceRemaining>Occult knowledge: {0} / {1} remaining</FFF_Occultech_SourceRemaining>
+  <FFF_Occultech_SourceDepleted>Depleted — an inert husk; no knowledge remains</FFF_Occultech_SourceDepleted>
+  <FFF_Occultech_SourceStatLabel>Knowledge reserve</FFF_Occultech_SourceStatLabel>
+  <FFF_Occultech_SourceStatDesc>Occult knowledge points still extractable from this font.</FFF_Occultech_SourceStatDesc>
+  <!-- Extractor inspect -->
+  <FFF_Occultech_ExtractorNoPower>Inactive: no power</FFF_Occultech_ExtractorNoPower>
+  <FFF_Occultech_ExtractorNoSource>Inactive: no knowledge font in front</FFF_Occultech_ExtractorNoSource>
+  <FFF_Occultech_ExtractorSourceDepleted>Inactive: font depleted</FFF_Occultech_ExtractorSourceDepleted>
+  <FFF_Occultech_ExtractorNoResearch>Inactive: no project in progress</FFF_Occultech_ExtractorNoResearch>
+  <FFF_Occultech_ExtractorWorking>Extracting {0} knowledge/day (font: {1} left)</FFF_Occultech_ExtractorWorking>
+  <FFF_Occultech_ExtractorStatLabel>Extraction rate</FFF_Occultech_ExtractorStatLabel>
+  <FFF_Occultech_ExtractorStatDesc>Knowledge points extracted per day while running. Knowledge is filed into the {0} category, overflowing into later categories of the same research tab.</FFF_Occultech_ExtractorStatDesc>
+
+</LanguageData>

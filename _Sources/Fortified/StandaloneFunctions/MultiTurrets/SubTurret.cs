@@ -20,12 +20,27 @@ namespace Fortified
 		public CompEquippable GunCompEq => cachedGunCompEq ??= this.turret.TryGetComp<CompEquippable>();
 		public LocalTargetInfo LastAttackedTarget => this.lastAttackedTarget;
 		public int LastAttackTargetTick => this.lastAttackTargetTick;
-		public int CooldownTimeAdjusted => this.CurrentEffectiveVerb.verbProps.defaultCooldownTime.SecondsToTicks();
-		public int WarmupTimeAdjusted => TurretProp.warmingTime.SecondsToTicks();
+		/// <summary>
+		/// Cooldown between bursts. Goes through AdjustedCooldown so the weapon's RangedWeapon_Cooldown stat and the
+		/// pawn's RangedCooldownFactor are respected - defaultCooldownTime alone defaults to 0 and is almost never authored.
+		/// </summary>
+		public int CooldownTimeAdjusted
+		{
+			get
+			{
+				Verb verb = this.CurrentEffectiveVerb;
+				if (verb == null)
+				{
+					return 0;
+				}
+				return Mathf.Max(0, verb.verbProps.AdjustedCooldown(verb, PawnOwner).SecondsToTicks());
+			}
+		}
+		public int WarmupTimeAdjusted => TurretProp?.warmingTime.SecondsToTicks() ?? 0;
 
 		private CompTurretProjectile ammo;
 
-		public CompTurretProjectile Ammo => ammo ?? (ammo = turret.TryGetComp<CompTurretProjectile>());
+		public CompTurretProjectile Ammo => ammo ?? (ammo = turret?.TryGetComp<CompTurretProjectile>());
 
 		public Pawn PawnOwner
 		{
@@ -72,13 +87,28 @@ namespace Fortified
 				|| PawnCapacityUtility.CalculateNaturalPartsAverageEfficiency(owner.health.hediffSet, this.CurrentEffectiveVerb.verbProps.linkedBodyPartsGroup) > 0f);
 		}
 
+		/// <summary>
+		/// True once this slot has been matched to a SubTurretProperties. A saved slot whose ID no longer exists in the
+		/// def stays false and is skipped everywhere instead of being re-resolved forever.
+		/// </summary>
+		public bool Initialized => turretProp != null;
+
 		public SubTurretProperties TurretProp
 		{
 			get
 			{
-				if (turretProp == null)
+				if (turretProp == null && !resolvingProp)
 				{
-					parent.TryGetComp<CompMultipleTurretGun>().Init();
+					// Re-entrancy guard: Init() reads TurretProp, so an unresolvable ID used to recurse until the stack blew.
+					resolvingProp = true;
+					try
+					{
+						parent?.TryGetComp<CompMultipleTurretGun>()?.Init();
+					}
+					finally
+					{
+						resolvingProp = false;
+					}
 				}
 				return turretProp;
 			}
@@ -104,7 +134,14 @@ namespace Fortified
 			{
 				Verb verb = allVerbs[i];
 				verb.caster = this.parent;
-				verb.verbProps.warmupTime = 0;
+				// VerbTracker hands every Verb the ThingDef's own VerbProperties instance, so writing to it here would
+				// zero the warmup for that weapon def globally. Clone first, then zero (the sub-turret drives its own
+				// warmup via SubTurretProperties.warmingTime and must not put a Stance_Warmup on the carrier pawn).
+				if (verb.verbProps != null && verb.verbProps.warmupTime != 0f)
+				{
+					verb.verbProps = verb.verbProps.MemberwiseClone();
+					verb.verbProps.warmupTime = 0f;
+				}
 				verb.castCompleteCallback = delegate ()
 				{
 					this.burstCooldownTicksLeft = CooldownTimeAdjusted;
@@ -115,6 +152,10 @@ namespace Fortified
 		public void Tick()
 		{
 			Pawn owner = PawnOwner;
+			if (!Initialized)
+			{
+				return;
+			}
 			if (CanShoot(owner) == false)
 			{
 				if (parent.IsHashIntervalTick(60))
@@ -144,15 +185,27 @@ namespace Fortified
 			{
 				if (WarmingUp)
 				{
-					burstWarmupTicksLeft--;
-					if (burstWarmupTicksLeft == 0)
+					// The spin-up runs for whole seconds; the target can die, break line of sight or walk out of range
+					// in that window. Bail out early instead of committing to a shot that cannot happen.
+					if (!WarmupTargetStillValid())
 					{
-						if (!CurrentEffectiveVerb.TryStartCastOn(currentTarget, currentTarget, false, true, false, true))
+						AbortWarmup();
+						return;
+					}
+					burstWarmupTicksLeft--;
+					if (burstWarmupTicksLeft <= 0)
+					{
+						if (CurrentEffectiveVerb.TryStartCastOn(currentTarget, currentTarget, false, true, false, true))
 						{
-							burstWarmupTicksLeft = 1;
+							lastAttackTargetTick = Find.TickManager.TicksGame;
+							lastAttackedTarget = currentTarget;
 						}
-						lastAttackTargetTick = Find.TickManager.TicksGame;
-						lastAttackedTarget = currentTarget;
+						else
+						{
+							// Previously this set burstWarmupTicksLeft = 1, which made WarmingUp permanently true and
+							// retried the same unreachable target every tick - the turret could never rescan again.
+							AbortWarmup();
+						}
 						return;
 					}
 				}
@@ -173,7 +226,7 @@ namespace Fortified
 						{
 							if (owner.Faction?.IsPlayer != true || owner.Drafted)
 							{
-								currentTarget = (Thing)AttackTargetFinder.BestShootTargetFromCurrentPosition(this, TargetScanFlags.NeedThreat | TargetScanFlags.NeedAutoTargetable, null, 0f, 9999f);
+								currentTarget = (Thing)AttackTargetFinder.BestShootTargetFromCurrentPosition(this, TargetScanFlagsFor(), null, 0f, 9999f);
 							}
 						}
 						if (currentTarget.IsValid)
@@ -184,6 +237,52 @@ namespace Fortified
 						ResetCurrentTarget();
 					}
 				}
+			}
+		}
+
+		/// <summary>
+		/// Mirrors Building_TurretGun.TryFindNewTarget: without the LOS flags BestAttackTarget's fallback branch happily
+		/// returns a target behind a wall, which the turret then cannot actually shoot.
+		/// </summary>
+		private TargetScanFlags TargetScanFlagsFor()
+		{
+			TargetScanFlags flags = TargetScanFlags.NeedThreat | TargetScanFlags.NeedAutoTargetable;
+			Verb verb = CurrentEffectiveVerb;
+			if (verb != null && !verb.ProjectileFliesOverhead())
+			{
+				flags |= TargetScanFlags.NeedLOSToAll | TargetScanFlags.LOSBlockableByGas;
+			}
+			return flags;
+		}
+
+		private bool WarmupTargetStillValid()
+		{
+			if (!currentTarget.IsValid)
+			{
+				return false;
+			}
+			if (targetForced)
+			{
+				// A player-forced target is kept until they clear it; the final TryStartCastOn decides whether it fires.
+				return true;
+			}
+			if (!parent.IsHashIntervalTick(WarmupRecheckInterval))
+			{
+				return true;
+			}
+			return CurrentEffectiveVerb?.CanHitTarget(currentTarget) == true;
+		}
+
+		/// <summary>
+		/// Drops out of the warm-up so the next tick falls through to the acquisition branch again.
+		/// Forced targets are preserved so the turret keeps re-attempting them.
+		/// </summary>
+		private void AbortWarmup()
+		{
+			burstWarmupTicksLeft = 0;
+			if (!targetForced)
+			{
+				currentTarget = LocalTargetInfo.Invalid;
 			}
 		}
 
@@ -381,6 +480,9 @@ namespace Fortified
 		private Verb cachedPrimaryVerb;
 		private CompCanBeDormant cachedDormant;
 		private bool dormantResolved;
+		private bool resolvingProp;
+
+		private const int WarmupRecheckInterval = 15;
 
 		public float curRotation;
 	}

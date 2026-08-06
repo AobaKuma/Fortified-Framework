@@ -34,4 +34,29 @@
   <!-- Used in ModExt_EnvironmentalBill.ValidateBillOnce with pressure percentage arg -->
   <FFF.PressureRestriction>Requires pressure: {0}</FFF.PressureRestriction>
 
+  <FFF.Cannot.TableEnvironmentUnknown>the environment around the workbench cannot be determined.</FFF.Cannot.TableEnvironmentUnknown>
+
+  <!-- ===== Facility-granted environmental exemptions (CompEnvironmentExemption) ===== -->
+  <FFF.EnvironmentExemption.Label>Environmental exemption</FFF.EnvironmentExemption.Label>
+  <FFF.EnvironmentExemption.Desc>While linked and active, this facility waives or relaxes the environmental requirements of recipes crafted at the connected workbench.</FFF.EnvironmentExemption.Desc>
+  <FFF.EnvironmentExemption.Inactive>inactive</FFF.EnvironmentExemption.Inactive>
+  <FFF.EnvironmentExemption.NoneLabel>none</FFF.EnvironmentExemption.NoneLabel>
+  <FFF.EnvironmentExemption.StatusLine>Exempted: {0}</FFF.EnvironmentExemption.StatusLine>
+  <FFF.EnvironmentExemption.RecipeNote>(may be waived by a linked facility)</FFF.EnvironmentExemption.RecipeNote>
+
+  <FFF.EnvironmentExemption.Cleanliness>cleanliness</FFF.EnvironmentExemption.Cleanliness>
+  <FFF.EnvironmentExemption.Temperature>temperature</FFF.EnvironmentExemption.Temperature>
+  <FFF.EnvironmentExemption.Lightness>brightness</FFF.EnvironmentExemption.Lightness>
+  <FFF.EnvironmentExemption.Darkness>darkness</FFF.EnvironmentExemption.Darkness>
+  <FFF.EnvironmentExemption.Pressure>pressure</FFF.EnvironmentExemption.Pressure>
+  <FFF.EnvironmentExemption.Vacuum>vacuum</FFF.EnvironmentExemption.Vacuum>
+  <FFF.EnvironmentExemption.MicroGravity>microgravity</FFF.EnvironmentExemption.MicroGravity>
+
+  <FFF.EnvironmentExemption.CleanlinessOffset>cleanliness -{0}</FFF.EnvironmentExemption.CleanlinessOffset>
+  <FFF.EnvironmentExemption.TemperatureOffset>temperature ±{0}</FFF.EnvironmentExemption.TemperatureOffset>
+  <FFF.EnvironmentExemption.LightnessOffset>brightness -{0}</FFF.EnvironmentExemption.LightnessOffset>
+  <FFF.EnvironmentExemption.DarknessOffset>darkness +{0}</FFF.EnvironmentExemption.DarknessOffset>
+  <FFF.EnvironmentExemption.PressureOffset>pressure +{0}</FFF.EnvironmentExemption.PressureOffset>
+  <FFF.EnvironmentExemption.VacuumOffset>vacuum -{0}</FFF.EnvironmentExemption.VacuumOffset>
+
 </LanguageData>

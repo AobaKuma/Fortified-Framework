@@ -447,7 +447,7 @@ namespace Fortified.Structures
 		public List<PawnGenOption> options = new List<PawnGenOption>();
 		public override void AddToSketch(Sketch sketch) { }
 
-		public List<IFFF_GenerationTask> GetTasks(Rot4 rot, IntVec3 offset)
+		public virtual List<IFFF_GenerationTask> GetTasks(Rot4 rot, IntVec3 offset)
 		{
 			List<IFFF_GenerationTask> tasks = new List<IFFF_GenerationTask>();
 			if (factionDef != null)
@@ -469,10 +469,19 @@ namespace Fortified.Structures
                             break;
                         }
                     }
-					tasks.Add(new Task_SpawnPawnGroupInRoom { pos = pos.RotatedBy(rot) + offset, faction = faction, pawns = list.ToList(), lordTag = lordTag, sendSignalRadius = sendSignalRadius });
+					tasks.Add(GetTask(rot, offset, faction, list.ToList()));
 				}
 			}
 			return tasks;
 		}
+
+        public virtual IFFF_GenerationTask GetTask(Rot4 rot, IntVec3 offset, Faction faction, List<PawnKindDef> pawns) => new Task_SpawnPawnGroup { pos = pos.RotatedBy(rot) + offset, faction = faction, pawns = pawns, lordTag = lordTag, sendSignalRadius = sendSignalRadius };
+	}
+
+	public class FFF_Element_PawnGroupInRoom : FFF_Element_PawnGroup
+	{
+		public FFF_Element_PawnGroupInRoom() { }
+
+		public override IFFF_GenerationTask GetTask(Rot4 rot, IntVec3 offset, Faction faction, List<PawnKindDef> pawns) => new Task_SpawnPawnGroupInRoom { pos = pos.RotatedBy(rot) + offset, faction = faction, pawns = pawns, lordTag = lordTag, sendSignalRadius = sendSignalRadius };
 	}
 }

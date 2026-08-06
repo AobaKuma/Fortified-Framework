@@ -40,4 +40,13 @@
   <!-- EN: {0} failed to hack the mech. The mech has awakened and is now hostile! -->
   <FFF.HackFailedDesc>{0}骇入机兵失败。机兵已苏醒并变为敌对状态！</FFF.HackFailedDesc>
 
+
+  <!-- 原地封存技能（CompAbilityEffect_DeactivateToCapsule）-->
+  <FFF.Mothball.Reason.NotSpawned>未展开</FFF.Mothball.Reason.NotSpawned>
+  <FFF.Mothball.Reason.NotMech>并非机械体</FFF.Mothball.Reason.NotMech>
+  <FFF.Mothball.Reason.NotPlayer>不受你控制</FFF.Mothball.Reason.NotPlayer>
+  <FFF.Mothball.Reason.Drafted>征召状态下无法封存</FFF.Mothball.Reason.Drafted>
+  <FFF.Mothball.Reason.Downed>倒地状态下无法封存</FFF.Mothball.Reason.Downed>
+  <FFF.Mothball.Reason.NoCapsule>没有适合此底盘的封存框架</FFF.Mothball.Reason.NoCapsule>
+
 </LanguageData>

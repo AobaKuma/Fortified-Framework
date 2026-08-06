@@ -33,7 +33,15 @@ namespace Fortified
 				SetupTurrets();
 			}
 			turrets.RemoveDuplicates((a, b) => a.ID == b.ID);
-			currentTurret ??= turrets.First().ID;
+			ResolveCurrentTurret();
+		}
+
+		private void ResolveCurrentTurret()
+		{
+			if (currentTurret == null && turrets.Count > 0)
+			{
+				currentTurret = turrets[0].ID;
+			}
 		}
 
 		public override void PostPostMake()
@@ -43,6 +51,10 @@ namespace Fortified
 		}
 		private void SetupTurrets()
 		{
+			if (Props.subTurrets == null)
+			{
+				return;
+			}
 			Props.subTurrets.ForEach(t =>
 			{
 				if (!turrets.Any(x => x.ID == t.ID))
@@ -53,12 +65,14 @@ namespace Fortified
 				}
 			});
 			//turrets.RemoveDuplicates((a, b) => a.ID == b.ID);
-			currentTurret ??= turrets.First().ID;
+			ResolveCurrentTurret();
 		}
 		public override void CompTick()
 		{
 			base.CompTick();
-			if (!this.parent.Spawned) return;
+			// Checking parent.Spawned broke the apparel case: worn apparel is never Spawned, so those sub-turrets never ticked.
+			Pawn owner = PawnOwner;
+			if (owner == null || !owner.Spawned) return;
 			for (int i = 0; i < turrets.Count; i++)
 			{
 				turrets[i].Tick();
@@ -67,11 +81,13 @@ namespace Fortified
 
 		public override void PostDrawExtraSelectionOverlays()
 		{
+			Pawn owner = PawnOwner;
+			if (owner == null || !owner.Spawned) return;
 			for (int i = 0; i < turrets.Count; i++)
 			{
 				if (turrets[i].targetForced && turrets[i].currentTarget.IsValid)
 				{
-					GenDraw.DrawLineBetween(parent.TrueCenter(), turrets[i].currentTarget.CenterVector3, Building_TurretGun.ForcedTargetLineMat);
+					GenDraw.DrawLineBetween(owner.TrueCenter(), turrets[i].currentTarget.CenterVector3, Building_TurretGun.ForcedTargetLineMat);
 				}
 			}
 		}
@@ -196,7 +212,7 @@ namespace Fortified
 			if (!IsApparel || PawnOwner == null || PawnOwner.DeadOrDowned) return;
 			foreach (SubTurret t in turrets)
 			{
-				if (t.TurretProp.renderNodeProperty == null) continue;
+				if (!t.Initialized || t.TurretProp.renderNodeProperty == null || t.turret == null) continue;
 				DrawTurret(PawnOwner, t, t.turret);
 			}
 		}
@@ -244,7 +260,7 @@ namespace Fortified
 				List<PawnRenderNode> list = new List<PawnRenderNode>();
 				foreach (SubTurret t in turrets)
 				{
-					if (t.TurretProp.renderNodeProperty == null || !t.HasTurret(result))
+					if (!t.Initialized || t.TurretProp.renderNodeProperty == null || !t.HasTurret(result))
 					{
 						continue;
 					}
@@ -279,7 +295,8 @@ namespace Fortified
 				}
 				if (workingWeapons.Count == 0)
 				{
-					return;
+					// One slot having no eligible weapon must not abort the remaining slots.
+					continue;
 				}
 				if (workingWeapons.TryRandomElementByWeight((ThingStuffPair pair) => pair.Commonality, out var result))
 				{
@@ -303,7 +320,15 @@ namespace Fortified
 			Init();
 			foreach (SubTurret t in turrets)
 			{
-				t.Ammo?.PostGenInit(pawn);
+				// Isolate each slot: a failure here used to abort the loop and leave every later sub-turret dry.
+				try
+				{
+					t.Ammo?.PostGenInit(pawn);
+				}
+				catch (Exception e)
+				{
+					Log.Error($"[FFF] Failed to generate sub-turret ammo for {pawn?.LabelShortCap} (slot '{t?.ID}'): {e}");
+				}
 			}
 		}
 
@@ -312,8 +337,16 @@ namespace Fortified
 			foreach (var t in turrets)
 			{
 				t.parent = PawnOwner;
-				t.Init(Props.subTurrets.Find(
-					 p => p.ID == t.ID));
+				SubTurretProperties prop = Props.subTurrets?.Find(p => p.ID == t.ID);
+				if (prop == null)
+				{
+					// Saved slot whose ID no longer exists in the def. Passing null used to leave TurretProp unresolved,
+					// which sent the getter straight back into Init() and blew the stack.
+					Log.ErrorOnce($"[FFF] {parent?.def?.defName} has no subTurrets entry matching saved slot ID '{t.ID}'; that slot stays inert.",
+						("FFF_SubTurret_" + parent?.def?.defName + t.ID).GetHashCode());
+					continue;
+				}
+				t.Init(prop);
 			}
 		}
 
@@ -352,14 +385,19 @@ namespace Fortified
 				for (int i = 0; i < subTurrets.Count; i++)
 				{
 					SubTurretProperties t = subTurrets[i];
-					string turretDesc = t.supportedWeaponTag.NullOrEmpty() ? t.turret.DescriptionDetailed : t.supportedWeaponTag.Translate();
-					yield return new StatDrawEntry(FFF_DefOf.FFF_Turrets, "FFF.MultiTurret.WeaponSlot".Translate() + " " + (i + 1), comp?.turrets[i]?.turret?.LabelCap ?? t.turret?.LabelCap ?? turretDesc, turretDesc, 5600, null, GetHyperlinks(t), false, false);
+					string turretDesc = t.supportedWeaponTag.NullOrEmpty() ? (t.turret?.DescriptionDetailed ?? string.Empty) : t.supportedWeaponTag.Translate();
+					// comp.turrets is keyed by saved slot, so it can be shorter/longer than subTurrets - match by ID.
+					SubTurret slot = comp?.turrets?.FirstOrDefault(x => x.ID == t.ID);
+					yield return new StatDrawEntry(FFF_DefOf.FFF_Turrets, "FFF.MultiTurret.WeaponSlot".Translate() + " " + (i + 1), slot?.turret?.LabelCap ?? t.turret?.LabelCap ?? turretDesc, turretDesc, 5600, null, GetHyperlinks(t), false, false);
 				}
 				IEnumerable<Dialog_InfoCard.Hyperlink> GetHyperlinks(SubTurretProperties props)
 				{
 					if (props.supportedWeaponTag.NullOrEmpty())
 					{
-						yield return new Dialog_InfoCard.Hyperlink(props.turret);
+						if (props.turret != null)
+						{
+							yield return new Dialog_InfoCard.Hyperlink(props.turret);
+						}
 						yield break;
 					}
 					foreach (ThingDef def in defs.Where(y => y.weaponTags?.Contains(props.supportedWeaponTag) == true))

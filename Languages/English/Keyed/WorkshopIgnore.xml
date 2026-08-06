@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+
+  <!-- === Preview dialog === -->
+  <FFF_RimIgnore_Title>Workshop upload — excluded content</FFF_RimIgnore_Title>
+  <FFF_RimIgnore_Subtitle>{0} — upload filtered by {1}</FFF_RimIgnore_Subtitle>
+  <FFF_RimIgnore_Summary>Will upload: {0} files ({1})\n\nExcluded: {2} entries / {3} files ({4})</FFF_RimIgnore_Summary>
+  <FFF_RimIgnore_ColPath>Entry</FFF_RimIgnore_ColPath>
+  <FFF_RimIgnore_ColSize>Size</FFF_RimIgnore_ColSize>
+  <FFF_RimIgnore_ColRule>Matched rule</FFF_RimIgnore_ColRule>
+  <FFF_RimIgnore_DirSize>{0} files / {1}</FFF_RimIgnore_DirSize>
+  <FFF_RimIgnore_NothingExcluded>Nothing is excluded.</FFF_RimIgnore_NothingExcluded>
+  <FFF_RimIgnore_OpenFile>Open .rimignore</FFF_RimIgnore_OpenFile>
+  <FFF_RimIgnore_Rescan>Rescan</FFF_RimIgnore_Rescan>
+  <FFF_RimIgnore_Confirm>Upload</FFF_RimIgnore_Confirm>
+  <FFF_RimIgnore_CannotUpload>The scan is incomplete, or no file would be uploaded.</FFF_RimIgnore_CannotUpload>
+  <FFF_RimIgnore_RescanFailed>Rescan failed.</FFF_RimIgnore_RescanFailed>
+  <FFF_RimIgnore_FileMissing>.rimignore not found.</FFF_RimIgnore_FileMissing>
+  <FFF_RimIgnore_UploadAnyway>Upload everything anyway</FFF_RimIgnore_UploadAnyway>
+  <FFF_RimIgnore_ErrorTitle>Upload ignore rules failed</FFF_RimIgnore_ErrorTitle>
+  <FFF_RimIgnore_MoreWarnings>… ({0} more)</FFF_RimIgnore_MoreWarnings>
+  <FFF_RimIgnore_RuleImplicit>[built-in] {0}</FFF_RimIgnore_RuleImplicit>
+  <FFF_RimIgnore_RuleLine>L{0}: {1}</FFF_RimIgnore_RuleLine>
+  <FFF_RimIgnore_ModRootLabel>[mod root]</FFF_RimIgnore_ModRootLabel>
+
+  <!-- === Rule parsing warnings === -->
+  <FFF_RimIgnore_Warn_NoPatternAfterBang>Line {0}: no pattern after '!', ignored.</FFF_RimIgnore_Warn_NoPatternAfterBang>
+  <FFF_RimIgnore_Warn_SlashOnly>Line {0}: pattern is just '/', ignored.</FFF_RimIgnore_Warn_SlashOnly>
+  <FFF_RimIgnore_Warn_EmptyPattern>Line {0}: empty pattern, ignored.</FFF_RimIgnore_Warn_EmptyPattern>
+  <FFF_RimIgnore_Warn_ParseFailed>Line {0}: could not parse pattern ({1}), ignored.</FFF_RimIgnore_Warn_ParseFailed>
+  <FFF_RimIgnore_Warn_CompileFailed>Line {0}: pattern failed to compile ({1}), ignored.</FFF_RimIgnore_Warn_CompileFailed>
+  <FFF_RimIgnore_Warn_TooManyLines>{0} exceeds {1} lines; the rest was skipped.</FFF_RimIgnore_Warn_TooManyLines>
+
+  <!-- === Scan warnings === -->
+  <FFF_RimIgnore_Warn_DepthLimit>Directory nesting exceeds {0} levels; stopped descending at: {1}</FFF_RimIgnore_Warn_DepthLimit>
+  <FFF_RimIgnore_Warn_ListDirFailed>Could not list directory contents ({0}): {1}</FFF_RimIgnore_Warn_ListDirFailed>
+  <FFF_RimIgnore_Warn_AttributeFailed>Could not read entry attributes ({0}): {1}</FFF_RimIgnore_Warn_AttributeFailed>
+  <FFF_RimIgnore_Warn_SkippedSymlink>Skipped symlink / junction: {0}</FFF_RimIgnore_Warn_SkippedSymlink>
+  <FFF_RimIgnore_Warn_EntryLimit>More than {0} entries; the scan was cut short. Check the paths in {1}.</FFF_RimIgnore_Warn_EntryLimit>
+
+  <!-- === Errors === -->
+  <FFF_RimIgnore_Err_LoadFailed>Could not read {0}; upload aborted. See the dev console for details.</FFF_RimIgnore_Err_LoadFailed>
+  <FFF_RimIgnore_Err_ScanFailed>Could not scan the mod folder; upload aborted. See the dev console for details.</FFF_RimIgnore_Err_ScanFailed>
+  <FFF_RimIgnore_Err_Unexpected>Unexpected error while applying the ignore rules; upload aborted. See the dev console for details.</FFF_RimIgnore_Err_Unexpected>
+  <FFF_RimIgnore_Err_StagingFailed>Failed to build the staging mirror; upload aborted (your original mod files were not touched).\n\n{0}</FFF_RimIgnore_Err_StagingFailed>
+  <FFF_RimIgnore_Err_PlanTruncated>The scan is incomplete (safety limit exceeded); mirror creation aborted.</FFF_RimIgnore_Err_PlanTruncated>
+  <FFF_RimIgnore_Err_NothingToUpload>No file would be uploaded after applying {0}; aborted.</FFF_RimIgnore_Err_NothingToUpload>
+  <FFF_RimIgnore_Err_MirrorCountMismatch>Mirrored file count mismatch (expected {0}, got {1}).</FFF_RimIgnore_Err_MirrorCountMismatch>
+  <FFF_RimIgnore_Err_StaleStagingLocked>Could not clear the existing staging mirror: {0}</FFF_RimIgnore_Err_StaleStagingLocked>
+
+  <!-- === Dev-mode debug actions === -->
+  <FFF_RimIgnore_Dbg_NoLocalMods>No local mod folder found.</FFF_RimIgnore_Dbg_NoLocalMods>
+  <FFF_RimIgnore_Dbg_AllHaveIgnore>Every local mod already has a {0}.</FFF_RimIgnore_Dbg_AllHaveIgnore>
+  <FFF_RimIgnore_Dbg_LoadFailed>Could not read {0}.</FFF_RimIgnore_Dbg_LoadFailed>
+  <FFF_RimIgnore_Dbg_ScanFailed>Could not scan the mod folder.</FFF_RimIgnore_Dbg_ScanFailed>
+  <FFF_RimIgnore_Dbg_TemplateCreated>Created {0}</FFF_RimIgnore_Dbg_TemplateCreated>
+  <FFF_RimIgnore_Dbg_TemplateFailed>Creation failed. See the dev console for details.</FFF_RimIgnore_Dbg_TemplateFailed>
+  <FFF_RimIgnore_Dbg_NoIgnoreSuffix> (no {0})</FFF_RimIgnore_Dbg_NoIgnoreSuffix>
+
+  <!-- === Template written by the debug action === -->
+  <FFF_RimIgnore_Template># .rimignore — files and folders to exclude when uploading to the Steam Workshop
+#
+# The syntax is identical to GitHub's .gitignore:
+#   #        comment (\# for a literal hash)
+#   !xxx     re-include; later rules override earlier ones
+#   /xxx     anchored to the mod root
+#   xxx/     directories only
+#   *        any characters, but never across /
+#   ?        a single character, but never across /
+#   [abc]    character set; [!abc] to negate
+#   **/xxx   at any depth; xxx/** for everything inside that folder
+#
+# Note: as in Git, once a directory is excluded its contents cannot be
+# re-included with !.
+# Always excluded by default: this file, .git/ .gitignore .gitattributes
+#                             .svn/ .hg/ .vs/ .idea/ .vscode/
+#                             Thumbs.db desktop.ini .DS_Store
+# Those built-in rules can be overridden with !, e.g. !.rimignore uploads this file too.
+
+# -- Source code and build output --
+/_Sources/
+/Source/
+**/obj/
+**/bin/
+*.pdb
+*.csproj.user
+*.sln
+*.suo
+
+# -- Unity project --
+/UnityProject/
+
+# -- Dev tools and shortcuts --
+/_Tools/
+*.lnk
+*.bat
+
+# -- Editor and backup noise --
+*.orig
+*.rej
+*.bak
+*~
+
+# -- Example: exclude a folder's contents but keep one file --
+# Exclude the *contents* rather than the folder itself, then re-include:
+# /Docs/*
+# !/Docs/Manual.md
+</FFF_RimIgnore_Template>
+
+</LanguageData>

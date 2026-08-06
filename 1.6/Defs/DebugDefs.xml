@@ -22,4 +22,25 @@
     <drawerType>MapMeshOnly</drawerType>
   </ThingDef>
 
+  <ThingDef>
+    <defName>FFF_ExportTool_RandomStructure</defName>
+    <label>Random structure tool</label>
+    <description>Pawn group export tool</description>
+    <thingClass>Fortified.Structures.ExportTool_RandomStructure</thingClass>
+    <altitudeLayer>Pawn</altitudeLayer>
+    <pathCost>0</pathCost>
+    <blockWind>false</blockWind>
+    <passability>PassThroughOnly</passability>
+    <fillPercent>0</fillPercent>
+    <receivesSignals>true</receivesSignals>
+    <forceDebugSpawnable>true</forceDebugSpawnable>
+    <graphicData>
+      <texPath>UI/Misc/BadTexture</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <size>(1,1)</size>
+    <selectable>true</selectable>
+    <drawerType>MapMeshOnly</drawerType>
+  </ThingDef>
+
 </Defs>

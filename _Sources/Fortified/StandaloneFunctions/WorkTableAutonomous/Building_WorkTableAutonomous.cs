@@ -23,6 +23,11 @@ namespace Fortified
         public float curWorkAmount;
         public bool prepared;
 
+        // 最後一個操作過這台機器的殖民者。自動彈出產品時需要一個「名義製作者」來決定
+        // 品質與意識形態風格 —— GenRecipe.PostProcessProduct 會直接存取 worker.Ideo，
+        // 傳 null 會直接爆掉，所以這裡必須記住人。
+        public Pawn lastHandler;
+
         protected Effecter Effecter => effecter ??= modExtension?.GetEffecterDef_Phase(this.Rotation)?.SpawnMaintained(this, Map);
         private Effecter effecter;
         private int maintainTick = 0;
@@ -55,6 +60,7 @@ namespace Fortified
                 return;
             }
             activeBill = bill;
+            if (handler != null) lastHandler = handler;
             totalWorkAmount = bill.GetWorkAmount(thing);
 
             float factor = 1 / this.GetStatValue(StatDefOf.WorkTableWorkSpeedFactor, true);
@@ -67,8 +73,10 @@ namespace Fortified
         public void Finish(Pawn handler)
         {
             if (activeBill == null) return;
+            if (handler != null) lastHandler = handler;
             if (totalWorkAmount <= 0f)
             {
+                ThingPlaceMode placeMode = modExtension?.ejectPlaceMode ?? ThingPlaceMode.Near;
                 List<Thing> list = new();
                 innerContainer.CopyToList(list);
                 foreach (Thing item in GenRecipe.MakeRecipeProducts(activeBill.recipe, handler, list, CalculateDominantIngredient(list), this))
@@ -78,7 +86,7 @@ namespace Fortified
                         SetQuality(q);
                     }
                     GenPlace.TryPlaceThing(item, this.InteractionCell,
-                        base.Map, ThingPlaceMode.Near, null, null, null, 30);
+                        base.Map, placeMode, null, null, null, 30);
                 }
                 if (activeBill.repeatMode == BillRepeatModeDefOf.RepeatCount)
                 {
@@ -212,8 +220,24 @@ namespace Fortified
             {
                 curWorkAmount = 0f;
                 prepared = false;
-                if (totalWorkAmount <= 0f) modExtension?.GetEffecterDef_DoneTrigger(Rotation)?.SpawnAttached(this, Map).Trigger(this, this);
+                if (totalWorkAmount <= 0f)
+                {
+                    modExtension?.GetEffecterDef_DoneTrigger(Rotation)?.SpawnAttached(this, Map).Trigger(this, this);
+                    TryAutoEject();
+                }
             }
+        }
+
+        // 開啟 autoEjectProducts 時，最後一個階段跑完就直接結算並把產品丟出來。
+        // 找不到可用的名義製作者就什麼都不做，退回原本等人來收的流程。
+        protected void TryAutoEject()
+        {
+            if (modExtension == null || !modExtension.autoEjectProducts) return;
+            if (activeBill == null || totalWorkAmount > 0f) return;
+            if (lastHandler == null || lastHandler.Destroyed) return;
+
+            modExtension.ejectSound?.PlayOneShot(new TargetInfo(Position, Map));
+            Finish(lastHandler);
         }
         private bool effectActive = false;
         protected override void Tick()
@@ -323,6 +347,7 @@ namespace Fortified
             Scribe_Values.Look(ref totalWorkAmount, "totalWorkAmount", 0f);
             Scribe_Values.Look(ref curWorkAmount, "curWorkAmount", 0f);
             Scribe_References.Look(ref activeBill, "activeBill");
+            Scribe_References.Look(ref lastHandler, "lastHandler");
             Scribe_Deep.Look(ref innerContainer, "innerContainer", this);
         }
         public void Notify_HauledTo(Pawn hauler, Thing thing, int count)

@@ -1,4 +1,5 @@
 // 当白昼倾坠之时
+using System.Collections.Generic;
 using HarmonyLib;
 using RimWorld;
 using UnityEngine;
@@ -7,86 +8,99 @@ using Verse.AI;
 
 namespace Fortified
 {
-    // 瞄准时替换主武器图为手持装备图
-    // 让挂CompAimingEquipmentGraphic的腰带类apparel在warmup时借主武器渲染位显示举枪图
+    // 瞄准时以手持装备图取代武器绘制
+    // 全程自绘, 不经由PawnRenderUtility.DrawEquipmentAiming
+    // 原因: CE(Harmony_PawnRenderer_DrawEquipmentAiming)以Transpiler改写该方法的DrawMesh,
+    //       缩放改从eq.def.GunDrawExtension/def.graphicData.drawSize取值而非eq.Graphic.drawSize,
+    //       且WeaponPlatform分支会丢弃传入material, 使换图与缩放双双失效
     [StaticConstructorOnStartup]
     [HarmonyPatch(typeof(PawnRenderUtility), nameof(PawnRenderUtility.DrawEquipmentAndApparelExtras))]
     public static class Patch_PawnRenderUtility_DrawAimingApparel
     {
-        // 当前需替换图的Thing
-        public static Thing swapTarget;
-        // 替换用手持图
-        public static Graphic swapGraphic;
-
+        // 接管绘制则跳过原方法
         [HarmonyPrefix]
-        public static void Prefix(Pawn pawn)
+        public static bool Prefix(Pawn pawn, Vector3 drawPos, Rot4 facing, PawnRenderFlags flags)
         {
-            swapTarget = null;
-            swapGraphic = null;
-            try { ResolveSwap(pawn); }
-            catch (System.Exception e) { Log.Error($"[FFF] Patch_DrawAimingApparel Prefix Error: {e}"); }
+            bool drawn;
+            try { drawn = TryDrawAimingApparel(pawn, drawPos, flags); }
+            catch (System.Exception e)
+            {
+                Log.Error($"[FFF] Patch_DrawAimingApparel Error: {e}");
+                return true;
+            }
+            if (!drawn) return true;
+
+            // 已接管武器位, 补跑原版佩戴附加绘制
+            try { DrawWornExtras(pawn); }
+            catch (System.Exception e) { Log.Error($"[FFF] Patch_DrawAimingApparel WornExtras Error: {e}"); }
+            return false;
         }
 
-        // 无主武器时借apparel自绘手持图
-        [HarmonyPostfix]
-        public static void Postfix(Pawn pawn, Vector3 drawPos, PawnRenderFlags flags)
+        // 正用挂comp的apparel瞄准则自绘手持图
+        private static bool TryDrawAimingApparel(Pawn pawn, Vector3 drawPos, PawnRenderFlags flags)
         {
-            try { DrawWeaponlessAiming(pawn, drawPos, flags); }
-            catch (System.Exception e) { Log.Error($"[FFF] Patch_DrawAimingApparel Postfix Error: {e}"); }
-        }
+            if (flags.HasFlag(PawnRenderFlags.NeverAimWeapon)) return false;
+            if (!(pawn.stances?.curStance is Stance_Warmup warmup)) return false;
+            if (warmup.neverAimWeapon || !warmup.focusTarg.IsValid) return false;
+            if (!(warmup.verb?.EquipmentSource is Apparel apparel)) return false;
 
-        [HarmonyFinalizer]
-        public static void Finalizer()
-        {
-            swapTarget = null;
-            swapGraphic = null;
-        }
-
-        // 有主武器则记录替换其图
-        private static void ResolveSwap(Pawn pawn)
-        {
-            Thing primary = pawn.equipment?.Primary;
-            if (primary == null) return;
-            Apparel apparel = GetAimingApparel(pawn, out Graphic graphic);
-            if (apparel == null) return;
-            swapTarget = primary;
-            swapGraphic = graphic;
-        }
-
-        // 无主武器时复刻原版瞄准绘制
-        private static void DrawWeaponlessAiming(Pawn pawn, Vector3 drawPos, PawnRenderFlags flags)
-        {
-            if (pawn.equipment?.Primary != null) return;
-            if (flags.HasFlag(PawnRenderFlags.NeverAimWeapon)) return;
             Job curJob = pawn.CurJob;
-            if (curJob != null && curJob.def?.neverShowWeapon == true) return;
-            if (!(pawn.stances?.curStance is Stance_Busy stance)) return;
-            if (stance.neverAimWeapon || !stance.focusTarg.IsValid) return;
+            if (curJob?.def != null && curJob.def.neverShowWeapon) return false;
 
-            Apparel apparel = GetAimingApparel(pawn, out Graphic graphic);
-            if (apparel == null) return;
+            CompAimingEquipmentGraphic comp = apparel.TryGetComp<CompAimingEquipmentGraphic>();
+            Graphic graphic = comp?.AimingGraphic;
+            if (graphic == null) return false;
 
-            float aimAngle = ResolveAimAngle(pawn, stance);
+            float aimAngle = ResolveAimAngle(pawn, warmup);
             float distFactor = pawn.ageTracker.CurLifeStage.equipmentDrawDistanceFactor;
-            drawPos += new Vector3(0f, 0f, 0.4f + apparel.def.equippedDistanceOffset).RotatedBy(aimAngle) * distFactor;
+            Vector3 pos = drawPos
+                + new Vector3(0f, 0f, 0.4f + apparel.def.equippedDistanceOffset).RotatedBy(aimAngle) * distFactor;
 
-            swapTarget = apparel;
-            swapGraphic = graphic;
-            PawnRenderUtility.DrawEquipmentAiming(apparel, drawPos, aimAngle);
-            swapTarget = null;
-            swapGraphic = null;
+            DrawAimingGraphic(apparel, graphic, pos, aimAngle);
+            return true;
         }
 
-        // 找正用本apparel verb瞄准的来源
-        private static Apparel GetAimingApparel(Pawn pawn, out Graphic graphic)
+        // 复刻原版DrawEquipmentAiming, 但缩放与材质一律取自comp图
+        private static void DrawAimingGraphic(Thing eq, Graphic graphic, Vector3 drawLoc, float aimAngle)
         {
-            graphic = null;
-            if (!(pawn.stances?.curStance is Stance_Warmup warmup)) return null;
-            if (!(warmup.verb?.EquipmentSource is Apparel apparel)) return null;
-            CompAimingEquipmentGraphic comp = apparel.TryGetComp<CompAimingEquipmentGraphic>();
-            if (comp?.AimingGraphic == null) return null;
-            graphic = comp.AimingGraphic;
-            return apparel;
+            float angle = aimAngle - 90f;
+            Mesh mesh;
+            if (aimAngle > 200f && aimAngle < 340f)
+            {
+                mesh = MeshPool.plane10Flip;
+                angle -= 180f;
+                angle -= eq.def.equippedAngleOffset;
+            }
+            else
+            {
+                mesh = MeshPool.plane10;
+                angle += eq.def.equippedAngleOffset;
+            }
+            angle %= 360f;
+
+            Material material = (graphic is Graphic_StackCount stackGraphic)
+                ? stackGraphic.SubGraphicForStackCount(1, eq.def).MatSingleFor(eq)
+                : graphic.MatSingleFor(eq);
+            if (material == null) return;
+
+            Vector2 size = graphic.drawSize;
+            Matrix4x4 matrix = Matrix4x4.TRS(
+                drawLoc,
+                Quaternion.AngleAxis(angle, Vector3.up),
+                new Vector3(size.x, 0f, size.y));
+            Graphics.DrawMesh(mesh, matrix, material, 0);
+        }
+
+        // 复刻原版佩戴附加绘制
+        private static void DrawWornExtras(Pawn pawn)
+        {
+            if (pawn.apparel == null) return;
+            List<Apparel> worn = pawn.apparel.WornApparel;
+            if (worn == null) return;
+            for (int i = 0; i < worn.Count; i++)
+            {
+                worn[i].DrawWornExtras();
+            }
         }
 
         // 复刻原版瞄准角计算
@@ -106,21 +120,6 @@ namespace Fortified
                 num = verb.AimAngleOverride.Value;
             }
             return num;
-        }
-    }
-
-    // 绘制瞄准期间把主武器图替换为手持图
-    [HarmonyPatch(typeof(Thing), "get_Graphic")]
-    public static class Patch_Thing_Graphic_AimingSwap
-    {
-        [HarmonyPostfix]
-        public static void Postfix(Thing __instance, ref Graphic __result)
-        {
-            if (Patch_PawnRenderUtility_DrawAimingApparel.swapGraphic != null
-                && __instance == Patch_PawnRenderUtility_DrawAimingApparel.swapTarget)
-            {
-                __result = Patch_PawnRenderUtility_DrawAimingApparel.swapGraphic;
-            }
         }
     }
 

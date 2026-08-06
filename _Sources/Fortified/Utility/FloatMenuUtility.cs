@@ -12,10 +12,26 @@ namespace Fortified
     {
         public static IEnumerable<FloatMenuOption> GetExtraFloatMenuOptionsFor(FloatMenuContext context, Thing clickedThing, MechWeaponExtension mechWeapon)
         {
-            if (!clickedThing.Spawned) yield break;
+            if (clickedThing == null || !clickedThing.Spawned) yield break;
             if (clickedThing is not ThingWithComps tmp) yield break;
 
-            Pawn pawn = context.FirstSelectedPawn as Pawn;
+            Pawn pawn = context?.FirstSelectedPawn as Pawn;
+            if (pawn == null) yield break;
+
+            //可回收的部署建築
+            //vanilla 的 FloatMenuOptionProvider_FromThing 是 MechanoidCanDo => false，
+            //機械體永遠看不到 CompUsable 的選項，因此改由本 provider 補上。
+            //限定 IsMechanoid 才補，否則非機械的 IWeaponUsable pawn 會拿到兩份重複選項。
+            if (pawn.RaceProps != null && pawn.RaceProps.IsMechanoid
+                && tmp.def.category == ThingCategory.Building
+                && tmp.GetComp<CompMinifyToInventory>() != null
+                && tmp.TryGetComp<CompUsable>(out var usableComp))
+            {
+                foreach (FloatMenuOption usableOption in usableComp.CompFloatMenuOptions(pawn))
+                {
+                    if (usableOption != null) yield return usableOption;
+                }
+            }
 
             //武器相關
             if (tmp.TryGetComp<CompEquippable>() != null)

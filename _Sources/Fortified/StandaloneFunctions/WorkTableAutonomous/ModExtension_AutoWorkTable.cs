@@ -23,6 +23,16 @@ namespace Fortified
         public bool northOnly = false;
         public ThingDef activeMote = null;
 
+        // 全部階段跑完時由工作台自己結算並彈出產品，不需要殖民者再跑一趟收取。
+        // 注意：仍然需要有人來準備每一個階段，這個選項只省下最後的取件動作。
+        public bool autoEjectProducts = false;
+
+        // 產品彈出的落點模式，預設沿用手動結算時的 Near。
+        public ThingPlaceMode ejectPlaceMode = ThingPlaceMode.Near;
+
+        // 彈出瞬間播放的音效，可留空。
+        public SoundDef ejectSound = null;
+
         public EffecterDef doneEffecter_east = null;
         public EffecterDef doneEffecter_west = null;
         public EffecterDef doneEffecter_south = null;

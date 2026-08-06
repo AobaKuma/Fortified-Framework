@@ -27,6 +27,11 @@ namespace Fortified
 		public override void ResolveReferences(ThingDef parentDef)
 		{
 			base.ResolveReferences(parentDef);
+			if (ammoFilter == null)
+			{
+				Log.Error($"[FFF] {parentDef?.defName} has CompProperties_TurretProjectile without an ammoFilter.");
+				ammoFilter = new ThingFilter();
+			}
 			ammoFilter.ResolveReferences();
 			if(parentDef.building == null)
 			{
@@ -41,12 +46,12 @@ namespace Fortified
 
 		public virtual IEnumerable<ThingDef> AllAcceptedAmmo()
 		{
-			return ammoFilter.AllowedThingDefs;
+			return ammoFilter?.AllowedThingDefs ?? Enumerable.Empty<ThingDef>();
 		}
 
 		public virtual bool AcceptsAmmo(ThingDef ammo)
 		{
-			bool flag = ammoFilter.Allows(ammo);
+			bool flag = ammo != null && ammoFilter != null && ammoFilter.Allows(ammo);
 			return flag;
 		}
 	}
@@ -88,24 +93,73 @@ namespace Fortified
 			//selectedAmmoDef = ThingDefOf.Shell_HighExplosive;
 		}
 
+		/// <summary>
+		/// Picks which ammo a freshly generated pawn spawns with.
+		/// Never returns a def that cannot be instantiated; returns null when there is nothing sane to hand out.
+		/// </summary>
+		public virtual ThingDef SelectStartingAmmo()
+		{
+			List<ThingDef> candidates = Props.AllAcceptedAmmo()?.Where(x => x != null).ToList();
+			if (candidates.NullOrEmpty())
+			{
+				return null;
+			}
+			// generateCommonality is 0 on plenty of ammo defs (Combat Extended zeroes it so ammo stays out of
+			// vanilla loot rolls). RandomElementByWeight returns null on a zero total weight, so fall back to a
+			// uniform pick instead of handing a null def to ThingMaker.
+			if (candidates.TryRandomElementByWeight(x => Mathf.Max(x.generateCommonality, 0f), out ThingDef weighted) && weighted != null)
+			{
+				return weighted;
+			}
+			return candidates.RandomElement();
+		}
+
 		public virtual void PostGenInit(Pawn pawn)
 		{
-			int count = Props.startingAmmoRange.RandomInRange;
-			if (count > 0)
+			if (pawn?.inventory?.innerContainer == null)
 			{
-				ThingDef def = Props.AllAcceptedAmmo().RandomElementByWeight(x => x.generateCommonality);
-				while(count > 0)
+				return;
+			}
+			int count = Props.startingAmmoRange.RandomInRange;
+			if (count <= 0)
+			{
+				return;
+			}
+			ThingDef def = SelectStartingAmmo();
+			if (def == null)
+			{
+				return;
+			}
+			int stackLimit = Mathf.Max(1, def.stackLimit);
+			while (count > 0)
+			{
+				Thing t = ThingMaker.MakeThing(def);
+				if (t == null)
 				{
-					Thing t = ThingMaker.MakeThing(def);
-					t.stackCount = Mathf.Min(count, def.stackLimit);
-					count -= t.stackCount;
-					pawn.inventory.innerContainer.TryAddOrTransfer(t);
+					return;
+				}
+				t.stackCount = Mathf.Min(count, stackLimit);
+				count -= t.stackCount;
+				if (!pawn.inventory.innerContainer.TryAddOrTransfer(t))
+				{
+					// Inventory refused the stack (Combat Extended bulk/weight limits, for one) - stop instead of looping.
+					if (!t.Destroyed)
+					{
+						t.Destroy();
+					}
+					return;
 				}
 			}
 		}
 
 		public override void Notify_UsedWeapon(Pawn pawn)
 		{
+			// This comp can sit on a weapon def that is also used outside the sub-turret system
+			// (a CompProperties_VehicleWeapon default weapon, for instance), where there is no SubTurret to talk to.
+			if (turret == null || pawn?.inventory?.innerContainer == null)
+			{
+				return;
+			}
 			Thing ammo;
 			if (selectedAmmoDef == null)
 			{
@@ -144,6 +198,10 @@ namespace Fortified
 
 		public virtual bool OutOfAmmo()
 		{
+			if (turret?.PawnOwner?.inventory?.innerContainer == null)
+			{
+				return true;
+			}
 			if (turret.PawnOwner.inventory.innerContainer.NullOrEmpty())
 			{
 				return true;

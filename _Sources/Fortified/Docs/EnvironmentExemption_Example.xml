@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Reference only — not loaded by the game. Copy the snippets into your own Defs.
+
+  CompEnvironmentExemption lets a *facility* waive or relax the environmental
+  requirements that ModExt_EnvironmentalBill declares on a recipe, for every
+  work table the facility is currently linked to.
+
+  Rules:
+    * The facility def MUST also carry CompProperties_Facility, otherwise nothing links to it.
+    * The work table def MUST carry CompProperties_AffectedByFacilities and list this facility
+      in <linkableFacilities>.
+    * The exemption only counts while the facility is active: powered (CompPowerTrader),
+      fuelled (CompRefuelable), switched on (CompFlickable) and not broken down
+      (CompBreakdownable). Comps that are absent are simply not checked.
+    * Booleans from several linked facilities OR together; offsets sum.
+    * Offsets are always a POSITIVE amount of added slack. Negative values are clamped to 0.
+-->
+<Defs>
+
+  <!-- ============ 1. A recipe with environmental requirements ============ -->
+  <RecipeDef>
+    <defName>FFF_Example_DelicateAssembly</defName>
+    <label>delicate assembly</label>
+    <workAmount>2000</workAmount>
+    <modExtensions>
+      <li Class="Fortified.ModExt_EnvironmentalBill">
+        <OnlyInCleanliness>true</OnlyInCleanliness>
+        <CleanlinessRequirement>0.4</CleanlinessRequirement>
+
+        <TemperatureRestricted>true</TemperatureRestricted>
+        <AllowedTemperatureRange>15~25</AllowedTemperatureRange>
+
+        <!-- Light floor. Combine with OnlyInDarkness to get a band instead. -->
+        <LightnessRestricted>true</LightnessRestricted>
+        <LightnessRequirement>0.6</LightnessRequirement>
+
+        <!-- Set false to make the recipe strict no matter what is linked. Default true. -->
+        <allowFacilityExemption>true</allowFacilityExemption>
+      </li>
+    </modExtensions>
+  </RecipeDef>
+
+
+  <!-- ============ 2. Facility: full waiver of cleanliness + temperature ============ -->
+  <ThingDef ParentName="BuildingBase">
+    <defName>FFF_Example_SealedEnclosure</defName>
+    <label>sealed enclosure</label>
+    <description>A sealed, climate-controlled shell. Recipes at the linked bench ignore room cleanliness and ambient temperature entirely.</description>
+    <comps>
+      <li Class="CompProperties_Facility">
+        <maxSimultaneous>1</maxSimultaneous>
+        <maxDistance>4</maxDistance>
+      </li>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>250</basePowerConsumption>
+      </li>
+      <li Class="CompProperties_Flickable" />
+      <li Class="CompProperties_Breakdownable" />
+
+      <li Class="Fortified.CompProperties_EnvironmentExemption">
+        <exemptCleanliness>true</exemptCleanliness>
+        <exemptTemperature>true</exemptTemperature>
+
+        <!-- Gating. All default to true; each is ignored when the comp it names is absent. -->
+        <requiresFuel>true</requiresFuel>
+        <requiresSwitchedOn>true</requiresSwitchedOn>
+        <requiresNotBroken>true</requiresNotBroken>
+      </li>
+    </comps>
+  </ThingDef>
+
+
+  <!-- ============ 3. Facility: partial relaxation only ============ -->
+  <ThingDef ParentName="BuildingBase">
+    <defName>FFF_Example_AirScrubber</defName>
+    <label>air scrubber</label>
+    <description>Filters particulates and buffers temperature. Loosens — but does not remove — the environmental requirements of the linked bench.</description>
+    <comps>
+      <li Class="CompProperties_Facility">
+        <maxSimultaneous>3</maxSimultaneous>
+        <maxDistance>6</maxDistance>
+      </li>
+      <li Class="CompProperties_Refuelable">
+        <fuelFilter><thingDefs><li>Chemfuel</li></thingDefs></fuelFilter>
+        <fuelCapacity>75</fuelCapacity>
+        <fuelConsumptionRate>8</fuelConsumptionRate>
+      </li>
+
+      <li Class="Fortified.CompProperties_EnvironmentExemption">
+        <!-- Required cleanliness drops by 0.25 (e.g. 0.4 -> 0.15). -->
+        <cleanlinessOffset>0.25</cleanlinessOffset>
+        <!-- Allowed temperature band widens by 10C on BOTH ends (15~25 -> 5~35). -->
+        <temperatureRangeExpansion>10</temperatureRangeExpansion>
+        <!-- Required light floor drops by 20% (0.6 -> 0.4). -->
+        <lightnessOffset>0.2</lightnessOffset>
+      </li>
+    </comps>
+  </ThingDef>
+
+
+  <!-- ============ 4. Facility: vacuum / gravity, restricted to one recipe ============ -->
+  <ThingDef ParentName="BuildingBase" MayRequire="Ludeon.RimWorld.Odyssey">
+    <defName>FFF_Example_InertialDamper</defName>
+    <label>inertial damper</label>
+    <description>Simulates freefall inside its field. Only assists the recipe it was designed for.</description>
+    <comps>
+      <li Class="CompProperties_Facility">
+        <maxSimultaneous>1</maxSimultaneous>
+        <mustBePlacedAdjacent>true</mustBePlacedAdjacent>
+      </li>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>600</basePowerConsumption>
+      </li>
+
+      <li Class="Fortified.CompProperties_EnvironmentExemption">
+        <exemptMicroGravity>true</exemptMicroGravity>
+        <!-- Raise the tolerated vacuum ceiling by 30%. -->
+        <pressureOffset>0.3</pressureOffset>
+
+        <onlyForRecipes>
+          <li>FFF_Example_DelicateAssembly</li>
+        </onlyForRecipes>
+        <!-- Optional: also limit which benches it will help.
+        <onlyForWorkTables>
+          <li>FFF_Example_PrecisionBench</li>
+        </onlyForWorkTables>
+        -->
+      </li>
+    </comps>
+  </ThingDef>
+
+
+  <!-- ============ 5. The work table must be able to link ============ -->
+  <ThingDef ParentName="BenchBase">
+    <defName>FFF_Example_PrecisionBench</defName>
+    <label>precision bench</label>
+    <comps>
+      <li Class="CompProperties_AffectedByFacilities">
+        <linkableFacilities>
+          <li>FFF_Example_SealedEnclosure</li>
+          <li>FFF_Example_AirScrubber</li>
+          <li>FFF_Example_InertialDamper</li>
+        </linkableFacilities>
+      </li>
+    </comps>
+    <recipes>
+      <li>FFF_Example_DelicateAssembly</li>
+    </recipes>
+  </ThingDef>
+
+</Defs>

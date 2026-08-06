@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <LanguageData>
 
   <!-- 機兵休眠容器 -->
@@ -38,5 +38,14 @@
   <FFF.HackFailed>駭入失敗</FFF.HackFailed>
   <!-- EN: {0} failed to hack the mech. The mech has awakened and is now hostile! -->
   <FFF.HackFailedDesc>{0}駭入機兵失敗。機兵已甦醒並變為敵對狀態！</FFF.HackFailedDesc>
+
+
+  <!-- 原地封存技能（CompAbilityEffect_DeactivateToCapsule）-->
+  <FFF.Mothball.Reason.NotSpawned>未展開</FFF.Mothball.Reason.NotSpawned>
+  <FFF.Mothball.Reason.NotMech>並非機械體</FFF.Mothball.Reason.NotMech>
+  <FFF.Mothball.Reason.NotPlayer>不受你控制</FFF.Mothball.Reason.NotPlayer>
+  <FFF.Mothball.Reason.Drafted>徵召狀態下無法封存</FFF.Mothball.Reason.Drafted>
+  <FFF.Mothball.Reason.Downed>倒地狀態下無法封存</FFF.Mothball.Reason.Downed>
+  <FFF.Mothball.Reason.NoCapsule>沒有適合此底盤的封存框架</FFF.Mothball.Reason.NoCapsule>
 
 </LanguageData>

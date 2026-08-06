@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+
+  <!-- ═══ 预览窗口 ═══ -->
+  <FFF_RimIgnore_Title>上传创意工坊 — 排除内容预览</FFF_RimIgnore_Title>
+  <FFF_RimIgnore_Subtitle>{0} — 按 {1} 过滤上传内容</FFF_RimIgnore_Subtitle>
+  <FFF_RimIgnore_Summary>即将上传：{0} 个文件（{1}）\n\n已排除：{2} 个项目 / {3} 个文件（{4}）</FFF_RimIgnore_Summary>
+  <FFF_RimIgnore_ColPath>项目</FFF_RimIgnore_ColPath>
+  <FFF_RimIgnore_ColSize>大小</FFF_RimIgnore_ColSize>
+  <FFF_RimIgnore_ColRule>命中规则</FFF_RimIgnore_ColRule>
+  <FFF_RimIgnore_DirSize>{0} 文件 / {1}</FFF_RimIgnore_DirSize>
+  <FFF_RimIgnore_NothingExcluded>没有任何项目被排除。</FFF_RimIgnore_NothingExcluded>
+  <FFF_RimIgnore_OpenFile>打开 .rimignore</FFF_RimIgnore_OpenFile>
+  <FFF_RimIgnore_Rescan>重新扫描</FFF_RimIgnore_Rescan>
+  <FFF_RimIgnore_Confirm>确认上传</FFF_RimIgnore_Confirm>
+  <FFF_RimIgnore_CannotUpload>扫描结果不完整，或过滤后没有任何文件可上传。</FFF_RimIgnore_CannotUpload>
+  <FFF_RimIgnore_RescanFailed>重新扫描失败。</FFF_RimIgnore_RescanFailed>
+  <FFF_RimIgnore_FileMissing>找不到 .rimignore。</FFF_RimIgnore_FileMissing>
+  <FFF_RimIgnore_UploadAnyway>仍要完整上传</FFF_RimIgnore_UploadAnyway>
+  <FFF_RimIgnore_ErrorTitle>忽略规则处理失败</FFF_RimIgnore_ErrorTitle>
+  <FFF_RimIgnore_MoreWarnings>…（尚有 {0} 条）</FFF_RimIgnore_MoreWarnings>
+  <FFF_RimIgnore_RuleImplicit>[内置] {0}</FFF_RimIgnore_RuleImplicit>
+  <FFF_RimIgnore_RuleLine>L{0}: {1}</FFF_RimIgnore_RuleLine>
+  <FFF_RimIgnore_ModRootLabel>「模组根目录」</FFF_RimIgnore_ModRootLabel>
+
+  <!-- ═══ 规则解析警告 ═══ -->
+  <FFF_RimIgnore_Warn_NoPatternAfterBang>第 {0} 行：'!' 之后没有样式，已忽略。</FFF_RimIgnore_Warn_NoPatternAfterBang>
+  <FFF_RimIgnore_Warn_SlashOnly>第 {0} 行：样式仅有 '/'，已忽略。</FFF_RimIgnore_Warn_SlashOnly>
+  <FFF_RimIgnore_Warn_EmptyPattern>第 {0} 行：样式为空，已忽略。</FFF_RimIgnore_Warn_EmptyPattern>
+  <FFF_RimIgnore_Warn_ParseFailed>第 {0} 行：样式无法解析（{1}），已忽略。</FFF_RimIgnore_Warn_ParseFailed>
+  <FFF_RimIgnore_Warn_CompileFailed>第 {0} 行：样式编译失败（{1}），已忽略。</FFF_RimIgnore_Warn_CompileFailed>
+  <FFF_RimIgnore_Warn_TooManyLines>{0} 超过 {1} 行，其余内容已略过。</FFF_RimIgnore_Warn_TooManyLines>
+
+  <!-- ═══ 扫描警告 ═══ -->
+  <FFF_RimIgnore_Warn_DepthLimit>文件夹嵌套超过 {0} 层，已停止深入：{1}</FFF_RimIgnore_Warn_DepthLimit>
+  <FFF_RimIgnore_Warn_ListDirFailed>无法列出文件夹内容（{0}）：{1}</FFF_RimIgnore_Warn_ListDirFailed>
+  <FFF_RimIgnore_Warn_AttributeFailed>无法读取项目属性（{0}）：{1}</FFF_RimIgnore_Warn_AttributeFailed>
+  <FFF_RimIgnore_Warn_SkippedSymlink>已跳过符号链接／联接点：{0}</FFF_RimIgnore_Warn_SkippedSymlink>
+  <FFF_RimIgnore_Warn_EntryLimit>项目数超过 {0}，扫描已提前中止。请确认 {1} 的路径设置是否正确。</FFF_RimIgnore_Warn_EntryLimit>
+
+  <!-- ═══ 错误信息 ═══ -->
+  <FFF_RimIgnore_Err_LoadFailed>无法读取 {0}，已中止上传。详情请见开发者控制台。</FFF_RimIgnore_Err_LoadFailed>
+  <FFF_RimIgnore_Err_ScanFailed>无法扫描模组文件夹，已中止上传。详情请见开发者控制台。</FFF_RimIgnore_Err_ScanFailed>
+  <FFF_RimIgnore_Err_Unexpected>套用忽略规则时发生未预期的错误，已中止上传。详情请见开发者控制台。</FFF_RimIgnore_Err_Unexpected>
+  <FFF_RimIgnore_Err_StagingFailed>创建暂存镜像失败，已中止上传（模组原始文件未被更动）。\n\n{0}</FFF_RimIgnore_Err_StagingFailed>
+  <FFF_RimIgnore_Err_PlanTruncated>扫描结果不完整（超出安全上限），已中止创建镜像。</FFF_RimIgnore_Err_PlanTruncated>
+  <FFF_RimIgnore_Err_NothingToUpload>套用 {0} 之后没有任何文件会被上传，已中止。</FFF_RimIgnore_Err_NothingToUpload>
+  <FFF_RimIgnore_Err_MirrorCountMismatch>镜像文件数不符（预期 {0}、实得 {1}）。</FFF_RimIgnore_Err_MirrorCountMismatch>
+  <FFF_RimIgnore_Err_StaleStagingLocked>无法清除既有的暂存镜像：{0}</FFF_RimIgnore_Err_StaleStagingLocked>
+
+  <!-- ═══ 开发者模式调试动作 ═══ -->
+  <FFF_RimIgnore_Dbg_NoLocalMods>找不到任何本地模组文件夹。</FFF_RimIgnore_Dbg_NoLocalMods>
+  <FFF_RimIgnore_Dbg_AllHaveIgnore>所有本地模组都已经有 {0} 了。</FFF_RimIgnore_Dbg_AllHaveIgnore>
+  <FFF_RimIgnore_Dbg_LoadFailed>无法读取 {0}。</FFF_RimIgnore_Dbg_LoadFailed>
+  <FFF_RimIgnore_Dbg_ScanFailed>无法扫描模组文件夹。</FFF_RimIgnore_Dbg_ScanFailed>
+  <FFF_RimIgnore_Dbg_TemplateCreated>已创建 {0}</FFF_RimIgnore_Dbg_TemplateCreated>
+  <FFF_RimIgnore_Dbg_TemplateFailed>创建失败，详情请见控制台。</FFF_RimIgnore_Dbg_TemplateFailed>
+  <FFF_RimIgnore_Dbg_NoIgnoreSuffix>（无 {0}）</FFF_RimIgnore_Dbg_NoIgnoreSuffix>
+
+  <!-- ═══ 由调试动作写出的 .rimignore 模板内容 ═══ -->
+  <FFF_RimIgnore_Template># .rimignore — 上传 Steam 创意工坊时要排除的文件／文件夹
+#
+# 语法与 GitHub 的 .gitignore 完全相同：
+#   #        注释（\# 可转义为字面井号）
+#   !xxx     反选（重新纳入），后出现的规则覆盖先出现的规则
+#   /xxx     锚定于模组根目录
+#   xxx/     仅匹配目录
+#   *        任意字符（不跨越 /）
+#   ?        单一字符（不跨越 /）
+#   [abc]    字符集，[!abc] 为排除
+#   **/xxx   任意深度；xxx/** 代表该目录底下全部
+#
+# 注意：与 Git 相同，文件夹一旦被排除，其中的内容就无法再用 ! 重新纳入。
+# 内置已自动排除：本文件、.git/ .gitignore .gitattributes .svn/ .hg/
+#                 .vs/ .idea/ .vscode/ Thumbs.db desktop.ini .DS_Store
+# 这些内置规则同样可以用 ! 覆写，例如：!.rimignore 会让本文件一起上传。
+
+# ── 源代码与构建产物 ──
+/_Sources/
+/Source/
+**/obj/
+**/bin/
+*.pdb
+*.csproj.user
+*.sln
+*.suo
+
+# ── Unity 项目 ──
+/UnityProject/
+
+# ── 开发用工具与快捷方式 ──
+/_Tools/
+*.lnk
+*.bat
+
+# ── 编辑器与备份杂讯 ──
+*.orig
+*.rej
+*.bak
+*~
+
+# ── 示例：排除整个文件夹但保留其中一个文件 ──
+# 先排除「内容」而非文件夹本身，再反选要保留的文件：
+# /Docs/*
+# !/Docs/Manual.md
+</FFF_RimIgnore_Template>
+
+</LanguageData>

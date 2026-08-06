@@ -69,7 +69,7 @@ namespace Fortified
 		}
 	}
 
-	public class PregnancyOutcomeExtension : DefModExtension
+	public class PregnancyOutcomeExtension : DefModExtension, IHiddenGeneSource
 	{
 		public bool applyIfNotGeneticMother = false;
 
@@ -87,6 +87,12 @@ namespace Fortified
 
 		[MustTranslate]
 		public string letterText = "";
+
+		// 導向發育基因不是玩家該在異種人編輯器裡挑的東西：它會把嬰兒換成物品。
+		// 預設藏起來，個別 Def 想露出來再把這格設成 false。
+		public bool hideInGeneEditor = true;
+
+		public bool HideInGeneEditor => hideInGeneEditor;
 
 		public bool TryApply(Pawn geneticMother, Thing birtherThing, Pawn father, out string letterDesc, out Thing result, bool fromMother = false)
 		{
