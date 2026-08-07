@@ -25,6 +25,8 @@ namespace Fortified
 
 		public string activatedTexPath = "";
 
+		public bool requireAccessWanter = false;
+
 		public ThingSetMakerDef lootMaker = null;
 
 		public FactionDef lootFaction;
@@ -50,9 +52,11 @@ namespace Fortified
 
 		public float progress;
 
+		public Thing linkedAccessWanter;
+
 		public virtual int TicksToActivate => Props.ticksToActivate;
 
-		public virtual bool HideGizmo => activated;
+		public virtual bool HideGizmo => activated || (Props.requireAccessWanter && linkedAccessWanter == null);
 
 		public bool CasterIsPawn => true;
 
@@ -117,6 +121,23 @@ namespace Fortified
 		{
 			activated = true;
 			parent.BroadcastCompSignal("FFF_ActivatedByAccessKey");
+			if (linkedAccessWanter != null)
+			{
+				if(linkedAccessWanter is IAccessKeyWanter wanter)
+				{
+					wanter.Notify_AccessKeyUsed(this, caster);
+				}
+				if(linkedAccessWanter is ThingWithComps twc)
+				{
+					foreach(ThingComp comp in twc.AllComps)
+					{
+						if (comp is IAccessKeyWanter compWanter)
+						{
+							compWanter.Notify_AccessKeyUsed(this, caster);
+						}
+					}
+				}
+			}
 			if(Props.lootMaker != null)
 			{
 				ThingSetMakerParams parms = default(ThingSetMakerParams);
@@ -188,6 +209,7 @@ namespace Fortified
 		{
 			Scribe_Values.Look(ref activated, "activated", defaultValue: false);
 			Scribe_Values.Look(ref progress, "progress", defaultValue: 0);
+			Scribe_References.Look(ref linkedAccessWanter, "linkedAccessWanter", saveDestroyedThings: false);
 		}
 
 		public bool CanHitTarget(LocalTargetInfo target)
@@ -291,9 +313,16 @@ namespace Fortified
 
 		public override void PostDraw()
 		{
-			if (activated && parent.def.drawerType != DrawerType.MapMeshOnly && !Props.activatedTexPath.NullOrEmpty())
+			if (activated)
 			{
-				ActivatedGraphic.Draw(parent.DrawPos, parent.Rotation, parent);
+				if (parent.def.drawerType != DrawerType.MapMeshOnly && !Props.activatedTexPath.NullOrEmpty())
+				{
+					ActivatedGraphic.Draw(parent.DrawPos, parent.Rotation, parent);
+				}
+			}
+			else if (linkedAccessWanter != null && (Find.Selector.IsSelected(parent) || Find.Selector.IsSelected(linkedAccessWanter)))
+			{
+				GenDraw.DrawLineBetween(parent.TrueCenter(), linkedAccessWanter.TrueCenter());
 			}
 		}
 

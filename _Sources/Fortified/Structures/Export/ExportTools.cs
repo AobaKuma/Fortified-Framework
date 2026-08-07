@@ -1,4 +1,5 @@
 ﻿using LudeonTK;
+using Multiplayer.API;
 using RimWorld;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 using Verse;
+using Verse.AI;
 using Verse.Noise;
 
 namespace Fortified.Structures
@@ -19,6 +21,8 @@ namespace Fortified.Structures
 
 	public class Dialog_PawnGroupExtractTool : Window
 	{
+		public static ExportTool_PawnGroup buffer;
+
 		private Vector2 scrollPosition = Vector2.zero;
 
 		public override Vector2 InitialSize => new Vector2(400f, 500f);
@@ -77,17 +81,13 @@ namespace Fortified.Structures
 			tool.lordTag = Widgets.TextField(new Rect(inRect.x, inRect.y + 90f, 200f, 30f), tool.lordTag, 20);
 			if(Widgets.ButtonImage(new Rect(inRect.x + 200f, inRect.y + 90f, 30f, 30f), TexButton.Copy))
 			{
-				ExportTool_PawnGroup tool2 = (ExportTool_PawnGroup)Find.Selector.SelectedObjects.Where((object x) => x is ExportTool_PawnGroup t && t != tool).FirstOrDefault();
-				if(tool2 != null)
-				{
-					tool.CopyFrom(tool2);
-				}
+				buffer = tool;
 			}
 			if (Widgets.ButtonImage(new Rect(inRect.x + 230f, inRect.y + 90f, 30f, 30f), TexButton.Paste))
 			{
-				foreach (ExportTool_PawnGroup t in Find.Selector.SelectedObjects.Where((object x) => x is ExportTool_PawnGroup t && t != tool))
+				if(buffer != null && buffer != tool)
 				{
-					t.CopyFrom(tool);
+					tool.CopyFrom(buffer);
 				}
 			}
 			tool.sendSignalRadius = Widgets.HorizontalSlider(new Rect(inRect.x, inRect.y + 120f, inRect.width, 30f), tool.sendSignalRadius, -1f, 80, roundTo: 1, label: $"Signal radius ({tool.sendSignalRadius})");
@@ -394,7 +394,9 @@ namespace Fortified.Structures
 			{
 				return;
 			}
+			IntVec3 pos = Position - origin;
 			sb.AppendLine("      <li Class=\"Fortified.Structures.FFF_Element_RandomSubStructure\">");
+			sb.AppendLine($"        <pos>{pos}</pos>");
 			sb.AppendLine($"        <tag>{substructureTag}</tag>");
 			sb.AppendLine($"        <chance>{1}</chance>");
 			sb.AppendLine("      </li>");
@@ -404,6 +406,123 @@ namespace Fortified.Structures
 		{
 			base.ExposeData();
 			Scribe_Values.Look(ref substructureTag, "substructureTag");
+		}
+	}
+
+	public class ExportTool_LinkAccessKeyWanter : ExportTool
+	{
+		public IntVec3 wanter = IntVec3.Invalid;
+
+		public IntVec3 activatable = IntVec3.Invalid;
+
+		public override IEnumerable<Gizmo> GetGizmos()
+		{
+			yield return new Command_Action
+			{
+				defaultLabel = "DEV: select wanter",
+				action = TargetWanter
+			};
+			yield return new Command_Action
+			{
+				defaultLabel = "DEV: select activatable",
+				action = TargetActivatable
+			};
+		}
+
+		public void TargetActivatable()
+		{
+			Find.Targeter.BeginTargeting(TargetingParameters.ForCell(), delegate (LocalTargetInfo t)
+			{
+				if (ValidateTarget(t))
+				{
+					activatable = t.Cell;
+				}
+			}, delegate (LocalTargetInfo t)
+			{
+				if (ValidateTarget(t))
+				{
+					GenDraw.DrawTargetHighlight(t);
+					GenDraw.DrawFieldEdges(new List<IntVec3>() { t.Cell });
+				}
+			}, ValidateTarget, null, null, BaseContent.ClearTex, playSoundOnAction: true, delegate (LocalTargetInfo t)
+			{
+				Widgets.MouseAttachedLabel("Select activatable");
+			});
+			bool ValidateTarget(LocalTargetInfo t)
+			{
+				if (!t.Cell.InBounds(Map))
+				{
+					return false;
+				}
+				return t.Cell.GetThingList(Map).FirstOrDefault(x => x.HasComp<CompAccessKeyActivatable>()) != null;
+			}
+		}
+
+		public void TargetWanter()
+		{
+			Find.Targeter.BeginTargeting(TargetingParameters.ForCell(), delegate (LocalTargetInfo t)
+			{
+				if (ValidateTarget(t))
+				{
+					wanter = t.Cell;
+				}
+			}, delegate (LocalTargetInfo t)
+			{
+				if (ValidateTarget(t))
+				{
+					GenDraw.DrawTargetHighlight(t);
+					GenDraw.DrawFieldEdges(new List<IntVec3>() { t.Cell });
+				}
+			}, ValidateTarget, null, null, BaseContent.ClearTex, playSoundOnAction: true, delegate (LocalTargetInfo t)
+			{
+				Widgets.MouseAttachedLabel("Select access wanter");
+			});
+			bool ValidateTarget(LocalTargetInfo t)
+			{
+				if (!t.Cell.InBounds(Map))
+				{
+					return false;
+				}
+				return t.Cell.GetThingList(Map).FirstOrDefault(x => x is IAccessKeyWanter) != null;
+			}
+		}
+
+		public override void DrawExtraSelectionOverlays()
+		{
+			base.DrawExtraSelectionOverlays();
+			if(wanter.IsValid)
+			{
+				GenDraw.DrawLineBetween(this.TrueCenter(), wanter.ToVector3Shifted(), SimpleColor.Yellow);
+			}
+			if (activatable.IsValid)
+			{
+				GenDraw.DrawLineBetween(this.TrueCenter(), activatable.ToVector3Shifted(), SimpleColor.Cyan);
+			}
+			if (activatable.IsValid && wanter.IsValid)
+			{
+				GenDraw.DrawLineBetween(activatable.ToVector3Shifted(), wanter.ToVector3Shifted(), SimpleColor.Green);
+			}
+		}
+
+		public override void ExportToXML(IntVec3 origin, StringBuilder sb)
+		{
+			if (!activatable.IsValid || !wanter.IsValid)
+			{
+				return;
+			}
+			IntVec3 activatablePos = activatable - origin;
+			IntVec3 wanterPos = wanter - origin;
+			sb.AppendLine("      <li Class=\"Fortified.Structures.FFF_Element_LinkAccessKeyWanter\">");
+			sb.AppendLine($"        <wanterPos>{wanterPos}</wanterPos>");
+			sb.AppendLine($"        <activatablePos>{activatablePos}</activatablePos>");
+			sb.AppendLine("      </li>");
+		}
+
+		public override void ExposeData()
+		{
+			base.ExposeData();
+			Scribe_Values.Look(ref activatable, "activatable");
+			Scribe_Values.Look(ref wanter, "wanter");
 		}
 	}
 }

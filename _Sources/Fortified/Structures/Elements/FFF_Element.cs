@@ -1,9 +1,10 @@
 // 当白昼倾坠之时
 using RimWorld;
-using Verse;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using UnityEngine;
+using Verse;
 
 namespace Fortified.Structures
 {
@@ -483,5 +484,23 @@ namespace Fortified.Structures
 		public FFF_Element_PawnGroupInRoom() { }
 
 		public override IFFF_GenerationTask GetTask(Rot4 rot, IntVec3 offset, Faction faction, List<PawnKindDef> pawns) => new Task_SpawnPawnGroupInRoom { pos = pos.RotatedBy(rot) + offset, faction = faction, pawns = pawns, lordTag = lordTag, sendSignalRadius = sendSignalRadius };
+	}
+
+	public class FFF_Element_LinkAccessKeyWanter : FFF_Element, IFFF_TaskProvider
+	{
+		public FFF_Element_LinkAccessKeyWanter() { }
+		public IntVec3 activatablePos;
+		public IntVec3 wanterPos;
+		public override void AddToSketch(Sketch sketch) { }
+
+		public virtual List<IFFF_GenerationTask> GetTasks(Rot4 rot, IntVec3 offset)
+		{
+			List<IFFF_GenerationTask> tasks = new List<IFFF_GenerationTask>();
+			if (activatablePos.IsValid && wanterPos.IsValid)
+			{
+				tasks.Add(new Task_LinkAccessKeyWanter { activatablePos = activatablePos.RotatedBy(rot) + offset, wanterPos = wanterPos.RotatedBy(rot) + offset });
+			}
+			return tasks;
+		}
 	}
 }

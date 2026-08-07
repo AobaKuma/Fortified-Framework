@@ -339,4 +339,33 @@ namespace Fortified.Structures
 			return new Task_SpawnPawnGroupInRoom { pos = pos.RotatedBy(rot) + offset, pawns = pawns, faction = faction, lordTag = lordTag, sendSignalRadius = sendSignalRadius };
 		}
 	}
+
+	public class Task_LinkAccessKeyWanter : IFFF_GenerationTask
+	{
+		public IntVec3 activatablePos;
+		public IntVec3 wanterPos;
+		public void Execute(Map map, IntVec3 offset)
+		{
+			IntVec3 actualActivatablePos = activatablePos + offset;
+			if (!actualActivatablePos.InBounds(map)) return;
+			IntVec3 actualWanterPos = wanterPos + offset;
+			if (!actualWanterPos.InBounds(map)) return;
+            Thing wanter = actualWanterPos.GetThingList(map).FirstOrDefault(x => x is IAccessKeyWanter);
+            if(wanter == null) return;
+            foreach(Thing t in actualActivatablePos.GetThingList(map))
+            {
+                if(t.TryGetComp(out CompAccessKeyActivatable comp))
+                {
+                    comp.linkedAccessWanter = wanter;
+                    (wanter as IAccessKeyWanter).Notify_LinkedTo(comp);
+                    return;
+                }
+            }
+		}
+
+		public IFFF_GenerationTask Transformed(Rot4 rot, IntVec3 offset)
+		{
+			return new Task_LinkAccessKeyWanter { activatablePos = activatablePos.RotatedBy(rot) + offset, wanterPos = wanterPos.RotatedBy(rot) + offset };
+		}
+	}
 }

@@ -1,4 +1,5 @@
 ﻿using RimWorld;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Verse;
@@ -75,6 +76,64 @@ namespace Fortified
 			{
 				SetFaction(null);
 			}
+		}
+	}
+
+	public class Building_RollingDoor_AccessLink : Building_RollingDoor, IAccessKeyWanter
+	{
+		public int countToActivate = -1;
+
+		public bool activated = false;
+
+		public override bool PawnCanOpen(Pawn p)
+		{
+			if (activated)
+			{
+				return base.PawnCanOpen(p);
+			}
+			return false;
+		}
+
+		protected override bool AlwaysOpen => activated;
+
+		protected override bool CheckFaction => false;
+
+		public override AcceptanceReport ClaimableBy(Faction by)
+		{
+			if (!activated)
+			{
+				return false;
+			}
+			return base.ClaimableBy(by);
+		}
+
+		public void Notify_AccessKeyUsed(CompAccessKeyActivatable comp, Pawn pawn = null)
+		{
+			if (activated) return;
+			countToActivate--;
+			if (countToActivate <= 0)
+			{
+				activated = true;
+				SetFaction(pawn?.Faction);
+				DoorOpen();
+			}
+		}
+
+		public void Notify_LinkedTo(CompAccessKeyActivatable comp)
+		{
+			if (activated) return;
+			if(countToActivate < 0)
+			{
+				countToActivate = 0;
+			}
+			countToActivate++;
+		}
+
+		public override void ExposeData()
+		{
+			base.ExposeData();
+			Scribe_Values.Look(ref activated, "activated", defaultValue: false);
+			Scribe_Values.Look(ref countToActivate, "countToActivate", defaultValue: -1);
 		}
 	}
 }
