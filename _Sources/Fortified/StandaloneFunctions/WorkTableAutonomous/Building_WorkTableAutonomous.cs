@@ -73,17 +73,27 @@ namespace Fortified
         public void Finish(Pawn handler)
         {
             if (activeBill == null) return;
-            if (handler != null) lastHandler = handler;
+            if (IsValidHandler(handler)) lastHandler = handler;
             if (totalWorkAmount <= 0f)
             {
+                // GenRecipe.PostProcessProduct 會直接存取 worker.Ideo / worker.RaceProps，傳 null 必爆。
+                // 這裡退回 lastHandler，兩者都不可用就什麼都不做 —— 保留 activeBill，
+                // 讓 WorkGiver 下次派人來收，總比整個 tick 噴紅字好。
+                Pawn worker = IsValidHandler(handler) ? handler : (IsValidHandler(lastHandler) ? lastHandler : null);
+                if (worker == null)
+                {
+                    Log.WarningOnce($"[FFF] {this.LabelCap} finished a bill with no usable handler; deferring product ejection.", this.thingIDNumber ^ 0x5F3A11);
+                    return;
+                }
+
                 ThingPlaceMode placeMode = modExtension?.ejectPlaceMode ?? ThingPlaceMode.Near;
                 List<Thing> list = new();
                 innerContainer.CopyToList(list);
-                foreach (Thing item in GenRecipe.MakeRecipeProducts(activeBill.recipe, handler, list, CalculateDominantIngredient(list), this))
+                foreach (Thing item in GenRecipe.MakeRecipeProducts(activeBill.recipe, worker, list, CalculateDominantIngredient(list), this))
                 {
                     if (item.TryGetComp<CompQuality>(out var q))
                     {
-                        SetQuality(q);
+                        SetQuality(q, activeBill.recipe);
                     }
                     GenPlace.TryPlaceThing(item, this.InteractionCell,
                         base.Map, placeMode, null, null, null, 30);
@@ -107,29 +117,72 @@ namespace Fortified
                 prepared = true;
             }
         }
+        /// <summary>
+        /// 能不能拿這個小人當「名義製作者」丟進 GenRecipe。
+        /// 死掉的人不該再被記為製作者（也會讓 TaleRecorder 記下奇怪的紀錄）。
+        /// </summary>
+        protected static bool IsValidHandler(Pawn pawn)
+        {
+            return pawn != null && !pawn.Destroyed && !pawn.Dead && pawn.RaceProps != null;
+        }
+
         public override void Notify_BillDeleted(Bill bill)
         {
             Messages.Message("FFF.Autofacturer.WorkerCanceled".Translate(Label), this, MessageTypeDefOf.RejectInput);
             base.Notify_BillDeleted(bill);
         }
-        protected void SetQuality(CompQuality comp)
+        protected void SetQuality(CompQuality comp, RecipeDef recipe = null)
         {
+            // GenRecipe 已經依「剛好過來收件的那個小人」的技能擲過一次品質。
+            // 但這是台自動化機台，ModExtension_AutoWorkTable.skills 宣告的額定技能才是它的加工水準；
+            // 先前這個欄位完全沒有被讀取，導致低技能小人（或機兵）收件就固定產出爛貨，
+            // 接再多機械櫃也只是從糟糕往上加一兩階。
+            // 這裡用額定技能再擲一次，取兩者較好的一邊 —— 高技能工匠不會因此變差。
             QualityCategory q = comp.Quality;
-            if (!compFacility.LinkedFacilitiesListForReading.NullOrEmpty())
+            int ratedLevel = RatedSkillLevel(recipe);
+            if (ratedLevel >= 0)
             {
-                var li = compFacility.LinkedFacilitiesListForReading.FindAll(b => b.def.HasModExtension<ModExtension_QualityChance>());
-                if (!li.Any()) return;
-                foreach (Thing building in li)
+                QualityCategory machineQuality = QualityUtility.GenerateQualityCreatedByPawn(ratedLevel, false);
+                if (machineQuality > q)
                 {
+                    q = machineQuality;
+                }
+            }
+
+            // 機械櫃：每一台通電的櫃子各有一次提升一階的機會。
+            if (compFacility != null && !compFacility.LinkedFacilitiesListForReading.NullOrEmpty())
+            {
+                foreach (Thing building in compFacility.LinkedFacilitiesListForReading)
+                {
+                    if (building?.def == null) continue;
+                    var ext = building.def.GetModExtension<ModExtension_QualityChance>();
+                    if (ext == null) continue;
                     if (building.TryGetComp<CompPowerTrader>(out var c) && !c.PowerOn) continue;
 
-                    if (q != QualityCategory.Legendary && Rand.Chance(building.def.GetModExtension<ModExtension_QualityChance>().qualityChance))
+                    if (q != QualityCategory.Legendary && Rand.Chance(ext.qualityChance))
                     {
                         q++;
                     }
                 }
             }
-            comp.SetQuality(q, null);
+            comp.SetQuality(q, ArtGenerationContext.Colony);
+        }
+
+        /// <summary>
+        /// 這台機器對該配方相關技能的額定等級，未宣告時回傳 -1。
+        /// </summary>
+        private int RatedSkillLevel(RecipeDef recipe)
+        {
+            SkillDef skill = recipe?.workSkill;
+            if (skill == null || modExtension?.skills == null)
+            {
+                return -1;
+            }
+            if (!modExtension.skills.TryGetValue(skill, out int level))
+            {
+                return -1;
+            }
+            return Mathf.Clamp(level, 0, 20);
         }
 
         public int GetWorkTime()//互動的工作時間
@@ -234,7 +287,7 @@ namespace Fortified
         {
             if (modExtension == null || !modExtension.autoEjectProducts) return;
             if (activeBill == null || totalWorkAmount > 0f) return;
-            if (lastHandler == null || lastHandler.Destroyed) return;
+            if (!IsValidHandler(lastHandler)) return;
 
             modExtension.ejectSound?.PlayOneShot(new TargetInfo(Position, Map));
             Finish(lastHandler);

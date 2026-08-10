@@ -1,0 +1,1 @@
+python steam_mod_comment_analyzer.py "https://steamcommunity.com/sharedfiles/filedetails/?id=569264526"
