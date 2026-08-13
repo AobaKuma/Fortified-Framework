@@ -5,6 +5,7 @@ using System.Drawing;
 using System.Linq;
 using UnityEngine;
 using Verse;
+using static UnityEngine.Networking.UnityWebRequest;
 
 namespace Fortified.Structures
 {
@@ -311,7 +312,7 @@ namespace Fortified.Structures
             return provider.GetTasks(finalRot, finalOffset);
         }
 
-        protected Rot4 GetFacingRot()
+        protected virtual Rot4 GetFacingRot()
         {
             if (facingMode == FFF_FacingMode.None) return Rot4.North;
 
@@ -441,6 +442,7 @@ namespace Fortified.Structures
 		public FFF_Element_PawnGroup() { }
         public FactionDef factionDef;
 		public IntVec3 pos;
+        public bool fixedOptions = false;
         public string lordTag = "";
         public float sendSignalRadius = -1f;
 
@@ -451,27 +453,41 @@ namespace Fortified.Structures
 		public virtual List<IFFF_GenerationTask> GetTasks(Rot4 rot, IntVec3 offset)
 		{
 			List<IFFF_GenerationTask> tasks = new List<IFFF_GenerationTask>();
-			if (factionDef != null)
+			if (!options.NullOrEmpty())
 			{
-                Faction faction = Find.FactionManager.FirstFactionOfDef(factionDef);
-                if(faction != null)
-                {
-                    List<PawnKindDef> list = new List<PawnKindDef>();
-                    float points = pointsRange.RandomInRange;
-                    while (points > 0)
-                    {
-                        if(options.TryRandomElementByWeight((x)=>x.selectionWeight, out var result))
-                        {
-							list.Add(result.kind);
-                            points -= result.Cost;
-						}
-                        else
-                        {
-                            break;
-                        }
-                    }
-					tasks.Add(GetTask(rot, offset, faction, list.ToList()));
+				Faction faction = null;
+				if (factionDef != null)
+				{
+					faction = Find.FactionManager.FirstFactionOfDef(factionDef);
 				}
+				List<PawnKindDef> list = new List<PawnKindDef>();
+				if (fixedOptions)
+				{
+					foreach (PawnGenOption item in options)
+					{
+						for (int i = 0; i < item.selectionWeight; i++)
+						{
+							list.Add(item.kind);
+						}
+					}
+				}
+				else
+				{
+					float points = pointsRange.RandomInRange;
+					while (points > 0)
+					{
+						if (options.TryRandomElementByWeight((x) => x.selectionWeight, out var result))
+						{
+							list.Add(result.kind);
+							points -= result.Cost;
+						}
+						else
+						{
+							break;
+						}
+					}
+				}
+				tasks.Add(GetTask(rot, offset, faction, list.ToList()));
 			}
 			return tasks;
 		}

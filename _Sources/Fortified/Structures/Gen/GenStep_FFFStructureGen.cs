@@ -96,7 +96,7 @@ namespace Fortified.Structures
                 List<ThingDef> filthDefs = filthTypes.Select(x => DefDatabase<ThingDef>.GetNamedSilentFail(x)).Where(x => x != null).ToList();
                 if (filthDefs.Count > 0)
                 {
-                    new Task_ScatterFilth { rect = rect, filthTypes = filthDefs, chance = 0.25f }.Execute(map, IntVec3.Zero);
+                    new Task_ScatterFilth { rect = rect, filthTypes = filthDefs, chance = 0.25f }.Execute(map, IntVec3.Zero, null);
                 }
             }
 

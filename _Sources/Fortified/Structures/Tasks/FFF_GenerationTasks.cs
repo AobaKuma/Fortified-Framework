@@ -12,7 +12,7 @@ namespace Fortified.Structures
     // 基础生成任务接口
     public interface IFFF_GenerationTask
     {
-        void Execute(Map map, IntVec3 offset);
+        void Execute(Map map, IntVec3 offset, Faction faction);
         IFFF_GenerationTask Transformed(Rot4 rot, IntVec3 offset);
     }
 
@@ -23,7 +23,7 @@ namespace Fortified.Structures
         public ThingSetMakerDef makerDef;
         public float stackMultiplier = 1f;
 
-        public void Execute(Map map, IntVec3 offset)
+        public void Execute(Map map, IntVec3 offset, Faction faction)
         {
             IntVec3 actualPos = pos + offset;
             Building_Crate crate = actualPos.GetFirstThing<Building_Crate>(map);
@@ -55,13 +55,13 @@ namespace Fortified.Structures
         public IntVec3 pos;
         public FactionDef factionDef;
 
-        public void Execute(Map map, IntVec3 offset)
+        public void Execute(Map map, IntVec3 offset, Faction faction)
         {
             IntVec3 actualPos = pos + offset;
             Building_TurretGun turret = actualPos.GetFirstThing<Building_TurretGun>(map);
             if (turret == null || !turret.def.building.IsMortar) return;
 
-            Faction faction = factionDef != null ? Find.FactionManager.FirstFactionOfDef(factionDef) : turret.Faction;
+            faction = (factionDef != null ? Find.FactionManager.FirstFactionOfDef(factionDef) : turret.Faction) ?? faction;
             if (faction == null || faction == Faction.OfPlayer) return;
 
             // 寻找操作位置
@@ -100,7 +100,7 @@ namespace Fortified.Structures
         public ColorDef color;
         public float? plantGrowth;
 
-        public void Execute(Map map, IntVec3 offset)
+        public void Execute(Map map, IntVec3 offset, Faction faction)
         {
             IntVec3 actualPos = pos + offset;
             foreach (Thing t in actualPos.GetThingList(map))
@@ -139,7 +139,7 @@ namespace Fortified.Structures
         public IntVec3 pos;
         public ColorDef color;
 
-        public void Execute(Map map, IntVec3 offset)
+        public void Execute(Map map, IntVec3 offset, Faction faction)
         {
             IntVec3 finalPos = pos + offset;
             if (finalPos.InBounds(map) && color != null)
@@ -159,7 +159,7 @@ namespace Fortified.Structures
         public TerrainDef terrain;
         public TerrainLayerType layerType;
 
-        public void Execute(Map map, IntVec3 offset)
+        public void Execute(Map map, IntVec3 offset, Faction faction)
         {
             IntVec3 finalPos = pos + offset;
             if (!finalPos.InBounds(map) || terrain == null) return;
@@ -185,7 +185,7 @@ namespace Fortified.Structures
         public List<ThingDef> filthTypes;
         public float chance = 0.2f;
 
-        public void Execute(Map map, IntVec3 offset)
+        public void Execute(Map map, IntVec3 offset, Faction faction)
         {
             if (filthTypes.NullOrEmpty()) return;
             CellRect finalRect = rect.MovedBy(offset);
@@ -214,7 +214,7 @@ namespace Fortified.Structures
     {
         public IntVec3 pos;
 
-        public void Execute(Map map, IntVec3 offset)
+        public void Execute(Map map, IntVec3 offset, Faction faction)
         {
             IntVec3 actualPos = pos + offset;
             if (!actualPos.InBounds(map)) return;
@@ -240,7 +240,7 @@ namespace Fortified.Structures
         public RoofDef roofDef;
         public bool force;
 
-        public void Execute(Map map, IntVec3 offset)
+        public void Execute(Map map, IntVec3 offset, Faction faction)
         {
             IntVec3 actualPos = pos + offset;
             if (!actualPos.InBounds(map)) return;
@@ -264,7 +264,7 @@ namespace Fortified.Structures
         public IntVec3 pos;
         public float targetTemperature;
 
-        public void Execute(Map map, IntVec3 offset)
+        public void Execute(Map map, IntVec3 offset, Faction faction)
         {
             IntVec3 actualPos = pos + offset;
             if (!actualPos.InBounds(map)) return;
@@ -292,8 +292,9 @@ namespace Fortified.Structures
 		public List<PawnKindDef> pawns;
 		public string lordTag = "";
 		public float sendSignalRadius = -1f;
-		public void Execute(Map map, IntVec3 offset)
+		public void Execute(Map map, IntVec3 offset, Faction faction)
 		{
+			faction = this.faction ?? faction;
 			IntVec3 actualPos = pos + offset;
 			if (!actualPos.InBounds(map)) return;
 			List<Pawn> list = new List<Pawn>();
@@ -319,8 +320,9 @@ namespace Fortified.Structures
         public List<PawnKindDef> pawns;
         public string lordTag = "";
 		public float sendSignalRadius = -1f;
-		public void Execute(Map map, IntVec3 offset)
+		public void Execute(Map map, IntVec3 offset, Faction faction)
 		{
+            faction = this.faction ?? faction;
 			IntVec3 actualPos = pos + offset;
 			if (!actualPos.InBounds(map)) return;
             Room room = actualPos.GetRoom(map);
@@ -344,7 +346,7 @@ namespace Fortified.Structures
 	{
 		public IntVec3 activatablePos;
 		public IntVec3 wanterPos;
-		public void Execute(Map map, IntVec3 offset)
+		public void Execute(Map map, IntVec3 offset, Faction faction)
 		{
 			IntVec3 actualActivatablePos = activatablePos + offset;
 			if (!actualActivatablePos.InBounds(map)) return;

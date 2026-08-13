@@ -4,6 +4,7 @@ using RimWorld;
 using System;
 using System.Collections.Generic;
 using System.Drawing.Printing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -33,7 +34,9 @@ namespace Fortified.Structures
 
 		public Dialog_PawnGroupExtractTool(ExportTool_PawnGroup tool)
 		{
-			this.doCloseButton = true;
+			this.resizeable = true;
+			this.doCloseButton = false;
+			this.doCloseX = true;
 			forcePause = false;
 			absorbInputAroundWindow = false;
 			onlyOneOfTypeAllowed = false;
@@ -45,8 +48,10 @@ namespace Fortified.Structures
 
 		public override void DoWindowContents(Rect inRect)
 		{
+			inRect = inRect.ContractedBy(10);
 			Text.Font = GameFont.Small;
-			if (Widgets.ButtonText(new Rect(inRect.x, inRect.y, 300f, 30f), tool.elementTypeName.NullOrEmpty() ? "None" : tool.elementTypeName))
+			float curY = inRect.y;
+			if (Widgets.ButtonText(new Rect(inRect.x, curY, inRect.width, 30f), tool.elementTypeName.NullOrEmpty() ? "None" : tool.elementTypeName))
 			{
 				List<FloatMenuOption> list = new List<FloatMenuOption>();
 				list.Add(new FloatMenuOption(typeof(FFF_Element_PawnGroup).FullName, delegate
@@ -63,7 +68,8 @@ namespace Fortified.Structures
 				}
 				Find.WindowStack.Add(new FloatMenu(list));
 			}
-			if (Widgets.ButtonText(new Rect(inRect.x, inRect.y + 30f, 300f, 30f), tool.factionDef?.defName ?? "Null"))
+			curY += 30f;
+			if (Widgets.ButtonText(new Rect(inRect.x, curY, inRect.width, 30f), tool.factionDef?.defName ?? "Null"))
 			{
 				List<FloatMenuOption> list = new List<FloatMenuOption>();
 				foreach (FactionDef def in DefDatabase<FactionDef>.AllDefs)
@@ -72,29 +78,39 @@ namespace Fortified.Structures
 					list.Add(new FloatMenuOption(localDef.defName, delegate
 					{
 						tool.factionDef = localDef;
-						kindDefs = DefDatabase<PawnKindDef>.AllDefs.Where((x) => (!x.RaceProps.Humanlike || localDef.humanlikeFaction) && (localDef == x.defaultFactionDef || x.RaceProps.IsMechanoid)).ToList();
+						RegeneratePawnKinds(localDef);
 					}));
 				}
 				Find.WindowStack.Add(new FloatMenu(list));
 			}
-			Widgets.FloatRange(new Rect(inRect.x, inRect.y + 60f, 300f, 30f), GetHashCode(), ref tool.pointsRange, 0f, 10000f, "Points range " + tool.pointsRange.ToString(), ToStringStyle.Integer, 1f, roundTo: 100f);
-			tool.lordTag = Widgets.TextField(new Rect(inRect.x, inRect.y + 90f, 200f, 30f), tool.lordTag, 20);
-			if(Widgets.ButtonImage(new Rect(inRect.x + 200f, inRect.y + 90f, 30f, 30f), TexButton.Copy))
+			curY += 30f;
+			Widgets.CheckboxLabeled(new Rect(inRect.x, curY, inRect.width, 30f), "Fixed pawns count", ref tool.fixedOptions);
+			curY += 30f;
+			if (!tool.fixedOptions)
+			{
+				Widgets.FloatRange(new Rect(inRect.x, curY, inRect.width, 30f), GetHashCode(), ref tool.pointsRange, 0f, 10000f, "Points range " + tool.pointsRange.ToString(), ToStringStyle.Integer, 1f, roundTo: 100f);
+				curY += 30f;
+			}
+			tool.lordTag = Widgets.TextField(new Rect(inRect.x, curY, inRect.width - 60f, 30f), tool.lordTag, 20);
+			if(Widgets.ButtonImage(new Rect(inRect.width - 60f, curY, 30f, 30f), TexButton.Copy))
 			{
 				buffer = tool;
 			}
-			if (Widgets.ButtonImage(new Rect(inRect.x + 230f, inRect.y + 90f, 30f, 30f), TexButton.Paste))
+			if (Widgets.ButtonImage(new Rect(inRect.width - 30f, curY, 30f, 30f), TexButton.Paste))
 			{
 				if(buffer != null && buffer != tool)
 				{
 					tool.CopyFrom(buffer);
 				}
 			}
-			tool.sendSignalRadius = Widgets.HorizontalSlider(new Rect(inRect.x, inRect.y + 120f, inRect.width, 30f), tool.sendSignalRadius, -1f, 80, roundTo: 1, label: $"Signal radius ({tool.sendSignalRadius})");
-			Widgets.DrawLineHorizontal(inRect.x, inRect.y + 155f, 300f);
-			Rect outRect = new Rect(inRect.x, inRect.y + 160f, inRect.width, inRect.height - 35f - 5f - inRect.y);
+			curY += 30f;
+			tool.sendSignalRadius = Widgets.HorizontalSlider(new Rect(inRect.x, curY, inRect.width, 30f), tool.sendSignalRadius, -1f, 80, roundTo: 1, label: $"Signal radius ({tool.sendSignalRadius})");
+			curY += 35f;
+			Widgets.DrawLineHorizontal(inRect.x, curY, inRect.width);
+			curY += 5f;
+			Rect outRect = new Rect(inRect.x, curY, inRect.width, inRect.height - curY);
 			float width = outRect.width - 16f;
-			Rect viewRect = new Rect(0f, 0f, width, tool.options.Count * 30f);
+			Rect viewRect = new Rect(0f, 0f, width, (tool.options.Count + 2) * 30f);
 			Widgets.BeginScrollView(outRect, ref scrollPosition, viewRect);
 			float num = 0f;
 			foreach (var item in tool.options.ToList())
@@ -103,10 +119,6 @@ namespace Fortified.Structures
 				if (Widgets.ButtonText(new Rect(0f, num, 175f, 30f), localItem.kind?.defName ?? "Null"))
 				{
 					List<FloatMenuOption> list = new List<FloatMenuOption>();
-					list.Add(new FloatMenuOption("Remove", delegate
-					{
-						tool.options.Remove(localItem);
-					}));
 					foreach (PawnKindDef kind in kindDefs)
 					{
 						PawnKindDef localKind = kind;
@@ -118,7 +130,7 @@ namespace Fortified.Structures
 					Find.WindowStack.Add(new FloatMenu(list));
 				}
 				string buffer = localItem.selectionWeight.ToString();
-				string text = Widgets.TextField(new Rect(175f, num, width - 175f, 30f), buffer, 5);
+				string text = Widgets.TextField(new Rect(175, num, width - 205, 30f), buffer, 5);
 				if (text != buffer && IsPartiallyOrFullyTypedNumber(text))
 				{
 					buffer = text;
@@ -127,13 +139,17 @@ namespace Fortified.Structures
 						localItem.selectionWeight = result;
 					}
 				}
+				if (Widgets.ButtonImageFitted(new Rect(width - 30f, num, 30f, 30f), DevGUI.CheckOff))
+				{
+					tool.options.Remove(localItem);
+				}
 				num += 30f;
 			}
 			if (Widgets.ButtonText(new Rect(0f, num, 100f, 30f), "Add"))
 			{
 				if (kindDefs.NullOrEmpty())
 				{
-					kindDefs = DefDatabase<PawnKindDef>.AllDefs.Where((x) => (!x.RaceProps.Humanlike || tool.factionDef.humanlikeFaction) && (tool.factionDef == x.defaultFactionDef || x.RaceProps.IsMechanoid)).ToList();
+					RegeneratePawnKinds(tool.factionDef);
 				}
 				List<FloatMenuOption> list = new List<FloatMenuOption>();
 				foreach (PawnKindDef kind in kindDefs)
@@ -147,6 +163,35 @@ namespace Fortified.Structures
 				Find.WindowStack.Add(new FloatMenu(list));
 			}
 			Widgets.EndScrollView();
+		}
+
+		public void RegeneratePawnKinds(FactionDef faction = null)
+		{
+			kindDefs = DefDatabase<PawnKindDef>.AllDefs.Where((x) => AllowKind(x)).ToList();
+			bool AllowKind(PawnKindDef kind)
+			{
+				if (kind.RaceProps.Animal)
+				{
+					return false;
+				}
+				if(faction == null)
+				{
+					return true;
+				}
+				if(kind.defaultFactionDef == faction || (!faction.categoryTag.NullOrEmpty() && kind.defaultFactionDef?.categoryTag == faction.categoryTag))
+				{
+					return true;
+				}
+				if (!faction.humanlikeFaction && kind.RaceProps.Humanlike)
+				{
+					return false;
+				}
+				if(faction.techLevel > TechLevel.Industrial && kind.RaceProps.IsMechanoid)
+				{
+					return true;
+				}
+				return false;
+			}
 		}
 
 		private static bool IsPartiallyOrFullyTypedNumber(string s)
@@ -234,6 +279,7 @@ namespace Fortified.Structures
 		public float sendSignalRadius = -1f;
 		private float minPoints = 1000;
 		private float maxPoints = 1000;
+		public bool fixedOptions = false;
 		public FloatRange pointsRange = new FloatRange(1000, 1000);
 		public List<PawnGenOption> options = new List<PawnGenOption>();
 
@@ -278,16 +324,26 @@ namespace Fortified.Structures
 		}
 		public override void ExportToXML(IntVec3 origin, StringBuilder sb)
 		{
-			if(factionDef == null || options.NullOrEmpty())
+			if(options.NullOrEmpty())
 			{
 				return;
 			}
 			sb.AppendLine("      <li Class=\"" + elementTypeName + "\">");
-			sb.AppendLine($"        <factionDef>{factionDef.defName}</factionDef>");
+			if(factionDef != null)
+			{
+				sb.AppendLine($"        <factionDef>{factionDef.defName}</factionDef>");
+			}
 			sb.AppendLine($"        <sendSignalRadius>{sendSignalRadius}</sendSignalRadius>");
 			IntVec3 pos = Position - origin;
 			sb.AppendLine($"        <pos>({pos.x}, 0, {pos.z})</pos>");
-			sb.AppendLine($"        <pointsRange>{pointsRange.min}~{pointsRange.max}</pointsRange>");
+			if (fixedOptions)
+			{
+				sb.AppendLine("        <fixedOptions>true</fixedOptions>");
+			}
+			else
+			{
+				sb.AppendLine($"        <pointsRange>{pointsRange.min}~{pointsRange.max}</pointsRange>");
+			}
 			if (!lordTag.NullOrEmpty()) sb.AppendLine($"        <lordTag>{lordTag.ToString()}</lordTag>");
 			sb.AppendLine("        <options>");
 			foreach (var item in options)
@@ -323,6 +379,7 @@ namespace Fortified.Structures
 			Scribe_Values.Look(ref sendSignalRadius, "sendSignalRadius", defaultValue: -1);
 			Scribe_Values.Look(ref minPoints, "minPoints", 1000);
 			Scribe_Values.Look(ref maxPoints, "maxPoints", 1000);
+			Scribe_Values.Look(ref fixedOptions, "fixedOptions", defaultValue: false);
 			Scribe_Defs.Look(ref factionDef, "factionDef");
 			if (Scribe.mode == LoadSaveMode.PostLoadInit)
 			{

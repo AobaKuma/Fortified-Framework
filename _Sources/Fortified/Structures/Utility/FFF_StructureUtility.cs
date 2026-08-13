@@ -43,7 +43,7 @@ namespace Fortified.Structures
             SpawnPawns(def, finalRot, offset, map, faction);
             HandleRoofs(def, sketch, offset, map, finalRot);
             HandleLegacyLogic(def, offset, map, finalRot);
-            FinishGeneration(map, occupiedRect, def, finalRot, offset, reconnectPower);
+            FinishGeneration(map, occupiedRect, def, finalRot, offset, reconnectPower, faction);
         }
 
         /// <summary>
@@ -93,21 +93,25 @@ namespace Fortified.Structures
             foreach (var terrain in sketch.Terrain)
             {
                 IntVec3 pos = terrain.pos + offset;
-                List<Thing> thingList = pos.GetThingList(map).ToList();
-                if (!thingList.NullOrEmpty())
+                if (pos.InBounds(map))
                 {
-                    for (int i = 0; i < thingList.Count; i++)
-                    {
-                        Thing t = thingList[i];
-                        if (!t.Spawned || !t.def.destroyable) continue;
-                        // 删除占位的天然岩石（如果有），以免影响地形生成
-                        if (t.def.building?.isNaturalRock ?? false)
-                        {
-                            t.Destroy(DestroyMode.Vanish);
-                        }
-                    }
+					List<Thing> thingList = pos.GetThingList(map).ToList();
+					if (!thingList.NullOrEmpty())
+					{
+						for (int i = 0; i < thingList.Count; i++)
+						{
+							Thing t = thingList[i];
+							if (!t.Spawned || !t.def.destroyable) continue;
+							// 删除占位的天然岩石（如果有），以免影响地形生成
+							if (t.def.building?.isNaturalRock ?? false)
+							{
+								t.Destroy(DestroyMode.Vanish);
+							}
+						}
+					}
+					map.terrainGrid.RemoveTempTerrain(pos, false, true);//should work without check because it checks itself
+					map.terrainGrid.SetTerrain(pos, terrain.def);
                 }
-                if (pos.InBounds(map)) map.terrainGrid.SetTerrain(pos, terrain.def);
             }
         }
 
@@ -317,7 +321,7 @@ namespace Fortified.Structures
                 ApplyLegacyTerrainColor(legacy, offset, map, rot);
         }
 
-        private static void FinishGeneration(Map map, CellRect rect, IFFF_Structure def, Rot4 rot, IntVec3 offset, bool reconnectPower)
+        private static void FinishGeneration(Map map, CellRect rect, IFFF_Structure def, Rot4 rot, IntVec3 offset, bool reconnectPower, Faction faction)
         {
             foreach (IntVec3 c in rect)
             {
@@ -331,7 +335,7 @@ namespace Fortified.Structures
             {
                 foreach (var task in tasks)
                 {
-                    try { task.Execute(map, IntVec3.Zero); }
+                    try { task.Execute(map, IntVec3.Zero, faction); }
                     catch (Exception e) { Log.Error($"[FFF] Error executing task {task.GetType().Name}: {e}"); }
                 }
             }

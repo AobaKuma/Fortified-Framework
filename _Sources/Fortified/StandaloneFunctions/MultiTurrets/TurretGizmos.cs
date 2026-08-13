@@ -13,8 +13,8 @@ using static UnityEngine.GraphicsBuffer;
 
 namespace Fortified
 {
-
-	internal class SubturretGizmo : Gizmo
+	[StaticConstructorOnStartup]
+	public class SubturretGizmo : Gizmo
 	{
 		public SubturretGizmo(CompMultipleTurretGun comp)
 		{
