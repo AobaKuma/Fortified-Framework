@@ -12,6 +12,7 @@ using UnityEngine;
 using Verse;
 using Verse.AI;
 using Verse.Noise;
+using static System.Collections.Specialized.BitVector32;
 
 namespace Fortified.Structures
 {
@@ -124,7 +125,7 @@ namespace Fortified.Structures
 						PawnKindDef localKind = kind;
 						list.Add(new FloatMenuOption(localKind.defName, delegate
 						{
-							localItem.kind = kind;
+							localItem.kind = localKind;
 						}));
 					}
 					Find.WindowStack.Add(new FloatMenu(list));
@@ -580,6 +581,59 @@ namespace Fortified.Structures
 			base.ExposeData();
 			Scribe_Values.Look(ref activatable, "activatable");
 			Scribe_Values.Look(ref wanter, "wanter");
+		}
+	}
+
+	public class ExportTool_ManTurret : ExportTool
+	{
+		public PawnKindDef kindDef;
+
+		public override IEnumerable<Gizmo> GetGizmos()
+		{
+			yield return new Command_Action
+			{
+				defaultLabel = "DEV: change props",
+				action = delegate
+				{
+					List<FloatMenuOption> list = new List<FloatMenuOption>();
+					foreach (PawnKindDef kind in DefDatabase<PawnKindDef>.AllDefs.Where((x) => AllowKind(x)))
+					{
+						PawnKindDef localKind = kind;
+						list.Add(new FloatMenuOption(localKind.defName, delegate
+						{
+							kindDef = localKind;
+						}));
+					}
+					Find.WindowStack.Add(new FloatMenu(list));
+					bool AllowKind(PawnKindDef kind)
+					{
+						if (kind.RaceProps.Animal)
+						{
+							return false;
+						}
+						return true;
+					}
+				}
+			};
+		}
+
+		public override void ExportToXML(IntVec3 origin, StringBuilder sb)
+		{
+			IntVec3 pos = Position - origin;
+			sb.AppendLine("      <li Class=\"Fortified.Structures.FFF_Element_ManMortar\">");
+			sb.AppendLine($"        <pos>{pos}</pos>");
+			if(kindDef != null)
+			{
+				sb.AppendLine($"        <kindDef>{kindDef.defName}</kindDef>");
+			}
+			sb.AppendLine($"        <chance>{1}</chance>");
+			sb.AppendLine("      </li>");
+		}
+
+		public override void ExposeData()
+		{
+			base.ExposeData();
+			Scribe_Defs.Look(ref kindDef, "kindDef");
 		}
 	}
 }

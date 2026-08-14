@@ -54,6 +54,7 @@ namespace Fortified.Structures
     {
         public IntVec3 pos;
         public FactionDef factionDef;
+        public PawnKindDef pawnKindDef;
 
         public void Execute(Map map, IntVec3 offset, Faction faction)
         {
@@ -66,7 +67,7 @@ namespace Fortified.Structures
 
             // 寻找操作位置
             IntVec3 manPos = turret.InteractionCell;
-            PawnKindDef pk = faction.RandomPawnKind();
+            PawnKindDef pk = pawnKindDef ?? faction.RandomPawnKind();
             if (pk == null) return;
 
             Pawn pawn = PawnGenerator.GeneratePawn(new PawnGenerationRequest(pk, faction, PawnGenerationContext.NonPlayer, map.Tile));
@@ -87,7 +88,7 @@ namespace Fortified.Structures
 
         public IFFF_GenerationTask Transformed(Rot4 rot, IntVec3 offset)
         {
-            return new Task_ManMortar { pos = pos.RotatedBy(rot) + offset, factionDef = factionDef };
+            return new Task_ManMortar { pos = pos.RotatedBy(rot) + offset, factionDef = factionDef, pawnKindDef = pawnKindDef };
         }
     }
 

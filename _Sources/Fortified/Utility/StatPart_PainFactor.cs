@@ -13,7 +13,7 @@ namespace Fortified
         public override void TransformValue(StatRequest req, ref float val)
         {
             if (!(req.Thing is Pawn pawn)) return;
-            if (curve == null) return;
+            if (curve == null || !pawn.RaceProps.IsFlesh) return;
 
             val += curve.Evaluate(CalcPainFactor(pawn));
         }
@@ -21,7 +21,7 @@ namespace Fortified
         public override string ExplanationPart(StatRequest req)
         {
             if (!(req.Thing is Pawn pawn)) return null;
-            if (curve == null) return null;
+            if (curve == null || !pawn.RaceProps.IsFlesh) return null;
 
             float factor = CalcPainFactor(pawn);
             float offset = curve.Evaluate(factor);

@@ -519,4 +519,23 @@ namespace Fortified.Structures
 			return tasks;
 		}
 	}
+
+	public class FFF_Element_ManMortar : FFF_Element, IFFF_TaskProvider
+	{
+		public FFF_Element_ManMortar() { }
+		public IntVec3 pos;
+        public PawnKindDef kindDef = null;
+
+		public override void AddToSketch(Sketch sketch) { }
+
+		public List<IFFF_GenerationTask> GetTasks(Rot4 rot, IntVec3 offset)
+		{
+			List<IFFF_GenerationTask> tasks = new List<IFFF_GenerationTask>();
+			if (pos.IsValid)
+			{
+				tasks.Add(new Task_ManMortar { pos = pos.RotatedBy(rot) + offset, pawnKindDef = kindDef});
+			}
+			return tasks;
+		}
+	}
 }

@@ -120,7 +120,7 @@ namespace Fortified
         // 判定可否被赋予状态
         private bool IsValidVictim(Pawn pawn)
         {
-            if (pawn == parent || pawn.Dead || !pawn.Spawned) return false;
+            if (pawn == parent || pawn.Dead || !pawn.Spawned || !pawn.RaceProps.IsFlesh) return false;
             if (pawn.InMentalState) return false;
             return StateDef.Worker.StateCanOccur(pawn);
         }

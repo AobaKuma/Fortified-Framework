@@ -1,67 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
 
-  <ThingDef>
+  <ThingDef Abstract="True" Name="Fortified_ExportToolBase">
+    <description>Export tool</description>
+    <altitudeLayer>Pawn</altitudeLayer>
+    <pathCost>0</pathCost>
+    <blockWind>false</blockWind>
+    <passability>PassThroughOnly</passability>
+    <fillPercent>0</fillPercent>
+    <receivesSignals>true</receivesSignals>
+    <forceDebugSpawnable>true</forceDebugSpawnable>
+    <graphicData>
+      <texPath>UI/Misc/BadTexture</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <size>(1,1)</size>
+    <selectable>true</selectable>
+    <drawerType>MapMeshOnly</drawerType>
+  </ThingDef>
+
+  <ThingDef ParentName="Fortified_ExportToolBase">
     <defName>FFF_ExportTool_PawnGroup</defName>
     <label>Pawn group tool</label>
-    <description>Pawn group export tool</description>
     <thingClass>Fortified.Structures.ExportTool_PawnGroup</thingClass>
-    <altitudeLayer>Pawn</altitudeLayer>
-    <pathCost>0</pathCost>
-    <blockWind>false</blockWind>
-    <passability>PassThroughOnly</passability>
-    <fillPercent>0</fillPercent>
-    <receivesSignals>true</receivesSignals>
-    <forceDebugSpawnable>true</forceDebugSpawnable>
-    <graphicData>
-      <texPath>UI/Misc/BadTexture</texPath>
-      <graphicClass>Graphic_Single</graphicClass>
-    </graphicData>
-    <size>(1,1)</size>
-    <selectable>true</selectable>
-    <drawerType>MapMeshOnly</drawerType>
   </ThingDef>
 
-  <ThingDef>
+  <ThingDef ParentName="Fortified_ExportToolBase">
     <defName>FFF_ExportTool_RandomStructure</defName>
     <label>Random structure tool</label>
-    <description>Random structure tool</description>
     <thingClass>Fortified.Structures.ExportTool_RandomStructure</thingClass>
-    <altitudeLayer>Pawn</altitudeLayer>
-    <pathCost>0</pathCost>
-    <blockWind>false</blockWind>
-    <passability>PassThroughOnly</passability>
-    <fillPercent>0</fillPercent>
-    <receivesSignals>true</receivesSignals>
-    <forceDebugSpawnable>true</forceDebugSpawnable>
-    <graphicData>
-      <texPath>UI/Misc/BadTexture</texPath>
-      <graphicClass>Graphic_Single</graphicClass>
-    </graphicData>
-    <size>(1,1)</size>
-    <selectable>true</selectable>
-    <drawerType>MapMeshOnly</drawerType>
   </ThingDef>
 
-  <ThingDef>
+  <ThingDef ParentName="Fortified_ExportToolBase">
     <defName>FFF_ExportTool_LinkAccessKeyWanter</defName>
     <label>Access link tool</label>
-    <description>Access link tool</description>
     <thingClass>Fortified.Structures.ExportTool_LinkAccessKeyWanter</thingClass>
-    <altitudeLayer>Pawn</altitudeLayer>
-    <pathCost>0</pathCost>
-    <blockWind>false</blockWind>
-    <passability>PassThroughOnly</passability>
-    <fillPercent>0</fillPercent>
-    <receivesSignals>true</receivesSignals>
-    <forceDebugSpawnable>true</forceDebugSpawnable>
-    <graphicData>
-      <texPath>UI/Misc/BadTexture</texPath>
-      <graphicClass>Graphic_Single</graphicClass>
-    </graphicData>
-    <size>(1,1)</size>
-    <selectable>true</selectable>
-    <drawerType>MapMeshOnly</drawerType>
+  </ThingDef>
+
+  <ThingDef ParentName="Fortified_ExportToolBase">
+    <defName>FFF_ExportTool_ManTurret</defName>
+    <label>Man turret tool</label>
+    <thingClass>Fortified.Structures.ExportTool_ManTurret</thingClass>
   </ThingDef>
 
 </Defs>
