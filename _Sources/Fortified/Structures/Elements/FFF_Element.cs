@@ -338,9 +338,23 @@ namespace Fortified.Structures
         public string tag;        // 通过标签检索
         public float chance = 1f;
 
+        /// <summary>
+        /// 擲骰是否已經做過。沒有這個旗標的話，chance 判定失敗時 cachedSub 仍是 null，
+        /// 於是 AddToSketch / GetPawns / GetTasks 每次都重擲一次 —— 結果就是
+        /// 「建築沒生成但守軍與生成任務生成了」，或反過來，兩者對不上。
+        ///
+        /// Without this flag a failed chance roll leaves cachedSub null, so AddToSketch,
+        /// GetPawns and GetTasks each re-roll independently — the sub-structure's buildings,
+        /// pawns and tasks then disagree about whether it exists at all.
+        /// </summary>
+        [Unsaved]
+        private bool rolled;
+
         protected override IFFF_Structure GetSub()
         {
-            if (cachedSub != null) return cachedSub;
+            if (rolled) return cachedSub;
+            rolled = true;
+
             if (Rand.Value > chance) return null;
 
             if (!pool.NullOrEmpty())

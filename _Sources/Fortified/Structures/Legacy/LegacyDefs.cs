@@ -46,7 +46,19 @@ namespace Fortified.Structures
                 cachedTasks = new List<IFFF_GenerationTask>();
                 LegacyParser.ParseToSketch(this, cachedSketch, cachedPawns, cachedTasks);
             }
-            return cachedSketch;
+
+            // 一定要回傳副本，與 FFF_StructureDef.GetSketch 一致。
+            // 呼叫端（FFF_StructureUtility.Generate / FootprintAt）會直接對回傳值呼叫 Rotate()，
+            // 交出快取本體等於永久轉壞這個 def：randomRotation 開啟時角度會跨地圖累加，
+            // 而且單次生成裡 FootprintAt → Generate 會轉兩次，預測的足跡與實際落點長寬互換，
+            // 後續的界內判定與衛星間距全部算在錯的矩形上。
+            //
+            // Must hand back a copy, as FFF_StructureDef.GetSketch already does. Callers rotate
+            // the returned sketch in place, so returning the cache permanently corrupts the def:
+            // with randomRotation the angle accumulates across maps, and within a single run
+            // FootprintAt → Generate rotates twice, leaving the predicted footprint transposed
+            // relative to the real one — every bounds and spacing check then works off a wrong rect.
+            return cachedSketch.DeepCopy();
         }
 
         // 获取布局关联的 Pawn 列表

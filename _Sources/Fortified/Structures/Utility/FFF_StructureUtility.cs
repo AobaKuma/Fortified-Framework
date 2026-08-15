@@ -11,6 +11,29 @@ namespace Fortified.Structures
 {
     public static class FFF_StructureUtility
     {
+        /// <summary>
+        /// 地圖邊緣安全帶寬度（格）。RimWorld 最外圈是小人進出／撤離與襲擊登場用的，
+        /// 結構壓上去會擋住出入口，觀感上也就是「結構生成在地圖邊緣」。
+        /// 依地圖短邊 4% 縮放並夾在 8~20 格，讓 200x200 與 400x400 都有合理留白。
+        ///
+        /// Width of the reserved band along the map edge. RimWorld's outermost ring carries
+        /// pawn entry/exit and raid arrival; structures placed there block those paths and
+        /// read as "generated on the map border". Scales with 4% of the map's short side,
+        /// clamped to 8..20 cells.
+        /// </summary>
+        public static int EdgeMargin(Map map)
+        {
+            if (map == null) return 8;
+            int shortSide = Mathf.Min(map.Size.x, map.Size.z);
+            return Mathf.Clamp(Mathf.RoundToInt(shortSide * 0.04f), 8, 20);
+        }
+
+        /// <summary>安全帶以內的可用區域。The usable area inside the edge band.</summary>
+        public static CellRect UsableRect(Map map)
+        {
+            return CellRect.WholeMap(map).ContractedBy(EdgeMargin(map));
+        }
+
         /// <param name="reconnectPower">
         /// 是否在結束時強制刷新電網。地圖生成期務必傳 false ——
         /// 生成期間 GenSpawn 的 WipeMode 會摧毀帶 CompPower 的建物，此時強制跑

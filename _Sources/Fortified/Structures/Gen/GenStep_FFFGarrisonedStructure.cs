@@ -107,8 +107,16 @@ namespace Fortified.Structures
         {
             // IFFF 結構 + 污垢 + SymbolResolvers。
             base.Generate(map, parms);
+            if (map == null) return;
 
-            IntVec3 center = map.Center;
+            // 用主結構的實際落點，不是 map.Center —— randomOffset 與邊界夾取都會讓兩者不同，
+            // 過去殘骸／戰利品／守軍／LordJob_DefendPoint 全都錨在錯的點上。
+            // Anchor on the structure's real centre rather than map.Center: randomOffset and
+            // the edge clamp both move it, and debris/loot/defenders/the defend-point lord all
+            // used to hang off the wrong spot.
+            IntVec3 center = hasLastStructure ? lastStructureRect.CenterCell : map.Center;
+            if (!center.InBounds(map)) center = map.Center;
+
             Faction faction = map.ParentFaction ?? parms.sitePart?.site?.Faction;
 
             // 先散布衛星，再放中央件與守軍 —— 這樣 SpawnCenterpiece 的
@@ -143,12 +151,19 @@ namespace Fortified.Structures
             if (satelliteScatter.NullOrEmpty()) return;
 
             int shortSide = Mathf.Min(map.Size.x, map.Size.z);
-            CellRect usable = CellRect.WholeMap(map).ContractedBy(2);
+
+            // 過去是 ContractedBy(2)：衛星可以貼到離地圖邊只剩兩格，正好就是玩家看到的
+            // 「結構長在地圖邊緣」。改用共用的安全帶寬度（短邊 4%，8~20 格）。
+            // Was ContractedBy(2), which let satellites sit two cells from the border — exactly
+            // the "structure on the map edge" symptom. Now uses the shared edge band.
+            CellRect usable = FFF_StructureUtility.UsableRect(map);
+            if (usable.Width <= 0 || usable.Height <= 0) return;
 
             List<CellRect> occupied = new List<CellRect>();
             if (hasLastStructure) occupied.Add(lastStructureRect);
 
             IntVec3 origin = hasLastStructure ? lastStructureRect.CenterCell : map.Center;
+            if (!origin.InBounds(map)) origin = map.Center;
 
             foreach (FFF_SatelliteScatter spec in satelliteScatter)
             {
@@ -232,6 +247,14 @@ namespace Fortified.Structures
                 && a.minZ - gap <= b.maxZ && b.minZ <= a.maxZ + gap;
         }
 
+        /// <summary>
+        /// 中央件的搜尋半徑階梯。原本只試 14 格：主結構本身就壓在中心，14 格內幾乎全是牆與建築，
+        /// 「整個足跡可站立且無 edifice」很容易一格都找不到 —— 這就是 centerpiece 有時跑到地圖邊的起點。
+        /// Escalating search radii. The old code only tried 14, but the structure itself sits on the
+        /// centre, so "whole footprint standable and edifice-free" often has no solution that close.
+        /// </summary>
+        private static readonly int[] CenterpieceSearchRadii = { 14, 24, 40, 64 };
+
         private void SpawnCenterpiece(Map map, IntVec3 center)
         {
             if (centerpieceDef == null) return;
@@ -240,12 +263,44 @@ namespace Fortified.Structures
             // Skip if the layout already placed one.
             if (map.listerThings.ThingsOfDef(centerpieceDef).Any()) return;
 
-            if (!TryFindClearCell(map, center, 14, centerpieceDef.Size, out IntVec3 cell))
+            CellRect safe = FFF_StructureUtility.UsableRect(map);
+            if (safe.Width <= 0 || safe.Height <= 0)
             {
-                cell = CellFinder.RandomCell(map);
-                Log.Warning("[FortifiedFramework] GenStep_FFFGarrisonedStructure: no clear cell near center for " + centerpieceDef.defName + ", using random cell.");
+                Log.Error($"[FortifiedFramework] centerpiece {centerpieceDef.defName}: map {map.Size.x}x{map.Size.z} " +
+                          "has no usable area inside the edge band; skipped.");
+                return;
             }
-            GenSpawn.Spawn(ThingMaker.MakeThing(centerpieceDef), cell, map, Rot4.North);
+
+            IntVec3 cell = IntVec3.Invalid;
+            foreach (int radius in CenterpieceSearchRadii)
+            {
+                if (TryFindClearCell(map, center, radius, centerpieceDef.Size, safe, out cell)) break;
+                cell = IntVec3.Invalid;
+            }
+
+            if (!cell.IsValid)
+            {
+                // 最後手段：安全帶內任一放得下足跡的可站立格。
+                // 絕對不用 CellFinder.RandomCell —— 它在整張地圖上均勻取樣，包含最外圈的邊界格，
+                // 任務關鍵建築因此會直接落在地圖邊上。
+                // Last resort: any standable cell inside the edge band that fits the footprint.
+                // Never CellFinder.RandomCell — it samples the whole map uniformly, border cells
+                // included, which is how a quest-critical building ends up on the map edge.
+                if (!safe.Cells.Where(c => FitsAt(map, c, centerpieceDef.Size, safe)).TryRandomElement(out cell))
+                {
+                    Log.Error($"[FortifiedFramework] centerpiece {centerpieceDef.defName}: nowhere on this " +
+                              $"{map.Size.x}x{map.Size.z} map can hold its {centerpieceDef.Size.x}x{centerpieceDef.Size.z} " +
+                              "footprint; skipped rather than dropped at a random cell.");
+                    return;
+                }
+
+                Log.Warning($"[FortifiedFramework] centerpiece {centerpieceDef.defName}: no clear cell within " +
+                            $"{CenterpieceSearchRadii[CenterpieceSearchRadii.Length - 1]} of {center}; " +
+                            $"fell back to {cell} (inside the map edge band).");
+            }
+
+            // VanishOrMoveAside：退路上的落點可能壓到既有物件，直接 Vanish 會無聲吃掉別的東西。
+            GenSpawn.Spawn(ThingMaker.MakeThing(centerpieceDef), cell, map, Rot4.North, WipeMode.VanishOrMoveAside);
         }
 
         private void ScatterDebris(Map map, IntVec3 center)
@@ -323,7 +378,11 @@ namespace Fortified.Structures
             LordMaker.MakeNewLord(faction, new LordJob_DefendPoint(center, defendRadius, null), map, pawns);
         }
 
-        private static bool TryFindClearCell(Map map, IntVec3 center, int maxDist, IntVec2 size, out IntVec3 result)
+        /// <summary>
+        /// 嚴格版：足跡整個落在 <paramref name="safe"/> 內、每格可站立且沒有 edifice。
+        /// Strict: the whole footprint sits inside <paramref name="safe"/>, standable, edifice-free.
+        /// </summary>
+        private static bool TryFindClearCell(Map map, IntVec3 center, int maxDist, IntVec2 size, CellRect safe, out IntVec3 result)
         {
             return CellFinder.TryFindRandomCellNear(center, map, maxDist, c =>
             {
@@ -331,10 +390,29 @@ namespace Fortified.Structures
                 if (!rect.InBounds(map)) return false;
                 foreach (IntVec3 rc in rect)
                 {
+                    if (!safe.Contains(rc)) return false;
                     if (!rc.Standable(map) || rc.GetEdifice(map) != null) return false;
                 }
                 return true;
             }, out result);
+        }
+
+        /// <summary>
+        /// 寬鬆版：足跡在 <paramref name="safe"/> 內且每格可站立，容許既有的可通行建物。
+        /// 只用於嚴格版全數失敗後的退路。
+        /// Lenient: footprint inside <paramref name="safe"/> and standable, existing passable
+        /// buildings tolerated. Only used once the strict pass has exhausted every radius.
+        /// </summary>
+        private static bool FitsAt(Map map, IntVec3 c, IntVec2 size, CellRect safe)
+        {
+            CellRect rect = GenAdj.OccupiedRect(c, Rot4.North, size);
+            if (!rect.InBounds(map)) return false;
+            foreach (IntVec3 rc in rect)
+            {
+                if (!safe.Contains(rc)) return false;
+                if (!rc.Standable(map)) return false;
+            }
+            return true;
         }
     }
 }

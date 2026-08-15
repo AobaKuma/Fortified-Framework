@@ -11,7 +11,13 @@ namespace Fortified.Structures
     {
         // 聚落总尺寸
         public IntVec2 settlementSize = new IntVec2(60, 60);
-        
+
+        // 標籤，供 GenStep 的 useTag 檢索（與 FFF_StructureDef / StructureLayoutDef 一致）。
+        // 過去 GenStep 是拿 label 做子字串比對，任何字面撞名的複合結構都會劫持生成路徑。
+        // Tags for GenStep useTag lookup, matching the other structure defs. The GenStep used
+        // to substring-match on label, so any incidental name collision hijacked generation.
+        public List<string> tags = new List<string>();
+
         // 中心结构配置
         public CenterStructureConfig centerStructure;
         

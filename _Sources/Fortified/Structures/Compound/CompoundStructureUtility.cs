@@ -11,11 +11,36 @@ namespace Fortified.Structures
     // 复合结构生成工具
     public static class CompoundStructureUtility
     {
-        public static void Generate(FFF_CompoundStructureDef def, IntVec3 center, Map map, Faction faction = null)
+        /// <summary>
+        /// 生成複合結構，回傳實際使用的聚落範圍；失敗時回傳 default(CellRect) 的空範圍
+        /// （呼叫端以 Width/Height &lt;= 0 判定）。回傳範圍是為了讓 GenStep 能把它記成落點，
+        /// 後續的衛星散布與污垢散射才有正確的中心可用。
+        ///
+        /// Returns the settlement rect actually used, or an empty rect on failure (callers test
+        /// Width/Height &lt;= 0). The GenStep records it as the run's footprint so satellite
+        /// scatter and filth have a correct centre to work from.
+        /// </summary>
+        public static CellRect Generate(FFF_CompoundStructureDef def, IntVec3 center, Map map, Faction faction = null)
         {
-            if (def == null || map == null) return;
+            if (def == null || map == null) return default;
 
-            CellRect settlementRect = CellRect.CenteredOn(center, def.settlementSize.x, def.settlementSize.z);
+            // settlementRect 之後會拿去鋪路、沿邊放沙包與砲塔。不夾回地圖安全帶的話，
+            // 只要 settlementSize 接近地圖尺寸，整圈「邊緣防禦」就直接鋪在地圖邊界線上。
+            // The rect drives roads and the ring of edge defenses. Unclamped, a settlementSize
+            // close to the map size puts that entire ring on the map border itself.
+            CellRect settlementRect = CellRect.CenteredOn(center, def.settlementSize.x, def.settlementSize.z)
+                .ClipInsideMap(map)
+                .ContractedBy(FFF_StructureUtility.EdgeMargin(map));
+
+            if (settlementRect.Width <= 0 || settlementRect.Height <= 0)
+            {
+                Log.Warning($"[FFF] CompoundStructure {def.defName}: a {map.Size.x}x{map.Size.z} map has no room for a " +
+                            $"{def.settlementSize.x}x{def.settlementSize.z} settlement once the edge band is reserved; skipped.");
+                return default;
+            }
+
+            if (!settlementRect.Contains(center)) center = settlementRect.CenterCell;
+
             List<CellRect> usedRects = new List<CellRect>();
 
             // 1. 清理区域
@@ -23,7 +48,7 @@ namespace Fortified.Structures
 
             // 2. 生成中心结构
             CellRect centerRect = GenerateCenterStructure(def, center, map, faction, usedRects);
-            if (centerRect == CellRect.Empty) return;
+            if (centerRect == CellRect.Empty) return default;
 
             // 3. 生成道路
             if (def.roadConfig != null) GenerateRoads(def.roadConfig, center, settlementRect, map);
@@ -36,6 +61,7 @@ namespace Fortified.Structures
 
             // 6. 完成处理
             FinishGeneration(map, settlementRect);
+            return settlementRect;
         }
 
         private static void ClearSettlementArea(Map map, CellRect rect)
@@ -179,11 +205,14 @@ namespace Fortified.Structures
 
         private static bool IsRectValid(CellRect rect, CellRect bounds, List<CellRect> usedRects, Map map)
         {
-            if (!bounds.Contains(rect.CenterCell)) return false;
-            
+            // 過去只檢查中心格是否在聚落範圍內，所以周邊結構可以整個凸出聚落、
+            // 一路貼到地圖邊。現在整個足跡都必須在範圍內。
+            // Only the centre cell used to be tested, so a peripheral structure could hang
+            // right out of the settlement and onto the map border. Now the whole footprint counts.
             foreach (IntVec3 c in rect)
             {
                 if (!c.InBounds(map)) return false;
+                if (!bounds.Contains(c)) return false;
                 if (!c.Standable(map) && c.GetEdifice(map) == null) return false;
             }
 
@@ -238,7 +267,8 @@ namespace Fortified.Structures
         {
             if (!config.addEdgeDefense) return;
 
-            List<IntVec3> edgeCells = rect.EdgeCells.ToList();
+            List<IntVec3> edgeCells = rect.EdgeCells.Where(c => c.InBounds(map)).ToList();
+            if (edgeCells.Count == 0) return;
 
             // 沙袋
             if (config.addSandbags)
@@ -257,6 +287,14 @@ namespace Fortified.Structures
             // 炮塔
             if (config.addTurrets && !config.allowedTurrets.NullOrEmpty())
             {
+                // cellsPerTurret 是除數，0 會直接 DivideByZeroException 並中斷整張地圖的生成。
+                // It is a divisor; 0 throws and takes the whole map generation down with it.
+                if (config.cellsPerTurret <= 0)
+                {
+                    Log.Warning($"[FFF] CompoundStructure: cellsPerTurret must be > 0 (is {config.cellsPerTurret}); turrets skipped.");
+                    return;
+                }
+
                 int turretCount = Mathf.Max(1, rect.Area / config.cellsPerTurret);
                 for (int i = 0; i < turretCount; i++)
                 {
