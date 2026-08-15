@@ -44,7 +44,7 @@ namespace Fortified
 			compClass = typeof(CompAccessKeyActivatable);
 		}
 	}
-	public class CompAccessKeyActivatable : ThingComp, ITargetingSource
+	public class CompAccessKeyActivatable : ThingComp, ITargetingSource, IAccessKeyActivatable
 	{
 		public CompProperties_AccessKeyActivatable Props => (CompProperties_AccessKeyActivatable)props;
 
@@ -53,6 +53,34 @@ namespace Fortified
 		public float progress;
 
 		public Thing linkedAccessWanter;
+
+		// ---- IAccessKeyActivatable ----
+
+		public Thing ParentThing => parent;
+
+		public Thing LinkedAccessWanter
+		{
+			get => linkedAccessWanter;
+			set => linkedAccessWanter = value;
+		}
+
+		public bool AccessKeyActivated => activated;
+
+		/// <summary>預設只擋掉「已連結」與「連結到自己」；子類可覆寫加上距離或派系限制。</summary>
+		public virtual bool CanLinkWanter(Thing wanter)
+		{
+			if (wanter == null || wanter.Destroyed || wanter == parent)
+			{
+				return false;
+			}
+			return linkedAccessWanter == null;
+		}
+
+		public virtual void Notify_WanterLinked(Thing wanter)
+		{
+		}
+
+		// -------------------------------
 
 		public virtual int TicksToActivate => Props.ticksToActivate;
 
@@ -121,23 +149,7 @@ namespace Fortified
 		{
 			activated = true;
 			parent.BroadcastCompSignal("FFF_ActivatedByAccessKey");
-			if (linkedAccessWanter != null)
-			{
-				if(linkedAccessWanter is IAccessKeyWanter wanter)
-				{
-					wanter.Notify_AccessKeyUsed(this, caster);
-				}
-				if(linkedAccessWanter is ThingWithComps twc)
-				{
-					foreach(ThingComp comp in twc.AllComps)
-					{
-						if (comp is IAccessKeyWanter compWanter)
-						{
-							compWanter.Notify_AccessKeyUsed(this, caster);
-						}
-					}
-				}
-			}
+			AccessKeyLinkUtility.NotifyAccessKeyUsed(this, caster);
 			if(Props.lootMaker != null)
 			{
 				ThingSetMakerParams parms = default(ThingSetMakerParams);

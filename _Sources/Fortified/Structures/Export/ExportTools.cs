@@ -478,51 +478,65 @@ namespace Fortified.Structures
 			yield return new Command_Action
 			{
 				defaultLabel = "DEV: select wanter",
+				defaultDesc = "Select a cell containing an IAccessKeyWanter (Thing or ThingComp).",
 				action = TargetWanter
 			};
 			yield return new Command_Action
 			{
 				defaultLabel = "DEV: select activatable",
+				defaultDesc = "Select a cell containing an IAccessKeyActivatable (Thing or ThingComp).",
 				action = TargetActivatable
+			};
+			yield return new Command_Action
+			{
+				defaultLabel = "DEV: clear link",
+				defaultDesc = "Clear both endpoints.",
+				action = delegate
+				{
+					wanter = IntVec3.Invalid;
+					activatable = IntVec3.Invalid;
+				}
 			};
 		}
 
 		public void TargetActivatable()
 		{
-			Find.Targeter.BeginTargeting(TargetingParameters.ForCell(), delegate (LocalTargetInfo t)
+			BeginCellTargeting("Select activatable", AccessKeyLinkUtility.HasActivatableAt, delegate (IntVec3 c)
 			{
-				if (ValidateTarget(t))
-				{
-					activatable = t.Cell;
-				}
-			}, delegate (LocalTargetInfo t)
-			{
-				if (ValidateTarget(t))
-				{
-					GenDraw.DrawTargetHighlight(t);
-					GenDraw.DrawFieldEdges(new List<IntVec3>() { t.Cell });
-				}
-			}, ValidateTarget, null, null, BaseContent.ClearTex, playSoundOnAction: true, delegate (LocalTargetInfo t)
-			{
-				Widgets.MouseAttachedLabel("Select activatable");
+				activatable = c;
 			});
-			bool ValidateTarget(LocalTargetInfo t)
-			{
-				if (!t.Cell.InBounds(Map))
-				{
-					return false;
-				}
-				return t.Cell.GetThingList(Map).FirstOrDefault(x => x.HasComp<CompAccessKeyActivatable>()) != null;
-			}
 		}
 
 		public void TargetWanter()
 		{
+			BeginCellTargeting("Select access wanter", AccessKeyLinkUtility.HasWanterAt, delegate (IntVec3 c)
+			{
+				wanter = c;
+			});
+		}
+
+		/// <summary>
+		/// 共用的選格流程。<paramref name="cellValidator"/> 只透過 AccessKeyLinkUtility 判斷，
+		/// 因此本工具不認得任何具體 Comp 型別。
+		/// </summary>
+		private void BeginCellTargeting(string label, Func<IntVec3, Map, bool> cellValidator, Action<IntVec3> setter)
+		{
+			Map map = Map;
+			if (map == null || cellValidator == null || setter == null)
+			{
+				return;
+			}
+
+			bool ValidateTarget(LocalTargetInfo t)
+			{
+				return t.IsValid && t.Cell.IsValid && t.Cell.InBounds(map) && cellValidator(t.Cell, map);
+			}
+
 			Find.Targeter.BeginTargeting(TargetingParameters.ForCell(), delegate (LocalTargetInfo t)
 			{
 				if (ValidateTarget(t))
 				{
-					wanter = t.Cell;
+					setter(t.Cell);
 				}
 			}, delegate (LocalTargetInfo t)
 			{
@@ -533,16 +547,37 @@ namespace Fortified.Structures
 				}
 			}, ValidateTarget, null, null, BaseContent.ClearTex, playSoundOnAction: true, delegate (LocalTargetInfo t)
 			{
-				Widgets.MouseAttachedLabel("Select access wanter");
+				Widgets.MouseAttachedLabel(label);
 			});
-			bool ValidateTarget(LocalTargetInfo t)
+		}
+
+		/// <summary>兩端是否都仍指向合法的實作。地圖被改動後可能失效。</summary>
+		public bool LinkIsValid
+		{
+			get
 			{
-				if (!t.Cell.InBounds(Map))
+				Map map = Map;
+				if (map == null || !activatable.IsValid || !wanter.IsValid)
 				{
 					return false;
 				}
-				return t.Cell.GetThingList(Map).FirstOrDefault(x => x is IAccessKeyWanter) != null;
+				return AccessKeyLinkUtility.HasActivatableAt(activatable, map) && AccessKeyLinkUtility.HasWanterAt(wanter, map);
 			}
+		}
+
+		public override string GetInspectString()
+		{
+			StringBuilder sb = new StringBuilder(base.GetInspectString());
+			if (sb.Length > 0)
+			{
+				sb.AppendLine();
+			}
+			Map map = Map;
+			bool hasActivatable = map != null && activatable.IsValid && AccessKeyLinkUtility.HasActivatableAt(activatable, map);
+			bool hasWanter = map != null && wanter.IsValid && AccessKeyLinkUtility.HasWanterAt(wanter, map);
+			sb.AppendLine("Activatable: " + (activatable.IsValid ? activatable.ToString() + (hasActivatable ? "" : " (missing!)") : "unset"));
+			sb.Append("Wanter: " + (wanter.IsValid ? wanter.ToString() + (hasWanter ? "" : " (missing!)") : "unset"));
+			return sb.ToString();
 		}
 
 		public override void DrawExtraSelectionOverlays()
@@ -566,6 +601,12 @@ namespace Fortified.Structures
 		{
 			if (!activatable.IsValid || !wanter.IsValid)
 			{
+				return;
+			}
+			// 選取後地圖可能被改動，匯出前重新以介面驗證兩端；失效時出聲而非靜默丟棄
+			if (!LinkIsValid)
+			{
+				Log.Warning($"[FFF] ExportTool_LinkAccessKeyWanter at {Position}: endpoint no longer implements IAccessKeyActivatable / IAccessKeyWanter, skipped.");
 				return;
 			}
 			IntVec3 activatablePos = activatable - origin;

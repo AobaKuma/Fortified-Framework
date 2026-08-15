@@ -353,17 +353,8 @@ namespace Fortified.Structures
 			if (!actualActivatablePos.InBounds(map)) return;
 			IntVec3 actualWanterPos = wanterPos + offset;
 			if (!actualWanterPos.InBounds(map)) return;
-            Thing wanter = actualWanterPos.GetThingList(map).FirstOrDefault(x => x is IAccessKeyWanter);
-            if(wanter == null) return;
-            foreach(Thing t in actualActivatablePos.GetThingList(map))
-            {
-                if(t.TryGetComp(out CompAccessKeyActivatable comp))
-                {
-                    comp.linkedAccessWanter = wanter;
-                    (wanter as IAccessKeyWanter).Notify_LinkedTo(comp);
-                    return;
-                }
-            }
+			// 兩端皆透過 IAccessKeyActivatable / IAccessKeyWanter 解析，Thing 本體與 ThingComp 都支援
+			AccessKeyLinkUtility.TryLinkAt(actualActivatablePos, actualWanterPos, map);
 		}
 
 		public IFFF_GenerationTask Transformed(Rot4 rot, IntVec3 offset)

@@ -58,6 +58,32 @@ public partial class CompBuildingMover : ThingComp
     // 感应门是否敞开
     public bool DoorOpen => !disabled && doorOpen;
 
+    // 外部锁定/解锁移动组件 供门禁等外部逻辑调用
+    // 锁定后组件完全停摆 感应门注销 建筑退回纯Impassable
+    // 滑动中不接受锁定 调用方应稍后重试 返回值表示目标状态是否已达成
+    public bool SetDisabled(bool value)
+    {
+        if (disabled == value) return true;
+        if (value && sliding) return false;
+
+        disabled = value;
+        if (value)
+        {
+            // 锁定时收回感应门状态 避免停在半开
+            doorOpen = false;
+            doorEmptyTicks = 0;
+            sensorDoorTargetOpen = 0;
+            if (Props.sensorDoor) DeregisterSensorDoorRuntime();
+        }
+        else if (Props.sensorDoor && parent.Spawned)
+        {
+            EnsureSensorDoorAnchor();
+            RegisterSensorDoorRuntime();
+        }
+        if (parent.Spawned) RefreshDoorPathCost();
+        return true;
+    }
+
     // 获取滑动偏移
     public static Vector3 GetSlideOffset(Thing thing)
     {

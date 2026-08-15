@@ -107,7 +107,7 @@ namespace Fortified
 			return base.ClaimableBy(by);
 		}
 
-		public void Notify_AccessKeyUsed(CompAccessKeyActivatable comp, Pawn pawn = null)
+		public void Notify_AccessKeyUsed(IAccessKeyActivatable activatable, Pawn pawn = null)
 		{
 			if (activated) return;
 			countToActivate--;
@@ -119,7 +119,7 @@ namespace Fortified
 			}
 		}
 
-		public void Notify_LinkedTo(CompAccessKeyActivatable comp)
+		public void Notify_LinkedTo(IAccessKeyActivatable activatable)
 		{
 			if (activated) return;
 			if(countToActivate < 0)

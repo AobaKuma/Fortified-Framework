@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  <FFF.AccessKeyDoor.Locked>门禁锁定</FFF.AccessKeyDoor.Locked>
+  <FFF.AccessKeyDoor.LockedKeysRemaining>门禁锁定：尚需使用 {0} 次门禁钥匙</FFF.AccessKeyDoor.LockedKeysRemaining>
+  <FFF.AccessKeyDoor.Unlocked>{0}认可门禁钥匙，向两侧滑开。</FFF.AccessKeyDoor.Unlocked>
+</LanguageData>

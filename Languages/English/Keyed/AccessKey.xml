@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  <!-- CompAccessKeyDoorLink : sensor door locked until its linked access keys are spent -->
+  <FFF.AccessKeyDoor.Locked>Access locked</FFF.AccessKeyDoor.Locked>
+  <FFF.AccessKeyDoor.LockedKeysRemaining>Access locked: {0} more access key use(s) required</FFF.AccessKeyDoor.LockedKeysRemaining>
+  <FFF.AccessKeyDoor.Unlocked>The {0} accepts the access key and slides open.</FFF.AccessKeyDoor.Unlocked>
+</LanguageData>
