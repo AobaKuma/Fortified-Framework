@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- EN: facility door -->
+  <FFF_RCdoor.label>設施門</FFF_RCdoor.label>
+  <!-- EN: Divides rooms. allows people to move through the door without slowing down. -->
+  <FFF_RCdoor.description>分隔房間的門。允許人們不減慢速度地穿過。</FFF_RCdoor.description>
+  <!-- EN: facility wall -->
+  <FFF_Wall_A.label>設施內牆</FFF_Wall_A.label>
+  <!-- EN: A structure with waterproof layers, commonly found in underground facilities. -->
+  <FFF_Wall_A.description>常見於地下設施具有複合塗層的鋼筋混凝土結構牆，為了支撐內部結構而被建造的無堅不摧。</FFF_Wall_A.description>
+  <!-- EN: facility wall -->
+  <FFF_Wall_B.label>設施內牆</FFF_Wall_B.label>
+  <!-- EN: A structure with waterproof layers, commonly found in underground facilities. -->
+  <FFF_Wall_B.description>常見於地下設施具有複合塗層的鋼筋混凝土結構牆，為了支撐內部結構而被建造的無堅不摧。</FFF_Wall_B.description>
+  <!-- EN: facility wall -->
+  <FFF_Wall_C.label>設施內牆</FFF_Wall_C.label>
+  <!-- EN: A structure with waterproof layers, commonly found in underground facilities. -->
+  <FFF_Wall_C.description>常見於地下設施具有複合塗層的鋼筋混凝土結構牆，為了支撐內部結構而被建造的無堅不摧。</FFF_Wall_C.description>
+
+</LanguageData>

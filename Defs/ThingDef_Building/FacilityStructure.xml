@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- ============================================================
+       Facility structure set (walls & doors).
+       Moved out of DMS-AncientCorps so any mod can reuse them.
+       ============================================================ -->
+
+  <ThingDef ParentName="BuildingBase" Name="FFF_FacilityBuildingBase" Abstract="True">
+    <thingClass>Building</thingClass>
+    <category>Building</category>
+    <building>
+      <claimable>false</claimable>
+      <repairable>false</repairable>
+      <deconstructible>false</deconstructible>
+      <neverBuildable>true</neverBuildable>
+    </building>
+    <pathCost>120</pathCost>
+    <defaultPlacingRot>2</defaultPlacingRot>
+    <passability>PassThroughOnly</passability>
+    <designationCategory>FFF_DevCategory</designationCategory>
+  </ThingDef>
+
+  <!-- ==================== Walls ==================== -->
+
+  <ThingDef Name="FFF_FacilityWallBase" ParentName="FFF_FacilityBuildingBase" Abstract="True">
+    <graphicData>
+      <graphicClass>Graphic_Single</graphicClass>
+      <linkType>CornerFiller</linkType>
+      <linkFlags>
+        <li>Wall</li>
+        <li>Rock</li>
+      </linkFlags>
+      <damageData>
+        <rect>(0.35,0.1,0.3,0.7)</rect>
+        <cornerTL>Damage/Corner</cornerTL>
+        <cornerTR>Damage/Corner</cornerTR>
+        <cornerBL>Damage/Corner</cornerBL>
+        <cornerBR>Damage/Corner</cornerBR>
+        <edgeTop>Damage/Edge</edgeTop>
+        <edgeBot>Damage/Edge</edgeBot>
+        <edgeLeft>Damage/Edge</edgeLeft>
+        <edgeRight>Damage/Edge</edgeRight>
+      </damageData>
+      <shadowData>
+        <volume>(1, 0.5, 0.45)</volume>
+        <offset>(0,0,-0.23)</offset>
+      </shadowData>
+    </graphicData>
+    <statBases>
+      <Flammability>0</Flammability>
+      <WorkToBuild>135</WorkToBuild>
+      <MeditationFocusStrength>0.22</MeditationFocusStrength>
+    </statBases>
+    <useHitPoints>false</useHitPoints>
+    <leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+    <holdsRoof>true</holdsRoof>
+    <blockWind>true</blockWind>
+    <blockLight>true</blockLight>
+    <castEdgeShadows>true</castEdgeShadows>
+    <fillPercent>1</fillPercent>
+    <placingDraggableDimensions>1</placingDraggableDimensions>
+    <drawStyleCategory>Walls</drawStyleCategory>
+    <coversFloor>true</coversFloor>
+    <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>Impassable</passability>
+    <tickerType>Never</tickerType>
+    <rotatable>false</rotatable>
+    <selectable>true</selectable>
+    <neverMultiSelect>true</neverMultiSelect>
+    <fertility>0</fertility>
+    <canOverlapZones>false</canOverlapZones>
+    <building>
+      <paintable>true</paintable>
+      <isInert>true</isInert>
+      <isPlaceOverableWall>true</isPlaceOverableWall>
+      <isTargetable>false</isTargetable>
+      <ai_chillDestination>false</ai_chillDestination>
+      <ai_neverTrashThis>true</ai_neverTrashThis>
+      <supportsWallAttachments>true</supportsWallAttachments>
+      <deconstructible>false</deconstructible>
+      <alwaysDeconstructible>false</alwaysDeconstructible>
+    </building>
+    <comps>
+      <li Class="CompProperties_MeditationFocus">
+        <statDef>MeditationFocusStrength</statDef>
+        <focusTypes>
+          <li>Minimal</li>
+        </focusTypes>
+      </li>
+    </comps>
+    <damageMultipliers>
+      <li>
+        <damageDef>Bomb</damageDef>
+        <multiplier>0</multiplier>
+      </li>
+      <li>
+        <damageDef>Thump</damageDef>
+        <multiplier>0</multiplier>
+      </li>
+    </damageMultipliers>
+  </ThingDef>
+
+  <ThingDef ParentName="FFF_FacilityWallBase">
+    <defName>FFF_Wall_A</defName>
+    <label>facility wall</label>
+    <description>A structure with waterproof layers, commonly found in underground facilities.</description>
+    <graphicData>
+      <texPath>Things/Building/Linked/Wall/Wall_Atlas_Concrete</texPath>
+    </graphicData>
+    <uiIconPath>Things/Building/Linked/Wall/Wall_Atlas_Concrete_UI</uiIconPath>
+  </ThingDef>
+
+  <ThingDef ParentName="FFF_FacilityWallBase">
+    <defName>FFF_Wall_B</defName>
+    <label>facility wall</label>
+    <description>A structure with waterproof layers, commonly found in underground facilities.</description>
+    <graphicData>
+      <texPath>Things/Building/Linked/Wall/Wall_Atlas_LoadBearing</texPath>
+    </graphicData>
+    <uiIconPath>Things/Building/Linked/Wall/Wall_Atlas_LoadBearing_UI</uiIconPath>
+  </ThingDef>
+
+  <ThingDef ParentName="FFF_FacilityWallBase">
+    <defName>FFF_Wall_C</defName>
+    <label>facility wall</label>
+    <description>A structure with waterproof layers, commonly found in underground facilities.</description>
+    <graphicData>
+      <texPath>Things/Building/Linked/Wall/Wall_Atlas_Concrete_Icon</texPath>
+      <shaderType>CutoutComplex</shaderType>
+    </graphicData>
+    <uiIconPath>Things/Building/Linked/Wall/Wall_Atlas_Concrete_Icon_UI</uiIconPath>
+  </ThingDef>
+
+  <!-- ==================== Doors ==================== -->
+
+  <ThingDef ParentName="FFF_FacilityBuildingBase" Name="FFF_FacilityDoorBase" Abstract="True">
+    <thingClass>Building_Door</thingClass>
+    <category>Building</category>
+    <altitudeLayer>DoorMoveable</altitudeLayer>
+    <fillPercent>1</fillPercent>
+    <useHitPoints>true</useHitPoints>
+    <statBases>
+      <MaxHitPoints>500</MaxHitPoints>
+      <Flammability>0.7</Flammability>
+    </statBases>
+    <leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+    <selectable>true</selectable>
+    <tickerType>Normal</tickerType>
+    <rotatable>false</rotatable>
+    <soundImpactDefault>BulletImpact_Metal</soundImpactDefault>
+    <terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+    <holdsRoof>true</holdsRoof>
+    <staticSunShadowHeight>1.0</staticSunShadowHeight>
+    <blockLight>true</blockLight>
+    <drawerType>RealtimeOnly</drawerType>
+    <passability>Standable</passability>
+    <building>
+      <poweredDoorOpenSpeedFactor>4</poweredDoorOpenSpeedFactor>
+      <unpoweredDoorOpenSpeedFactor>2</unpoweredDoorOpenSpeedFactor>
+      <unpoweredDoorCloseSpeedFactor>2</unpoweredDoorCloseSpeedFactor>
+      <isInert>true</isInert>
+      <canPlaceOverWall>true</canPlaceOverWall>
+      <soundDoorOpenPowered>Door_OpenPowered</soundDoorOpenPowered>
+      <soundDoorClosePowered>Door_ClosePowered</soundDoorClosePowered>
+      <soundDoorOpenManual>Door_OpenManual</soundDoorOpenManual>
+      <soundDoorCloseManual>Door_CloseManual</soundDoorCloseManual>
+      <blueprintClass>Blueprint_Door</blueprintClass>
+      <blueprintGraphicData>
+        <texPath>Things/Building/Door/Door_Blueprint</texPath>
+      </blueprintGraphicData>
+      <ai_chillDestination>false</ai_chillDestination>
+      <paintable>true</paintable>
+    </building>
+    <comps>
+      <li Class="CompProperties_Forbiddable">
+        <allowNonPlayer>true</allowNonPlayer>
+      </li>
+    </comps>
+    <placeWorkers>
+      <li>PlaceWorker_DoorLearnOpeningSpeed</li>
+    </placeWorkers>
+  </ThingDef>
+
+  <ThingDef ParentName="FFF_FacilityDoorBase">
+    <defName>FFF_RCdoor</defName>
+    <label>facility door</label>
+    <description>Divides rooms. allows people to move through the door without slowing down.</description>
+    <statBases>
+      <WorkToBuild>1100</WorkToBuild>
+    </statBases>
+    <graphicData>
+      <texPath>Things/Building/Door/DMS_Door_Mover</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <damageData>
+        <enabled>false</enabled>
+      </damageData>
+    </graphicData>
+    <uiIconPath>Things/Building/Door/DMS_Door_MenuIcon</uiIconPath>
+    <costList>
+      <Steel>20</Steel>
+    </costList>
+    <designationHotKey>Misc2</designationHotKey>
+  </ThingDef>
+
+</Defs>
