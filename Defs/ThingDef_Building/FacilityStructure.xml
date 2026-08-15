@@ -104,8 +104,8 @@
 
   <ThingDef ParentName="FFF_FacilityWallBase">
     <defName>FFF_Wall_A</defName>
-    <label>facility wall</label>
-    <description>A structure with waterproof layers, commonly found in underground facilities.</description>
+    <label>facility interior wall</label>
+    <description>A reinforced concrete structural wall with a composite coating, commonly found in underground facilities. It was built to carry the structure around it, and is effectively indestructible.</description>
     <graphicData>
       <texPath>Things/Building/Linked/Wall/Wall_Atlas_Concrete</texPath>
     </graphicData>
@@ -114,8 +114,8 @@
 
   <ThingDef ParentName="FFF_FacilityWallBase">
     <defName>FFF_Wall_B</defName>
-    <label>facility wall</label>
-    <description>A structure with waterproof layers, commonly found in underground facilities.</description>
+    <label>facility interior wall</label>
+    <description>A reinforced concrete structural wall with a composite coating, commonly found in underground facilities. It was built to carry the structure around it, and is effectively indestructible.</description>
     <graphicData>
       <texPath>Things/Building/Linked/Wall/Wall_Atlas_LoadBearing</texPath>
     </graphicData>
@@ -124,13 +124,31 @@
 
   <ThingDef ParentName="FFF_FacilityWallBase">
     <defName>FFF_Wall_C</defName>
-    <label>facility wall</label>
-    <description>A structure with waterproof layers, commonly found in underground facilities.</description>
+    <label>facility interior wall</label>
+    <description>A reinforced concrete structural wall with a composite coating, commonly found in underground facilities. It was built to carry the structure around it, and is effectively indestructible.</description>
     <graphicData>
       <texPath>Things/Building/Linked/Wall/Wall_Atlas_Concrete_Icon</texPath>
       <shaderType>CutoutComplex</shaderType>
     </graphicData>
     <uiIconPath>Things/Building/Linked/Wall/Wall_Atlas_Concrete_Icon_UI</uiIconPath>
+  </ThingDef>
+
+  <ThingDef ParentName="FFF_FacilityWallBase">
+    <defName>FFF_Wall_Hull</defName>
+    <label>hull wall</label>
+    <description>A prefabricated pressure-hull panel. Panels like these were bolted together section by section to line the deep levels of a facility, sealing out groundwater and the overpressure of a blast.</description>
+    <graphicData>
+      <texPath>Things/Building/Linked/Wall/Wall_Atlas_Hull</texPath>
+    </graphicData>
+  </ThingDef>
+
+  <ThingDef ParentName="FFF_FacilityWallBase">
+    <defName>FFF_Wall_HullHatch</defName>
+    <label>hull maintenance wall</label>
+    <description>A pressure-hull panel fitted with a sealed maintenance hatch. The hatch leads into the conduit space behind the panel, though it was welded shut long ago.</description>
+    <graphicData>
+      <texPath>Things/Building/Linked/Wall/Wall_Atlas_HullHatch</texPath>
+    </graphicData>
   </ThingDef>
 
   <!-- ==================== Doors ==================== -->
@@ -186,7 +204,7 @@
   <ThingDef ParentName="FFF_FacilityDoorBase">
     <defName>FFF_RCdoor</defName>
     <label>facility door</label>
-    <description>Divides rooms. allows people to move through the door without slowing down.</description>
+    <description>A door that divides rooms. People pass through it without slowing down.</description>
     <statBases>
       <WorkToBuild>1100</WorkToBuild>
     </statBases>

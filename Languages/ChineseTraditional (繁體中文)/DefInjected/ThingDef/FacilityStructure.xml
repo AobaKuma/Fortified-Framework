@@ -3,19 +3,32 @@
 
   <!-- EN: facility door -->
   <FFF_RCdoor.label>設施門</FFF_RCdoor.label>
-  <!-- EN: Divides rooms. allows people to move through the door without slowing down. -->
+  <!-- EN: A door that divides rooms. People pass through it without slowing down. -->
   <FFF_RCdoor.description>分隔房間的門。允許人們不減慢速度地穿過。</FFF_RCdoor.description>
-  <!-- EN: facility wall -->
+
+  <!-- EN: facility interior wall -->
   <FFF_Wall_A.label>設施內牆</FFF_Wall_A.label>
-  <!-- EN: A structure with waterproof layers, commonly found in underground facilities. -->
+  <!-- EN: A reinforced concrete structural wall with a composite coating, commonly found in underground facilities. It was built to carry the structure around it, and is effectively indestructible. -->
   <FFF_Wall_A.description>常見於地下設施具有複合塗層的鋼筋混凝土結構牆，為了支撐內部結構而被建造的無堅不摧。</FFF_Wall_A.description>
-  <!-- EN: facility wall -->
+
+  <!-- EN: facility interior wall -->
   <FFF_Wall_B.label>設施內牆</FFF_Wall_B.label>
-  <!-- EN: A structure with waterproof layers, commonly found in underground facilities. -->
+  <!-- EN: A reinforced concrete structural wall with a composite coating, commonly found in underground facilities. It was built to carry the structure around it, and is effectively indestructible. -->
   <FFF_Wall_B.description>常見於地下設施具有複合塗層的鋼筋混凝土結構牆，為了支撐內部結構而被建造的無堅不摧。</FFF_Wall_B.description>
-  <!-- EN: facility wall -->
+
+  <!-- EN: facility interior wall -->
   <FFF_Wall_C.label>設施內牆</FFF_Wall_C.label>
-  <!-- EN: A structure with waterproof layers, commonly found in underground facilities. -->
+  <!-- EN: A reinforced concrete structural wall with a composite coating, commonly found in underground facilities. It was built to carry the structure around it, and is effectively indestructible. -->
   <FFF_Wall_C.description>常見於地下設施具有複合塗層的鋼筋混凝土結構牆，為了支撐內部結構而被建造的無堅不摧。</FFF_Wall_C.description>
+
+  <!-- EN: hull wall -->
+  <FFF_Wall_Hull.label>船體牆</FFF_Wall_Hull.label>
+  <!-- EN: A prefabricated pressure-hull panel. Panels like these were bolted together section by section to line the deep levels of a facility, sealing out groundwater and the overpressure of a blast. -->
+  <FFF_Wall_Hull.description>預製的耐壓船體板。這類板材被逐段栓接起來鋪滿設施的深層區域，用以隔絕地下水與爆炸產生的超壓。</FFF_Wall_Hull.description>
+
+  <!-- EN: hull maintenance wall -->
+  <FFF_Wall_HullHatch.label>船體檢修牆</FFF_Wall_HullHatch.label>
+  <!-- EN: A pressure-hull panel fitted with a sealed maintenance hatch. The hatch leads into the conduit space behind the panel, though it was welded shut long ago. -->
+  <FFF_Wall_HullHatch.description>裝有密封檢修艙門的耐壓船體板。艙門通往板後的管線夾層，不過早就被焊死了。</FFF_Wall_HullHatch.description>
 
 </LanguageData>
