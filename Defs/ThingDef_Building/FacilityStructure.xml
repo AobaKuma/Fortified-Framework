@@ -59,7 +59,6 @@
     <blockLight>true</blockLight>
     <castEdgeShadows>true</castEdgeShadows>
     <fillPercent>1</fillPercent>
-    <placingDraggableDimensions>1</placingDraggableDimensions>
     <drawStyleCategory>Walls</drawStyleCategory>
     <coversFloor>true</coversFloor>
     <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
