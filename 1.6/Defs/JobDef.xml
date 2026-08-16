@@ -114,4 +114,16 @@
     <allowOpportunisticPrefix>true</allowOpportunisticPrefix>
   </JobDef>
 
+  <JobDef>
+    <defName>FFF_ControlMech_Overseer</defName>
+    <driverClass>Fortified.JobDriver_ControlMech_Overseer</driverClass>
+    <reportString>taking control of TargetA.</reportString>
+  </JobDef>
+
+  <JobDef>
+    <defName>FFF_RepairMech_Overseer</defName>
+    <driverClass>Fortified.JobDriver_RepairMech_Overseer</driverClass>
+    <reportString>repairing TargetA.</reportString>
+  </JobDef>
+
 </Defs>	

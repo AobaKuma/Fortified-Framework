@@ -12,7 +12,28 @@ namespace Fortified
         private static void Postfix(Pawn mech, LocalTargetInfo target, ref bool __result)
         {
             if (__result) return;
-            if (mech.TryGetComp<CompDeadManSwitch>() is CompDeadManSwitch compDMS && compDMS.woken)
+
+            //This region should on average be processed faster than comp processing so put it above
+			#region Overseer
+			if (mech is IOverseer)
+			{
+				__result = true;
+				return;
+			}
+			Pawn overseer = mech.GetOverseer();
+			if (overseer == null)
+			{
+				return;
+			}
+			Thing overlord = overseer.GetOverseerThing(out var overseerInt);
+			if (overlord != null && overlord.MapHeld == mech.Map && (overseerInt.Comp.Props.controlWholeMap || overlord.PositionHeld.DistanceTo(target.Cell) <= overseerInt.Comp.Props.commandRange))
+			{
+				__result = true;
+                return;
+			}
+			#endregion
+
+			if (mech.TryGetComp<CompDeadManSwitch>() is CompDeadManSwitch compDMS && compDMS.woken)
             {
                 __result = true;
                 return;
@@ -28,7 +49,7 @@ namespace Fortified
                 return;
             }
 
-            Pawn overseer = MechanitorUtility.GetOverseer(mech);
+            overseer = MechanitorUtility.GetOverseer(mech);
             if (overseer == null) return;
 
             var relays = CompCommandRelay.allRelays;

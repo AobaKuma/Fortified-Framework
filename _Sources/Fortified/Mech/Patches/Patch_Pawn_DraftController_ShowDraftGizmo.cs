@@ -12,7 +12,12 @@ namespace Fortified
         {
             if(__result) return;
 
-            if (__instance.pawn.TryGetComp<CompDeadManSwitch>() is CompDeadManSwitch comp && comp.woken)
+			if (__instance.pawn is IOverseer)
+			{
+				__result = true;
+			}
+
+			if (__instance.pawn.TryGetComp<CompDeadManSwitch>() is CompDeadManSwitch comp && comp.woken)
             {
                 __result = true;
             }

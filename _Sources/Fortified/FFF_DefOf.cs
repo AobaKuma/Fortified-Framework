@@ -26,6 +26,8 @@ public static class FFF_DefOf
     public static JobDef FFF_SwitchAmmo;
     public static JobDef FFF_EquipTurret;
     public static JobDef FFF_UseAccessKey;
+    public static JobDef FFF_RepairMech_Overseer;
+	public static JobDef FFF_ControlMech_Overseer;
 
 	public static StatCategoryDef FFF_Turrets;
 
@@ -34,7 +36,11 @@ public static class FFF_DefOf
     public static MentalStateDef FFF_FleeInPlace;
 
 	public static HediffDef FFF_Camouflage;
-    public static FleckDef FFF_Fleck_DeflectShell;
+    public static HediffDef FFF_DummyHediff;
+
+	public static PawnKindDef FFF_Dummy;
+
+	public static FleckDef FFF_Fleck_DeflectShell;
 
     public static StatDef FFF_FearResistance;
 }

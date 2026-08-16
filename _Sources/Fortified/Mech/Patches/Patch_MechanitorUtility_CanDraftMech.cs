@@ -10,8 +10,14 @@ namespace Fortified
     {
         static void Postfix(Pawn mech, ref AcceptanceReport __result)
         {
-            if (__result == true || mech.DeadOrDowned) return;
-            if ((!mech.IsColonyMech && mech.HostFaction == null)) return;
+            if (__result == true) return;
+			if (mech is IOverseer)
+			{
+				__result = true;
+                return;
+			}
+			if (mech.DeadOrDowned) return;
+			if ((!mech.IsColonyMech && mech.HostFaction == null)) return;
 
             if (mech.TryGetComp<CompDeadManSwitch>() is CompDeadManSwitch comp && comp.woken)
             {

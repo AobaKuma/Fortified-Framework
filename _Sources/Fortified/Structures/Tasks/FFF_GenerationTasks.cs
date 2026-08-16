@@ -73,11 +73,12 @@ namespace Fortified.Structures
             Pawn pawn = PawnGenerator.GeneratePawn(new PawnGenerationRequest(pk, faction, PawnGenerationContext.NonPlayer, map.Tile));
             GenSpawn.Spawn(pawn, manPos, map);
 
-            // 指派操作任务
-            pawn.mindState.duty = new Verse.AI.PawnDuty(DutyDefOf.ManClosestTurret, actualPos);
+			// 指派操作任务
+			//pawn.mindState.duty = new Verse.AI.PawnDuty(DutyDefOf.ManClosestTurret, actualPos); Doesn't work
+			LordMaker.MakeNewLord(faction, new LordJob_ManTurrets(), map, Gen.YieldSingle(pawn));
 
-            // 生成炮弹
-            ThingDef shellDef = TurretGunUtility.TryFindRandomShellDef(turret.def, false, true, true, faction.def.techLevel);
+			// 生成炮弹
+			ThingDef shellDef = TurretGunUtility.TryFindRandomShellDef(turret.def, false, true, true, faction.def.techLevel);
             if (shellDef != null)
             {
                 Thing shells = ThingMaker.MakeThing(shellDef);

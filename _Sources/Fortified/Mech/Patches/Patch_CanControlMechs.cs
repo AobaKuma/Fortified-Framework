@@ -16,7 +16,13 @@ namespace Fortified
         {
             if (__result == true) return;
             if (__instance.Pawn.HostFaction != null) __result = true;
-            if (__instance.OverseenPawns?.Where(p => p.TryGetComp<CompCommandRelay>() != null)?.Count() > 0) __result = true;
+			Thing overseer = OverseerUtility.GetOverseerThing(__instance.Pawn);
+			if (overseer != null && overseer.Spawned)
+			{
+				__result = true;
+                return;
+			}
+			if (__instance.OverseenPawns?.Where(p => p.TryGetComp<CompCommandRelay>() != null)?.Count() > 0) __result = true;
         }
     }
 }

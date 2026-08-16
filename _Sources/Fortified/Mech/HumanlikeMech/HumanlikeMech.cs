@@ -8,9 +8,11 @@ using System.Linq;
 
 namespace Fortified
 {
-    public class HumanlikeMech : Pawn, IWeaponUsable
+    public class HumanlikeMech : Pawn, IWeaponUsable, ICaravanOwner
     {
-        public MechWeaponExtension MechWeapon => def.GetModExtension<MechWeaponExtension>();
+		public virtual bool CanCaravan => false;//Maybe should be true?????
+
+		public MechWeaponExtension MechWeapon => def.GetModExtension<MechWeaponExtension>();
         public HumanlikeMechExtension Extension => def.GetModExtension<HumanlikeMechExtension>();
         private Graphic headGraphic;
         public Graphic HeadGraphic

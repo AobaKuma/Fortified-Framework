@@ -289,6 +289,8 @@ namespace Fortified.Structures
 
 		public void CopyFrom(ExportTool_PawnGroup tool)
 		{
+			elementTypeName = tool.elementTypeName;
+			fixedOptions = tool.fixedOptions;
 			factionDef = tool.factionDef;
 			lordTag = tool.lordTag;
 			pointsRange = tool.pointsRange;
@@ -320,7 +322,7 @@ namespace Fortified.Structures
 			base.DrawExtraSelectionOverlays();
 			if(sendSignalRadius > 0)
 			{
-				GenDraw.DrawRadiusRing(Position, sendSignalRadius);
+				GenDraw.DrawRadiusRing(Position, Mathf.Min(sendSignalRadius, GenRadial.MaxRadialPatternRadius));
 			}
 		}
 		public override void ExportToXML(IntVec3 origin, StringBuilder sb)
@@ -656,6 +658,20 @@ namespace Fortified.Structures
 					}
 				}
 			};
+		}
+
+		public override void Notify_DebugSpawned()
+		{
+			base.Notify_DebugSpawned();
+			foreach(IntVec3 c in CellRect.FromCell(Position).ExpandedBy(1))
+			{
+				Building_TurretGun turret = c.GetFirstThing<Building_TurretGun>(Map);
+				if(turret != null)
+				{
+					Position = turret.Position;
+					return;
+				}
+			}
 		}
 
 		public override void ExportToXML(IntVec3 origin, StringBuilder sb)

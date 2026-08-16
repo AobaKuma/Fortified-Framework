@@ -8,9 +8,10 @@ using Fortified;
 
 namespace Fortified
 {
-    public class WeaponUsableMech : Pawn, IWeaponUsable
+    public class WeaponUsableMech : Pawn, IWeaponUsable, ICaravanOwner
     {
-        public MechWeaponExtension MechWeapon { get; private set; }
+		public virtual bool CanCaravan => false;
+		public MechWeaponExtension MechWeapon { get; private set; }
         public override void SpawnSetup(Map map, bool respawningAfterLoad)
         {
             base.SpawnSetup(map, respawningAfterLoad);

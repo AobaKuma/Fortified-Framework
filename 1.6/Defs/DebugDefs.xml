@@ -43,4 +43,38 @@
     <thingClass>Fortified.Structures.ExportTool_ManTurret</thingClass>
   </ThingDef>
 
+  <PawnKindDef>
+    <defName>FFF_Dummy</defName>
+    <label>dummy</label>
+    <apparelMoney>0~0</apparelMoney>
+    <race>Human</race>
+    <combatPower>85</combatPower>
+    <backstoryCryptosleepCommonality>1</backstoryCryptosleepCommonality>
+    <backstoryFilters>
+      <li>
+        <categories>
+          <li>Scientist</li>
+        </categories>
+      </li>
+    </backstoryFilters>
+    <chemicalAddictionChance>0</chemicalAddictionChance>
+    <apparelIgnoreSeasons>true</apparelIgnoreSeasons>
+    <apparelIgnorePollution MayRequire="Ludeon.RimWorld.Biotech">true</apparelIgnorePollution>
+    <apparelAllowHeadgearChance>0</apparelAllowHeadgearChance>
+    <techHediffsRequired MayRequire="Ludeon.RimWorld.Biotech">
+      <li>Mechlink</li>
+    </techHediffsRequired>
+    <combatEnhancingDrugsChance>0</combatEnhancingDrugsChance>
+    <combatEnhancingDrugsCount>0</combatEnhancingDrugsCount>
+    <initialWillRange>0</initialWillRange>
+    <initialResistanceRange>0</initialResistanceRange>
+    <requiredWorkTags>
+      <li>Intellectual</li>
+    </requiredWorkTags>
+    <disallowedTraitsWithDegree>
+      <PsychicSensitivity>-1</PsychicSensitivity>
+      <PsychicSensitivity>-2</PsychicSensitivity>
+    </disallowedTraitsWithDegree>
+  </PawnKindDef>
+
 </Defs>
