@@ -12,28 +12,37 @@ namespace Fortified
         private static void Postfix(Pawn mech, LocalTargetInfo target, ref bool __result)
         {
             if (__result) return;
+            if (mech == null) return;
 
-            //This region should on average be processed faster than comp processing so put it above
-			#region Overseer
-			if (mech is IOverseer)
-			{
-				__result = true;
-				return;
-			}
-			Pawn overseer = mech.GetOverseer();
-			if (overseer == null)
-			{
-				return;
-			}
-			Thing overlord = overseer.GetOverseerThing(out var overseerInt);
-			if (overlord != null && overlord.MapHeld == mech.Map && (overseerInt.Comp.Props.controlWholeMap || overlord.PositionHeld.DistanceTo(target.Cell) <= overseerInt.Comp.Props.commandRange))
-			{
-				__result = true;
+            //This region should on average be processed faster than comp processing so put it above.
+            //IMPORTANT: it must never early-return when there is no overseer. Mechs without an
+            //overseer (woken CompDeadManSwitch mechs, drones, relays) are exactly the cases the
+            //checks further down are meant to cover - bailing out here left them with no
+            //commandable area at all.
+            #region Overseer
+            if (mech is IOverseer)
+            {
+                __result = true;
                 return;
-			}
-			#endregion
+            }
+            Pawn overseer = mech.GetOverseer();
+            if (overseer != null)
+            {
+                Thing overlord = overseer.GetOverseerThing(out var overseerInt);
+                CompProperties_Overseer overseerProps = overseerInt?.Comp?.Props;
+                if (overlord != null && overseerProps != null
+                    && overlord.MapHeld != null && overlord.MapHeld == mech.MapHeld
+                    && (overseerProps.controlWholeMap
+                        || (target.IsValid && overlord.PositionHeld.DistanceTo(target.Cell) <= overseerProps.commandRange)))
+                {
+                    __result = true;
+                    return;
+                }
+            }
+            #endregion
 
-			if (mech.TryGetComp<CompDeadManSwitch>() is CompDeadManSwitch compDMS && compDMS.woken)
+            //Woken mechs answer to nobody, so they are never out of command range.
+            if (mech.TryGetComp<CompDeadManSwitch>() is CompDeadManSwitch compDMS && compDMS.woken)
             {
                 __result = true;
                 return;
@@ -49,20 +58,23 @@ namespace Fortified
                 return;
             }
 
-            overseer = MechanitorUtility.GetOverseer(mech);
+            //Everything below resolves relays through the mech's overseer, so it needs one.
             if (overseer == null) return;
 
             var relays = CompCommandRelay.allRelays;
-            for (int i = 0; i < relays.Count; i++)
+            if (relays != null)
             {
-                CompCommandRelay relay = relays[i];
-                Pawn relayPawn = (Pawn)relay.parent;
-                if (relayPawn.Spawned && relayPawn.MapHeld == mech.MapHeld && relayPawn.GetOverseer() == overseer)
+                for (int i = 0; i < relays.Count; i++)
                 {
-                    if (relay.Props.coverWholeMap || CheckUtility.InRange(relayPawn.Position, target, relay.SquaredDistance))
+                    CompCommandRelay relay = relays[i];
+                    if (relay == null || relay.parent is not Pawn relayPawn) continue;
+                    if (relayPawn.Spawned && relayPawn.MapHeld == mech.MapHeld && relayPawn.GetOverseer() == overseer)
                     {
-                        __result = true;
-                        return;
+                        if (relay.Props.coverWholeMap || CheckUtility.InRange(relayPawn.Position, target, relay.SquaredDistance))
+                        {
+                            __result = true;
+                            return;
+                        }
                     }
                 }
             }
