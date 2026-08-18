@@ -39,4 +39,34 @@
   <FFF.Mod.NotModifiable>該武器不支援改裝</FFF.Mod.NotModifiable>
   <FFF.Mod.NotValidForThisWeapon>該改裝件不適用於此武器</FFF.Mod.NotValidForThisWeapon>
 
+  <FFF.MechModification.InfoName>名稱：{0}</FFF.MechModification.InfoName>
+  <FFF.MechModification.InfoRace>型號：{0}</FFF.MechModification.InfoRace>
+  <FFF.MechModification.InfoAge>服役年齡：{0}</FFF.MechModification.InfoAge>
+  <FFF.MechModification.PawnInfoTip>開啟機械體資訊。</FFF.MechModification.PawnInfoTip>
+  <FFF.MechModification.GizmoLabel>機械體改裝</FFF.MechModification.GizmoLabel>
+  <FFF.MechModification.GizmoDesc>開啟此機械體的改裝視窗。需要完成微電子基礎研究。</FFF.MechModification.GizmoDesc>
+  <FFF.MechModification.SelectModsFor>{0} 可用的改件</FFF.MechModification.SelectModsFor>
+  <FFF.MechModification.SelectPartPrompt>請選擇身體槽位。</FFF.MechModification.SelectPartPrompt>
+  <FFF.MechModification.NoModsOnMap>地圖上沒有可用於該槽位的改件。</FFF.MechModification.NoModsOnMap>
+  <FFF.MechModification.QueueEmpty>目前沒有排隊操作。</FFF.MechModification.QueueEmpty>
+  <FFF.MechModification.QueueInstall>將 {0} 安裝到 {1}</FFF.MechModification.QueueInstall>
+  <FFF.MechModification.QueueUninstall>從 {1} 移除 {0}</FFF.MechModification.QueueUninstall>
+  <FFF.MechModification.Missing>缺失</FFF.MechModification.Missing>
+  <FFF.MechModification.PartFallback>機體</FFF.MechModification.PartFallback>
+  <FFF.MechModification.SavePreset>儲存預設</FFF.MechModification.SavePreset>
+  <FFF.MechModification.LoadPreset>載入預設</FFF.MechModification.LoadPreset>
+  <FFF.MechModification.PresetDefaultName>機械體預設</FFF.MechModification.PresetDefaultName>
+  <FFF.MechModification.PresetSaved>已儲存預設：{0}</FFF.MechModification.PresetSaved>
+  <FFF.MechModification.PresetLoaded>已載入預設：{0}</FFF.MechModification.PresetLoaded>
+  <FFF.MechModification.PresetLoadFailed>無法載入預設：{0}</FFF.MechModification.PresetLoadFailed>
+  <FFF.MechModification.Apply>套用</FFF.MechModification.Apply>
+  <FFF.MechModification.Reset>重設</FFF.MechModification.Reset>
+  <FFF.MechModification.Return>返回</FFF.MechModification.Return>
+  <FFF.MechModification.AppliedQueued>設定已套用，已排入 {0} 個操作。</FFF.MechModification.AppliedQueued>
+  <FFF.MechModification.InvalidModification>該物品沒有定義有效的機械體改件。</FFF.MechModification.InvalidModification>
+  <FFF.MechModification.NotEnoughItems>地圖上可到達的 {0} 數量不足。</FFF.MechModification.NotEnoughItems>
+  <FFF.MechModification.PartOccupied>{0} 已安裝或已排隊安裝其他改件。</FFF.MechModification.PartOccupied>
+  <FFF.MechModification.Unique>{0} 具有唯一性，無法在同一槽位重複安裝。</FFF.MechModification.Unique>
+  <FFF.MechModification.StackFull>{0} 已達到安裝數量上限（{1}）。</FFF.MechModification.StackFull>
+
 </LanguageData>

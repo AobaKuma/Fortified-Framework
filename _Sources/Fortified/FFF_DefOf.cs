@@ -17,6 +17,7 @@ public static class FFF_DefOf
     public static JobDef FFF_MechLeave;
     public static JobDef FFF_EnterBunkerFacility;
     public static JobDef FFF_Modification;
+    public static JobDef FFF_ModificationRemove;
     public static JobDef FFF_EjectDeactivatedMech;
     public static JobDef FFF_HackDeactivatedMech;
     public static JobDef FFF_ResurrectMech;

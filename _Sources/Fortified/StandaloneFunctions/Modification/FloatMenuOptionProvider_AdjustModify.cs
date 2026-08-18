@@ -27,8 +27,10 @@ namespace Fortified
             {
                 yield return RimWorld.FloatMenuUtility.DecoratePrioritizedTask(new FloatMenuOption("FFF.Modification_Remove".Translate(item.parent.LabelCap), delegate
                 {
-                    item.isApplyTarget = true;
-                    context.FirstSelectedPawn.jobs.TryTakeOrderedJob(JobMaker.MakeJob(item.Props.applyJob, clickedPawn), JobTag.Misc);
+                    JobDef jobDef = item.Props.applyJob ?? FFF_DefOf.FFF_ModificationRemove;
+                    if (jobDef == null) return;
+                    Job job = ModificationJobUtility.MakeRemoveJob(jobDef, clickedPawn, item.parent);
+                    context.FirstSelectedPawn.jobs.TryTakeOrderedJob(job, JobTag.Misc);
                     FleckMaker.Static(clickedPawn.DrawPos, clickedPawn.MapHeld, FleckDefOf.FeedbackEquip);
                 }, MenuOptionPriority.High), context.FirstSelectedPawn, clickedPawn);
             }

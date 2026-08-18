@@ -40,17 +40,16 @@ namespace Fortified
             PreApplyDamage(ref dinfo, out absorbed);
         }
     }
-    public class HediffComp_ProtectiveShield : HediffComp_PreApplyDamage
+    public class HediffComp_ProtectiveShield : HediffComp_PreApplyDamage, IModificationMergeParticipant
     {
-        public float DurablePercent => Hitpoints / MaxHitpoints;
-        public float MaxHitpoints => maxHitpoints == 0 ? maxHitpoints = (int)(Props.hitpoints * parent.pawn.BodySize) : maxHitpoints;
+        public float DurablePercent => MaxHitpoints <= 0f ? 0f : Hitpoints / MaxHitpoints;
+        public float MaxHitpoints => maxHitpoints == 0 ? maxHitpoints = Mathf.Max(1, Mathf.RoundToInt(Props.hitpoints * parent.pawn.BodySize)) : maxHitpoints;
         public float Hitpoints
         {
             get { return hitpoints; }
             set {
-                if(value>MaxHitpoints) value = MaxHitpoints;
+                hitpoints = Mathf.Clamp(value, 0f, MaxHitpoints);
                 parent.Severity = DurablePercent;
-                hitpoints = value;
             }
         }
         private int maxHitpoints;
@@ -130,16 +129,22 @@ namespace Fortified
         public override void CompPostMake()
         {
             base.CompPostMake();
-            hitpoints = Props.hitpoints;
+            Hitpoints = Props.hitpoints;
         }
 
         public override void CompPostMerged(Hediff other)
         {
             base.CompPostMerged(other);
-            Hitpoints += other.TryGetComp<HediffComp_ProtectiveShield>().Hitpoints;
+            HediffComp_ProtectiveShield otherShield = other?.TryGetComp<HediffComp_ProtectiveShield>();
+            if (otherShield != null) Hitpoints += otherShield.Hitpoints;
+        }
+
+        public bool CanMergeModificationFrom(HediffComp other)
+        {
+            return other is HediffComp_ProtectiveShield && Hitpoints < MaxHitpoints;
         }
     }
-    public class HediffCompProperties_ProtectiveShield : HediffCompProperties
+    public class HediffCompProperties_ProtectiveShield : HediffCompProperties, IModificationMergeCapacityProvider
     {
         public ThingDef filthOnDamaged;
         public EffecterDef effectOnDamaged;
@@ -149,6 +154,11 @@ namespace Fortified
         public HediffCompProperties_ProtectiveShield()
         {
             compClass = typeof(HediffComp_ProtectiveShield);
+        }
+
+        public int GetMaxModificationInstallations(Pawn pawn)
+        {
+            return Mathf.Max(1, Mathf.CeilToInt(pawn?.BodySize ?? 1f));
         }
     }
 
