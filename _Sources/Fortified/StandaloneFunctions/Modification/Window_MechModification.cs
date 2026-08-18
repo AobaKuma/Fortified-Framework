@@ -59,6 +59,7 @@ namespace Fortified
         public Hediff uninstallHediff;
         public bool custom;
         public bool allowEquivalentPart;
+        public bool submitted;
         public string customId;
         public string customData;
     }
@@ -178,6 +179,12 @@ namespace Fortified
             BeginCloseAnimation(doCloseSound);
         }
 
+        public override void PostClose()
+        {
+            ResetOperationWorkspace();
+            base.PostClose();
+        }
+
         public override void DoWindowContents(Rect inRect)
         {
             if (Mech == null)
@@ -266,12 +273,20 @@ namespace Fortified
                 float iconSize = rect.height - 8f;
                 Widgets.DrawTextureFitted(new Rect(rect.x + 4f, rect.y + 4f, iconSize, iconSize), FooterIcon, 1f);
             }
-            if (Widgets.ButtonText(resetRect, ResetButtonLabel)) OnResetClicked();
+            if (Widgets.ButtonText(resetRect, ResetButtonLabel))
+            {
+                ResetOperationWorkspace();
+                OnResetClicked();
+            }
             if (Widgets.ButtonText(applyRect, ApplyButtonLabel)) ApplyAndStartJobs();
             if (Widgets.ButtonText(returnRect, ReturnButtonLabel)) Close();
         }
 
         protected virtual void OnResetClicked()
+        {
+        }
+
+        private void ResetOperationWorkspace()
         {
             QueuedOperations.Clear();
             InvalidateAvailableItems();
@@ -306,11 +321,13 @@ namespace Fortified
         private bool ValidateStandardQueue(out string rejectionReason)
         {
             rejectionReason = null;
-            List<MechModificationQueueEntry> preceding = new List<MechModificationQueueEntry>();
+            List<MechModificationQueueEntry> preceding = QueuedOperations
+                .Where(entry => entry?.submitted == true)
+                .ToList();
             for (int i = 0; i < QueuedOperations.Count; i++)
             {
                 MechModificationQueueEntry entry = QueuedOperations[i];
-                if (entry == null) continue;
+                if (entry == null || entry.submitted) continue;
                 if (entry.kind == MechModificationOperationKind.Install && !entry.custom
                     && ModificationProfileDatabase.IsModificationDef(entry.itemDef)
                     && !ModificationInstallValidator.CanInstall(
@@ -471,11 +488,14 @@ namespace Fortified
                 Widgets.DrawHighlightIfMouseover(row);
                 Rect labelRect = new Rect(row.x, row.y, row.width - 28f, row.height);
                 Widgets.Label(labelRect, GetQueueLabel(entry));
+                bool previousEnabled = GUI.enabled;
+                GUI.enabled = previousEnabled && !entry.submitted;
                 if (Widgets.ButtonText(new Rect(labelRect.xMax + 2f, row.y, 24f, row.height), "X"))
                 {
                     QueuedOperations.RemoveAt(i--);
                     InvalidateAvailableItems();
                 }
+                GUI.enabled = previousEnabled;
             }
             if (QueuedOperations.Count == 0) Widgets.Label(new Rect(0f, 0f, view.width, rowHeight), "FFF.MechModification.QueueEmpty".Translate());
             Text.Anchor = previousAnchor;
@@ -615,15 +635,21 @@ namespace Fortified
             for (int i = 0; i < QueuedOperations.Count; i++)
             {
                 MechModificationQueueEntry entry = QueuedOperations[i];
+                if (entry == null || entry.submitted) continue;
                 Job job = CreateJob(entry);
                 if (job == null) continue;
                 job.playerForced = true;
-                if (started == 0 && Mech.jobs.curJob == null) Mech.jobs.TryTakeOrderedJob(job, JobTag.MiscWork);
-                else Mech.jobs.jobQueue.EnqueueLast(job);
+                bool accepted;
+                if (started == 0 && Mech.jobs.curJob == null) accepted = Mech.jobs.TryTakeOrderedJob(job, JobTag.MiscWork);
+                else
+                {
+                    Mech.jobs.jobQueue.EnqueueLast(job);
+                    accepted = true;
+                }
+                if (!accepted) continue;
+                entry.submitted = true;
                 started++;
             }
-            QueuedOperations.Clear();
-            InvalidateAvailableItems();
             return started;
         }
 
@@ -813,7 +839,7 @@ namespace Fortified
 
         private void ApplyPreset(MechModificationPreset preset)
         {
-            QueuedOperations.Clear();
+            QueuedOperations.RemoveAll(entry => entry?.submitted != true);
             if (preset?.entries == null)
             {
                 InvalidateAvailableItems();
