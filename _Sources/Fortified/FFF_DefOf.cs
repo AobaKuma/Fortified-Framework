@@ -43,6 +43,8 @@ public static class FFF_DefOf
 	public static FleckDef FFF_Fleck_DeflectShell;
 
     public static StatDef FFF_FearResistance;
+    [MayRequireBiotech]
+    public static StatDef FFF_MechCommandRange;
 }
 
 [StaticConstructorOnStartup]

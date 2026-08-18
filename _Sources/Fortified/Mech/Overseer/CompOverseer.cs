@@ -59,11 +59,11 @@ namespace Fortified
 {
     public class CompProperties_Overseer : CompProperties
     {
-        public float commandRange = 34.9f;
+        /*public float commandRange = 34.9f;
 
         public int controlGroups = 2;
 
-        public int bandwidth = 6;
+        public int bandwidth = 6;*/
 
         public bool canRepair = true;
 
@@ -92,25 +92,64 @@ namespace Fortified
 				yield return "Fortified.CompOverseer require Biotech to work";
 			}
 		}
+
+		public override IEnumerable<StatDrawEntry> SpecialDisplayStats(StatRequest req)
+		{
+			if (req.HasThing)
+            {
+                yield return GetEntry(StatDefOf.MechBandwidth, req.Thing.GetStatValue(StatDefOf.MechBandwidth));
+                yield return GetEntry(StatDefOf.MechControlGroups, req.Thing.GetStatValue(StatDefOf.MechControlGroups));
+                //yield return GetEntry(FFF_DefOf.FFF_MechCommandRange, req.Thing.GetStatValue(FFF_DefOf.FFF_MechCommandRange));
+			}
+            else if(req.Def is ThingDef t)
+            {
+				yield return GetEntry(StatDefOf.MechBandwidth, t.GetStatValueAbstract(StatDefOf.MechBandwidth));
+				yield return GetEntry(StatDefOf.MechControlGroups, t.GetStatValueAbstract(StatDefOf.MechControlGroups));
+				//yield return GetEntry(FFF_DefOf.FFF_MechCommandRange, t.GetStatValueAbstract(FFF_DefOf.FFF_MechCommandRange));
+			}
+            StatDrawEntry GetEntry(StatDef def, float value)
+            {
+                return new StatDrawEntry(def.category, def, value, req);
+            }
+		}
     }
 
     public class CompOverseer : ThingComp
     {
         public CompProperties_Overseer Props => (CompProperties_Overseer)props;
 
-        public Pawn dummyPawn;
+		private float? cachedCommandRange = null;
 
-		public bool MechanitorActive => dummyPawn != null && parent.Faction == Faction.OfPlayerSilentFail;
+		private int? cachedBandwidth = null;
+
+		public Pawn dummyPawn;
+
+        public bool activeInt = true;
+
+		public bool MechanitorActive => activeInt && dummyPawn != null && parent.Faction == Faction.OfPlayerSilentFail;
 
         public int CurrentBandwidth
         {
             get
             {
-                int num = Props.bandwidth;
-                num += (int)dummyPawn.GetStatValue(StatDefOf.MechBandwidth);
-                num -= 6;
-				return num;
+                if(cachedBandwidth == null)
+                {
+					cachedBandwidth = (int)parent.GetStatValue(StatDefOf.MechBandwidth);
+				}
+				return cachedBandwidth.Value;
             }
+        }
+
+        public float CurrentCommandRange
+        {
+            get
+            {
+                if(cachedCommandRange == null)
+                {
+					cachedCommandRange = parent.GetStatValue(FFF_DefOf.FFF_MechCommandRange);
+				}
+                return cachedCommandRange.Value;
+			}
         }
 
         private Texture2D selectIcon;
@@ -124,6 +163,20 @@ namespace Fortified
 				}
 				return selectIcon;
 			}
+		}
+
+        public void Notify_BandwidthChanged()
+        {
+            dummyPawn?.mechanitor.Notify_BandwidthChanged();
+        }
+
+		public void RecacheValues()
+        {
+            cachedCommandRange = null;
+            cachedBandwidth = null;
+			Hediff_Dummy hediff = (Hediff_Dummy)dummyPawn.health.GetOrAddHediff(FFF_DefOf.FFF_DummyHediff);
+			hediff.overseer = parent as IOverseer;
+			hediff.Severity = Mathf.Max((int)parent.GetStatValue(StatDefOf.MechControlGroups) - 2, 0.1f);
 		}
 
 		public override void PostSpawnSetup(bool respawningAfterLoad)
@@ -142,9 +195,9 @@ namespace Fortified
         public override void PostDraw()
         {
             base.PostDraw();
-            if (MechanitorActive && parent.Spawned && dummyPawn.mechanitor.AnySelectedDraftedMechs)
+            if (MechanitorActive && parent.Spawned && CurrentCommandRange < GenRadial.MaxRadialPatternRadius && dummyPawn.mechanitor.AnySelectedDraftedMechs)
             {
-                GenDraw.DrawRadiusRing(parent.Position, Props.commandRange, Color.white, (IntVec3 c) => c.InBounds(parent.MapHeld));
+                GenDraw.DrawRadiusRing(parent.Position, CurrentCommandRange, Color.white, (IntVec3 c) => c.InBounds(parent.MapHeld));
             }
         }
 
@@ -168,7 +221,7 @@ namespace Fortified
             }
             Hediff_Dummy hediff = (Hediff_Dummy)dummyPawn.health.GetOrAddHediff(FFF_DefOf.FFF_DummyHediff);
             hediff.overseer = parent as IOverseer;
-            hediff.Severity = Mathf.Max(Props.controlGroups - 2, 0.5f);
+            hediff.Severity = Mathf.Max((int)parent.GetStatValue(StatDefOf.MechControlGroups) - 2, 0.1f);
 			PawnComponentsUtility.AddComponentsForSpawn(dummyPawn);
             PawnComponentsUtility.AddAndRemoveDynamicComponents(dummyPawn);
             dummyPawn.mechanitor.Notify_BandwidthChanged();
@@ -252,6 +305,7 @@ namespace Fortified
         {
             base.PostExposeData();
             Scribe_Deep.Look(ref dummyPawn, "FFF_dummyPawn");
+            Scribe_Values.Look(ref activeInt, "FFF_activeInt", defaultValue: true);
 		}
     }
 }

@@ -29,11 +29,9 @@ namespace Fortified
             if (overseer != null)
             {
                 Thing overlord = overseer.GetOverseerThing(out var overseerInt);
-                CompProperties_Overseer overseerProps = overseerInt?.Comp?.Props;
-                if (overlord != null && overseerProps != null
+                if (overlord != null
                     && overlord.MapHeld != null && overlord.MapHeld == mech.MapHeld
-                    && (overseerProps.controlWholeMap
-                        || (target.IsValid && overlord.PositionHeld.DistanceTo(target.Cell) <= overseerProps.commandRange)))
+                    && (target.IsValid && overlord.PositionHeld.DistanceTo(target.Cell) <= overseerInt.Comp.CurrentCommandRange))
                 {
                     __result = true;
                     return;

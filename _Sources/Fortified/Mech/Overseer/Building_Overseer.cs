@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using UnityEngine;
 using Verse;
 using Verse.Sound;
+using static HarmonyLib.Code;
+using static Mono.Math.BigInteger;
 
 namespace Fortified
 {
@@ -26,7 +28,18 @@ namespace Fortified
 			canTargetPawns = true,
 			canTargetLocations = false
 		};
-		public Texture2D UIIcon => TexCommand.Install;
+		private Texture2D cachedUIIcon;
+		public Texture2D UIIcon
+		{
+			get
+			{
+				if (cachedUIIcon == null)
+				{
+					cachedUIIcon = ContentFinder<Texture2D>.Get("UI/FFF_SelectOverseerSubject");
+				}
+				return cachedUIIcon;
+			}
+		}
 		public ITargetingSource DestinationSelector => null;
 		public bool CanHitTarget(LocalTargetInfo target)
 		{
@@ -119,6 +132,24 @@ namespace Fortified
 			}
 		}
 
+		public override void SpawnSetup(Map map, bool respawningAfterLoad)
+		{
+			base.SpawnSetup(map, respawningAfterLoad);
+			if (Comp.activeInt)
+			{
+				if (!Power.PowerOn)
+				{
+					Comp.activeInt = false;
+					Comp.Notify_BandwidthChanged();
+				}
+			}
+			else if (Power.PowerOn)
+			{
+				Comp.activeInt = true;
+				Comp.Notify_BandwidthChanged();
+			}
+		}
+
 		public override void DeSpawn(DestroyMode mode = DestroyMode.Vanish)
 		{
 			if (mode != DestroyMode.WillReplace)
@@ -126,6 +157,24 @@ namespace Fortified
 				Comp.dummyPawn?.mechanitor?.UndraftAllMechs();
 			}
 			base.DeSpawn(mode);
+		}
+
+		protected override void ReceiveCompSignal(string signal)
+		{
+			base.ReceiveCompSignal(signal);
+			if(Comp.activeInt)
+			{
+				if(signal == "PowerTurnedOff")
+				{
+					Comp.activeInt = false;
+					Comp.Notify_BandwidthChanged();
+				}
+			}
+			else if (signal == "PowerTurnedOn")
+			{
+				Comp.activeInt = true;
+				Comp.Notify_BandwidthChanged();
+			}
 		}
 
 		public override IEnumerable<Gizmo> GetGizmos()
