@@ -42,16 +42,19 @@ namespace Fortified
                 Messages.Message("FFF.Modification_RaceNotSupported".Translate(), MessageTypeDefOf.NeutralEvent);
                 return;
             }
-            if (!ModificationUtility.HasSpaceToAttach((Pawn)selectedTarget, Props, out var _b))
+            Pawn targetPawn = (Pawn)selectedTarget;
+            // This path is invoked from the item's active use job. The selected stack
+            // is already reserved by usedBy, so a map-wide CanReserve check would
+            // incorrectly hide that stack (and make a second stack appear required).
+            // The apply job validates and resolves the actual material again when it starts.
+            if (!ModificationInstallValidator.TryFindInstallPart(targetPawn, parent.def, null, out BodyPartRecord part, out string reason, false))
             {
-                Messages.Message("FFF.Modification_NoValidPart".Translate(), MessageTypeDefOf.NeutralEvent);
+                Messages.Message(reason ?? "FFF.Modification_NoValidPart".Translate(), MessageTypeDefOf.NeutralEvent);
                 return;
             }
             if (usedBy.IsColonistPlayerControlled)
             {
-                Job job = JobMaker.MakeJob(FFF_DefOf.FFF_Modification, (Pawn)selectedTarget, this.parent);
-                job.count = 1;
-                job.playerForced = true;
+                Job job = ModificationJobUtility.MakeApplyJob(FFF_DefOf.FFF_Modification, targetPawn, parent, part);
                 usedBy.jobs.TryTakeOrderedJob(job, JobTag.Misc);
             }
         }

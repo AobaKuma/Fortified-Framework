@@ -30,4 +30,34 @@
   <FFF.Mod.NotModifiable>This weapon does not support modifications</FFF.Mod.NotModifiable>
   <FFF.Mod.NotValidForThisWeapon>This modification is not valid for this weapon</FFF.Mod.NotValidForThisWeapon>
 
+  <FFF.MechModification.InfoName>Name: {0}</FFF.MechModification.InfoName>
+  <FFF.MechModification.InfoRace>Model: {0}</FFF.MechModification.InfoRace>
+  <FFF.MechModification.InfoAge>Service age: {0}</FFF.MechModification.InfoAge>
+  <FFF.MechModification.PawnInfoTip>Open mech information.</FFF.MechModification.PawnInfoTip>
+  <FFF.MechModification.GizmoLabel>Mech modification</FFF.MechModification.GizmoLabel>
+  <FFF.MechModification.GizmoDesc>Open this mech's modification window. Requires microelectronics.</FFF.MechModification.GizmoDesc>
+  <FFF.MechModification.SelectModsFor>Available modifications for {0}</FFF.MechModification.SelectModsFor>
+  <FFF.MechModification.SelectPartPrompt>Select a body slot.</FFF.MechModification.SelectPartPrompt>
+  <FFF.MechModification.NoModsOnMap>No compatible modification is available on this map.</FFF.MechModification.NoModsOnMap>
+  <FFF.MechModification.QueueEmpty>No queued operations.</FFF.MechModification.QueueEmpty>
+  <FFF.MechModification.QueueInstall>Install {0} on {1}</FFF.MechModification.QueueInstall>
+  <FFF.MechModification.QueueUninstall>Remove {0} from {1}</FFF.MechModification.QueueUninstall>
+  <FFF.MechModification.Missing>missing</FFF.MechModification.Missing>
+  <FFF.MechModification.PartFallback>frame</FFF.MechModification.PartFallback>
+  <FFF.MechModification.SavePreset>Save preset</FFF.MechModification.SavePreset>
+  <FFF.MechModification.LoadPreset>Load preset</FFF.MechModification.LoadPreset>
+  <FFF.MechModification.PresetDefaultName>Mech preset</FFF.MechModification.PresetDefaultName>
+  <FFF.MechModification.PresetSaved>Preset saved: {0}</FFF.MechModification.PresetSaved>
+  <FFF.MechModification.PresetLoaded>Preset loaded: {0}</FFF.MechModification.PresetLoaded>
+  <FFF.MechModification.PresetLoadFailed>Could not load preset: {0}</FFF.MechModification.PresetLoadFailed>
+  <FFF.MechModification.Apply>Apply</FFF.MechModification.Apply>
+  <FFF.MechModification.Reset>Reset</FFF.MechModification.Reset>
+  <FFF.MechModification.Return>Return</FFF.MechModification.Return>
+  <FFF.MechModification.AppliedQueued>Settings applied; {0} operation(s) queued.</FFF.MechModification.AppliedQueued>
+  <FFF.MechModification.InvalidModification>This item does not define a valid mech modification.</FFF.MechModification.InvalidModification>
+  <FFF.MechModification.NotEnoughItems>There are not enough reachable {0} on this map.</FFF.MechModification.NotEnoughItems>
+  <FFF.MechModification.PartOccupied>{0} already has another modification installed or queued.</FFF.MechModification.PartOccupied>
+  <FFF.MechModification.Unique>{0} is unique and cannot be installed more than once in the same slot.</FFF.MechModification.Unique>
+  <FFF.MechModification.StackFull>{0} has reached its installation limit ({1}).</FFF.MechModification.StackFull>
+
 </LanguageData>
