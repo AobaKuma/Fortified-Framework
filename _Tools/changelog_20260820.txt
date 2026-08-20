@@ -1,0 +1,56 @@
+[h1]Update 2026-08-20[/h1]
+[i]Changes since the 2026-08-06 release (20 commits).[/i]
+
+[h2]New features[/h2]
+[list]
+[*][b]Overseer system[/b] — mechs can now be commanded by an [i]overseer[/i] that is not a mechanitor pawn: either a building ([b]Building_Overseer[/b]) or a dedicated overseer mech ([b]OverseerMech[/b] / [b]HumanlikeOverseerMech[/b]). [b]CompOverseer[/b] exposes command range, control groups, bandwidth, optional auto-repair of nearby mechs, instant control and a whole-map control option. Comes with targeting, gizmos, float-menu options, work-mode/charge controls and its own control & repair jobs.
+[*][b]Overseer caravans[/b] — overseers and the mechs they control can leave the map, form or join caravans, act as carriers and settle. Added the [b]ICaravanOwner[/b] interface plus caravan patches (exit map, gather items/downed pawns, caravan-owner checks, carrier validity, settle command, map-removal blocking) so mech-only groups are handled correctly instead of being rejected as ownerless.
+[*][b]Occultech knowledge extraction[/b] — new [b]CompOccultechSource[/b] (a "knowledge font" with a finite, inspectable reserve that depletes into an inert husk) and [b]CompOccultechExtractor[/b] (powered building that drains the font in front of it and files the knowledge into research at a per-day rate). Progress is stored in a save-safe [b]GameComponent_KnowledgeStore[/b].
+[*][b]Custom multi-category research tabs[/b] — [b]ModExtension_UniqueResearchTab[/b] turns any ResearchTabDef into an Anomaly-style knowledge tab: categories render as left-to-right columns, and knowledge poured into an earlier category overflows into the later ones.
+[*][b]Access keys[/b] — a new standalone system for key-gated content. [b]CompAccessKeyActivatable[/b] makes a building activatable by spending a key item (configurable key def/count, activation time, activated texture, optional loot on activation with its own loot faction), and [b]CompAccessKeyDoorLink[/b] links doors that stay locked until the required number of key uses is spent. Includes [b]Building_RollingDoor_Access[/b], the [b]FFF_UseAccessKey[/b] job driver and full EN / zh-Hans / zh-Hant text.
+[*][b]Facility structure set[/b] — new buildings in [b]FacilityStructure.xml[/b]: three facility interior wall variants, a hull wall, a hull maintenance wall and a facility door, with new concrete / hull / load-bearing wall atlases and door textures.
+[*][b]CompProperties_WeaponReloadable[/b] — reloadable weapons using the apparel-reloadable comp, with config errors that catch wrong parent defs at load time.
+[*][b]Ammo switch icons[/b] — UI icons for HE, HEAT, HESH, Sabot, air-burst, smoke and toxic shells, plus buckshot, slug, dart, dragon's-breath, breaching, rubber and EMP shotgun shells.
+[*][b]Gene editor visibility[/b] — [b]ModExtension_HiddenGene[/b] / [b]IHiddenGeneSource[/b] lets a gene be hidden from the xenotype editor while still working normally. Pregnancy-outcome genes (which replace the baby with an item) are hidden by default; set [code]hideInGeneEditor[/code] to false per def to show them again.
+[*][b]Growth vat embryo graphics[/b] — [b]ModExtension_VatEmbryoGraphic[/b] gives an embryo custom early-stage and late-stage art inside the growth vat.
+[*][b]New structure elements & export tools[/b] — [b]FFF_Element_LinkAccessKeyWanter[/b] and [b]FFF_Element_ManMortar[/b] (posts a crew pawn at a generated mortar's interaction cell, with an optional pawn kind and faction), with matching in-game export tools [b]Access link tool[/b] and [b]Man turret tool[/b]; the export tool defs now share one abstract parent.
+[/list]
+
+[h2]Environmental bills — rebuilt[/h2]
+[list]
+[*][b]EnvironmentalBillGate[/b] is now the single enforcement point for cleanliness / temperature / light / vacuum / microgravity requirements. Failing bills are suspended, autonomous worktables are cancelled, and all failure reasons are merged into one message instead of several. Results are cached per game tick, so overriding calls no longer re-run the whole check.
+[*][b]Enforcement now covers every bill type[/b] — [b]Bill.ShouldDoNow[/b] is abstract and cannot be patched directly, so every non-abstract implementation (production, medical, autonomous, mech gestation and loaded mod subclasses) is now patched individually. Previously specialised bill types slipped past the restrictions entirely.
+[*][b]Facility exemptions[/b] — new [b]CompEnvironmentExemption[/b] sits alongside CompFacility and, while connected and running (powered / fuelled / switched on / not broken), grants boolean exemptions and numeric relaxations to recipes on the linked worktable. Supports per-recipe and per-worktable whitelists.
+[*][b]Exemption aggregation[/b] — [b]EnvironmentExemptions[/b] merges every connected facility: booleans OR together, numbers add up (negatives clamped to 0), and effective thresholds are computed from the total.
+[*][b]Safer probing[/b] — [b]EnvironmentUtility[/b] checks spawned state and map validity first, and normalises all ranges via TrueMin/TrueMax so a reversed min/max in XML can no longer make a requirement unsatisfiable.
+[*][b]MakeNewBill[/b] now only swaps in the environmental bill when the result is a plain Bill_Production, so specialised bills keep their own type; the restrictions still apply through the ShouldDoNow patches.
+[*][b]Whitelists compare by defName string[/b] rather than List&lt;Def&gt;, because unresolved entries in a Def list are silently dropped — which used to collapse a whitelist into "no restriction at all".
+[/list]
+
+[h2]Fixes[/h2]
+[list]
+[*][b]Drone platform area restriction lost after gravship travel[/b] — area IDs are only meaningful on the map that created them, so landing elsewhere silently reset drones to unrestricted. The platform now also stores the area label and rebinds by name on the new map, then re-pushes the restriction for several ticks so drones that land later than the platform still pick it up.
+[*][b]Mechs without an overseer could not be commanded[/b] — the InMechanitorCommandRange patch now never early-returns when there is no overseer, restoring commandable range for woken dead-man-switch mechs, drones and relays.
+[*][b]Gravship scenario start[/b] — the custom-structure arrival ScenPart no longer throws when hashing scenarios before the scenario menu opens (the structure may still be null), falls back to a vanilla drop-pod start whenever the gravship path is unusable, guarantees starting pawns spawn even if no spot is found inside the structure, and never loses starting items: anything that will not fit on a shelf is dropped at the start spot instead of vanishing.
+[*][b]Structures generating on the map edge[/b] — the settlement rect is now clamped to the map's edge safety band, peripheral structures must fit entirely inside the settlement (previously only their centre cell was tested), satellite scatter uses the shared edge band instead of two cells from the border, and the centerpiece search escalates through 14/24/40/64 tiles with a safe in-band fallback instead of sampling the whole map.
+[*][b]Everything anchored to the wrong point[/b] — debris, loot, garrison pawns and the defend-point lord now use the structure's real footprint centre instead of the map centre, which random offset and edge clamping had already moved.
+[*][b]Compound structure tag matching[/b] — GenStep useTag lookups now use a proper [code]tags[/code] list; matching used to be a substring test on the label, so any incidental name collision could hijack generation.
+[*][b]Sub-structure chance rolled multiple times[/b] — a failed roll left the cache null, so buildings, pawns and generation tasks each re-rolled independently and disagreed about whether the sub-structure existed. The roll is now made once.
+[*][b]cellsPerTurret = 0[/b] no longer throws a divide-by-zero that takes down the whole map generation.
+[*][b]Autonomous worktable quality[/b] — the machine's rated skill from [code]ModExtension_AutoWorkTable[/code] was never actually read, so a low-skill pawn (or a mech) collecting the product locked in bad quality no matter how many mech cabinets were attached. Quality is now rolled again at the rated skill and the better result is kept, so skilled crafters are never made worse.
+[*][b]Autonomous worktable null worker[/b] — GenRecipe dereferences the worker, so a null one crashed every tick. It now falls back to the last handler, skips dead pawns as the nominal maker, and keeps the active bill for the next worker rather than spamming errors.
+[*][b]Ammo switch[/b] — the implicit "default ammo" entry can now be turned off per def via [code]includeDefaultAmmo[/code], indices are clamped into the legal range on load (so saves made before the option changed or the ammo list shrank no longer sit on an illegal index), and malformed defs degrade to the old behaviour instead of breaking.
+[*][b]Panic aura and pain stat applied to non-flesh pawns[/b] — mechs and other non-flesh pawns are now excluded from CompCausePanicInRange and StatPart_PainFactor.
+[*][b]Listed containers[/b] — loot can now be generated for an explicit [code]lootFaction[/code] instead of always the container's own faction.
+[*][b]Sub-turret gizmo[/b] made public and marked [b]StaticConstructorOnStartup[/b] so its textures load correctly.
+[*][b]Building mover[/b] gained [b]SetDisabled[/b] so external logic (such as access-key locks) can shut the mover down; a locked building retracts its sensor-door state instead of stopping half-open, and locking is refused mid-slide.
+[*][b]Structure spawning[/b] uses VanishOrMoveAside on fallback placement so a fallback spot never silently eats an existing object.
+[/list]
+
+[h2]Under the hood[/h2]
+[list]
+[*][b]CompoundStructureUtility.Generate[/b] now returns the settlement rect it actually used (empty rect on failure) so callers can anchor satellite scatter and filth correctly.
+[*]New debug defs: dummy pawn kind and dummy hediff backing the overseer's control dummy, plus the new overseer and access-key JobDefs.
+[*]Dev tools: a Steam mod comment analyzer for triaging workshop feedback, and an updated structure overlap checker.
+[*]Translations: EN, Simplified Chinese and Traditional Chinese text for access keys, Occultech and the new facility buildings; environmental-bill strings updated.
+[/list]
