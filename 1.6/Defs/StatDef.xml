@@ -38,6 +38,17 @@
     <minValue>0</minValue>
   </StatDef>
 
+  <StatDef MayRequire="Ludeon.RimWorld.Biotech">
+    <defName>FFF_MechCommandRange</defName>
+    <label>mech command range</label>
+    <description>Required pawn body size to equip this weapon.</description>
+    <category>Mechanitor</category>
+    <defaultBaseValue>0</defaultBaseValue>
+    <minValue>0</minValue>
+    <displayPriorityInCategory>2000</displayPriorityInCategory>
+    <showIfUndefined>false</showIfUndefined>
+  </StatDef>
+
   <StatDef>
     <defName>FFF_FearResistance</defName>
     <label>fear resistance</label>
