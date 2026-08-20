@@ -28,10 +28,16 @@ The single most common cause of both: for multi-cell things `pos` is the CENTRE
 cell, not the lower-left corner. A 3x1 building at x=9 covers x=8..10.
 
 Usage:
-    python check_structures.py [mod_root ...]
+    python check_structures.py [mod_root ...] [--data <RimWorld/Data>] [--strict]
 
 With no arguments it scans this mod root plus every sibling mod folder next to it,
 so a framework checkout validates the content mods that depend on it.
+
+Core/DLC footprints are read straight from the game's Data folder, which is found
+automatically by walking up from this script (Mods/<mod>/_Tools/StructureCheck ->
+RimWorld/Data). Override with --data or the RIMWORLD_DIR environment variable.
+Only when no Data folder is found does the script fall back to the small
+hand-maintained VANILLA table below — which is why that table stays in place.
 
 Exit code is 0 even when problems are found (so the .bat can open the report);
 check the report, or pass --strict to exit 1 on any ERROR.
@@ -51,8 +57,36 @@ REPORT_NAME = "StructureOverlaps.txt"
 PRUNE_DIRS = {
     "_source", "_sources", "obj", "bin", ".git", ".vs", ".idea", "migrationbackup",
     "unityproject", "textures", "sounds", "about", "packages", "node_modules",
-    "publicizedassemblies", "assemblies", "news",
+    "publicizedassemblies", "assemblies", "news", "languages",
 }
+
+
+def find_game_data(mod_root):
+    """Locate RimWorld's Data folder (Core + DLC defs), or None.
+
+    Looked for in order: --data / RIMWORLD_DIR, then by walking up from the mod
+    root, since mods normally live at <RimWorld>/Mods/<mod>/.
+    """
+    def looks_right(p):
+        return p and os.path.isdir(os.path.join(p, "Core", "Defs"))
+
+    for hint in (os.environ.get("RIMWORLD_DIR"),):
+        if not hint:
+            continue
+        for cand in (hint, os.path.join(hint, "Data")):
+            if looks_right(cand):
+                return os.path.abspath(cand)
+
+    cur = os.path.abspath(mod_root)
+    for _ in range(6):
+        parent = os.path.dirname(cur)
+        if parent == cur:
+            break
+        cand = os.path.join(parent, "Data")
+        if looks_right(cand):
+            return os.path.abspath(cand)
+        cur = parent
+    return None
 
 
 def walk_xml(root):
@@ -71,6 +105,9 @@ STRUCTURE_TAGS = (
 # ---------------------------------------------------------------------------
 # Vanilla fallback table: defs that live in Core/DLCs, not in any mod folder.
 # size is (x, z); "transmits" mirrors ThingDef.EverTransmitsPower.
+#
+# Only used when the game's Data folder cannot be found (see find_game_data) —
+# a hand-maintained table always lags the game, so real defs win when available.
 # ---------------------------------------------------------------------------
 VANILLA = {
     # transmitters
@@ -100,6 +137,27 @@ VANILLA = {
     "AncientMachine":           ((1, 1), False, True),
     "AncientRustedTruck":       ((3, 6), False, True),
     "TrapIED_HighExplosive":    ((1, 1), False, False),
+    # multi-cell furniture / production - the usual source of silent WARNs
+    "Bed":                      ((1, 2), False, True),
+    "DoubleBed":                ((2, 2), False, True),
+    "RoyalBed":                 ((2, 2), False, True),
+    "HospitalBed":              ((1, 2), False, True),
+    "Couch":                    ((2, 1), False, True),
+    "Dresser":                  ((2, 1), False, True),
+    "Shelf":                    ((2, 1), False, True),
+    "ToolCabinet":              ((2, 1), False, True),
+    "FlatscreenTelevision":     ((2, 1), False, True),
+    "MegascreenTelevision":     ((3, 1), False, True),
+    "ElectricStove":            ((3, 1), False, True),
+    "FueledStove":              ((3, 1), False, True),
+    "Table1x2c":                ((1, 2), False, True),
+    "Table2x2c":                ((2, 2), False, True),
+    "Table2x4c":                ((2, 4), False, True),
+    "Table3x3c":                ((3, 3), False, True),
+    "TableButcher":             ((3, 1), False, True),
+    "ElectricSmelter":          ((3, 1), False, True),
+    "HiTechResearchBench":      ((5, 2), False, True),
+    "SimpleResearchBench":      ((3, 2), False, True),
     # craters are terrain-like props, not edifices
     "CraterSmall":              ((1, 1), False, False),
     "CraterMedium":             ((2, 2), False, False),
@@ -111,12 +169,17 @@ VANILLA = {
 # ---------------------------------------------------------------------------
 # ThingDef table
 # ---------------------------------------------------------------------------
-def collect_thingdefs(roots):
-    """Return {defName: (size, transmits, is_edifice)} from every ThingDef found."""
+def collect_thingdefs(roots, def_roots=()):
+    """Return {defName: (size, transmits, is_edifice)} from every ThingDef found.
+
+    def_roots are scanned for ThingDefs only (the game's Data folder), never for
+    structure layouts. Mod roots are listed last so a mod's own def wins on a
+    defName clash, matching RimWorld's load order.
+    """
     raw = {}      # defName -> (size|None, transmits|None, edifice|None, parentName|None)
     by_name = {}  # Name= attribute -> same tuple, for inheritance
 
-    for root in roots:
+    for root in list(def_roots) + list(roots):
         for path in walk_xml(root):
             try:
                 text = open(path, encoding="utf-8-sig", errors="replace").read()
@@ -140,12 +203,13 @@ def collect_thingdefs(roots):
                     m = re.search(r"<transmitsPower>\s*(\w+)\s*</transmitsPower>", blk)
                     transmits = bool(m) and m.group(1).lower() == "true"
 
+                # Leave edifice as None unless the def states it outright, so an
+                # inherited <isEdifice>false</isEdifice> still reaches the child.
+                # (HiddenConduit carries its own <building> block but takes
+                # isEdifice=false from PowerConduit; guessing True from the mere
+                # presence of <building> made every wall-with-conduit a warning.)
                 ed = re.search(r"<isEdifice>\s*(\w+)\s*</isEdifice>", blk)
-                edifice = None
-                if ed:
-                    edifice = ed.group(1).lower() == "true"
-                elif "<building>" in blk:
-                    edifice = True  # has a building block, no explicit override
+                edifice = ed.group(1).lower() == "true" if ed else None
 
                 rec = (size, transmits, edifice, parent.group(1) if parent else None)
                 if dn:
@@ -277,8 +341,15 @@ def check_structures(roots, table):
 
 
 def main():
-    args = [a for a in sys.argv[1:] if not a.startswith("--")]
-    strict = "--strict" in sys.argv
+    argv = sys.argv[1:]
+    strict = "--strict" in argv
+    data_hint = None
+    if "--data" in argv:
+        i = argv.index("--data")
+        if i + 1 < len(argv):
+            data_hint = argv[i + 1]
+            argv = argv[:i] + argv[i + 2:]
+    args = [a for a in argv if not a.startswith("--")]
 
     here = os.path.dirname(os.path.abspath(__file__))
     mod_root = os.path.abspath(os.path.join(here, "..", ".."))
@@ -292,7 +363,8 @@ def main():
             if os.path.isdir(p) and p != mod_root and not entry.startswith("."):
                 roots.append(p)
 
-    table = collect_thingdefs(roots)
+    game_data = data_hint if data_hint and os.path.isdir(data_hint) else find_game_data(mod_root)
+    table = collect_thingdefs(roots, [game_data] if game_data else [])
     errors, warns, unknown, parse_errors = check_structures(roots, table)
 
     lines = []
@@ -302,7 +374,14 @@ def main():
     lines.append("Scanned roots:")
     for r in roots:
         lines.append(f"  {r}")
-    lines.append(f"\nThingDefs resolved: {len(table)}")
+    lines.append("")
+    if game_data:
+        lines.append(f"Core/DLC defs read from: {game_data}")
+    else:
+        lines.append("Core/DLC defs: game Data folder NOT found - falling back to the")
+        lines.append("built-in VANILLA table, which covers only common defs. Pass --data")
+        lines.append("<RimWorld/Data> or set RIMWORLD_DIR for complete footprints.")
+    lines.append(f"ThingDefs resolved: {len(table)}")
     lines.append("")
     lines.append(f"ERROR  two power transmitters on one cell : {len(errors)}")
     lines.append(f"WARN   two edifices on one cell           : {len(warns)}")
@@ -319,17 +398,21 @@ def main():
     lines.append("WARNINGS - edifices sharing a cell")
     lines.append("Silent at runtime: GenSpawn's WipeMode deletes the loser, leaving holes.")
     lines.append("Remember multi-cell things use their CENTRE cell as pos.")
-    lines.append("Caveat: footprints for Core/DLC defs come from the hand-maintained VANILLA")
-    lines.append("table in this script, so a wrong entry there can produce a false warning.")
+    if game_data:
+        lines.append("Footprints for Core/DLC defs were read from the game's own Defs.")
+    else:
+        lines.append("Caveat: no game Data folder found, so Core/DLC footprints come from the")
+        lines.append("hand-maintained VANILLA table - a wrong entry there can produce a false")
+        lines.append("warning, and a missing one hides a real overlap.")
     lines.append("-" * 78)
     lines.extend(warns or ["  (none)"])
     lines.append("")
 
     if unknown:
         lines.append("-" * 78)
-        lines.append("UNRESOLVED defs (not found in any scanned mod, not in the vanilla table)")
-        lines.append("Their footprint was assumed unknown and skipped - add them to VANILLA")
-        lines.append("in this script if they matter.")
+        lines.append("UNRESOLVED defs (not found in the game Data, any scanned mod, or VANILLA)")
+        lines.append("Their footprint is unknown so they were skipped entirely - if they matter,")
+        lines.append("scan the mod that defines them too, or add them to VANILLA in this script.")
         lines.append("-" * 78)
         lines.extend(f"  {u}" for u in unknown)
         lines.append("")

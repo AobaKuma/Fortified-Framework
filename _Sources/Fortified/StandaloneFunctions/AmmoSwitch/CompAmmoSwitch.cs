@@ -16,16 +16,6 @@ namespace Fortified
         public int defaultIndex = -1;
         public int switchCooldown = 90;
         public SoundDef soundSwitch;
-        /// <summary>
-        /// Whether the implicit "default ammo" entry (index -1, which falls back to the verb's own
-        /// projectile) is offered in the switch menu and selectable at all.
-        /// <para>
-        /// Set to false for weapons whose every firing mode must be described by an explicit
-        /// <see cref="AmmoOption"/>; the comp then never rests on index -1. This is unrelated to
-        /// <see cref="AmmoOption.useDefaultProjectile"/>, which stays available as a way to expose the
-        /// verb's projectile as a *named* option carrying its own stat factors.
-        /// </para>
-        /// </summary>
         public bool includeDefaultAmmo = true;
 
         public CompProperties_AmmoSwitch()

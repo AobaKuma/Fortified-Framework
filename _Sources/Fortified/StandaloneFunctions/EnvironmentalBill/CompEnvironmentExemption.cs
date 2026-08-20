@@ -41,8 +41,26 @@ public class CompProperties_EnvironmentExemption : CompProperties
     public bool requiresNotBroken = true;     // !CompBreakdownable.BrokenDown
 
     // ---- Optional whitelists. null / empty means "no restriction". ----
-    public List<RecipeDef> onlyForRecipes;
-    public List<ThingDef> onlyForWorkTables;
+    //
+    // These are declared as raw defNames on purpose. DO NOT change them back to
+    // List<RecipeDef> / List<ThingDef>.
+    //
+    // RimWorld's cross-reference loader (DirectXmlCrossRefLoader.WantedRefForList.TryResolve)
+    // builds a def-typed list by *adding only the entries it managed to resolve*. An <li> that
+    // names a def which does not exist — a typo, a renamed def, or a def belonging to a mod that
+    // is not active — is never added; it does not even leave a null behind. An entry carrying
+    // MayRequire for an inactive mod is dropped without so much as a log line.
+    //
+    // With def-typed lists, a whitelist whose entries all fail to resolve silently collapses to an
+    // empty list, which NullOrEmpty() then reads as "no restriction" — so a facility that was meant
+    // to help exactly one bench (or one recipe) quietly turns into a blanket waiver for every
+    // environmental requirement in the game. Whitelists must fail closed, not open.
+    //
+    // Keeping the raw names means a missing target simply never matches anything: the whitelist
+    // stays non-empty, the facility keeps helping nothing, and ConfigErrors reports the dangling
+    // entry so the author can see it. The XML syntax is unchanged (<li>SomeDefName</li>).
+    public List<string> onlyForRecipes;
+    public List<string> onlyForWorkTables;
 
     public CompProperties_EnvironmentExemption()
     {
@@ -56,6 +74,35 @@ public class CompProperties_EnvironmentExemption : CompProperties
         cleanlinessOffset > 0f || temperatureRangeExpansion > 0f ||
         lightnessOffset > 0f || darknessOffset > 0f ||
         pressureOffset > 0f || vacuumOffset > 0f;
+
+    /// <summary>
+    /// Whitelist test. An undeclared (null / empty) list means "no restriction"; a declared list
+    /// only ever passes on an exact defName match, so an entry naming something that does not
+    /// exist can never widen the whitelist.
+    /// </summary>
+    private static bool NameAllowed(List<string> whitelist, string defName)
+    {
+        if (whitelist.NullOrEmpty())
+        {
+            return true;
+        }
+        if (defName.NullOrEmpty())
+        {
+            return false;
+        }
+        for (int i = 0; i < whitelist.Count; i++)
+        {
+            if (whitelist[i] == defName)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public bool AllowsRecipe(RecipeDef recipe) => NameAllowed(onlyForRecipes, recipe?.defName);
+
+    public bool AllowsWorkTable(Thing workTable) => NameAllowed(onlyForWorkTables, workTable?.def?.defName);
 
     public override IEnumerable<string> ConfigErrors(ThingDef parentDef)
     {
@@ -95,28 +142,58 @@ public class CompProperties_EnvironmentExemption : CompProperties
                          "which only matter when Odyssey is active.";
         }
 
-        if (!onlyForRecipes.NullOrEmpty())
+        // Dangling whitelist entries are not fatal — an unmatched name just means this facility
+        // helps nothing, which is the safe direction — but they are almost always a typo or a
+        // missing dependency, so say so out loud.
+        foreach (string error in WhitelistErrors(parentDef, onlyForRecipes, "onlyForRecipes",
+                                                 name => DefDatabase<RecipeDef>.GetNamedSilentFail(name) != null))
         {
-            for (int i = 0; i < onlyForRecipes.Count; i++)
+            yield return error;
+        }
+
+        foreach (string error in WhitelistErrors(parentDef, onlyForWorkTables, "onlyForWorkTables",
+                                                 name => DefDatabase<ThingDef>.GetNamedSilentFail(name) != null))
+        {
+            yield return error;
+        }
+    }
+
+    private static IEnumerable<string> WhitelistErrors(ThingDef parentDef, List<string> whitelist,
+                                                       string fieldName, System.Func<string, bool> exists)
+    {
+        if (whitelist.NullOrEmpty())
+        {
+            yield break;
+        }
+
+        bool blank = false;
+        List<string> unresolved = null;
+
+        for (int i = 0; i < whitelist.Count; i++)
+        {
+            string name = whitelist[i];
+            if (name.NullOrEmpty())
             {
-                if (onlyForRecipes[i] == null)
-                {
-                    yield return $"{parentDef.defName} CompEnvironmentExemption.onlyForRecipes contains a null entry.";
-                    break;
-                }
+                blank = true;
+                continue;
+            }
+            if (!exists(name))
+            {
+                (unresolved ??= new List<string>()).Add(name);
             }
         }
 
-        if (!onlyForWorkTables.NullOrEmpty())
+        if (blank)
         {
-            for (int i = 0; i < onlyForWorkTables.Count; i++)
-            {
-                if (onlyForWorkTables[i] == null)
-                {
-                    yield return $"{parentDef.defName} CompEnvironmentExemption.onlyForWorkTables contains a null entry.";
-                    break;
-                }
-            }
+            yield return $"{parentDef.defName} CompEnvironmentExemption.{fieldName} contains a blank entry.";
+        }
+
+        if (unresolved != null)
+        {
+            yield return $"{parentDef.defName} CompEnvironmentExemption.{fieldName} names no loaded def: " +
+                         string.Join(", ", unresolved) +
+                         ". Those entries can never be matched, so the facility grants nothing for them. " +
+                         "Check for a typo, or that the mod providing them is active.";
         }
     }
 }
@@ -191,11 +268,11 @@ public class CompEnvironmentExemption : ThingComp
         {
             return false;
         }
-        if (!p.onlyForRecipes.NullOrEmpty() && (recipe == null || !p.onlyForRecipes.Contains(recipe)))
+        if (!p.AllowsRecipe(recipe))
         {
             return false;
         }
-        if (!p.onlyForWorkTables.NullOrEmpty() && (workTable == null || !p.onlyForWorkTables.Contains(workTable.def)))
+        if (!p.AllowsWorkTable(workTable))
         {
             return false;
         }

@@ -15,6 +15,11 @@
       (CompBreakdownable). Comps that are absent are simply not checked.
     * Booleans from several linked facilities OR together; offsets sum.
     * Offsets are always a POSITIVE amount of added slack. Negative values are clamped to 0.
+    * onlyForRecipes / onlyForWorkTables are matched by defName (plain strings, NOT def
+      cross-references). Leave a list out entirely for "no restriction"; once declared, only an
+      exact defName match passes. An entry naming something that is not loaded simply never
+      matches — the facility keeps granting nothing instead of turning into a blanket waiver —
+      and ConfigErrors reports it so typos and missing dependencies are visible.
 -->
 <Defs>
 
@@ -120,6 +125,8 @@
         <!-- Raise the tolerated vacuum ceiling by 30%. -->
         <pressureOffset>0.3</pressureOffset>
 
+        <!-- Whitelists are defNames. A name that does not resolve never matches, so a typo here
+             costs this facility its usefulness instead of silently making it exempt everything. -->
         <onlyForRecipes>
           <li>FFF_Example_DelicateAssembly</li>
         </onlyForRecipes>

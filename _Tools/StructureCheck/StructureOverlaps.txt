@@ -2,18 +2,29 @@ FFF structure-layout overlap report
 ==============================================================================
 
 Scanned roots:
-  /sessions/exciting-peaceful-maxwell/mnt/Dead-Man-Switch
+  /sessions/rcw-013dmjse187eqwqckdztlzuf/mnt/_Ascension Megacorp
 
-ThingDefs resolved: 309
+ThingDefs resolved: 114
 
-ERROR  two power transmitters on one cell : 0
-WARN   two edifices on one cell           : 15
+ERROR  two power transmitters on one cell : 6
+WARN   two edifices on one cell           : 18
 
 ------------------------------------------------------------------------------
 ERRORS - power transmitters sharing a cell
 PowerNetGrid will log 'there can't be two transmitters on the same cell'.
 ------------------------------------------------------------------------------
-  (none)
+USAC_Villa_A  cell (4, 10)  ->  Battery + Battery
+        _Ascension Megacorp/1.6/Defs/StructureDef/StructureDef.xml
+USAC_Villa_A  cell (5, 10)  ->  WoodFiredGenerator + WoodFiredGenerator
+        _Ascension Megacorp/1.6/Defs/StructureDef/StructureDef.xml
+USAC_Villa_A  cell (6, 9)  ->  WoodFiredGenerator + WoodFiredGenerator
+        _Ascension Megacorp/1.6/Defs/StructureDef/StructureDef.xml
+USAC_Villa_A  cell (6, 10)  ->  WoodFiredGenerator + WoodFiredGenerator + WoodFiredGenerator + WoodFiredGenerator
+        _Ascension Megacorp/1.6/Defs/StructureDef/StructureDef.xml
+USAC_Villa_A  cell (6, 11)  ->  WoodFiredGenerator + WoodFiredGenerator
+        _Ascension Megacorp/1.6/Defs/StructureDef/StructureDef.xml
+USAC_Villa_A  cell (7, 10)  ->  WoodFiredGenerator + WoodFiredGenerator
+        _Ascension Megacorp/1.6/Defs/StructureDef/StructureDef.xml
 
 ------------------------------------------------------------------------------
 WARNINGS - edifices sharing a cell
@@ -22,50 +33,60 @@ Remember multi-cell things use their CENTRE cell as pos.
 Caveat: footprints for Core/DLC defs come from the hand-maintained VANILLA
 table in this script, so a wrong entry there can produce a false warning.
 ------------------------------------------------------------------------------
-DMS_Ruin_B  cell (18, 12)  ->  Wall + DMS_Wreckage_Chunk
-        Dead-Man-Switch/1.6/NewContent/Defs/GenStructures/Ruin_ScatteredSmall.xml
-DMS_Ruin_B  cell (19, 12)  ->  Wall + DMS_Wreckage_Chunk
-        Dead-Man-Switch/1.6/NewContent/Defs/GenStructures/Ruin_ScatteredSmall.xml
-DMS_Ruin_E  cell (9, 9)  ->  DMS_Wreckage_Chunk + DMS_ChunkSlag_Old
-        Dead-Man-Switch/1.6/NewContent/Defs/GenStructures/Ruin_ScatteredSmall.xml
-DMS_Ruin_E  cell (20, 21)  ->  DMS_Wreckage_Chunk + DMS_ChunkSlag_Old
-        Dead-Man-Switch/1.6/NewContent/Defs/GenStructures/Ruin_ScatteredSmall.xml
-DMS_Ruin_E  cell (21, 11)  ->  DMS_Wreckage_Chunk + DMS_Wreckage_SentryGun
-        Dead-Man-Switch/1.6/NewContent/Defs/GenStructures/Ruin_ScatteredSmall.xml
-DMS_Ruin_F  cell (10, 13)  ->  DMS_ChunkSlag_Old + AncientRazorWire
-        Dead-Man-Switch/1.6/NewContent/Defs/GenStructures/Ruin_ScatteredSmall.xml
-DMS_Ruin_F  cell (19, 8)  ->  DMS_Building_MissileLauncherDestoryed + DMS_ChunkSlag_Old
-        Dead-Man-Switch/1.6/NewContent/Defs/GenStructures/Ruin_ScatteredSmall.xml
-DMS_Ruin_G  cell (10, 14)  ->  AncientMilitaryCrate + AncientMilitaryCrate
-        Dead-Man-Switch/1.6/NewContent/Defs/GenStructures/Ruin_ScatteredSmall.xml
-DMS_Ruin_G  cell (10, 15)  ->  AncientMilitaryCrate + AncientMilitaryCrate
-        Dead-Man-Switch/1.6/NewContent/Defs/GenStructures/Ruin_ScatteredSmall.xml
-DMS_Ruin_G  cell (11, 14)  ->  AncientMilitaryCrate + AncientMilitaryCrate
-        Dead-Man-Switch/1.6/NewContent/Defs/GenStructures/Ruin_ScatteredSmall.xml
-DMS_Ruin_G  cell (11, 15)  ->  AncientMilitaryCrate + AncientMilitaryCrate
-        Dead-Man-Switch/1.6/NewContent/Defs/GenStructures/Ruin_ScatteredSmall.xml
-DMS_Ruin_G  cell (12, 15)  ->  AncientMilitaryCrate + DMS_Building_Scanner_LargeDestoryed
-        Dead-Man-Switch/1.6/NewContent/Defs/GenStructures/Ruin_ScatteredSmall.xml
-DMS_Ruin_I  cell (26, 19)  ->  Sandbags + AncientMilitaryCrate
-        Dead-Man-Switch/1.6/NewContent/Defs/GenStructures/Ruin_ScatteredSmall.xml
-DMS_Ruin_K  cell (6, 5)  ->  Wall + Battery
-        Dead-Man-Switch/1.6/NewContent/Defs/GenStructures/Ruin_ScatteredSmall.xml
-DMS_Ruin_L  cell (13, 16)  ->  Wall + DMS_RollingDoor_Double
-        Dead-Man-Switch/1.6/NewContent/Defs/GenStructures/Ruin_ScatteredSmall.xml
+USAC_Villa_A  cell (4, 10)  ->  Battery + Battery
+        _Ascension Megacorp/1.6/Defs/StructureDef/StructureDef.xml
+USAC_Villa_A  cell (4, 11)  ->  Battery + Wall
+        _Ascension Megacorp/1.6/Defs/StructureDef/StructureDef.xml
+USAC_Villa_A  cell (5, 10)  ->  WoodFiredGenerator + WoodFiredGenerator
+        _Ascension Megacorp/1.6/Defs/StructureDef/StructureDef.xml
+USAC_Villa_A  cell (5, 11)  ->  WoodFiredGenerator + Wall
+        _Ascension Megacorp/1.6/Defs/StructureDef/StructureDef.xml
+USAC_Villa_A  cell (6, 9)  ->  WoodFiredGenerator + WoodFiredGenerator
+        _Ascension Megacorp/1.6/Defs/StructureDef/StructureDef.xml
+USAC_Villa_A  cell (6, 10)  ->  WoodFiredGenerator + WoodFiredGenerator + WoodFiredGenerator + WoodFiredGenerator
+        _Ascension Megacorp/1.6/Defs/StructureDef/StructureDef.xml
+USAC_Villa_A  cell (6, 11)  ->  WoodFiredGenerator + WoodFiredGenerator + Wall
+        _Ascension Megacorp/1.6/Defs/StructureDef/StructureDef.xml
+USAC_Villa_A  cell (7, 9)  ->  WoodFiredGenerator + Door
+        _Ascension Megacorp/1.6/Defs/StructureDef/StructureDef.xml
+USAC_Villa_A  cell (7, 10)  ->  WoodFiredGenerator + Wall + WoodFiredGenerator
+        _Ascension Megacorp/1.6/Defs/StructureDef/StructureDef.xml
+USAC_Villa_A  cell (7, 11)  ->  WoodFiredGenerator + Wall
+        _Ascension Megacorp/1.6/Defs/StructureDef/StructureDef.xml
+USAC_Villa_A  cell (21, 3)  ->  USAC_Crate_Medium + USAC_Crate_Medium
+        _Ascension Megacorp/1.6/Defs/StructureDef/StructureDef.xml
+USAC_Villa_A  cell (24, 6)  ->  USAC_Crate_Large + USAC_Crate_Large
+        _Ascension Megacorp/1.6/Defs/StructureDef/StructureDef.xml
+USAC_Villa_A  cell (25, 5)  ->  USAC_Crate_Large + USAC_Crate_Large
+        _Ascension Megacorp/1.6/Defs/StructureDef/StructureDef.xml
+USAC_Villa_A  cell (25, 6)  ->  USAC_Crate_Large + USAC_Crate_Large + USAC_Crate_Large + USAC_Crate_Large
+        _Ascension Megacorp/1.6/Defs/StructureDef/StructureDef.xml
+USAC_Villa_A  cell (25, 7)  ->  USAC_Crate_Large + USAC_Crate_Large
+        _Ascension Megacorp/1.6/Defs/StructureDef/StructureDef.xml
+USAC_Villa_A  cell (26, 5)  ->  Wall + USAC_Crate_Large
+        _Ascension Megacorp/1.6/Defs/StructureDef/StructureDef.xml
+USAC_Villa_A  cell (26, 6)  ->  USAC_Crate_Large + Wall + USAC_Crate_Large
+        _Ascension Megacorp/1.6/Defs/StructureDef/StructureDef.xml
+USAC_Villa_A  cell (26, 7)  ->  USAC_Crate_Large + Wall
+        _Ascension Megacorp/1.6/Defs/StructureDef/StructureDef.xml
 
 ------------------------------------------------------------------------------
 UNRESOLVED defs (not found in any scanned mod, not in the vanilla table)
 Their footprint was assumed unknown and skipped - add them to VANILLA
 in this script if they matter.
 ------------------------------------------------------------------------------
-  AncientConcreteBarrier
-  AncientCrate
-  AncientDisplayBank
-  AncientEquipmentBlocks
-  AncientLamp
-  AncientLargeContainer
-  AncientLongCrate
-  AncientRustedJeep
-  AncientSecurityTurret
-  AncientSmallCrate
-  ToxifierGenerator
+  Couch
+  Dresser
+  ElectricStove
+  EndTable
+  FlatscreenTelevision
+  FloodLight
+  PassiveCooler
+  PlantPot
+  RoyalBed
+  Shelf
+  Stool
+  Table1x2c
+  ToolCabinet
+  Turret_MiniTurret
+  WallLamp
