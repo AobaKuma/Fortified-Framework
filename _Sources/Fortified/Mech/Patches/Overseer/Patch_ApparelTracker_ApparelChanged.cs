@@ -16,9 +16,11 @@ namespace Fortified
 		[HarmonyPostfix]
 		public static void Postfix(Pawn_ApparelTracker __instance)
 		{
-			if (__instance.pawn is IOverseerMech mech)
+			//Vanilla notification path - must never throw. Comp can be null on a mech
+			//that implements IOverseerMech but has no CompOverseer on its def.
+			if (__instance?.pawn is IOverseerMech mech)
 			{
-				mech.Comp.Notify_BandwidthChanged();
+				mech.Comp?.Notify_BandwidthChanged();
 			}
 		}
 	}

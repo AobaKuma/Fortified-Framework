@@ -15,7 +15,9 @@ namespace Fortified
 		[HarmonyPrefix]
 		public static void Prefix(Pawn_MechanitorTracker __instance)
 		{
-			__instance.Pawn.GetParentOverseer()?.Comp.RecacheValues();
+			//Vanilla notification path - must never throw. GetParentOverseer only
+			//resolves for dummy pawns, and the overseer's Comp can still be null.
+			__instance?.Pawn?.GetParentOverseer()?.Comp?.RecacheValues();
 		}
 	}
 }

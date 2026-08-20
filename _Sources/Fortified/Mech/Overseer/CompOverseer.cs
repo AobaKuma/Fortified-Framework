@@ -167,14 +167,31 @@ namespace Fortified
 
         public void Notify_BandwidthChanged()
         {
-            dummyPawn?.mechanitor.Notify_BandwidthChanged();
+            dummyPawn?.mechanitor?.Notify_BandwidthChanged();
         }
 
 		public void RecacheValues()
         {
             cachedCommandRange = null;
             cachedBandwidth = null;
-			Hediff_Dummy hediff = (Hediff_Dummy)dummyPawn.health.GetOrAddHediff(FFF_DefOf.FFF_DummyHediff);
+            RefreshDummyHediff();
+		}
+
+		//IMPORTANT: this runs from Harmony patches on vanilla notification paths
+		//(Pawn_MechanitorTracker.Notify_BandwidthChanged), so it must never throw.
+		//dummyPawn only exists for player-faction overseers, and another mod may swap
+		//the hediffClass of FFF_DummyHediff - neither may be assumed.
+		private void RefreshDummyHediff()
+		{
+			if (dummyPawn == null || dummyPawn.health == null || parent == null || FFF_DefOf.FFF_DummyHediff == null)
+			{
+				return;
+			}
+			if (dummyPawn.health.GetOrAddHediff(FFF_DefOf.FFF_DummyHediff) is not Hediff_Dummy hediff)
+			{
+				Log.ErrorOnce("[FFF] " + FFF_DefOf.FFF_DummyHediff.defName + " did not resolve to a Hediff_Dummy on " + parent.LabelCap + "; overseer control is disabled for it.", (parent.thingIDNumber ^ 0x0FF0DEF));
+				return;
+			}
 			hediff.overseer = parent as IOverseer;
 			hediff.Severity = Mathf.Max((int)parent.GetStatValue(StatDefOf.MechControlGroups) - 2, 0.1f);
 		}
@@ -207,6 +224,11 @@ namespace Fortified
             {
                 PawnGenerationRequest req = new PawnGenerationRequest(FFF_DefOf.FFF_Dummy, Faction.OfAncients, forcedXenotype: XenotypeDefOf.Baseliner, forceGenerateNewPawn: true);
                 dummyPawn = PawnGenerator.GeneratePawn(req);
+                if (dummyPawn == null)
+                {
+                    Log.ErrorOnce("[FFF] Failed to generate the overseer dummy pawn for " + parent.LabelCap + "; overseer control is disabled for it.", (parent.thingIDNumber ^ 0x0FF0DAD));
+                    return;
+                }
                 dummyPawn.SetFactionDirect(parent.Faction);
                 dummyPawn.Name = new NameSingle(parent.LabelCap);
                 for (int num = dummyPawn.health.hediffSet.hediffs.Count - 1; num >= 0; num--)
@@ -219,9 +241,7 @@ namespace Fortified
                     dummyPawn.health.RemoveHediff(h);
                 }
             }
-            Hediff_Dummy hediff = (Hediff_Dummy)dummyPawn.health.GetOrAddHediff(FFF_DefOf.FFF_DummyHediff);
-            hediff.overseer = parent as IOverseer;
-            hediff.Severity = Mathf.Max((int)parent.GetStatValue(StatDefOf.MechControlGroups) - 2, 0.1f);
+            RefreshDummyHediff();
 			PawnComponentsUtility.AddComponentsForSpawn(dummyPawn);
             PawnComponentsUtility.AddAndRemoveDynamicComponents(dummyPawn);
             dummyPawn.mechanitor.Notify_BandwidthChanged();

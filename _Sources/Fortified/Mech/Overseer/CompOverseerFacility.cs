@@ -46,9 +46,10 @@ namespace Fortified
 
 		protected virtual void Notify_LinkAdded(CompFacility facility, Thing thing)
 		{
+			//Comp is null when a thing implements IOverseer without a CompOverseer on its def.
 			if (thing is IOverseer overseer)
 			{
-				overseer.Comp.Notify_BandwidthChanged();
+				overseer.Comp?.Notify_BandwidthChanged();
 			}
 		}
 
@@ -56,21 +57,27 @@ namespace Fortified
 		{
 			if (thing is IOverseer overseer)
 			{
-				overseer.Comp.Notify_BandwidthChanged();
+				overseer.Comp?.Notify_BandwidthChanged();
 			}
 		}
 
 		public override void ReceiveCompSignal(string signal)
 		{
 			base.ReceiveCompSignal(signal);
-			if (signal == "PowerTurnedOff" || signal == "PowerTurnedOn")
+			if (signal != "PowerTurnedOff" && signal != "PowerTurnedOn")
 			{
-				foreach(Thing t in LinkedBuildings)
+				return;
+			}
+			List<Thing> linked = LinkedBuildings;
+			if (linked == null)
+			{
+				return;
+			}
+			for (int i = 0; i < linked.Count; i++)
+			{
+				if (linked[i] is IOverseer overseer)
 				{
-					if (t is IOverseer overseer)
-					{
-						overseer.Comp.Notify_BandwidthChanged();
-					}
+					overseer.Comp?.Notify_BandwidthChanged();
 				}
 			}
 		}

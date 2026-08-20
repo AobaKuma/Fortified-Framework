@@ -41,7 +41,7 @@
   <StatDef MayRequire="Ludeon.RimWorld.Biotech">
     <defName>FFF_MechCommandRange</defName>
     <label>mech command range</label>
-    <description>Required pawn body size to equip this weapon.</description>
+    <description>The radius within which this overseer can command the mechanoids it controls. Mechanoids outside this radius cannot be given orders.</description>
     <category>Mechanitor</category>
     <defaultBaseValue>0</defaultBaseValue>
     <minValue>0</minValue>

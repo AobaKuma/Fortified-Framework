@@ -10,9 +10,9 @@
   <FFF_Substation_HackedMsg>{HACKER_labelShort} 已關閉 {SUBJECT_label}。</FFF_Substation_HackedMsg>
 
   <!-- 設施狀態 -->
-  <FFF_Substation_Online>狀態：運作中 — 輸出 3000 W</FFF_Substation_Online>
+  <FFF_Substation_Online>狀態：運作中</FFF_Substation_Online>
   <FFF_Substation_Offline>狀態：離線（手動關閉）</FFF_Substation_Offline>
-  <FFF_Substation_EMPDisabled>狀態：被 EMP 停用</FFF_Substation_EMPDisabled>
+  <FFF_Substation_EMPDisabled>狀態：電磁脈衝保護</FFF_Substation_EMPDisabled>
 
   <!-- 事件訊息 -->
   <FFF_Substation_ShockMessage>{PAWN_labelShort} 在關閉配電箱時遭到電擊！</FFF_Substation_ShockMessage>

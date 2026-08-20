@@ -17,20 +17,29 @@ namespace Fortified
 		public static IEnumerable<Gizmo> Postfix(IEnumerable<Gizmo> __result, FormCaravanComp __instance)
 		{
 			bool flag = false;
-			foreach (Gizmo g in __result)
+			if (__result != null)
 			{
-				if (g is Command_Action action && action.tutorTag == "ReformCaravan")
+				foreach (Gizmo g in __result)
 				{
-					flag = true;
+					if (g is Command_Action action && action.tutorTag == "ReformCaravan")
+					{
+						flag = true;
+					}
+					yield return g;
 				}
-				yield return g;
 			}
 			if (flag)
 			{
 				yield break;
 			}
-			MapParent mapParent = (MapParent)__instance.parent;
-			if (mapParent.HasMap && __instance.Reform && mapParent.Map.mapPawns.FreeColonistsSpawned.Count == 0 && !__instance.AnyActiveThreatNow && mapParent.Map.mapPawns.PawnsInFaction(Faction.OfPlayerSilentFail).Any((x) => x is ICaravanOwner owner && owner.CanCaravan))
+			//FormCaravanComp lives on a MapParent in vanilla, but the cast is not
+			//guaranteed once other mods attach the comp elsewhere.
+			if (__instance.parent is not MapParent mapParent || !mapParent.HasMap || mapParent.Map == null)
+			{
+				yield break;
+			}
+			Faction playerFaction = Faction.OfPlayerSilentFail;
+			if (playerFaction != null && __instance.Reform && mapParent.Map.mapPawns.FreeColonistsSpawned.Count == 0 && !__instance.AnyActiveThreatNow && mapParent.Map.mapPawns.PawnsInFaction(playerFaction).Any((x) => x is ICaravanOwner owner && owner.CanCaravan))
 			{
 				Command_Action command_Action = new Command_Action();
 				command_Action.defaultLabel = "CommandReformCaravan".Translate();
