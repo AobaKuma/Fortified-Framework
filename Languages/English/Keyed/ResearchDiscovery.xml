@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- ==================== Research discovery (Fortified.ModExtension_ResearchDiscovery) ==================== -->
+  <FFF_Research_DiscoveredLetterLabel>Research revealed</FFF_Research_DiscoveredLetterLabel>
+  <FFF_Research_DiscoveredLetterText>Your latest findings have given context to material that was previously unreadable. The following research projects are no longer unknown and can now be started:</FFF_Research_DiscoveredLetterText>
+
+</LanguageData>

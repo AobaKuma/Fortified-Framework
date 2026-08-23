@@ -192,7 +192,8 @@ namespace Fortified
                 {
                     ResearchProjectDef p = all[i];
                     if (p.knowledgeCategory == cat && p.baseCost <= 0f && p.knowledgeCost > 0f
-                        && !p.IsFinished && p.PrerequisitesCompleted)
+                        && !p.IsFinished && p.PrerequisitesCompleted
+                        && !ResearchDiscoveryUtility.IsUndiscovered(p))
                     {
                         return true;
                     }
@@ -213,6 +214,8 @@ namespace Fortified
             List<ResearchProjectDef> candidates = DefDatabase<ResearchProjectDef>.AllDefsListForReading
                 .Where(p => p.knowledgeCategory == category && p.baseCost <= 0f && p.knowledgeCost > 0f)
                 .Where(p => !p.IsFinished && p.PrerequisitesCompleted)
+                // 未探明的專案不接受知識注入：玩家連它存在都還不知道，不該被暗中推進。
+                .Where(p => !ResearchDiscoveryUtility.IsUndiscovered(p))
                 .OrderBy(p => p.researchViewY)
                 .ThenBy(p => p.researchViewX)
                 .ThenBy(p => p.knowledgeCost)

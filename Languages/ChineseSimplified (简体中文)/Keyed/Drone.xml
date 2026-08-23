@@ -52,4 +52,16 @@
   <!-- EN: Command all {0} controlled by this platform to withdraw, which will replenish the {1} consumption. -->
   <FFF.RetractDronesDesc>命令所有由此平台所控制的{0}撤回部署平台，这将补充平台部署无人机时的{1}消耗。</FFF.RetractDronesDesc>
 
+
+  <!-- EN: Deploy type: {0} -->
+  <FFF.Drone.SelectKind>部署型号：{0}</FFF.Drone.SelectKind>
+  <!-- EN: Choose which unit type this platform deploys. Units already in the field are not affected. -->
+  <FFF.Drone.SelectKindDesc>选择这座平台要部署的无人机型号。已经在场上的单位不受影响。</FFF.Drone.SelectKindDesc>
+  <!-- EN: requires {0} -->
+  <FFF.Drone.KindLocked>需要 {0}</FFF.Drone.KindLocked>
+  <!-- EN: No deployable unit type available -->
+  <FFF.Drone.NoSpawnKind>没有可部署的型号</FFF.Drone.NoSpawnKind>
+  <!-- EN: drones -->
+  <FFF.Drone.GenericPlural>无人机</FFF.Drone.GenericPlural>
+
 </LanguageData>

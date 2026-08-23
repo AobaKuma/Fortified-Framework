@@ -31,4 +31,11 @@
   <FFF.RetractDrones>Retract all {0}</FFF.RetractDrones>
   <FFF.RetractDronesDesc>Command all {0} controlled by this platform to withdraw, which will replenish the {1} consumption.</FFF.RetractDronesDesc>
 
+
+  <FFF.Drone.SelectKind>Deploy type: {0}</FFF.Drone.SelectKind>
+  <FFF.Drone.SelectKindDesc>Choose which unit type this platform deploys. Units already in the field are not affected.</FFF.Drone.SelectKindDesc>
+  <FFF.Drone.KindLocked>requires {0}</FFF.Drone.KindLocked>
+  <FFF.Drone.NoSpawnKind>No deployable unit type available</FFF.Drone.NoSpawnKind>
+  <FFF.Drone.GenericPlural>drones</FFF.Drone.GenericPlural>
+
 </LanguageData>

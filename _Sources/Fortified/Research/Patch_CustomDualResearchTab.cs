@@ -105,7 +105,8 @@ namespace Fortified
                 foreach (var cat in categories)
                 {
                     var proj = ResearchTabUtility.GetActiveProjectForCategory(cat);
-                    if (proj != null)
+                    // 未探明的專案不得成為選取目標，否則右側面板會洩漏它的名稱與描述。
+                    if (proj != null && !proj.IsHidden)
                     {
                         selectedProject = proj;
                         break;
@@ -116,7 +117,8 @@ namespace Fortified
                 // single global current research project so the panel still has a sensible selection.
                 if (selectedProject == null)
                 {
-                    selectedProject = Find.ResearchManager.GetProject();
+                    ResearchProjectDef fallback = Find.ResearchManager.GetProject();
+                    selectedProject = (fallback != null && fallback.IsHidden) ? null : fallback;
                 }
 
                 // Update the selectedProject field
@@ -163,6 +165,13 @@ namespace Fortified
                 }
 
                 ResearchProjectDef selectedProject = GetSelectedProject(__instance);
+
+                // 未探明的專案一律當作「沒有選取」：不畫標題、描述、解鎖清單與開發者按鈕。
+                // 正常流程進不到這裡（原生點擊會拒絕隱藏節點），這是對其他 mod 的保底。
+                if (selectedProject != null && selectedProject.IsHidden)
+                {
+                    selectedProject = null;
+                }
 
                 // Determine number of active project slots
                 int numSlots = ResearchTabUtility.GetProjectSlotCount(currentTab);
@@ -288,7 +297,7 @@ namespace Fortified
                 Rect colRect = new Rect(rect.x + i * colWidth, rect.y, colWidth, rect.height);
 
                 ResearchProjectDef proj = ResearchTabUtility.GetActiveProjectForCategory(cat);
-                if (proj != null)
+                if (proj != null && !proj.IsHidden)
                 {
                     anyProject = true;
                     DrawProjectProgress(__instance, colRect, proj, cat.LabelCap, prefixWidth);

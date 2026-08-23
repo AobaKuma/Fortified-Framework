@@ -1,0 +1,73 @@
+FFF build report
+generated : 2026-08-23 16:00:03
+config    : Release
+roots     : D:\Steam\steamapps\common\RimWorld\Mods\_Fortified-Framework, D:\Steam\steamapps\common\RimWorld\Mods\3075384838, D:\Steam\steamapps\common\RimWorld\Mods\3313313985, D:\Steam\steamapps\common\RimWorld\Mods\Camping tent, D:\Steam\steamapps\common\RimWorld\Mods\Dead-Man-Switch, D:\Steam\steamapps\common\RimWorld\Mods\Fishery, D:\Steam\steamapps\common\RimWorld\Mods\Performance-Fish, D:\Steam\steamapps\common\RimWorld\Mods\Prepatcher, D:\Steam\steamapps\common\RimWorld\Mods\RimThunder-Core, D:\Steam\steamapps\common\RimWorld\Mods\Rimworld-Pregnator-main, D:\Steam\steamapps\common\RimWorld\Mods\SolarSpawn, D:\Steam\steamapps\common\RimWorld\Mods\VanillaExpandedFramework, D:\Steam\steamapps\common\RimWorld\Mods\Vehicle-Framework, D:\Steam\steamapps\common\RimWorld\Mods\_Ancient-Urban-Ruins, D:\Steam\steamapps\common\RimWorld\Mods\_Ascension Megacorp, D:\Steam\steamapps\common\RimWorld\Mods\_CindersFromTheEmbergarden, D:\Steam\steamapps\common\RimWorld\Mods\_Dead-Man-Switch-AncientCorps, D:\Steam\steamapps\common\RimWorld\Mods\_Dead-Man-Switch-MobileDragoon, D:\Steam\steamapps\common\RimWorld\Mods\_KaiShek Logistic, D:\Steam\steamapps\common\RimWorld\Mods\_NymphTheMilitaryNightmare
+elapsed   : 18.5s
+
+==========================================================================
+SUMMARY
+==========================================================================
+  OK       BreadMoAncientFarm         13.5s  E0   W3    D:\Steam\steamapps\common\RimWorld\Mods\3075384838\Source\BreadMoAncientFarm\BreadMoAncientFarm\bin\Release\BreadMoAncientFarm.dll
+  OK       AncientAmorphousThreat      1.6s  E0   W140  D:\Steam\steamapps\common\RimWorld\Mods\3313313985\_source\AncientAmorphousThreat\bin\Release\AncientAmorphousThreat.dll
+  FAILED   AncientMarket_Libraray      3.3s  E1   W11   D:\Steam\steamapps\common\RimWorld\Mods\_Ancient-Urban-Ruins\_Sources\AncientMarket_Libraray-master\AncientMarket_Libraray\bin\Release\AncientMarket_Libraray.dll
+  SKIPPED  AncientMarketAI_Libraray    0.0s  E0   W0    D:\Steam\steamapps\common\RimWorld\Mods\_Ancient-Urban-Ruins\_Sources\AncientMarketAI_Libraray-master\AncientMarketAI_Libraray\bin\Release\AncientMarketAI_Libraray.dll
+  SKIPPED  Embergarden                 0.0s  E0   W0    D:\Steam\steamapps\common\RimWorld\Mods\_CindersFromTheEmbergarden\_Sources\Embergarden\Embergarden\bin\Release\Embergarden.dll
+  SKIPPED  WeaponSwitch                0.0s  E0   W0    D:\Steam\steamapps\common\RimWorld\Mods\_CindersFromTheEmbergarden\_Sources\Embergarden\WeaponSwitch\WeaponSwitch\WeaponSwitch\bin\Release\CinderWeaponSwitch.dll
+  SKIPPED  AncientCorps                0.0s  E0   W0    D:\Steam\steamapps\common\RimWorld\Mods\_Dead-Man-Switch-AncientCorps\_source\AncientCorps\bin\Release\AncientCorps.dll
+  SKIPPED  Fortified                   0.0s  E0   W0    D:\Steam\steamapps\common\RimWorld\Mods\_Fortified-Framework\1.6\Assemblies\Fortified.dll
+  SKIPPED  ROCALogistic                0.0s  E0   W0    D:\Steam\steamapps\common\RimWorld\Mods\_KaiShek Logistic\1.6\Assemblies\ROCALogistic.dll
+  SKIPPED  CompGiveThought             0.0s  E0   W0    D:\Steam\steamapps\common\RimWorld\Mods\Camping tent\source\CompGiveThought\CompGiveThought\bin\Release\CompGiveThought.dll
+  SKIPPED  tent                        0.0s  E0   W0    D:\Steam\steamapps\common\RimWorld\Mods\Camping tent\source\tent\bin\Release\Tent.dll
+  SKIPPED  FisheryLib.Tests            0.0s  E0   W0    (output path unknown)
+  SKIPPED  1.2                         0.0s  E0   W0    (output path unknown)
+  SKIPPED  1.3                         0.0s  E0   W0    (output path unknown)
+  SKIPPED  1.4                         0.0s  E0   W0    (output path unknown)
+  SKIPPED  1.5                         0.0s  E0   W0    (output path unknown)
+  SKIPPED  PerformanceFish.Tests       0.0s  E0   W0    (output path unknown)
+  SKIPPED  1.4                         0.0s  E0   W0    (output path unknown)
+  SKIPPED  1.5                         0.0s  E0   W0    (output path unknown)
+  SKIPPED  API                         0.0s  E0   W0    (output path unknown)
+  SKIPPED  DataAssembly                0.0s  E0   W0    D:\Steam\steamapps\common\RimWorld\Mods\Prepatcher\Assemblies\0PrepatcherDataAssembly.dll
+  SKIPPED  Prepatcher                  0.0s  E0   W0    D:\Steam\steamapps\common\RimWorld\Mods\Prepatcher\Assemblies\net472\Prepatcher.dll
+  SKIPPED  Prestarter                  0.0s  E0   W0    (output path unknown)
+  SKIPPED  TestAssemblyTarget          0.0s  E0   W0    (output path unknown)
+  SKIPPED  Motorization                0.0s  E0   W0    D:\Steam\steamapps\common\RimWorld\Mods\RimThunder-Core\_Sources\Motorization\Motorization\bin\Release\Motorization.dll
+  SKIPPED  Insect_Library              0.0s  E0   W0    D:\Steam\steamapps\common\RimWorld\Mods\Rimworld-Pregnator-main\_Source\Insect_Library\bin\Release\Insect_Library.dll
+  SKIPPED  SolarSpawn                  0.0s  E0   W0    D:\Steam\steamapps\common\RimWorld\Mods\SolarSpawn\Assemblies\SolarSpawn.dll
+  SKIPPED  ModSettingsFramework        0.0s  E0   W0    D:\Steam\steamapps\common\RimWorld\Mods\VanillaExpandedFramework\1.6\Assemblies\0ModSettingsFramework.dll
+  SKIPPED  MVCF                        0.0s  E0   W0    D:\Steam\steamapps\common\RimWorld\Mods\VanillaExpandedFramework\1.2\Assemblies\MVCF.dll
+  SKIPPED  DevTools                    0.0s  E0   W0    (output path unknown)
+  SKIPPED  CoreLib                     0.0s  E0   W0    (output path unknown)
+  SKIPPED  SmashTools.Analyzer         0.0s  E0   W0    (output path unknown)
+  SKIPPED  SmashTools                  0.0s  E0   W0    (output path unknown)
+  SKIPPED  Test_Burst                  0.0s  E0   W0    (output path unknown)
+  SKIPPED  Test_CoreLib                0.0s  E0   W0    (output path unknown)
+  SKIPPED  Test_SmashTools             0.0s  E0   W0    (output path unknown)
+  SKIPPED  Test_Vehicles               0.0s  E0   W0    (output path unknown)
+  SKIPPED  Vehicles                    0.0s  E0   W0    (output path unknown)
+  SKIPPED  UpdateLog                   0.0s  E0   W0    (output path unknown)
+  SKIPPED  AncientAmorphousThreatCE    0.0s  E0   W0    D:\Steam\steamapps\common\RimWorld\Mods\3313313985\_source\AncientAmorphousThreatCE\bin\Release\AncientAmorphousThreatCE.dll
+  SKIPPED  AncientAmorphousThreatHarmony    0.0s  E0   W0    D:\Steam\steamapps\common\RimWorld\Mods\3313313985\_source\AncientAmorphousThreatHarmony\bin\Release\AncientAmorphousThreatHarmony.dll
+  SKIPPED  USAC                        0.0s  E0   W0    D:\Steam\steamapps\common\RimWorld\Mods\_Ascension Megacorp\1.6\Assemblies\USAC.dll
+  SKIPPED  EmbergardenCE               0.0s  E0   W0    D:\Steam\steamapps\common\RimWorld\Mods\_CindersFromTheEmbergarden\_Sources\Embergarden\EmbergardenCE\bin\Release\EmbergardenCE.dll
+  SKIPPED  FortifiedCE                 0.0s  E0   W0    D:\Steam\steamapps\common\RimWorld\Mods\_Fortified-Framework\1.6\CE\Assemblies\FortifiedCE.dll
+  SKIPPED  DMS                         0.0s  E0   W0    D:\Steam\steamapps\common\RimWorld\Mods\Dead-Man-Switch\1.6\Assemblies\DMS.dll
+  SKIPPED  Implementation              0.0s  E0   W0    D:\Steam\steamapps\common\RimWorld\Mods\Prepatcher\Assemblies\PrepatcherImpl.dll
+  SKIPPED  TestAssembly                0.0s  E0   W0    (output path unknown)
+  SKIPPED  MotorizationCE              0.0s  E0   W0    D:\Steam\steamapps\common\RimWorld\Mods\RimThunder-Core\_Sources\Motorization\MotorizationCE\bin\Release\MotorizationCE.dll
+  SKIPPED  Tests                       0.0s  E0   W0    (output path unknown)
+  SKIPPED  KCSG                        0.0s  E0   W0    D:\Steam\steamapps\common\RimWorld\Mods\VanillaExpandedFramework\1.6\Assemblies\KCSG.dll
+  SKIPPED  Outposts                    0.0s  E0   W0    D:\Steam\steamapps\common\RimWorld\Mods\VanillaExpandedFramework\1.6\Assemblies\Outposts.dll
+  SKIPPED  PipeSystem                  0.0s  E0   W0    D:\Steam\steamapps\common\RimWorld\Mods\VanillaExpandedFramework\1.6\Assemblies\PipeSystem.dll
+  SKIPPED  VEF                         0.0s  E0   W0    D:\Steam\steamapps\common\RimWorld\Mods\VanillaExpandedFramework\1.6\Assemblies\VEF.dll
+
+  ! circular references between: kcsg.csproj, outposts.csproj, pipesystem.csproj, vef.csproj
+
+==========================================================================
+AncientMarket_Libraray  (D:\Steam\steamapps\common\RimWorld\Mods\_Ancient-Urban-Ruins\_Sources\AncientMarket_Libraray-master\AncientMarket_Libraray\AncientMarket_Libraray.csproj)
+==========================================================================
+
+ERRORS (1)
+
+  C:\Program Files\dotnet\sdk\10.0.400\Microsoft.Common.CurrentVersion.targets
+    line 6120  MSB3073  "copy D:\Steam\steamapps\common\RimWorld\Mods\_Ancient-Urban-Ruins\_Sources\AncientMarket_Libraray-master\AncientMarket_Libraray\bin\Release\AncientMarket_Libraray.dll D:\Game\Steam\steamapps\common\RimWorld\Mods\_Ancient-Urban-Ruins\1.6\Assemblies" 命令以返回碼 1 結束。
