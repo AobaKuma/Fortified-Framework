@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ═══════════════════════════════════════════════════════════════════════
+   pullFromLinkedStorage 手動測試檔（不會隨創意工坊上傳，見 .rimignore）
+  ═══════════════════════════════════════════════════════════════════════
+
+  這個檔案把原版貨架（Shelf）改造成可抽料的儲存來源，並加入一台
+  一次性的測試工作台，用來驗證「自動工作台直接從連結的儲存建築拿料」。
+
+  ── 測試步驟 ────────────────────────────────────────────────────────
+   1. 開發者模式生成一台「測試自動工作台」（家具 → 生產分頁，或用 Debug spawn）。
+   2. 緊貼著它蓋一座原版貨架（需要「複雜家具」研究，測試時直接 Debug 解鎖即可）。
+      選取任一邊應該看得到藍色連結線；看不到就是距離超過 12 或視線被擋。
+   3. 把鋼材丟進貨架。
+   4. 在工作台加一張「測試：鋼材煉銀」訂單，重複模式設成「永遠重複」。
+   5. 什麼都不要做。機台應該每 60 tick 檢查一次，把 10 鋼材吸進去、
+      自己開工、600 工作量跑完後把 20 白銀吐在互動格旁邊，然後重複。
+
+  ── 預期會看到的行為 ─────────────────────────────────────────────────
+   * 貨架斷開連結（拆掉或移遠）→ 機台停在「等待原料」，不會自己去搬地上的東西。
+   * 鋼材被禁止（Forbid）→ 不會被抽走。
+   * 有殖民者正在前往這台機器（有預約）→ 這一輪整個跳過，改由小人送料。
+   * 貨架裡的鋼材不足 10 → 一顆都不會被搬進機台（全有全無）。
+
+  ── 這台測試機刻意「沒有」CompPowerTrader ────────────────────────────
+   Building_WorkTable.CanWorkWithoutPower 在 powerComp 為 null 時回傳 true，
+   所以它照樣能運作；同時這也是 Tick() / Cancel() 那兩處 Power NRE 修正的回歸測試。
+   要測有電的情況，自己加一個 CompProperties_Power 進去即可。
+
+  ── 測完請把這個檔案刪掉 ─────────────────────────────────────────────
+   它會給「所有」原版貨架掛上 CompProperties_Facility。行為無害，
+   但貨架的檢視面板會多出連結資訊，不該留在正式版裡。
+-->
+<Patch>
+
+  <!-- ═══ 1. 讓原版貨架變成「可連結而且可抽料」的來源 ═══════════════════
+
+       ⚠ Patch 作用在「還沒套用繼承的原始 XML」上。
+         Shelf 自己只寫了 defName / graphicData / statBases / size / building，
+         <comps> 是在它的父定義 StorageShelfBase 上，所以
+         /Defs/ThingDef[defName="Shelf"]/comps 這條 xpath 找不到節點會直接失敗。
+
+         解法是把整個 <comps> 節點加到 Shelf 自己身上。繼承時
+         XmlInheritance.RecursiveNodeCopyOverwriteElements 對名稱相同的節點會遞迴，
+         而其中的 <li> 一律是「附加」而不是覆蓋，所以父定義的
+         CompProperties_Styleable 不會被蓋掉。
+
+         另一個選擇是改去 patch 父定義 /Defs/ThingDef[@Name="StorageShelfBase"]/comps，
+         那會連小貨架 ShelfSmall 一起生效。這裡選前者，把影響範圍留在大貨架上。
+
+       連結關係是雙向宣告的：這裡給貨架 CompProperties_Facility，
+       下面的工作台再把 Shelf 列進 linkableFacilities。
+       CompProperties_Facility.ResolveReferences 會反過來掃描所有 ThingDef，
+       所以只要兩邊都寫對，先後順序無所謂。                            -->
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/ThingDef[defName="Shelf"]</xpath>
+    <value>
+
+      <comps>
+        <li Class="CompProperties_Facility">
+          <!-- 一台工作台最多接 4 座貨架（原版預設是 1，測試時太少）。 -->
+          <maxSimultaneous>4</maxSimultaneous>
+          <!-- 原版預設 8，放寬一點方便擺放。 -->
+          <maxDistance>12</maxDistance>
+          <!-- 貨架沒有 statOffsets，檢視面板不必顯示「最大連結數」。 -->
+          <showMaxSimultaneous>false</showMaxSimultaneous>
+        </li>
+      </comps>
+
+      <!-- 沒有這個 ModExtension 的 facility 一律不會被抽料，
+           所以工具櫃、機械櫃那類建築不會被誤吃。 -->
+      <modExtensions>
+        <li Class="Fortified.ModExtension_MaterialSource">
+          <!-- 貨架沒有電力元件，IsFacilityActive 恆為 true，維持預設即可。 -->
+          <allowWhileInactive>false</allowWhileInactive>
+          <!-- 跳過小人已經預約的堆疊，免得半路搶走別人要搬的東西。 -->
+          <respectReservations>true</respectReservations>
+        </li>
+      </modExtensions>
+
+      <!-- 蓋貨架時就把可連結的工作台畫出來，省得猜距離。 -->
+      <placeWorkers>
+        <li>PlaceWorker_ShowFacilitiesConnections</li>
+      </placeWorkers>
+
+    </value>
+  </Operation>
+
+  <!-- ═══ 2. 測試用的配方、工作台與 WorkGiver ═══════════════════════ -->
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs</xpath>
+    <value>
+
+      <!-- 刻意不宣告 workSkill 與 skillRequirements：
+           這樣自動開工不會卡在 MachineSatisfiesSkillRequirements，
+           產物 Silver 也沒有 CompQuality，測試時不必管品質擲點。 -->
+      <RecipeDef>
+        <defName>FFF_Test_SmeltSteelToSilver</defName>
+        <label>test: smelt steel into silver</label>
+        <description>測試用配方：10 鋼材煉成 20 白銀。</description>
+        <jobString>Testing linked-storage pull.</jobString>
+        <workAmount>600</workAmount>
+        <ingredients>
+          <li>
+            <filter>
+              <thingDefs>
+                <li>Steel</li>
+              </thingDefs>
+            </filter>
+            <count>10</count>
+          </li>
+        </ingredients>
+        <fixedIngredientFilter>
+          <thingDefs>
+            <li>Steel</li>
+          </thingDefs>
+        </fixedIngredientFilter>
+        <products>
+          <Silver>20</Silver>
+        </products>
+      </RecipeDef>
+
+      <ThingDef ParentName="BenchBase">
+        <defName>FFF_Test_AutoBench</defName>
+        <label>test autofacturer</label>
+        <description>測試 pullFromLinkedStorage 的臨時工作台。會自己從相鄰的貨架抽取原料並開工，不需要殖民者搬運。測完請連同 FFF_LinkedStorageTest.xml 一起刪除。</description>
+        <thingClass>Fortified.Building_WorkTableAutonomous</thingClass>
+        <!-- 抽料檢查掛在 Tick() 上，ticker 一定要是 Normal。 -->
+        <tickerType>Normal</tickerType>
+        <graphicData>
+          <texPath>Things/Building/Production/TableMachining</texPath>
+          <graphicClass>Graphic_Multi</graphicClass>
+          <drawSize>(3.5,1.5)</drawSize>
+          <damageData>
+            <cornerTL>Damage/Corner</cornerTL>
+            <cornerTR>Damage/Corner</cornerTR>
+            <cornerBL>Damage/Corner</cornerBL>
+            <cornerBR>Damage/Corner</cornerBR>
+          </damageData>
+        </graphicData>
+        <costList>
+          <Steel>50</Steel>
+        </costList>
+        <altitudeLayer>Building</altitudeLayer>
+        <fillPercent>0.5</fillPercent>
+        <useHitPoints>True</useHitPoints>
+        <statBases>
+          <WorkToBuild>500</WorkToBuild>
+          <MaxHitPoints>180</MaxHitPoints>
+          <Flammability>1.0</Flammability>
+        </statBases>
+        <size>(3,1)</size>
+        <designationCategory>Production</designationCategory>
+        <passability>PassThroughOnly</passability>
+        <pathCost>50</pathCost>
+        <hasInteractionCell>True</hasInteractionCell>
+        <interactionCellOffset>(0,0,-1)</interactionCellOffset>
+        <surfaceType>Item</surfaceType>
+        <inspectorTabs>
+          <li>ITab_Bills</li>
+        </inspectorTabs>
+        <building>
+          <spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
+        </building>
+        <recipes>
+          <li>FFF_Test_SmeltSteelToSilver</li>
+        </recipes>
+        <comps>
+          <li Class="CompProperties_AffectedByFacilities">
+            <linkableFacilities>
+              <!-- 這一行才是「貨架可以接到這台機器」的宣告。 -->
+              <li>Shelf</li>
+            </linkableFacilities>
+          </li>
+        </comps>
+        <placeWorkers>
+          <!-- 擺放時就畫出可連結的貨架，省得猜距離。 -->
+          <li>PlaceWorker_ShowFacilitiesConnections</li>
+          <li>PlaceWorker_PreventInteractionSpotOverlap</li>
+        </placeWorkers>
+        <modExtensions>
+          <li Class="Fortified.ModExtension_AutoWorkTable">
+            <!-- 本次測試的主角。 -->
+            <pullFromLinkedStorage>true</pullFromLinkedStorage>
+            <!-- 測試時調快，正式用途建議留 120。 -->
+            <pullCheckIntervalTicks>60</pullCheckIntervalTicks>
+
+            <!-- 設得比 workAmount 大很多，保證只有一個階段。
+                 多階段的話第二段之後仍然需要殖民者來準備，
+                 那會讓「全自動循環」這個測試看不出結果。 -->
+            <workAmountPerStage>999999</workAmountPerStage>
+
+            <!-- 跑完自己結算彈出產品，不必等人來收。
+                 兩者都開才是完整的無人循環。 -->
+            <autoEjectProducts>true</autoEjectProducts>
+            <ejectPlaceMode>Near</ejectPlaceMode>
+
+            <!-- 殖民者手動操作時的互動秒數（tick）。 -->
+            <workTime>60</workTime>
+          </li>
+        </modExtensions>
+      </ThingDef>
+
+      <!-- 手動操作的路徑也留著，方便對照「有人送料」與「自動抽料」的差別。
+           自動抽料時機台會先被 activeBill 佔住，這個 WorkGiver 自然不會派工。 -->
+      <WorkGiverDef>
+        <defName>FFF_Test_OperateAutoBench</defName>
+        <label>operate test autofacturer</label>
+        <giverClass>Fortified.WorkGiver_DoAutonomousBill</giverClass>
+        <workType>Crafting</workType>
+        <priorityInType>140</priorityInType>
+        <fixedBillGiverDefs>
+          <li>FFF_Test_AutoBench</li>
+        </fixedBillGiverDefs>
+        <verb>operate</verb>
+        <gerund>operating at</gerund>
+        <requiredCapacities>
+          <li>Manipulation</li>
+        </requiredCapacities>
+        <prioritizeSustains>true</prioritizeSustains>
+      </WorkGiverDef>
+
+    </value>
+  </Operation>
+
+</Patch>

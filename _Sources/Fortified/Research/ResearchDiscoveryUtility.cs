@@ -135,6 +135,12 @@ namespace Fortified
             {
                 return false;
             }
+            // 外力強制探明（解封物品、事件、任務獎勵）永久有效，且優先於前置研究的推導結果。
+            // 只是查一個 HashSet，且內部已 try/catch，放在重入旗標之外是安全的。
+            if (GameComponent_ResearchDiscovery.IsForceDiscoveredSafe(proj))
+            {
+                return false;
+            }
 
             evaluating = true;
             try
@@ -161,6 +167,38 @@ namespace Fortified
         public static bool IsDiscovered(ResearchProjectDef proj)
         {
             return proj != null && !IsUndiscovered(proj);
+        }
+
+        /// <summary>
+        /// 強制探明一個專案（解封物品、事件、任務獎勵用）。狀態存檔且永久有效，
+        /// 會蓋過「前置研究尚未完成」的推導結果。
+        ///
+        /// 回傳 true 表示這次呼叫真的解封了某個原本未探明的專案；
+        /// 專案為 null、尚未進入遊戲、或它本來就已探明時回傳 false。
+        /// </summary>
+        /// <param name="suppressLetter">
+        /// true（預設）＝同時標記為「已通知」，由呼叫方自行告知玩家，不會再多出一封通用探明信。
+        /// </param>
+        public static bool ForceDiscover(ResearchProjectDef proj, bool suppressLetter = true)
+        {
+            if (proj == null)
+            {
+                return false;
+            }
+            try
+            {
+                GameComponent_ResearchDiscovery comp = GameComponent_ResearchDiscovery.CompSafe;
+                if (comp == null)
+                {
+                    return false;
+                }
+                return comp.ForceDiscover(proj, suppressLetter);
+            }
+            catch (Exception ex)
+            {
+                Log.Error($"[FFF] ResearchDiscoveryUtility.ForceDiscover failed for {proj.defName}: {ex}");
+                return false;
+            }
         }
 
         /// <summary>清空快取。僅供除錯／熱重載使用。</summary>

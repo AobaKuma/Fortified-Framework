@@ -202,6 +202,60 @@ namespace Fortified
             return false;
         }
 
+        /// <summary>
+        /// 對「單一指定專案」推進研究進度，自動選對正確的進度容器：
+        ///
+        /// - 一般研究（baseCost &gt; 0）：走原生 <see cref="ResearchManager.AddProgress"/>，
+        ///   由原生負責上限截斷與達標完成。
+        /// - 知識型研究（baseCost == 0 且 knowledgeCost &gt; 0）：原生 AddProgress 會寫進
+        ///   <c>progress</c> 字典，但 GetProgress 對這類專案根本不讀該字典，等於整筆進度被吞掉。
+        ///   因此 Anomaly 啟用時改走 <see cref="ResearchManager.ApplyKnowledge(ResearchProjectDef, float, out float)"/>，
+        ///   未啟用時走 <see cref="GameComponent_KnowledgeStore"/>。
+        ///
+        /// 與 <see cref="AddKnowledge"/> 不同：本方法不做類別溢流，只針對呼叫方指定的那一個專案。
+        /// 回傳 true 表示進度確實被記錄下來。
+        /// </summary>
+        public static bool AddProgressTo(ResearchProjectDef proj, float amount, Pawn source = null)
+        {
+            if (proj == null || amount <= 0f)
+            {
+                return false;
+            }
+
+            ResearchManager manager = Find.ResearchManager;
+            if (manager == null)
+            {
+                return false;
+            }
+
+            bool knowledgeProject = proj.baseCost <= 0f && proj.knowledgeCost > 0f;
+            if (!knowledgeProject)
+            {
+                manager.AddProgress(proj, amount, source);
+                return true;
+            }
+
+            if (ModsConfig.AnomalyActive)
+            {
+                manager.ApplyKnowledge(proj, amount, out _);
+                return true;
+            }
+
+            GameComponent_KnowledgeStore store = GameComponent_KnowledgeStore.CompSafe;
+            if (store == null)
+            {
+                return false;
+            }
+
+            store.AddStored(proj, amount);
+            // 前置未完成時不自動完成：原生 AddProgress 也是同一條規則，避免跳過整段研究樹。
+            if (proj.PrerequisitesCompleted && store.GetStored(proj) >= proj.knowledgeCost - 0.001f)
+            {
+                FinishKnowledgeProject(store, proj);
+            }
+            return true;
+        }
+
         /// <summary>將知識點依序灌入某一類別內的可用專案，填滿一個就完成一個，餘量往下帶。</summary>
         private static void ApplyWithinCategory(GameComponent_KnowledgeStore store, KnowledgeCategoryDef category, float amount, out float remainder)
         {

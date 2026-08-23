@@ -23,11 +23,17 @@ namespace Fortified
 
         protected override IEnumerable<Toil> MakeNewToils()
         {
-            this.AddFinishAction(a => 
+            this.AddFinishAction(a =>
             {
-                if (a != JobCondition.Succeeded && this.TargetThingA is Building_WorkTableAutonomous b) 
+                if (a != JobCondition.Succeeded && this.TargetThingA is Building_WorkTableAutonomous b)
                 {
-                    b.Cancel();
+                    // 只有在機台還沒有進行中的訂單時才清場。開啟 pullFromLinkedStorage 之後，
+                    // 機器可能在小人趕路途中自己抽料開工了，這時候 Cancel() 會把別人跑到一半的
+                    // 加工進度連同容器裡的料一起倒掉。
+                    if (b.activeBill == null)
+                    {
+                        b.Cancel();
+                    }
                 }
             });
             this.FailOnDestroyedOrNull(TargetIndex.A);
@@ -44,6 +50,14 @@ namespace Fortified
                     {
                         return true;
                     }
+                }
+                // 機台自己抽料開工（pullFromLinkedStorage）時，這趟送料就作廢。
+                // 再走下去小人會把第二份原料倒進容器，而 Finish() 是把容器裡的東西
+                // 全部當成原料交給 GenRecipe，多的那份會被白吃掉。
+                if (job.GetTarget(TargetIndex.A).Thing is Building_WorkTableAutonomous table
+                    && table.activeBill != null && table.activeBill != job.bill)
+                {
+                    return true;
                 }
                 return false;
             });
