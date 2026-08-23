@@ -3,13 +3,13 @@
 
   <!-- ==================== 研究探明（Fortified.ModExtension_ResearchDiscovery） ==================== -->
   <FFF_Research_DiscoveredLetterLabel>研究已探明</FFF_Research_DiscoveredLetterLabel>
-  <FFF_Research_DiscoveredLetterText>最新的研究成果，讓先前無從解讀的資料終於能夠對上號。以下研究專案已不再是未知檔案，現在可以開始研究：</FFF_Research_DiscoveredLetterText>
+  <FFF_Research_DiscoveredLetterText>最新的研究成果已探明先前無從解讀的封存資料。以下研究專案已不再是未知，現在可以開始研究：</FFF_Research_DiscoveredLetterText>
 
   <!-- ==================== 封存科技解封（Fortified.CompUseEffect_DiscoverResearch） ==================== -->
-  <FFF_Research_UnsealLetterLabel>封存科技已解封</FFF_Research_UnsealLetterLabel>
-  <FFF_Research_UnsealLetterText>封存庫吐出了其中一筆被鎖住的條目。{PROJECT}已不再是未知檔案，同時附帶了 {PROGRESS} 點研究進度。</FFF_Research_UnsealLetterText>
-  <FFF_Research_UnsealProgressMessage>{PROJECT}推進了 {PROGRESS} 點研究進度。</FFF_Research_UnsealProgressMessage>
-  <FFF_Research_UnsealNothingMessage>封存庫裡已經沒有新東西，但{PAWN}從中獲得了 {XP} 點{SKILL}經驗。</FFF_Research_UnsealNothingMessage>
-  <FFF_Research_UnsealNothingNoGainMessage>封存庫裡已經沒有新東西，也沒有人能從中學到什麼。</FFF_Research_UnsealNothingNoGainMessage>
+  <FFF_Research_UnsealLetterLabel>封存技術已探明</FFF_Research_UnsealLetterLabel>
+  <FFF_Research_UnsealLetterText>成功破譯的資料使被封存的{PROJECT}已不再是未知，同時根據現有的資料我們獲得了{PROGRESS}點的研究進度。</FFF_Research_UnsealLetterText>
+  <FFF_Research_UnsealProgressMessage>{PROJECT}推進了{PROGRESS}點研究進度。</FFF_Research_UnsealProgressMessage>
+  <FFF_Research_UnsealNothingMessage>解密的數據中並沒有什麼有價值的技術資料，但{PAWN}仍從中獲得了{XP}點{SKILL}經驗。</FFF_Research_UnsealNothingMessage>
+  <FFF_Research_UnsealNothingNoGainMessage>破譯的數據中沒有甚麼有價值的資料，也沒有人能從中學到什麼。</FFF_Research_UnsealNothingNoGainMessage>
 
 </LanguageData>

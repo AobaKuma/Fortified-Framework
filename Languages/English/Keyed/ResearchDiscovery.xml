@@ -3,13 +3,13 @@
 
   <!-- ==================== Research discovery (Fortified.ModExtension_ResearchDiscovery) ==================== -->
   <FFF_Research_DiscoveredLetterLabel>Research revealed</FFF_Research_DiscoveredLetterLabel>
-  <FFF_Research_DiscoveredLetterText>Your latest findings have given context to material that was previously unreadable. The following research projects are no longer unknown and can now be started:</FFF_Research_DiscoveredLetterText>
+  <FFF_Research_DiscoveredLetterText>Our latest findings have made sense of archived material that was previously unreadable. The following research projects are no longer unknown, and can now be started:</FFF_Research_DiscoveredLetterText>
 
   <!-- ==================== Archived tech unsealing (Fortified.CompUseEffect_DiscoverResearch) ==================== -->
-  <FFF_Research_UnsealLetterLabel>Archived technology unsealed</FFF_Research_UnsealLetterLabel>
-  <FFF_Research_UnsealLetterText>The archive gives up one of its sealed entries. {PROJECT} is no longer an unknown file, and {PROGRESS} points of research progress came along with it.</FFF_Research_UnsealLetterText>
+  <FFF_Research_UnsealLetterLabel>Archived technology revealed</FFF_Research_UnsealLetterLabel>
+  <FFF_Research_UnsealLetterText>Successfully decrypted records mean the archived {PROJECT} is no longer unknown, and what we already have on file is worth {PROGRESS} points of research progress.</FFF_Research_UnsealLetterText>
   <FFF_Research_UnsealProgressMessage>{PROJECT} advanced by {PROGRESS} research points.</FFF_Research_UnsealProgressMessage>
-  <FFF_Research_UnsealNothingMessage>The archive holds nothing new, but {PAWN} gained {XP} {SKILL} experience from reading it.</FFF_Research_UnsealNothingMessage>
-  <FFF_Research_UnsealNothingNoGainMessage>The archive holds nothing new, and nobody learned anything from it.</FFF_Research_UnsealNothingNoGainMessage>
+  <FFF_Research_UnsealNothingMessage>The decrypted data holds no technical material worth having, but {PAWN} still gained {XP} {SKILL} experience from it.</FFF_Research_UnsealNothingMessage>
+  <FFF_Research_UnsealNothingNoGainMessage>The decrypted data holds nothing worth having, and nobody could learn anything from it.</FFF_Research_UnsealNothingNoGainMessage>
 
 </LanguageData>
