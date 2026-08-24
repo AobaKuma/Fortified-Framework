@@ -1,4 +1,4 @@
-﻿using Verse;
+using Verse;
 using HarmonyLib;
 using RimWorld;
 
@@ -9,7 +9,7 @@ namespace Fortified
     {
         public static bool Prefix(PawnDrawParms parms, ref bool __result)
         {
-            if (parms.pawn is HumanlikeMech && parms.pawn.apparel.AnyApparel)
+            if (parms.pawn is IHumanlikeMech && parms.pawn.apparel.AnyApparel)
             {
                 __result = true;
                 return false;

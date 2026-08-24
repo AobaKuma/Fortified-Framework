@@ -1258,7 +1258,7 @@ namespace Fortified
             }
 
             // ¤ä«ù HumanlikeMech
-            if (pawn is HumanlikeMech)
+            if (pawn is IHumanlikeMech)
             {
                 return pawn.apparel != null;
             }

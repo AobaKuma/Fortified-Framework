@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,7 +12,7 @@ namespace Fortified
     {
         protected override bool Satisfied(Pawn pawn)
         {
-            return pawn.TryGetComp<CompDeadManSwitch>() is CompDeadManSwitch comp && comp.woken;
+            return pawn is ICachedMechComps cc && cc.DeadManSwitchComp?.woken == true;
         }
     }
 }

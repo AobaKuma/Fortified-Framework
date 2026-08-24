@@ -1,4 +1,4 @@
-﻿/*
+/*
 Modified from RimWorld.ITab_Pawn_Gear
 */
 
@@ -88,7 +88,7 @@ namespace Fortified
         {
             get
             {
-                return (SelPawnForGear is HumanlikeMech || SelPawnForGear is WeaponUsableMech) && CanControl;
+                return (SelPawnForGear is IHumanlikeMech || SelPawnForGear is WeaponUsableMech) && CanControl;
             }
         }
 

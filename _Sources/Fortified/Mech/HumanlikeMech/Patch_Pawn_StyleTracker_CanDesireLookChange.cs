@@ -1,4 +1,4 @@
-﻿using HarmonyLib;
+using HarmonyLib;
 using RimWorld;
 
 namespace Fortified
@@ -8,7 +8,7 @@ namespace Fortified
     {
         public static bool Prefix(Pawn_StyleTracker __instance, ref bool __result)
         {
-            if (__instance.pawn is HumanlikeMech)
+            if (__instance.pawn is IHumanlikeMech)
             {
                 __result = false;
                 return false;

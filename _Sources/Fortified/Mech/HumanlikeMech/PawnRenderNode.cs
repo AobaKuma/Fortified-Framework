@@ -1,4 +1,4 @@
-﻿using RimWorld;
+using RimWorld;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,7 +23,7 @@ namespace Fortified
 
         public override Graphic GraphicFor(Pawn pawn)
         {
-            if (pawn is HumanlikeMech mech)
+            if (pawn is IHumanlikeMech mech)
             {
                 return mech.HeadGraphic;
             }

@@ -1,4 +1,4 @@
-﻿using HarmonyLib;
+using HarmonyLib;
 using RimWorld;
 using System;
 using System.Collections.Generic;
@@ -36,7 +36,7 @@ namespace Fortified
 
         public static bool IsStoryEmptyOrHumanMech(this Pawn p) 
         {
-            return p.story != null && p is not HumanlikeMech;
+            return p.story != null && p is not IHumanlikeMech;
         }
     }
 }

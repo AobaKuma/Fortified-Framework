@@ -94,7 +94,8 @@ namespace Fortified
 						}
 					}
 				}
-				if (!MechRepairUtility.CanRepair(clickedPawn) || !overseer.Comp.Props.canRepair)
+				if (!MechRepairUtility.CanRepair(clickedPawn) || !overseer.Comp.Props.canRepair
+					|| (clickedPawn is ArtificialOrganism amo && !amo.Repairable))
 				{
 					yield break;
 				}

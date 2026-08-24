@@ -1,4 +1,4 @@
-﻿using Verse;
+using Verse;
 using HarmonyLib;
 
 namespace Fortified
@@ -11,7 +11,7 @@ namespace Fortified
             if (__result) return;
             if (!__instance.Spawned || !__instance.IsColonyMech) return;
             if (__instance is IWeaponUsable) __result = true;
-            if (__instance.TryGetComp<CompDrone>(out var c) && c.CanDraft) __result = true;
+            if (__instance is ICachedMechComps cc && cc.DroneComp is CompDrone c && c.CanDraft) __result = true;
         }
     }
 }

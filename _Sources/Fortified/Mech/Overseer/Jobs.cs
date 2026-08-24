@@ -1,4 +1,4 @@
-﻿using RimWorld;
+using RimWorld;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +15,11 @@ namespace Fortified
 		protected override Job TryGiveJob(Pawn pawn)
 		{
 			if (!(pawn is IOverseer mech) || !mech.Comp.Props.canRepair)
+			{
+				return null;
+			}
+			//AMO 不可被修理（自行再生）。
+			if (pawn is ArtificialOrganism amo && !amo.Repairable)
 			{
 				return null;
 			}
@@ -37,11 +42,17 @@ namespace Fortified
 			{
 				return false;
 			}
+			//AMO 不可被修理（自行再生）。
+			if (target is ArtificialOrganism amo && !amo.Repairable)
+			{
+				return false;
+			}
 			if (target.Drafted)
 			{
 				return false;
 			}
-			CompMechRepairable compMechRepairable = thing.TryGetComp<CompMechRepairable>();
+			//快取 comps（spawn 後有效）；非框架機械保留 TryGetComp 語意。
+			CompMechRepairable compMechRepairable = target is ICachedMechComps cc ? cc.MechRepairableComp : target.TryGetComp<CompMechRepairable>();
 			if (compMechRepairable == null)
 			{
 				return false;

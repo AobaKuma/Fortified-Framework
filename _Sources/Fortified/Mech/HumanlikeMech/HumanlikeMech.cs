@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 
 using Verse;
 using RimWorld;
@@ -8,32 +8,43 @@ using System.Linq;
 
 namespace Fortified
 {
-    public class HumanlikeMech : Pawn, IWeaponUsable, ICaravanOwner
+    public class HumanlikeMech : Pawn, IWeaponUsable, ICaravanOwner, IHumanlikeMech
     {
 		public virtual bool CanCaravan => false;//Maybe should be true?????
 
 		public MechWeaponExtension MechWeapon => def.GetModExtension<MechWeaponExtension>();
-        public HumanlikeMechExtension Extension => def.GetModExtension<HumanlikeMechExtension>();
-        private Graphic headGraphic;
-        public Graphic HeadGraphic
-        {
-            get
-            {
-                headGraphic ??= Extension.headGraphic.Graphic;
-                if (Extension.canChangeHairStyle && HasHair) headGraphic = Extension.headGraphicHaired.Graphic;
-                return headGraphic;
-            }
-        }
-        private bool HasHair => story.hairDef != null && story.hairDef != HairDefOf.Bald;
+        public HumanlikeMechExtension Extension => HumanlikeMechUtility.Extension(this);
+
+		// —— 快取 comps（避免 patch 熱路徑重複 TryGetComp）——
+		private CompOverseerSubject cachedOverseerSubject;
+		private CompDeadManSwitch cachedDeadManSwitch;
+		private CompCommandRelay cachedCommandRelay;
+		private CompDrone cachedDrone;
+		private CompMechRepairable cachedMechRepairable;
+
+		public CompOverseerSubject OverseerSubjectComp => cachedOverseerSubject ??= GetComp<CompOverseerSubject>();
+		public CompDeadManSwitch DeadManSwitchComp => cachedDeadManSwitch ??= GetComp<CompDeadManSwitch>();
+		public CompCommandRelay CommandRelayComp => cachedCommandRelay ??= GetComp<CompCommandRelay>();
+		public CompDrone DroneComp => cachedDrone ??= GetComp<CompDrone>();
+		public CompMechRepairable MechRepairableComp => cachedMechRepairable ??= GetComp<CompMechRepairable>();
+
+        public Graphic HeadGraphic => HumanlikeMechUtility.GetHeadGraphic(this);
+
         public override void PostMake()
         {
             base.PostMake();
-            CheckTracker();
+            HumanlikeMechUtility.CheckTracker(this);
         }
         public override void SpawnSetup(Map map, bool respawningAfterLoad)
         {
             base.SpawnSetup(map, respawningAfterLoad);
-            CheckTracker();
+            // 預先填值快取 comps（comp 在 spawn 後由 def 固定，不會再變）
+            cachedOverseerSubject = GetComp<CompOverseerSubject>();
+            cachedDeadManSwitch = GetComp<CompDeadManSwitch>();
+            cachedCommandRelay = GetComp<CompCommandRelay>();
+            cachedDrone = GetComp<CompDrone>();
+            cachedMechRepairable = GetComp<CompMechRepairable>();
+            HumanlikeMechUtility.CheckTracker(this);
         }
         public override void Kill(DamageInfo? dinfo, Hediff exactCulprit = null)
         {
@@ -55,83 +66,14 @@ namespace Fortified
             base.ExposeData();
             if (Scribe.mode == LoadSaveMode.PostLoadInit)
             {
-                CheckTracker();
+                HumanlikeMechUtility.CheckTracker(this);
                 this.Drawer?.renderer?.SetAllGraphicsDirty();
             }
         }
-        private void CheckTracker()
-        {
-            if (story != null)
-            {
-                try { _ = story.SkinColorBase; }
-                catch (System.InvalidOperationException) { story.SkinColorBase = Color.white; }
-            }
-            if (Extension != null)
-            {
-                // 检查story是否是首次初始化
-                bool isStoryFirstInit = story == null;
 
-                outfits ??= new Pawn_OutfitTracker(this);
-                story ??= new Pawn_StoryTracker(this);
+        // 限制机械体工作类型（保留 public API，供 Patch_PawnGenerator_GeneratePawn 使用）
+        public void ApplyWorkTypeRestrictions() => HumanlikeMechUtility.ApplyWorkTypeRestrictions(this);
 
-                // 仅在首次初始化时设置这些值，避免覆盖加载的数据
-                if (isStoryFirstInit)
-                {
-                    story.bodyType ??= Extension.bodyTypeOverride;
-                    story.headType ??= Extension.headTypeOverride;
-                    story.SkinColorBase = Color.white;
-                    story.HairColor = Color.white;
-
-                    // 如果不允许改变髮型，强制设置为秃头；否则仅在未初始化时设置
-                    if (!Extension.canChangeHairStyle || story.hairDef == null)
-                    {
-                        story.hairDef = HairDefOf.Bald;
-                    }
-                }
-
-                style ??= new Pawn_StyleTracker(this)
-                {
-                    beardDef = BeardDefOf.NoBeard,
-                    FaceTattoo = null,
-                    BodyTattoo = null,
-                };
-
-                interactions ??= new(this);
-                if (skills == null)
-                {
-                    skills = new(this);
-                    skills.skills.ForEach(s => s.Level = def.race.mechFixedSkillLevel);
-                    if (!Extension.skills.NullOrEmpty())
-                    {
-                        foreach (SkillRange item in Extension.skills)
-                        {
-                            skills.GetSkill(item.Skill).Level = item.Range.RandomInRange;
-                        }
-                    }
-                }
-
-                // 初始化工作设置，让机械体能够被分配工作
-                if (workSettings == null)
-                {
-                    workSettings = new Pawn_WorkSettings(this);
-                    workSettings.EnableAndInitializeIfNotAlreadyInitialized();
-                    ApplyWorkTypeRestrictions();
-                }
-            }
-        }
-        // 限制机械体工作类型
-        public void ApplyWorkTypeRestrictions()
-        {
-            if (workSettings == null) return;
-            if (RaceProps.IsMechanoid || RaceProps.mechEnabledWorkTypes.NullOrEmpty()) return;
-            foreach (WorkTypeDef w in DefDatabase<WorkTypeDef>.AllDefsListForReading)
-            {
-                if (!RaceProps.mechEnabledWorkTypes.Contains(w))
-                {
-                    workSettings.SetPriority(w, 0);
-                }
-            }
-        }
         public void Equip(ThingWithComps equipment)
         {
             equipment.SetForbidden(false);

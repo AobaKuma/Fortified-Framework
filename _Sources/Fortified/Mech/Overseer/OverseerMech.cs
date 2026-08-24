@@ -60,6 +60,8 @@ namespace Fortified
 {
 	public class OverseerMech : WeaponUsableMech, IOverseerMech
 	{
+		public bool ControllableByState => true;
+
 		private CompOverseer comp;
 
 		private MechWorkModeDef workMode;
@@ -173,6 +175,8 @@ namespace Fortified
 
 	public class HumanlikeOverseerMech : HumanlikeMech, IOverseerMech
 	{
+		public bool ControllableByState => true;
+
 		private CompOverseer comp;
 
 		private MechWorkModeDef workMode;

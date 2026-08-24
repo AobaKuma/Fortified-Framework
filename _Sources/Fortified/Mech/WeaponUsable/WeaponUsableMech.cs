@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using Verse;
 using RimWorld;
 using UnityEngine;
@@ -12,6 +12,20 @@ namespace Fortified
     {
 		public virtual bool CanCaravan => false;
 		public MechWeaponExtension MechWeapon { get; private set; }
+
+		// —— 快取 comps（避免 patch 熱路徑重複 TryGetComp）——
+		private CompOverseerSubject cachedOverseerSubject;
+		private CompDeadManSwitch cachedDeadManSwitch;
+		private CompCommandRelay cachedCommandRelay;
+		private CompDrone cachedDrone;
+		private CompMechRepairable cachedMechRepairable;
+
+		public CompOverseerSubject OverseerSubjectComp => cachedOverseerSubject ??= GetComp<CompOverseerSubject>();
+		public CompDeadManSwitch DeadManSwitchComp => cachedDeadManSwitch ??= GetComp<CompDeadManSwitch>();
+		public CompCommandRelay CommandRelayComp => cachedCommandRelay ??= GetComp<CompCommandRelay>();
+		public CompDrone DroneComp => cachedDrone ??= GetComp<CompDrone>();
+		public CompMechRepairable MechRepairableComp => cachedMechRepairable ??= GetComp<CompMechRepairable>();
+
         public override void SpawnSetup(Map map, bool respawningAfterLoad)
         {
             base.SpawnSetup(map, respawningAfterLoad);
@@ -21,6 +35,13 @@ namespace Fortified
             equipment ??= new(this);
             skills ??= new(this);
             skills.skills.ForEach(s => s.Level = def.race.mechFixedSkillLevel == 0 ? 5 : def.race.mechFixedSkillLevel);
+
+            // 預先填值快取 comps（comp 在 spawn 後由 def 固定，不會再變）
+            cachedOverseerSubject = GetComp<CompOverseerSubject>();
+            cachedDeadManSwitch = GetComp<CompDeadManSwitch>();
+            cachedCommandRelay = GetComp<CompCommandRelay>();
+            cachedDrone = GetComp<CompDrone>();
+            cachedMechRepairable = GetComp<CompMechRepairable>();
 
             // 初始化工作设置，让机械体能够被分配工作
             if (workSettings == null)

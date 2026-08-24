@@ -1,4 +1,4 @@
-﻿using RimWorld;
+using RimWorld;
 using Verse;
 using Verse.AI.Group;
 using Verse.AI;
@@ -114,8 +114,11 @@ namespace Fortified
         }
         public override string CompInspectStringExtra()
         {
-            if (!parent.Faction.IsPlayer || parent.GetComp<CompOverseerSubject>() == null) return null;
-            if (parent.GetComp<CompOverseerSubject>().State != OverseerSubjectState.Overseen)
+            if (!parent.Faction.IsPlayer) return null;
+            //快取 comps（框架機械走快取；非框架機械回退 TryGetComp 語意）。
+            CompOverseerSubject subject = parent is ICachedMechComps cc ? cc.OverseerSubjectComp : parent.GetComp<CompOverseerSubject>();
+            if (subject == null) return null;
+            if (subject.State != OverseerSubjectState.Overseen)
             {
                 string str = "FFF.WillTerminateTheBetrayedUnit".Translate();
                 return str;

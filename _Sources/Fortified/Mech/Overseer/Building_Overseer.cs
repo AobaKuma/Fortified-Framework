@@ -1,4 +1,4 @@
-﻿using RimWorld;
+using RimWorld;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +14,8 @@ namespace Fortified
 {
 	public class Building_Overseer : Building, IOverseer, ITargetingSource
 	{
+		public bool ControllableByState => true;
+
 		#region Targetable
 		public bool CasterIsPawn => true;
 		public bool IsMeleeAttack => false;

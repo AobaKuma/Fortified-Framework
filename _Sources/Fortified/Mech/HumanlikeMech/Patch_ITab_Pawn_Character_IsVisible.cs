@@ -1,4 +1,4 @@
-﻿using Verse;
+using Verse;
 using HarmonyLib;
 using System.Reflection;
 using RimWorld;
@@ -14,7 +14,7 @@ namespace Fortified
             if (__result)
             {
                 var pawn = AccessTools.Property(typeof(ITab_Pawn_Character), "PawnToShowInfoAbout")?.GetValue(__instance) as Pawn;
-                __result = pawn is not HumanlikeMech;
+                __result = pawn is not IHumanlikeMech;
             }
         }
     }

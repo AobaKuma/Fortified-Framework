@@ -1,4 +1,4 @@
-﻿using Verse;
+using Verse;
 using RimWorld;
 using HarmonyLib;
 using System.Reflection;
@@ -18,7 +18,7 @@ namespace Fortified
                 {
                     __result = true;
                 }
-                if (pawn.TryGetComp<CompDrone>(out var d) && d.CanDraft) __result = true;
+                if (pawn is ICachedMechComps cc && cc.DroneComp is CompDrone d && d.CanDraft) __result = true;
             }
         }
     }
@@ -46,7 +46,7 @@ namespace Fortified
                 {
                     __result = true;
                 }
-                if (pawn.TryGetComp<CompDrone>(out var d) && d.CanDraft) __result = true;
+                if (pawn is ICachedMechComps cc && cc.DroneComp is CompDrone d && d.CanDraft) __result = true;
             }
 		}
 	}
@@ -76,7 +76,7 @@ namespace Fortified
 			{
 				__result = false;
 			}
-			else if (pawn.TryGetComp<CompDrone>(out var d) == true && d.CanDraft) __result = false;
+			else if (pawn is ICachedMechComps cc && cc.DroneComp is CompDrone d && d.CanDraft) __result = false;
 		}
 	}
 }

@@ -1,4 +1,4 @@
-﻿using Fortified;
+using Fortified;
 using RimWorld;
 using System;
 using System.Collections.Generic;
@@ -14,7 +14,9 @@ namespace Fortified
     {
         protected override Job TryGiveJob(Pawn pawn)
         {
-            if (pawn.TryGetComp<CompDeadManSwitch>() is CompDeadManSwitch comp && comp.woken && MechRepairUtility.CanRepair(pawn))
+            //AMO 不可被修理（自行再生，走 CompArtificialOrganism）。
+            if (pawn is ArtificialOrganism amo && !amo.Repairable) return null;
+            if (pawn is ICachedMechComps cc && cc.DeadManSwitchComp?.woken == true && MechRepairUtility.CanRepair(pawn))
             {
                 return JobMaker.MakeJob(FFF_DefOf.FFF_RepairSelf,pawn);
             }

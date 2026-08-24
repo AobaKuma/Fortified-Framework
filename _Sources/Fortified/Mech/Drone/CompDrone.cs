@@ -1,4 +1,4 @@
-﻿using HarmonyLib;
+using HarmonyLib;
 using RimWorld;
 using System.Collections.Generic;
 using System.Runtime.Remoting.Messaging;
@@ -214,7 +214,7 @@ namespace Fortified
             // 处理 CompDrone、WeaponUsableMech 和 HumanlikeMech 的 workSettings 初始化
             bool needsWorkSettings = pawn.TryGetComp<CompDrone>() != null
                 || pawn is WeaponUsableMech
-                || pawn is HumanlikeMech;
+                || pawn is IHumanlikeMech;
 
             if (needsWorkSettings && pawn.workSettings == null)
             {

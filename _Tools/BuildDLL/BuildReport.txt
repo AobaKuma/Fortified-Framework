@@ -1,73 +1,873 @@
 FFF build report
-generated : 2026-08-23 16:00:03
+generated : 2026-08-24 16:15:47
 config    : Release
 roots     : D:\Steam\steamapps\common\RimWorld\Mods\_Fortified-Framework, D:\Steam\steamapps\common\RimWorld\Mods\3075384838, D:\Steam\steamapps\common\RimWorld\Mods\3313313985, D:\Steam\steamapps\common\RimWorld\Mods\Camping tent, D:\Steam\steamapps\common\RimWorld\Mods\Dead-Man-Switch, D:\Steam\steamapps\common\RimWorld\Mods\Fishery, D:\Steam\steamapps\common\RimWorld\Mods\Performance-Fish, D:\Steam\steamapps\common\RimWorld\Mods\Prepatcher, D:\Steam\steamapps\common\RimWorld\Mods\RimThunder-Core, D:\Steam\steamapps\common\RimWorld\Mods\Rimworld-Pregnator-main, D:\Steam\steamapps\common\RimWorld\Mods\SolarSpawn, D:\Steam\steamapps\common\RimWorld\Mods\VanillaExpandedFramework, D:\Steam\steamapps\common\RimWorld\Mods\Vehicle-Framework, D:\Steam\steamapps\common\RimWorld\Mods\_Ancient-Urban-Ruins, D:\Steam\steamapps\common\RimWorld\Mods\_Ascension Megacorp, D:\Steam\steamapps\common\RimWorld\Mods\_CindersFromTheEmbergarden, D:\Steam\steamapps\common\RimWorld\Mods\_Dead-Man-Switch-AncientCorps, D:\Steam\steamapps\common\RimWorld\Mods\_Dead-Man-Switch-MobileDragoon, D:\Steam\steamapps\common\RimWorld\Mods\_KaiShek Logistic, D:\Steam\steamapps\common\RimWorld\Mods\_NymphTheMilitaryNightmare
-elapsed   : 18.5s
+elapsed   : 13.2s
 
 ==========================================================================
 SUMMARY
 ==========================================================================
-  OK       BreadMoAncientFarm         13.5s  E0   W3    D:\Steam\steamapps\common\RimWorld\Mods\3075384838\Source\BreadMoAncientFarm\BreadMoAncientFarm\bin\Release\BreadMoAncientFarm.dll
-  OK       AncientAmorphousThreat      1.6s  E0   W140  D:\Steam\steamapps\common\RimWorld\Mods\3313313985\_source\AncientAmorphousThreat\bin\Release\AncientAmorphousThreat.dll
-  FAILED   AncientMarket_Libraray      3.3s  E1   W11   D:\Steam\steamapps\common\RimWorld\Mods\_Ancient-Urban-Ruins\_Sources\AncientMarket_Libraray-master\AncientMarket_Libraray\bin\Release\AncientMarket_Libraray.dll
-  SKIPPED  AncientMarketAI_Libraray    0.0s  E0   W0    D:\Steam\steamapps\common\RimWorld\Mods\_Ancient-Urban-Ruins\_Sources\AncientMarketAI_Libraray-master\AncientMarketAI_Libraray\bin\Release\AncientMarketAI_Libraray.dll
-  SKIPPED  Embergarden                 0.0s  E0   W0    D:\Steam\steamapps\common\RimWorld\Mods\_CindersFromTheEmbergarden\_Sources\Embergarden\Embergarden\bin\Release\Embergarden.dll
-  SKIPPED  WeaponSwitch                0.0s  E0   W0    D:\Steam\steamapps\common\RimWorld\Mods\_CindersFromTheEmbergarden\_Sources\Embergarden\WeaponSwitch\WeaponSwitch\WeaponSwitch\bin\Release\CinderWeaponSwitch.dll
-  SKIPPED  AncientCorps                0.0s  E0   W0    D:\Steam\steamapps\common\RimWorld\Mods\_Dead-Man-Switch-AncientCorps\_source\AncientCorps\bin\Release\AncientCorps.dll
-  SKIPPED  Fortified                   0.0s  E0   W0    D:\Steam\steamapps\common\RimWorld\Mods\_Fortified-Framework\1.6\Assemblies\Fortified.dll
-  SKIPPED  ROCALogistic                0.0s  E0   W0    D:\Steam\steamapps\common\RimWorld\Mods\_KaiShek Logistic\1.6\Assemblies\ROCALogistic.dll
-  SKIPPED  CompGiveThought             0.0s  E0   W0    D:\Steam\steamapps\common\RimWorld\Mods\Camping tent\source\CompGiveThought\CompGiveThought\bin\Release\CompGiveThought.dll
-  SKIPPED  tent                        0.0s  E0   W0    D:\Steam\steamapps\common\RimWorld\Mods\Camping tent\source\tent\bin\Release\Tent.dll
-  SKIPPED  FisheryLib.Tests            0.0s  E0   W0    (output path unknown)
-  SKIPPED  1.2                         0.0s  E0   W0    (output path unknown)
-  SKIPPED  1.3                         0.0s  E0   W0    (output path unknown)
-  SKIPPED  1.4                         0.0s  E0   W0    (output path unknown)
-  SKIPPED  1.5                         0.0s  E0   W0    (output path unknown)
-  SKIPPED  PerformanceFish.Tests       0.0s  E0   W0    (output path unknown)
-  SKIPPED  1.4                         0.0s  E0   W0    (output path unknown)
-  SKIPPED  1.5                         0.0s  E0   W0    (output path unknown)
-  SKIPPED  API                         0.0s  E0   W0    (output path unknown)
-  SKIPPED  DataAssembly                0.0s  E0   W0    D:\Steam\steamapps\common\RimWorld\Mods\Prepatcher\Assemblies\0PrepatcherDataAssembly.dll
-  SKIPPED  Prepatcher                  0.0s  E0   W0    D:\Steam\steamapps\common\RimWorld\Mods\Prepatcher\Assemblies\net472\Prepatcher.dll
-  SKIPPED  Prestarter                  0.0s  E0   W0    (output path unknown)
-  SKIPPED  TestAssemblyTarget          0.0s  E0   W0    (output path unknown)
-  SKIPPED  Motorization                0.0s  E0   W0    D:\Steam\steamapps\common\RimWorld\Mods\RimThunder-Core\_Sources\Motorization\Motorization\bin\Release\Motorization.dll
-  SKIPPED  Insect_Library              0.0s  E0   W0    D:\Steam\steamapps\common\RimWorld\Mods\Rimworld-Pregnator-main\_Source\Insect_Library\bin\Release\Insect_Library.dll
-  SKIPPED  SolarSpawn                  0.0s  E0   W0    D:\Steam\steamapps\common\RimWorld\Mods\SolarSpawn\Assemblies\SolarSpawn.dll
-  SKIPPED  ModSettingsFramework        0.0s  E0   W0    D:\Steam\steamapps\common\RimWorld\Mods\VanillaExpandedFramework\1.6\Assemblies\0ModSettingsFramework.dll
-  SKIPPED  MVCF                        0.0s  E0   W0    D:\Steam\steamapps\common\RimWorld\Mods\VanillaExpandedFramework\1.2\Assemblies\MVCF.dll
-  SKIPPED  DevTools                    0.0s  E0   W0    (output path unknown)
-  SKIPPED  CoreLib                     0.0s  E0   W0    (output path unknown)
-  SKIPPED  SmashTools.Analyzer         0.0s  E0   W0    (output path unknown)
-  SKIPPED  SmashTools                  0.0s  E0   W0    (output path unknown)
-  SKIPPED  Test_Burst                  0.0s  E0   W0    (output path unknown)
-  SKIPPED  Test_CoreLib                0.0s  E0   W0    (output path unknown)
-  SKIPPED  Test_SmashTools             0.0s  E0   W0    (output path unknown)
-  SKIPPED  Test_Vehicles               0.0s  E0   W0    (output path unknown)
-  SKIPPED  Vehicles                    0.0s  E0   W0    (output path unknown)
-  SKIPPED  UpdateLog                   0.0s  E0   W0    (output path unknown)
-  SKIPPED  AncientAmorphousThreatCE    0.0s  E0   W0    D:\Steam\steamapps\common\RimWorld\Mods\3313313985\_source\AncientAmorphousThreatCE\bin\Release\AncientAmorphousThreatCE.dll
-  SKIPPED  AncientAmorphousThreatHarmony    0.0s  E0   W0    D:\Steam\steamapps\common\RimWorld\Mods\3313313985\_source\AncientAmorphousThreatHarmony\bin\Release\AncientAmorphousThreatHarmony.dll
-  SKIPPED  USAC                        0.0s  E0   W0    D:\Steam\steamapps\common\RimWorld\Mods\_Ascension Megacorp\1.6\Assemblies\USAC.dll
-  SKIPPED  EmbergardenCE               0.0s  E0   W0    D:\Steam\steamapps\common\RimWorld\Mods\_CindersFromTheEmbergarden\_Sources\Embergarden\EmbergardenCE\bin\Release\EmbergardenCE.dll
-  SKIPPED  FortifiedCE                 0.0s  E0   W0    D:\Steam\steamapps\common\RimWorld\Mods\_Fortified-Framework\1.6\CE\Assemblies\FortifiedCE.dll
-  SKIPPED  DMS                         0.0s  E0   W0    D:\Steam\steamapps\common\RimWorld\Mods\Dead-Man-Switch\1.6\Assemblies\DMS.dll
-  SKIPPED  Implementation              0.0s  E0   W0    D:\Steam\steamapps\common\RimWorld\Mods\Prepatcher\Assemblies\PrepatcherImpl.dll
-  SKIPPED  TestAssembly                0.0s  E0   W0    (output path unknown)
-  SKIPPED  MotorizationCE              0.0s  E0   W0    D:\Steam\steamapps\common\RimWorld\Mods\RimThunder-Core\_Sources\Motorization\MotorizationCE\bin\Release\MotorizationCE.dll
-  SKIPPED  Tests                       0.0s  E0   W0    (output path unknown)
-  SKIPPED  KCSG                        0.0s  E0   W0    D:\Steam\steamapps\common\RimWorld\Mods\VanillaExpandedFramework\1.6\Assemblies\KCSG.dll
-  SKIPPED  Outposts                    0.0s  E0   W0    D:\Steam\steamapps\common\RimWorld\Mods\VanillaExpandedFramework\1.6\Assemblies\Outposts.dll
-  SKIPPED  PipeSystem                  0.0s  E0   W0    D:\Steam\steamapps\common\RimWorld\Mods\VanillaExpandedFramework\1.6\Assemblies\PipeSystem.dll
-  SKIPPED  VEF                         0.0s  E0   W0    D:\Steam\steamapps\common\RimWorld\Mods\VanillaExpandedFramework\1.6\Assemblies\VEF.dll
+  OK       Fortified                   1.7s  E0   W1    D:\Steam\steamapps\common\RimWorld\Mods\_Fortified-Framework\1.6\Assemblies\Fortified.dll
+  FAILED   DMS                        11.5s  E718 W0    D:\Steam\steamapps\common\RimWorld\Mods\Dead-Man-Switch\1.6\Assemblies\DMS.dll
 
   ! circular references between: kcsg.csproj, outposts.csproj, pipesystem.csproj, vef.csproj
 
 ==========================================================================
-AncientMarket_Libraray  (D:\Steam\steamapps\common\RimWorld\Mods\_Ancient-Urban-Ruins\_Sources\AncientMarket_Libraray-master\AncientMarket_Libraray\AncientMarket_Libraray.csproj)
+DMS  (D:\Steam\steamapps\common\RimWorld\Mods\Dead-Man-Switch\_Source\DMS\DMS.csproj)
 ==========================================================================
 
-ERRORS (1)
+ERRORS (718)
 
-  C:\Program Files\dotnet\sdk\10.0.400\Microsoft.Common.CurrentVersion.targets
-    line 6120  MSB3073  "copy D:\Steam\steamapps\common\RimWorld\Mods\_Ancient-Urban-Ruins\_Sources\AncientMarket_Libraray-master\AncientMarket_Libraray\bin\Release\AncientMarket_Libraray.dll D:\Game\Steam\steamapps\common\RimWorld\Mods\_Ancient-Urban-Ruins\1.6\Assemblies" 命令以返回碼 1 結束。
+  CSC
+    -          CS0009   無法開啟中繼資料檔'D:\Steam\steamapps\common\RimWorld\Mods\Dead-Man-Switch\_Source\DMS\obj\Release\PublicizedAssemblies\Assembly-CSharp.EDD027980459BAB4088F63AE2D8B547B\Assembly-CSharp.dll' -- Image is too small.
+
+  D:\Steam\steamapps\common\RimWorld\Mods\Dead-Man-Switch\_Source\DMS\AI\CarrierAIUtility.cs
+    line 3     CS0246   找不到類型或命名空間名稱 'RimWorld' (是否遺漏了 using 指示詞或組件參考?)
+    line 5     CS0246   找不到類型或命名空間名稱 'Verse' (是否遺漏了 using 指示詞或組件參考?)
+    line 6     CS0246   找不到類型或命名空間名稱 'Verse' (是否遺漏了 using 指示詞或組件參考?)
+    line 19    CS0246   找不到類型或命名空間名稱 'IntVec3' (是否遺漏了 using 指示詞或組件參考?)
+    line 25    CS0246   找不到類型或命名空間名稱 'IntVec3' (是否遺漏了 using 指示詞或組件參考?)
+    line 34    CS0246   找不到類型或命名空間名稱 'Pawn' (是否遺漏了 using 指示詞或組件參考?)
+    line 69    CS0246   找不到類型或命名空間名稱 'Verb' (是否遺漏了 using 指示詞或組件參考?)
+    line 82    CS0246   找不到類型或命名空間名稱 'Pawn' (是否遺漏了 using 指示詞或組件參考?)
+    line 117   CS0246   找不到類型或命名空間名稱 'Pawn' (是否遺漏了 using 指示詞或組件參考?)
+    line 117   CS0246   找不到類型或命名空間名稱 'Thing' (是否遺漏了 using 指示詞或組件參考?)
+    line 118   CS0246   找不到類型或命名空間名稱 'IntVec3' (是否遺漏了 using 指示詞或組件參考?)
+    line 203   CS0246   找不到類型或命名空間名稱 'Pawn' (是否遺漏了 using 指示詞或組件參考?)
+    line 231   CS0246   找不到類型或命名空間名稱 'IntVec3' (是否遺漏了 using 指示詞或組件參考?)
+    line 252   CS0246   找不到類型或命名空間名稱 'Thing' (是否遺漏了 using 指示詞或組件參考?)
+    line 252   CS0246   找不到類型或命名空間名稱 'Pawn' (是否遺漏了 using 指示詞或組件參考?)
+
+  D:\Steam\steamapps\common\RimWorld\Mods\Dead-Man-Switch\_Source\DMS\AI\JobDriver_DeployDroneSwarm.cs
+    line 3     CS0246   找不到類型或命名空間名稱 'RimWorld' (是否遺漏了 using 指示詞或組件參考?)
+    line 4     CS0246   找不到類型或命名空間名稱 'Verse' (是否遺漏了 using 指示詞或組件參考?)
+    line 5     CS0246   找不到類型或命名空間名稱 'Verse' (是否遺漏了 using 指示詞或組件參考?)
+    line 13    CS0246   找不到類型或命名空間名稱 'JobDriver' (是否遺漏了 using 指示詞或組件參考?)
+    line 22    CS0246   找不到類型或命名空間名稱 'Toil' (是否遺漏了 using 指示詞或組件參考?)
+
+  D:\Steam\steamapps\common\RimWorld\Mods\Dead-Man-Switch\_Source\DMS\AI\JobGiver_AICarrierStandoff.cs
+    line 1     CS0246   找不到類型或命名空間名稱 'RimWorld' (是否遺漏了 using 指示詞或組件參考?)
+    line 3     CS0246   找不到類型或命名空間名稱 'Verse' (是否遺漏了 using 指示詞或組件參考?)
+    line 4     CS0246   找不到類型或命名空間名稱 'Verse' (是否遺漏了 using 指示詞或組件參考?)
+    line 18    CS0246   找不到類型或命名空間名稱 'JobGiver_AIFightEnemy' (是否遺漏了 using 指示詞或組件參考?)
+    line 50    CS0246   找不到類型或命名空間名稱 'ThinkNode' (是否遺漏了 using 指示詞或組件參考?)
+    line 66    CS0246   找不到類型或命名空間名稱 'Job' (是否遺漏了 using 指示詞或組件參考?)
+    line 66    CS0246   找不到類型或命名空間名稱 'Pawn' (是否遺漏了 using 指示詞或組件參考?)
+    line 146   CS0246   找不到類型或命名空間名稱 'Job' (是否遺漏了 using 指示詞或組件參考?)
+    line 146   CS0246   找不到類型或命名空間名稱 'Pawn' (是否遺漏了 using 指示詞或組件參考?)
+    line 158   CS0246   找不到類型或命名空間名稱 'IntVec3' (是否遺漏了 using 指示詞或組件參考?)
+    line 158   CS0246   找不到類型或命名空間名稱 'IntVec3' (是否遺漏了 using 指示詞或組件參考?)
+    line 168   CS0246   找不到類型或命名空間名稱 'Pawn' (是否遺漏了 using 指示詞或組件參考?)
+    line 196   CS0246   找不到類型或命名空間名稱 'Pawn' (是否遺漏了 using 指示詞或組件參考?)
+    line 196   CS0246   找不到類型或命名空間名稱 'IntVec3' (是否遺漏了 using 指示詞或組件參考?)
+    line 196   CS0246   找不到類型或命名空間名稱 'Verb' (是否遺漏了 using 指示詞或組件參考?)
+
+  D:\Steam\steamapps\common\RimWorld\Mods\Dead-Man-Switch\_Source\DMS\AI\JobGiver_DeployDroneSwarm.cs
+    line 2     CS0246   找不到類型或命名空間名稱 'RimWorld' (是否遺漏了 using 指示詞或組件參考?)
+    line 4     CS0246   找不到類型或命名空間名稱 'Verse' (是否遺漏了 using 指示詞或組件參考?)
+    line 5     CS0246   找不到類型或命名空間名稱 'Verse' (是否遺漏了 using 指示詞或組件參考?)
+    line 18    CS0246   找不到類型或命名空間名稱 'ThinkNode_JobGiver' (是否遺漏了 using 指示詞或組件參考?)
+    line 32    CS0246   找不到類型或命名空間名稱 'ThinkNode' (是否遺漏了 using 指示詞或組件參考?)
+    line 42    CS0246   找不到類型或命名空間名稱 'Job' (是否遺漏了 using 指示詞或組件參考?)
+    line 42    CS0246   找不到類型或命名空間名稱 'Pawn' (是否遺漏了 using 指示詞或組件參考?)
+
+  D:\Steam\steamapps\common\RimWorld\Mods\Dead-Man-Switch\_Source\DMS\AI\ThinkNode_ConditionalDronePayload.cs
+    line 2     CS0246   找不到類型或命名空間名稱 'Verse' (是否遺漏了 using 指示詞或組件參考?)
+    line 3     CS0246   找不到類型或命名空間名稱 'Verse' (是否遺漏了 using 指示詞或組件參考?)
+    line 14    CS0246   找不到類型或命名空間名稱 'ThinkNode_Conditional' (是否遺漏了 using 指示詞或組件參考?)
+    line 22    CS0246   找不到類型或命名空間名稱 'ThinkNode' (是否遺漏了 using 指示詞或組件參考?)
+    line 30    CS0246   找不到類型或命名空間名稱 'Pawn' (是否遺漏了 using 指示詞或組件參考?)
+
+  D:\Steam\steamapps\common\RimWorld\Mods\Dead-Man-Switch\_Source\DMS\AI\ThinkNode_ConditionalHostileWithin.cs
+    line 2     CS0246   找不到類型或命名空間名稱 'Verse' (是否遺漏了 using 指示詞或組件參考?)
+    line 3     CS0246   找不到類型或命名空間名稱 'Verse' (是否遺漏了 using 指示詞或組件參考?)
+    line 12    CS0246   找不到類型或命名空間名稱 'ThinkNode_Conditional' (是否遺漏了 using 指示詞或組件參考?)
+    line 23    CS0246   找不到類型或命名空間名稱 'ThinkNode' (是否遺漏了 using 指示詞或組件參考?)
+    line 32    CS0246   找不到類型或命名空間名稱 'Pawn' (是否遺漏了 using 指示詞或組件參考?)
+
+  D:\Steam\steamapps\common\RimWorld\Mods\Dead-Man-Switch\_Source\DMS\CompPanicAura.cs
+    line 2     CS0246   找不到類型或命名空間名稱 'RimWorld' (是否遺漏了 using 指示詞或組件參考?)
+    line 3     CS0246   找不到類型或命名空間名稱 'Verse' (是否遺漏了 using 指示詞或組件參考?)
+    line 14    CS0246   找不到類型或命名空間名稱 'ThingComp' (是否遺漏了 using 指示詞或組件參考?)
+    line 93    CS0246   找不到類型或命名空間名稱 'Pawn' (是否遺漏了 using 指示詞或組件參考?)
+    line 115   CS0246   找不到類型或命名空間名稱 'CompProperties' (是否遺漏了 using 指示詞或組件參考?)
+    line 143   CS0246   找不到類型或命名空間名稱 'ThingDef' (是否遺漏了 using 指示詞或組件參考?)
+
+  D:\Steam\steamapps\common\RimWorld\Mods\Dead-Man-Switch\_Source\DMS\CompTurretTopDraw.cs
+    line 8     CS0246   找不到類型或命名空間名稱 'Verse' (是否遺漏了 using 指示詞或組件參考?)
+    line 12    CS0246   找不到類型或命名空間名稱 'CompProperties' (是否遺漏了 using 指示詞或組件參考?)
+    line 14    CS0246   找不到類型或命名空間名稱 'GraphicData' (是否遺漏了 using 指示詞或組件參考?)
+    line 23    CS0246   找不到類型或命名空間名稱 'ThingComp' (是否遺漏了 using 指示詞或組件參考?)
+
+  D:\Steam\steamapps\common\RimWorld\Mods\Dead-Man-Switch\_Source\DMS\CompUseEffect_SummonRaid.cs
+    line 1     CS0246   找不到類型或命名空間名稱 'Verse' (是否遺漏了 using 指示詞或組件參考?)
+    line 2     CS0246   找不到類型或命名空間名稱 'RimWorld' (是否遺漏了 using 指示詞或組件參考?)
+    line 6     CS0246   找不到類型或命名空間名稱 'CompUseEffect' (是否遺漏了 using 指示詞或組件參考?)
+    line 10    CS0246   找不到類型或命名空間名稱 'AcceptanceReport' (是否遺漏了 using 指示詞或組件參考?)
+    line 10    CS0246   找不到類型或命名空間名稱 'Pawn' (是否遺漏了 using 指示詞或組件參考?)
+    line 15    CS0246   找不到類型或命名空間名稱 'TaggedString' (是否遺漏了 using 指示詞或組件參考?)
+    line 15    CS0246   找不到類型或命名空間名稱 'Pawn' (是否遺漏了 using 指示詞或組件參考?)
+    line 21    CS0246   找不到類型或命名空間名稱 'Pawn' (是否遺漏了 using 指示詞或組件參考?)
+    line 33    CS0246   找不到類型或命名空間名稱 'CompProperties_UseEffect' (是否遺漏了 using 指示詞或組件參考?)
+    line 40    CS0246   找不到類型或命名空間名稱 'BossgroupDef' (是否遺漏了 using 指示詞或組件參考?)
+    line 42    CS0246   找不到類型或命名空間名稱 'EffecterDef' (是否遺漏了 using 指示詞或組件參考?)
+
+  D:\Steam\steamapps\common\RimWorld\Mods\Dead-Man-Switch\_Source\DMS\DMS_DefOf.cs
+    line 1     CS0246   找不到類型或命名空間名稱 'RimWorld' (是否遺漏了 using 指示詞或組件參考?)
+    line 3     CS0246   找不到類型或命名空間名稱 'Verse' (是否遺漏了 using 指示詞或組件參考?)
+    line 7     CS0246   找不到類型或命名空間名稱 'DefOfAttribute' (是否遺漏了 using 指示詞或組件參考?)
+    line 7     CS0246   找不到類型或命名空間名稱 'DefOf' (是否遺漏了 using 指示詞或組件參考?)
+    line 14    CS0246   找不到類型或命名空間名稱 'FactionDef' (是否遺漏了 using 指示詞或組件參考?)
+    line 15    CS0246   找不到類型或命名空間名稱 'QuestScriptDef' (是否遺漏了 using 指示詞或組件參考?)
+    line 16    CS0246   找不到類型或命名空間名稱 'QuestScriptDef' (是否遺漏了 using 指示詞或組件參考?)
+    line 17    CS0246   找不到類型或命名空間名稱 'QuestScriptDef' (是否遺漏了 using 指示詞或組件參考?)
+    line 18    CS0246   找不到類型或命名空間名稱 'PawnKindDef' (是否遺漏了 using 指示詞或組件參考?)
+    line 19    CS0246   找不到類型或命名空間名稱 'PawnKindDef' (是否遺漏了 using 指示詞或組件參考?)
+    line 20    CS0246   找不到類型或命名空間名稱 'ThingDef' (是否遺漏了 using 指示詞或組件參考?)
+    line 21    CS0246   找不到類型或命名空間名稱 'ThingDef' (是否遺漏了 using 指示詞或組件參考?)
+    line 22    CS0246   找不到類型或命名空間名稱 'TransportShipDef' (是否遺漏了 using 指示詞或組件參考?)
+    line 23    CS0246   找不到類型或命名空間名稱 'JobDef' (是否遺漏了 using 指示詞或組件參考?)
+    line 25    CS0246   找不到類型或命名空間名稱 'JobDef' (是否遺漏了 using 指示詞或組件參考?)
+    line 26    CS0246   找不到類型或命名空間名稱 'RulePackDef' (是否遺漏了 using 指示詞或組件參考?)
+    line 29    CS0246   找不到類型或命名空間名稱 'TaleDef' (是否遺漏了 using 指示詞或組件參考?)
+    line 30    CS0246   找不到類型或命名空間名稱 'TaleDef' (是否遺漏了 using 指示詞或組件參考?)
+    line 31    CS0246   找不到類型或命名空間名稱 'HistoryEventDef' (是否遺漏了 using 指示詞或組件參考?)
+
+  D:\Steam\steamapps\common\RimWorld\Mods\Dead-Man-Switch\_Source\DMS\Frogman\Building_SecondaryGestation.cs
+    line 2     CS0246   找不到類型或命名空間名稱 'RimWorld' (是否遺漏了 using 指示詞或組件參考?)
+    line 4     CS0246   找不到類型或命名空間名稱 'Verse' (是否遺漏了 using 指示詞或組件參考?)
+    line 12    CS0246   找不到類型或命名空間名稱 'DefModExtension' (是否遺漏了 using 指示詞或組件參考?)
+    line 15    CS0246   找不到類型或命名空間名稱 'ThingDef' (是否遺漏了 using 指示詞或組件參考?)
+    line 21    CS0246   找不到類型或命名空間名稱 'FloatRange' (是否遺漏了 using 指示詞或組件參考?)
+    line 38    CS0246   找不到類型或命名空間名稱 'MustTranslateAttribute' (是否遺漏了 using 指示詞或組件參考?)
+    line 38    CS0246   找不到類型或命名空間名稱 'MustTranslate' (是否遺漏了 using 指示詞或組件參考?)
+    line 39    CS0246   找不到類型或命名空間名稱 'MustTranslateAttribute' (是否遺漏了 using 指示詞或組件參考?)
+    line 39    CS0246   找不到類型或命名空間名稱 'MustTranslate' (是否遺漏了 using 指示詞或組件參考?)
+    line 52    CS0246   找不到類型或命名空間名稱 'StaticConstructorOnStartupAttribute' (是否遺漏了 using 指示詞或組件參考?)
+    line 52    CS0246   找不到類型或命名空間名稱 'StaticConstructorOnStartup' (是否遺漏了 using 指示詞或組件參考?)
+    line 53    CS0246   找不到類型或命名空間名稱 'Building' (是否遺漏了 using 指示詞或組件參考?)
+    line 110   CS0246   找不到類型或命名空間名稱 'Map' (是否遺漏了 using 指示詞或組件參考?)
+    line 194   CS0246   找不到類型或命名空間名稱 'SectionLayer' (是否遺漏了 using 指示詞或組件參考?)
+    line 284   CS0246   找不到類型或命名空間名稱 'Gizmo' (是否遺漏了 using 指示詞或組件參考?)
+
+  D:\Steam\steamapps\common\RimWorld\Mods\Dead-Man-Switch\_Source\DMS\Frogman\MechBirth.cs
+    line 3     CS0246   找不到類型或命名空間名稱 'RimWorld' (是否遺漏了 using 指示詞或組件參考?)
+    line 5     CS0246   找不到類型或命名空間名稱 'Verse' (是否遺漏了 using 指示詞或組件參考?)
+    line 16    CS0246   找不到類型或命名空間名稱 'DefModExtension' (是否遺漏了 using 指示詞或組件參考?)
+    line 19    CS0246   找不到類型或命名空間名稱 'ThingDef' (是否遺漏了 using 指示詞或組件參考?)
+    line 27    CS0246   找不到類型或命名空間名稱 'ThingDef' (是否遺漏了 using 指示詞或組件參考?)
+    line 29    CS0246   找不到類型或命名空間名稱 'IntRange' (是否遺漏了 using 指示詞或組件參考?)
+    line 32    CS0246   找不到類型或命名空間名稱 'ThingDef' (是否遺漏了 using 指示詞或組件參考?)
+    line 34    CS0246   找不到類型或命名空間名稱 'IntRange' (是否遺漏了 using 指示詞或組件參考?)
+    line 40    CS0246   找不到類型或命名空間名稱 'TaleDef' (是否遺漏了 using 指示詞或組件參考?)
+    line 43    CS0246   找不到類型或命名空間名稱 'TaleDef' (是否遺漏了 using 指示詞或組件參考?)
+    line 46    CS0246   找不到類型或命名空間名稱 'HistoryEventDef' (是否遺漏了 using 指示詞或組件參考?)
+    line 48    CS0246   找不到類型或命名空間名稱 'MustTranslateAttribute' (是否遺漏了 using 指示詞或組件參考?)
+    line 48    CS0246   找不到類型或命名空間名稱 'MustTranslate' (是否遺漏了 using 指示詞或組件參考?)
+    line 49    CS0246   找不到類型或命名空間名稱 'MustTranslateAttribute' (是否遺漏了 using 指示詞或組件參考?)
+    line 49    CS0246   找不到類型或命名空間名稱 'MustTranslate' (是否遺漏了 using 指示詞或組件參考?)
+    line 50    CS0246   找不到類型或命名空間名稱 'MustTranslateAttribute' (是否遺漏了 using 指示詞或組件參考?)
+    line 50    CS0246   找不到類型或命名空間名稱 'MustTranslate' (是否遺漏了 using 指示詞或組件參考?)
+    line 51    CS0246   找不到類型或命名空間名稱 'MustTranslateAttribute' (是否遺漏了 using 指示詞或組件參考?)
+    line 51    CS0246   找不到類型或命名空間名稱 'MustTranslate' (是否遺漏了 using 指示詞或組件參考?)
+    line 58    CS0246   找不到類型或命名空間名稱 'PregnancyUtility' (是否遺漏了 using 指示詞或組件參考?)
+    line 58    CS0103   名稱 'PregnancyUtility' 不存在於目前的內容中
+    line 63    CS0246   找不到類型或命名空間名稱 'RitualOutcomePossibility' (是否遺漏了 using 指示詞或組件參考?)
+    line 63    CS0246   找不到類型或命名空間名稱 'GeneDef' (是否遺漏了 using 指示詞或組件參考?)
+    line 64    CS0246   找不到類型或命名空間名稱 'Pawn' (是否遺漏了 using 指示詞或組件參考?)
+    line 64    CS0246   找不到類型或命名空間名稱 'Thing' (是否遺漏了 using 指示詞或組件參考?)
+    line 64    CS0246   找不到類型或命名空間名稱 'Thing' (是否遺漏了 using 指示詞或組件參考?)
+    line 144   CS0246   找不到類型或命名空間名稱 'Pawn' (是否遺漏了 using 指示詞或組件參考?)
+    line 172   CS0246   找不到類型或命名空間名稱 'GeneDef' (是否遺漏了 using 指示詞或組件參考?)
+    line 194   CS0246   找不到類型或命名空間名稱 'GeneDef' (是否遺漏了 using 指示詞或組件參考?)
+    line 194   CS0246   找不到類型或命名空間名稱 'Thing' (是否遺漏了 using 指示詞或組件參考?)
+    line 220   CS0246   找不到類型或命名空間名稱 'IntVec3' (是否遺漏了 using 指示詞或組件參考?)
+    line 220   CS0246   找不到類型或命名空間名稱 'Thing' (是否遺漏了 using 指示詞或組件參考?)
+    line 220   CS0246   找不到類型或命名空間名稱 'Map' (是否遺漏了 using 指示詞或組件參考?)
+    line 248   CS0246   找不到類型或命名空間名稱 'IntVec3' (是否遺漏了 using 指示詞或組件參考?)
+    line 248   CS0246   找不到類型或命名空間名稱 'Map' (是否遺漏了 using 指示詞或組件參考?)
+    line 255   CS0246   找不到類型或命名空間名稱 'Pawn' (是否遺漏了 using 指示詞或組件參考?)
+    line 256   CS0246   找不到類型或命名空間名稱 'Thing' (是否遺漏了 using 指示詞或組件參考?)
+    line 256   CS0246   找不到類型或命名空間名稱 'Thing' (是否遺漏了 using 指示詞或組件參考?)
+
+  D:\Steam\steamapps\common\RimWorld\Mods\Dead-Man-Switch\_Source\DMS\Frogman\MechEmbryo.cs
+    line 2     CS0246   找不到類型或命名空間名稱 'RimWorld' (是否遺漏了 using 指示詞或組件參考?)
+    line 3     CS0246   找不到類型或命名空間名稱 'Verse' (是否遺漏了 using 指示詞或組件參考?)
+    line 11    CS0246   找不到類型或命名空間名稱 'DefModExtension' (是否遺漏了 using 指示詞或組件參考?)
+    line 14    CS0246   找不到類型或命名空間名稱 'GeneDef' (是否遺漏了 using 指示詞或組件參考?)
+    line 31    CS0246   找不到類型或命名空間名稱 'HumanEmbryo' (是否遺漏了 using 指示詞或組件參考?)
+
+  D:\Steam\steamapps\common\RimWorld\Mods\Dead-Man-Switch\_Source\DMS\Frogman\Patch_ImplantMechEmbryo.cs
+    line 4     CS0246   找不到類型或命名空間名稱 'RimWorld' (是否遺漏了 using 指示詞或組件參考?)
+    line 5     CS0246   找不到類型或命名空間名稱 'Verse' (是否遺漏了 using 指示詞或組件參考?)
+    line 15    CS0246   找不到類型或命名空間名稱 'Recipe_ImplantEmbryo' (是否遺漏了 using 指示詞或組件參考?)
+    line 15    CS0103   名稱 'Recipe_ImplantEmbryo' 不存在於目前的內容中
+    line 19    CS0246   找不到類型或命名空間名稱 'Recipe_ImplantEmbryo' (是否遺漏了 using 指示詞或組件參考?)
+    line 19    CS0246   找不到類型或命名空間名稱 'Pawn' (是否遺漏了 using 指示詞或組件參考?)
+    line 19    CS0246   找不到類型或命名空間名稱 'BodyPartRecord' (是否遺漏了 using 指示詞或組件參考?)
+    line 20    CS0246   找不到類型或命名空間名稱 'Pawn' (是否遺漏了 using 指示詞或組件參考?)
+    line 20    CS0246   找不到類型或命名空間名稱 'Thing' (是否遺漏了 using 指示詞或組件參考?)
+    line 20    CS0246   找不到類型或命名空間名稱 'Bill' (是否遺漏了 using 指示詞或組件參考?)
+
+  D:\Steam\steamapps\common\RimWorld\Mods\Dead-Man-Switch\_Source\DMS\Frogman\RationRecovery.cs
+    line 2     CS0246   找不到類型或命名空間名稱 'RimWorld' (是否遺漏了 using 指示詞或組件參考?)
+    line 4     CS0246   找不到類型或命名空間名稱 'Verse' (是否遺漏了 using 指示詞或組件參考?)
+    line 5     CS0246   找不到類型或命名空間名稱 'Verse' (是否遺漏了 using 指示詞或組件參考?)
+    line 10    CS0246   找不到類型或命名空間名稱 'DefOfAttribute' (是否遺漏了 using 指示詞或組件參考?)
+    line 10    CS0246   找不到類型或命名空間名稱 'DefOf' (是否遺漏了 using 指示詞或組件參考?)
+    line 13    CS0246   找不到類型或命名空間名稱 'JobDef' (是否遺漏了 using 指示詞或組件參考?)
+    line 25    CS0246   找不到類型或命名空間名稱 'CompProperties' (是否遺漏了 using 指示詞或組件參考?)
+    line 28    CS0246   找不到類型或命名空間名稱 'ThingDef' (是否遺漏了 using 指示詞或組件參考?)
+    line 44    CS0246   找不到類型或命名空間名稱 'ThingDef' (是否遺漏了 using 指示詞或組件參考?)
+    line 65    CS0246   找不到類型或命名空間名稱 'ThingComp' (是否遺漏了 using 指示詞或組件參考?)
+    line 65    CS0012   類型 'ThingDef' 定義在未參考的組件中。您必須加入組件 'Assembly-CSharp, Version=1.6.9655.19392, Culture=neutral, PublicKeyToken=null' 的參考。
+    line 71    CS0246   找不到類型或命名空間名稱 'Pawn' (是否遺漏了 using 指示詞或組件參考?)
+    line 82    CS0246   找不到類型或命名空間名稱 'ThingDef' (是否遺漏了 using 指示詞或組件參考?)
+    line 110   CS0246   找不到類型或命名空間名稱 'Thing' (是否遺漏了 using 指示詞或組件參考?)
+    line 137   CS0246   找不到類型或命名空間名稱 'Gizmo' (是否遺漏了 using 指示詞或組件參考?)
+    line 186   CS0246   找不到類型或命名空間名稱 'Pawn' (是否遺漏了 using 指示詞或組件參考?)
+    line 201   CS0246   找不到類型或命名空間名稱 'Thing' (是否遺漏了 using 指示詞或組件參考?)
+    line 201   CS0246   找不到類型或命名空間名稱 'Pawn' (是否遺漏了 using 指示詞或組件參考?)
+    line 221   CS0246   找不到類型或命名空間名稱 'JobDriver' (是否遺漏了 using 指示詞或組件參考?)
+    line 230   CS0246   找不到類型或命名空間名稱 'Toil' (是否遺漏了 using 指示詞或組件參考?)
+    line 264   CS0246   找不到類型或命名空間名稱 'CompProperties_AbilityEffect' (是否遺漏了 using 指示詞或組件參考?)
+    line 278   CS0246   找不到類型或命名空間名稱 'EffecterDef' (是否遺漏了 using 指示詞或組件參考?)
+    line 291   CS0246   找不到類型或命名空間名稱 'CompAbilityEffect' (是否遺漏了 using 指示詞或組件參考?)
+    line 315   CS0246   找不到類型或命名空間名稱 'LocalTargetInfo' (是否遺漏了 using 指示詞或組件參考?)
+    line 315   CS0246   找不到類型或命名空間名稱 'LocalTargetInfo' (是否遺漏了 using 指示詞或組件參考?)
+
+  D:\Steam\steamapps\common\RimWorld\Mods\Dead-Man-Switch\_Source\DMS\HarmonyEntry.cs
+    line 1     CS0246   找不到類型或命名空間名稱 'Verse' (是否遺漏了 using 指示詞或組件參考?)
+    line 6     CS0246   找不到類型或命名空間名稱 'StaticConstructorOnStartupAttribute' (是否遺漏了 using 指示詞或組件參考?)
+    line 6     CS0246   找不到類型或命名空間名稱 'StaticConstructorOnStartup' (是否遺漏了 using 指示詞或組件參考?)
+
+  D:\Steam\steamapps\common\RimWorld\Mods\Dead-Man-Switch\_Source\DMS\MechanitorPatch.cs
+    line 1     CS0246   找不到類型或命名空間名稱 'Verse' (是否遺漏了 using 指示詞或組件參考?)
+    line 3     CS0246   找不到類型或命名空間名稱 'RimWorld' (是否遺漏了 using 指示詞或組件參考?)
+    line 7     CS0246   找不到類型或命名空間名稱 'StaticConstructorOnStartupAttribute' (是否遺漏了 using 指示詞或組件參考?)
+    line 7     CS0246   找不到類型或命名空間名稱 'StaticConstructorOnStartup' (是否遺漏了 using 指示詞或組件參考?)
+    line 8     CS0246   找不到類型或命名空間名稱 'CallBossgroupUtility' (是否遺漏了 using 指示詞或組件參考?)
+    line 11    CS0246   找不到類型或命名空間名稱 'BossgroupDef' (是否遺漏了 using 指示詞或組件參考?)
+    line 11    CS0246   找不到類型或命名空間名稱 'AcceptanceReport' (是否遺漏了 using 指示詞或組件參考?)
+
+  D:\Steam\steamapps\common\RimWorld\Mods\Dead-Man-Switch\_Source\DMS\ModExtension_BossSong.cs
+    line 1     CS0246   找不到類型或命名空間名稱 'Verse' (是否遺漏了 using 指示詞或組件參考?)
+    line 6     CS0246   找不到類型或命名空間名稱 'DefModExtension' (是否遺漏了 using 指示詞或組件參考?)
+    line 8     CS0246   找不到類型或命名空間名稱 'SongDef' (是否遺漏了 using 指示詞或組件參考?)
+    line 10    CS0246   找不到類型或命名空間名稱 'SongDef' (是否遺漏了 using 指示詞或組件參考?)
+
+  D:\Steam\steamapps\common\RimWorld\Mods\Dead-Man-Switch\_Source\DMS\NoMechanitorNeed.cs
+    line 1     CS0246   找不到類型或命名空間名稱 'Verse' (是否遺漏了 using 指示詞或組件參考?)
+    line 5     CS0246   找不到類型或命名空間名稱 'DefModExtension' (是否遺漏了 using 指示詞或組件參考?)
+
+  D:\Steam\steamapps\common\RimWorld\Mods\Dead-Man-Switch\_Source\DMS\QuestNode_Root_BossgroupFactionExposed.cs
+    line 1     CS0246   找不到類型或命名空間名稱 'Verse' (是否遺漏了 using 指示詞或組件參考?)
+    line 2     CS0246   找不到類型或命名空間名稱 'RimWorld' (是否遺漏了 using 指示詞或組件參考?)
+    line 3     CS0246   找不到類型或命名空間名稱 'RimWorld' (是否遺漏了 using 指示詞或組件參考?)
+    line 4     CS0246   找不到類型或命名空間名稱 'RimWorld' (是否遺漏了 using 指示詞或組件參考?)
+    line 10    CS0246   找不到類型或命名空間名稱 'QuestNode' (是否遺漏了 using 指示詞或組件參考?)
+    line 13    CS0246   找不到類型或命名空間名稱 'IntRange' (是否遺漏了 using 指示詞或組件參考?)
+    line 15    CS0246   找不到類型或命名空間名稱 'IntRange' (是否遺漏了 using 指示詞或組件參考?)
+    line 16    CS0246   找不到類型或命名空間名稱 'FactionDef' (是否遺漏了 using 指示詞或組件參考?)
+    line 17    CS0246   找不到類型或命名空間名稱 'MustTranslateAttribute' (是否遺漏了 using 指示詞或組件參考?)
+    line 17    CS0246   找不到類型或命名空間名稱 'MustTranslate' (是否遺漏了 using 指示詞或組件參考?)
+    line 134   CS0246   找不到類型或命名空間名稱 'Slate' (是否遺漏了 using 指示詞或組件參考?)
+
+  D:\Steam\steamapps\common\RimWorld\Mods\Dead-Man-Switch\_Source\DMS\QuestPart_BossgroupArrivesWithMusic.cs
+    line 1     CS0246   找不到類型或命名空間名稱 'Verse' (是否遺漏了 using 指示詞或組件參考?)
+    line 2     CS0246   找不到類型或命名空間名稱 'RimWorld' (是否遺漏了 using 指示詞或組件參考?)
+    line 3     CS0246   找不到類型或命名空間名稱 'LudeonTK' (是否遺漏了 using 指示詞或組件參考?)
+    line 8     CS0246   找不到類型或命名空間名稱 'QuestPart_BossgroupArrives' (是否遺漏了 using 指示詞或組件參考?)
+    line 10    CS0246   找不到類型或命名空間名稱 'SongDef' (是否遺漏了 using 指示詞或組件參考?)
+    line 11    CS0246   找不到類型或命名空間名稱 'SignalArgs' (是否遺漏了 using 指示詞或組件參考?)
+    line 23    CS0246   找不到類型或命名空間名稱 'DebugActionAttribute' (是否遺漏了 using 指示詞或組件參考?)
+    line 23    CS0246   找不到類型或命名空間名稱 'DebugAction' (是否遺漏了 using 指示詞或組件參考?)
+    line 23    CS0103   名稱 'DebugActionType' 不存在於目前的內容中
+    line 23    CS0103   名稱 'AllowedGameStates' 不存在於目前的內容中
+
+  D:\Steam\steamapps\common\RimWorld\Mods\Dead-Man-Switch\_Source\DMS\Quests\CompQuestWorkable.cs
+    line 2     CS0246   找不到類型或命名空間名稱 'RimWorld' (是否遺漏了 using 指示詞或組件參考?)
+    line 4     CS0246   找不到類型或命名空間名稱 'Verse' (是否遺漏了 using 指示詞或組件參考?)
+    line 5     CS0246   找不到類型或命名空間名稱 'Verse' (是否遺漏了 using 指示詞或組件參考?)
+    line 6     CS0246   找不到類型或命名空間名稱 'Verse' (是否遺漏了 using 指示詞或組件參考?)
+    line 11    CS0246   找不到類型或命名空間名稱 'ThingComp' (是否遺漏了 using 指示詞或組件參考?)
+    line 58    CS0246   找不到類型或命名空間名稱 'CompProperties' (是否遺漏了 using 指示詞或組件參考?)
+    line 109   CS0246   找不到類型或命名空間名稱 'Pawn' (是否遺漏了 using 指示詞或組件參考?)
+    line 122   CS0246   找不到類型或命名空間名稱 'Pawn' (是否遺漏了 using 指示詞或組件參考?)
+    line 138   CS0246   找不到類型或命名空間名稱 'Thing' (是否遺漏了 using 指示詞或組件參考?)
+    line 158   CS0246   找不到類型或命名空間名稱 'DestroyMode' (是否遺漏了 using 指示詞或組件參考?)
+    line 158   CS0246   找不到類型或命名空間名稱 'Map' (是否遺漏了 using 指示詞或組件參考?)
+    line 169   CS0246   找不到類型或命名空間名稱 'Thing' (是否遺漏了 using 指示詞或組件參考?)
+    line 186   CS0246   找不到類型或命名空間名稱 'CompProperties' (是否遺漏了 using 指示詞或組件參考?)
+
+  D:\Steam\steamapps\common\RimWorld\Mods\Dead-Man-Switch\_Source\DMS\Quests\CourtMartial\QuestNode_Root_CourtMartial.cs
+    line 3     CS0246   找不到類型或命名空間名稱 'RimWorld' (是否遺漏了 using 指示詞或組件參考?)
+    line 4     CS0246   找不到類型或命名空間名稱 'RimWorld' (是否遺漏了 using 指示詞或組件參考?)
+    line 6     CS0246   找不到類型或命名空間名稱 'Verse' (是否遺漏了 using 指示詞或組件參考?)
+    line 17    CS0246   找不到類型或命名空間名稱 'QuestNode' (是否遺漏了 using 指示詞或組件參考?)
+    line 19    CS0246   找不到類型或命名空間名稱 'FactionDef' (是否遺漏了 using 指示詞或組件參考?)
+    line 20    CS0246   找不到類型或命名空間名稱 'TransportShipDef' (是否遺漏了 using 指示詞或組件參考?)
+    line 21    CS0246   找不到類型或命名空間名稱 'IntRange' (是否遺漏了 using 指示詞或組件參考?)
+    line 23    CS0246   找不到類型或命名空間名稱 'SimpleCurve' (是否遺漏了 using 指示詞或組件參考?)
+    line 35    CS0246   找不到類型或命名空間名稱 'Faction' (是否遺漏了 using 指示詞或組件參考?)
+    line 39    CS0246   找不到類型或命名空間名稱 'Pawn' (是否遺漏了 using 指示詞或組件參考?)
+    line 39    CS0246   找不到類型或命名空間名稱 'Faction' (是否遺漏了 using 指示詞或組件參考?)
+    line 39    CS0246   找不到類型或命名空間名稱 'Map' (是否遺漏了 using 指示詞或組件參考?)
+    line 55    CS0246   找不到類型或命名空間名稱 'Slate' (是否遺漏了 using 指示詞或組件參考?)
+
+  D:\Steam\steamapps\common\RimWorld\Mods\Dead-Man-Switch\_Source\DMS\Quests\CourtMartial\QuestPart_CourtTruce.cs
+    line 1     CS0246   找不到類型或命名空間名稱 'RimWorld' (是否遺漏了 using 指示詞或組件參考?)
+    line 3     CS0246   找不到類型或命名空間名稱 'Verse' (是否遺漏了 using 指示詞或組件參考?)
+    line 15    CS0246   找不到類型或命名空間名稱 'QuestPartActivable' (是否遺漏了 using 指示詞或組件參考?)
+    line 17    CS0246   找不到類型或命名空間名稱 'Faction' (是否遺漏了 using 指示詞或組件參考?)
+    line 18    CS0246   找不到類型或命名空間名稱 'Pawn' (是否遺漏了 using 指示詞或組件參考?)
+    line 32    CS0246   找不到類型或命名空間名稱 'SignalArgs' (是否遺漏了 using 指示詞或組件參考?)
+    line 50    CS0246   找不到類型或命名空間名稱 'Signal' (是否遺漏了 using 指示詞或組件參考?)
+    line 113   CS0246   找不到類型或命名空間名稱 'FactionRelationKind' (是否遺漏了 using 指示詞或組件參考?)
+
+  D:\Steam\steamapps\common\RimWorld\Mods\Dead-Man-Switch\_Source\DMS\Quests\CourtMartial\QuestPart_CourtVerdict.cs
+    line 2     CS0246   找不到類型或命名空間名稱 'RimWorld' (是否遺漏了 using 指示詞或組件參考?)
+    line 4     CS0246   找不到類型或命名空間名稱 'Verse' (是否遺漏了 using 指示詞或組件參考?)
+    line 14    CS0246   找不到類型或命名空間名稱 'QuestPart' (是否遺漏了 using 指示詞或組件參考?)
+    line 17    CS0246   找不到類型或命名空間名稱 'Faction' (是否遺漏了 using 指示詞或組件參考?)
+    line 18    CS0246   找不到類型或命名空間名稱 'Pawn' (是否遺漏了 using 指示詞或組件參考?)
+    line 46    CS0246   找不到類型或命名空間名稱 'Signal' (是否遺漏了 using 指示詞或組件參考?)
+    line 128   CS0246   找不到類型或命名空間名稱 'QuestPart' (是否遺漏了 using 指示詞或組件參考?)
+    line 133   CS0246   找不到類型或命名空間名稱 'Signal' (是否遺漏了 using 指示詞或組件參考?)
+
+  D:\Steam\steamapps\common\RimWorld\Mods\Dead-Man-Switch\_Source\DMS\Quests\CourtMartial\QuestPart_SpawnCourtShuttle.cs
+    line 1     CS0246   找不到類型或命名空間名稱 'RimWorld' (是否遺漏了 using 指示詞或組件參考?)
+    line 2     CS0246   找不到類型或命名空間名稱 'Verse' (是否遺漏了 using 指示詞或組件參考?)
+    line 15    CS0246   找不到類型或命名空間名稱 'RulePackDef' (是否遺漏了 using 指示詞或組件參考?)
+    line 34    CS0246   找不到類型或命名空間名稱 'RulePackDef' (是否遺漏了 using 指示詞或組件參考?)
+    line 35    CS0246   找不到類型或命名空間名稱 'RulePackDef' (是否遺漏了 using 指示詞或組件參考?)
+
+  D:\Steam\steamapps\common\RimWorld\Mods\Dead-Man-Switch\_Source\DMS\Quests\JobDriver_ProcessQuestWorkable.cs
+    line 2     CS0246   找不到類型或命名空間名稱 'RimWorld' (是否遺漏了 using 指示詞或組件參考?)
+    line 3     CS0246   找不到類型或命名空間名稱 'Verse' (是否遺漏了 using 指示詞或組件參考?)
+    line 4     CS0246   找不到類型或命名空間名稱 'Verse' (是否遺漏了 using 指示詞或組件參考?)
+    line 9     CS0246   找不到類型或命名空間名稱 'JobDriver' (是否遺漏了 using 指示詞或組件參考?)
+    line 11    CS0246   找不到類型或命名空間名稱 'Thing' (是否遺漏了 using 指示詞或組件參考?)
+    line 12    CS0246   找不到類型或命名空間名稱 'Thing' (是否遺漏了 using 指示詞或組件參考?)
+    line 23    CS0246   找不到類型或命名空間名稱 'Toil' (是否遺漏了 using 指示詞或組件參考?)
+    line 61    CS0246   找不到類型或命名空間名稱 'WorkGiver_Scanner' (是否遺漏了 using 指示詞或組件參考?)
+    line 63    CS0246   找不到類型或命名空間名稱 'ThingRequest' (是否遺漏了 using 指示詞或組件參考?)
+    line 64    CS0246   找不到類型或命名空間名稱 'PathEndMode' (是否遺漏了 using 指示詞或組件參考?)
+    line 66    CS0246   找不到類型或命名空間名稱 'Pawn' (是否遺漏了 using 指示詞或組件參考?)
+    line 66    CS0246   找不到類型或命名空間名稱 'Thing' (是否遺漏了 using 指示詞或組件參考?)
+    line 78    CS0246   找不到類型或命名空間名稱 'Job' (是否遺漏了 using 指示詞或組件參考?)
+    line 78    CS0246   找不到類型或命名空間名稱 'Pawn' (是否遺漏了 using 指示詞或組件參考?)
+    line 78    CS0246   找不到類型或命名空間名稱 'Thing' (是否遺漏了 using 指示詞或組件參考?)
+    line 88    CS0246   找不到類型或命名空間名稱 'Thing' (是否遺漏了 using 指示詞或組件參考?)
+    line 88    CS0246   找不到類型或命名空間名稱 'Pawn' (是否遺漏了 using 指示詞或組件參考?)
+
+  D:\Steam\steamapps\common\RimWorld\Mods\Dead-Man-Switch\_Source\DMS\Quests\OfficerTraining\QuestNode_Root_OfficerTraining.cs
+    line 3     CS0246   找不到類型或命名空間名稱 'RimWorld' (是否遺漏了 using 指示詞或組件參考?)
+    line 4     CS0246   找不到類型或命名空間名稱 'RimWorld' (是否遺漏了 using 指示詞或組件參考?)
+    line 6     CS0246   找不到類型或命名空間名稱 'Verse' (是否遺漏了 using 指示詞或組件參考?)
+    line 21    CS0246   找不到類型或命名空間名稱 'QuestNode' (是否遺漏了 using 指示詞或組件參考?)
+    line 23    CS0246   找不到類型或命名空間名稱 'FactionDef' (是否遺漏了 using 指示詞或組件參考?)
+    line 24    CS0246   找不到類型或命名空間名稱 'TransportShipDef' (是否遺漏了 using 指示詞或組件參考?)
+    line 25    CS0246   找不到類型或命名空間名稱 'PawnKindDef' (是否遺漏了 using 指示詞或組件參考?)
+    line 42    CS0246   找不到類型或命名空間名稱 'Faction' (是否遺漏了 using 指示詞或組件參考?)
+    line 46    CS0246   找不到類型或命名空間名稱 'QuestGen_Pawns' (是否遺漏了 using 指示詞或組件參考?)
+    line 46    CS0246   找不到類型或命名空間名稱 'Faction' (是否遺漏了 using 指示詞或組件參考?)
+    line 57    CS0246   找不到類型或命名空間名稱 'Slate' (是否遺漏了 using 指示詞或組件參考?)
+    line 57    CS0246   找不到類型或命名空間名稱 'Pawn' (是否遺漏了 using 指示詞或組件參考?)
+    line 57    CS0246   找不到類型或命名空間名稱 'Faction' (是否遺漏了 using 指示詞或組件參考?)
+    line 57    CS0246   找不到類型或命名空間名稱 'RoyalTitleDef' (是否遺漏了 using 指示詞或組件參考?)
+    line 72    CS0246   找不到類型或命名空間名稱 'Pawn' (是否遺漏了 using 指示詞或組件參考?)
+    line 87    CS0246   找不到類型或命名空間名稱 'Slate' (是否遺漏了 using 指示詞或組件參考?)
+
+  D:\Steam\steamapps\common\RimWorld\Mods\Dead-Man-Switch\_Source\DMS\Quests\OfficerTraining\QuestPart_SpawnTrainingShuttle.cs
+    line 1     CS0246   找不到類型或命名空間名稱 'Verse' (是否遺漏了 using 指示詞或組件參考?)
+    line 11    CS0246   找不到類型或命名空間名稱 'RulePackDef' (是否遺漏了 using 指示詞或組件參考?)
+    line 34    CS0246   找不到類型或命名空間名稱 'RulePackDef' (是否遺漏了 using 指示詞或組件參考?)
+    line 35    CS0246   找不到類型或命名空間名稱 'RulePackDef' (是否遺漏了 using 指示詞或組件參考?)
+
+  D:\Steam\steamapps\common\RimWorld\Mods\Dead-Man-Switch\_Source\DMS\Quests\OfficerTraining\QuestPart_TrainingGraduation.cs
+    line 3     CS0246   找不到類型或命名空間名稱 'RimWorld' (是否遺漏了 using 指示詞或組件參考?)
+    line 5     CS0246   找不到類型或命名空間名稱 'Verse' (是否遺漏了 using 指示詞或組件參考?)
+    line 17    CS0246   找不到類型或命名空間名稱 'QuestPart' (是否遺漏了 using 指示詞或組件參考?)
+    line 20    CS0246   找不到類型或命名空間名稱 'Faction' (是否遺漏了 using 指示詞或組件參考?)
+    line 21    CS0246   找不到類型或命名空間名稱 'Pawn' (是否遺漏了 using 指示詞或組件參考?)
+    line 22    CS0246   找不到類型或命名空間名稱 'RoyalTitleDef' (是否遺漏了 using 指示詞或組件參考?)
+    line 23    CS0246   找不到類型或命名空間名稱 'SkillDef' (是否遺漏了 using 指示詞或組件參考?)
+    line 32    CS0246   找不到類型或命名空間名稱 'Signal' (是否遺漏了 using 指示詞或組件參考?)
+
+  D:\Steam\steamapps\common\RimWorld\Mods\Dead-Man-Switch\_Source\DMS\Quests\OfficerTraining\QuestPart_TrainingWatch.cs
+    line 2     CS0246   找不到類型或命名空間名稱 'RimWorld' (是否遺漏了 using 指示詞或組件參考?)
+    line 3     CS0246   找不到類型或命名空間名稱 'Verse' (是否遺漏了 using 指示詞或組件參考?)
+    line 20    CS0246   找不到類型或命名空間名稱 'QuestPartActivable' (是否遺漏了 using 指示詞或組件參考?)
+    line 22    CS0246   找不到類型或命名空間名稱 'Faction' (是否遺漏了 using 指示詞或組件參考?)
+    line 23    CS0246   找不到類型或命名空間名稱 'Pawn' (是否遺漏了 using 指示詞或組件參考?)
+    line 24    CS0246   找不到類型或命名空間名稱 'Pawn' (是否遺漏了 using 指示詞或組件參考?)
+    line 32    CS0246   找不到類型或命名空間名稱 'QuestPart_LendColonistsToFaction' (是否遺漏了 using 指示詞或組件參考?)
+
+  D:\Steam\steamapps\common\RimWorld\Mods\Dead-Man-Switch\_Source\DMS\Quests\OfficerTraining\TitleTrainingExtension.cs
+    line 2     CS0246   找不到類型或命名空間名稱 'RimWorld' (是否遺漏了 using 指示詞或組件參考?)
+    line 3     CS0246   找不到類型或命名空間名稱 'Verse' (是否遺漏了 using 指示詞或組件參考?)
+    line 11    CS0246   找不到類型或命名空間名稱 'DefModExtension' (是否遺漏了 using 指示詞或組件參考?)
+    line 14    CS0246   找不到類型或命名空間名稱 'IntRange' (是否遺漏了 using 指示詞或組件參考?)
+    line 29    CS0246   找不到類型或命名空間名稱 'SkillDef' (是否遺漏了 using 指示詞或組件參考?)
+    line 32    CS0246   找不到類型或命名空間名稱 'NoTranslateAttribute' (是否遺漏了 using 指示詞或組件參考?)
+    line 32    CS0246   找不到類型或命名空間名稱 'NoTranslate' (是否遺漏了 using 指示詞或組件參考?)
+    line 49    CS0246   找不到類型或命名空間名稱 'NoTranslateAttribute' (是否遺漏了 using 指示詞或組件參考?)
+    line 49    CS0246   找不到類型或命名空間名稱 'NoTranslate' (是否遺漏了 using 指示詞或組件參考?)
+    line 55    CS0246   找不到類型或命名空間名稱 'TraitDef' (是否遺漏了 using 指示詞或組件參考?)
+    line 58    CS0246   找不到類型或命名空間名稱 'TraitDef' (是否遺漏了 using 指示詞或組件參考?)
+    line 71    CS0246   找不到類型或命名空間名稱 'Trait' (是否遺漏了 using 指示詞或組件參考?)
+    line 77    CS0246   找不到類型或命名空間名稱 'Trait' (是否遺漏了 using 指示詞或組件參考?)
+
+  D:\Steam\steamapps\common\RimWorld\Mods\Dead-Man-Switch\_Source\DMS\Quests\QuestNode_RandomLetter.cs
+    line 2     CS0246   找不到類型或命名空間名稱 'RimWorld' (是否遺漏了 using 指示詞或組件參考?)
+    line 3     CS0246   找不到類型或命名空間名稱 'RimWorld' (是否遺漏了 using 指示詞或組件參考?)
+    line 4     CS0246   找不到類型或命名空間名稱 'Verse' (是否遺漏了 using 指示詞或組件參考?)
+    line 12    CS0246   找不到類型或命名空間名稱 'QuestNode' (是否遺漏了 using 指示詞或組件參考?)
+    line 14    CS0246   找不到類型或命名空間名稱 'NoTranslateAttribute' (是否遺漏了 using 指示詞或組件參考?)
+    line 14    CS0246   找不到類型或命名空間名稱 'NoTranslate' (是否遺漏了 using 指示詞或組件參考?)
+    line 15    CS0246   找不到類型或命名空間名稱 'SlateRef<>' (是否遺漏了 using 指示詞或組件參考?)
+    line 17    CS0246   找不到類型或命名空間名稱 'LetterDef' (是否遺漏了 using 指示詞或組件參考?)
+    line 19    CS0246   找不到類型或命名空間名稱 'NoTranslateAttribute' (是否遺漏了 using 指示詞或組件參考?)
+    line 19    CS0246   找不到類型或命名空間名稱 'NoTranslate' (是否遺漏了 using 指示詞或組件參考?)
+    line 22    CS0246   找不到類型或命名空間名稱 'NoTranslateAttribute' (是否遺漏了 using 指示詞或組件參考?)
+    line 22    CS0246   找不到類型或命名空間名稱 'NoTranslate' (是否遺漏了 using 指示詞或組件參考?)
+    line 25    CS0246   找不到類型或命名空間名稱 'Slate' (是否遺漏了 using 指示詞或組件參考?)
+
+  D:\Steam\steamapps\common\RimWorld\Mods\Dead-Man-Switch\_Source\DMS\Quests\QuestNode_Root_DMS_RandomFactionTimedSite.cs
+    line 3     CS0246   找不到類型或命名空間名稱 'RimWorld' (是否遺漏了 using 指示詞或組件參考?)
+    line 4     CS0246   找不到類型或命名空間名稱 'RimWorld' (是否遺漏了 using 指示詞或組件參考?)
+    line 5     CS0246   找不到類型或命名空間名稱 'RimWorld' (是否遺漏了 using 指示詞或組件參考?)
+    line 6     CS0246   找不到類型或命名空間名稱 'Verse' (是否遺漏了 using 指示詞或組件參考?)
+    line 29    CS0012   類型 'QuestNode' 定義在未參考的組件中。您必須加入組件 'Assembly-CSharp, Version=1.6.9655.19392, Culture=neutral, PublicKeyToken=null' 的參考。
+    line 35    CS0012   類型 'QuestNode' 定義在未參考的組件中。您必須加入組件 'Assembly-CSharp, Version=1.6.9655.19392, Culture=neutral, PublicKeyToken=null' 的參考。
+    line 35    CS0012   類型 'QuestNode' 定義在未參考的組件中。您必須加入組件 'Assembly-CSharp, Version=1.6.9655.19392, Culture=neutral, PublicKeyToken=null' 的參考。
+    line 35    CS0246   找不到類型或命名空間名稱 'FactionDef' (是否遺漏了 using 指示詞或組件參考?)
+    line 53    CS0012   類型 'QuestNode' 定義在未參考的組件中。您必須加入組件 'Assembly-CSharp, Version=1.6.9655.19392, Culture=neutral, PublicKeyToken=null' 的參考。
+    line 53    CS0246   找不到類型或命名空間名稱 'Faction' (是否遺漏了 using 指示詞或組件參考?)
+    line 68    CS0012   類型 'QuestNode' 定義在未參考的組件中。您必須加入組件 'Assembly-CSharp, Version=1.6.9655.19392, Culture=neutral, PublicKeyToken=null' 的參考。
+    line 68    CS0012   類型 'QuestNode' 定義在未參考的組件中。您必須加入組件 'Assembly-CSharp, Version=1.6.9655.19392, Culture=neutral, PublicKeyToken=null' 的參考。
+    line 68    CS0246   找不到類型或命名空間名稱 'Faction' (是否遺漏了 using 指示詞或組件參考?)
+    line 88    CS0012   類型 'QuestNode' 定義在未參考的組件中。您必須加入組件 'Assembly-CSharp, Version=1.6.9655.19392, Culture=neutral, PublicKeyToken=null' 的參考。
+    line 88    CS0012   類型 'QuestNode' 定義在未參考的組件中。您必須加入組件 'Assembly-CSharp, Version=1.6.9655.19392, Culture=neutral, PublicKeyToken=null' 的參考。
+    line 88    CS0246   找不到類型或命名空間名稱 'Faction' (是否遺漏了 using 指示詞或組件參考?)
+    line 100   CS0012   類型 'QuestNode' 定義在未參考的組件中。您必須加入組件 'Assembly-CSharp, Version=1.6.9655.19392, Culture=neutral, PublicKeyToken=null' 的參考。
+    line 100   CS0012   類型 'QuestNode' 定義在未參考的組件中。您必須加入組件 'Assembly-CSharp, Version=1.6.9655.19392, Culture=neutral, PublicKeyToken=null' 的參考。
+    line 100   CS0246   找不到類型或命名空間名稱 'Faction' (是否遺漏了 using 指示詞或組件參考?)
+    line 114   CS0012   類型 'QuestNode' 定義在未參考的組件中。您必須加入組件 'Assembly-CSharp, Version=1.6.9655.19392, Culture=neutral, PublicKeyToken=null' 的參考。
+    line 114   CS0246   找不到類型或命名空間名稱 'Slate' (是否遺漏了 using 指示詞或組件參考?)
+
+  D:\Steam\steamapps\common\RimWorld\Mods\Dead-Man-Switch\_Source\DMS\Quests\QuestPart_SpawnPickupShuttle.cs
+    line 2     CS0246   找不到類型或命名空間名稱 'RimWorld' (是否遺漏了 using 指示詞或組件參考?)
+    line 3     CS0246   找不到類型或命名空間名稱 'RimWorld' (是否遺漏了 using 指示詞或組件參考?)
+    line 4     CS0246   找不到類型或命名空間名稱 'Verse' (是否遺漏了 using 指示詞或組件參考?)
+    line 16    CS0246   找不到類型或命名空間名稱 'QuestPart' (是否遺漏了 using 指示詞或組件參考?)
+    line 19    CS0246   找不到類型或命名空間名稱 'MapParent' (是否遺漏了 using 指示詞或組件參考?)
+    line 20    CS0246   找不到類型或命名空間名稱 'TransportShipDef' (是否遺漏了 using 指示詞或組件參考?)
+    line 22    CS0246   找不到類型或命名空間名稱 'Thing' (是否遺漏了 using 指示詞或組件參考?)
+    line 23    CS0246   找不到類型或命名空間名稱 'Pawn' (是否遺漏了 using 指示詞或組件參考?)
+    line 30    CS0246   找不到類型或命名空間名稱 'RulePackDef' (是否遺漏了 using 指示詞或組件參考?)
+    line 51    CS0246   找不到類型或命名空間名稱 'GlobalTargetInfo' (是否遺漏了 using 指示詞或組件參考?)
+    line 60    CS0246   找不到類型或命名空間名稱 'Signal' (是否遺漏了 using 指示詞或組件參考?)
+
+  D:\Steam\steamapps\common\RimWorld\Mods\Dead-Man-Switch\_Source\DMS\Quests\QuestPart_TrackDoc.cs
+    line 5     CS0246   找不到類型或命名空間名稱 'RimWorld' (是否遺漏了 using 指示詞或組件參考?)
+    line 6     CS0246   找不到類型或命名空間名稱 'RimWorld' (是否遺漏了 using 指示詞或組件參考?)
+    line 7     CS0246   找不到類型或命名空間名稱 'Verse' (是否遺漏了 using 指示詞或組件參考?)
+    line 11    CS0246   找不到類型或命名空間名稱 'QuestNode' (是否遺漏了 using 指示詞或組件參考?)
+    line 13    CS0246   找不到類型或命名空間名稱 'NoTranslateAttribute' (是否遺漏了 using 指示詞或組件參考?)
+    line 13    CS0246   找不到類型或命名空間名稱 'NoTranslate' (是否遺漏了 using 指示詞或組件參考?)
+    line 14    CS0246   找不到類型或命名空間名稱 'SlateRef<>' (是否遺漏了 using 指示詞或組件參考?)
+    line 15    CS0246   找不到類型或命名空間名稱 'NoTranslateAttribute' (是否遺漏了 using 指示詞或組件參考?)
+    line 15    CS0246   找不到類型或命名空間名稱 'NoTranslate' (是否遺漏了 using 指示詞或組件參考?)
+    line 16    CS0246   找不到類型或命名空間名稱 'SlateRef<>' (是否遺漏了 using 指示詞或組件參考?)
+    line 17    CS0246   找不到類型或命名空間名稱 'NoTranslateAttribute' (是否遺漏了 using 指示詞或組件參考?)
+    line 17    CS0246   找不到類型或命名空間名稱 'NoTranslate' (是否遺漏了 using 指示詞或組件參考?)
+    line 18    CS0246   找不到類型或命名空間名稱 'SlateRef<>' (是否遺漏了 using 指示詞或組件參考?)
+    line 20    CS0246   找不到類型或命名空間名稱 'SlateRef<>' (是否遺漏了 using 指示詞或組件參考?)
+    line 22    CS0246   找不到類型或命名空間名稱 'Slate' (是否遺漏了 using 指示詞或組件參考?)
+    line 39    CS0246   找不到類型或命名空間名稱 'QuestPartActivable' (是否遺漏了 using 指示詞或組件參考?)
+    line 46    CS0246   找不到類型或命名空間名稱 'Signal' (是否遺漏了 using 指示詞或組件參考?)
+
+  D:\Steam\steamapps\common\RimWorld\Mods\Dead-Man-Switch\_Source\DMS\Quests\Stele\CommonParts.cs
+    line 1     CS0246   找不到類型或命名空間名稱 'RimWorld' (是否遺漏了 using 指示詞或組件參考?)
+    line 7     CS0246   找不到類型或命名空間名稱 'Verse' (是否遺漏了 using 指示詞或組件參考?)
+    line 11    CS0246   找不到類型或命名空間名稱 'QuestPart' (是否遺漏了 using 指示詞或組件參考?)
+    line 21    CS0246   找不到類型或命名空間名稱 'Signal' (是否遺漏了 using 指示詞或組件參考?)
+
+  D:\Steam\steamapps\common\RimWorld\Mods\Dead-Man-Switch\_Source\DMS\Quests\Stele\Main.cs
+    line 1     CS0246   找不到類型或命名空間名稱 'RimWorld' (是否遺漏了 using 指示詞或組件參考?)
+    line 2     CS0246   找不到類型或命名空間名稱 'RimWorld' (是否遺漏了 using 指示詞或組件參考?)
+    line 3     CS0246   找不到類型或命名空間名稱 'RimWorld' (是否遺漏了 using 指示詞或組件參考?)
+    line 10    CS0246   找不到類型或命名空間名稱 'Verse' (是否遺漏了 using 指示詞或組件參考?)
+    line 14    CS0246   找不到類型或命名空間名稱 'QuestNode' (是否遺漏了 using 指示詞或組件參考?)
+    line 16    CS0246   找不到類型或命名空間名稱 'QuestScriptDef' (是否遺漏了 using 指示詞或組件參考?)
+    line 20    CS0246   找不到類型或命名空間名稱 'ThingDef' (是否遺漏了 using 指示詞或組件參考?)
+    line 22    CS0246   找不到類型或命名空間名稱 'Slate' (是否遺漏了 using 指示詞或組件參考?)
+    line 58    CS0246   找不到類型或命名空間名稱 'QuestPart_SubquestGenerator' (是否遺漏了 using 指示詞或組件參考?)
+    line 80    CS0246   找不到類型或命名空間名稱 'QuestScriptDef' (是否遺漏了 using 指示詞或組件參考?)
+    line 159   CS0246   找不到類型或命名空間名稱 'QuestScriptDef' (是否遺漏了 using 指示詞或組件參考?)
+    line 170   CS0246   找不到類型或命名空間名稱 'QuestScriptDef' (是否遺漏了 using 指示詞或組件參考?)
+    line 196   CS0246   找不到類型或命名空間名稱 'Signal' (是否遺漏了 using 指示詞或組件參考?)
+    line 213   CS0246   找不到類型或命名空間名稱 'Slate' (是否遺漏了 using 指示詞或組件參考?)
+
+  D:\Steam\steamapps\common\RimWorld\Mods\Dead-Man-Switch\_Source\DMS\Quests\Stele\OccultechKey.cs
+    line 6     CS0246   找不到類型或命名空間名稱 'Verse' (是否遺漏了 using 指示詞或組件參考?)
+    line 7     CS0246   找不到類型或命名空間名稱 'RimWorld' (是否遺漏了 using 指示詞或組件參考?)
+    line 11    CS0246   找不到類型或命名空間名稱 'ThingWithComps' (是否遺漏了 using 指示詞或組件參考?)
+    line 33    CS0246   找不到類型或命名空間名稱 'DestroyMode' (是否遺漏了 using 指示詞或組件參考?)
+    line 33    CS0103   名稱 'DestroyMode' 不存在於目前的內容中
+
+  D:\Steam\steamapps\common\RimWorld\Mods\Dead-Man-Switch\_Source\DMS\Quests\Stele\Sub_Site.cs
+    line 1     CS0246   找不到類型或命名空間名稱 'RimWorld' (是否遺漏了 using 指示詞或組件參考?)
+    line 2     CS0246   找不到類型或命名空間名稱 'RimWorld' (是否遺漏了 using 指示詞或組件參考?)
+    line 3     CS0246   找不到類型或命名空間名稱 'RimWorld' (是否遺漏了 using 指示詞或組件參考?)
+    line 9     CS0246   找不到類型或命名空間名稱 'Verse' (是否遺漏了 using 指示詞或組件參考?)
+    line 13    CS0246   找不到類型或命名空間名稱 'QuestNode' (是否遺漏了 using 指示詞或組件參考?)
+    line 15    CS0246   找不到類型或命名空間名稱 'BiomeDef' (是否遺漏了 using 指示詞或組件參考?)
+    line 17    CS0246   找不到類型或命名空間名稱 'Hilliness' (是否遺漏了 using 指示詞或組件參考?)
+    line 19    CS0246   找不到類型或命名空間名稱 'Hilliness' (是否遺漏了 using 指示詞或組件參考?)
+    line 21    CS0246   找不到類型或命名空間名稱 'IntRange' (是否遺漏了 using 指示詞或組件參考?)
+    line 23    CS0246   找不到類型或命名空間名稱 'LandmarkDef' (是否遺漏了 using 指示詞或組件參考?)
+    line 25    CS0246   找不到類型或命名空間名稱 'PlanetLayerDef' (是否遺漏了 using 指示詞或組件參考?)
+    line 27    CS0246   找不到類型或命名空間名稱 'SitePartDef' (是否遺漏了 using 指示詞或組件參考?)
+    line 29    CS0246   找不到類型或命名空間名稱 'FactionDef' (是否遺漏了 using 指示詞或組件參考?)
+    line 65    CS0246   找不到類型或命名空間名稱 'PlanetTile' (是否遺漏了 using 指示詞或組件參考?)
+    line 108   CS0246   找不到類型或命名空間名稱 'Slate' (是否遺漏了 using 指示詞或組件參考?)
+
+  D:\Steam\steamapps\common\RimWorld\Mods\Dead-Man-Switch\_Source\DMS\Quests\SupplyChain\CompSupplyRequest.cs
+    line 3     CS0246   找不到類型或命名空間名稱 'RimWorld' (是否遺漏了 using 指示詞或組件參考?)
+    line 5     CS0246   找不到類型或命名空間名稱 'Verse' (是否遺漏了 using 指示詞或組件參考?)
+    line 9     CS0246   找不到類型或命名空間名稱 'CompProperties_Transporter' (是否遺漏了 using 指示詞或組件參考?)
+    line 12    CS0246   找不到類型或命名空間名稱 'ThingDef' (是否遺漏了 using 指示詞或組件參考?)
+    line 24    CS0246   找不到類型或命名空間名稱 'CompTransporter' (是否遺漏了 using 指示詞或組件參考?)
+    line 26    CS0246   找不到類型或命名空間名稱 'ThingCategoryDef' (是否遺漏了 using 指示詞或組件參考?)
+    line 32    CS0246   找不到類型或命名空間名稱 'Thing' (是否遺漏了 using 指示詞或組件參考?)
+    line 74    CS0246   找不到類型或命名空間名稱 'Gizmo' (是否遺漏了 using 指示詞或組件參考?)
+
+  D:\Steam\steamapps\common\RimWorld\Mods\Dead-Man-Switch\_Source\DMS\Quests\SupplyChain\QuestNode_Root_SupplyChain.cs
+    line 3     CS0246   找不到類型或命名空間名稱 'RimWorld' (是否遺漏了 using 指示詞或組件參考?)
+    line 4     CS0246   找不到類型或命名空間名稱 'RimWorld' (是否遺漏了 using 指示詞或組件參考?)
+    line 5     CS0246   找不到類型或命名空間名稱 'Verse' (是否遺漏了 using 指示詞或組件參考?)
+    line 12    CS0246   找不到類型或命名空間名稱 'ThingCategoryDef' (是否遺漏了 using 指示詞或組件參考?)
+    line 20    CS0246   找不到類型或命名空間名稱 'QuestNode' (是否遺漏了 using 指示詞或組件參考?)
+    line 23    CS0246   找不到類型或命名空間名稱 'QuestScriptDef' (是否遺漏了 using 指示詞或組件參考?)
+    line 24    CS0246   找不到類型或命名空間名稱 'RulePackDef' (是否遺漏了 using 指示詞或組件參考?)
+    line 27    CS0246   找不到類型或命名空間名稱 'SimpleCurve' (是否遺漏了 using 指示詞或組件參考?)
+    line 29    CS0246   找不到類型或命名空間名稱 'SimpleCurve' (是否遺漏了 using 指示詞或組件參考?)
+    line 30    CS0246   找不到類型或命名空間名稱 'IntRange' (是否遺漏了 using 指示詞或組件參考?)
+    line 31    CS0246   找不到類型或命名空間名稱 'IntRange' (是否遺漏了 using 指示詞或組件參考?)
+    line 34    CS0246   找不到類型或命名空間名稱 'SimpleCurve' (是否遺漏了 using 指示詞或組件參考?)
+    line 39    CS0246   找不到類型或命名空間名稱 'FactionDef' (是否遺漏了 using 指示詞或組件參考?)
+    line 42    CS0246   找不到類型或命名空間名稱 'FloatRange' (是否遺漏了 using 指示詞或組件參考?)
+    line 44    CS0246   找不到類型或命名空間名稱 'Slate' (是否遺漏了 using 指示詞或組件參考?)
+    line 59    CS0246   找不到類型或命名空間名稱 'ThingCategoryDef' (是否遺漏了 using 指示詞或組件參考?)
+
+  D:\Steam\steamapps\common\RimWorld\Mods\Dead-Man-Switch\_Source\DMS\Quests\SupplyChain\QuestNode_Root_SupplyDelivery.cs
+    line 1     CS0246   找不到類型或命名空間名稱 'RimWorld' (是否遺漏了 using 指示詞或組件參考?)
+    line 2     CS0246   找不到類型或命名空間名稱 'RimWorld' (是否遺漏了 using 指示詞或組件參考?)
+    line 3     CS0246   找不到類型或命名空間名稱 'Verse' (是否遺漏了 using 指示詞或組件參考?)
+    line 16    CS0246   找不到類型或命名空間名稱 'QuestNode' (是否遺漏了 using 指示詞或組件參考?)
+    line 18    CS0246   找不到類型或命名空間名稱 'ThingDef' (是否遺漏了 using 指示詞或組件參考?)
+    line 19    CS0246   找不到類型或命名空間名稱 'ThingDef' (是否遺漏了 using 指示詞或組件參考?)
+    line 21    CS0246   找不到類型或命名空間名稱 'Slate' (是否遺漏了 using 指示詞或組件參考?)
+
+  D:\Steam\steamapps\common\RimWorld\Mods\Dead-Man-Switch\_Source\DMS\Quests\SupplyChain\QuestPart_SpawnSupplyPod.cs
+    line 2     CS0246   找不到類型或命名空間名稱 'RimWorld' (是否遺漏了 using 指示詞或組件參考?)
+    line 3     CS0246   找不到類型或命名空間名稱 'RimWorld' (是否遺漏了 using 指示詞或組件參考?)
+    line 4     CS0246   找不到類型或命名空間名稱 'Verse' (是否遺漏了 using 指示詞或組件參考?)
+    line 12    CS0246   找不到類型或命名空間名稱 'QuestPart' (是否遺漏了 using 指示詞或組件參考?)
+    line 16    CS0246   找不到類型或命名空間名稱 'MapParent' (是否遺漏了 using 指示詞或組件參考?)
+    line 17    CS0246   找不到類型或命名空間名稱 'ThingDef' (是否遺漏了 using 指示詞或組件參考?)
+    line 18    CS0246   找不到類型或命名空間名稱 'ThingDef' (是否遺漏了 using 指示詞或組件參考?)
+    line 19    CS0246   找不到類型或命名空間名稱 'ThingCategoryDef' (是否遺漏了 using 指示詞或組件參考?)
+    line 24    CS0246   找不到類型或命名空間名稱 'Thing' (是否遺漏了 using 指示詞或組件參考?)
+    line 27    CS0246   找不到類型或命名空間名稱 'GlobalTargetInfo' (是否遺漏了 using 指示詞或組件參考?)
+    line 40    CS0246   找不到類型或命名空間名稱 'GlobalTargetInfo' (是否遺漏了 using 指示詞或組件參考?)
+    line 51    CS0246   找不到類型或命名空間名稱 'Signal' (是否遺漏了 using 指示詞或組件參考?)
+    line 96    CS0246   找不到類型或命名空間名稱 'IntVec3' (是否遺漏了 using 指示詞或組件參考?)
+    line 96    CS0246   找不到類型或命名空間名稱 'Map' (是否遺漏了 using 指示詞或組件參考?)
+
+  D:\Steam\steamapps\common\RimWorld\Mods\Dead-Man-Switch\_Source\DMS\Quests\SupplyChain\QuestPart_SupplyChainGenerator.cs
+    line 1     CS0246   找不到類型或命名空間名稱 'RimWorld' (是否遺漏了 using 指示詞或組件參考?)
+    line 2     CS0246   找不到類型或命名空間名稱 'RimWorld' (是否遺漏了 using 指示詞或組件參考?)
+    line 3     CS0246   找不到類型或命名空間名稱 'RimWorld' (是否遺漏了 using 指示詞或組件參考?)
+    line 5     CS0246   找不到類型或命名空間名稱 'Verse' (是否遺漏了 using 指示詞或組件參考?)
+    line 14    CS0246   找不到類型或命名空間名稱 'QuestPartActivable' (是否遺漏了 using 指示詞或組件參考?)
+    line 16    CS0246   找不到類型或命名空間名稱 'ThingCategoryDef' (是否遺漏了 using 指示詞或組件參考?)
+    line 17    CS0246   找不到類型或命名空間名稱 'QuestScriptDef' (是否遺漏了 using 指示詞或組件參考?)
+    line 18    CS0246   找不到類型或命名空間名稱 'MapParent' (是否遺漏了 using 指示詞或組件參考?)
+    line 31    CS0246   找不到類型或命名空間名稱 'IntRange' (是否遺漏了 using 指示詞或組件參考?)
+    line 42    CS0246   找不到類型或命名空間名稱 'Quest' (是否遺漏了 using 指示詞或組件參考?)
+    line 49    CS0246   找不到類型或命名空間名稱 'Signal' (是否遺漏了 using 指示詞或組件參考?)
+
+  D:\Steam\steamapps\common\RimWorld\Mods\Dead-Man-Switch\_Source\DMS\Quests\SupplyChain\QuestPart_SupplyReward.cs
+    line 2     CS0246   找不到類型或命名空間名稱 'RimWorld' (是否遺漏了 using 指示詞或組件參考?)
+    line 3     CS0246   找不到類型或命名空間名稱 'RimWorld' (是否遺漏了 using 指示詞或組件參考?)
+    line 4     CS0246   找不到類型或命名空間名稱 'Verse' (是否遺漏了 using 指示詞或組件參考?)
+    line 9     CS0246   找不到類型或命名空間名稱 'QuestPart' (是否遺漏了 using 指示詞或組件參考?)
+    line 13    CS0246   找不到類型或命名空間名稱 'MapParent' (是否遺漏了 using 指示詞或組件參考?)
+    line 16    CS0246   找不到類型或命名空間名稱 'Signal' (是否遺漏了 using 指示詞或組件參考?)
+
+  D:\Steam\steamapps\common\RimWorld\Mods\Dead-Man-Switch\_Source\DMS\Quests\SupplyChain\SupplyChainText.cs
+    line 1     CS0246   找不到類型或命名空間名稱 'Verse' (是否遺漏了 using 指示詞或組件參考?)
+    line 2     CS0246   找不到類型或命名空間名稱 'Verse' (是否遺漏了 using 指示詞或組件參考?)
+    line 9     CS0246   找不到類型或命名空間名稱 'RulePackDef' (是否遺漏了 using 指示詞或組件參考?)
+    line 10    CS0246   找不到類型或命名空間名稱 'RulePackDef' (是否遺漏了 using 指示詞或組件參考?)
+    line 17    CS0246   找不到類型或命名空間名稱 'RulePackDef' (是否遺漏了 using 指示詞或組件參考?)
+
+  D:\Steam\steamapps\common\RimWorld\Mods\Dead-Man-Switch\_Source\DMS\Rendering\PawnRenderNode_ApparelUniform.cs
+    line 1     CS0246   找不到類型或命名空間名稱 'RimWorld' (是否遺漏了 using 指示詞或組件參考?)
+    line 4     CS0246   找不到類型或命名空間名稱 'Verse' (是否遺漏了 using 指示詞或組件參考?)
+    line 22    CS0246   找不到類型或命名空間名稱 'PawnRenderNode_Apparel' (是否遺漏了 using 指示詞或組件參考?)
+    line 24    CS0246   找不到類型或命名空間名稱 'Pawn' (是否遺漏了 using 指示詞或組件參考?)
+    line 24    CS0246   找不到類型或命名空間名稱 'PawnRenderNodeProperties' (是否遺漏了 using 指示詞或組件參考?)
+    line 24    CS0246   找不到類型或命名空間名稱 'PawnRenderTree' (是否遺漏了 using 指示詞或組件參考?)
+    line 29    CS0246   找不到類型或命名空間名稱 'Pawn' (是否遺漏了 using 指示詞或組件參考?)
+    line 29    CS0246   找不到類型或命名空間名稱 'PawnRenderNodeProperties' (是否遺漏了 using 指示詞或組件參考?)
+    line 29    CS0246   找不到類型或命名空間名稱 'PawnRenderTree' (是否遺漏了 using 指示詞或組件參考?)
+    line 29    CS0246   找不到類型或命名空間名稱 'Apparel' (是否遺漏了 using 指示詞或組件參考?)
+    line 34    CS0246   找不到類型或命名空間名稱 'Graphic' (是否遺漏了 using 指示詞或組件參考?)
+    line 34    CS0246   找不到類型或命名空間名稱 'Pawn' (是否遺漏了 using 指示詞或組件參考?)
+    line 48    CS0246   找不到類型或命名空間名稱 'Graphic' (是否遺漏了 using 指示詞或組件參考?)
+    line 48    CS0246   找不到類型或命名空間名稱 'Pawn' (是否遺漏了 using 指示詞或組件參考?)
+    line 93    CS0246   找不到類型或命名空間名稱 'PawnRenderNodeWorker_Apparel_Body' (是否遺漏了 using 指示詞或組件參考?)
+    line 95    CS0246   找不到類型或命名空間名稱 'PawnRenderNode' (是否遺漏了 using 指示詞或組件參考?)
+    line 95    CS0246   找不到類型或命名空間名稱 'PawnDrawParms' (是否遺漏了 using 指示詞或組件參考?)
+
+  D:\Steam\steamapps\common\RimWorld\Mods\Dead-Man-Switch\_Source\DMS\RoyalTitlePermitWorker_RewardShuttle.cs
+    line 1     CS0246   找不到類型或命名空間名稱 'Verse' (是否遺漏了 using 指示詞或組件參考?)
+    line 2     CS0246   找不到類型或命名空間名稱 'RimWorld' (是否遺漏了 using 指示詞或組件參考?)
+    line 5     CS0246   找不到類型或命名空間名稱 'RimWorld' (是否遺漏了 using 指示詞或組件參考?)
+    line 10    CS0246   找不到類型或命名空間名稱 'RoyalTitlePermitWorker_Targeted' (是否遺漏了 using 指示詞或組件參考?)
+    line 12    CS0246   找不到類型或命名空間名稱 'Faction' (是否遺漏了 using 指示詞或組件參考?)
+    line 14    CS0246   找不到類型或命名空間名稱 'TransportShipDef' (是否遺漏了 using 指示詞或組件參考?)
+    line 15    CS0246   找不到類型或命名空間名稱 'LocalTargetInfo' (是否遺漏了 using 指示詞或組件參考?)
+    line 36    CS0246   找不到類型或命名空間名稱 'LocalTargetInfo' (是否遺漏了 using 指示詞或組件參考?)
+    line 42    CS0246   找不到類型或命名空間名稱 'LocalTargetInfo' (是否遺漏了 using 指示詞或組件參考?)
+    line 47    CS0246   找不到類型或命名空間名稱 'LocalTargetInfo' (是否遺漏了 using 指示詞或組件參考?)
+    line 55    CS0246   找不到類型或命名空間名稱 'FloatMenuOption' (是否遺漏了 using 指示詞或組件參考?)
+    line 55    CS0246   找不到類型或命名空間名稱 'Map' (是否遺漏了 using 指示詞或組件參考?)
+    line 55    CS0246   找不到類型或命名空間名稱 'Pawn' (是否遺漏了 using 指示詞或組件參考?)
+    line 55    CS0246   找不到類型或命名空間名稱 'Faction' (是否遺漏了 using 指示詞或組件參考?)
+    line 82    CS0246   找不到類型或命名空間名稱 'Pawn' (是否遺漏了 using 指示詞或組件參考?)
+    line 82    CS0246   找不到類型或命名空間名稱 'Map' (是否遺漏了 using 指示詞或組件參考?)
+    line 82    CS0246   找不到類型或命名空間名稱 'Faction' (是否遺漏了 using 指示詞或組件參考?)
+    line 100   CS0246   找不到類型或命名空間名稱 'IntVec3' (是否遺漏了 using 指示詞或組件參考?)
+    line 117   CS0246   找不到類型或命名空間名稱 'LocalTargetInfo' (是否遺漏了 using 指示詞或組件參考?)
+    line 117   CS0246   找不到類型或命名空間名稱 'Map' (是否遺漏了 using 指示詞或組件參考?)
+    line 117   CS0246   找不到類型或命名空間名稱 'ThingDef' (是否遺漏了 using 指示詞或組件參考?)
+    line 117   CS0246   找不到類型或命名空間名稱 'Rot4' (是否遺漏了 using 指示詞或組件參考?)
+    line 125   CS0246   找不到類型或命名空間名稱 'AcceptanceReport' (是否遺漏了 using 指示詞或組件參考?)
+    line 125   CS0246   找不到類型或命名空間名稱 'LocalTargetInfo' (是否遺漏了 using 指示詞或組件參考?)
+    line 125   CS0246   找不到類型或命名空間名稱 'Map' (是否遺漏了 using 指示詞或組件參考?)
+    line 125   CS0246   找不到類型或命名空間名稱 'ThingDef' (是否遺漏了 using 指示詞或組件參考?)
+    line 125   CS0246   找不到類型或命名空間名稱 'Rot4' (是否遺漏了 using 指示詞或組件參考?)
+    line 159   CS0246   找不到類型或命名空間名稱 'IntVec3' (是否遺漏了 using 指示詞或組件參考?)
+    line 159   CS0246   找不到類型或命名空間名稱 'Map' (是否遺漏了 using 指示詞或組件參考?)
+    line 159   CS0246   找不到類型或命名空間名稱 'ThingDef' (是否遺漏了 using 指示詞或組件參考?)
+
+  D:\Steam\steamapps\common\RimWorld\Mods\Dead-Man-Switch\_Source\DMS\Royalty\Patch_GenerateBestowingCeremonyQuest.cs
+    line 1     CS0246   找不到類型或命名空間名稱 'Verse' (是否遺漏了 using 指示詞或組件參考?)
+    line 2     CS0246   找不到類型或命名空間名稱 'RimWorld' (是否遺漏了 using 指示詞或組件參考?)
+    line 5     CS0246   找不到類型或命名空間名稱 'RimWorld' (是否遺漏了 using 指示詞或組件參考?)
+    line 10    CS0246   找不到類型或命名空間名稱 'RoyalTitleUtility' (是否遺漏了 using 指示詞或組件參考?)
+    line 10    CS0103   名稱 'RoyalTitleUtility' 不存在於目前的內容中
+    line 13    CS0246   找不到類型或命名空間名稱 'Pawn' (是否遺漏了 using 指示詞或組件參考?)
+    line 13    CS0246   找不到類型或命名空間名稱 'Faction' (是否遺漏了 using 指示詞或組件參考?)
+
+  D:\Steam\steamapps\common\RimWorld\Mods\Dead-Man-Switch\_Source\DMS\Royalty\QuestNode_Root_PromotionCeremony.cs
+    line 1     CS0246   找不到類型或命名空間名稱 'RimWorld' (是否遺漏了 using 指示詞或組件參考?)
+    line 2     CS0246   找不到類型或命名空間名稱 'RimWorld' (是否遺漏了 using 指示詞或組件參考?)
+    line 5     CS0246   找不到類型或命名空間名稱 'Verse' (是否遺漏了 using 指示詞或組件參考?)
+    line 6     CS0246   找不到類型或命名空間名稱 'Verse' (是否遺漏了 using 指示詞或組件參考?)
+    line 10    CS0246   找不到類型或命名空間名稱 'QuestNode' (是否遺漏了 using 指示詞或組件參考?)
+    line 13    CS0246   找不到類型或命名空間名稱 'Slate' (是否遺漏了 using 指示詞或組件參考?)
+    line 13    CS0246   找不到類型或命名空間名稱 'Pawn' (是否遺漏了 using 指示詞或組件參考?)
+    line 13    CS0246   找不到類型或命名空間名稱 'Faction' (是否遺漏了 using 指示詞或組件參考?)
+    line 215   CS0246   找不到類型或命名空間名稱 'Slate' (是否遺漏了 using 指示詞或組件參考?)
+
+  D:\Steam\steamapps\common\RimWorld\Mods\Dead-Man-Switch\_Source\DMS\Storyteller\ModExtension_StorytellerBias.cs
+    line 2     CS0246   找不到類型或命名空間名稱 'RimWorld' (是否遺漏了 using 指示詞或組件參考?)
+    line 3     CS0246   找不到類型或命名空間名稱 'Verse' (是否遺漏了 using 指示詞或組件參考?)
+    line 17    CS0246   找不到類型或命名空間名稱 'DefModExtension' (是否遺漏了 using 指示詞或組件參考?)
+    line 37    CS0246   找不到類型或命名空間名稱 'FactionDef' (是否遺漏了 using 指示詞或組件參考?)
+    line 39    CS0246   找不到類型或命名空間名稱 'UnsavedAttribute' (是否遺漏了 using 指示詞或組件參考?)
+    line 39    CS0246   找不到類型或命名空間名稱 'Unsaved' (是否遺漏了 using 指示詞或組件參考?)
+    line 69    CS0246   找不到類型或命名空間名稱 'Def' (是否遺漏了 using 指示詞或組件參考?)
+    line 78    CS0246   找不到類型或命名空間名稱 'FactionDef' (是否遺漏了 using 指示詞或組件參考?)
+
+  D:\Steam\steamapps\common\RimWorld\Mods\Dead-Man-Switch\_Source\DMS\Storyteller\Patch_StorytellerBias.cs
+    line 2     CS0246   找不到類型或命名空間名稱 'RimWorld' (是否遺漏了 using 指示詞或組件參考?)
+    line 3     CS0246   找不到類型或命名空間名稱 'Verse' (是否遺漏了 using 指示詞或組件參考?)
+    line 32    CS0246   找不到類型或命名空間名稱 'NaturalRandomQuestChooser' (是否遺漏了 using 指示詞或組件參考?)
+    line 32    CS0103   名稱 'NaturalRandomQuestChooser' 不存在於目前的內容中
+    line 35    CS0246   找不到類型或命名空間名稱 'QuestScriptDef' (是否遺漏了 using 指示詞或組件參考?)
+    line 61    CS0246   找不到類型或命名空間名稱 'StorytellerComp' (是否遺漏了 using 指示詞或組件參考?)
+    line 64    CS0246   找不到類型或命名空間名稱 'IncidentDef' (是否遺漏了 using 指示詞或組件參考?)
+    line 90    CS0246   找不到類型或命名空間名稱 'FactionDef' (是否遺漏了 using 指示詞或組件參考?)
+    line 90    CS0103   名稱 'FactionDef' 不存在於目前的內容中
+    line 93    CS0246   找不到類型或命名空間名稱 'FactionDef' (是否遺漏了 using 指示詞或組件參考?)
+
+  D:\Steam\steamapps\common\RimWorld\Mods\Dead-Man-Switch\_Source\DMS\Storyteller\StorytellerComp_FavoredQuest.cs
+    line 3     CS0246   找不到類型或命名空間名稱 'RimWorld' (是否遺漏了 using 指示詞或組件參考?)
+    line 4     CS0246   找不到類型或命名空間名稱 'Verse' (是否遺漏了 using 指示詞或組件參考?)
+    line 16    CS0246   找不到類型或命名空間名稱 'StorytellerCompProperties_OnOffCycle' (是否遺漏了 using 指示詞或組件參考?)
+    line 24    CS0246   找不到類型或命名空間名稱 'StorytellerComp_OnOffCycle' (是否遺漏了 using 指示詞或組件參考?)
+    line 26    CS0246   找不到類型或命名空間名稱 'IncidentParms' (是否遺漏了 using 指示詞或組件參考?)
+    line 26    CS0246   找不到類型或命名空間名稱 'IncidentCategoryDef' (是否遺漏了 using 指示詞或組件參考?)
+    line 26    CS0246   找不到類型或命名空間名稱 'IIncidentTarget' (是否遺漏了 using 指示詞或組件參考?)
+    line 37    CS0246   找不到類型或命名空間名稱 'FiringIncident' (是否遺漏了 using 指示詞或組件參考?)
+    line 37    CS0246   找不到類型或命名空間名稱 'IIncidentTarget' (是否遺漏了 using 指示詞或組件參考?)
+    line 52    CS0246   找不到類型或命名空間名稱 'QuestScriptDef' (是否遺漏了 using 指示詞或組件參考?)
+    line 52    CS0246   找不到類型或命名空間名稱 'IIncidentTarget' (是否遺漏了 using 指示詞或組件參考?)
+
+  D:\Steam\steamapps\common\RimWorld\Mods\Dead-Man-Switch\_Source\DMS\SurgicalApparel\CompSurgicalApparel.cs
+    line 2     CS0246   找不到類型或命名空間名稱 'RimWorld' (是否遺漏了 using 指示詞或組件參考?)
+    line 3     CS0246   找不到類型或命名空間名稱 'Verse' (是否遺漏了 using 指示詞或組件參考?)
+    line 13    CS0246   找不到類型或命名空間名稱 'CompProperties' (是否遺漏了 using 指示詞或組件參考?)
+    line 16    CS0246   找不到類型或命名空間名稱 'RecipeDef' (是否遺漏了 using 指示詞或組件參考?)
+    line 32    CS0246   找不到類型或命名空間名稱 'ThingDef' (是否遺漏了 using 指示詞或組件參考?)
+    line 46    CS0246   找不到類型或命名空間名稱 'ThingComp' (是否遺漏了 using 指示詞或組件參考?)
+    line 71    CS0246   找不到類型或命名空間名稱 'Thing' (是否遺漏了 using 指示詞或組件參考?)
+    line 76    CS0246   找不到類型或命名空間名稱 'Thing' (是否遺漏了 using 指示詞或組件參考?)
+    line 84    CS0246   找不到類型或命名空間名稱 'Apparel' (是否遺漏了 using 指示詞或組件參考?)
+    line 84    CS0246   找不到類型或命名空間名稱 'Pawn' (是否遺漏了 using 指示詞或組件參考?)
+    line 84    CS0246   找不到類型或命名空間名稱 'ThingDef' (是否遺漏了 using 指示詞或組件參考?)
+
+  D:\Steam\steamapps\common\RimWorld\Mods\Dead-Man-Switch\_Source\DMS\SurgicalApparel\Patch_SurgicalApparel.cs
+    line 3     CS0246   找不到類型或命名空間名稱 'RimWorld' (是否遺漏了 using 指示詞或組件參考?)
+    line 4     CS0246   找不到類型或命名空間名稱 'Verse' (是否遺漏了 using 指示詞或組件參考?)
+    line 13    CS0246   找不到類型或命名空間名稱 'Pawn_ApparelTracker' (是否遺漏了 using 指示詞或組件參考?)
+    line 13    CS0103   名稱 'Pawn_ApparelTracker' 不存在於目前的內容中
+    line 17    CS0246   找不到類型或命名空間名稱 'Apparel' (是否遺漏了 using 指示詞或組件參考?)
+    line 29    CS0246   找不到類型或命名空間名稱 'FloatMenuOptionProvider_Wear' (是否遺漏了 using 指示詞或組件參考?)
+    line 33    CS0246   找不到類型或命名空間名稱 'Thing' (是否遺漏了 using 指示詞或組件參考?)
+    line 33    CS0246   找不到類型或命名空間名稱 'FloatMenuContext' (是否遺漏了 using 指示詞或組件參考?)
+    line 33    CS0246   找不到類型或命名空間名稱 'FloatMenuOption' (是否遺漏了 using 指示詞或組件參考?)
+
+  D:\Steam\steamapps\common\RimWorld\Mods\Dead-Man-Switch\_Source\DMS\SurgicalApparel\Recipe_RemoveSurgicalApparel.cs
+    line 2     CS0246   找不到類型或命名空間名稱 'RimWorld' (是否遺漏了 using 指示詞或組件參考?)
+    line 3     CS0246   找不到類型或命名空間名稱 'Verse' (是否遺漏了 using 指示詞或組件參考?)
+    line 12    CS0246   找不到類型或命名空間名稱 'Recipe_Surgery' (是否遺漏了 using 指示詞或組件參考?)
+    line 18    CS0246   找不到類型或命名空間名稱 'Apparel' (是否遺漏了 using 指示詞或組件參考?)
+    line 18    CS0246   找不到類型或命名空間名稱 'Pawn' (是否遺漏了 using 指示詞或組件參考?)
+    line 50    CS0246   找不到類型或命名空間名稱 'Thing' (是否遺漏了 using 指示詞或組件參考?)
+    line 50    CS0246   找不到類型或命名空間名稱 'BodyPartRecord' (是否遺漏了 using 指示詞或組件參考?)
+    line 55    CS0246   找不到類型或命名空間名稱 'Pawn' (是否遺漏了 using 指示詞或組件參考?)
+    line 60    CS0246   找不到類型或命名空間名稱 'Pawn' (是否遺漏了 using 指示詞或組件參考?)
+    line 60    CS0246   找不到類型或命名空間名稱 'BodyPartRecord' (是否遺漏了 using 指示詞或組件參考?)
+    line 60    CS0246   找不到類型或命名空間名稱 'Pawn' (是否遺漏了 using 指示詞或組件參考?)
+    line 60    CS0246   找不到類型或命名空間名稱 'Thing' (是否遺漏了 using 指示詞或組件參考?)
+    line 60    CS0246   找不到類型或命名空間名稱 'Bill' (是否遺漏了 using 指示詞或組件參考?)
+
+  D:\Steam\steamapps\common\RimWorld\Mods\Dead-Man-Switch\_Source\DMS\Vault\Building_VaultElevator.cs
+    line 3     CS0246   找不到類型或命名空間名稱 'RimWorld' (是否遺漏了 using 指示詞或組件參考?)
+    line 4     CS0246   找不到類型或命名空間名稱 'Verse' (是否遺漏了 using 指示詞或組件參考?)
+    line 21    CS0246   找不到類型或命名空間名稱 'MapPortal' (是否遺漏了 using 指示詞或組件參考?)
+    line 26    CS0246   找不到類型或命名空間名稱 'CompHackable' (是否遺漏了 using 指示詞或組件參考?)
+    line 27    CS0246   找不到類型或命名空間名稱 'CompSealable' (是否遺漏了 using 指示詞或組件參考?)
+    line 28    CS0246   找不到類型或命名空間名稱 'Graphic' (是否遺漏了 using 指示詞或組件參考?)
+    line 43    CS0246   找不到類型或命名空間名稱 'CompHackable' (是否遺漏了 using 指示詞或組件參考?)
+    line 45    CS0246   找不到類型或命名空間名稱 'CompSealable' (是否遺漏了 using 指示詞或組件參考?)
+    line 92    CS0246   找不到類型或命名空間名稱 'Graphic' (是否遺漏了 using 指示詞或組件參考?)
+    line 114   CS0246   找不到類型或命名空間名稱 'SectionLayer' (是否遺漏了 using 指示詞或組件參考?)
+    line 122   CS0246   找不到類型或命名空間名稱 'GenStepWithParams' (是否遺漏了 using 指示詞或組件參考?)
+
+  D:\Steam\steamapps\common\RimWorld\Mods\Dead-Man-Switch\_Source\DMS\Vault\DMS_GenStep_Vault.cs
+    line 1     CS0246   找不到類型或命名空間名稱 'RimWorld' (是否遺漏了 using 指示詞或組件參考?)
+    line 2     CS0246   找不到類型或命名空間名稱 'Verse' (是否遺漏了 using 指示詞或組件參考?)
+    line 14    CS0246   找不到類型或命名空間名稱 'GenStep' (是否遺漏了 using 指示詞或組件參考?)
+    line 17    CS0246   找不到類型或命名空間名稱 'LayoutDef' (是否遺漏了 using 指示詞或組件參考?)
+    line 20    CS0246   找不到類型或命名空間名稱 'IntRange' (是否遺漏了 using 指示詞或組件參考?)
+    line 24    CS0246   找不到類型或命名空間名稱 'Map' (是否遺漏了 using 指示詞或組件參考?)
+    line 24    CS0246   找不到類型或命名空間名稱 'GenStepParams' (是否遺漏了 using 指示詞或組件參考?)
+
+  D:\Steam\steamapps\common\RimWorld\Mods\Dead-Man-Switch\_Source\DMS\Vault\DMS_LayoutWorker_Vault.cs
+    line 2     CS0246   找不到類型或命名空間名稱 'RimWorld' (是否遺漏了 using 指示詞或組件參考?)
+    line 4     CS0246   找不到類型或命名空間名稱 'Verse' (是否遺漏了 using 指示詞或組件參考?)
+    line 13    CS0246   找不到類型或命名空間名稱 'DefModExtension' (是否遺漏了 using 指示詞或組件參考?)
+    line 15    CS0246   找不到類型或命名空間名稱 'ThingDef' (是否遺漏了 using 指示詞或組件參考?)
+    line 16    CS0246   找不到類型或命名空間名稱 'ThingDef' (是否遺漏了 using 指示詞或組件參考?)
+    line 31    CS0246   找不到類型或命名空間名稱 'LayoutWorker_Structure' (是否遺漏了 using 指示詞或組件參考?)
+    line 33    CS0246   找不到類型或命名空間名稱 'LayoutDef' (是否遺漏了 using 指示詞或組件參考?)
+    line 38    CS0246   找不到類型或命名空間名稱 'StructureLayout' (是否遺漏了 using 指示詞或組件參考?)
+    line 38    CS0246   找不到類型或命名空間名稱 'StructureGenParams' (是否遺漏了 using 指示詞或組件參考?)
+    line 38    CS0246   找不到類型或命名空間名稱 'CellRect' (是否遺漏了 using 指示詞或組件參考?)
+    line 55    CS0246   找不到類型或命名空間名稱 'StructureLayout' (是否遺漏了 using 指示詞或組件參考?)
+    line 55    CS0246   找不到類型或命名空間名稱 'StructureGenParams' (是否遺漏了 using 指示詞或組件參考?)
+    line 65    CS0246   找不到類型或命名空間名稱 'LayoutStructureSketch' (是否遺漏了 using 指示詞或組件參考?)
+    line 71    CS0246   找不到類型或命名空間名稱 'LayoutSketch' (是否遺漏了 using 指示詞或組件參考?)
+
+  D:\Steam\steamapps\common\RimWorld\Mods\Dead-Man-Switch\_Source\DMS\Vault\ModExtension_PortalLayout.cs
+    line 1     CS0246   找不到類型或命名空間名稱 'RimWorld' (是否遺漏了 using 指示詞或組件參考?)
+    line 2     CS0246   找不到類型或命名空間名稱 'Verse' (是否遺漏了 using 指示詞或組件參考?)
+    line 16    CS0246   找不到類型或命名空間名稱 'DefModExtension' (是否遺漏了 using 指示詞或組件參考?)
+    line 19    CS0246   找不到類型或命名空間名稱 'GenStepDef' (是否遺漏了 using 指示詞或組件參考?)
+    line 22    CS0246   找不到類型或命名空間名稱 'LayoutDef' (是否遺漏了 using 指示詞或組件參考?)
+
+  D:\Steam\steamapps\common\RimWorld\Mods\Dead-Man-Switch\_Source\DMS\Vault\ModExtension_SealedGraphic.cs
+    line 1     CS0246   找不到類型或命名空間名稱 'Verse' (是否遺漏了 using 指示詞或組件參考?)
+    line 12    CS0246   找不到類型或命名空間名稱 'DefModExtension' (是否遺漏了 using 指示詞或組件參考?)
+    line 15    CS0246   找不到類型或命名空間名稱 'GraphicData' (是否遺漏了 using 指示詞或組件參考?)
+
+  D:\Steam\steamapps\common\RimWorld\Mods\Dead-Man-Switch\_Source\DMS\Vault\RoomContents_VaultArmory.cs
+    line 3     CS0246   找不到類型或命名空間名稱 'RimWorld' (是否遺漏了 using 指示詞或組件參考?)
+    line 4     CS0246   找不到類型或命名空間名稱 'Verse' (是否遺漏了 using 指示詞或組件參考?)
+    line 14    CS0246   找不到類型或命名空間名稱 'RoomContentsWorker' (是否遺漏了 using 指示詞或組件參考?)
+    line 19    CS0246   找不到類型或命名空間名稱 'IntRange' (是否遺漏了 using 指示詞或組件參考?)
+    line 21    CS0246   找不到類型或命名空間名稱 'Map' (是否遺漏了 using 指示詞或組件參考?)
+    line 21    CS0246   找不到類型或命名空間名稱 'LayoutRoom' (是否遺漏了 using 指示詞或組件參考?)
+    line 21    CS0246   找不到類型或命名空間名稱 'Faction' (是否遺漏了 using 指示詞或組件參考?)
+    line 32    CS0246   找不到類型或命名空間名稱 'Map' (是否遺漏了 using 指示詞或組件參考?)
+    line 32    CS0246   找不到類型或命名空間名稱 'LayoutRoom' (是否遺漏了 using 指示詞或組件參考?)
+
+  D:\Steam\steamapps\common\RimWorld\Mods\Dead-Man-Switch\_Source\DMS\Vault\RoomContents_VaultCommand.cs
+    line 1     CS0246   找不到類型或命名空間名稱 'RimWorld' (是否遺漏了 using 指示詞或組件參考?)
+    line 2     CS0246   找不到類型或命名空間名稱 'Verse' (是否遺漏了 using 指示詞或組件參考?)
+    line 14    CS0246   找不到類型或命名空間名稱 'RoomContentsWorker' (是否遺漏了 using 指示詞或組件參考?)
+    line 16    CS0246   找不到類型或命名空間名稱 'IntRange' (是否遺漏了 using 指示詞或組件參考?)
+    line 18    CS0246   找不到類型或命名空間名稱 'Map' (是否遺漏了 using 指示詞或組件參考?)
+    line 18    CS0246   找不到類型或命名空間名稱 'LayoutRoom' (是否遺漏了 using 指示詞或組件參考?)
+    line 18    CS0246   找不到類型或命名空間名稱 'Faction' (是否遺漏了 using 指示詞或組件參考?)
+
+  D:\Steam\steamapps\common\RimWorld\Mods\Dead-Man-Switch\_Source\DMS\Vault\RoomContents_VaultEntrance.cs
+    line 2     CS0246   找不到類型或命名空間名稱 'RimWorld' (是否遺漏了 using 指示詞或組件參考?)
+    line 3     CS0246   找不到類型或命名空間名稱 'Verse' (是否遺漏了 using 指示詞或組件參考?)
+    line 16    CS0246   找不到類型或命名空間名稱 'RoomContentsWorker' (是否遺漏了 using 指示詞或組件參考?)
+    line 20    CS0246   找不到類型或命名空間名稱 'IntRange' (是否遺漏了 using 指示詞或組件參考?)
+    line 22    CS0246   找不到類型或命名空間名稱 'Map' (是否遺漏了 using 指示詞或組件參考?)
+    line 22    CS0246   找不到類型或命名空間名稱 'LayoutRoom' (是否遺漏了 using 指示詞或組件參考?)
+    line 22    CS0246   找不到類型或命名空間名稱 'Faction' (是否遺漏了 using 指示詞或組件參考?)
+    line 29    CS0246   找不到類型或命名空間名稱 'Map' (是否遺漏了 using 指示詞或組件參考?)
+    line 29    CS0246   找不到類型或命名空間名稱 'LayoutRoom' (是否遺漏了 using 指示詞或組件參考?)
+    line 46    CS0246   找不到類型或命名空間名稱 'Map' (是否遺漏了 using 指示詞或組件參考?)
+    line 46    CS0246   找不到類型或命名空間名稱 'LayoutRoom' (是否遺漏了 using 指示詞或組件參考?)
+    line 46    CS0246   找不到類型或命名空間名稱 'Faction' (是否遺漏了 using 指示詞或組件參考?)
+
+  D:\Steam\steamapps\common\RimWorld\Mods\Dead-Man-Switch\_Source\DMS\Vault\RoomContents_VaultMechBay.cs
+    line 1     CS0246   找不到類型或命名空間名稱 'RimWorld' (是否遺漏了 using 指示詞或組件參考?)
+    line 2     CS0246   找不到類型或命名空間名稱 'Verse' (是否遺漏了 using 指示詞或組件參考?)
+    line 10    CS0246   找不到類型或命名空間名稱 'RoomContentsWorker' (是否遺漏了 using 指示詞或組件參考?)
+    line 14    CS0246   找不到類型或命名空間名稱 'IntRange' (是否遺漏了 using 指示詞或組件參考?)
+    line 15    CS0246   找不到類型或命名空間名稱 'IntRange' (是否遺漏了 using 指示詞或組件參考?)
+    line 16    CS0246   找不到類型或命名空間名稱 'IntRange' (是否遺漏了 using 指示詞或組件參考?)
+    line 18    CS0246   找不到類型或命名空間名稱 'Map' (是否遺漏了 using 指示詞或組件參考?)
+    line 18    CS0246   找不到類型或命名空間名稱 'LayoutRoom' (是否遺漏了 using 指示詞或組件參考?)
+    line 18    CS0246   找不到類型或命名空間名稱 'Faction' (是否遺漏了 using 指示詞或組件參考?)
+
+  D:\Steam\steamapps\common\RimWorld\Mods\Dead-Man-Switch\_Source\DMS\Vault\VaultRoomUtility.cs
+    line 4     CS0246   找不到類型或命名空間名稱 'RimWorld' (是否遺漏了 using 指示詞或組件參考?)
+    line 5     CS0246   找不到類型或命名空間名稱 'Verse' (是否遺漏了 using 指示詞或組件參考?)
+    line 21    CS0246   找不到類型或命名空間名稱 'Map' (是否遺漏了 using 指示詞或組件參考?)
+    line 21    CS0246   找不到類型或命名空間名稱 'LayoutRoom' (是否遺漏了 using 指示詞或組件參考?)
+    line 21    CS0246   找不到類型或命名空間名稱 'Faction' (是否遺漏了 using 指示詞或組件參考?)
+    line 54    CS0246   找不到類型或命名空間名稱 'Map' (是否遺漏了 using 指示詞或組件參考?)
+    line 54    CS0246   找不到類型或命名空間名稱 'LayoutRoom' (是否遺漏了 using 指示詞或組件參考?)
+    line 54    CS0246   找不到類型或命名空間名稱 'Thing' (是否遺漏了 using 指示詞或組件參考?)
+    line 74    CS0246   找不到類型或命名空間名稱 'Map' (是否遺漏了 using 指示詞或組件參考?)
+    line 74    CS0246   找不到類型或命名空間名稱 'IntVec3' (是否遺漏了 using 指示詞或組件參考?)
+    line 74    CS0246   找不到類型或命名空間名稱 'ThingDef' (是否遺漏了 using 指示詞或組件參考?)
+    line 81    CS0246   找不到類型或命名空間名稱 'ThingDef' (是否遺漏了 using 指示詞或組件參考?)
+    line 92    CS0246   找不到類型或命名空間名稱 'Map' (是否遺漏了 using 指示詞或組件參考?)
+    line 92    CS0246   找不到類型或命名空間名稱 'LayoutRoom' (是否遺漏了 using 指示詞或組件參考?)

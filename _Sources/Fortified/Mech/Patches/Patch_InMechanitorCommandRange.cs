@@ -1,4 +1,4 @@
-﻿using HarmonyLib;
+using HarmonyLib;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -20,7 +20,8 @@ namespace Fortified
             //checks further down are meant to cover - bailing out here left them with no
             //commandable area at all.
             #region Overseer
-            if (mech is IOverseer)
+            //狀態可控機械（IOverseer / AMO…）：單一介面檢查。
+            if (mech is IStateControllableMech sc && sc.ControllableByState)
             {
                 __result = true;
                 return;
@@ -40,17 +41,17 @@ namespace Fortified
             #endregion
 
             //Woken mechs answer to nobody, so they are never out of command range.
-            if (mech.TryGetComp<CompDeadManSwitch>() is CompDeadManSwitch compDMS && compDMS.woken)
+            if (mech is ICachedMechComps cc1 && cc1.DeadManSwitchComp?.woken == true)
             {
                 __result = true;
                 return;
             }
-            if (mech.TryGetComp<CompCommandRelay>(out var _c))
+            if (mech is ICachedMechComps cc2 && cc2.CommandRelayComp != null)
             {
                 __result = true;
                 return;
             }
-            if (mech.TryGetComp<CompDrone>() != null)
+            if (mech is ICachedMechComps cc3 && cc3.DroneComp != null)
             {
                 __result = true;
                 return;

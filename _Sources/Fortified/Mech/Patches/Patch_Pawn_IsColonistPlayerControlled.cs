@@ -1,4 +1,4 @@
-﻿using HarmonyLib;
+using HarmonyLib;
 using Verse;
 
 namespace Fortified
@@ -10,7 +10,7 @@ namespace Fortified
         {
             if (!__result)
             {
-                if (__instance is HumanlikeMech && __instance.IsColonyMechPlayerControlled)
+                if (__instance is IHumanlikeMech && __instance.IsColonyMechPlayerControlled)
                 {
                     __result = true;
                 }

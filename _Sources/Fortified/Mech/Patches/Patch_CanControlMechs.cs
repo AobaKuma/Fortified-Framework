@@ -1,4 +1,4 @@
-﻿using Verse;
+using Verse;
 using HarmonyLib;
 using RimWorld;
 using System.Linq;
@@ -22,7 +22,7 @@ namespace Fortified
 				__result = true;
                 return;
 			}
-			if (__instance.OverseenPawns?.Where(p => p.TryGetComp<CompCommandRelay>() != null)?.Count() > 0) __result = true;
+			if (__instance.OverseenPawns?.Any(p => p is ICachedMechComps cc && cc.CommandRelayComp != null) == true) __result = true;
         }
     }
 }

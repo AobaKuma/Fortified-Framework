@@ -1,4 +1,4 @@
-﻿using HarmonyLib;
+using HarmonyLib;
 using RimWorld;
 using System;
 using System.Reflection;
@@ -15,7 +15,8 @@ namespace Fortified
         [HarmonyPostfix]
         public static void Postfix(Pawn pawn)
         {
-            if (pawn.TryGetComp<CompDeadManSwitch>() is CompDeadManSwitch comp && comp.woken)
+            //woken DMS 機械走快取 comps。
+            if (pawn is ICachedMechComps cc && cc.DeadManSwitchComp?.woken == true)
             {
                 if (pawn.interactions == null)
                 {

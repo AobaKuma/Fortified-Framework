@@ -1,4 +1,4 @@
-﻿using HarmonyLib;
+using HarmonyLib;
 using RimWorld;
 using System.Collections.Generic;
 using Verse;
@@ -11,7 +11,8 @@ namespace Fortified
         static void Postfix(Pawn mech, ref AcceptanceReport __result)
         {
             if (__result == true) return;
-			if (mech is IOverseer)
+			//狀態可控機械（IOverseer / AMO…）：單一介面檢查。
+			if (mech is IStateControllableMech sc && sc.ControllableByState)
 			{
 				__result = true;
                 return;
@@ -19,7 +20,8 @@ namespace Fortified
 			if (mech.DeadOrDowned) return;
 			if ((!mech.IsColonyMech && mech.HostFaction == null)) return;
 
-            if (mech.TryGetComp<CompDeadManSwitch>() is CompDeadManSwitch comp && comp.woken)
+            //woken DMS 機械走快取 comps。
+            if (mech is ICachedMechComps cc && cc.DeadManSwitchComp?.woken == true)
             {
                 __result = true;
             }
@@ -28,7 +30,9 @@ namespace Fortified
                 __result = true;
             }
 
-            if (mech.kindDef.race.HasComp(typeof(CompCommandRelay)))
+            //快取 comps（spawn 後有效）；另保留 def 層 HasComp 以涵蓋 spawn 前語境（行為等價）。
+            if ((mech is ICachedMechComps cc2 && cc2.CommandRelayComp != null)
+                || mech.kindDef.race.HasComp(typeof(CompCommandRelay)))
             {
                 __result = true;
                 return;

@@ -1,4 +1,4 @@
-﻿// 当白昼倾坠之时
+// 当白昼倾坠之时
 using HarmonyLib;
 using RimWorld;
 using RimWorld.Planet;
@@ -22,7 +22,7 @@ namespace Fortified
         {
             try { HumanlikeMechApparelPatchHelper.GenerateApparelForHumanlikeMech(__result, kindDef, faction); }
             catch (Exception e) { Log.Error($"[FFF] Patch_PawnGenerator_GeneratePawn Error: {e}"); }
-            (__result as HumanlikeMech)?.ApplyWorkTypeRestrictions();
+            (__result as IHumanlikeMech)?.ApplyWorkTypeRestrictions();
         }
     }
 
@@ -39,7 +39,7 @@ namespace Fortified
         {
             try { HumanlikeMechApparelPatchHelper.GenerateApparelForHumanlikeMech(__result, request.KindDef, request.Faction); }
             catch (Exception e) { Log.Error($"[FFF] Patch_PawnGenerator_GeneratePawn_Request Error: {e}"); }
-            (__result as HumanlikeMech)?.ApplyWorkTypeRestrictions();
+            (__result as IHumanlikeMech)?.ApplyWorkTypeRestrictions();
         }
     }
 
@@ -61,7 +61,7 @@ namespace Fortified
                 comp.PostGenInit(pawn);
             }
 
-            if (pawn is not HumanlikeMech humanlikeMech || humanlikeMech.apparel == null)
+            if (pawn is not IHumanlikeMech || pawn.apparel == null)
             {
                 return;
             }
@@ -70,10 +70,10 @@ namespace Fortified
             if (faction == null || faction.IsPlayer) return;
 
             // 检查是否已有装备，避免重复生成
-            if (humanlikeMech.apparel.WornApparel.Count > 0) return;
+            if (pawn.apparel.WornApparel.Count > 0) return;
 
             PawnGenerationRequest request = new PawnGenerationRequest(kindDef);
-            MechApparelGenerator.GenerateStartingApparelFor(humanlikeMech, request);
+            MechApparelGenerator.GenerateStartingApparelFor(pawn, request);
         }
     }
 

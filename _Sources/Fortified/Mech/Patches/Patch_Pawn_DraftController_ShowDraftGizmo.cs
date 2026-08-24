@@ -1,4 +1,4 @@
-﻿using HarmonyLib;
+using HarmonyLib;
 using RimWorld;
 using Verse;
 
@@ -12,12 +12,14 @@ namespace Fortified
         {
             if(__result) return;
 
-			if (__instance.pawn is IOverseer)
+			//狀態可控機械（IOverseer / AMO…）：單一介面檢查。
+			if (__instance.pawn is IStateControllableMech sc && sc.ControllableByState)
 			{
 				__result = true;
 			}
 
-			if (__instance.pawn.TryGetComp<CompDeadManSwitch>() is CompDeadManSwitch comp && comp.woken)
+			//woken DMS 機械走快取 comps。
+			if (__instance.pawn is ICachedMechComps cc && cc.DeadManSwitchComp?.woken == true)
             {
                 __result = true;
             }
