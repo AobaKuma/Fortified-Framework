@@ -21,7 +21,7 @@ namespace Fortified
 			if ((!mech.IsColonyMech && mech.HostFaction == null)) return;
 
             //woken DMS 機械走快取 comps。
-            if (mech is ICachedMechComps cc && cc.DeadManSwitchComp?.woken == true)
+            if (mech.CachedDeadManSwitch()?.woken == true)
             {
                 __result = true;
             }
@@ -31,7 +31,7 @@ namespace Fortified
             }
 
             //快取 comps（spawn 後有效）；另保留 def 層 HasComp 以涵蓋 spawn 前語境（行為等價）。
-            if ((mech is ICachedMechComps cc2 && cc2.CommandRelayComp != null)
+            if (mech.CachedCommandRelay() != null
                 || mech.kindDef.race.HasComp(typeof(CompCommandRelay)))
             {
                 __result = true;

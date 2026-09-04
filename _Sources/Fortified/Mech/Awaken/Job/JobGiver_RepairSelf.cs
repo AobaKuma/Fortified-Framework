@@ -16,7 +16,7 @@ namespace Fortified
         {
             //AMO 不可被修理（自行再生，走 CompArtificialOrganism）。
             if (pawn is ArtificialOrganism amo && !amo.Repairable) return null;
-            if (pawn is ICachedMechComps cc && cc.DeadManSwitchComp?.woken == true && MechRepairUtility.CanRepair(pawn))
+            if (pawn.CachedDeadManSwitch()?.woken == true && MechRepairUtility.CanRepair(pawn))
             {
                 return JobMaker.MakeJob(FFF_DefOf.FFF_RepairSelf,pawn);
             }

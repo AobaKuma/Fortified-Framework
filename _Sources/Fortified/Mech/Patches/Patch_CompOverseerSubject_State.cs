@@ -21,7 +21,7 @@ namespace Fortified
 			}
 
 			//woken DMS 機械走快取 comps。
-			if (__instance.parent is ICachedMechComps cc && cc.DeadManSwitchComp?.woken == true)
+			if (__instance.parent.CachedDeadManSwitch()?.woken == true)
             {
                 __result = OverseerSubjectState.Overseen;
             }

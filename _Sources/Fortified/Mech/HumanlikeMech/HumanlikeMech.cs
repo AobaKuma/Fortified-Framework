@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace Fortified
 {
-    public class HumanlikeMech : Pawn, IWeaponUsable, ICaravanOwner, IHumanlikeMech
+    public class HumanlikeMech : Pawn, IWeaponUsable, ICaravanOwner, IHumanlikeMech, ICachedMechComps
     {
 		public virtual bool CanCaravan => false;//Maybe should be true?????
 

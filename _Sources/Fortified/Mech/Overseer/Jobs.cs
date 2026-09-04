@@ -52,7 +52,7 @@ namespace Fortified
 				return false;
 			}
 			//快取 comps（spawn 後有效）；非框架機械保留 TryGetComp 語意。
-			CompMechRepairable compMechRepairable = target is ICachedMechComps cc ? cc.MechRepairableComp : target.TryGetComp<CompMechRepairable>();
+			CompMechRepairable compMechRepairable = target.CachedMechRepairable();
 			if (compMechRepairable == null)
 			{
 				return false;

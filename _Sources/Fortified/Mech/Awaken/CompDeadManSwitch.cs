@@ -116,7 +116,7 @@ namespace Fortified
         {
             if (!parent.Faction.IsPlayer) return null;
             //快取 comps（框架機械走快取；非框架機械回退 TryGetComp 語意）。
-            CompOverseerSubject subject = parent is ICachedMechComps cc ? cc.OverseerSubjectComp : parent.GetComp<CompOverseerSubject>();
+            CompOverseerSubject subject = parent.CachedOverseerSubject();
             if (subject == null) return null;
             if (subject.State != OverseerSubjectState.Overseen)
             {

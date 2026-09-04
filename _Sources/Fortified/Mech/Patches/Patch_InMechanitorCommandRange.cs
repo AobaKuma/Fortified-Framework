@@ -41,17 +41,18 @@ namespace Fortified
             #endregion
 
             //Woken mechs answer to nobody, so they are never out of command range.
-            if (mech is ICachedMechComps cc1 && cc1.DeadManSwitchComp?.woken == true)
+            if (mech.CachedDeadManSwitch()?.woken == true)
             {
                 __result = true;
                 return;
             }
-            if (mech is ICachedMechComps cc2 && cc2.CommandRelayComp != null)
+            if (mech.CachedCommandRelay() != null)
             {
                 __result = true;
                 return;
             }
-            if (mech is ICachedMechComps cc3 && cc3.DroneComp != null)
+            //Drone 聽平台（建築／穿戴者）的命令而不是機械師，所以永遠不受指揮範圍限制。
+            if (mech.CachedDrone() != null)
             {
                 __result = true;
                 return;

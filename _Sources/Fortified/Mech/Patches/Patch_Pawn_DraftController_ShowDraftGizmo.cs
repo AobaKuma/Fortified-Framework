@@ -19,7 +19,7 @@ namespace Fortified
 			}
 
 			//woken DMS 機械走快取 comps。
-			if (__instance.pawn is ICachedMechComps cc && cc.DeadManSwitchComp?.woken == true)
+			if (__instance.pawn.CachedDeadManSwitch()?.woken == true)
             {
                 __result = true;
             }

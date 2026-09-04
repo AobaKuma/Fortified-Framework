@@ -22,7 +22,7 @@ namespace Fortified
 				__result = true;
                 return;
 			}
-			if (__instance.OverseenPawns?.Any(p => p is ICachedMechComps cc && cc.CommandRelayComp != null) == true) __result = true;
+			if (__instance.OverseenPawns?.Any(p => p.CachedCommandRelay() != null) == true) __result = true;
         }
     }
 }

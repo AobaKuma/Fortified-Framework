@@ -9,7 +9,7 @@ namespace Fortified
 	/// 不可被機械師/監督者修理、自體再生、以口糧補能量。
 	/// 以 Pawn + IWeaponUsable 為基底（與 WeaponUsableMech / HumanlikeMech 同層）。
 	/// </summary>
-	public class ArtificialOrganism : Pawn, IWeaponUsable, IStateControllableMech
+	public class ArtificialOrganism : Pawn, IWeaponUsable, IStateControllableMech, ICachedMechComps
 	{
 		public bool ControllableByState => true; // 預設 true，無需額外檢查
 

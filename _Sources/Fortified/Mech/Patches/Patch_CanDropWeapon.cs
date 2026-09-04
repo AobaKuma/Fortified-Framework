@@ -18,7 +18,7 @@ namespace Fortified
                 {
                     __result = true;
                 }
-                if (pawn is ICachedMechComps cc && cc.DroneComp is CompDrone d && d.CanDraft) __result = true;
+                if (pawn.CachedDrone() is CompDrone d && d.CanDraft) __result = true;
             }
         }
     }
@@ -46,7 +46,7 @@ namespace Fortified
                 {
                     __result = true;
                 }
-                if (pawn is ICachedMechComps cc && cc.DroneComp is CompDrone d && d.CanDraft) __result = true;
+                if (pawn.CachedDrone() is CompDrone d && d.CanDraft) __result = true;
             }
 		}
 	}
@@ -76,7 +76,7 @@ namespace Fortified
 			{
 				__result = false;
 			}
-			else if (pawn is ICachedMechComps cc && cc.DroneComp is CompDrone d && d.CanDraft) __result = false;
+			else if (pawn.CachedDrone() is CompDrone d && d.CanDraft) __result = false;
 		}
 	}
 }

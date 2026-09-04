@@ -12,7 +12,7 @@ namespace Fortified
     {
         protected override bool Satisfied(Pawn pawn)
         {
-            return pawn is ICachedMechComps cc && cc.DeadManSwitchComp?.woken == true;
+            return pawn.CachedDeadManSwitch()?.woken == true;
         }
     }
 }

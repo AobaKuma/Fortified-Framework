@@ -8,7 +8,7 @@ using Fortified;
 
 namespace Fortified
 {
-    public class WeaponUsableMech : Pawn, IWeaponUsable, ICaravanOwner
+    public class WeaponUsableMech : Pawn, IWeaponUsable, ICaravanOwner, ICachedMechComps
     {
 		public virtual bool CanCaravan => false;
 		public MechWeaponExtension MechWeapon { get; private set; }

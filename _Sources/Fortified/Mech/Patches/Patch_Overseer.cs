@@ -16,7 +16,7 @@ namespace Fortified
         public static void Postfix(Pawn pawn)
         {
             //woken DMS 機械走快取 comps。
-            if (pawn is ICachedMechComps cc && cc.DeadManSwitchComp?.woken == true)
+            if (pawn.CachedDeadManSwitch()?.woken == true)
             {
                 if (pawn.interactions == null)
                 {
