@@ -18,7 +18,7 @@ namespace Fortified
 			{
 				if (gizmo is Command_Action command && command.defaultLabel == "CommandSelectOverseer".Translate())
 				{
-					if (mech is IOverseer)
+					if (mech is IStateControllableMech scm && scm.ControllableByState)
 					{
 						continue;
 					}

@@ -11,6 +11,8 @@ namespace Fortified
 	/// </summary>
 	public class ArtificialOrganismHumanlike : ArtificialOrganism, IHumanlikeMech
 	{
+		public override bool CanCaravan => true;//they're humanlike afterall
+
 		public HumanlikeMechExtension Extension => HumanlikeMechUtility.Extension(this);
 
 		public Graphic HeadGraphic => HumanlikeMechUtility.GetHeadGraphic(this);

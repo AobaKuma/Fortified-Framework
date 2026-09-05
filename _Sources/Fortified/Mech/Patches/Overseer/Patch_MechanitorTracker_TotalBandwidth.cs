@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace Fortified
 {
 	[HarmonyPatch(typeof(Pawn_MechanitorTracker), nameof(Pawn_MechanitorTracker.TotalBandwidth), MethodType.Getter)]
-	public static class Pawn_MechanitorTracker_TotalBandwidth
+	public static class Patch_MechanitorTracker_TotalBandwidth
 	{
 		public static void Postfix(ref int __result, Pawn_MechanitorTracker __instance)
 		{
