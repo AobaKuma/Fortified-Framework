@@ -130,7 +130,7 @@ namespace Fortified
 		{
 			Pawn pawn = Pawn;
 			IRationSource source = RationSource;
-			if (pawn == null || source == null || source.RationDef == null)
+			if (pawn == null || source == null || source.RationDef == null || parent.Faction != Faction.OfPlayerSilentFail)
 			{
 				return null;
 			}
