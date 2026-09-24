@@ -22,9 +22,9 @@
   <FFF_Lockdown_StartedText>The facility's alert level has maxed out and the lockdown controller has engaged. In {0}, the blast gates will close and the lifts will stop working.\n\nGet out now, or hack the lockdown controller to stop it. Do not destroy it: it is built to seal the facility completely if it goes down.</FFF_Lockdown_StartedText>
   <FFF_Lockdown_Countdown>Facility lockdown in {0}.</FFF_Lockdown_Countdown>
   <FFF_Lockdown_LockedLabel>Facility locked down</FFF_Lockdown_LockedLabel>
-  <FFF_Lockdown_LockedText>The blast gates have closed. Nobody is getting in or out until someone hacks the lockdown controller.</FFF_Lockdown_LockedText>
+  <FFF_Lockdown_LockedText>The blast gates have closed and the entrance hack has been wiped. Nobody is getting in or out until someone hacks the lockdown controller, or hacks the entrance open again from the surface.</FFF_Lockdown_LockedText>
   <FFF_Lockdown_SealedLabel>Facility sealed</FFF_Lockdown_SealedLabel>
-  <FFF_Lockdown_SealedText>The lockdown controller has been destroyed, and the facility has sealed itself completely. It can no longer be opened from inside.\n\nSomeone on the surface has to work the entrance's emergency override to get the doors open.</FFF_Lockdown_SealedText>
+  <FFF_Lockdown_SealedText>The lockdown controller has been destroyed, and the facility has sealed itself completely. It can no longer be opened from inside.\n\nSomeone on the surface has to work the entrance's emergency override, or hack the entrance open again, to get the doors open.</FFF_Lockdown_SealedText>
   <FFF_Lockdown_Disarmed>{HACKER_nameDef} has disarmed the lockdown controller. It will no longer seal the facility.</FFF_Lockdown_Disarmed>
   <FFF_Lockdown_Lifted>{HACKER_nameDef} has hacked the lockdown controller. The blast gates are opening.</FFF_Lockdown_Lifted>
   <FFF_Lockdown_Overridden>{PAWN_nameDef} has forced the entrance open from the surface. The facility is accessible again.</FFF_Lockdown_Overridden>
@@ -36,7 +36,7 @@
   <FFF_Lockdown_OverrideProgress>Override progress: {0}</FFF_Lockdown_OverrideProgress>
   <FFF_Lockdown_GraceLeft>Anyone trapped below will be lost in {0}</FFF_Lockdown_GraceLeft>
   <FFF_Lockdown_TrappedLabel>Trapped below</FFF_Lockdown_TrappedLabel>
-  <FFF_Lockdown_TrappedText>Our people are sealed inside the facility, and nobody can get them out: no one below can hack the lockdown controller, and no one on the surface can override the entrance.\n\nIf nothing changes within {0}, they will be given up as lost.</FFF_Lockdown_TrappedText>
+  <FFF_Lockdown_TrappedText>Our people are sealed inside the facility, and nobody can get them out: no one below can hack the lockdown controller, and no one on the surface can override or re-hack the entrance.\n\nIf nothing changes within {0}, they will be given up as lost.</FFF_Lockdown_TrappedText>
   <FFF_Lockdown_GraceCancelled>Someone can deal with the lockdown again. The people trapped below still have a chance.</FFF_Lockdown_GraceCancelled>
   <FFF_Lockdown_LostLabel>Lost in the facility</FFF_Lockdown_LostLabel>
   <FFF_Lockdown_LostText>Nobody came. The facility stays sealed, and everyone trapped inside is now counted as missing:\n\n{0}</FFF_Lockdown_LostText>

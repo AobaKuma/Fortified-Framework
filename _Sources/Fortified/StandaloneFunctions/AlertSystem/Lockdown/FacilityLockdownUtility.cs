@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
+using HarmonyLib;
 using RimWorld;
 using RimWorld.Planet;
 using Verse;
@@ -8,6 +10,38 @@ namespace Fortified
 {
     public static class FacilityLockdownUtility
     {
+        // ── reflection handles for resetting CompHackable private state ───────────
+        private static readonly FieldInfo FI_hacked =
+            AccessTools.Field(typeof(CompHackable), "hacked");
+        private static readonly FieldInfo FI_progress =
+            AccessTools.Field(typeof(CompHackable), "progress");
+        private static readonly FieldInfo FI_progressLastLockout =
+            AccessTools.Field(typeof(CompHackable), "progressLastLockout");
+
+        /// <summary>
+        /// 封鎖生效時，地表入口的駭入進度歸零：鎖死之後，要從外面進去就得重新駭一次。
+        /// When the lockdown bites, the surface entrance's hack is wiped: getting back in from outside means hacking it again.
+        /// </summary>
+        public static void ResetEntranceHack(MapPortal portal)
+        {
+            CompHackable hack = portal?.TryGetComp<CompHackable>();
+            if (hack == null) return;
+            FI_hacked.SetValue(hack, false);
+            FI_progress.SetValue(hack, 0f);
+            FI_progressLastLockout.SetValue(hack, 0f);
+            if (portal.Spawned) portal.DirtyMapMesh(portal.Map);
+        }
+
+        /// <summary>
+        /// 地表緊急解鎖本身就是在入口上破門，完成後入口直接視為已駭入，不必再駭第二次。
+        /// The surface override is itself a break-in at the entrance, so it leaves the entrance hacked; no second hack.
+        /// </summary>
+        public static void RestoreEntranceHack(MapPortal portal)
+        {
+            CompHackable hack = portal?.TryGetComp<CompHackable>();
+            if (hack != null && !hack.IsHacked) hack.HackNow();
+        }
+
         /// <summary>找通往這張口袋地圖的地表入口。Find the surface portal whose pocket map this is.</summary>
         public static MapPortal FindSurfacePortal(Map pocketMap)
         {

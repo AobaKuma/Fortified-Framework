@@ -8,11 +8,13 @@ namespace Fortified
 {
     /// <summary>
     /// 從地表對入口電梯執行緊急解鎖。結構照原版 JobDriver_Hack：走過去、每 tick 以 HackingSpeed 推進。
-    /// 不走 CompHackable：地表電梯當初為了進去已經駭過一次，同一個 Thing 掛兩個 CompHackable 會讓原版取錯。
+    /// 不走 CompHackable：地表電梯本身已經掛著進門用的 CompHackable（封鎖時歸零、解鎖完成時補滿），
+    /// 同一個 Thing 掛兩個 CompHackable 會讓原版取錯。
     ///
     /// Emergency override on the surface lift, laid out like vanilla JobDriver_Hack: walk over, then advance
-    /// by HackingSpeed each tick. Not a CompHackable: the lift was already hacked to get in, and a second
-    /// CompHackable on the same thing would confuse vanilla's lookup.
+    /// by HackingSpeed each tick. Not a CompHackable: the lift already carries one for getting in (wiped by the
+    /// lockdown, completed by this override), and a second CompHackable on the same thing would confuse
+    /// vanilla's lookup.
     /// </summary>
     public class JobDriver_LockdownOverride : JobDriver
     {

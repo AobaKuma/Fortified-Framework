@@ -71,6 +71,17 @@ namespace Fortified
             permanentlySealed = true;
         }
 
+        /// <summary>
+        /// 封鎖時地表入口的駭入會被歸零；重新駭開它，就等於從外面解除封鎖。其他時候駭入不影響封鎖。
+        /// The lockdown wipes the surface entrance's hack; hacking it open again lifts the lockdown from outside.
+        /// A hack at any other time leaves the lockdown alone.
+        /// </summary>
+        public override void Notify_Hacked(Pawn hacker)
+        {
+            base.Notify_Hacked(hacker);
+            if (IsSurfaceEnd && !permanentlySealed) Lockdown?.Notify_SurfaceOverride(hacker);
+        }
+
         public override AcceptanceReport CanEnterPortal()
         {
             if (permanentlySealed) return "FFF_Lockdown_GateLost".Translate();
