@@ -20,4 +20,7 @@
   <!-- EN: area blocked -->
   <FFF.MinifiedDeployable.SelectedAreaBlocked>位置被阻擋</FFF.MinifiedDeployable.SelectedAreaBlocked>
 
+  <!-- EN: not owned by your faction; -->
+  <FFF.MinifiedDeployable.NotOwned>不屬於你的派系</FFF.MinifiedDeployable.NotOwned>
+
 </LanguageData>

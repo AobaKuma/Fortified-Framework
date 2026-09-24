@@ -13,12 +13,33 @@
   <FFF_AlertScanner_Detecting>Intruder detected!</FFF_AlertScanner_Detecting>
   <FFF_AlertScanner_Watching>Scanning for intruders</FFF_AlertScanner_Watching>
 
-  <!-- AlertEffect_FacilityLockdown : countermeasure that seals the facility and abandons the map -->
-  <FFF_Alert_FacilityLockdown_Warning>Facility lockdown initiated. The site will be sealed shortly — get everyone out.</FFF_Alert_FacilityLockdown_Warning>
-  <FFF_Alert_FacilityLockdown_Countdown>Facility lockdown in {0}.</FFF_Alert_FacilityLockdown_Countdown>
-  <FFF_Alert_FacilityLockdown_Executed>The facility has been sealed. Anyone still inside is lost.</FFF_Alert_FacilityLockdown_Executed>
-  <FFF_Alert_PawnMissing_Label>{0} missing</FFF_Alert_PawnMissing_Label>
-  <FFF_Alert_PawnMissing_Desc>{0} was still inside the facility when it was sealed and is now missing, presumed lost.</FFF_Alert_PawnMissing_Desc>
+  <!-- 設施封鎖（Fortified.MapComponent_FacilityLockdown）：中控建築驅動的封鎖 / facility lockdown driven by a controller building -->
+  <FFF_Lockdown_InspectIdle>Standing by</FFF_Lockdown_InspectIdle>
+  <FFF_Lockdown_InspectCountdown>Lockdown in {0}</FFF_Lockdown_InspectCountdown>
+  <FFF_Lockdown_InspectLocked>Facility locked down</FFF_Lockdown_InspectLocked>
+  <FFF_Lockdown_InspectDisarmed>Disarmed</FFF_Lockdown_InspectDisarmed>
+  <FFF_Lockdown_StartedLabel>Facility lockdown</FFF_Lockdown_StartedLabel>
+  <FFF_Lockdown_StartedText>The facility's alert level has maxed out and the lockdown controller has engaged. In {0}, the blast gates will close and the lifts will stop working.\n\nGet out now, or hack the lockdown controller to stop it. Do not destroy it: it is built to seal the facility completely if it goes down.</FFF_Lockdown_StartedText>
+  <FFF_Lockdown_Countdown>Facility lockdown in {0}.</FFF_Lockdown_Countdown>
+  <FFF_Lockdown_LockedLabel>Facility locked down</FFF_Lockdown_LockedLabel>
+  <FFF_Lockdown_LockedText>The blast gates have closed. Nobody is getting in or out until someone hacks the lockdown controller.</FFF_Lockdown_LockedText>
+  <FFF_Lockdown_SealedLabel>Facility sealed</FFF_Lockdown_SealedLabel>
+  <FFF_Lockdown_SealedText>The lockdown controller has been destroyed, and the facility has sealed itself completely. It can no longer be opened from inside.\n\nSomeone on the surface has to work the entrance's emergency override to get the doors open.</FFF_Lockdown_SealedText>
+  <FFF_Lockdown_Disarmed>{HACKER_nameDef} has disarmed the lockdown controller. It will no longer seal the facility.</FFF_Lockdown_Disarmed>
+  <FFF_Lockdown_Lifted>{HACKER_nameDef} has hacked the lockdown controller. The blast gates are opening.</FFF_Lockdown_Lifted>
+  <FFF_Lockdown_Overridden>{PAWN_nameDef} has forced the entrance open from the surface. The facility is accessible again.</FFF_Lockdown_Overridden>
+  <FFF_Lockdown_GateLocked>Locked down</FFF_Lockdown_GateLocked>
+  <FFF_Lockdown_GateSealed>Sealed: needs an emergency override from the surface</FFF_Lockdown_GateSealed>
+  <FFF_Lockdown_GateLost>Permanently sealed</FFF_Lockdown_GateLost>
+  <FFF_Lockdown_Override>Emergency override on {0}</FFF_Lockdown_Override>
+  <FFF_Lockdown_CannotOverride>Cannot override</FFF_Lockdown_CannotOverride>
+  <FFF_Lockdown_OverrideProgress>Override progress: {0}</FFF_Lockdown_OverrideProgress>
+  <FFF_Lockdown_GraceLeft>Anyone trapped below will be lost in {0}</FFF_Lockdown_GraceLeft>
+  <FFF_Lockdown_TrappedLabel>Trapped below</FFF_Lockdown_TrappedLabel>
+  <FFF_Lockdown_TrappedText>Our people are sealed inside the facility, and nobody can get them out: no one below can hack the lockdown controller, and no one on the surface can override the entrance.\n\nIf nothing changes within {0}, they will be given up as lost.</FFF_Lockdown_TrappedText>
+  <FFF_Lockdown_GraceCancelled>Someone can deal with the lockdown again. The people trapped below still have a chance.</FFF_Lockdown_GraceCancelled>
+  <FFF_Lockdown_LostLabel>Lost in the facility</FFF_Lockdown_LostLabel>
+  <FFF_Lockdown_LostText>Nobody came. The facility stays sealed, and everyone trapped inside is now counted as missing:\n\n{0}</FFF_Lockdown_LostText>
 
   <!-- AlertEffect_AirspaceBlockade : shuttles and pods are grounded for the duration -->
   <FFF_Alert_AirspaceBlockade_Start>Airspace blockade in effect. Shuttles and transport pods cannot take off from this map.</FFF_Alert_AirspaceBlockade_Start>

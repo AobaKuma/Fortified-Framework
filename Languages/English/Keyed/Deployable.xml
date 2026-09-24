@@ -14,4 +14,7 @@
 
   <FFF.MinifiedDeployable.SelectedAreaBlocked>area blocked</FFF.MinifiedDeployable.SelectedAreaBlocked>
 
+  <!-- EN: not owned by your faction; claim it first -->
+  <FFF.MinifiedDeployable.NotOwned>not owned by your faction; claim it first</FFF.MinifiedDeployable.NotOwned>
+
 </LanguageData>

@@ -36,5 +36,7 @@
   
   <!-- EN: returning to platform -->
   <FFF_ReturnToDronePlatform.reportString>returning to platform</FFF_ReturnToDronePlatform.reportString>
-  
+
+  <FFF_LockdownOverride.reportString>overriding the lockdown on TargetA.</FFF_LockdownOverride.reportString>
+
 </LanguageData>

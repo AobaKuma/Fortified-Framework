@@ -13,12 +13,33 @@
   <FFF_AlertScanner_Detecting>偵測到入侵者！</FFF_AlertScanner_Detecting>
   <FFF_AlertScanner_Watching>正在掃描入侵者</FFF_AlertScanner_Watching>
 
-  <!-- AlertEffect_FacilityLockdown：封鎖設施並放棄地圖的反制措施 -->
-  <FFF_Alert_FacilityLockdown_Warning>設施封鎖程序已啟動。站點即將被密封——把所有人撤出去。</FFF_Alert_FacilityLockdown_Warning>
-  <FFF_Alert_FacilityLockdown_Countdown>設施將於 {0} 後封鎖。</FFF_Alert_FacilityLockdown_Countdown>
-  <FFF_Alert_FacilityLockdown_Executed>設施已被密封。仍留在裡面的人都已失去聯繫。</FFF_Alert_FacilityLockdown_Executed>
-  <FFF_Alert_PawnMissing_Label>{0}失蹤</FFF_Alert_PawnMissing_Label>
-  <FFF_Alert_PawnMissing_Desc>設施密封時{0}仍在裡面，現已失蹤，推定罹難。</FFF_Alert_PawnMissing_Desc>
+  <!-- 設施封鎖（Fortified.MapComponent_FacilityLockdown）：中控建築驅動的封鎖 -->
+  <FFF_Lockdown_InspectIdle>待命中</FFF_Lockdown_InspectIdle>
+  <FFF_Lockdown_InspectCountdown>{0}後封鎖</FFF_Lockdown_InspectCountdown>
+  <FFF_Lockdown_InspectLocked>設施已封鎖</FFF_Lockdown_InspectLocked>
+  <FFF_Lockdown_InspectDisarmed>已解除</FFF_Lockdown_InspectDisarmed>
+  <FFF_Lockdown_StartedLabel>設施封鎖</FFF_Lockdown_StartedLabel>
+  <FFF_Lockdown_StartedText>設施的警戒值已達上限，封鎖中控已經啟動。{0}後，出入口的閘門將會關閉，電梯也將無法使用。\n\n立刻撤離，或是駭入封鎖中控阻止它。不要摧毀它：這類裝置在被摧毀時會將整座設施完全封死。</FFF_Lockdown_StartedText>
+  <FFF_Lockdown_Countdown>設施將在{0}後封鎖。</FFF_Lockdown_Countdown>
+  <FFF_Lockdown_LockedLabel>設施已封鎖</FFF_Lockdown_LockedLabel>
+  <FFF_Lockdown_LockedText>閘門已經關閉。在有人駭入封鎖中控之前，任何人都無法進出。</FFF_Lockdown_LockedText>
+  <FFF_Lockdown_SealedLabel>設施完全封死</FFF_Lockdown_SealedLabel>
+  <FFF_Lockdown_SealedText>封鎖中控已被摧毀，設施自行進入了完全封鎖，從內部再也無法開啟。\n\n必須有人在地表對入口執行緊急解鎖，才能打開閘門。</FFF_Lockdown_SealedText>
+  <FFF_Lockdown_Disarmed>{HACKER_nameDef}解除了封鎖中控，它不會再封鎖設施了。</FFF_Lockdown_Disarmed>
+  <FFF_Lockdown_Lifted>{HACKER_nameDef}駭入了封鎖中控，閘門正在開啟。</FFF_Lockdown_Lifted>
+  <FFF_Lockdown_Overridden>{PAWN_nameDef}從地表強制開啟了入口，設施可以再次進出了。</FFF_Lockdown_Overridden>
+  <FFF_Lockdown_GateLocked>封鎖中</FFF_Lockdown_GateLocked>
+  <FFF_Lockdown_GateSealed>完全封死：需要從地表執行緊急解鎖</FFF_Lockdown_GateSealed>
+  <FFF_Lockdown_GateLost>已永久封死</FFF_Lockdown_GateLost>
+  <FFF_Lockdown_Override>對{0}執行緊急解鎖</FFF_Lockdown_Override>
+  <FFF_Lockdown_CannotOverride>無法執行緊急解鎖</FFF_Lockdown_CannotOverride>
+  <FFF_Lockdown_OverrideProgress>解鎖進度：{0}</FFF_Lockdown_OverrideProgress>
+  <FFF_Lockdown_GraceLeft>受困者將在{0}後判定失蹤</FFF_Lockdown_GraceLeft>
+  <FFF_Lockdown_TrappedLabel>受困地下</FFF_Lockdown_TrappedLabel>
+  <FFF_Lockdown_TrappedText>我們的人被封在設施裡，而且沒有任何人能救他們出來：地下沒有人能駭入封鎖中控，地表也沒有人能對入口執行緊急解鎖。\n\n如果{0}內情況沒有改變，他們將被判定為失蹤。</FFF_Lockdown_TrappedText>
+  <FFF_Lockdown_GraceCancelled>已經有人能處理封鎖了，受困的人還有機會。</FFF_Lockdown_GraceCancelled>
+  <FFF_Lockdown_LostLabel>失蹤於設施中</FFF_Lockdown_LostLabel>
+  <FFF_Lockdown_LostText>沒有人來。設施維持封死，所有受困其中的人都被判定為失蹤：\n\n{0}</FFF_Lockdown_LostText>
 
   <!-- AlertEffect_AirspaceBlockade：期間內穿梭機與運輸艙無法起飛 -->
   <FFF_Alert_AirspaceBlockade_Start>空域封鎖生效中。穿梭機與運輸艙無法從此地圖起飛。</FFF_Alert_AirspaceBlockade_Start>

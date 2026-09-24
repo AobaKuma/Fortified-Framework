@@ -36,5 +36,7 @@
   
   <!-- EN: returning to platform -->
   <FFF_ReturnToDronePlatform.reportString>返回平台</FFF_ReturnToDronePlatform.reportString>
-  
+
+  <FFF_LockdownOverride.reportString>正在對TargetA執行緊急解鎖。</FFF_LockdownOverride.reportString>
+
 </LanguageData>

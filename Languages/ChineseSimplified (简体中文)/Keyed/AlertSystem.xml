@@ -13,12 +13,33 @@
   <FFF_AlertScanner_Detecting>侦测到入侵者！</FFF_AlertScanner_Detecting>
   <FFF_AlertScanner_Watching>正在扫描入侵者</FFF_AlertScanner_Watching>
 
-  <!-- AlertEffect_FacilityLockdown：封锁设施并放弃地图的反制措施 -->
-  <FFF_Alert_FacilityLockdown_Warning>设施封锁程序已启动。站点即将被密封——把所有人撤出去。</FFF_Alert_FacilityLockdown_Warning>
-  <FFF_Alert_FacilityLockdown_Countdown>设施将于 {0} 后封锁。</FFF_Alert_FacilityLockdown_Countdown>
-  <FFF_Alert_FacilityLockdown_Executed>设施已被密封。仍留在里面的人都已失去联系。</FFF_Alert_FacilityLockdown_Executed>
-  <FFF_Alert_PawnMissing_Label>{0}失踪</FFF_Alert_PawnMissing_Label>
-  <FFF_Alert_PawnMissing_Desc>设施密封时{0}仍在里面，现已失踪，推定罹难。</FFF_Alert_PawnMissing_Desc>
+  <!-- 设施封锁（Fortified.MapComponent_FacilityLockdown）：中控建筑驱动的封锁 -->
+  <FFF_Lockdown_InspectIdle>待命中</FFF_Lockdown_InspectIdle>
+  <FFF_Lockdown_InspectCountdown>{0}后封锁</FFF_Lockdown_InspectCountdown>
+  <FFF_Lockdown_InspectLocked>设施已封锁</FFF_Lockdown_InspectLocked>
+  <FFF_Lockdown_InspectDisarmed>已解除</FFF_Lockdown_InspectDisarmed>
+  <FFF_Lockdown_StartedLabel>设施封锁</FFF_Lockdown_StartedLabel>
+  <FFF_Lockdown_StartedText>设施的警戒值已达上限，封锁中控已经启动。{0}后，出入口的闸门将会关闭，电梯也将无法使用。\n\n立刻撤离，或是骇入封锁中控阻止它。不要摧毁它：这类装置在被摧毁时会将整座设施完全封死。</FFF_Lockdown_StartedText>
+  <FFF_Lockdown_Countdown>设施将在{0}后封锁。</FFF_Lockdown_Countdown>
+  <FFF_Lockdown_LockedLabel>设施已封锁</FFF_Lockdown_LockedLabel>
+  <FFF_Lockdown_LockedText>闸门已经关闭。在有人骇入封锁中控之前，任何人都无法进出。</FFF_Lockdown_LockedText>
+  <FFF_Lockdown_SealedLabel>设施完全封死</FFF_Lockdown_SealedLabel>
+  <FFF_Lockdown_SealedText>封锁中控已被摧毁，设施自行进入了完全封锁，从内部再也无法开启。\n\n必须有人在地表对入口执行紧急解锁，才能打开闸门。</FFF_Lockdown_SealedText>
+  <FFF_Lockdown_Disarmed>{HACKER_nameDef}解除了封锁中控，它不会再封锁设施了。</FFF_Lockdown_Disarmed>
+  <FFF_Lockdown_Lifted>{HACKER_nameDef}骇入了封锁中控，闸门正在开启。</FFF_Lockdown_Lifted>
+  <FFF_Lockdown_Overridden>{PAWN_nameDef}从地表强制开启了入口，设施可以再次进出了。</FFF_Lockdown_Overridden>
+  <FFF_Lockdown_GateLocked>封锁中</FFF_Lockdown_GateLocked>
+  <FFF_Lockdown_GateSealed>完全封死：需要从地表执行紧急解锁</FFF_Lockdown_GateSealed>
+  <FFF_Lockdown_GateLost>已永久封死</FFF_Lockdown_GateLost>
+  <FFF_Lockdown_Override>对{0}执行紧急解锁</FFF_Lockdown_Override>
+  <FFF_Lockdown_CannotOverride>无法执行紧急解锁</FFF_Lockdown_CannotOverride>
+  <FFF_Lockdown_OverrideProgress>解锁进度：{0}</FFF_Lockdown_OverrideProgress>
+  <FFF_Lockdown_GraceLeft>受困者将在{0}后判定失踪</FFF_Lockdown_GraceLeft>
+  <FFF_Lockdown_TrappedLabel>受困地下</FFF_Lockdown_TrappedLabel>
+  <FFF_Lockdown_TrappedText>我们的人被封在设施里，而且没有任何人能救他们出来：地下没有人能骇入封锁中控，地表也没有人能对入口执行紧急解锁。\n\n如果{0}内情况没有改变，他们将被判定为失踪。</FFF_Lockdown_TrappedText>
+  <FFF_Lockdown_GraceCancelled>已经有人能处理封锁了，受困的人还有机会。</FFF_Lockdown_GraceCancelled>
+  <FFF_Lockdown_LostLabel>失踪于设施中</FFF_Lockdown_LostLabel>
+  <FFF_Lockdown_LostText>没有人来。设施维持封死，所有受困其中的人都被判定为失踪：\n\n{0}</FFF_Lockdown_LostText>
 
   <!-- AlertEffect_AirspaceBlockade：期间内航天飞机与运输舱无法起飞 -->
   <FFF_Alert_AirspaceBlockade_Start>空域封锁生效中。航天飞机与运输舱无法从此地图起飞。</FFF_Alert_AirspaceBlockade_Start>

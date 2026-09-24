@@ -11,157 +11,19 @@ using Verse.AI.Group;
 namespace Fortified
 {
     // ════════════════════════════════════════════════════════════
-    //  一、地下設施封鎖
-    //  AlertEffect_FacilityLockdown
+    //  一、地下設施封鎖：已改為中控建築驅動，見 Lockdown/MapComponent_FacilityLockdown.cs
+    //  Facility lockdown now runs off a controller building; see Lockdown/MapComponent_FacilityLockdown.cs
     // ════════════════════════════════════════════════════════════
     /// <summary>
-    /// 警戒值滿後觸發地下設施封鎖程序：
-    /// <list type="bullet">
-    ///   <item>每 <see cref="alarmIntervalTicks"/>（預設 10 秒）播一次警報音 / 訊息。</item>
-    ///   <item>倒數 <see cref="lockdownDelay"/>（預設 60 秒）後：
-    ///     <list type="bullet">
-    ///       <item>地圖 Despawn（PocketMap 回收）。</item>
-    ///       <item>地面入口 <see cref="FacilityEntrance"/> 設為封閉（不可通行）。</item>
-    ///       <item>仍在地圖內的玩家 Pawn 被判定為失蹤（移除）。</item>
-    ///     </list>
-    ///   </item>
-    /// </list>
+    /// 舊版 AlertEffectWorker_FacilityLockdown 的驅動器。舊版已移除；這個空殼只為了讓舊存檔裡的
+    /// WorldComponent 能正常讀取，下下個版本刪除。
+    /// Driver of the removed AlertEffectWorker_FacilityLockdown. This empty shell only keeps older saves
+    /// loading cleanly; remove it two versions from now.
     /// </summary>
-    public class AlertEffectWorker_FacilityLockdown : AlertEffectWorker
-    {
-        // ── 可配置 ──────────────────────────────────────────────
-        /// <summary>警報週期（ticks），預設 10 秒 = 600。</summary>
-        public int alarmIntervalTicks = 600;
-        /// <summary>封鎖倒數（ticks），預設 60 秒 = 3600。</summary>
-        public int lockdownDelay = 3600;
-
-        // ── 狀態 ────────────────────────────────────────────────
-        private int ticksElapsed = 0;
-        private int nextAlarmTick = 0;
-        private bool lockdownExecuted = false;
-        private Map targetMap;
-
-        public override void Execute(Map map)
-        {
-            if (map == null) return;
-            targetMap = map;
-            ticksElapsed = 0;
-            nextAlarmTick = 0;
-            lockdownExecuted = false;
-
-            // 立即顯示首次警告
-            Messages.Message("FFF_Alert_FacilityLockdown_Warning".Translate(), MessageTypeDefOf.ThreatBig);
-
-            // 用 GameComponent 來驅動後續 Tick（避免 MapComponent 被 Despawn 一起移除前出問題）
-            Find.World.GetComponent<WorldComponent_AlertLockdownDriver>()
-                ?.RegisterLockdown(this);
-        }
-
-        /// <summary>每 tick 由 <see cref="WorldComponent_AlertLockdownDriver"/> 呼叫。</summary>
-        public void Tick()
-        {
-            if (lockdownExecuted || targetMap == null) return;
-            if (!Find.Maps.Contains(targetMap)) { lockdownExecuted = true; return; }
-
-            ticksElapsed++;
-
-            // 週期警報
-            if (ticksElapsed >= nextAlarmTick)
-            {
-                nextAlarmTick = ticksElapsed + alarmIntervalTicks;
-                int remaining = lockdownDelay - ticksElapsed;
-                if (remaining > 0)
-                {
-                    Messages.Message(
-                        "FFF_Alert_FacilityLockdown_Countdown".Translate(remaining.ToStringTicksToPeriod()),
-                        MessageTypeDefOf.ThreatBig);
-                    // 閃爍警報燈 Effecter 可擴充
-                }
-            }
-
-            // 封鎖執行
-            if (ticksElapsed >= lockdownDelay)
-            {
-                ExecuteLockdown();
-            }
-        }
-
-        private void ExecuteLockdown()
-        {
-            if (lockdownExecuted) return;
-            lockdownExecuted = true;
-
-            if (targetMap == null || !Find.Maps.Contains(targetMap)) return;
-
-            // 1. 判定仍在地圖內的玩家 Pawn → 失蹤
-            List<Pawn> playerPawns = targetMap.mapPawns.PawnsInFaction(Faction.OfPlayer).ToList();
-            foreach (Pawn pawn in playerPawns)
-            {
-                if (pawn.Spawned && pawn.Map == targetMap)
-                {
-                    // 移除 Pawn（判為失蹤）
-                    pawn.SetFaction(null);
-                    pawn.DeSpawn(DestroyMode.Vanish);
-                    Find.LetterStack.ReceiveLetter(
-                        "FFF_Alert_PawnMissing_Label".Translate(pawn.LabelShort),
-                        "FFF_Alert_PawnMissing_Desc".Translate(pawn.LabelShort),
-                        LetterDefOf.NegativeEvent);
-                }
-            }
-
-            // 2. 關閉地面入口
-            Map parentMap = targetMap.Parent?.Map;
-            if (parentMap != null)
-            {
-                foreach (FacilityEntrance entrance in parentMap.listerThings.ThingsOfDef(
-                    DefDatabase<ThingDef>.GetNamedSilentFail("FFF_FacilityEntrance"))
-                    .OfType<FacilityEntrance>()
-                    .Where(e => e.PocketMap == targetMap))
-                {
-                    entrance.SetFaction(null);   // 簡易封閉：移除控制派系
-                    // 若有專屬的 CompCloseable 可在此呼叫 Close()
-                }
-            }
-
-            // 3. Despawn 地圖（PocketMap 回收）
-            if (targetMap.Parent is MapParent mp && mp.Spawned)
-            {
-                mp.Destroy();
-            }
-
-            Messages.Message("FFF_Alert_FacilityLockdown_Executed".Translate(), MessageTypeDefOf.ThreatBig);
-        }
-
-        public bool IsFinished => lockdownExecuted;
-    }
-
-    // ════════════════════════════════════════════════════════════
-    //  WorldComponent_AlertLockdownDriver
-    //  驅動 FacilityLockdown 的 WorldComponent
-    // ════════════════════════════════════════════════════════════
+    [System.Obsolete("Facility lockdown is now driven by CompFacilityLockdownController; this shell only keeps old saves loading.")]
     public class WorldComponent_AlertLockdownDriver : WorldComponent
     {
-        private List<AlertEffectWorker_FacilityLockdown> active
-            = new List<AlertEffectWorker_FacilityLockdown>();
-
         public WorldComponent_AlertLockdownDriver(World world) : base(world) { }
-
-        public void RegisterLockdown(AlertEffectWorker_FacilityLockdown worker)
-        {
-            if (!active.Contains(worker))
-                active.Add(worker);
-        }
-
-        public override void WorldComponentTick()
-        {
-            if (active.Count == 0) return;
-            for (int i = active.Count - 1; i >= 0; i--)
-            {
-                active[i].Tick();
-                if (active[i].IsFinished)
-                    active.RemoveAt(i);
-            }
-        }
     }
 
     // ════════════════════════════════════════════════════════════

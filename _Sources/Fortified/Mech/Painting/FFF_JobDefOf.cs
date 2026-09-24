@@ -9,5 +9,8 @@ namespace Fortified
     {
         public static JobDef FFF_PaintMech;
         public static JobDef FFF_WaitForPainting;
+
+        // 設施封鎖：地表緊急解鎖 / Facility lockdown: surface emergency override
+        public static JobDef FFF_LockdownOverride;
     }
 }

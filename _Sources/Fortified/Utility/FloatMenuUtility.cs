@@ -250,6 +250,16 @@ namespace Fortified
             }
 
             string labelShort = building.LabelShort;
+            // 與 CompUsable 的拾起走同一套派系規則：非己方的建築要先宣稱才能動。
+            AcceptanceReport pickUpReport = CompMinifyToInventory.CanPickUp(building, pawn);
+            if (!pickUpReport.Accepted)
+            {
+                if (pickUpReport.Reason.NullOrEmpty())
+                {
+                    return null;
+                }
+                return new FloatMenuOption("CannotEquip".Translate(labelShort) + ": " + pickUpReport.Reason, null);
+            }
             if (pawn.WorkTagIsDisabled(WorkTags.Violent))
             {
                 return new FloatMenuOption("CannotEquip".Translate(labelShort) + ": " + "IsIncapableOfViolenceLower".Translate(pawn.LabelShort, pawn).CapitalizeFirst(), null);

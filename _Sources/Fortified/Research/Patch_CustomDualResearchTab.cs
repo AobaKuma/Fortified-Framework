@@ -279,8 +279,9 @@ namespace Fortified
                 return;
             }
 
-            int cols = categories.Count;
-            float colWidth = rect.width / cols;
+            // 各類別上下垂直排列（與原版異象分頁一致），而非水平並排。
+            int rows = categories.Count;
+            float rowHeight = rect.height / rows;
 
             // Calculate prefix width for category labels across all categories
             float prefixWidth = 0f;
@@ -290,37 +291,18 @@ namespace Fortified
                 if (labelWidth > prefixWidth) prefixWidth = labelWidth;
             }
 
-            bool anyProject = false;
-            for (int i = 0; i < cols; i++)
+            for (int i = 0; i < rows; i++)
             {
                 var cat = categories[i];
-                Rect colRect = new Rect(rect.x + i * colWidth, rect.y, colWidth, rect.height);
+                Rect rowRect = new Rect(rect.x, rect.y + i * rowHeight, rect.width, rowHeight);
 
+                // 未探明的專案當作空槽，避免洩漏名稱；原版會替 null 畫出「沒有進行中的項目」。
                 ResearchProjectDef proj = ResearchTabUtility.GetActiveProjectForCategory(cat);
-                if (proj != null && !proj.IsHidden)
+                if (proj != null && proj.IsHidden)
                 {
-                    anyProject = true;
-                    DrawProjectProgress(__instance, colRect, proj, cat.LabelCap, prefixWidth);
+                    proj = null;
                 }
-                else
-                {
-                    using (new TextBlock(TextAnchor.MiddleCenter))
-                    {
-                        Widgets.Label(colRect, "NoProjectSelected".Translate());
-                    }
-                }
-
-                // Draw vertical separator except after last column
-                if (i < cols - 1)
-                {
-                    float sepX = colRect.xMax;
-                    Widgets.DrawLineVertical((int)sepX, (int)rect.y, (int)rect.height);
-                }
-            }
-
-            if (!anyProject)
-            {
-                // nothing selected in any column
+                DrawProjectProgress(__instance, rowRect, proj, cat.LabelCap, prefixWidth);
             }
         }
 
@@ -342,74 +324,50 @@ namespace Fortified
             }
         }
 
-        /// <summary>
-        /// Helper to draw progress bar for a single project.
-        /// This mimics the original method behavior.
-        /// </summary>
-        private static void DrawProjectProgress(MainTabWindow_Research __instance, Rect rect, ResearchProjectDef project, string categoryLabel = null, float prefixWidth = 0f)
-        {
-            if (project == null)
-            {
-                return;
-            }
-
-            // Draw category label if provided (for dual-slot)
-            if (!categoryLabel.NullOrEmpty())
-            {
-                Rect labelRect = rect;
-                labelRect.width = prefixWidth;
-                GUI.Label(labelRect, categoryLabel + ":");
-                
-                Rect projectRect = rect;
-                projectRect.x += prefixWidth + 5f;
-                projectRect.width -= prefixWidth + 5f;
-                
-                DrawProjectProgressBar(__instance, projectRect, project);
-            }
-            else
-            {
-                // No label - full width (single-slot)
-                DrawProjectProgressBar(__instance, rect, project);
-            }
-        }
+        // 原版簽章為 DrawProjectProgress(Rect, ResearchProjectDef, string prefixTitle = null, float prefixWidth = 75f)；
+        // 反射必須以完整四參數查找，只給兩個型別會找不到方法而什麼都不畫。
+        private static MethodInfo cachedDrawProjectProgress = null;
+        private static MethodInfo DrawProjectProgressMethod => cachedDrawProjectProgress ??
+            (cachedDrawProjectProgress = typeof(MainTabWindow_Research).GetMethod(
+                "DrawProjectProgress",
+                BindingFlags.NonPublic | BindingFlags.Instance,
+                null,
+                new[] { typeof(Rect), typeof(ResearchProjectDef), typeof(string), typeof(float) },
+                null
+            ));
 
         /// <summary>
-        /// Draw the actual progress bar using original game logic.
+        /// Draws a project's label, progress bar and optional category prefix via the vanilla method,
+        /// which also handles a null project ("NoProjectSelected").
         /// </summary>
-        private static void DrawProjectProgressBar(MainTabWindow_Research instance, Rect rect, ResearchProjectDef project)
+        private static void DrawProjectProgress(MainTabWindow_Research __instance, Rect rect, ResearchProjectDef project, string categoryLabel = null, float prefixWidth = 75f)
         {
-            if (project == null)
-            {
-                return;
-            }
-
-            // Call original rendering if available via reflection
             try
             {
-                var method = typeof(MainTabWindow_Research).GetMethod(
-                    "DrawProjectProgress",
-                    BindingFlags.NonPublic | BindingFlags.Instance,
-                    null,
-                    new[] { typeof(Rect), typeof(ResearchProjectDef) },
-                    null
-                );
-
-                if (method != null)
+                if (DrawProjectProgressMethod != null)
                 {
-                    method.Invoke(instance, new object[] { rect, project });
+                    DrawProjectProgressMethod.Invoke(__instance, new object[] { rect, project, categoryLabel, prefixWidth });
+                    return;
                 }
             }
-            catch
+            catch (Exception ex)
             {
-                // Fallback: Draw a simple progress bar
-                float progress = project.ProgressPercent;
-                Widgets.FillableBar(rect, progress, null, null, doBorder: true);
-                
-                string label = project.LabelCap + " " + Mathf.RoundToInt(progress * 100f) + "%";
-                Text.Font = GameFont.Tiny;
-                Widgets.Label(rect, label);
-                Text.Font = GameFont.Small;
+                Log.WarningOnce($"[FFF] Could not invoke DrawProjectProgress: {ex.Message}", 0x4F2A91);
             }
+
+            if (project == null)
+            {
+                return;
+            }
+
+            // Fallback: Draw a simple progress bar
+            float progress = project.ProgressPercent;
+            Widgets.FillableBar(rect, progress, null, null, doBorder: true);
+
+            string label = project.LabelCap + " " + Mathf.RoundToInt(progress * 100f) + "%";
+            Text.Font = GameFont.Tiny;
+            Widgets.Label(rect, label);
+            Text.Font = GameFont.Small;
         }
 
         /// <summary>

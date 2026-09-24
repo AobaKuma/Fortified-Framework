@@ -18,6 +18,38 @@ namespace Fortified
         {
         }
 
+        /// <summary>
+        /// 拾起資格。非己方的部署建築不得直接收走——那等同無償接收敵方裝備，
+        /// 玩家必須先用 vanilla 的「宣稱」把它收為己有（宣稱本身受附近威脅限制）。
+        /// </summary>
+        public override AcceptanceReport CanBeUsedBy(Pawn p)
+        {
+            return CanPickUp(parent, p);
+        }
+
+        /// <summary>
+        /// 共用的拾起資格判定：拾起路徑（CompUsable 浮動選單／Gizmo）與直接裝備路徑
+        /// （<see cref="FloatMenuUtility.TryMakeFloatMenuForDeployable"/> ／
+        /// <see cref="JobDriver_EquipDeployable"/>）都走這裡，確保兩邊規則一致。
+        /// 只限制建築；已迷你化、躺在地上的物品沿用 vanilla 的撿拾規則。
+        /// </summary>
+        public static AcceptanceReport CanPickUp(Thing thing, Pawn pawn)
+        {
+            if (thing == null || pawn == null)
+            {
+                return false;
+            }
+            if (thing is not Building building)
+            {
+                return true;
+            }
+            if (building.Faction == pawn.Faction)
+            {
+                return true;
+            }
+            return "FFF.MinifiedDeployable.NotOwned".Translate();
+        }
+
         public override void DoEffect(Pawn usedBy)
         {
             MinifyInto(usedBy, parent, replacePrimary: false);
@@ -44,6 +76,11 @@ namespace Fortified
                 return false;
             }
             if (thing == null || thing.Destroyed)
+            {
+                return false;
+            }
+            // 最後一道關卡：即使有人繞過浮動選單直接下 job，也不該收走非己方的建築。
+            if (!CanPickUp(thing, usedBy).Accepted)
             {
                 return false;
             }

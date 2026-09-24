@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Text;
 using RimWorld;
 using Verse;
 using HarmonyLib;
@@ -37,10 +38,19 @@ namespace Fortified
         // 补丁负重能力
         [HarmonyPatch(typeof(MassUtility), nameof(MassUtility.Capacity))]
         [HarmonyPostfix]
-        public static void CapacityPostfix(Pawn p, ref float __result)
+        public static void CapacityPostfix(Pawn p, StringBuilder explanation, ref float __result)
         {
             if (p == null) return;
-            __result += p.GetStatValue(FFF_StatDefOf.FFF_MassCarryCapacity);
+            float offset = p.GetStatValue(FFF_StatDefOf.FFF_MassCarryCapacity);
+            if (offset == 0f) return;
+            __result += offset;
+
+            // 在负重说明中列出加成来源
+            if (explanation != null)
+            {
+                explanation.AppendLine();
+                explanation.Append("  - " + FFF_StatDefOf.FFF_MassCarryCapacity.LabelCap + ": " + offset.ToStringMassOffset());
+            }
         }
 
         // 补丁最小能力级别

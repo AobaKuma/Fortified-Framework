@@ -37,4 +37,6 @@
   <!-- EN: Replenishing -->
   <FFF_Replenish.reportString>补给中</FFF_Replenish.reportString>
 
+  <FFF_LockdownOverride.reportString>正在对TargetA执行紧急解锁。</FFF_LockdownOverride.reportString>
+
 </LanguageData>

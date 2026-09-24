@@ -213,6 +213,7 @@ Patch/整合：相關 Patch 補入 turret / pawn equipment 的 gizmo，使 UI �
     - 迷你化結果若是裝備類型（有 CompEquippable 且 equipmentType != None），先跑 EquipmentUtility.CanEquip 完整資格檢查（涵蓋生物編碼、靈魂鏈接綁定、意識形態角色限制，以及 Patch_EquipmentUtility_CanEquip 疊加的 FFF_NeverEquip、HeavyEquippableExtension 體型門檻與 IWeaponUsable 的 MechWeaponExtension 白名單）；不合格則改收進物品欄。
     - IWeaponUsable（機械體）額外套用 MassUtility 載重上限；收納失敗時以 GenPlace.TryPlaceThing 落地兜底，確保物件不會遺失。
     - TryMinifyAndEquip（靜態）：「直接裝備」入口，與 DoEffect 唯一差別是主手已有武器時由 MakeRoomFor 卸下原武器再裝上，而非塞進背包。
+    - CanPickUp（靜態）/ CanBeUsedBy：派系門檻——建築的 Faction 不等於操作者的 Faction（含無派系）時一律拒絕，理由 FFF.MinifiedDeployable.NotOwned，玩家須先用 vanilla 的「宣稱」收為己有。拾起（CompUsable）、直接裝備（浮動選單 / JobDriver_EquipDeployable）與 MinifyInto 內的最後守衛都走同一個判定；已迷你化的地面物品不受限，沿用 vanilla 撿拾規則。
   - JobDriver_EquipDeployable (Thing/DeployableItem/JobDriver_EquipDeployable.cs)
     - JobDef FFF_EquipDeployable：走到部署中的陣地建築旁（Touch）後呼叫 CompMinifyToInventory.TryMinifyAndEquip。
   - DeployUtility / MinifiedThingDeployable (Thing/DeployableItem/MinifiedThingDeployable.cs)

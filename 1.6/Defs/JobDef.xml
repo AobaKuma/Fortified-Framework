@@ -133,4 +133,13 @@
     <reportString>repairing TargetA.</reportString>
   </JobDef>
 
+  <!-- 設施封鎖：從地表對入口執行緊急解鎖（Fortified.CompFacilityLockdownGate）。
+       Facility lockdown: emergency override on the entrance from the surface. -->
+  <JobDef>
+    <defName>FFF_LockdownOverride</defName>
+    <driverClass>Fortified.JobDriver_LockdownOverride</driverClass>
+    <reportString>overriding the lockdown on TargetA.</reportString>
+    <casualInterruptible>false</casualInterruptible>
+  </JobDef>
+
 </Defs>

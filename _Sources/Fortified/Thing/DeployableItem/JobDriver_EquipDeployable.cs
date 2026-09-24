@@ -22,6 +22,8 @@ namespace Fortified
         protected override IEnumerable<Toil> MakeNewToils()
         {
             this.FailOnDestroyedOrNull(TargetIndex.A);
+            // 走到一半對方被宣稱回去／易主時中止，與浮動選單的判定保持一致。
+            this.FailOn(() => !CompMinifyToInventory.CanPickUp(Target, pawn).Accepted);
             yield return Toils_Goto.GotoThing(TargetIndex.A, PathEndMode.Touch).FailOnDespawnedNullOrForbidden(TargetIndex.A);
 
             Toil equip = ToilMaker.MakeToil("EquipDeployable");
