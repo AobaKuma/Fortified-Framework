@@ -154,13 +154,13 @@ namespace Fortified
             // 持續效果 Tick（空域封鎖、精確砲擊）
             TickActiveEffects();
 
-            if (triggered) return;
-
-            // 衰減：距上次 Notify 超過 DecayDelay 才開始
+            // 衰減：距上次 Notify 超過 DecayDelay 才開始。
+            // 滿值觸發後同樣會衰減，衰減到 0 才解除 triggered，否則警戒值會永遠卡在滿值。
             int now = Find.TickManager.TicksGame;
             if (alertLevel > 0f && (now - lastNotifyTick) > DecayDelay)
             {
                 alertLevel = Mathf.Max(0f, alertLevel - DecayPerTick);
+                if (alertLevel <= 0f) triggered = false;
             }
         }
 

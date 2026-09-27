@@ -157,14 +157,16 @@ namespace Fortified
         [SyncMethod]
         public void ReturnToPlatform(bool forceInterrupt = false)
         {
-            if (!HasPlatform && !noPlatformWarning)
+            if (!HasPlatform)
             {
-                //如果沒有平台則警告 (Translation: Warning if no platform is available)
-                Messages.Message("FFF.Drone.NoPlatform".Translate(parent.Label), MessageTypeDefOf.RejectInput, false);
-                noPlatformWarning = true;
+                //如果沒有平台則警告，只對玩家陣營的Drone提示 (Translation: Warning if no platform is available, player drones only)
+                if (!noPlatformWarning && parent.Faction == Faction.OfPlayer)
+                {
+                    Messages.Message("FFF.Drone.NoPlatform".Translate(parent.Label), MessageTypeDefOf.RejectInput, false);
+                    noPlatformWarning = true;
+                }
                 return;
             }
-            if (!HasPlatform) return;
 
             // 低电量时尝试强制中断当前工作，防止机械体沉迷工作忘记充电 (Translation?: Forces to stop task when battery low)
             if (forceInterrupt)

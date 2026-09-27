@@ -554,9 +554,10 @@ namespace Fortified.Structures
 	}
 
 	/// <summary>
-	/// 版面元素：把 pos/size 矩形內的貨架（Building_Storage）用 makerDef 的產物填滿。
+	/// 版面元素：把 pos/size 矩形內的貨架（Building_Storage）用 makerDef 的產物填滿，書櫃放書（見 Task_FillStorage）。
 	/// 純生成任務、不加東西進 sketch，所以放在貨架元素之後或之前都可以。
-	/// Layout element: fill every Building_Storage inside the pos/size rect from makerDef.
+	/// Layout element: fill every Building_Storage inside the pos/size rect from makerDef and put books in the
+	/// bookcases (see Task_FillStorage).
 	/// Task-only (adds nothing to the sketch), so it can sit anywhere relative to the shelf elements.
 	/// </summary>
 	public class FFF_Element_FillStorage : FFF_Element, IFFF_TaskProvider
@@ -573,13 +574,19 @@ namespace Fortified.Structures
 		public float fillChance = 1f;
 		/// <summary>放上去的東西是否標記為禁止拾取。Whether placed items are forbidden.</summary>
 		public bool forbidden = true;
+		/// <summary>
+		/// 範圍內每座書櫃先放幾本隨機的書（maker 產出的書也會優先收進書櫃）；0 = 只收 maker 產出的書。
+		/// Random books per bookcase in the rect up front (books from the maker go to bookcases first too); 0 = only
+		/// books from the maker.
+		/// </summary>
+		public IntRange booksPerBookcase = new IntRange(1, 3);
 
 		public override void AddToSketch(Sketch sketch) { }
 
 		public List<IFFF_GenerationTask> GetTasks(Rot4 rot, IntVec3 offset)
 		{
 			List<IFFF_GenerationTask> tasks = new List<IFFF_GenerationTask>();
-			if (makerDef == null) return tasks;
+			// makerDef 留空時只放書。With no makerDef it only places books.
 			Task_FillStorage task = new Task_FillStorage
 			{
 				rect = new CellRect(pos.x, pos.z, size.x, size.z),
@@ -587,7 +594,8 @@ namespace Fortified.Structures
 				batches = batches,
 				totalMarketValueRange = totalMarketValueRange,
 				fillChance = fillChance,
-				forbidden = forbidden
+				forbidden = forbidden,
+				booksPerBookcase = booksPerBookcase
 			};
 			tasks.Add(task.Transformed(rot, offset));
 			return tasks;

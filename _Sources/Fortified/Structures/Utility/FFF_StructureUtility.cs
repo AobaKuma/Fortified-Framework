@@ -128,6 +128,56 @@ namespace Fortified.Structures
             return false;
         }
 
+        /// <summary>
+        /// 收集 rect 內所有已生成的書櫃（Building_Bookcase）。書櫃不是 Building_Storage，StoragesIn 不會收到它。
+        /// Collects every spawned Building_Bookcase inside the rect. Bookcases aren't Building_Storage, so StoragesIn misses them.
+        /// </summary>
+        public static List<Building_Bookcase> BookcasesIn(Map map, CellRect rect)
+        {
+            List<Building_Bookcase> bookcases = new List<Building_Bookcase>();
+            if (map == null) return bookcases;
+            foreach (IntVec3 c in rect.ClipInsideMap(map))
+            {
+                List<Thing> things = c.GetThingList(map);
+                for (int i = 0; i < things.Count; i++)
+                {
+                    if (things[i] is Building_Bookcase b && b.Spawned && !bookcases.Contains(b)) bookcases.Add(b);
+                }
+            }
+            return bookcases;
+        }
+
+        /// <summary>
+        /// 在書櫃裡放 count 本隨機的書（品質隨機），不超過書櫃剩餘的空位。回傳實際放了幾本。
+        /// Puts count random books (random quality) into a bookcase, up to its free space. Returns how many went in.
+        /// </summary>
+        public static int StockBookcase(Building_Bookcase bookcase, int count)
+        {
+            if (bookcase == null || count <= 0) return 0;
+            int placed = 0;
+            count = Math.Min(count, bookcase.SpaceRemainingFor(null));
+            for (int i = 0; i < count; i++)
+            {
+                Book book = BookUtility.MakeBook(ArtGenerationContext.Outsider);
+                if (book == null) break;
+                if (bookcase.GetDirectlyHeldThings().TryAdd(book)) placed++;
+                else book.Destroy();
+            }
+            return placed;
+        }
+
+        /// <summary>把一本書收進清單裡任一還有空位的書櫃。Puts a book into any listed bookcase that still has room.</summary>
+        public static bool TryPlaceInBookcases(Thing book, List<Building_Bookcase> bookcases)
+        {
+            if (!(book is Book) || bookcases.NullOrEmpty()) return false;
+            foreach (Building_Bookcase bookcase in bookcases.InRandomOrder())
+            {
+                if (!bookcase.Spawned || !bookcase.Accepts(book)) continue;
+                if (bookcase.GetDirectlyHeldThings().TryAdd(book)) return true;
+            }
+            return false;
+        }
+
         /// <summary>目前登記的 UsedRects 快照（生成期以外回傳空清單）。Snapshot of the registered UsedRects; empty outside generation.</summary>
         public static List<CellRect> CurrentUsedRects(Map map)
         {

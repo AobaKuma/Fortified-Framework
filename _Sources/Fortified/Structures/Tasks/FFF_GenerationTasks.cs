@@ -365,14 +365,18 @@ namespace Fortified.Structures
 	}
 
 	/// <summary>
-	/// 用 ThingSetMakerDef 的產物填滿矩形範圍內的儲物建築（貨架等 Building_Storage）。
-	/// Task_FillContainer 只認 Building_Crate；這個是給開放式貨架用的：產物直接放上格位、標記為禁止拾取。
-	/// 每個儲物建築有 fillChance 的機率參與；跑 batches 輪 maker，放不下的東西直接銷毀，不會掉到地上。
+	/// 用 ThingSetMakerDef 的產物填滿矩形範圍內的儲物建築（貨架等 Building_Storage）與書櫃（Building_Bookcase）。
+	/// Task_FillContainer 只認 Building_Crate；這個是給開放式貨架與書櫃用的：產物直接放上格位、標記為禁止拾取。
+	/// 每個儲物建築與書櫃各有 fillChance 的機率參與。書櫃先各放 booksPerBookcase 本隨機的書；
+	/// maker 產出的書優先收進書櫃，其他東西放貨架。跑 batches 輪 maker，放不下的東西直接銷毀，不會掉到地上。
+	/// makerDef 可以留空，只放書。
 	///
-	/// Fills every storage building (Building_Storage, i.e. shelves) inside a rect from a ThingSetMakerDef.
-	/// Task_FillContainer only handles Building_Crate; this one is for open shelving: items go straight
-	/// onto slot cells and are forbidden. Each storage joins with fillChance; the maker runs batches times
-	/// and whatever does not fit is destroyed rather than dumped on the floor.
+	/// Fills every storage building (Building_Storage, i.e. shelves) and bookcase (Building_Bookcase) inside a rect.
+	/// Task_FillContainer only handles Building_Crate; this one is for open shelving and bookcases: items go straight
+	/// onto slot cells and are forbidden. Each shelf and bookcase joins with fillChance. Bookcases first get
+	/// booksPerBookcase random books each; books from the maker go to bookcases first and everything else to the
+	/// shelves. The maker runs batches times and whatever does not fit is destroyed rather than dumped on the floor.
+	/// makerDef may be left empty to place books only.
 	/// </summary>
 	public class Task_FillStorage : IFFF_GenerationTask
 	{
@@ -382,26 +386,24 @@ namespace Fortified.Structures
 		public FloatRange? totalMarketValueRange;
 		public float fillChance = 1f;
 		public bool forbidden = true;
+		/// <summary>每座書櫃先放幾本隨機的書；0 = 只收 maker 產出的書。Random books per bookcase up front; 0 = only books from the maker.</summary>
+		public IntRange booksPerBookcase = new IntRange(1, 3);
 
 		public void Execute(Map map, IntVec3 offset, Faction faction)
 		{
-			if (makerDef?.root == null || map == null) return;
+			if (map == null) return;
 
 			CellRect actual = rect.MovedBy(offset).ClipInsideMap(map);
-			List<Building_Storage> storages = new List<Building_Storage>();
-			foreach (IntVec3 c in actual)
-			{
-				List<Thing> things = c.GetThingList(map);
-				for (int i = 0; i < things.Count; i++)
-				{
-					if (things[i] is Building_Storage s && !storages.Contains(s) && Rand.Chance(fillChance))
-					{
-						storages.Add(s);
-					}
-				}
-			}
-			if (storages.Count == 0) return;
+			List<Building_Storage> storages = FFF_StructureUtility.StoragesIn(map, actual).FindAll(_ => Rand.Chance(fillChance));
+			List<Building_Bookcase> bookcases = FFF_StructureUtility.BookcasesIn(map, actual).FindAll(_ => Rand.Chance(fillChance));
+			if (storages.Count == 0 && bookcases.Count == 0) return;
 
+			foreach (Building_Bookcase bookcase in bookcases)
+			{
+				FFF_StructureUtility.StockBookcase(bookcase, booksPerBookcase.RandomInRange);
+			}
+
+			if (makerDef?.root == null) return;
 			int rounds = batches.RandomInRange;
 			for (int b = 0; b < rounds; b++)
 			{
@@ -413,7 +415,8 @@ namespace Fortified.Structures
 				bool anyPlaced = false;
 				foreach (Thing item in items)
 				{
-					if (FFF_StructureUtility.TryPlaceOnStorages(item, storages, map, forbidden))
+					if ((item is Book && FFF_StructureUtility.TryPlaceInBookcases(item, bookcases))
+						|| FFF_StructureUtility.TryPlaceOnStorages(item, storages, map, forbidden))
 					{
 						anyPlaced = true;
 					}
@@ -441,7 +444,8 @@ namespace Fortified.Structures
 				batches = batches,
 				totalMarketValueRange = totalMarketValueRange,
 				fillChance = fillChance,
-				forbidden = forbidden
+				forbidden = forbidden,
+				booksPerBookcase = booksPerBookcase
 			};
 		}
 	}
