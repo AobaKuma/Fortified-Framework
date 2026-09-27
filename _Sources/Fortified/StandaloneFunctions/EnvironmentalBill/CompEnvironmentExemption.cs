@@ -299,10 +299,7 @@ public class CompEnvironmentExemption : ThingComp
 
     public override IEnumerable<StatDrawEntry> SpecialDisplayStats()
     {
-        foreach (StatDrawEntry entry in base.SpecialDisplayStats())
-        {
-            yield return entry;
-        }
+        // ThingComp.SpecialDisplayStats() 預設回傳 null，不可 foreach。
 
         CompProperties_EnvironmentExemption p = Props;
         if (p == null || !p.GrantsAnything)

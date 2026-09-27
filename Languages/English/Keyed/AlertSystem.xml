@@ -27,6 +27,8 @@
   <FFF_Lockdown_SealedText>The lockdown controller has been destroyed, and the facility has sealed itself completely. It can no longer be opened from inside.\n\nSomeone on the surface has to work the entrance's emergency override, or hack the entrance open again, to get the doors open.</FFF_Lockdown_SealedText>
   <FFF_Lockdown_Disarmed>{HACKER_nameDef} has disarmed the lockdown controller. It will no longer seal the facility.</FFF_Lockdown_Disarmed>
   <FFF_Lockdown_Lifted>{HACKER_nameDef} has hacked the lockdown controller. The blast gates are opening.</FFF_Lockdown_Lifted>
+  <FFF_Lockdown_Disarmed_NoHacker>The lockdown controller has been disarmed. It will no longer seal the facility.</FFF_Lockdown_Disarmed_NoHacker>
+  <FFF_Lockdown_Lifted_NoHacker>The lockdown controller has been hacked. The blast gates are opening.</FFF_Lockdown_Lifted_NoHacker>
   <FFF_Lockdown_Overridden>{PAWN_nameDef} has forced the entrance open from the surface. The facility is accessible again.</FFF_Lockdown_Overridden>
   <FFF_Lockdown_GateLocked>Locked down</FFF_Lockdown_GateLocked>
   <FFF_Lockdown_GateSealed>Sealed: needs an emergency override from the surface</FFF_Lockdown_GateSealed>

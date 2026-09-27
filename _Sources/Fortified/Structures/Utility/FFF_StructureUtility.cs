@@ -155,15 +155,51 @@ namespace Fortified.Structures
         {
             if (bookcase == null || count <= 0) return 0;
             int placed = 0;
+            int failures = 0;
             count = Math.Min(count, bookcase.SpaceRemainingFor(null));
-            for (int i = 0; i < count; i++)
+            // 生不出來或收不進去就換一本再試，失敗太多次就收手，不讓壞掉的書卡住整個生成。
+            // A book that fails to generate or fit is swapped for another; too many failures and we stop,
+            // so one broken book can't stall the whole generation.
+            while (placed < count && failures < MaxBookFailures)
             {
-                Book book = BookUtility.MakeBook(ArtGenerationContext.Outsider);
-                if (book == null) break;
+                Book book = TryMakeBook(ArtGenerationContext.Outsider);
+                if (book == null)
+                {
+                    failures++;
+                    continue;
+                }
                 if (bookcase.GetDirectlyHeldThings().TryAdd(book)) placed++;
-                else book.Destroy();
+                else
+                {
+                    book.Destroy();
+                    failures++;
+                }
             }
             return placed;
+        }
+
+        private const int MaxBookFailures = 3;
+
+        /// <summary>
+        /// 產生一本隨機的書；失敗時回傳 null 而不是丟例外。書名與內容會跑文法，某個研究或技能的 generalRules 壞掉
+        /// （例如 XML 寫成空的 &lt;generalRules /&gt;，RulePack 沒跑 PostLoad）時，非英文語系會在 MakeBook 裡 NRE。
+        /// 換一本通常就會抽到別的主題。
+        ///
+        /// Makes a random book, returning null instead of throwing. Titles and descriptions run through grammar, and a
+        /// broken research or skill generalRules (e.g. an empty &lt;generalRules /&gt; in XML, whose RulePack never gets
+        /// PostLoad) throws an NRE inside MakeBook under non-English languages. Retrying usually rolls another topic.
+        /// </summary>
+        public static Book TryMakeBook(ArtGenerationContext context)
+        {
+            try
+            {
+                return BookUtility.MakeBook(context);
+            }
+            catch (Exception ex)
+            {
+                Log.WarningOnce($"[FFF] Failed to generate a book, skipping it. Some def's grammar rules are likely broken: {ex}", 0x4F46F001);
+                return null;
+            }
         }
 
         /// <summary>把一本書收進清單裡任一還有空位的書櫃。Puts a book into any listed bookcase that still has room.</summary>

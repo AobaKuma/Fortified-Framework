@@ -4,6 +4,8 @@
   <!-- ==================== Research discovery (Fortified.ModExtension_ResearchDiscovery) ==================== -->
   <FFF_Research_DiscoveredLetterLabel>Research revealed</FFF_Research_DiscoveredLetterLabel>
   <FFF_Research_DiscoveredLetterText>Our latest findings have made sense of archived material that was previously unreadable. The following research projects are no longer unknown, and can now be started:</FFF_Research_DiscoveredLetterText>
+  <FFF_Research_UndiscoveredProject>[an undiscovered technology]</FFF_Research_UndiscoveredProject>
+  <FFF_Research_UndiscoveredUnlock>[Undiscovered]</FFF_Research_UndiscoveredUnlock>
 
   <!-- ==================== Archived tech unsealing (Fortified.CompUseEffect_DiscoverResearch) ==================== -->
   <FFF_Research_UnsealLetterLabel>Archived technology revealed</FFF_Research_UnsealLetterLabel>

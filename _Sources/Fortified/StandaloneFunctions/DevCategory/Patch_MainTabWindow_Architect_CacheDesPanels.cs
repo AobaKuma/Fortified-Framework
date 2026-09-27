@@ -62,7 +62,8 @@ namespace Fortified
 
         public static void Postfix(MainTabWindow_Architect __instance)
         {
-            bool current = Prefs.DevMode && DebugSettings.godMode;
+            // 必須與 CacheDesPanels 的隱藏條件一致（只看 DevMode），否則切換開發模式時不會重建面板
+            bool current = Prefs.DevMode;
             if (lastDevMode.HasValue && lastDevMode.Value == current)
                 return;
 

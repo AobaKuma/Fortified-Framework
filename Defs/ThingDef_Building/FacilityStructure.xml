@@ -107,6 +107,7 @@
     <description>A reinforced concrete structural wall with a composite coating, commonly found in underground facilities. It was built to carry the structure around it, and is effectively indestructible.</description>
     <graphicData>
       <texPath>Things/Building/Linked/Wall/Wall_Atlas_Concrete</texPath>
+      <color>(150,148,140)</color>
     </graphicData>
     <uiIconPath>Things/Building/Linked/Wall/Wall_Atlas_Concrete_UI</uiIconPath>
   </ThingDef>
@@ -117,6 +118,7 @@
     <description>A reinforced concrete structural wall with a composite coating, commonly found in underground facilities. It was built to carry the structure around it, and is effectively indestructible.</description>
     <graphicData>
       <texPath>Things/Building/Linked/Wall/Wall_Atlas_LoadBearing</texPath>
+      <color>(150,148,140)</color>
     </graphicData>
     <uiIconPath>Things/Building/Linked/Wall/Wall_Atlas_LoadBearing_UI</uiIconPath>
   </ThingDef>
@@ -127,6 +129,7 @@
     <description>A reinforced concrete structural wall with a composite coating, commonly found in underground facilities. It was built to carry the structure around it, and is effectively indestructible.</description>
     <graphicData>
       <texPath>Things/Building/Linked/Wall/Wall_Atlas_Concrete_Icon</texPath>
+      <color>(150,148,140)</color>
       <shaderType>CutoutComplex</shaderType>
     </graphicData>
     <uiIconPath>Things/Building/Linked/Wall/Wall_Atlas_Concrete_Icon_UI</uiIconPath>
@@ -138,6 +141,7 @@
     <description>A prefabricated pressure-hull panel. Panels like these were bolted together section by section to line the deep levels of a facility, sealing out groundwater and the overpressure of a blast.</description>
     <graphicData>
       <texPath>Things/Building/Linked/Wall/Wall_Atlas_Hull</texPath>
+      <color>(105,115,120)</color>
     </graphicData>
     <uiIconPath>Things/Building/Linked/Wall/Wall_Atlas_Hull_UI</uiIconPath>
   </ThingDef>
@@ -148,6 +152,7 @@
     <description>A pressure-hull panel fitted with a sealed maintenance hatch. The hatch leads into the conduit space behind the panel, though it was welded shut long ago.</description>
     <graphicData>
       <texPath>Things/Building/Linked/Wall/Wall_Atlas_HullHatch</texPath>
+      <color>(105,115,120)</color>
     </graphicData>
     <uiIconPath>Things/Building/Linked/Wall/Wall_Atlas_HullHatch_UI</uiIconPath>
   </ThingDef>
@@ -211,6 +216,7 @@
     </statBases>
     <graphicData>
       <texPath>Things/Building/Door/DMS_Door_Mover</texPath>
+      <color>(140,150,152)</color>
       <graphicClass>Graphic_Single</graphicClass>
       <damageData>
         <enabled>false</enabled>

@@ -122,10 +122,7 @@ namespace Fortified
 
         public override IEnumerable<StatDrawEntry> SpecialDisplayStats()
         {
-            foreach (StatDrawEntry e in base.SpecialDisplayStats())
-            {
-                yield return e;
-            }
+            // ThingComp.SpecialDisplayStats() 預設回傳 null，不可 foreach。
             yield return new StatDrawEntry(
                 StatCategoryDefOf.Building,
                 "FFF_Occultech_SourceStatLabel".Translate(),

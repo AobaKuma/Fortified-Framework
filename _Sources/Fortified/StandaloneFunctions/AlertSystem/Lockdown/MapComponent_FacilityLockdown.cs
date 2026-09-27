@@ -97,7 +97,12 @@ namespace Fortified
             countdownLeft = -1;
             graceLeft = -1;
             string key = wasActive ? "FFF_Lockdown_Lifted" : "FFF_Lockdown_Disarmed";
-            Messages.Message(key.Translate(hacker.Named("HACKER")), controller, MessageTypeDefOf.PositiveEvent);
+            // 原版 CompHackable.HackNow()（開發者模式等）會傳入 null 的駭客。
+            // Vanilla CompHackable.HackNow() (dev mode, etc.) passes a null hacker.
+            TaggedString text = hacker != null
+                ? key.Translate(hacker.Named("HACKER"))
+                : (key + "_NoHacker").Translate();
+            Messages.Message(text, controller, MessageTypeDefOf.PositiveEvent);
         }
 
         public void Notify_ControllerDestroyed()

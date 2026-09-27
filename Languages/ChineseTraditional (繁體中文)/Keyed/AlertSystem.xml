@@ -27,6 +27,8 @@
   <FFF_Lockdown_SealedText>封鎖中控已被摧毀，設施自行進入了完全封鎖，從內部再也無法開啟。\n\n必須有人在地表對入口執行緊急解鎖，或重新駭開入口，才能打開閘門。</FFF_Lockdown_SealedText>
   <FFF_Lockdown_Disarmed>{HACKER_nameDef}解除了封鎖中控，它不會再封鎖設施了。</FFF_Lockdown_Disarmed>
   <FFF_Lockdown_Lifted>{HACKER_nameDef}駭入了封鎖中控，閘門正在開啟。</FFF_Lockdown_Lifted>
+  <FFF_Lockdown_Disarmed_NoHacker>封鎖中控已被解除，它不會再封鎖設施了。</FFF_Lockdown_Disarmed_NoHacker>
+  <FFF_Lockdown_Lifted_NoHacker>封鎖中控已被駭入，閘門正在開啟。</FFF_Lockdown_Lifted_NoHacker>
   <FFF_Lockdown_Overridden>{PAWN_nameDef}從地表強制開啟了入口，設施可以再次進出了。</FFF_Lockdown_Overridden>
   <FFF_Lockdown_GateLocked>封鎖中</FFF_Lockdown_GateLocked>
   <FFF_Lockdown_GateSealed>完全封死：需要從地表執行緊急解鎖</FFF_Lockdown_GateSealed>

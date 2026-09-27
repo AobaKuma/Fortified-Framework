@@ -411,16 +411,38 @@ namespace Fortified.Structures
 				if (totalMarketValueRange.HasValue) parms.totalMarketValueRange = totalMarketValueRange.Value;
 				if (faction != null) parms.makingFaction = faction;
 
-				List<Thing> items = makerDef.root.Generate(parms);
+				// maker 會生書、武器、藝術品等，任一個的生成（文法、品質、材料）壞掉都會丟例外；
+				// 吞掉並停止後續輪次，已經放好的東西保留，不讓整個 GenStep 跟著中止。
+				// The maker can make books, weapons, art and so on, and any of them may throw (grammar, quality, stuff);
+				// swallow it and stop the remaining rounds, keeping what was already placed, so the GenStep isn't aborted.
+				List<Thing> items;
+				try
+				{
+					items = makerDef.root.Generate(parms);
+				}
+				catch (Exception ex)
+				{
+					Log.WarningOnce($"[FFF] Task_FillStorage: {makerDef.defName} threw while generating, skipping the remaining batches: {ex}", makerDef.shortHash ^ 0x4F46F002);
+					break;
+				}
+				if (items.NullOrEmpty()) break;
+
 				bool anyPlaced = false;
 				foreach (Thing item in items)
 				{
-					if ((item is Book && FFF_StructureUtility.TryPlaceInBookcases(item, bookcases))
-						|| FFF_StructureUtility.TryPlaceOnStorages(item, storages, map, forbidden))
+					if (item == null || item.Destroyed) continue;
+					bool placed = false;
+					try
 					{
-						anyPlaced = true;
+						placed = (item is Book && FFF_StructureUtility.TryPlaceInBookcases(item, bookcases))
+							|| FFF_StructureUtility.TryPlaceOnStorages(item, storages, map, forbidden);
 					}
-					else if (!item.Destroyed)
+					catch (Exception ex)
+					{
+						Log.WarningOnce($"[FFF] Task_FillStorage: failed to place {item.ToStringSafe()}, discarding it: {ex}", item.def.shortHash ^ 0x4F46F003);
+					}
+					if (placed) anyPlaced = true;
+					else if (!item.Destroyed && !item.Spawned && item.ParentHolder == null)
 					{
 						item.Destroy();
 					}

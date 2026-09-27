@@ -4,6 +4,8 @@
   <!-- ==================== 研究探明（Fortified.ModExtension_ResearchDiscovery） ==================== -->
   <FFF_Research_DiscoveredLetterLabel>研究已探明</FFF_Research_DiscoveredLetterLabel>
   <FFF_Research_DiscoveredLetterText>最新的研究成果已探明先前无从解读的封存资料。以下研究项目已不再是未知，现在可以开始研究：</FFF_Research_DiscoveredLetterText>
+  <FFF_Research_UndiscoveredProject>[一项未探明的科技]</FFF_Research_UndiscoveredProject>
+  <FFF_Research_UndiscoveredUnlock>[未探明]</FFF_Research_UndiscoveredUnlock>
 
   <!-- ==================== 封存科技解封（Fortified.CompUseEffect_DiscoverResearch） ==================== -->
   <FFF_Research_UnsealLetterLabel>封存技术已探明</FFF_Research_UnsealLetterLabel>

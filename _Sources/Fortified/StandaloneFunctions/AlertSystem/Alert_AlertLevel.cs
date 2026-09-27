@@ -11,6 +11,7 @@ namespace Fortified
     /// <summary>
     /// 將 <see cref="MapComponent_AlertCounter"/> 的警戒值以原生 Alert（右側通知）方式呈現。
     /// <para>
+    /// 只針對目前檢視中的地圖（<see cref="Find.CurrentMap"/>），不跨地圖彙整。<br/>
     /// 顯示條件：地圖上存在至少一個相關警報建築（<see cref="CompAlertScanner"/>）
     /// 且該地圖警戒值 &gt; 0。<br/>
     /// 優先度隨警戒值升級：已觸發 → Critical；≥50% → High；其餘 → Medium。<br/>
@@ -50,41 +51,33 @@ namespace Fortified
             cachedWorstTriggered = false;
             cachedBuildingCount = 0;
 
-            List<Map> maps = Find.Maps;
-            if (maps.NullOrEmpty()) return AlertReport.Inactive;
+            // 只看玩家目前正在檢視的地圖；子地圖（口袋地圖）的警戒值不該出現在主地圖上
+            Map map = Find.CurrentMap;
+            if (map == null) return AlertReport.Inactive;
+
+            MapComponent_AlertCounter counter = map.GetComponent<MapComponent_AlertCounter>();
+            if (counter == null) return AlertReport.Inactive;
+
+            // 條件一：地圖上存在相關警報建築
+            if (!counter.HasActiveScanners) return AlertReport.Inactive;
+            // 條件二：警戒值已被拉高（靜止時不打擾玩家）
+            if (counter.AlertLevel <= 0f) return AlertReport.Inactive;
 
             // 每次建立新清單，避免跨呼叫的參照別名問題
             List<GlobalTargetInfo> culprits = new List<GlobalTargetInfo>();
-
-            for (int i = 0; i < maps.Count; i++)
+            foreach (Thing t in counter.GetScannerBuildings())
             {
-                Map map = maps[i];
-                if (map == null) continue;
-
-                MapComponent_AlertCounter counter = map.GetComponent<MapComponent_AlertCounter>();
-                if (counter == null) continue;
-
-                // 條件一：地圖上存在相關警報建築
-                if (!counter.HasActiveScanners) continue;
-                // 條件二：警戒值已被拉高（靜止時不打擾玩家）
-                if (counter.AlertLevel <= 0f) continue;
-
-                foreach (Thing t in counter.GetScannerBuildings())
+                if (t != null && t.Spawned)
                 {
-                    if (t != null && t.Spawned)
-                    {
-                        culprits.Add(t);
-                        cachedBuildingCount++;
-                    }
+                    culprits.Add(t);
+                    cachedBuildingCount++;
                 }
-
-                if (counter.AlertLevelPct > cachedWorstPct)
-                    cachedWorstPct = counter.AlertLevelPct;
-                if (counter.IsTriggered)
-                    cachedWorstTriggered = true;
             }
 
             if (culprits.Count == 0) return AlertReport.Inactive;
+
+            cachedWorstPct = counter.AlertLevelPct;
+            cachedWorstTriggered = counter.IsTriggered;
             return AlertReport.CulpritsAre(culprits);
         }
 
