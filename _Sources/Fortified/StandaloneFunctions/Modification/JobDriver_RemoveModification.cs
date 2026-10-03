@@ -49,7 +49,7 @@ namespace Fortified
             Messages.Message("FFF.Message.Modification.Removed".Translate(TargetPawn), TargetPawn, MessageTypeDefOf.PositiveEvent);
             TargetPawn.health.RemoveHediff(hediff);
 
-            if (hediff.def.spawnThingOnRemoved != null && TargetPawn.MapHeld != null)
+            if (hediff.def.spawnThingOnRemoved != null && installedCount > 0 && TargetPawn.MapHeld != null)
             {
                 // Merged installations were paid for with several items; refund all of them.
                 Thing thing = ThingMaker.MakeThing(hediff.def.spawnThingOnRemoved);

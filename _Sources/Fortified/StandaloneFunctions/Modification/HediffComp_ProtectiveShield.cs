@@ -54,9 +54,20 @@ namespace Fortified
             }
         }
 
-        // 每份改裝提供 Props.hitpoints；受損但未耗盡的那份仍算在內。
-        // Each installation adds Props.hitpoints; a damaged but unspent one still counts.
-        public int RemainingInstallations => Props.hitpoints <= 0 ? int.MaxValue : Mathf.CeilToInt(Hitpoints / Props.hitpoints);
+        // 只算完好的份數，受損的那份可以直接補裝替換。每份的耐久取單片耐久與「上限 ÷ 可裝份數」的較小者，
+        // 否則體型非整數（上限不是單片耐久的整數倍）時，剛裝滿也會被算成少一份。
+        // Counts intact installations only, so a damaged one can be replaced by installing another.
+        // One installation's share is the smaller of Props.hitpoints and cap / allowed installations;
+        // otherwise a fractional body size (cap not a multiple of Props.hitpoints) undercounts a full set.
+        public int RemainingInstallations
+        {
+            get
+            {
+                if (Props.hitpoints <= 0) return int.MaxValue;
+                float perInstallation = Mathf.Min(Props.hitpoints, MaxHitpoints / Props.GetMaxModificationInstallations(parent.pawn));
+                return Mathf.FloorToInt(Hitpoints / perInstallation + 0.001f);
+            }
+        }
         private int maxHitpoints;
         private float hitpoints;
         public HediffCompProperties_ProtectiveShield Props

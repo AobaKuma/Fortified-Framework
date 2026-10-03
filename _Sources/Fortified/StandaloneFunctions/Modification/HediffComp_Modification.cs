@@ -17,7 +17,9 @@ namespace Fortified
             {
                 int count = installedCount < 1 ? 1 : installedCount;
                 int remaining = RemainingConsumableInstallations();
-                return remaining < 0 ? count : Math.Max(1, Math.Min(count, remaining));
+                // 消耗性改裝全數受損時可以是 0，安裝上限才會放行替換。
+                // May be 0 when every consumable installation is damaged, so the install limit allows a replacement.
+                return remaining < 0 ? count : Math.Min(count, remaining);
             }
         }
 
@@ -27,7 +29,9 @@ namespace Fortified
         /// </summary>
         public void Notify_Consumed()
         {
-            installedCount = InstalledCount;
+            // 存檔值保持 >= 1；實際份數由 InstalledCount 依剩餘耐久計算。
+            // The stored value stays >= 1; InstalledCount derives the real figure from durability.
+            installedCount = Math.Max(1, InstalledCount);
         }
 
         // 沒有消耗性元件時回傳 -1。Returns -1 when no comp is consumable.
