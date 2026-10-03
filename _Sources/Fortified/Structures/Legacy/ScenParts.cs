@@ -90,7 +90,9 @@ namespace Fortified.Structures
         private void ApplyInitialGoodwill(Faction f)
         {
             int target = alwaysHostile ? -100 : startingGoodwillRange.RandomInRange;
-            f.TryAffectGoodwillWith(Faction.OfPlayer, target - f.PlayerGoodwill, false, false);
+            // 直接設定確切值：TryAffectGoodwillWith 會往自然好感度多推最多 25%，見 FactionRelationUtility。
+            // Set the exact value: TryAffectGoodwillWith overshoots toward natural goodwill, see FactionRelationUtility.
+            FactionRelationUtility.SetGoodwill(f, target);
         }
 
         // 检查派系是否符合规则

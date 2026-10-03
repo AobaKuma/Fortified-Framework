@@ -276,6 +276,7 @@ Patch/整合：相關 Patch 補入 turret / pawn equipment 的 gizmo，使 UI �
   - CheckUtility.cs（檢查/驗證工具）
   - WeaponTagUtil.cs（武器標籤處理）
   - FloatMenuUtility.cs、FFF_StructureUtility.cs、FleckMakerEx.cs
+  - FactionRelationUtility.cs（把派系關係設定為確切好感度與類型，繞過原版的溢出與拒絕；用法見 Docs/FactionRelation_Usage.md）
 - StatWorker_*、IngredientValueGetter_* 等：提供統計/數值顯示或擴充
 
 功能要點：跨模組共用函式、Gizmo/FloatMenu 支援、數值計算輔助。
