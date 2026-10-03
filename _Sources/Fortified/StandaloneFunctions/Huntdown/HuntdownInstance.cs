@@ -16,7 +16,24 @@ public class HuntdownInstance : IExposable
 
     public int startedTick;
 
+    /// <summary>
+    /// 被追緝的角色（例如叛逃者）。軍事法庭審判此人、或此人不在時可結束追緝。
+    /// The hunted pawn (e.g. the deviant). Trying them at a court-martial, or losing them, can end the huntdown.
+    /// </summary>
+    public Pawn boundPawn;
+
+    // 曾綁定過角色；讀檔後參照遺失時據此判定為「角色已不在」。
+    // Whether a pawn was ever bound, so a reference lost on load still counts as the pawn being gone.
+    public bool hasBoundPawn;
+
+    /// <summary>暫停到這個 tick；-1 = 未暫停。Suspended until this tick; -1 = not suspended.</summary>
+    public int suspendedUntilTick = -1;
+
     public List<HuntdownMapTimer> timers = new List<HuntdownMapTimer>();
+
+    public bool Suspended => suspendedUntilTick > Find.TickManager.TicksGame;
+
+    public int SuspendedTicksLeft => Suspended ? suspendedUntilTick - Find.TickManager.TicksGame : 0;
 
     public HuntdownMapTimer TimerFor(Map map)
     {
@@ -32,6 +49,9 @@ public class HuntdownInstance : IExposable
         Scribe_Defs.Look(ref def, "def");
         Scribe_Values.Look(ref source, "source");
         Scribe_Values.Look(ref startedTick, "startedTick");
+        Scribe_References.Look(ref boundPawn, "boundPawn");
+        Scribe_Values.Look(ref hasBoundPawn, "hasBoundPawn");
+        Scribe_Values.Look(ref suspendedUntilTick, "suspendedUntilTick", -1);
         Scribe_Collections.Look(ref timers, "timers", LookMode.Deep);
         if (Scribe.mode == LoadSaveMode.PostLoadInit)
         {

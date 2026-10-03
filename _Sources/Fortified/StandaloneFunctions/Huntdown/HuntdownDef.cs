@@ -52,13 +52,34 @@ public class HuntdownDef : Def
 
     // ── 襲擊 Raid ───────────────────────────────────────────────────────────
 
+    /// <summary>未填時交給 RaidEnemy 依說書人規則挑選。Left to RaidEnemy's own choice when unset.</summary>
     public PawnsArrivalModeDef raidArrivalMode;
     public RaidStrategyDef raidStrategy;
+
+    /// <summary>
+    /// 派系目前不敵對（例如軍事法庭休戰）時延後這一波並重新排程；
+    /// 否則原版 RaidEnemy 會把非敵對的指定派系換成隨機敵對派系。
+    /// Postpone and reschedule a wave while the faction is not hostile (e.g. a court-martial truce);
+    /// otherwise vanilla RaidEnemy swaps a non-hostile forced faction for a random hostile one.
+    /// </summary>
+    public bool postponeWhileNotHostile = true;
+
+    /// <summary>每一波發動後提供的任務（例如軍事法庭）。Quests offered after each wave (e.g. a court-martial).</summary>
+    public List<HuntdownQuestOffer> questsOnWave;
 
     // ── 追蹤條件 Tracking conditions ────────────────────────────────────────
 
     /// <summary>玩家重力船降落時，追緝跟到新地圖。Follow the player's gravship to each map it lands on.</summary>
     public bool followGravship = true;
+
+    /// <summary>
+    /// 沒有任何被追緝的地圖時，自動改追任一玩家據點（追殺整個殖民地，而不是特定地點）。
+    /// When no map is hunted, pick up any player home map (hunting the colony rather than one place).
+    /// </summary>
+    public bool retargetPlayerHome;
+
+    /// <summary>綁定的角色死亡或消失時結束追緝。End the huntdown when its bound pawn dies or is gone.</summary>
+    public bool stopWhenBoundPawnLost = true;
 
     /// <summary>地圖上沒有玩家重力引擎時停止追緝該地圖（原版行為）。Drop a map once it has no player grav engine.</summary>
     public bool requireGravEngine;
@@ -79,6 +100,11 @@ public class HuntdownDef : Def
 
     /// <summary>預警信件指向的物件，依序找第一個存在的。Things the warning letter points at, first found wins.</summary>
     public List<ThingDef> letterLookTargets;
+
+    public bool sendWarningLetter = true;
+
+    /// <summary>右側倒數警報。The countdown alert.</summary>
+    public bool showAlert = true;
 
     // ── 文字 Text（{0} = 派系名稱 faction name）─────────────────────────────
 
@@ -135,10 +161,6 @@ public class HuntdownDef : Def
     // DefOf 與 Keyed 在 ResolveReferences 時不一定就緒，預設值一律在使用時解析。
     // DefOfs and keyed strings may not be ready during ResolveReferences, so defaults resolve on use.
 
-    public PawnsArrivalModeDef RaidArrivalMode => raidArrivalMode ?? PawnsArrivalModeDefOf.RandomDrop;
-
-    public RaidStrategyDef RaidStrategy => raidStrategy ?? RaidStrategyDefOf.ImmediateAttack;
-
     public bool IsExcluded(MapGeneratorDef generator)
     {
         if (generator == null) return false;
@@ -180,7 +202,25 @@ public class HuntdownDef : Def
         {
             yield return "wave delayTicks must not be negative";
         }
+        if (questsOnWave != null && questsOnWave.Any(q => q?.quest == null))
+        {
+            yield return "questsOnWave has an entry without a quest";
+        }
     }
+}
+
+/// <summary>
+/// 波次後提供的任務。已有同一任務待接或進行中時不重複提供，任務自己的 TestRun 不通過時略過。
+/// A quest offered after a wave; skipped while one with the same root is pending or ongoing, or when its TestRun fails.
+/// </summary>
+public class HuntdownQuestOffer
+{
+    public QuestScriptDef quest;
+
+    public float chance = 1f;
+
+    /// <summary>用據點任務的威脅點數（而非襲擊點數）。Use site threat points instead of raid threat points.</summary>
+    public bool siteThreatPoints;
 }
 
 /// <summary>一波追緝襲擊。One raid wave of a huntdown.</summary>

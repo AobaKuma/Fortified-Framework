@@ -36,6 +36,18 @@ public static class DebugActions_Huntdown
             .ToList();
     }
 
+    [DebugAction(Category, "Huntdown: suspend 1 day / resume", allowedGameStates = AllowedGameStates.Playing)]
+    private static List<DebugActionNode> ToggleSuspend()
+    {
+        return HuntdownUtility.AllActive
+            .Select(x => new DebugActionNode(x.def.defName + (x.Suspended ? " (resume)" : " (suspend)"), DebugActionType.Action, () =>
+            {
+                if (x.Suspended) HuntdownUtility.ResumeNow(x.def);
+                else HuntdownUtility.Suspend(x.def, GenDate.TicksPerDay);
+            }))
+            .ToList();
+    }
+
     [DebugAction(Category, "Huntdown: log status", allowedGameStates = AllowedGameStates.Playing)]
     private static void LogStatus()
     {
@@ -43,7 +55,9 @@ public static class DebugActions_Huntdown
         List<string> lines = new List<string> { $"[FFF] Huntdowns at tick {now}:" };
         foreach (HuntdownInstance instance in HuntdownUtility.AllActive)
         {
-            lines.Add($"- {instance.def.defName} (source: {instance.source ?? "?"}, started {instance.startedTick})");
+            lines.Add($"- {instance.def.defName} (source: {instance.source ?? "?"}, started {instance.startedTick}, " +
+                $"bound: {(instance.hasBoundPawn ? instance.boundPawn?.LabelShort ?? "lost" : "-")}, " +
+                $"suspended: {(instance.Suspended ? instance.SuspendedTicksLeft.ToString() : "no")})");
             foreach (HuntdownMapTimer timer in instance.timers)
             {
                 lines.Add($"    {timer.map}: warning {timer.warningTick - now:+#;-#;0}, " +

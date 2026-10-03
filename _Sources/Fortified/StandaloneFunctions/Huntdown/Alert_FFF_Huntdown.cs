@@ -40,6 +40,7 @@ public class Alert_FFF_Huntdown : Alert
         int now = Find.TickManager.TicksGame;
         foreach (HuntdownInstance instance in HuntdownUtility.HuntersOf(map))
         {
+            if (!instance.def.showAlert || instance.Suspended) continue;
             HuntdownMapTimer timer = instance.TimerFor(map);
             if (!timer.warned || timer.AllWavesFired(instance.def) || now > timer.LastWaveTick(instance.def)) continue;
             if (cachedTimer == null || timer.NextWaveTick(instance.def) < cachedTimer.NextWaveTick(cachedDef))

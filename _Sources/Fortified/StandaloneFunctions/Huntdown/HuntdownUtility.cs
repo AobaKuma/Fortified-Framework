@@ -64,7 +64,7 @@ public static class HuntdownUtility
     /// With map null nothing is scheduled until a gravship landing or a later TrackMap.
     /// initial uses the short initial delays meant for the starting map.
     /// </summary>
-    public static HuntdownInstance Start(HuntdownDef def, Map map = null, bool initial = false, string source = null)
+    public static HuntdownInstance Start(HuntdownDef def, Map map = null, bool initial = false, string source = null, Pawn boundPawn = null)
     {
         GameComponent_Huntdown component = Component;
         if (def == null || component == null) return null;
@@ -75,6 +75,7 @@ public static class HuntdownUtility
             instance = component.Add(def, source);
             def.Worker.OnStarted();
         }
+        if (boundPawn != null) BindPawn(def, boundPawn);
         if (map != null) TrackMap(def, map, initial);
         return instance;
     }
@@ -96,6 +97,72 @@ public static class HuntdownUtility
         {
             Stop(instance.def);
         }
+    }
+
+    // ── 綁定角色 Bound pawn ─────────────────────────────────────────────────
+
+    /// <summary>把追緝綁定到一名角色（取代先前的綁定）。Binds the huntdown to a pawn, replacing any earlier one.</summary>
+    public static bool BindPawn(HuntdownDef def, Pawn pawn)
+    {
+        HuntdownInstance instance = GetInstance(def);
+        if (instance == null || pawn == null) return false;
+        instance.boundPawn = pawn;
+        instance.hasBoundPawn = true;
+        return true;
+    }
+
+    public static IEnumerable<HuntdownInstance> HuntdownsBoundTo(Pawn pawn)
+    {
+        if (pawn == null) yield break;
+        foreach (HuntdownInstance instance in AllActive)
+        {
+            if (instance.boundPawn == pawn) yield return instance;
+        }
+    }
+
+    /// <summary>
+    /// 結束所有綁定此角色的追緝（例如軍事法庭審判了他），回傳結束的數量。
+    /// Stops every huntdown bound to the pawn (e.g. they stood trial at a court-martial); returns how many.
+    /// </summary>
+    public static int StopAllBoundTo(Pawn pawn)
+    {
+        int count = 0;
+        foreach (HuntdownInstance instance in HuntdownsBoundTo(pawn).ToList())
+        {
+            if (Stop(instance.def)) count++;
+        }
+        return count;
+    }
+
+    // ── 暫停 Suspension ────────────────────────────────────────────────────
+
+    public static bool IsSuspended(HuntdownDef def) => GetInstance(def)?.Suspended ?? false;
+
+    public static int SuspendedTicksLeft(HuntdownDef def) => GetInstance(def)?.SuspendedTicksLeft ?? 0;
+
+    /// <summary>
+    /// 暫停追緝；已在暫停中時疊加在目前的結束時間之後。結束時所有地圖重新排程。回傳暫停剩餘 ticks。
+    /// Suspends the huntdown, stacking onto a running suspension. Every map is rescheduled when it ends.
+    /// Returns the ticks left.
+    /// </summary>
+    public static int Suspend(HuntdownDef def, int ticks)
+    {
+        HuntdownInstance instance = GetInstance(def);
+        if (instance == null) return 0;
+        bool wasSuspended = instance.Suspended;
+        int now = Find.TickManager.TicksGame;
+        instance.suspendedUntilTick = System.Math.Max(now, instance.suspendedUntilTick) + System.Math.Max(0, ticks);
+        if (!wasSuspended) def.Worker.OnSuspended(instance);
+        return instance.SuspendedTicksLeft;
+    }
+
+    /// <summary>在下一次檢查時結束暫停。Ends the suspension at the next check.</summary>
+    public static bool ResumeNow(HuntdownDef def)
+    {
+        HuntdownInstance instance = GetInstance(def);
+        if (instance == null || instance.suspendedUntilTick < 0) return false;
+        instance.suspendedUntilTick = Find.TickManager.TicksGame;
+        return true;
     }
 
     // ── 地圖 Maps ──────────────────────────────────────────────────────────

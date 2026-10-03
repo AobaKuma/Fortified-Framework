@@ -55,10 +55,71 @@ public class HuntdownWorker
             target = map,
             points = Mathf.Max(wave.minPoints, StorytellerUtility.DefaultThreatPointsNow(map) * wave.pointsMultiplier),
             faction = faction,
-            raidArrivalMode = def.RaidArrivalMode,
-            raidStrategy = def.RaidStrategy,
+            raidArrivalMode = def.raidArrivalMode,
+            raidStrategy = def.raidStrategy,
         };
         return IncidentDefOf.RaidEnemy.Worker.TryExecute(parms);
+    }
+
+    /// <summary>
+    /// 這一波現在能否發動；回傳 false 時整張地圖的排程延後（重新擲延遲）。
+    /// Whether a wave may fire now; false postpones the map's schedule (delays are re-rolled).
+    /// </summary>
+    public virtual bool CanFireWave(Map map)
+    {
+        Faction faction = Faction;
+        if (faction == null) return false;
+        return !def.postponeWhileNotHostile || faction.HostileTo(Faction.OfPlayer);
+    }
+
+    /// <summary>每一波發動後呼叫；預設提供 questsOnWave。Called after each wave; offers questsOnWave by default.</summary>
+    public virtual void OnWaveFired(Map map, HuntdownWave wave)
+    {
+        if (def.questsOnWave.NullOrEmpty()) return;
+        foreach (HuntdownQuestOffer offer in def.questsOnWave)
+        {
+            if (Rand.Chance(offer.chance)) TryOfferQuest(offer, map);
+        }
+    }
+
+    /// <summary>綁定的角色是否已經不在（死亡或被移除）。Whether the bound pawn is gone (dead or discarded).</summary>
+    public virtual bool BoundPawnLost(Pawn pawn)
+    {
+        return pawn == null || pawn.Dead || pawn.Discarded;
+    }
+
+    public virtual void OnSuspended(HuntdownInstance instance)
+    {
+    }
+
+    /// <summary>暫停結束、重新排程之後呼叫。Called once a suspension ends and the maps are rescheduled.</summary>
+    public virtual void OnResumed(HuntdownInstance instance)
+    {
+    }
+
+    protected static bool TryOfferQuest(HuntdownQuestOffer offer, Map map)
+    {
+        QuestScriptDef root = offer?.quest;
+        if (root == null || map == null) return false;
+        List<Quest> quests = Find.QuestManager.QuestsListForReading;
+        for (int i = 0; i < quests.Count; i++)
+        {
+            if (quests[i].root == root && (quests[i].State == QuestState.NotYetAccepted || quests[i].State == QuestState.Ongoing)) return false;
+        }
+        float points = offer.siteThreatPoints ? StorytellerUtility.DefaultSiteThreatPointsNow() : StorytellerUtility.DefaultThreatPointsNow(map);
+        try
+        {
+            // 先 TestRun：條件不符時靜默略過，不要每波都在 RunInt 裡丟例外。
+            // TestRun first so an unmet condition is skipped quietly instead of throwing in RunInt every wave.
+            if (!root.CanRun(points, map)) return false;
+            QuestUtility.GenerateQuestAndMakeAvailable(root, points);
+            return true;
+        }
+        catch (System.Exception ex)
+        {
+            Log.Warning($"[FFF] Huntdown {offer.quest.defName} could not be offered: {ex}");
+            return false;
+        }
     }
 
     /// <summary>啟動時套用一次（好感度等）。Applied once when the huntdown starts (goodwill etc.).</summary>

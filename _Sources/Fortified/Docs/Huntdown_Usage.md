@@ -43,13 +43,18 @@
 | `waves` | 兩波：0 tick ×1.5（下限 2000）、30000 tick ×2（下限 8000） | `delayTicks` 從首波起算；`pointsMultiplier` 乘上地圖威脅點數；`minPoints` 為下限。 |
 | `repeatWhileStaying` | false | 最後一波結束後若仍在該地圖，用隨機延遲重新排程。 |
 | `criticalAlertLeadTicks` | 60000 | 首波前多久警報轉紅。 |
-| `raidArrivalMode` / `raidStrategy` | RandomDrop / ImmediateAttack | 襲擊方式。 |
+| `raidArrivalMode` / `raidStrategy` | 無 | 襲擊方式；未填時交給 RaidEnemy 依說書人規則挑選。 |
+| `postponeWhileNotHostile` | true | 派系不敵對（例如軍事法庭休戰）時延後這一波並重新排程，避免 RaidEnemy 換成隨機敵對派系。 |
+| `questsOnWave` | 無 | 每波後提供的任務：`quest`、`chance`（預設 1）、`siteThreatPoints`。同一任務待接或進行中時不重複。 |
 | `followGravship` | true | 玩家重力船降落時，追緝跟到新地圖。 |
+| `retargetPlayerHome` | false | 沒有被追緝的地圖時自動改追任一玩家據點（追殺整個殖民地）。 |
+| `stopWhenBoundPawnLost` | true | 綁定角色死亡或消失時結束追緝。 |
 | `requireGravEngine` | false | 地圖上沒有玩家重力引擎時停止追緝該地圖（原版行為）。 |
 | `requiredThings` | 無 | 地圖上必須有其中之一，否則停止追緝該地圖（例如被追蹤的石碑）。 |
 | `excludedMapGenerators` | Mechhive | 不追緝的地圖類型。 |
 | `goodwillChangeOnStart` | 0 | 啟動時對玩家的好感度變化。 |
 | `letterLookTargets` | 無 | 預警信件指向的物件，找不到時改指 `requiredThings`，再找不到就指向地圖。 |
+| `sendWarningLetter` / `showAlert` | true / true | 是否送預警信件、顯示倒數警報。 |
 | `letterLabel` … `alertExplanationCritical` | Keyed 預設 | 信件與警報文字。 |
 
 ## 3. 開局即被追緝
@@ -60,6 +65,8 @@
   <huntdown>MyMod_FleetHuntdown</huntdown>
 </li>
 ```
+
+`bindStartingPawn` 設為 true 時綁定第一名開局角色（見第 5 節）。
 
 需要禁止移除某派系時，自己定義 ScenPartDef，`scenPartClass` 填 `Fortified.ScenPart_Huntdown`，並加上 `preventRemovalOfFaction`。
 
@@ -85,7 +92,21 @@ int ticks = HuntdownUtility.TicksUntilNextWave(def, map);   // 無排程時為 -
 
 其他：`TrackMap` / `UntrackMap` 手動增減追蹤地圖，`FireNextWaveNow` 立即發動下一波，`AllActive` 列出所有進行中的追緝。
 
-## 5. 自訂行為
+## 5. 綁定角色與暫停
+
+```csharp
+// 綁定被追緝的角色；他死亡時結束（stopWhenBoundPawnLost），也可由任務主動結束
+HuntdownUtility.Start(def, map, boundPawn: pawn);
+HuntdownUtility.StopAllBoundTo(defendant);          // 例如軍事法庭審判了這個人
+
+// 暫停（例如摧毀追蹤網路節點）：已在暫停中會疊加；結束時所有地圖重新排程並呼叫 OnResumed
+HuntdownUtility.Suspend(def, GenDate.TicksPerYear);
+HuntdownUtility.IsSuspended(def);
+HuntdownUtility.SuspendedTicksLeft(def);
+HuntdownUtility.ResumeNow(def);
+```
+
+## 6. 自訂行為
 
 ```csharp
 public class HuntdownWorker_Stele : HuntdownWorker
@@ -95,13 +116,15 @@ public class HuntdownWorker_Stele : HuntdownWorker
 }
 ```
 
-可覆寫：`Faction`、`CanTrackMap`、`StillHunted`、`SendWarningLetter`、`TryFireWave`、`OnStarted`、`OnStopped`。
+可覆寫：`Faction`、`CanTrackMap`、`StillHunted`、`SendWarningLetter`、`TryFireWave`、`CanFireWave`、`OnWaveFired`、
+`BoundPawnLost`、`OnStarted`、`OnStopped`、`OnSuspended`、`OnResumed`。
 
-## 6. 除錯
+## 7. 除錯
 
 開發者模式 → Debug actions → Fortified：
 
 - Huntdown: start on current map
 - Huntdown: fire next wave
 - Huntdown: stop
+- Huntdown: suspend 1 day / resume
 - Huntdown: log status

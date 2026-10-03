@@ -49,7 +49,31 @@ public class GameComponent_Huntdown : GameComponent
         for (int i = instances.Count - 1; i >= 0; i--)
         {
             HuntdownInstance instance = instances[i];
-            HuntdownWorker worker = instance.def.Worker;
+            HuntdownDef def = instance.def;
+            HuntdownWorker worker = def.Worker;
+
+            if (instance.hasBoundPawn && def.stopWhenBoundPawnLost && worker.BoundPawnLost(instance.boundPawn))
+            {
+                HuntdownUtility.Stop(def);
+                continue;
+            }
+
+            if (instance.suspendedUntilTick >= 0)
+            {
+                if (now < instance.suspendedUntilTick) continue;
+                instance.suspendedUntilTick = -1;
+                foreach (HuntdownMapTimer timer in instance.timers)
+                {
+                    HuntdownUtility.Reschedule(def, timer, initial: false);
+                }
+                worker.OnResumed(instance);
+            }
+
+            if (def.retargetPlayerHome && instance.timers.Count == 0 && Find.AnyPlayerHomeMap is Map home)
+            {
+                HuntdownUtility.TrackMap(def, home);
+            }
+
             for (int j = instance.timers.Count - 1; j >= 0; j--)
             {
                 HuntdownMapTimer timer = instance.timers[j];
@@ -74,17 +98,26 @@ public class GameComponent_Huntdown : GameComponent
     private static void TickTimer(HuntdownInstance instance, HuntdownMapTimer timer, int now)
     {
         HuntdownDef def = instance.def;
+        HuntdownWorker worker = def.Worker;
         if (!timer.warned && now >= timer.warningTick)
         {
             timer.warned = true;
-            def.Worker.SendWarningLetter(timer.map);
+            if (def.sendWarningLetter) worker.SendWarningLetter(timer.map);
         }
         // 一次檢查只發一波，讓連續波次之間至少間隔一個檢查週期。
         // At most one wave per check, so back-to-back waves are spaced by at least one interval.
         if (!timer.AllWavesFired(def) && now >= timer.NextWaveTick(def))
         {
-            def.Worker.TryFireWave(timer.map, def.waves[timer.wavesFired]);
+            if (!worker.CanFireWave(timer.map))
+            {
+                // 例如休戰：整張地圖重新排程，之後再預警一次。E.g. a truce: reschedule the map and warn again later.
+                HuntdownUtility.Reschedule(def, timer, initial: false);
+                return;
+            }
+            HuntdownWave wave = def.waves[timer.wavesFired];
+            worker.TryFireWave(timer.map, wave);
             timer.wavesFired++;
+            worker.OnWaveFired(timer.map, wave);
         }
         if (timer.AllWavesFired(def))
         {

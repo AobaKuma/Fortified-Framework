@@ -12,12 +12,19 @@ namespace Fortified;
 /// &lt;li Class="Fortified.ScenPart_Huntdown"&gt;
 ///   &lt;def&gt;FFF_Huntdown&lt;/def&gt;
 ///   &lt;huntdown&gt;MyMod_SomeHuntdown&lt;/huntdown&gt;
+///   &lt;bindStartingPawn&gt;true&lt;/bindStartingPawn&gt;
 /// &lt;/li&gt;
 /// </code>
 /// </summary>
 public class ScenPart_Huntdown : ScenPart
 {
     public HuntdownDef huntdown;
+
+    /// <summary>
+    /// 綁定第一名開局角色：他被軍事法庭審判或死亡時追緝結束（見 HuntdownDef.stopWhenBoundPawnLost）。
+    /// Binds the first starting pawn: the huntdown ends when they stand trial or die (see stopWhenBoundPawnLost).
+    /// </summary>
+    public bool bindStartingPawn;
 
     // 開局地圖尚未生成。The starting map has not been generated yet.
     private bool awaitingStartMap;
@@ -28,6 +35,7 @@ public class ScenPart_Huntdown : ScenPart
     {
         base.ExposeData();
         Scribe_Defs.Look(ref huntdown, "huntdown");
+        Scribe_Values.Look(ref bindStartingPawn, "bindStartingPawn");
         Scribe_Values.Look(ref awaitingStartMap, "awaitingStartMap");
     }
 
@@ -64,6 +72,7 @@ public class ScenPart_Huntdown : ScenPart
     {
         if (!awaitingStartMap || huntdown == null) return;
         awaitingStartMap = false;
-        HuntdownUtility.Start(huntdown, map, initial: true, source: "Scenario");
+        Pawn boundPawn = bindStartingPawn ? Find.GameInitData?.startingAndOptionalPawns?.FirstOrDefault() : null;
+        HuntdownUtility.Start(huntdown, map, initial: true, source: "Scenario", boundPawn: boundPawn);
     }
 }

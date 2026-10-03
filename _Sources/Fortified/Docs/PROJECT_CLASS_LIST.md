@@ -155,8 +155,8 @@ Patch/整合：相關 Patch 補入 turret / pawn equipment 的 gizmo，使 UI �
 ### Huntdown（派系追緝）
 - 關鍵類別 (StandaloneFunctions/Huntdown/*):
   - HuntdownDef / HuntdownWave — 追緝方派系、預警與襲擊時程、波次、追蹤條件與文字；原型為原版 ScenPart_PursuingMechanoids。
-  - HuntdownWorker — 可繼承的行為：CanTrackMap、StillHunted、SendWarningLetter、TryFireWave、OnStarted / OnStopped。
-  - HuntdownUtility — 管理與調用入口：Start / Stop / TrackMap / UntrackMap / Delay / FireNextWaveNow / 查詢。
+  - HuntdownWorker — 可繼承的行為：CanTrackMap、StillHunted、SendWarningLetter、TryFireWave、CanFireWave、OnWaveFired、BoundPawnLost、OnStarted / OnStopped / OnSuspended / OnResumed。
+  - HuntdownUtility — 管理與調用入口：Start / Stop / TrackMap / UntrackMap / Delay / FireNextWaveNow / BindPawn / StopAllBoundTo / Suspend / ResumeNow / 查詢。
   - GameComponent_Huntdown / HuntdownInstance / HuntdownMapTimer — 存檔狀態與每 250 tick 的計時。
   - ScenPart_Huntdown — 開局地圖生成時啟動追緝（ScenPartDef `FFF_Huntdown`）。
   - Alert_FFF_Huntdown — 目前地圖的倒數警報。
