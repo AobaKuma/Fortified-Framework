@@ -40,7 +40,7 @@ namespace Fortified
             PreApplyDamage(ref dinfo, out absorbed);
         }
     }
-    public class HediffComp_ProtectiveShield : HediffComp_PreApplyDamage, IModificationMergeParticipant
+    public class HediffComp_ProtectiveShield : HediffComp_PreApplyDamage, IModificationMergeParticipant, IModificationConsumable
     {
         public float DurablePercent => MaxHitpoints <= 0f ? 0f : Hitpoints / MaxHitpoints;
         public float MaxHitpoints => maxHitpoints == 0 ? maxHitpoints = Mathf.Max(1, Mathf.RoundToInt(Props.hitpoints * parent.pawn.BodySize)) : maxHitpoints;
@@ -50,8 +50,13 @@ namespace Fortified
             set {
                 hitpoints = Mathf.Clamp(value, 0f, MaxHitpoints);
                 parent.Severity = DurablePercent;
+                parent.TryGetComp<HediffComp_Modification>()?.Notify_Consumed();
             }
         }
+
+        // 每份改裝提供 Props.hitpoints；受損但未耗盡的那份仍算在內。
+        // Each installation adds Props.hitpoints; a damaged but unspent one still counts.
+        public int RemainingInstallations => Props.hitpoints <= 0 ? int.MaxValue : Mathf.CeilToInt(Hitpoints / Props.hitpoints);
         private int maxHitpoints;
         private float hitpoints;
         public HediffCompProperties_ProtectiveShield Props
