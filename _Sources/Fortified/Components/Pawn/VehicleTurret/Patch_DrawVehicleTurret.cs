@@ -27,13 +27,32 @@ namespace Fortified
             if (compWeapon == null) return;
             if (parms.pawn.equipment != null && parms.pawn.equipment.Primary != null)
             {
-                DrawTuret(parms.pawn, compWeapon, parms.pawn.equipment.Primary);
+                DrawTuret(parms.pawn, compWeapon, parms.pawn.equipment.Primary, GetAnimationOffset(node, parms));
             }
         }
-        public static void DrawTuret(Pawn pawn, CompVehicleWeapon compWeapon, Thing equipment)
+        /// <summary>
+        /// Sum of the AnimationDef offsets on this carried node and every ancestor (e.g. a "Root" key
+        /// or a custom weapon-mount tag), so the weapon moves with the body animation.
+        /// </summary>
+        public static Vector3 GetAnimationOffset(PawnRenderNode node, PawnDrawParms parms)
+        {
+            Vector3 total = Vector3.zero;
+            if (parms.Portrait) return total;
+            for (PawnRenderNode n = node; n != null; n = n.parent)
+            {
+                if (n.TryGetAnimationOffset(parms, out Vector3 offset))
+                {
+                    total += offset;
+                }
+            }
+            total.y = 0f;
+            return total;
+        }
+
+        public static void DrawTuret(Pawn pawn, CompVehicleWeapon compWeapon, Thing equipment, Vector3 animationOffset = default)
         {
             float aimAngle = compWeapon.CurrentAngle;
-            Vector3 drawLoc = pawn.DrawPos + compWeapon.GetOffsetByRot();
+            Vector3 drawLoc = pawn.DrawPos + compWeapon.GetOffsetByRot() + animationOffset;
             drawLoc.y += Altitudes.AltInc * compWeapon.Props.drawData.LayerForRot(pawn.Rotation, 1);
             float num = aimAngle - 90f;
             Mesh mesh;

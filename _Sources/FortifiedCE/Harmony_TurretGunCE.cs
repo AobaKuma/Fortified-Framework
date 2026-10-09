@@ -13,9 +13,17 @@ namespace FortifiedCE
         {
             if (__instance.def.HasModExtension<ForceTargetableExtension>())
             {
-                if (__instance is Building_TurretCapacityCE building_TurretCapacity && building_TurretCapacity.PawnInside != null)
+                if (__instance is Building_TurretCapacityCE building_TurretCapacity)
                 {
-
+                    if (building_TurretCapacity.PawnInside != null)
+                    {
+                        __result = true;
+                    }
+                }
+                // 沒有 Mannable 的一般砲塔 (例如 DMS GateKeeper)：CE 預設 mannableComp != null 才能強制攻擊，
+                // 這裡比照 Fortified.Patch_CanSetForcedTarget，玩家陣營的砲塔掛了 ForceTargetableExtension 就可手動指定目標
+                else if (!__result && (__instance.Faction == null || __instance.Faction.IsPlayer))
+                {
                     __result = true;
                 }
             }

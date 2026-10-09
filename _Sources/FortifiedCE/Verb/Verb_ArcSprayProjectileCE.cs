@@ -1,4 +1,5 @@
 using CombatExtended;
+using Fortified;
 using RimWorld;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,14 +18,38 @@ namespace FortifiedCE
     /// sprayEffecterDef 每發都會從 caster 射向該格子，可用來畫火焰束 / 泡沫束之類的視覺效果。
     ///
     /// 路徑長度固定等於本次連發的實際射擊數 (ShotsPerBurst)，不再依賴 sprayNumExtraCells，
-    /// 所以切換 CE 射擊模式 (單發 / 點放 / 全自動) 都不會超出範圍，而且整段弧線一定掃完。
+    /// 所以切換 CE 射擊模式 (單發 / 點放 / 全自動) 都不會超出範圍，而且整段路徑一定掃完。
+    ///
+    /// 掃射軌跡是之字形：從中軸點 (目標格) 出發，左右邊緣之間來回掃後回到中軸點收尾，
+    /// 並有近距離保護 (不掃到砲塔旁邊或背後)，兩者與原版 Fortified.Verb_ArcSprayProjectile
+    /// 共用 Fortified.ArcSprayPathUtility，細節見該類別。
+    ///
+    /// CE 的瞄準模式選「瞄準射擊」(AimMode.AimedShot) 時不掃射，完全回到 Verb_ShootCE 原本的行為：
+    /// 對目標本身做單點精準射擊 (含瞄準延遲、鎖定方向累積後座力)。其餘模式 (快速射擊 / 壓制射擊) 才掃射。
     /// </summary>
     public class Verb_ArcSprayProjectileCE : Verb_ShootCE
     {
         protected List<IntVec3> path = new List<IntVec3>();
         protected Vector3 initialTargetPosition;
 
+        // 左右邊緣之間來回掃的趟數 (不含出發與收尾那兩段)
+        protected virtual int ZigzagSweeps => ArcSprayPathUtility.DefaultSweeps;
+
+        // 掃射點相對砲口方向的最大左右夾角 (度)
+        protected virtual float MaxSweepHalfAngle => ArcSprayPathUtility.DefaultMaxHalfAngle;
+
+        // 掃射格離砲口中心的最小距離
+        protected virtual float MinCellDistance => ArcSprayPathUtility.DefaultMinCellDistance(caster, verbProps);
+
+        // 玩家 / AI 目前選的是「瞄準射擊」：此時不掃射，照 Verb_ShootCE 原本的方式射擊
+        protected bool IsAimedShot => CompFireModes != null && CompFireModes.CurrentAimMode == AimMode.AimedShot;
+
         private int CurrentPathIndex => Mathf.Clamp(ShotsPerBurst - burstShotsLeft, 0, path.Count - 1);
+
+        // CE 連發時 (numShotsFired > 0) 會把射擊方向與仰角鎖在第一發，讓後座力累積；
+        // 掃射每一發的目標都不同，不關掉的話第 2 發起全部會沿第一發的方向射出，變成定點連射。
+        // 沒有掃射路徑時 (瞄準射擊 / 讀檔中途) 維持 CE 原本的鎖定行為。
+        protected override bool LockRotationAndAngle => path.Count == 0 && base.LockRotationAndAngle;
 
         // 砲塔頂 (TurretTop.DrawTurret) 與 Pawn 持槍角度都吃這個，讓槍口跟著掃射路徑轉
         public override float? AimAngleOverride
@@ -44,7 +69,15 @@ namespace FortifiedCE
             // Verb_ShootCE.WarmupComplete 在瞄準模式下可能先延長暖機再回頭呼叫一次，
             // 兩次都重算路徑沒有副作用；真正開火前路徑一定已就緒。
             initialTargetPosition = currentTarget.CenterVector3;
-            PreparePath();
+            if (IsAimedShot)
+            {
+                // 路徑留空 → TryCastShot 走 base (Verb_ShootCE)、AimAngleOverride 回 null，槍口照常追目標
+                path.Clear();
+            }
+            else
+            {
+                PreparePath();
+            }
             base.WarmupComplete();
         }
 
@@ -127,31 +160,10 @@ namespace FortifiedCE
             return true;
         }
 
-        // 與原版 Verb_ArcSpray.PreparePath 相同的散布邏輯，只是格子數改成跟本次連發射擊數一致
+        // 之字形掃射：路徑長度 = 本次連發射擊數，第一發與最後一發都落在中軸點 (目標格)；詳見 ArcSprayPathUtility
         protected virtual void PreparePath()
         {
-            path.Clear();
-            Vector3 normalized = (currentTarget.CenterVector3 - caster.Position.ToVector3Shifted()).Yto0().normalized;
-            Vector3 tan = normalized.RotatedBy(90f);
-            int extraCells = Mathf.Max(ShotsPerBurst - 1, 0);
-            for (int i = 0; i < extraCells; i++)
-            {
-                for (int j = 0; j < 15; j++)
-                {
-                    float value = Rand.Value;
-                    float num = Rand.Value - 0.5f;
-                    float num2 = value * verbProps.sprayWidth * 2f - verbProps.sprayWidth;
-                    float num3 = num * verbProps.sprayThicknessCells + num * 2f * verbProps.sprayArching;
-                    IntVec3 item = (currentTarget.CenterVector3 + num2 * tan - num3 * normalized).ToIntVec3();
-                    if (!path.Contains(item) || Rand.Value < 0.25f)
-                    {
-                        path.Add(item);
-                        break;
-                    }
-                }
-            }
-            path.Add(currentTarget.Cell);
-            path.SortBy((IntVec3 c) => (c.ToVector3Shifted() - caster.DrawPos).Yto0().normalized.AngleToFlat(tan));
+            ArcSprayPathUtility.BuildZigzagPath(path, caster, currentTarget, verbProps, ShotsPerBurst, ZigzagSweeps, MaxSweepHalfAngle, MinCellDistance);
         }
 
         public override void ExposeData()
