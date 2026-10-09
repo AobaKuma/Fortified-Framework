@@ -37,4 +37,15 @@
     <scenPartClass>Fortified.ScenPart_PlayerPawnsArriveGravship</scenPartClass>
     <summaryPriority>470</summaryPriority>
   </ScenPartDef>
+
+  <!-- 追緝：開局即被某派系追殺（設定見 HuntdownDef）。Huntdown: hunted from game start, see HuntdownDef. -->
+  <ScenPartDef>
+    <defName>FFF_Huntdown</defName>
+    <label>huntdown</label>
+    <category>Misc</category>
+    <scenPartClass>Fortified.ScenPart_Huntdown</scenPartClass>
+    <maxUses>1</maxUses>
+    <selectionWeight>0</selectionWeight>
+    <summaryPriority>300</summaryPriority>
+  </ScenPartDef>
 </Defs>

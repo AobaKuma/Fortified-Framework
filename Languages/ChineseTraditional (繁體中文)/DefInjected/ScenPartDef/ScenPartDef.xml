@@ -10,4 +10,7 @@
   <!-- EN: start with prefab -->
   <FFF_PrefabGen.label>初始結構</FFF_PrefabGen.label>
   
+  <!-- EN: huntdown -->
+  <FFF_Huntdown.label>追緝</FFF_Huntdown.label>
+  
 </LanguageData>

@@ -16,6 +16,7 @@
   - WorkTableAutonomous / EnvironmentalBill
   - InfoDisplay（訊息卡特殊機制條目）
   - Recycleable（倒地／死亡單位原地拆解）
+  - Huntdown（派系追緝）
   - 其他（Bossgroup、SignalAreaTrigger、ForceTargetable、PawnReplace...）
 - Mech（機甲子系統）
 - Thing / Projectile / Explosions
@@ -151,6 +152,18 @@ Patch/整合：相關 Patch 補入 turret / pawn equipment 的 gizmo，使 UI �
 - Def：1.6/Defs/Recycleable.xml（DesignationDef / JobDef / WorkGiverDef）；訊息卡條目 `FFF_Info_Recycleable` 自動附加到 CompProperties_Recycleable。
 - 用法：見 Docs/Recycleable_Usage.md。
 
+### Huntdown（派系追緝）
+- 關鍵類別 (StandaloneFunctions/Huntdown/*):
+  - HuntdownDef / HuntdownWave — 追緝方派系、預警與襲擊時程、波次、追蹤條件與文字；原型為原版 ScenPart_PursuingMechanoids。
+  - HuntdownWorker — 可繼承的行為：CanTrackMap、StillHunted、SendWarningLetter、TryFireWave、CanFireWave、OnWaveFired、BoundPawnLost、OnStarted / OnStopped / OnSuspended / OnResumed。
+  - HuntdownUtility — 管理與調用入口：Start / Stop / TrackMap / UntrackMap / Delay / FireNextWaveNow / BindPawn / StopAllBoundTo / Suspend / ResumeNow / 查詢。
+  - GameComponent_Huntdown / HuntdownInstance / HuntdownMapTimer — 存檔狀態與每 250 tick 的計時。
+  - ScenPart_Huntdown — 開局地圖生成時啟動追緝（ScenPartDef `FFF_Huntdown`）。
+  - Alert_FFF_Huntdown — 目前地圖的倒數警報。
+  - Patch_Huntdown_PostGravshipLanded / Patch_Huntdown_MapRemoved — 掛在 Scenario 上，讓非開局啟動的追緝也能跟著重力船、隨地圖移除清理。
+- Def：1.6/Defs/ScenPartDef.xml（FFF_Huntdown）；預設文字 Keyed/Huntdown.xml。
+- 用法：見 Docs/Huntdown_Usage.md。
+
 ### 其他小型子系統
 - Bossgroup（CompUseEffect_SummonRaid）、SignalAreaTrigger、ForceTargetable、PawnReplace 等，皆以 Comp / ModExtension / Patch 組合驅動特定互動或事件。
 
@@ -263,6 +276,7 @@ Patch/整合：相關 Patch 補入 turret / pawn equipment 的 gizmo，使 UI �
   - CheckUtility.cs（檢查/驗證工具）
   - WeaponTagUtil.cs（武器標籤處理）
   - FloatMenuUtility.cs、FFF_StructureUtility.cs、FleckMakerEx.cs
+  - FactionRelationUtility.cs（把派系關係設定為確切好感度與類型，繞過原版的溢出與拒絕；用法見 Docs/FactionRelation_Usage.md）
 - StatWorker_*、IngredientValueGetter_* 等：提供統計/數值顯示或擴充
 
 功能要點：跨模組共用函式、Gizmo/FloatMenu 支援、數值計算輔助。

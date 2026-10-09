@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- Huntdown: defaults used when a HuntdownDef leaves its text empty. {0} = faction name. -->
+  <FFF_Huntdown_LetterLabel>Hunted</FFF_Huntdown_LetterLabel>
+  <FFF_Huntdown_LetterText>{0} has picked up your trail. A hunting party will be sent after you before long.</FFF_Huntdown_LetterText>
+  <FFF_Huntdown_AlertLabel>Hunted by {0}</FFF_Huntdown_AlertLabel>
+  <FFF_Huntdown_AlertLabelCritical>{0} closing in</FFF_Huntdown_AlertLabelCritical>
+  <FFF_Huntdown_AlertExplanation>{0} is tracking this location. It is only a matter of time before they attack.</FFF_Huntdown_AlertExplanation>
+  <FFF_Huntdown_AlertExplanationCritical>{0} has found this location. Their attack is imminent.</FFF_Huntdown_AlertExplanationCritical>
+
+  <!-- Scenario summary. {0} = faction label. -->
+  <FFF_Huntdown_ScenSummary>hunted by {0} from the start</FFF_Huntdown_ScenSummary>
+
+</LanguageData>

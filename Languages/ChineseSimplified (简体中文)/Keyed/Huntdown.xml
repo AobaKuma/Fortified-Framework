@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- 追缉：HuntdownDef 未填文字时的默认值。{0} = 派系名称 -->
+  <FFF_Huntdown_LetterLabel>遭到追缉</FFF_Huntdown_LetterLabel>
+  <FFF_Huntdown_LetterText>{0}已经掌握了你的行踪，追捕部队很快就会出发。</FFF_Huntdown_LetterText>
+  <FFF_Huntdown_AlertLabel>{0}的追缉</FFF_Huntdown_AlertLabel>
+  <FFF_Huntdown_AlertLabelCritical>{0}正在逼近</FFF_Huntdown_AlertLabelCritical>
+  <FFF_Huntdown_AlertExplanation>{0}正在追踪这个地点，他们发动攻击只是时间问题。</FFF_Huntdown_AlertExplanation>
+  <FFF_Huntdown_AlertExplanationCritical>{0}已经找到这个地点，攻击随时会到来。</FFF_Huntdown_AlertExplanationCritical>
+
+  <!-- 开局摘要。{0} = 派系名称 -->
+  <FFF_Huntdown_ScenSummary>开局即遭{0}追缉</FFF_Huntdown_ScenSummary>
+
+</LanguageData>
