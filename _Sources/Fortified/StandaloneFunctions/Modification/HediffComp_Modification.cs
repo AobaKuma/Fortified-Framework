@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using Verse;
 
 namespace Fortified
@@ -8,7 +10,46 @@ namespace Fortified
         private int installedCount = 1;
 
         public ThingDef SourceThingDef => sourceThingDefName.NullOrEmpty() ? null : DefDatabase<ThingDef>.GetNamedSilentFail(sourceThingDefName);
-        public int InstalledCount => installedCount < 1 ? 1 : installedCount;
+
+        public int InstalledCount
+        {
+            get
+            {
+                int count = installedCount < 1 ? 1 : installedCount;
+                int remaining = RemainingConsumableInstallations();
+                // 消耗性改裝全數受損時可以是 0，安裝上限才會放行替換。
+                // May be 0 when every consumable installation is damaged, so the install limit allows a replacement.
+                return remaining < 0 ? count : Math.Min(count, remaining);
+            }
+        }
+
+        /// <summary>
+        /// 消耗性改裝耗損後呼叫，讓記錄的安裝數跟著剩餘耐久下降。
+        /// Called when a consumable modification wears down, so the recorded count follows what is left.
+        /// </summary>
+        public void Notify_Consumed()
+        {
+            // 存檔值保持 >= 1；實際份數由 InstalledCount 依剩餘耐久計算。
+            // The stored value stays >= 1; InstalledCount derives the real figure from durability.
+            installedCount = Math.Max(1, InstalledCount);
+        }
+
+        // 沒有消耗性元件時回傳 -1。Returns -1 when no comp is consumable.
+        private int RemainingConsumableInstallations()
+        {
+            List<HediffComp> comps = (parent as HediffWithComps)?.comps;
+            if (comps == null) return -1;
+            int remaining = -1;
+            for (int i = 0; i < comps.Count; i++)
+            {
+                if (comps[i] is IModificationConsumable consumable)
+                {
+                    int value = consumable.RemainingInstallations;
+                    remaining = remaining < 0 ? value : Math.Min(remaining, value);
+                }
+            }
+            return remaining;
+        }
 
         public HediffCompProperties_Modification Props
         {

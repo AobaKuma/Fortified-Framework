@@ -40,7 +40,7 @@ namespace Fortified
             PreApplyDamage(ref dinfo, out absorbed);
         }
     }
-    public class HediffComp_ProtectiveShield : HediffComp_PreApplyDamage, IModificationMergeParticipant
+    public class HediffComp_ProtectiveShield : HediffComp_PreApplyDamage, IModificationMergeParticipant, IModificationConsumable
     {
         public float DurablePercent => MaxHitpoints <= 0f ? 0f : Hitpoints / MaxHitpoints;
         public float MaxHitpoints => maxHitpoints == 0 ? maxHitpoints = Mathf.Max(1, Mathf.RoundToInt(Props.hitpoints * parent.pawn.BodySize)) : maxHitpoints;
@@ -50,6 +50,22 @@ namespace Fortified
             set {
                 hitpoints = Mathf.Clamp(value, 0f, MaxHitpoints);
                 parent.Severity = DurablePercent;
+                parent.TryGetComp<HediffComp_Modification>()?.Notify_Consumed();
+            }
+        }
+
+        // 只算完好的份數，受損的那份可以直接補裝替換。每份的耐久取單片耐久與「上限 ÷ 可裝份數」的較小者，
+        // 否則體型非整數（上限不是單片耐久的整數倍）時，剛裝滿也會被算成少一份。
+        // Counts intact installations only, so a damaged one can be replaced by installing another.
+        // One installation's share is the smaller of Props.hitpoints and cap / allowed installations;
+        // otherwise a fractional body size (cap not a multiple of Props.hitpoints) undercounts a full set.
+        public int RemainingInstallations
+        {
+            get
+            {
+                if (Props.hitpoints <= 0) return int.MaxValue;
+                float perInstallation = Mathf.Min(Props.hitpoints, MaxHitpoints / Props.GetMaxModificationInstallations(parent.pawn));
+                return Mathf.FloorToInt(Hitpoints / perInstallation + 0.001f);
             }
         }
         private int maxHitpoints;

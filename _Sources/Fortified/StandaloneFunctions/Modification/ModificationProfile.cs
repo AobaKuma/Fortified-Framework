@@ -15,6 +15,16 @@ namespace Fortified
         int GetMaxModificationInstallations(Pawn pawn);
     }
 
+    /// <summary>
+    /// 消耗性改裝（例如陶瓷裝甲）依剩餘耐久回報還剩幾份；改裝介面、安裝上限與拆除返還都以此為準。
+    /// Consumable modifications (e.g. ceramic plates) report how many installations are left based on
+    /// remaining durability; the modification window, install limit and refunds all use it.
+    /// </summary>
+    public interface IModificationConsumable
+    {
+        int RemainingInstallations { get; }
+    }
+
     public sealed class ModificationProfile
     {
         public ThingDef itemDef;
