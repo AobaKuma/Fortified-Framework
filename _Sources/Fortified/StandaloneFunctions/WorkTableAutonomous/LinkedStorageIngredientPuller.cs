@@ -139,6 +139,52 @@ namespace Fortified
             }
         }
 
+        /// <summary>
+        /// 只看機台容器本身，問「這張訂單實際要吃哪些、各吃多少」。
+        /// </summary>
+        /// <remarks>
+        /// 對應原版 JobDriver_DoBill 的 job.placedThings：原版是記下「這趟實際放進去的東西與數量」，
+        /// 結算時只拆出那幾份，不會把容器整個吃掉。FFF 的容器可能因為各種路徑多出料
+        /// （殖民者與自動抽料重疊、中斷後殘留、找不到掛名製作者時的留料），
+        /// 所以用跟開工前挑料同一個演算法重算一次，沒被選中的就是多餘的。
+        /// </remarks>
+        public static bool TrySelectFromContainer(Building_WorkTableAutonomous table, Bill bill, List<ThingCount> result)
+        {
+            if (!Available || running || table?.innerContainer == null || bill?.recipe == null || result == null)
+            {
+                return false;
+            }
+            if (bill.recipe.ingredients.NullOrEmpty())
+            {
+                return false;
+            }
+
+            running = true;
+            try
+            {
+                candidates.Clear();
+                seen.Clear();
+                result.Clear();
+                CollectFromInnerContainer(table);
+                if (candidates.Count == 0)
+                {
+                    return false;
+                }
+                return selectIngredients(candidates, bill, result, table.Position, false, null);
+            }
+            catch (Exception ex)
+            {
+                Log.Error($"[FFF] {table.LabelCap} 計算實際需要的原料時發生例外：{ex}");
+                return false;
+            }
+            finally
+            {
+                candidates.Clear();
+                seen.Clear();
+                running = false;
+            }
+        }
+
         private static void CollectFromInnerContainer(Building_WorkTableAutonomous table)
         {
             ThingOwner owner = table.innerContainer;

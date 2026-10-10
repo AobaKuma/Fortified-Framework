@@ -76,6 +76,7 @@ namespace Fortified
             }
             activeBill = bill;
             if (handler != null) lastHandler = handler;
+            ReturnSurplusIngredients();
             totalWorkAmount = bill.GetWorkAmount(thing);
 
             float factor = 1 / this.GetStatValue(StatDefOf.WorkTableWorkSpeedFactor, true);
@@ -102,6 +103,7 @@ namespace Fortified
                 }
 
                 ThingPlaceMode placeMode = modExtension?.ejectPlaceMode ?? ThingPlaceMode.Near;
+                ReturnSurplusIngredients();
                 List<Thing> list = new();
                 innerContainer.CopyToList(list);
                 List<Thing> products = GenRecipe.MakeRecipeProducts(activeBill.recipe, worker, list, CalculateDominantIngredient(list), this).ToList();
@@ -132,6 +134,39 @@ namespace Fortified
                 prepared = true;
             }
         }
+        /// <summary>
+        /// 把容器裡超出配方需求的料退到地上，只留下實際要消耗的那幾份。
+        /// </summary>
+        /// <remarks>
+        /// Finish() 會把容器剩下的東西全部當原料銷毀。原版是靠 job.placedThings 只拆出實際放入的數量，
+        /// 這裡改成開工與結算時都先算出「配方真正要吃什麼」，其餘退還，不會被白吃。
+        /// 算不出來（功能停用、容器內湊不齊）就維持原狀，不冒險亂退。
+        /// </remarks>
+        private void ReturnSurplusIngredients()
+        {
+            if (activeBill == null || !Spawned || Map == null || innerContainer.Count == 0) return;
+
+            List<ThingCount> needed = new();
+            if (!LinkedStorageIngredientPuller.TrySelectFromContainer(this, activeBill, needed)) return;
+
+            List<Thing> held = new();
+            innerContainer.CopyToList(held);
+            for (int i = 0; i < held.Count; i++)
+            {
+                Thing thing = held[i];
+                int surplus = thing.stackCount - ThingCountUtility.CountOf(needed, thing);
+                if (surplus <= 0) continue;
+
+                Thing part = thing.SplitOff(surplus);
+                if (part == null) continue;
+                if (!GenPlace.TryPlaceThing(part, InteractionCell, Map, ThingPlaceMode.Near))
+                {
+                    // 放不下就塞回去，寧可被吃掉也不能讓東西憑空消失成無主物件。
+                    innerContainer.TryAdd(part, canMergeWithExistingStacks: true);
+                }
+            }
+        }
+
         /// <summary>
         /// 能不能拿這個小人當「名義製作者」丟進 GenRecipe。
         /// 死掉的人不該再被記為製作者（也會讓 TaleRecorder 記下奇怪的紀錄）。
