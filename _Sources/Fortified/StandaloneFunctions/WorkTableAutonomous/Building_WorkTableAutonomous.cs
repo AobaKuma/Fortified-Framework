@@ -15,6 +15,7 @@ namespace Fortified
     {
         public CompPowerTrader Power;
         public CompBreakdownable CompBreakdownable;
+        public CompRefuelable Refuelable;
 
         public ThingOwner innerContainer;
 
@@ -36,7 +37,7 @@ namespace Fortified
         /// <summary>連結的 facility。抽料需要走這個清單，見 <see cref="LinkedStorageIngredientPuller"/>。</summary>
         public CompAffectedByFacilities CompFacility => compFacility;
 
-        public bool CanRun => Power == null || Power.PowerOn;
+        public bool CanRun => (Power == null || Power.PowerOn) && (Refuelable == null || Refuelable.HasFuel);
 
         public ModExtension_AutoWorkTable modExtension = null;
         
@@ -51,6 +52,7 @@ namespace Fortified
             base.SpawnSetup(map, respawningAfterLoad);
             this.TryGetComp(out Power);
             this.TryGetComp(out CompBreakdownable);
+            this.TryGetComp(out Refuelable);
             this.TryGetComp(out compFacility);
             modExtension = def.GetModExtension<ModExtension_AutoWorkTable>();
             maintainTick = Rand.Range(0, 120);
@@ -285,6 +287,7 @@ namespace Fortified
         {
             base.TickInterval(delta);
             if (!prepared || !CanRun) return;
+            ConsumeFuelForWork(delta);
             curWorkAmount -= delta * (this.GetStatValue(StatDefOf.WorkTableEfficiencyFactor) > 1 ? this.GetStatValue(StatDefOf.WorkTableEfficiencyFactor) : 1);
             if (curWorkAmount <= 0f)
             {
@@ -295,6 +298,18 @@ namespace Fortified
                     modExtension?.GetEffecterDef_DoneTrigger(Rotation)?.SpawnAttached(this, Map).Trigger(this, this);
                     TryAutoEject();
                 }
+            }
+        }
+
+        // 原版的 JobDriver_DoBill 每 tick 會呼叫 UsedThisTick() 來燒燃料；自動機台沒有人在做事，
+        // 所以得自己補上。只處理 consumeFuelOnlyWhenUsed 的燃料——其餘的 CompRefuelable 自己會在 CompTick 燒。
+        private void ConsumeFuelForWork(int delta)
+        {
+            if (Refuelable == null || !Refuelable.Props.consumeFuelOnlyWhenUsed) return;
+            UsedThisTick();
+            if (delta > 1)
+            {
+                Refuelable.ConsumeFuel(Refuelable.Props.fuelConsumptionRate / 60000f * (delta - 1));
             }
         }
 
