@@ -185,6 +185,59 @@ namespace Fortified
             }
         }
 
+        /// <summary>
+        /// 殖民者挑好的料（<paramref name="chosen"/>，來自地圖）加上機台容器裡已有的料，一起重新挑一次。
+        /// 容器裡的距離最近（就在機台上），所以會被優先採用，只有不足的部分才從地圖補。
+        /// </summary>
+        /// <returns>重新挑選成功並已改寫 <paramref name="chosen"/> 時為 true；失敗時 chosen 原封不動。</returns>
+        public static bool TryMergeContainerInto(Building_WorkTableAutonomous table, Bill bill, List<ThingCount> chosen)
+        {
+            if (!Available || running || table?.innerContainer == null || bill?.recipe == null || chosen == null)
+            {
+                return false;
+            }
+            if (table.innerContainer.Count == 0 || bill.recipe.ingredients.NullOrEmpty())
+            {
+                return false;
+            }
+
+            running = true;
+            try
+            {
+                candidates.Clear();
+                seen.Clear();
+                CollectFromInnerContainer(table);
+                for (int i = 0; i < chosen.Count; i++)
+                {
+                    Thing thing = chosen[i].Thing;
+                    if (thing != null && !thing.Destroyed && thing.stackCount > 0 && seen.Add(thing))
+                    {
+                        candidates.Add(thing);
+                    }
+                }
+
+                List<ThingCount> merged = new List<ThingCount>();
+                if (!selectIngredients(candidates, bill, merged, table.Position, false, null))
+                {
+                    return false;
+                }
+                chosen.Clear();
+                chosen.AddRange(merged);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Log.Error($"[FFF] {table.LabelCap} 合併容器內原料時發生例外，沿用原本的挑選結果：{ex}");
+                return false;
+            }
+            finally
+            {
+                candidates.Clear();
+                seen.Clear();
+                running = false;
+            }
+        }
+
         private static void CollectFromInnerContainer(Building_WorkTableAutonomous table)
         {
             ThingOwner owner = table.innerContainer;
