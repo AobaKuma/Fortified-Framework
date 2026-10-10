@@ -104,7 +104,8 @@ namespace Fortified
                 ThingPlaceMode placeMode = modExtension?.ejectPlaceMode ?? ThingPlaceMode.Near;
                 List<Thing> list = new();
                 innerContainer.CopyToList(list);
-                foreach (Thing item in GenRecipe.MakeRecipeProducts(activeBill.recipe, worker, list, CalculateDominantIngredient(list), this))
+                List<Thing> products = GenRecipe.MakeRecipeProducts(activeBill.recipe, worker, list, CalculateDominantIngredient(list), this).ToList();
+                foreach (Thing item in products)
                 {
                     if (item.TryGetComp<CompQuality>(out var q))
                     {
@@ -113,14 +114,11 @@ namespace Fortified
                     GenPlace.TryPlaceThing(item, this.InteractionCell,
                         base.Map, placeMode, null, null, null, 30);
                 }
-                if (activeBill.repeatMode == BillRepeatModeDefOf.RepeatCount)
-                {
-                    activeBill.repeatCount--;
-                }
-                if (activeBill.repeatCount == 0)
-                {
-                    Messages.Message("FFF.Autofacturer.WorkerDone".Translate(activeBill.Label), this, MessageTypeDefOf.TaskCompletion);
-                }
+                // 走原版的 Notify_IterationCompleted：它負責 repeatCount 遞減（含 0 的夾限）、
+                // 完成訊息，以及 recipe.Worker 的收尾掛鉤。先前自己減 repeatCount，玩家在機台
+                // 運轉中把數量改成 0 會減成 -1，其他模組掛在這個方法上的邏輯也全部被繞過。
+                activeBill.Notify_IterationCompleted(worker, list);
+                RecordsUtility.Notify_BillDone(worker, products);
                 activeBill = null;
                 totalWorkAmount = 0f;
                 // 原料已經變成產品了，要照原版 ConsumeIngredients 的做法真的銷毀。
@@ -145,7 +143,13 @@ namespace Fortified
 
         public override void Notify_BillDeleted(Bill bill)
         {
-            Messages.Message("FFF.Autofacturer.WorkerCanceled".Translate(Label), this, MessageTypeDefOf.RejectInput);
+            // 這個回呼每刪一張訂單都會觸發（包含別張、包含做完被移除的）。只有刪到進行中的那張，
+            // 才需要中止加工並退料；否則機台會拿著已刪除的訂單照樣跑完、吐出產品。
+            if (bill != null && bill == activeBill)
+            {
+                Cancel();
+                Messages.Message("FFF.Autofacturer.WorkerCanceled".Translate(Label), this, MessageTypeDefOf.RejectInput);
+            }
             base.Notify_BillDeleted(bill);
         }
         protected void SetQuality(CompQuality comp, RecipeDef recipe = null)
@@ -496,7 +500,7 @@ namespace Fortified
             // 底下每 250 tick 就會噴一次 NRE。CanRun 早就有做這個檢查，這裡以前漏了。
             if (Power != null && this.IsHashIntervalTick(250))
             {
-                if (activeBill != null && prepared)
+                if (activeBill != null && prepared && (Refuelable == null || Refuelable.HasFuel))
                 {
                     Power.PowerOutput = 0f - Power.Props.PowerConsumption;
                 }
