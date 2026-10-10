@@ -15,6 +15,7 @@ namespace Fortified
     {
         public CompPowerTrader Power;
         public CompBreakdownable CompBreakdownable;
+        public CompRefuelable Refuelable;
 
         public ThingOwner innerContainer;
 
@@ -36,7 +37,7 @@ namespace Fortified
         /// <summary>連結的 facility。抽料需要走這個清單，見 <see cref="LinkedStorageIngredientPuller"/>。</summary>
         public CompAffectedByFacilities CompFacility => compFacility;
 
-        public bool CanRun => Power == null || Power.PowerOn;
+        public bool CanRun => (Power == null || Power.PowerOn) && (Refuelable == null || Refuelable.HasFuel);
 
         public ModExtension_AutoWorkTable modExtension = null;
         
@@ -51,6 +52,7 @@ namespace Fortified
             base.SpawnSetup(map, respawningAfterLoad);
             this.TryGetComp(out Power);
             this.TryGetComp(out CompBreakdownable);
+            this.TryGetComp(out Refuelable);
             this.TryGetComp(out compFacility);
             modExtension = def.GetModExtension<ModExtension_AutoWorkTable>();
             maintainTick = Rand.Range(0, 120);
@@ -74,6 +76,7 @@ namespace Fortified
             }
             activeBill = bill;
             if (handler != null) lastHandler = handler;
+            ReturnSurplusIngredients();
             totalWorkAmount = bill.GetWorkAmount(thing);
 
             float factor = 1 / this.GetStatValue(StatDefOf.WorkTableWorkSpeedFactor, true);
@@ -100,9 +103,11 @@ namespace Fortified
                 }
 
                 ThingPlaceMode placeMode = modExtension?.ejectPlaceMode ?? ThingPlaceMode.Near;
+                ReturnSurplusIngredients();
                 List<Thing> list = new();
                 innerContainer.CopyToList(list);
-                foreach (Thing item in GenRecipe.MakeRecipeProducts(activeBill.recipe, worker, list, CalculateDominantIngredient(list), this))
+                List<Thing> products = GenRecipe.MakeRecipeProducts(activeBill.recipe, worker, list, CalculateDominantIngredient(list), this).ToList();
+                foreach (Thing item in products)
                 {
                     if (item.TryGetComp<CompQuality>(out var q))
                     {
@@ -111,14 +116,11 @@ namespace Fortified
                     GenPlace.TryPlaceThing(item, this.InteractionCell,
                         base.Map, placeMode, null, null, null, 30);
                 }
-                if (activeBill.repeatMode == BillRepeatModeDefOf.RepeatCount)
-                {
-                    activeBill.repeatCount--;
-                }
-                if (activeBill.repeatCount == 0)
-                {
-                    Messages.Message("FFF.Autofacturer.WorkerDone".Translate(activeBill.Label), this, MessageTypeDefOf.TaskCompletion);
-                }
+                // 走原版的 Notify_IterationCompleted：它負責 repeatCount 遞減（含 0 的夾限）、
+                // 完成訊息，以及 recipe.Worker 的收尾掛鉤。先前自己減 repeatCount，玩家在機台
+                // 運轉中把數量改成 0 會減成 -1，其他模組掛在這個方法上的邏輯也全部被繞過。
+                activeBill.Notify_IterationCompleted(worker, list);
+                RecordsUtility.Notify_BillDone(worker, products);
                 activeBill = null;
                 totalWorkAmount = 0f;
                 // 原料已經變成產品了，要照原版 ConsumeIngredients 的做法真的銷毀。
@@ -133,6 +135,39 @@ namespace Fortified
             }
         }
         /// <summary>
+        /// 把容器裡超出配方需求的料退到地上，只留下實際要消耗的那幾份。
+        /// </summary>
+        /// <remarks>
+        /// Finish() 會把容器剩下的東西全部當原料銷毀。原版是靠 job.placedThings 只拆出實際放入的數量，
+        /// 這裡改成開工與結算時都先算出「配方真正要吃什麼」，其餘退還，不會被白吃。
+        /// 算不出來（功能停用、容器內湊不齊）就維持原狀，不冒險亂退。
+        /// </remarks>
+        private void ReturnSurplusIngredients()
+        {
+            if (activeBill == null || !Spawned || Map == null || innerContainer.Count == 0) return;
+
+            List<ThingCount> needed = new();
+            if (!LinkedStorageIngredientPuller.TrySelectFromContainer(this, activeBill, needed)) return;
+
+            List<Thing> held = new();
+            innerContainer.CopyToList(held);
+            for (int i = 0; i < held.Count; i++)
+            {
+                Thing thing = held[i];
+                int surplus = thing.stackCount - ThingCountUtility.CountOf(needed, thing);
+                if (surplus <= 0) continue;
+
+                Thing part = thing.SplitOff(surplus);
+                if (part == null) continue;
+                if (!GenPlace.TryPlaceThing(part, InteractionCell, Map, ThingPlaceMode.Near))
+                {
+                    // 放不下就塞回去，寧可被吃掉也不能讓東西憑空消失成無主物件。
+                    innerContainer.TryAdd(part, canMergeWithExistingStacks: true);
+                }
+            }
+        }
+
+        /// <summary>
         /// 能不能拿這個小人當「名義製作者」丟進 GenRecipe。
         /// 死掉的人不該再被記為製作者（也會讓 TaleRecorder 記下奇怪的紀錄）。
         /// </summary>
@@ -143,7 +178,13 @@ namespace Fortified
 
         public override void Notify_BillDeleted(Bill bill)
         {
-            Messages.Message("FFF.Autofacturer.WorkerCanceled".Translate(Label), this, MessageTypeDefOf.RejectInput);
+            // 這個回呼每刪一張訂單都會觸發（包含別張、包含做完被移除的）。只有刪到進行中的那張，
+            // 才需要中止加工並退料；否則機台會拿著已刪除的訂單照樣跑完、吐出產品。
+            if (bill != null && bill == activeBill)
+            {
+                Cancel();
+                Messages.Message("FFF.Autofacturer.WorkerCanceled".Translate(Label), this, MessageTypeDefOf.RejectInput);
+            }
             base.Notify_BillDeleted(bill);
         }
         protected void SetQuality(CompQuality comp, RecipeDef recipe = null)
@@ -285,6 +326,7 @@ namespace Fortified
         {
             base.TickInterval(delta);
             if (!prepared || !CanRun) return;
+            ConsumeFuelForWork(delta);
             curWorkAmount -= delta * (this.GetStatValue(StatDefOf.WorkTableEfficiencyFactor) > 1 ? this.GetStatValue(StatDefOf.WorkTableEfficiencyFactor) : 1);
             if (curWorkAmount <= 0f)
             {
@@ -295,6 +337,18 @@ namespace Fortified
                     modExtension?.GetEffecterDef_DoneTrigger(Rotation)?.SpawnAttached(this, Map).Trigger(this, this);
                     TryAutoEject();
                 }
+            }
+        }
+
+        // 原版的 JobDriver_DoBill 每 tick 會呼叫 UsedThisTick() 來燒燃料；自動機台沒有人在做事，
+        // 所以得自己補上。只處理 consumeFuelOnlyWhenUsed 的燃料——其餘的 CompRefuelable 自己會在 CompTick 燒。
+        private void ConsumeFuelForWork(int delta)
+        {
+            if (Refuelable == null || !Refuelable.Props.consumeFuelOnlyWhenUsed) return;
+            UsedThisTick();
+            if (delta > 1)
+            {
+                Refuelable.ConsumeFuel(Refuelable.Props.fuelConsumptionRate / 60000f * (delta - 1));
             }
         }
 
@@ -481,7 +535,7 @@ namespace Fortified
             // 底下每 250 tick 就會噴一次 NRE。CanRun 早就有做這個檢查，這裡以前漏了。
             if (Power != null && this.IsHashIntervalTick(250))
             {
-                if (activeBill != null && prepared)
+                if (activeBill != null && prepared && (Refuelable == null || Refuelable.HasFuel))
                 {
                     Power.PowerOutput = 0f - Power.Props.PowerConsumption;
                 }
