@@ -3,6 +3,7 @@ using RimWorld;
 using Verse;
 using Verse.AI;
 using UnityEngine;
+using System.Linq;
 
 namespace Fortified
 {
@@ -10,8 +11,25 @@ namespace Fortified
     public class WorkGiver_PaintMech : WorkGiver_Scanner
     {
         private static ThingDef cachedDyeDef;
+        private static ThingDef[] cachedPaintablePawnDefs = null;
 
-        public override ThingRequest PotentialWorkThingRequest => ThingRequest.ForGroup(ThingRequestGroup.Pawn);
+        public override IEnumerable<Thing> PotentialWorkThingsGlobal(Pawn pawn)
+        {
+            if (pawn?.Map?.listerThings is { } listerThings)
+            {
+                cachedPaintablePawnDefs ??= CompPaintable.GetOwnerThingDefs().Where(thingDef => typeof(Pawn).IsAssignableFrom(thingDef.thingClass)).ToArray();
+
+                return cachedPaintablePawnDefs.SelectMany(listerThings.ThingsOfDef).Where(thing =>
+                    thing.Faction.IsPlayer &&
+                    (thing.TryGetComp<CompPaintable>()?.activePaintRequest ?? false)
+                );
+            }
+            else
+            {
+                return Enumerable.Empty<Thing>();
+            }
+        }
+
         public override PathEndMode PathEndMode => PathEndMode.Touch;
 
         // 检查是否有工作
@@ -74,20 +92,22 @@ namespace Fortified
     public class WorkGiver_PaintBuilding : WorkGiver_Scanner
     {
         private static ThingDef cachedDyeDef;
+        private static ThingDef[] cachedPaintableBuildingDefs;
 
         public override IEnumerable<Thing> PotentialWorkThingsGlobal(Pawn pawn)
         {
-            if (pawn?.Map?.listerBuildings == null) yield break;
-
-            List<Building> buildings = pawn.Map.listerBuildings.allBuildingsColonist;
-            for (int i = 0; i < buildings.Count; i++)
+            if (pawn?.Map?.listerThings is { } listerThings)
             {
-                Building b = buildings[i];
-                var comp = b.TryGetComp<CompPaintable>();
-                if (comp != null && comp.activePaintRequest)
-                {
-                    yield return b;
-                }
+                cachedPaintableBuildingDefs ??= CompPaintable.GetOwnerThingDefs().Where(thingDef => typeof(Building).IsAssignableFrom(thingDef.thingClass)).ToArray();
+
+                return cachedPaintableBuildingDefs.SelectMany(listerThings.ThingsOfDef).Where(thing =>
+                    thing.Faction.IsPlayer &&
+                    (thing.TryGetComp<CompPaintable>()?.activePaintRequest ?? false)
+                );
+            }
+            else
+            {
+                return Enumerable.Empty<Thing>();
             }
         }
 

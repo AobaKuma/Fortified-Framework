@@ -3,6 +3,7 @@ using Verse;
 using RimWorld;
 using UnityEngine;
 using Verse.AI;
+using System.Linq;
 
 namespace Fortified
 {
@@ -22,6 +23,16 @@ namespace Fortified
         public static FFF_OverlayDef clipOverlayDef;
 
         public CompProperties_Paintable Props => (CompProperties_Paintable)props;
+
+        static ThingDef[] ownerThingDefs = null;
+
+        public static ThingDef[] GetOwnerThingDefs()
+        {
+            ownerThingDefs ??= DefDatabase<ThingDef>.AllDefs.Where(thingDef => thingDef.comps is { } comps && comps.Any(comp => typeof(CompPaintable).IsAssignableFrom(comp.compClass))).ToArray();
+
+            return ownerThingDefs;
+        }
+
 
         public override void PostPostMake()
         {
