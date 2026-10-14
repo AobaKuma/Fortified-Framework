@@ -23,7 +23,6 @@
   <!-- EN: Control {0} -->
   <FFF.DeactivatedMech_Control>控制{0}</FFF.DeactivatedMech_Control>
   <!-- EN: Destroy mech -->
-  <FFF.DeactivatedMech_Disable>拆解机体</FFF.DeactivatedMech_Disable>
   <!-- EN: Cannot control -->
   <FFF.DeactivatedMech_CannotControl>无法控制</FFF.DeactivatedMech_CannotControl>
 

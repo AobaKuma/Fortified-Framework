@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <LanguageData>
-  <FFF.Settings.ShowDevCategory>在開發模式下顯示「Building(Dev)」建築分類</FFF.Settings.ShowDevCategory>
-  <FFF.Settings.ShowDevCategory.Desc>Building(Dev) 分類收錄本框架及其衍生模組中僅供上帝模式使用的地圖設計建築。關閉後，即使開啟開發模式也不會在建築選單中顯示。下次開啟建築選單時生效。</FFF.Settings.ShowDevCategory.Desc>
+  <FFF.Settings.ShowDevCategory>開發模式下顯示「Building(Dev)」分類</FFF.Settings.ShowDevCategory>
+  <FFF.Settings.ShowDevCategory.Desc>收錄本框架及衍生模組中僅限上帝模式使用的地圖設計建築。</FFF.Settings.ShowDevCategory.Desc>
 </LanguageData>

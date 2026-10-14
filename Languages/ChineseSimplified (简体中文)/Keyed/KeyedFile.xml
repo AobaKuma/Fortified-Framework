@@ -8,7 +8,6 @@
   <!-- EN: Need mechanitor in map -->
   <FFF.Reason.NoMechanitorInMap>地图中需有机械师</FFF.Reason.NoMechanitorInMap>
   <!-- EN: Must be Mechanitor -->
-  <FFF.Reason.NotMechanitor>必须是机械师</FFF.Reason.NotMechanitor>
   <!-- EN: Orbital downlink has established connection with mechanitor -->
   <FFF.Message.BandwidthSupported>轨道下行带宽建立了与机械师的连接协议</FFF.Message.BandwidthSupported>
 
@@ -21,10 +20,8 @@
 
   <!-- EN: work type disabled -->
   <!-- EN: work type disabled -->
-  <FFF.Reason.WorkTypeDisabled>工作类型禁用</FFF.Reason.WorkTypeDisabled>
   <!-- EN: need bandwidth:{0} -->
   <!-- EN: need bandwidths:{0} -->
-  <FFF.Reason.NeedBandwidth>需要带宽: {0}</FFF.Reason.NeedBandwidth>
   <!-- EN: altitude layer occupied -->
   <!-- EN: altitude layer occupied -->
   <FFF.Reason.AltitudeLayerOccupied>建筑层被占用</FFF.Reason.AltitudeLayerOccupied>
@@ -37,7 +34,6 @@
 
   <!-- EN: deactivate Mech -->
   <!-- EN: deactivate mech -->
-  <FFF.DeactivatedMech_Disable>拆解机体</FFF.DeactivatedMech_Disable>
   <!-- EN: Try hacking {0} -->
   <!-- EN: Try hacking {0} -->
   <FFF.DeactivatedMech_TryHack>尝试骇入{0}</FFF.DeactivatedMech_TryHack>
@@ -90,7 +86,6 @@
   <FFF.AirSupportFromClosestBase>来自{0}的{1}正在抵达。</FFF.AirSupportFromClosestBase>
   
   <!-- UNUSED -->
-  <FFF.ScenPart_SelectPrefabDef>选择结构</FFF.ScenPart_SelectPrefabDef>
   <FFF.Message.CannotPlaceWithoutWall>需要放置于墙体或门上</FFF.Message.CannotPlaceWithoutWall>
   <FFF.Message.MustOnACoverBuilding>需要放置在掩体上</FFF.Message.MustOnACoverBuilding>
 
@@ -101,5 +96,5 @@
   <FFF_NextStrikeIn>预计投射打击时间: {0}</FFF_NextStrikeIn>
   <FFF_NextStrikeStatus>空袭支援状态: {0}</FFF_NextStrikeStatus>
   <FFF_Status_Standby>待机 (等待目标)</FFF_Status_Standby>
-  <FFF_Site_LocalMonitoring>本地监考中 (离线)</FFF_Site_LocalMonitoring>
+  <FFF_Site_LocalMonitoring>本地监控中 (离线)</FFF_Site_LocalMonitoring>
 </LanguageData>

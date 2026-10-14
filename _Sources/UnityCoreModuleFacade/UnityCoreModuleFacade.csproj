@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    只供 1.7 編譯 FortifiedCE 用的轉送組件，不隨模組發佈（輸出留在本資料夾的 bin/；.rimignore 已排除 /_Sources/）。
+
+    CE 目前只有 1.6 版（.NET Framework），它的 API 用到的 Unity 型別記在 UnityEngine.CoreModule 名下。
+    1.7 的這些型別都在 UnityStubs 裡；遊戲執行時會把 UnityEngine.* 組件重導到 UnityStubs，但編譯器不會，
+    所以 FortifiedCE 以 net10.0 參考 CE 時會出現 CS0012（「類型 'Color' 定義在未參考的組件中」）。
+    本組件命名為 UnityEngine.CoreModule，把這些型別轉送（TypeForwardedTo）到 UnityStubs，
+    編譯器便會把 CE 的 Vector3、Color… 與 1.7 的視為同一個型別。轉送清單見 TypeForwards.cs。
+  -->
+  <PropertyGroup>
+    <OutputType>Library</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <AssemblyName>UnityEngine.CoreModule</AssemblyName>
+    <!-- CE 參考的是 UnityEngine.CoreModule 0.0.0.0 -->
+    <AssemblyVersion>0.0.0.0</AssemblyVersion>
+    <FileVersion>0.0.0.0</FileVersion>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+    <GenerateDependencyFile>false</GenerateDependencyFile>
+    <DebugType>none</DebugType>
+    <RimWorldDir Condition="'$(RimWorldDir)' == ''">$(MSBuildThisFileDirectory)..\..\..\..\</RimWorldDir>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="UnityStubs">
+      <HintPath>$(RimWorldDir)UnityStubs.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+
+</Project>

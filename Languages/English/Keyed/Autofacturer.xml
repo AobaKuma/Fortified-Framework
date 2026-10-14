@@ -1,12 +1,11 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <LanguageData>
 
-<FFF.CancelActiveBill>Cancel proccess</FFF.CancelActiveBill>
+<FFF.CancelActiveBill>Cancel process</FFF.CancelActiveBill>
 <FFF.CancelActiveBillDesc>Cancel the current process, which will return resources and stop consuming power.</FFF.CancelActiveBillDesc>
 
 <FFF.Autofacturer.WorkerCanceled>The currently executing work list has been canceled, but it needs to stop running.</FFF.Autofacturer.WorkerCanceled>
 
-<FFF.Autofacturer.WorkerDone>{0} Completed</FFF.Autofacturer.WorkerDone>
 
   <FFF.Autofacturer.CurrentRecipe>current bill: {0}</FFF.Autofacturer.CurrentRecipe>
 <FFF.Autofacturer.WorkerFinished>current processes have completed, require colonist to work</FFF.Autofacturer.WorkerFinished>

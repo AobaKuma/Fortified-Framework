@@ -1,16 +1,37 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
+  <!--
+    同一份原始碼同時建置兩個遊戲版本（與 Fortified.csproj 相同）：
+      net472   → RimWorld 1.6（.NET Framework / Unity / Harmony 2）→ 1.6/CE/Assemblies
+      net10.0  → RimWorld 1.7（.NET 10 / Waylith / Harmony 3）    → 1.7/CE/Assemblies，並定義 RW_1_7
+    CE 目前只有 1.6 版（.NET Framework），兩個目標都參考 ../CombatExtended.dll；1.7 下由遊戲的相容層載入。
+    1.7 沒有參考組件套件，直接參考遊戲本體的 DLL；預設假設本模組位於 <RimWorld>/Mods/<模組>/，
+    遊戲裝在別處時以 -p:RimWorldDir=<遊戲目錄>\ 覆寫。
+  -->
   <PropertyGroup>
     <OutputType>Library</OutputType>
-    <TargetFramework>net472</TargetFramework>
+    <TargetFrameworks>net472;net10.0</TargetFrameworks>
     <RootNamespace>FortifiedCE</RootNamespace>
     <AssemblyName>FortifiedCE</AssemblyName>
-    <OutputPath>$(MSBuildThisFileDirectory)/../../1.6/CE/Assemblies</OutputPath>
     <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <!-- 上一行同樣會讓兩個目標共用 obj\<設定>\，平行建置時互搶 FortifiedCE.dll；中間檔依目標分開 -->
+    <IntermediateOutputPath>$(BaseIntermediateOutputPath)$(Configuration)\$(TargetFramework)\</IntermediateOutputPath>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <LangVersion>10.0</LangVersion>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <RimWorldDir Condition="'$(RimWorldDir)' == ''">$(MSBuildThisFileDirectory)..\..\..\..\</RimWorldDir>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)' == 'net472'">
+    <OutputPath>$(MSBuildThisFileDirectory)/../../1.6/CE/Assemblies</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)' == 'net10.0'">
+    <OutputPath>$(MSBuildThisFileDirectory)/../../1.7/CE/Assemblies</OutputPath>
+    <DefineConstants>$(DefineConstants);RW_1_7</DefineConstants>
+    <!-- 遊戲只載入 Assemblies 內的 .dll，不需要 FortifiedCE.deps.json -->
+    <GenerateDependencyFile>false</GenerateDependencyFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -21,18 +42,45 @@
     <DebugType>none</DebugType>
   </PropertyGroup>
 
-  <ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)' == 'net472'">
     <PackageReference Include="Krafs.Rimworld.Ref" Version="1.6.4759-beta" />
     <PackageReference Include="Lib.Harmony" Version="2.4.2" ExcludeAssets="runtime" />
+    <Reference Include="Fortified">
+      <HintPath>..\..\1.6\Assemblies\Fortified.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net10.0'">
+    <!-- 與 Harmony 模組 1.7 資料夾內的 0Harmony.dll 完全相同（3.0.0-rc.2） -->
+    <PackageReference Include="Lib.Harmony" Version="3.0.0-rc.2" ExcludeAssets="runtime" />
+    <Reference Include="Assembly-CSharp">
+      <HintPath>$(RimWorldDir)Assembly-CSharp.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <!-- 1.7 的 UnityEngine.* 型別全部由 UnityStubs 提供 -->
+    <Reference Include="UnityStubs">
+      <HintPath>$(RimWorldDir)UnityStubs.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Waylith">
+      <HintPath>$(RimWorldDir)Waylith.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Fortified">
+      <HintPath>..\..\1.7\Assemblies\Fortified.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <!--
+      CE 的 API 用到的 Unity 型別記在 UnityEngine.CoreModule 名下，編譯時由這個轉送組件對應到 UnityStubs（見該專案的說明）。
+      只供編譯使用，不會複製到輸出資料夾。
+    -->
+    <ProjectReference Include="..\UnityCoreModuleFacade\UnityCoreModuleFacade.csproj" Private="false" />
   </ItemGroup>
 
   <ItemGroup>
     <Reference Include="CombatExtended">
       <HintPath>..\CombatExtended.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Fortified">
-      <HintPath>..\..\1.6\Assemblies\Fortified.dll</HintPath>
       <Private>False</Private>
     </Reference>
   </ItemGroup>

@@ -26,7 +26,6 @@
   <FFF.Darkness>Indoor brightness below: {0}</FFF.Darkness>
 
   <FFF.PressureVacuum>Vacuum between: {0} ~ {1}</FFF.PressureVacuum>
-  <FFF.Pressure>Vacuum below: {0}</FFF.Pressure>
   <FFF.Vacuum>Vacuum above: {0}</FFF.Vacuum>
 
   <FFF.MicroGravity>Microgravity</FFF.MicroGravity>

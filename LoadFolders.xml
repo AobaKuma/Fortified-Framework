@@ -13,11 +13,14 @@
 	<!--
 		1.7 沿用 1.6 的 Defs / Patches；後列的 1.7 優先，相同相對路徑的檔案會蓋掉 1.6 的版本
 		（Assemblies 的 .NET 10 組件、AssetBundles 的 Vulkan 著色器）。
-		CE 尚無 1.7 版，FortifiedCE 暫不載入。
+		CE 啟用時同理：1.7/CE 的 .NET 10 版 FortifiedCE.dll 蓋掉 1.6/CE 的版本。
+		CE 尚無 1.7 版，1.7 下由遊戲的相容層載入 CE 的 1.6 版。
 	-->
 	<v1.7>
 		<li>/</li>
 		<li>1.6</li>
+		<li IfModActive="CETeam.CombatExtended,CETeam.CombatExtended_steam">1.6/CE</li>
 		<li>1.7</li>
+		<li IfModActive="CETeam.CombatExtended,CETeam.CombatExtended_steam">1.7/CE</li>
 	</v1.7>
 </loadFolders>

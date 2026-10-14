@@ -4,9 +4,8 @@
   <!-- EN: Unrestricted -->
   <FFF.Drone.NoRestrict>無限制</FFF.Drone.NoRestrict>
   <!-- EN: Allowed area -->
-  <FFF.Drone.AllowedArea>允許活動區</FFF.Drone.AllowedArea>
   <!-- EN: Set the allow area for Drones, deployed Drone will comply with the platform's area settings. -->
-  <FFF.Drone.AllowedAreaDesc>設置許可活動區域，新部屬以及部屬中的無人機將自動同步平台的活動區設置。</FFF.Drone.AllowedAreaDesc>
+  <FFF.Drone.AllowedAreaDesc>設置許可活動區域，新部署以及部署中的無人機將自動同步平台的活動區設置。</FFF.Drone.AllowedAreaDesc>
 
   <!-- EN: control platform unavailable -->
   <FFF.Drone.NoControlPlatform>主控平台不可用</FFF.Drone.NoControlPlatform>
@@ -41,11 +40,10 @@
   <!-- EN: Auto Deploy -->
   <FFF.AutoDeploy>自動部署</FFF.AutoDeploy>
   <!-- EN: Command this platform to automatically deploy and undeploy drones at a stable interval. -->
-  <FFF.AutoDeployDesc>命令此平台以穩定的間隔週期自動部署與部署無人機。</FFF.AutoDeployDesc>
+  <FFF.AutoDeployDesc>命令此平台以穩定的間隔自動部署與回收無人機。</FFF.AutoDeployDesc>
   <!-- EN: Auto Deploy Enable -->
   <FFF.AutoDeployEnabled>自動部署激活</FFF.AutoDeployEnabled>
   <!-- EN: Deployment interval: {0} -->
-  <FFF.WillDeployAt>部署間隔: {0}</FFF.WillDeployAt>
 
   <!-- EN: Retract all {0} -->
   <FFF.RetractDrones>收回所有 {0}</FFF.RetractDrones>

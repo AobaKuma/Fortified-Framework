@@ -1,0 +1,38 @@
+using System.Runtime.CompilerServices;
+
+// CE（_Sources/CombatExtended.dll）中所有以 UnityEngine.CoreModule 為來源的型別，全部轉送到 UnityStubs。
+// 更新 CE 後若 1.7 編譯又出現「類型 'X' 定義在未參考的組件中 'UnityEngine.CoreModule'」(CS0012)，
+// 在下方補上對應的 X 即可（UnityStubs 須有同名型別）。巢狀型別會隨外層型別一起轉送，不用另外列出。
+
+[assembly: TypeForwardedTo(typeof(UnityEngine.Bounds))]
+[assembly: TypeForwardedTo(typeof(UnityEngine.Camera))]
+[assembly: TypeForwardedTo(typeof(UnityEngine.Color))]
+[assembly: TypeForwardedTo(typeof(UnityEngine.Component))]
+[assembly: TypeForwardedTo(typeof(UnityEngine.Coroutine))]
+[assembly: TypeForwardedTo(typeof(UnityEngine.FilterMode))]
+[assembly: TypeForwardedTo(typeof(UnityEngine.GameObject))]
+[assembly: TypeForwardedTo(typeof(UnityEngine.Graphics))]
+[assembly: TypeForwardedTo(typeof(UnityEngine.KeyCode))]
+[assembly: TypeForwardedTo(typeof(UnityEngine.Material))]
+[assembly: TypeForwardedTo(typeof(UnityEngine.MaterialPropertyBlock))]
+[assembly: TypeForwardedTo(typeof(UnityEngine.Mathf))]
+[assembly: TypeForwardedTo(typeof(UnityEngine.Matrix4x4))]
+[assembly: TypeForwardedTo(typeof(UnityEngine.Mesh))]
+[assembly: TypeForwardedTo(typeof(UnityEngine.MonoBehaviour))]
+[assembly: TypeForwardedTo(typeof(UnityEngine.Object))]
+[assembly: TypeForwardedTo(typeof(UnityEngine.Quaternion))]
+[assembly: TypeForwardedTo(typeof(UnityEngine.Random))]
+[assembly: TypeForwardedTo(typeof(UnityEngine.Ray))]
+[assembly: TypeForwardedTo(typeof(UnityEngine.Ray2D))]
+[assembly: TypeForwardedTo(typeof(UnityEngine.Rect))]
+[assembly: TypeForwardedTo(typeof(UnityEngine.RenderTexture))]
+[assembly: TypeForwardedTo(typeof(UnityEngine.RenderTextureFormat))]
+[assembly: TypeForwardedTo(typeof(UnityEngine.RenderTextureReadWrite))]
+[assembly: TypeForwardedTo(typeof(UnityEngine.Rendering.ShadowCastingMode))]
+[assembly: TypeForwardedTo(typeof(UnityEngine.Shader))]
+[assembly: TypeForwardedTo(typeof(UnityEngine.StackTraceUtility))]
+[assembly: TypeForwardedTo(typeof(UnityEngine.Texture))]
+[assembly: TypeForwardedTo(typeof(UnityEngine.Texture2D))]
+[assembly: TypeForwardedTo(typeof(UnityEngine.Vector2))]
+[assembly: TypeForwardedTo(typeof(UnityEngine.Vector3))]
+[assembly: TypeForwardedTo(typeof(UnityEngine.WaitForEndOfFrame))]

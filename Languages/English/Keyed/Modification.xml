@@ -4,7 +4,7 @@
   <!-- EN: Weapon system not supported -->
   <FFF.Reason.WeaponNotSupported>Weapon system not supported</FFF.Reason.WeaponNotSupported>
   <!-- EN: Mech frame not supported -->
-  <FFF.Reason.FrameNotSupported>Mech frame not supported </FFF.Reason.FrameNotSupported>
+  <FFF.Reason.FrameNotSupported>Mech frame not supported</FFF.Reason.FrameNotSupported>
   
   <!-- EN: model not supported -->
   <FFF.Modification_RaceNotSupported>model not supported</FFF.Modification_RaceNotSupported>
@@ -33,7 +33,6 @@
   <FFF.MechModification.InfoName>Name: {0}</FFF.MechModification.InfoName>
   <FFF.MechModification.InfoRace>Model: {0}</FFF.MechModification.InfoRace>
   <FFF.MechModification.InfoAge>Service age: {0}</FFF.MechModification.InfoAge>
-  <FFF.MechModification.PawnInfoTip>Open mech information.</FFF.MechModification.PawnInfoTip>
   <FFF.MechModification.GizmoLabel>Mech modification</FFF.MechModification.GizmoLabel>
   <FFF.MechModification.GizmoDesc>Open this mech's modification window. Requires microelectronics.</FFF.MechModification.GizmoDesc>
   <FFF.MechModification.SelectModsFor>Available modifications for {0}</FFF.MechModification.SelectModsFor>

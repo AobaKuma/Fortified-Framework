@@ -14,7 +14,6 @@
 
   <!-- 右键菜单选项 -->
   <FFF.DeactivatedMech_Control>Control {0}</FFF.DeactivatedMech_Control>
-  <FFF.DeactivatedMech_Disable>Destroy mech</FFF.DeactivatedMech_Disable>
   <FFF.DeactivatedMech_CannotControl>Cannot control</FFF.DeactivatedMech_CannotControl>
 
   <!-- 无法控制的原因 -->

@@ -8,7 +8,6 @@
   <!-- EN: Need mechanitor in map -->
   <FFF.Reason.NoMechanitorInMap>地圖中需有御機使</FFF.Reason.NoMechanitorInMap>
   <!-- EN: Must be Mechanitor -->
-  <FFF.Reason.NotMechanitor>不是機械師</FFF.Reason.NotMechanitor>
   <!-- EN: Orbital downlink has established connection with mechanitor -->
   <FFF.Message.BandwidthSupported>軌道下行帶寬建立了與御機使的連接協議</FFF.Message.BandwidthSupported>
 
@@ -21,10 +20,8 @@
 
   <!-- EN: work type disabled -->
   <!-- EN: work type disabled -->
-  <FFF.Reason.WorkTypeDisabled>研究工作已禁用</FFF.Reason.WorkTypeDisabled>
   <!-- EN: need bandwidth:{0} -->
   <!-- EN: need bandwidths:{0} -->
-  <FFF.Reason.NeedBandwidth>需要{0}帶寬</FFF.Reason.NeedBandwidth>
   <!-- EN: altitude layer occupied -->
   <!-- EN: altitude layer occupied -->
   <FFF.Reason.AltitudeLayerOccupied>建築層被占用</FFF.Reason.AltitudeLayerOccupied>
@@ -37,7 +34,6 @@
 
   <!-- EN: deactivate Mech -->
   <!-- EN: deactivate mech -->
-  <FFF.DeactivatedMech_Disable>拆解機體</FFF.DeactivatedMech_Disable>
   <!-- EN: Try hacking {0} -->
   <!-- EN: Try hacking {0} -->
   <FFF.DeactivatedMech_TryHack>嘗試駭入{0}</FFF.DeactivatedMech_TryHack>
@@ -94,7 +90,6 @@
   <!-- EN: {0}% protection -->
   <FFF.Armor.Vanilla>{0}%防護</FFF.Armor.Vanilla>
   <!-- UNUSED -->
-  <FFF.ScenPart_SelectPrefabDef>選擇結構</FFF.ScenPart_SelectPrefabDef>
   <FFF.Message.CannotPlaceWithoutWall>需要放置於牆體或門上</FFF.Message.CannotPlaceWithoutWall>
   <FFF.Message.MustOnACoverBuilding>需要放置在掩體上</FFF.Message.MustOnACoverBuilding>
 

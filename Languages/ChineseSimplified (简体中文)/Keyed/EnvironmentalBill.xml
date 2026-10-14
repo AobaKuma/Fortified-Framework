@@ -44,7 +44,6 @@
   <!-- EN: Vacuum between: {0} ~ {1} -->
   <FFF.PressureVacuum>室内真空处于: {0}~{1}之间</FFF.PressureVacuum>
   <!-- EN: Vacuum below: {0} -->
-  <FFF.Pressure>室内真空低于: {0}</FFF.Pressure>
   <!-- EN: Vacuum above: {0} -->
   <FFF.Vacuum>室内真空高于: {0}</FFF.Vacuum>
 

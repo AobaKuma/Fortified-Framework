@@ -12,6 +12,8 @@
     <TargetFrameworks>net472;net10.0</TargetFrameworks>
     <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <!-- 上一行同樣會讓兩個目標共用 obj\<設定>\，平行建置時互搶 Fortified.dll 與 PublicizedAssemblies；中間檔依目標分開 -->
+    <IntermediateOutputPath>$(BaseIntermediateOutputPath)$(Configuration)\$(TargetFramework)\</IntermediateOutputPath>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <LangVersion>10.0</LangVersion>
     <BaseOutputPath>\..\..\1.6\Assemblies</BaseOutputPath>

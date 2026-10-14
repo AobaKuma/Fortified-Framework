@@ -42,7 +42,6 @@
   <FFF.MechModification.InfoName>名称：{0}</FFF.MechModification.InfoName>
   <FFF.MechModification.InfoRace>型号：{0}</FFF.MechModification.InfoRace>
   <FFF.MechModification.InfoAge>服役年龄：{0}</FFF.MechModification.InfoAge>
-  <FFF.MechModification.PawnInfoTip>打开机械体信息。</FFF.MechModification.PawnInfoTip>
   <FFF.MechModification.GizmoLabel>机械体改装</FFF.MechModification.GizmoLabel>
   <FFF.MechModification.GizmoDesc>打开此机械体的改装窗口。需要完成微电子基础研究。</FFF.MechModification.GizmoDesc>
   <FFF.MechModification.SelectModsFor>{0} 可用的改件</FFF.MechModification.SelectModsFor>

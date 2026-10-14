@@ -10,7 +10,6 @@
   <FFF.Autofacturer.WorkerCanceled>当前执行的工作清单已取消，但需要停止运行。</FFF.Autofacturer.WorkerCanceled>
 
 <!-- EN: {0} Completed -->
-  <FFF.Autofacturer.WorkerDone>{0}已完成</FFF.Autofacturer.WorkerDone>
 
   <!-- EN: current bill: {0} -->
   <FFF.Autofacturer.CurrentRecipe>当前进行中: {0}</FFF.Autofacturer.CurrentRecipe>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <LanguageData>
   <!-- FortifiedMod : mod settings window -->
-  <FFF.Settings.ShowDevCategory>Show the "Building(Dev)" architect category in dev mode</FFF.Settings.ShowDevCategory>
-  <FFF.Settings.ShowDevCategory.Desc>The Building(Dev) category holds god-mode-only map-design buildings from this framework and the mods built on it. When disabled, it stays hidden even with development mode on. Takes effect the next time the Architect menu is opened.</FFF.Settings.ShowDevCategory.Desc>
+  <FFF.Settings.ShowDevCategory>Show "Building(Dev)" category in dev mode</FFF.Settings.ShowDevCategory>
+  <FFF.Settings.ShowDevCategory.Desc>Contains god-mode-only map-design buildings from this framework and mods built on it.</FFF.Settings.ShowDevCategory.Desc>
 </LanguageData>

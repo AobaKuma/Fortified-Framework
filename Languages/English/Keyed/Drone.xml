@@ -2,7 +2,6 @@
 <LanguageData>
 
   <FFF.Drone.NoRestrict>Unrestricted</FFF.Drone.NoRestrict>
-  <FFF.Drone.AllowedArea>Allowed area</FFF.Drone.AllowedArea>
   <FFF.Drone.AllowedAreaDesc>Set the allow area for Drones, deployed Drone will comply with the platform's area settings.</FFF.Drone.AllowedAreaDesc>
 
   <FFF.Drone.NoControlPlatform>control platform unavailable</FFF.Drone.NoControlPlatform>
@@ -26,7 +25,6 @@
   <FFF.AutoDeploy>Auto Deploy</FFF.AutoDeploy>
   <FFF.AutoDeployDesc>Command this platform to automatically deploy and undeploy drones at a stable interval.</FFF.AutoDeployDesc>
   <FFF.AutoDeployEnabled>Auto Deploy Enable</FFF.AutoDeployEnabled>
-  <FFF.WillDeployAt>Deployment interval: {0}</FFF.WillDeployAt>
 
   <FFF.RetractDrones>Retract all {0}</FFF.RetractDrones>
   <FFF.RetractDronesDesc>Command all {0} controlled by this platform to withdraw, which will replenish the {1} consumption.</FFF.RetractDronesDesc>

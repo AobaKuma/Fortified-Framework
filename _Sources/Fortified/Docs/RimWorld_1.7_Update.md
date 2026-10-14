@@ -44,6 +44,15 @@ Fortified Features Framework 已同時支援 RimWorld 1.6 與 1.7，兩個版本
 | `net472` | 1.6 | `1.6/Assemblies/Fortified.dll` | NuGet：`Krafs.Rimworld.Ref`、`Lib.Harmony 2.4.2`、`RimWorld.MultiplayerAPI` |
 | `net10.0` | 1.7 | `1.7/Assemblies/Fortified.dll` | 遊戲本體 DLL（`Assembly-CSharp`、`UnityStubs`、`Waylith`）、`Lib.Harmony 3.0.0-rc.2`、`1.7/Assemblies/0MultiplayerAPI.dll` |
 
+`_Sources/FortifiedCE/FortifiedCE.csproj` 同樣改為多目標建置：`net472` → `1.6/CE/Assemblies`、`net10.0` → `1.7/CE/Assemblies`。
+CE 目前只有 1.6 版（.NET Framework），兩個目標都參考 `_Sources/CombatExtended.dll`；1.7 下 CE 由遊戲的相容層載入。
+
+- CE 的 API 用到的 Unity 型別（`Vector3`、`Color`…）記在 `UnityEngine.CoreModule` 名下，而 1.7 的這些型別在 `UnityStubs`。
+  遊戲執行時會把 `UnityEngine.*` 重導到 `UnityStubs`，編譯器卻不會，直接以 `net10.0` 參考 CE 會出現 27 個 CS0012。
+- 解法是只供編譯使用的轉送組件 `_Sources/UnityCoreModuleFacade`：組件名稱為 `UnityEngine.CoreModule`，
+  把 CE 用到的 32 個型別轉送（`TypeForwardedTo`）到 `UnityStubs`。FortifiedCE 的 `net10.0` 目標以 `ProjectReference`（`Private="false"`）參考它，
+  不會複製到輸出資料夾；編出的 `FortifiedCE.dll` 直接參考 `UnityStubs`，不參考 `UnityEngine.CoreModule`。
+
 - 1.7 建置會額外定義 `RW_1_7`，需要分版本的程式碼請用 `#if RW_1_7`。
 - `dotnet build` 或 `build.bat` 一次產出兩個 DLL；`_Tools/BuildDLL/build_dlls.py` 已能辨識多目標專案的兩個輸出（相依排序、檔案鎖定檢查、建置報告都涵蓋兩者）。
 
@@ -73,12 +82,13 @@ Fortified Features Framework 已同時支援 RimWorld 1.6 與 1.7，兩個版本
 ```
 LoadFolders.xml
   v1.6 → /, 1.6, (CE 啟用時) 1.6/CE
-  v1.7 → /, 1.6, 1.7
+  v1.7 → /, 1.6, (CE 啟用時) 1.6/CE, 1.7, (CE 啟用時) 1.7/CE
 ```
 
 - 1.7 **直接沿用 1.6 的 Defs 與 Patches**。
 - 列在後面的資料夾優先，**相同相對路徑的檔案會蓋掉前面的版本**：
   - `1.7/Assemblies/Fortified.dll`、`0MultiplayerAPI.dll` 蓋掉 1.6 的 .NET Framework 版本；
+  - `1.7/CE/Assemblies/FortifiedCE.dll` 蓋掉 `1.6/CE` 的版本（遊戲以 `Assemblies/` 下的相對路徑去重，只載入最後列出的那一份）；
   - `1.7/AssetBundles/fortified_shaders_*` 蓋掉 1.6 的 bundle。
 - `About.xml` 的 `supportedVersions` 已加入 `1.7`。
 
@@ -111,6 +121,8 @@ LoadFolders.xml
 | 被補丁方法的 1.6 → 1.7 差異 | 150 個中 148 個完全相同；2 個有變動且已確認無影響或已處理 |
 | XML | 所有 `ParentName`、`Class`／`thingClass`／`compClass` 等型別、XPath 補丁目標在 1.7 皆存在 |
 | `.rimignore` 過濾 | 以模擬的 1.7 上傳複本測試通過（保留 `Assets.zip`、排除附屬檔與開發資料夾） |
+| FortifiedCE 1.6 / 1.7 編譯 | 皆 0 錯誤 0 警告；兩個版本的型別清單與發佈中的 1.6 版完全相同 |
+| FortifiedCE Harmony 補丁（靜態檢查） | 9 個補丁類別的目標在 1.7 本體、工作坊版 CE（2026-07-04）、本框架中皆存在，`__instance` 型別與宣告類別一致；無 Transpiler |
 
 **尚未在遊戲內實測**：實際載入 XML、`StaticConstructorOnStartup` 初始化、著色器在 Vulkan 下的轉換結果，仍需開遊戲確認。
 
@@ -126,7 +138,8 @@ LoadFolders.xml
 
 ## 4. 已知限制
 
-- **Combat Extended 尚無 1.7 版**：1.7 不載入 `FortifiedCE`。CE 釋出 1.7 版後，需要以 CE 1.7 的 DLL 重新建置 FortifiedCE，並在 `LoadFolders.xml` 的 `v1.7` 補上對應資料夾。
+- **Combat Extended 尚無 1.7 版**：1.7 的 FortifiedCE 是對 CE 1.6 的 DLL 建置，靠遊戲的相容層執行，尚未在遊戲內實測。
+  CE 釋出 1.7 版（.NET 10）後，把 FortifiedCE 的 `net10.0` 目標改參考 CE 1.7 的 DLL 重新建置；屆時 CE 不再參考 `UnityEngine.CoreModule`，`UnityCoreModuleFacade` 可以移除。
 - **Multiplayer**：沿用 `0MultiplayerAPI.dll` 0.6.0（.NET Framework 版，1.7 可正常載入）；Multiplayer 模組本身尚未支援 1.7。
 - **塗裝著色器**仰賴 Unity bundle 的 Vulkan 轉換，尚未在遊戲內目視確認。
 
@@ -157,7 +170,10 @@ LoadFolders.xml
 
 - **1.6/Assemblies 若新增 DLL，1.7/Assemblies 必須有同名的 1.7 版本**，否則 1.7 會載入 .NET Framework 版的 DLL。
 - 只在 1.7 需要不同的 XML 時，把檔案放到 `1.7/` 下**相同的相對路徑**（例如 `1.7/Defs/StatDef.xml`）即可覆寫 1.6 的版本。
-- 1.6 專屬內容（如 CE 相容）放在 `1.6/` 的子資料夾，並只在 `v1.6` 的載入清單列出。
+- 1.6 專屬內容放在 `1.6/` 的子資料夾，並只在 `v1.6` 的載入清單列出。
+- CE 相容內容放在 `1.6/CE`，`v1.6` 與 `v1.7` 都會載入；`1.7/CE` 只放 .NET 10 版的 `FortifiedCE.dll`。
+- 更新 `_Sources/CombatExtended.dll` 後，若 1.7 編譯出現「類型 'X' 定義在未參考的組件中 'UnityEngine.CoreModule'」（CS0012），
+  在 `_Sources/UnityCoreModuleFacade/TypeForwards.cs` 補上 `X` 即可。
 
 ### 著色器
 
@@ -184,7 +200,9 @@ LoadFolders.xml
 - 1.7 請參考 `1.7/Assemblies/Fortified.dll`，1.6 請參考 `1.6/Assemblies/Fortified.dll`；兩者的公開 API 相同。
 - 建置設定可直接參考本框架的 `Fortified.csproj`。常見的坑：
   - `RimWorld.MultiplayerAPI` 的 NuGet 套件會連帶引入 1.6 的 Unity 參考組件，在 `net10.0` 下造成型別重複（CS0433），1.7 請直接參考 `0MultiplayerAPI.dll`；
-  - 不要在 `net10.0` 目標引用 `Krafs.Rimworld.Ref`。
+  - 不要在 `net10.0` 目標引用 `Krafs.Rimworld.Ref`；
+  - 以 `net10.0` 參考只有 1.6 版的模組 DLL（CE、VEF…）時，若它的 API 用到 Unity 型別會出現 CS0012，
+    可比照 `_Sources/UnityCoreModuleFacade` 做一個只供編譯的轉送組件；只碰到一兩處時，也可以在 `#if RW_1_7` 下改用反射讀取。
 - 自己的 AssetBundle 著色器同樣需要 Vulkan 變體（使用 linux 版 bundle）。
 
 ---
@@ -206,3 +224,7 @@ LoadFolders.xml
 | `UnityProject/Assets/Editor/BuildBundle.cs` | 自動產生 1.7 bundle |
 | `_Tools/BuildDLL/build_dlls.py` | 支援多目標專案 |
 | `.rimignore`、`.gitignore` | `Assets.zip` 相關規則 |
+| `LoadFolders.xml` | `v1.7` 在 CE 啟用時載入 `1.6/CE`、`1.7/CE` |
+| `1.7/CE/Assemblies/` | 1.7 版 `FortifiedCE.dll` |
+| `_Sources/FortifiedCE/FortifiedCE.csproj` | 多目標建置 |
+| `_Sources/UnityCoreModuleFacade/` | 只供編譯的 `UnityEngine.CoreModule` 轉送組件 |

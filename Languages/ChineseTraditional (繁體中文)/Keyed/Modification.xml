@@ -42,7 +42,6 @@
   <FFF.MechModification.InfoName>名稱：{0}</FFF.MechModification.InfoName>
   <FFF.MechModification.InfoRace>型號：{0}</FFF.MechModification.InfoRace>
   <FFF.MechModification.InfoAge>服役年齡：{0}</FFF.MechModification.InfoAge>
-  <FFF.MechModification.PawnInfoTip>開啟機械體資訊。</FFF.MechModification.PawnInfoTip>
   <FFF.MechModification.GizmoLabel>機械體改裝</FFF.MechModification.GizmoLabel>
   <FFF.MechModification.GizmoDesc>開啟此機械體的改裝視窗。需要完成微電子基礎研究。</FFF.MechModification.GizmoDesc>
   <FFF.MechModification.SelectModsFor>{0} 可用的改件</FFF.MechModification.SelectModsFor>

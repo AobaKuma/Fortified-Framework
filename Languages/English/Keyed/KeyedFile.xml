@@ -5,26 +5,22 @@
   <FFF.WillTerminateTheBetrayedUnit>DMS: Trigger Safe Actived</FFF.WillTerminateTheBetrayedUnit>
   
   <FFF.Reason.NoMechanitorInMap>Need mechanitor in map</FFF.Reason.NoMechanitorInMap>
-  <FFF.Reason.NotMechanitor>Must be Mechanitor</FFF.Reason.NotMechanitor>
   <FFF.Message.BandwidthSupported>Orbital downlink has established connection with mechanitor</FFF.Message.BandwidthSupported>
 
-  <FFF.Reason.NoPayloadCapacity>Inventroy fulled</FFF.Reason.NoPayloadCapacity>
+  <FFF.Reason.NoPayloadCapacity>Inventory full</FFF.Reason.NoPayloadCapacity>
   <FFF.TakeToInventory>Take {0}</FFF.TakeToInventory>
   <FFF.DropGears>Drop inventories</FFF.DropGears>
 
   <!-- EN: work type disabled -->
-  <FFF.Reason.WorkTypeDisabled>work type disabled</FFF.Reason.WorkTypeDisabled>
   <!-- EN: need bandwidth:{0} -->
-  <FFF.Reason.NeedBandwidth>need bandwidths:{0}</FFF.Reason.NeedBandwidth>
   <!-- EN: altitude layer occupied -->
   <FFF.Reason.AltitudeLayerOccupied>altitude layer occupied</FFF.Reason.AltitudeLayerOccupied>
   <!-- EN: No enough fuel -->
-  <FFF.Reason.NoEnoughFuel>No enough fuel</FFF.Reason.NoEnoughFuel>
+  <FFF.Reason.NoEnoughFuel>Not enough fuel</FFF.Reason.NoEnoughFuel>
   <!-- EN: No fuel -->
   <FFF.Reason.NotFueled>No fuel</FFF.Reason.NotFueled>
 
   <!-- EN: deactivate Mech -->
-  <FFF.DeactivatedMech_Disable>deactivate mech</FFF.DeactivatedMech_Disable>
   <!-- EN: Try hacking {0} -->
   <FFF.DeactivatedMech_TryHack>Try hacking {0}</FFF.DeactivatedMech_TryHack>
   <!-- EN: Cannot hacking -->
@@ -60,7 +56,6 @@
   <FFF.Armor.CE>{0}mmRha armor</FFF.Armor.CE>
   <FFF.Armor.Vanilla>{0}% protection</FFF.Armor.Vanilla>
   
-  <FFF.ScenPart_SelectPrefabDef>select structure</FFF.ScenPart_SelectPrefabDef>
   <FFF.Message.CannotPlaceWithoutWall>must be placed on a wall or door</FFF.Message.CannotPlaceWithoutWall>
   <FFF.Message.MustOnACoverBuilding>must be placed on a cover building</FFF.Message.MustOnACoverBuilding>
 
