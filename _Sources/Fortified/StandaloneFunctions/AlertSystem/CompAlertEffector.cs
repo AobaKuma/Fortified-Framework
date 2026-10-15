@@ -30,9 +30,30 @@ namespace Fortified
         /// </summary>
         public bool inactiveWhenFogged = false;
 
+        /// <summary>
+        /// 最低激活警戒值（0~1，地圖警戒值占滿值的比例）。收到警報時地圖警戒值未達這個比例就不觸發，也不消耗 oneShot 與觸發機率；
+        /// 0 = 不限制。掃描器是先累加警戒值再廣播訊號，所以這次警報本身的增量已經算在內。
+        /// Minimum alert level to activate (0~1, the map's alert as a share of its maximum). Below it an alarm doesn't
+        /// fire the effector and spends neither oneShot nor the trigger roll; 0 = no threshold. Scanners raise the alert
+        /// before broadcasting, so this alarm's own increment already counts.
+        /// </summary>
+        public float minAlertLevel = 0f;
+
         public CompProperties_AlertEffector()
         {
             compClass = typeof(CompAlertEffector);
+        }
+
+        public override IEnumerable<string> ConfigErrors(ThingDef parentDef)
+        {
+            foreach (string error in base.ConfigErrors(parentDef))
+            {
+                yield return error;
+            }
+            if (minAlertLevel < 0f || minAlertLevel > 1f)
+            {
+                yield return $"{GetType().Name}.minAlertLevel must be between 0 and 1 (a share of the map's maximum alert), not {minAlertLevel}.";
+            }
         }
     }
 
@@ -72,9 +93,11 @@ namespace Fortified
         /// <summary>
         /// 由外部（MapComponent_AlertCounter 或 Signal）呼叫通知警報。<br/>
         /// 斷電、被 EMP / Stun 暈眩、或休眠中的反制建築一律不觸發，也不消耗 oneShot 與觸發機率
-        /// （判定見 <see cref="AlertBuildingUtility.IsOperational(ThingWithComps)"/>）；<see cref="CanFire"/> 回絕時亦同。
+        /// （判定見 <see cref="AlertBuildingUtility.IsOperational(ThingWithComps)"/>）；地圖警戒值未達
+        /// <see cref="CompProperties_AlertEffector.minAlertLevel"/>、或 <see cref="CanFire"/> 回絕時亦同。
         /// Alarm entry point. An unpowered, EMP/stun-stunned or dormant counter-measure building never fires,
-        /// and neither its oneShot nor its trigger roll is consumed; the same goes when <see cref="CanFire"/> refuses.
+        /// and neither its oneShot nor its trigger roll is consumed; the same goes while the map's alert is below
+        /// <see cref="CompProperties_AlertEffector.minAlertLevel"/> or when <see cref="CanFire"/> refuses.
         /// </summary>
         public void OnAlertNotify()
         {
@@ -93,7 +116,10 @@ namespace Fortified
             if (lastFiredTick == now) return;
 
             // 回絕不記 lastFiredTick：同 tick 另一個掃描器的警報若符合條件仍可觸發。
+            // 警戒值門檻放在這裡而不是 CanFire，覆寫 CanFire 的子類忘了呼叫 base 也跳不過它。
             // A refusal leaves lastFiredTick alone: another scanner's alarm in the same tick may still qualify.
+            // The alert threshold lives here rather than in CanFire so a subclass that forgets base can't skip it.
+            if (Props.minAlertLevel > 0f && MapAlertLevelPct < Props.minAlertLevel) return;
             if (!CanFire(signal)) return;
 
             if (!Rand.Chance(Props.triggerChance)) return;
@@ -116,6 +142,9 @@ namespace Fortified
             if (Props.inactiveWhenFogged && IsFullyFogged()) return false;
             return true;
         }
+
+        /// <summary>地圖目前的警戒值比例（0~1）；地圖沒有計數器時為 0。The map's current alert as a share of its maximum (0~1); 0 without a counter.</summary>
+        protected float MapAlertLevelPct => parent.Map?.GetComponent<MapComponent_AlertCounter>()?.AlertLevelPct ?? 0f;
 
         /// <summary>佔地每一格都還在迷霧裡；露出任何一格就算被發現。Every occupied cell fogged; any revealed cell counts as discovered.</summary>
         protected bool IsFullyFogged()
