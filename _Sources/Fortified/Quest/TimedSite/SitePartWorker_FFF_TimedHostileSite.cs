@@ -32,6 +32,9 @@ namespace Fortified
 
         private FFF_TimedSiteExtension Extension => def.GetModExtension<FFF_TimedSiteExtension>() ?? DefaultExtension;
 
+        /// <summary>威脅點數 → 戰利品市值。Threat points → loot market value.</summary>
+        public static float LootMarketValueFor(float threatPoints) => ThreatPointsLootMarketValue.Evaluate(threatPoints);
+
         public override SitePartParams GenerateDefaultParams(float myThreatPoints, PlanetTile tile, Faction faction)
         {
             SitePartParams parms = base.GenerateDefaultParams(myThreatPoints, tile, faction);
@@ -39,7 +42,7 @@ namespace Fortified
             {
                 parms.threatPoints = Mathf.Max(parms.threatPoints, faction.def.MinPointsToGeneratePawnGroup(PawnGroupKindDefOf.Combat));
             }
-            parms.lootMarketValue = ThreatPointsLootMarketValue.Evaluate(parms.threatPoints);
+            parms.lootMarketValue = LootMarketValueFor(parms.threatPoints);
             return parms;
         }
 
