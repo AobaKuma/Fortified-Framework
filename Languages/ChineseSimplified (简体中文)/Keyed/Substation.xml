@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
-  <!-- 按钮文字 -->
-  <FFF_Substation_TurnOn>恢复配电箱供电</FFF_Substation_TurnOn>
-  <FFF_Substation_TurnOnDesc>手动重新启动配电箱。无需技能检查——危险的部分是关闭它。</FFF_Substation_TurnOnDesc>
-
   <!-- CompHackable 字串 -->
   <FFF_Substation_HackPrompt>骇入以关闭</FFF_Substation_HackPrompt>
   <FFF_Substation_HackedLabel>离线（已关闭）</FFF_Substation_HackedLabel>
@@ -16,4 +12,5 @@
 
   <!-- 事件消息 -->
   <FFF_Substation_ShockMessage>{PAWN_labelShort} 在关闭配电箱时遭到电击！</FFF_Substation_ShockMessage>
+  <FFF_Substation_FlickedOffMessage>{SUBSTATION_label}断电，{BUILDING_label}跟着关闭了。</FFF_Substation_FlickedOffMessage>
 </LanguageData>

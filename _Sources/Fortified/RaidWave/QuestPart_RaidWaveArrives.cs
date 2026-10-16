@@ -22,6 +22,15 @@ public class QuestPart_RaidWaveArrives : QuestPartActivable
 
     public override void QuestPartTick()
     {
+        // The target map is gone (gravship departure, abandoned settlement, ...). A destroyed
+        // world object resolves to null on load, so this also covers saves made before the
+        // "mapParent.Destroyed" end signal was wired up. Nothing can land anymore — end the quest.
+        if (mapParent == null || mapParent.Destroyed)
+        {
+            quest.End(QuestEndOutcome.Unknown, sendLetter: false);
+            return;
+        }
+
         int now = Find.TickManager.TicksGame;
 
         if (now < enableTick + minDelay)
@@ -33,7 +42,9 @@ public class QuestPart_RaidWaveArrives : QuestPartActivable
             return;
         }
 
-        if (mapParent.IsHashIntervalTick(CheckInterval)
+        // raidWaveDef is null if its def was removed from the load order; fall back to forced arrival.
+        if (raidWaveDef != null
+            && mapParent.IsHashIntervalTick(CheckInterval)
             && mapParent.Map != null
             && (bool)raidWaveDef.Worker.ShouldSummonNow(mapParent.Map))
         {
@@ -54,8 +65,8 @@ public class QuestPart_RaidWaveArrives : QuestPartActivable
             text += $"\nTicks until min delay: {untilMin} ({untilMin.ToStringTicksToPeriodVerbose()})";
         text += $"\nTicks until forced arrival: {untilMax} ({untilMax.ToStringTicksToPeriodVerbose()})";
 
-        if (mapParent.Map != null)
-            text += $"\nShouldSummonNow: {(bool)raidWaveDef.Worker.ShouldSummonNow(mapParent.Map)}";
+        if (mapParent?.Map != null && raidWaveDef != null)
+            text +=$"\nShouldSummonNow: {(bool)raidWaveDef.Worker.ShouldSummonNow(mapParent.Map)}";
 
         Vector2 size = Text.CalcSize(text);
         Rect labelRect = new Rect(innerRect.x, curY, innerRect.width, size.y);

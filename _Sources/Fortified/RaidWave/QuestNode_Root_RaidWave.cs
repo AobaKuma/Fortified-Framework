@@ -153,6 +153,9 @@ public class QuestNode_Root_RaidWave : QuestNode
         quest.End(QuestEndOutcome.Unknown, 0, null, allDeadSignal);
 
         // --- End quest if map is destroyed ---
+        // The "mapParent.Destroyed" signal only fires if 'mapParent' is a slate var: QuestGen tags
+        // slate objects named in hardcoded signals when generation finishes (same as vanilla Bossgroup).
+        slate.Set("mapParent", map.Parent);
         quest.End(QuestEndOutcome.Unknown, 0, null,
             QuestGenUtility.HardcodedSignalWithQuestID("mapParent.Destroyed"));
     }

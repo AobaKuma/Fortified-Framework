@@ -1,8 +1,6 @@
+using System;
 using System.Collections.Generic;
-using System.Reflection;
-using HarmonyLib;
 using RimWorld;
-using UnityEngine;
 using Verse;
 
 namespace Fortified
@@ -17,6 +15,20 @@ namespace Fortified
 
         /// <summary>Raw damage dealt to the pawn on a shock event.</summary>
         public float shockDamageAmount = 18f;
+
+        /// <summary>
+        /// 關閉時順手關掉一座同地圖、<c>building.buildingTags</c> 含這個標籤、<see cref="CompFlickable"/> 還開著的建築，
+        /// 挑離變電箱最近的；空 = 不關。
+        /// On shutdown, also switch off one building on the same map whose <c>building.buildingTags</c> contain this tag
+        /// and whose <see cref="CompFlickable"/> is still on, picking the nearest; empty = none.
+        /// </summary>
+        public string flickOffBuildingTag;
+
+        /// <summary>
+        /// 從最近的幾座裡隨機挑一座。1 = 就是最近那座（一樣近時隨機）。
+        /// Pick at random among this many nearest candidates. 1 = the nearest one (random among equally near).
+        /// </summary>
+        public int flickOffNearestCount = 1;
 
         public CompProperties_SubstationPower()
         {
@@ -33,6 +45,8 @@ namespace Fortified
                 yield return $"{nameof(CompProperties_SubstationPower)}: shockChance must be 0–1.";
             if (shockDamageAmount < 0f)
                 yield return $"{nameof(CompProperties_SubstationPower)}: shockDamageAmount must be >= 0.";
+            if (flickOffNearestCount < 1)
+                yield return $"{nameof(CompProperties_SubstationPower)}: flickOffNearestCount must be >= 1.";
         }
     }
 
@@ -40,16 +54,11 @@ namespace Fortified
     /// Power plant comp for the underground substation cabinet.
     /// Generates a fixed wattage, can be shut down via the vanilla Hack job
     /// (with an Intellect shock risk for low-skill operators), and is
-    /// temporarily disabled by EMP.
+    /// temporarily disabled by EMP. A shutdown is permanent and can also switch
+    /// off the nearest tagged building (see <see cref="CompProperties_SubstationPower.flickOffBuildingTag"/>).
     /// </summary>
     public class CompSubstationPower : CompPowerPlant
     {
-        // ── reflection handles for resetting CompHackable private state ───────────
-        private static readonly FieldInfo FI_hacked =
-            AccessTools.Field(typeof(CompHackable), "hacked");
-        private static readonly FieldInfo FI_progress =
-            AccessTools.Field(typeof(CompHackable), "progress");
-
         // ElectricalBurn is [MayRequireAnomaly] — fall back to Burn when absent.
         private static DamageDef ShockDamageDef =>
             DamageDefOf.ElectricalBurn
@@ -59,7 +68,6 @@ namespace Fortified
         // ── state ─────────────────────────────────────────────────────────────────
         private bool isShutdown;
         private CompStunnable stunnableComp;
-        private CompHackable hackableComp;
 
         // ── accessors ─────────────────────────────────────────────────────────────
         public new CompProperties_SubstationPower Props =>
@@ -77,12 +85,10 @@ namespace Fortified
         {
             base.PostSpawnSetup(respawningAfterLoad);
             stunnableComp = parent.TryGetComp<CompStunnable>();
-            hackableComp  = parent.TryGetComp<CompHackable>();
         }
 
         public override void PostExposeData()
         {
-            
             base.PostExposeData();
             Scribe_Values.Look(ref isShutdown, "isShutdown", false);
         }
@@ -110,45 +116,13 @@ namespace Fortified
         }
 
         // ── public API ────────────────────────────────────────────────────────────
+        /// <summary>永久關閉；已經關著時什麼都不做。Shuts down for good; does nothing if already off.</summary>
         public void ExecuteShutdown()
         {
+            if (isShutdown) return;
             isShutdown = true;
             UpdateDesiredPowerOutput();
-        }
-
-        /// <summary>
-        /// Restore power and reset CompHackable so the unit can be shut down again.
-        /// </summary>
-        public void ExecuteStartup()
-        {
-            isShutdown = false;
-
-            if (hackableComp != null)
-            {
-                FI_hacked.SetValue(hackableComp,  false);
-                FI_progress.SetValue(hackableComp, 0f);
-            }
-
-            UpdateDesiredPowerOutput();
-        }
-
-        // ── gizmos ────────────────────────────────────────────────────────────────
-        public override IEnumerable<Gizmo> CompGetGizmosExtra()
-        {
-            foreach (Gizmo g in base.CompGetGizmosExtra())
-                yield return g;
-
-            if (parent.Faction != Faction.OfPlayer || !isShutdown)
-                yield break;
-
-            // "Restore Power" — shown only while offline; no skill check required.
-            yield return new Command_Action
-            {
-                defaultLabel = "FFF_Substation_TurnOn".Translate(),
-                defaultDesc  = "FFF_Substation_TurnOnDesc".Translate(),
-                icon         = ContentFinder<Texture2D>.Get("UI/Commands/DesirePower"),
-                action       = ExecuteStartup
-            };
+            TryFlickOffNearestTagged();
         }
 
         // ── inspect string ────────────────────────────────────────────────────────
@@ -168,6 +142,41 @@ namespace Fortified
         }
 
         // ── helpers ───────────────────────────────────────────────────────────────
+        private void TryFlickOffNearestTagged()
+        {
+            string tag = Props.flickOffBuildingTag;
+            if (tag.NullOrEmpty() || !parent.Spawned) return;
+
+            IntVec3 origin = parent.Position;
+            List<CompFlickable> candidates = new List<CompFlickable>();
+            foreach (Thing t in parent.Map.listerThings.ThingsInGroup(ThingRequestGroup.BuildingArtificial))
+            {
+                if (t == parent) continue;
+                List<string> tags = t.def.building?.buildingTags;
+                if (tags == null || !tags.Contains(tag)) continue;
+                CompFlickable flickable = t.TryGetComp<CompFlickable>();
+                if (flickable == null || !flickable.SwitchIsOn) continue;
+                candidates.Add(flickable);
+            }
+            if (candidates.Count == 0) return;
+
+            // 先打亂再依距離排序，一樣近的就是隨機順序。Shuffle first so equally near candidates end up in random order.
+            candidates.Shuffle();
+            candidates.SortBy(f => f.parent.Position.DistanceToSquared(origin));
+            CompFlickable picked = candidates[Rand.Range(0, Math.Min(Props.flickOffNearestCount, candidates.Count))];
+
+            // wantSwitchOn 一起改，免得留下「想被打開」的待撥狀態。Keep wantSwitchOn in step so no pending flick back on is left.
+            picked.wantSwitchOn = false;
+            picked.SwitchIsOn = false;
+
+            // 還在迷霧裡的不帶玩家過去看，免得洩漏位置。Don't jump the camera to a building still under fog.
+            Thing building = picked.parent;
+            Messages.Message(
+                "FFF_Substation_FlickedOffMessage".Translate(parent.Named("SUBSTATION"), building.Named("BUILDING")),
+                building.Fogged() ? parent : building,
+                MessageTypeDefOf.PositiveEvent);
+        }
+
         private void TryApplyShock(Pawn hacker)
         {
             if (hacker.skills == null) return;

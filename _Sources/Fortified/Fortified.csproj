@@ -106,6 +106,7 @@
     </PackageReference>
 
     <Publicize Include="Assembly-CSharp:RimWorld.CompTargetable.selectedTarget" />
+    <Publicize Include="Assembly-CSharp:RimWorld.CompFlickable.wantSwitchOn" />
     <Publicize Include="Assembly-CSharp:RimWorld.LordToil_Siege.SetAsDefender" />
     <Publicize Include="Assembly-CSharp:Verse.RegionDirtyer.Notify_ThingAffectingRegionsSpawned" />
     <Publicize Include="Assembly-CSharp:Verse.RegionDirtyer.Notify_ThingAffectingRegionsDespawned" />
