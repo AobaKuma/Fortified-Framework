@@ -316,7 +316,7 @@ namespace Fortified
     public class CompProperties_ContinuousDamager : CompProperties
     {
         /// <summary>Which damage type to apply each hit.</summary>
-        public DamageDef damageDef = DamageDefOf.Blunt;
+        public DamageDef damageDef;
 
         /// <summary>Raw damage per hit (before armor).</summary>
         public float damageAmount = 50f;
@@ -364,6 +364,12 @@ namespace Fortified
         public CompProperties_ContinuousDamager()
         {
             compClass = typeof(CompContinuousDamager);
+        }
+
+        public override void ResolveReferences(ThingDef parentDef)
+        {
+            base.ResolveReferences(parentDef);
+            damageDef ??= DamageDefOf.Blunt;
         }
 
         public override IEnumerable<string> ConfigErrors(ThingDef parentDef)

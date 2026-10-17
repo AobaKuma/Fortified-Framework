@@ -23,7 +23,7 @@ namespace Fortified
         /// <summary>矩形偵測高度（以 parent 為中心，0 表示使用 radius）。</summary>
         public int scanHeight = 0;
         /// <summary>圓形偵測半徑（scanWidth/Height 為 0 時生效）。</summary>
-        public int radius = 0;
+        public float radius = 0f;
         /// <summary>是否受視線（LOS）影響。</summary>
         public bool requireLOS = true;
         /// <summary>
