@@ -179,6 +179,9 @@ namespace Fortified
                 controller.relations.AddDirectRelation(PawnRelationDefOf.Overseer, mech);
             }
 
+            // Non-player generation can cache unrestricted work types. Rebuild after either control path.
+            mech.Notify_DisabledWorkTypesChanged();
+
             // 释放机兵
             innerContainer.TryDropAll(Position, Map, ThingPlaceMode.Near);
 

@@ -160,6 +160,10 @@ namespace Fortified
 				return;
 			}
 
+			// PostMake can cache work capabilities before generation assigns the faction/story.
+			// Refresh capabilities as well as priorities when generation/spawn reapplies restrictions.
+			pawn.Notify_DisabledWorkTypesChanged();
+
 			List<WorkTypeDef> all = DefDatabase<WorkTypeDef>.AllDefsListForReading;
 			for (int i = 0; i < all.Count; i++)
 			{

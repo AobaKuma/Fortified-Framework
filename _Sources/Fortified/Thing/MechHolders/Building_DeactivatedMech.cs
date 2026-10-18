@@ -218,6 +218,8 @@ namespace Fortified
                             Pawn.GetOverseer()?.relations.RemoveDirectRelation(PawnRelationDefOf.Overseer, Pawn);
                         }
                     usedBy.relations.AddDirectRelation(PawnRelationDefOf.Overseer, Pawn);
+                    // Non-player generation can cache unrestricted work types. Rebuild after recruitment.
+                    Pawn.Notify_DisabledWorkTypesChanged();
                 }
                 innerContainer.TryDropAll(base.Position, base.Map, ThingPlaceMode.Near);
             }
