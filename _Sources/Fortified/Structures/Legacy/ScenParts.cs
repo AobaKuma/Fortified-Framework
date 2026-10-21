@@ -23,14 +23,22 @@ namespace Fortified.Structures
             if (map == null || !map.IsStartingMap || map.IsPocketMap) return;
             if (chooseFrom.NullOrEmpty()) return;
 
-            var layout = DefDatabase<StructureLayoutDef>.GetNamedSilentFail(chooseFrom.RandomElement());
-            if (layout == null) return;
+            string structureDefName = chooseFrom.RandomElement();
+            // Preserve layout precedence while supporting element-based structure defs.
+            IFFF_Structure structure = DefDatabase<StructureLayoutDef>.GetNamedSilentFail(structureDefName);
+            if (structure == null)
+                structure = DefDatabase<FFF_StructureDef>.GetNamedSilentFail(structureDefName);
+            if (structure == null)
+            {
+                Log.Warning($"[Fortified] Starting structure '{structureDefName}' was not found as either StructureLayoutDef or FFF_StructureDef. Check chooseFrom and the required mods.");
+                return;
+            }
                 
             IntVec3 pos = nearMapCenter ? map.Center : CellFinder.RandomCell(map);
             Rot4 rot = randomRotation ? Rot4.Random : Rot4.North;
             
             Faction fac = spawnPartOfEnemyFaction ? Find.FactionManager.RandomEnemyFaction() : Faction.OfPlayer;
-            FFF_StructureUtility.Generate(layout, pos, map, fac, rot, reconnectPower: false);
+            FFF_StructureUtility.Generate(structure, pos, map, fac, rot, reconnectPower: false);
 
             NotifyAndMovePawns(map, pos);
         }
