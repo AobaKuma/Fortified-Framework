@@ -1,4 +1,4 @@
-﻿using RimWorld;
+using RimWorld;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -161,6 +161,11 @@ namespace Fortified
             {
                 SpawnSingleProjectile(projectileDef);
             }
+
+            // 每發子母彈解體時只結算一次聲望（不是每顆子彈一次），
+            // 而且要趕在 Destroy() 之前——Destroy 之後 Map 就沒了。
+            ApplyGoodwillCorrection(GetAffectedCells());
+
             Destroy();
         }
 
@@ -172,8 +177,6 @@ namespace Fortified
 
             spawnedProjectile.Launch(this, ExactPosition, targetCell, targetCell, ProjectileHitFlags.All, 
                 preventFriendlyFire: false, ThingMaker.MakeThing(base.EquipmentDef));
-
-            ApplyGoodwillCorrection(affectedCells);
         }
 
         private List<IntVec3> GetAffectedCells()
@@ -182,31 +185,54 @@ namespace Fortified
             return GenRadial.RadialCellsAround(base.DestinationCell, errorRange, useCenter: true).ToList();
         }
 
+        /// <summary>
+        /// 撒佈範圍內被波及的非敵對勢力扣好感。
+        /// 只對「玩家發射」的子母彈生效：敵方打過來的彈不該動玩家與中立勢力的關係。
+        /// 同一個勢力每次解體只扣一次（多個 pawn 不重複扣）。
+        /// </summary>
         private void ApplyGoodwillCorrection(List<IntVec3> cells)
         {
+            Faction attacker = launcher?.Faction;
+            if (attacker == null || !attacker.IsPlayer)
+            {
+                return;
+            }
+
+            HashSet<Faction> corrected = new HashSet<Faction>();
             foreach (IntVec3 cell in cells)
             {
                 List<Thing> thingList = cell.GetThingList(base.Map);
                 foreach (Thing thing in thingList)
                 {
-                    if (thing is Pawn pawn)
-                    {
-                        CorrectPawnGoodwill(pawn);
-                    }
+                    if (!(thing is Pawn pawn)) { continue; }
+                    if (pawn.Dead || pawn.Faction == null) { continue; }
+                    if (!corrected.Add(pawn.Faction)) { continue; }
+
+                    CorrectPawnGoodwill(pawn.Faction);
                 }
             }
         }
 
-        private void CorrectPawnGoodwill(Pawn pawn)
+        /// <summary>
+        /// 對單一勢力扣固定好感。
+        /// 舊版是「把關係壓到 -10」：
+        /// <c>-GoodwillPenalty - baseGoodwill + GoodwillWith(faction)</c>，
+        /// 對 +80 的勢力等於一次扣掉 90 點，明顯不是原意 → 改成純扣 <see cref="GoodwillPenalty"/>。
+        /// </summary>
+        private void CorrectPawnGoodwill(Faction faction)
         {
-            if (pawn.Dead || pawn.Faction == null || pawn.Faction.IsPlayer || pawn.Faction.HostileTo(launcher.Faction))
+            if (faction == null || faction.IsPlayer)
             {
                 return;
             }
 
-            FactionRelation factionRelation = pawn.Faction.RelationWith(launcher.Faction);
-            int goodwillChange = -GoodwillPenalty - factionRelation.baseGoodwill + pawn.Faction.GoodwillWith(launcher.Faction);
-            pawn.Faction.TryAffectGoodwillWith(launcher.Faction, goodwillChange);
+            Faction attacker = launcher?.Faction;
+            if (attacker == null || faction.HostileTo(attacker))
+            {
+                return;
+            }
+
+            faction.TryAffectGoodwillWith(attacker, -GoodwillPenalty);
         }
 
         private int CalculateDistance(Vector3 from, Vector3 to)
