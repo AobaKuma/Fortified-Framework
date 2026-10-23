@@ -54,7 +54,7 @@ namespace Fortified
         {
             if (factionDef == null || sitePartDef == null) return false;
             if (Find.FactionManager.FirstFactionOfDef(factionDef) == null) return false;
-            return TileFinder.TryFindNewSiteTile(out _, exitOnFirstTileFound: true);
+            return FFF_SiteTileUtility.TryFindNewSiteTile(out _, exitOnFirstTileFound: true);
         }
 
         protected override void RunInt()
@@ -82,7 +82,8 @@ namespace Fortified
                 timeoutTicks = FFF_TimedSiteUtility.QuestTimeoutTicks(baseTimeoutDays, minTimeoutDays, maxTimeoutDays);
             }
 
-            if (!TileFinder.TryFindNewSiteTile(out PlanetTile tile))
+            // 避開地標地塊，見 FFF_SiteTileUtility。Keep off landmark tiles, see FFF_SiteTileUtility.
+            if (!FFF_SiteTileUtility.TryFindNewSiteTile(out PlanetTile tile))
             {
                 Log.Error("[FortifiedFramework] QuestNode_Root_FFF_TimedHostileSite: failed to find a site tile.");
                 return;

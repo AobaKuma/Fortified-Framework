@@ -2,7 +2,11 @@
 <Defs>
   <WorldGenStepDef>
     <defName>FFF_SpawnWorldObjects</defName>
-    <order>80</order> <!-- After settlements and basic stuff -->
+    <!-- 必須在 Factions（500）之後：站點要用 spawnPartOfFaction 指定的派系，太早跑時派系還不存在，站點會沒有派系。
+         也要在 Landmarks（650）之前：地標會避開已有站點的地塊。
+         Must run after Factions (500): sites take their spawnPartOfFaction, which doesn't exist yet any earlier (the
+         site ended up with no faction). And before Landmarks (650), which keep off tiles that already hold a site. -->
+    <order>550</order>
     <worldGenStep Class="Fortified.Structures.WorldGenStep_FFFSpawnWorldObjects"/>
   </WorldGenStepDef>
 </Defs>

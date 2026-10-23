@@ -130,7 +130,7 @@ namespace Fortified.Structures
             IntVec3 center = hasLastStructure ? lastStructureRect.CenterCell : map.Center;
             if (!center.InBounds(map)) center = map.Center;
 
-            Faction faction = map.ParentFaction ?? parms.sitePart?.site?.Faction;
+            Faction faction = ResolveFaction(map, parms);
 
             // 先散布衛星，再放中央件與守軍 —— 這樣 SpawnCenterpiece 的
             // "layout already has one" 檢查看到的是完整地圖狀態。

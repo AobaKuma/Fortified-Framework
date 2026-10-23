@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- Readiness: defaults used when a ReadinessDef leaves its text empty. {0} = faction name, {1} = level label. -->
+  <FFF_Readiness_LevelN>Level {0}</FFF_Readiness_LevelN>
+  <FFF_Readiness_RiseLabel>{0} on alert</FFF_Readiness_RiseLabel>
+  <FFF_Readiness_RiseText>Recent events have pushed {0} to raise its readiness to {1}.</FFF_Readiness_RiseText>
+  <FFF_Readiness_DropLabel>{0} stands down</FFF_Readiness_DropLabel>
+  <FFF_Readiness_DropText>With things quieting down, {0} has lowered its readiness to {1}.</FFF_Readiness_DropText>
+  <FFF_Readiness_AlertLabel>{0}: {1}</FFF_Readiness_AlertLabel>
+  <FFF_Readiness_AlertExplanation>{0} is currently at {1}.</FFF_Readiness_AlertExplanation>
+  <FFF_Readiness_AtWar>It is at war with {0}.</FFF_Readiness_AtWar>
+  <FFF_Readiness_DropIn>If nothing provokes it further, it will stand down in {0}.</FFF_Readiness_DropIn>
+  <FFF_Readiness_Pressure>It is {0} of the way to the next level.</FFF_Readiness_Pressure>
+
+  <!-- War. {0} = this faction, {1} = target faction. -->
+  <FFF_Readiness_WarLabel>War declared</FFF_Readiness_WarLabel>
+  <FFF_Readiness_WarText>{0} has declared war on {1} and will send its forces against {1}'s settlements.</FFF_Readiness_WarText>
+  <FFF_Readiness_WarOverLabel>War ended</FFF_Readiness_WarOverLabel>
+  <FFF_Readiness_WarOverText>{0} has announced the end of its campaign against {1}, and its forces are returning to their usual posture.</FFF_Readiness_WarOverText>
+
+  <!-- Takeover. {0} = this faction, {1} = former owner, {2} = old name, {3} = new name. -->
+  <FFF_Readiness_TakeoverLabel>Settlement taken</FFF_Readiness_TakeoverLabel>
+  <FFF_Readiness_TakeoverText>{0} has taken {2} from {1} and renamed the settlement {3}.</FFF_Readiness_TakeoverText>
+
+  <!-- Companies. -->
+  <!-- {0} = faction, {1} = company type, {2} = target settlement. -->
+  <FFF_Company_DescTarget>This {1} belongs to {0} and is likely targeting {2} within its combat radius.</FFF_Company_DescTarget>
+  <FFF_Company_DescNoTarget>This {1} belongs to {0}, and its target is unknown.</FFF_Company_DescNoTarget>
+  <FFF_Company_RaidLabel>Attack: {0}</FFF_Company_RaidLabel>
+  <FFF_Company_RaidText>The {1} of {0} is moving on your colony, and its platoons will attack from several directions.</FFF_Company_RaidText>
+
+  <!-- Patrols. {0} = faction. -->
+  <FFF_ReadinessPatrol_Label>Reinforcements</FFF_ReadinessPatrol_Label>
+  <FFF_ReadinessPatrol_Text>A patrol of {0} has reached this site, and follow-up units will now arrive more quickly.</FFF_ReadinessPatrol_Text>
+
+  <!-- Permanent hostility. {0} = faction. -->
+  <FFF_Readiness_PermanentHostilityLabel>{0}: permanent enemy</FFF_Readiness_PermanentHostilityLabel>
+  <FFF_Readiness_PermanentHostilityText>You have pushed {0} too far: it has marked your colony as a permanent enemy and will never stand down again.</FFF_Readiness_PermanentHostilityText>
+
+</LanguageData>

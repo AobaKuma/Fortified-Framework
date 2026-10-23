@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- 戒備系統：ReadinessDef 未填文字時使用。{0} = 派系名稱，{1} = 等級標籤。 -->
+  <FFF_Readiness_LevelN>{0} 級</FFF_Readiness_LevelN>
+  <FFF_Readiness_RiseLabel>{0}戒備提升</FFF_Readiness_RiseLabel>
+  <FFF_Readiness_RiseText>由於近期發生的事件，{0}將戒備等級提高至{1}。</FFF_Readiness_RiseText>
+  <FFF_Readiness_DropLabel>{0}戒備降低</FFF_Readiness_DropLabel>
+  <FFF_Readiness_DropText>隨著局勢趨於平靜，{0}將戒備等級降低至{1}。</FFF_Readiness_DropText>
+  <FFF_Readiness_AlertLabel>{0}：{1}</FFF_Readiness_AlertLabel>
+  <FFF_Readiness_AlertExplanation>{0}目前處於{1}。</FFF_Readiness_AlertExplanation>
+  <FFF_Readiness_AtWar>目前正與{0}交戰。</FFF_Readiness_AtWar>
+  <FFF_Readiness_DropIn>若沒有新的挑釁，將於{0}後降低戒備。</FFF_Readiness_DropIn>
+  <FFF_Readiness_Pressure>距離下一級已累積{0}。</FFF_Readiness_Pressure>
+
+  <FFF_Readiness_WarLabel>宣戰</FFF_Readiness_WarLabel>
+  <FFF_Readiness_WarText>{0}已向{1}宣戰，其部隊將對{1}的聚落展開行動。</FFF_Readiness_WarText>
+  <FFF_Readiness_WarOverLabel>行動結束</FFF_Readiness_WarOverLabel>
+  <FFF_Readiness_WarOverText>{0}宣布針對{1}的軍事行動已經結束，部隊正回到原本的部署。</FFF_Readiness_WarOverText>
+
+  <FFF_Readiness_TakeoverLabel>接管</FFF_Readiness_TakeoverLabel>
+  <FFF_Readiness_TakeoverText>{0}接管了原屬於{1}的{2}，並將其更名為{3}。</FFF_Readiness_TakeoverText>
+
+  <!-- {0} = faction, {1} = company type, {2} = target settlement. -->
+  <FFF_Company_DescTarget>這支{1}隸屬於{0}，目標很可能是作戰半徑內的{2}。</FFF_Company_DescTarget>
+  <FFF_Company_DescNoTarget>這支{1}隸屬於{0}，目標不明。</FFF_Company_DescNoTarget>
+  <FFF_Company_RaidLabel>進攻：{0}</FFF_Company_RaidLabel>
+  <FFF_Company_RaidText>隸屬於{0}的{1}正朝你的殖民地推進，各排將從不同方向發起進攻。</FFF_Company_RaidText>
+
+  <FFF_ReadinessPatrol_Label>增援</FFF_ReadinessPatrol_Label>
+  <FFF_ReadinessPatrol_Text>一支{0}的巡邏部隊已抵達此處，後續部隊將更快陸續增援。</FFF_ReadinessPatrol_Text>
+
+  <!-- Permanent hostility. {0} = faction. -->
+  <FFF_Readiness_PermanentHostilityLabel>{0}：永久敵對</FFF_Readiness_PermanentHostilityLabel>
+  <FFF_Readiness_PermanentHostilityText>你把{0}逼得太緊了，它已將你的殖民地登記為永久敵對目標，從此不會再停火。</FFF_Readiness_PermanentHostilityText>
+
+</LanguageData>

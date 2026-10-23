@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <!--
+    1.6 起世界生成只跑各星球層 worldGenSteps 列出的步驟，光有 WorldGenStepDef 不會執行。把 FFF 的世界站點生成加進地表層，
+    才會依 SpawnAtWorldGen 放下站點（order 550：派系之後、地標之前）。
+    Since 1.6 world generation only runs the steps a planet layer lists in worldGenSteps; a WorldGenStepDef alone never
+    runs. Add FFF's world-site spawner to the surface layer so SpawnAtWorldGen sites are placed (order 550: after
+    factions, before landmarks).
+  -->
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/PlanetLayerDef[defName="Surface"]/worldGenSteps</xpath>
+    <value>
+      <li>FFF_SpawnWorldObjects</li>
+    </value>
+  </Operation>
+</Patch>

@@ -214,6 +214,31 @@ namespace Fortified.Structures
             return false;
         }
 
+        /// <summary>
+        /// 佈局裡的屍體元素：照原版 SymbolResolver_DesiccatedCorpses 生成同種族的 pawn、殺掉、清掉裝備，做成乾屍。
+        /// 找不到對應種族時回傳 null（略過）。
+        /// A corpse element in a layout: like vanilla's SymbolResolver_DesiccatedCorpses, generate a pawn of the matching
+        /// race, kill it, strip its gear and dry it out. Returns null (skipped) when no race matches.
+        /// </summary>
+        public static Corpse MakeDesiccatedCorpse(ThingDef corpseDef, Map map)
+        {
+            ThingDef race = DefDatabase<ThingDef>.AllDefsListForReading.FirstOrDefault(d => d.race != null && d.race.corpseDef == corpseDef);
+            PawnKindDef kind = race == null ? null : DefDatabase<PawnKindDef>.AllDefsListForReading.Where(k => k.race == race).RandomElementWithFallback();
+            if (kind == null) return null;
+            Pawn pawn = PawnGenerator.GeneratePawn(new PawnGenerationRequest(kind, null, PawnGenerationContext.NonPlayer, map.Tile,
+                allowDead: true, canGeneratePawnRelations: false, allowFood: false, forceNoIdeo: true, forceNoBackstory: true, forbidAnyTitle: true));
+            if (!pawn.Dead) pawn.Kill(null, null);
+            pawn.inventory?.DestroyAll();
+            pawn.equipment?.DestroyAllEquipment();
+            if (pawn.relations != null) pawn.relations.hidePawnRelations = true;
+            Corpse corpse = pawn.Corpse;
+            if (corpse == null) return null;
+            corpse.Age = Rand.Range(180000000, 720000000);
+            CompRottable rot = corpse.GetComp<CompRottable>();
+            if (rot != null) rot.RotProgress += corpse.Age;
+            return corpse;
+        }
+
         /// <summary>目前登記的 UsedRects 快照（生成期以外回傳空清單）。Snapshot of the registered UsedRects; empty outside generation.</summary>
         public static List<CellRect> CurrentUsedRects(Map map)
         {
@@ -377,7 +402,10 @@ namespace Fortified.Structures
                         continue;
                     }
 
-                    Thing thing = skThing.Instantiate();
+                    // 屍體不能直接 Instantiate（沒有內部 pawn，生成時會報 "spawned in bugged state"）。
+                    // A corpse can't be instantiated bare (no inner pawn; it spawns "in bugged state").
+                    Thing thing = skThing.def.IsCorpse ? MakeDesiccatedCorpse(skThing.def, map) : skThing.Instantiate();
+                    if (thing == null) continue;
                     if (faction != null && thing.def.CanHaveFaction)
                         thing.SetFactionDirect(faction);
 

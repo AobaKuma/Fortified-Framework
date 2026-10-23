@@ -175,10 +175,9 @@ public class HuntdownDef : Def
     public string AlertExplanation => TextOrKey(alertExplanation, "FFF_Huntdown_AlertExplanation");
     public string AlertExplanationCritical => TextOrKey(alertExplanationCritical, "FFF_Huntdown_AlertExplanationCritical");
 
-    private static string TextOrKey(string text, string key)
-    {
-        return text.NullOrEmpty() ? key.Translate().RawText : text;
-    }
+    // 欄位可直接寫字，也可寫 Keyed 鍵（能翻譯就翻譯），與 ReadinessDef 相同；空白時用 FFF 預設鍵。
+    // A field may be literal text or a Keyed key (translated when it resolves), as in ReadinessDef; empty uses FFF's key.
+    private static string TextOrKey(string text, string key) => ReadinessUtility.KeyOrText(text, key);
 
     public override IEnumerable<string> ConfigErrors()
     {

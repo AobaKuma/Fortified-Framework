@@ -26,6 +26,26 @@ namespace Fortified.Structures
         public bool randomRotation = false;
         public IntRange randomOffset = new IntRange(0, 5);
 
+        /// <summary>
+        /// 生成主結構後套用符合的 StructureAugmentDef（預警設施等增補）。只想要原始佈局時關掉。
+        /// Apply matching StructureAugmentDefs (early-warning gear and other add-ons) after the main structure. Off: layout only.
+        /// </summary>
+        public bool applyAugments = true;
+
+        /// <summary>
+        /// 結構、守軍、殘骸、衛星一律歸這個派系，不看站點或地圖的派系（站點可能被玩家接手、或缺派系）。
+        /// Structure, garrison, debris and satellites always go to this faction, whatever the site's or map's faction
+        /// (a site can be taken over by the player or lack a faction).
+        /// </summary>
+        public FactionDef forcedFaction;
+
+        /// <summary>這次生成用的派系：forcedFaction，否則站點派系，否則地圖派系。The faction for this run: forcedFaction, else the site's, else the map's.</summary>
+        protected Faction ResolveFaction(Map map, GenStepParams parms)
+        {
+            Faction forced = forcedFaction != null ? Find.FactionManager.FirstFactionOfDef(forcedFaction) : null;
+            return forced ?? parms.sitePart?.site?.Faction ?? map.ParentFaction;
+        }
+
         // 本次生成的主结构落点，供子类（例如卫星散布）使用。
         // Where the main structure landed this run, for subclasses such as satellite scatter.
         protected IFFF_Structure lastStructureDef;
@@ -57,7 +77,7 @@ namespace Fortified.Structures
             if (map == null) return;
 
             IntVec3 center = CalculateCenter(map);
-            Faction faction = map.ParentFaction ?? parms.sitePart?.site?.Faction;
+            Faction faction = ResolveFaction(map, parms);
 
             // 优先尝试复合结构
             FFF_CompoundStructureDef compoundDef = ResolveCompoundDef();
@@ -76,6 +96,7 @@ namespace Fortified.Structures
                     // 複合結構過去會直接 return，導致 filthTypes 與 symbolResolvers 靜默失效。
                     // The compound path used to return early, silently dropping filth and resolvers.
                     HandlePostScatter(map, compoundRect);
+                    if (applyAugments) StructureAugmentUtility.Apply(map, compoundRect, compoundDef, useTag, faction, parms);
                 }
                 return;
             }
@@ -107,6 +128,7 @@ namespace Fortified.Structures
             // reconnectPower: false —— 生成期不強制刷新電網，見 Generate 的參數說明。
             FFF_StructureUtility.Generate(def, center, map, faction, rot, reconnectPower: false);
             HandlePostScatter(map, lastStructureRect);
+            if (applyAugments) StructureAugmentUtility.Apply(map, lastStructureRect, def, useTag, faction, parms);
         }
 
         /// <summary>
@@ -242,14 +264,29 @@ namespace Fortified.Structures
             }
 
             // 2. 处理 SymbolResolvers (KCSG 兼容)
+            // BaseGen 需要先指定地圖，否則 Generate 只會報「null map」什麼都不做。kcsg_* 符號來自 VEF 的 KCSG，
+            // 沒載入時找不到對應的 RuleDef，逐一略過而不是讓整串報錯。
+            // BaseGen needs the map set first, or Generate only logs "null map". kcsg_* symbols come from VEF's KCSG;
+            // without it they have no RuleDef, so skip them one by one instead of failing the whole stack.
             if (!symbolResolvers.NullOrEmpty())
             {
                 var rp = new RimWorld.BaseGen.ResolveParams { rect = rect };
+                int pushed = 0;
                 foreach (string resolver in symbolResolvers)
                 {
+                    if (!DefDatabase<RimWorld.RuleDef>.AllDefsListForReading.Any(r => r.symbol == resolver))
+                    {
+                        if (Prefs.DevMode) Log.WarningOnce($"[FortifiedFramework] Symbol resolver '{resolver}' has no RuleDef (KCSG not loaded?); skipped.", resolver.GetHashCode());
+                        continue;
+                    }
                     RimWorld.BaseGen.BaseGen.symbolStack.Push(resolver, rp, null);
+                    pushed++;
                 }
-                RimWorld.BaseGen.BaseGen.Generate();
+                if (pushed > 0)
+                {
+                    RimWorld.BaseGen.BaseGen.globalSettings.map = map;
+                    RimWorld.BaseGen.BaseGen.Generate();
+                }
             }
         }
 

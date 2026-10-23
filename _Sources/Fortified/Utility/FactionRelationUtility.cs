@@ -31,6 +31,8 @@ namespace Fortified
             if (faction == null || other == null || faction == other) return false;
             if (!faction.HasGoodwill || !other.HasGoodwill) return false;
             if (faction.defeated || other.defeated) return false;
+            // 永久敵對鎖（FactionHostilityLock）：鎖住的一對不能被強制改回。Locked pairs can't be forced back.
+            if (FactionHostilityLock.BlocksForcing(faction, other)) return false;
             if (faction.def.permanentEnemy || other.def.permanentEnemy) return false;
             if (faction.def.permanentEnemyToEveryoneExceptPlayer && !other.IsPlayer) return false;
             if (other.def.permanentEnemyToEveryoneExceptPlayer && !faction.IsPlayer) return false;

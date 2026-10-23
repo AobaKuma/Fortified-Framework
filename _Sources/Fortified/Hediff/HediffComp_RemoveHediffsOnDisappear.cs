@@ -20,7 +20,8 @@ namespace Fortified
             {
                 if (Pawn.health.hediffSet.HasHediff(extension.hediffs[i].hediffDef))
                 {
-                    Pawn.health.RemoveHediff(Pawn.health.hediffSet.GetFirstHediffOfDef(extension.hediffs[i].hediffDef));
+                    // 死亡通知期間只排隊，避免原版迴圈索引越界。Queued during death notifications so vanilla's loop stays in range.
+                    DeferredHediffRemoval.Remove(Pawn, Pawn.health.hediffSet.GetFirstHediffOfDef(extension.hediffs[i].hediffDef));
                 }
             }
         }
