@@ -126,15 +126,47 @@ namespace Fortified
         }
 
         // ── tick ──────────────────────────────────────────────────────────────────
+        /// <summary>
+        /// 完整邏輯每 <see cref="UpdateInterval"/> tick 才跑一次（依建築雜湊錯開），電量依實際經過 tick 數結算。
+        /// 斷電／開關訊號會標記 <see cref="dirty"/>，下一 tick 立刻處理，切換自供電不會延遲。
+        /// Full logic runs every UpdateInterval ticks (hash-staggered) with energy scaled by elapsed ticks;
+        /// power/flick signals mark the comp dirty so switch-over still happens on the next tick.
+        /// </summary>
+        private const int UpdateInterval = 60;
+        private bool dirty = true;
+        private int  lastUpdateTick = -1;
+
+        public override void ReceiveCompSignal(string signal)
+        {
+            base.ReceiveCompSignal(signal);
+            switch (signal)
+            {
+                case "PowerTurnedOff":
+                case "PowerTurnedOn":
+                case "FlickedOff":
+                case "FlickedOn":
+                case "ScheduledOff":
+                case "ScheduledOn":
+                    dirty = true;
+                    break;
+            }
+        }
         public override void CompTick()
         {
             base.CompTick();
 
+            if (!dirty && !parent.IsHashIntervalTick(UpdateInterval)) return;
             if (!parent.Spawned) return;
+
+            int now = Find.TickManager.TicksGame;
+            int elapsed = lastUpdateTick < 0 ? 1 : Mathf.Clamp(now - lastUpdateTick, 1, UpdateInterval);
+            lastUpdateTick = now;
+            dirty = false;
+            float tickFactor = WattsToWattDaysPerTick * elapsed;
 
             if (Standby)
             {
-                StandbyTick();
+                StandbyTick(elapsed);
                 return;
             }
             standbyChargeWattsLast = 0f;
@@ -148,8 +180,7 @@ namespace Fortified
                         ExitSelfPowered();
                         return;
                     }
-                    float consumePerTick = Props.PowerConsumption * WattsToWattDaysPerTick;
-                    storedEnergy -= consumePerTick;
+                    storedEnergy -= Props.PowerConsumption * tickFactor;
                     if (storedEnergy <= 0f)
                     {
                         storedEnergy = 0f;
@@ -165,9 +196,12 @@ namespace Fortified
                         PowerOn = false;
                         return;
                     }
-                    float chargePerTick = BatteryProps.chargeRateWatts * WattsToWattDaysPerTick;
-                    storedEnergy = Mathf.Min(storedEnergy + chargePerTick, BatteryProps.internalBatteryMax);
-                    SyncPowerOutput();
+                    if (storedEnergy < BatteryProps.internalBatteryMax)
+                    {
+                        float charge = BatteryProps.chargeRateWatts * tickFactor;
+                        storedEnergy = Mathf.Min(storedEnergy + charge, BatteryProps.internalBatteryMax);
+                        SyncPowerOutput();
+                    }
                 }
             }
             else
@@ -194,7 +228,7 @@ namespace Fortified
         /// 待機（開關關閉）：不運作、不自供電，只向電網充電。
         /// 原版收到 FlickedOff 時已把 PowerOn 設為 false；這裡確保不會被自供電邏輯重新拉起。
         /// </summary>
-        private void StandbyTick()
+        private void StandbyTick(int elapsed)
         {
             if (selfPowered)
             {
@@ -213,25 +247,26 @@ namespace Fortified
             if (net == null) return;
             if (parent.Map.gameConditionManager.ElectricityDisabled(parent.Map)) return;
 
-            float wantPerTick = Mathf.Min(StandbyChargeWatts * WattsToWattDaysPerTick, max - storedEnergy);
-            if (wantPerTick <= 0f) return;
+            float tickFactor = WattsToWattDaysPerTick * elapsed;
+            float want = Mathf.Min(StandbyChargeWatts * tickFactor, max - storedEnergy);
+            if (want <= 0f) return;
 
-            float got = DrawFromNet(net, wantPerTick);
+            float got = DrawFromNet(net, want, elapsed);
             if (got <= 0f) return;
 
             storedEnergy = Mathf.Min(storedEnergy + got, max);
-            standbyChargeWattsLast = got / WattsToWattDaysPerTick;
+            standbyChargeWattsLast = got / tickFactor;
         }
         /// <summary>
         /// 直接向電網索取電量（Wd），回傳實際取得量。
-        /// 有電池的電網從電池抽；沒電池的電網取用當下的發電盈餘。
+        /// 有電池的電網從電池抽；沒電池的電網取用這段期間（elapsed tick）的發電盈餘。
         /// </summary>
-        private static float DrawFromNet(PowerNet net, float amount)
+        private static float DrawFromNet(PowerNet net, float amount, int elapsed)
         {
             List<CompPowerBattery> bats = net.batteryComps;
             if (bats.Count == 0)
             {
-                return Mathf.Clamp(net.CurrentEnergyGainRate(), 0f, amount);
+                return Mathf.Clamp(net.CurrentEnergyGainRate() * elapsed, 0f, amount);
             }
             float remaining = amount;
             for (int i = 0; i < bats.Count && remaining > 1E-07f; i++)
