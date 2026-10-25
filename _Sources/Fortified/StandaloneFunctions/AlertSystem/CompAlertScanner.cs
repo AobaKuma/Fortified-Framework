@@ -24,7 +24,12 @@ namespace Fortified
         public int scanHeight = 0;
         /// <summary>圓形偵測半徑（scanWidth/Height 為 0 時生效）。</summary>
         public float radius = 0f;
-        /// <summary>是否受視線（LOS）影響。</summary>
+        /// <summary>
+        /// 是否受視線（LOS）影響。<br/>
+        /// 受視線影響的掃描器也會被煙霧（<see cref="GasType.BlindSmoke"/>）遮蔽：掃描器所在格、目標所在格或兩者之間的視線上有煙霧就看不到。
+        /// Whether line of sight matters. Line-of-sight scanners are also blinded by smoke (<see cref="GasType.BlindSmoke"/>):
+        /// smoke on the scanner's cell, the target's cell or the line between them hides the target.
+        /// </summary>
         public bool requireLOS = true;
         /// <summary>
         /// 是否能看穿心理隱身（<see cref="PawnUtility.IsPsychologicallyInvisible"/>）。<br/>
@@ -32,6 +37,13 @@ namespace Fortified
         /// 掛 <see cref="ModExtension_AlertScannerImmunity"/> 的 Hediff 不受此開關影響，一律豁免。
         /// </summary>
         public bool detectsInvisible = false;
+        /// <summary>
+        /// 是否偵測飛行單位：原版飛行中的 Pawn（<see cref="Pawn.Flying"/>）與掛 <see cref="CompProperties_Floating"/> 的懸浮單位。<br/>
+        /// 預設 true。震動傳感器這類靠地面震動偵測的掃描器設為 false。
+        /// Whether flying units are detected: pawns in vanilla flight (<see cref="Pawn.Flying"/>) and hovering pawns with
+        /// <see cref="CompProperties_Floating"/>. Default true; ground-vibration sensors set it false.
+        /// </summary>
+        public bool detectsFlying = true;
 
         // ── 旋轉補正（Attachment 用）────────────────────────────
         /// <summary>
@@ -114,6 +126,8 @@ namespace Fortified
         private int geoCacheRot = -1;
         /// <summary>下次重建 LOS 快取的 tick。</summary>
         private int nextLosCacheTick = -1;
+        /// <summary>煙霧視線判定用的格子驗證器（首次使用時建立，避免每次掃描配置閉包）。</summary>
+        private System.Func<IntVec3, bool> smokeFreeCell;
 
         // ── 狀態 ────────────────────────────────────────────────
         private bool detecting = false;          // 目前是否偵測到威脅
@@ -138,6 +152,9 @@ namespace Fortified
         private bool IsOperational => AlertBuildingUtility.IsOperational(cachedPower, cachedStunnable, cachedDormant);
 
         private bool IsArmed => rearmTicksLeft <= 0;
+
+        /// <summary>這種傷害會讓它暈眩（有 CompStunnable 且列在 affectedDamageDefs）。This damage will stun it (listed in its CompStunnable's affectedDamageDefs).</summary>
+        private bool WillBeStunnedBy(DamageDef def) => def.causeStun && cachedStunnable != null && cachedStunnable.CanBeStunnedByDamage(def);
 
         // ── 生命週期 ────────────────────────────────────────────
         public override void PostSpawnSetup(bool respawningAfterLoad)
@@ -175,10 +192,17 @@ namespace Fortified
                 rearmTicksLeft--;
             }
 
-            // 觸發倒數
+            // 觸發倒數。倒數中斷電、被 EMP 暈眩或休眠就取消，不然癱瘓掃描器也擋不住已經開始的倒數。
+            // A countdown in progress is called off once the scanner goes offline (power cut, EMP stun, dormant);
+            // otherwise disabling it couldn't stop an alarm that was already counting down.
             if (countingDown)
             {
-                if (countdownTicksLeft > 0)
+                if (!IsOperational)
+                {
+                    countingDown = false;
+                    countdownTicksLeft = 0;
+                }
+                else if (countdownTicksLeft > 0)
                 {
                     countdownTicksLeft--;
                 }
@@ -216,6 +240,13 @@ namespace Fortified
         {
             base.PostPreApplyDamage(ref dinfo, out absorbed);
             if (!IsOperational || !IsArmed) return;
+            // EMP、煙霧這類不傷血的傷害，以及會讓它暈眩的傷害，都不算遭受攻擊。原版 Building.PreApplyDamage
+            // 先跑各 Comp 的 PostPreApplyDamage、之後才套用暈眩，所以這裡還看不到這次 EMP 造成的暈眩；
+            // 不擋掉的話，用 EMP 癱瘓掃描器反而會照 attackTriggerChance 觸發警報。
+            // Damage that doesn't harm health (EMP, smoke...) or that will stun the scanner isn't an attack. Vanilla
+            // Building.PreApplyDamage runs the comps' PostPreApplyDamage before it applies the stun, so this EMP's stun
+            // isn't visible yet; without this, knocking a scanner out with an EMP would roll attackTriggerChance itself.
+            if (!dinfo.Def.harmsHealth || WillBeStunnedBy(dinfo.Def)) return;
             if (Rand.Chance(Props.attackTriggerChance))
             {
                 BeginCountdownOrFire();
@@ -365,19 +396,40 @@ namespace Fortified
         }
 
         /// <summary>
-        /// 隱身／潛行豁免：心理隱身（除非 detectsInvisible）與掛
-        /// <see cref="ModExtension_AlertScannerImmunity"/> 的 Hediff 會讓 Pawn 躲過掃描；
+        /// 豁免判定：飛行單位（detectsFlying 為 false 時）、被煙霧遮住視線（requireLOS 時）、心理隱身（除非 detectsInvisible）
+        /// 與掛 <see cref="ModExtension_AlertScannerImmunity"/> 的 Hediff 都會讓 Pawn 躲過掃描；
         /// detectionChance 介於 0~1 時每次掃描擲一次骰。
-        /// Stealth exemption: psychologically invisible pawns (unless detectsInvisible) and pawns carrying a hediff
-        /// with <see cref="ModExtension_AlertScannerImmunity"/> slip past the scan; a partial detectionChance is
-        /// rolled once per scan.
+        /// Exemptions: flying units (when detectsFlying is false), targets hidden by smoke (with requireLOS),
+        /// psychologically invisible pawns (unless detectsInvisible) and pawns carrying a hediff with
+        /// <see cref="ModExtension_AlertScannerImmunity"/> slip past the scan; a partial detectionChance is rolled once per scan.
         /// </summary>
         private bool CanDetect(Pawn pawn)
         {
+            if (!Props.detectsFlying && IsFlying(pawn)) return false;
+            if (Props.requireLOS && IsHiddenBySmoke(pawn.Position)) return false;
+
             float chance = ModExtension_AlertScannerImmunity.GetDetectionChance(pawn, Props.detectsInvisible);
             if (chance >= 1f) return true;
             if (chance <= 0f) return false;
             return Rand.Chance(chance);
+        }
+
+        /// <summary>原版飛行中，或是 FFF 懸浮單位。In vanilla flight, or an FFF hovering unit.</summary>
+        private static bool IsFlying(Pawn pawn) => pawn.Flying || FloatingTracker.IsFloating(pawn);
+
+        /// <summary>
+        /// 比照原版砲塔索敵（TargetScanFlags.LOSBlockableByGas）：掃描器所在格、目標所在格或兩者之間的視線上有煙霧就看不到。
+        /// 煙霧隨時在變，所以不放進 LOS 快取，只在掃到敵人時才逐條檢查。
+        /// Mirrors vanilla turret targeting (TargetScanFlags.LOSBlockableByGas): smoke on the scanner's cell, the target's
+        /// cell or the line between them hides the target. Smoke shifts constantly, so this stays out of the LOS cache
+        /// and is only traced once a hostile is found.
+        /// </summary>
+        private bool IsHiddenBySmoke(IntVec3 target)
+        {
+            Map m = parent.Map;
+            if (parent.Position.AnyGas(m, GasType.BlindSmoke) || target.AnyGas(m, GasType.BlindSmoke)) return true;
+            smokeFreeCell ??= c => !c.AnyGas(parent.Map, GasType.BlindSmoke);
+            return !GenSight.LineOfSight(parent.Position, target, m, true, smokeFreeCell);
         }
 
         // ── 掃描格快取 ───────────────────────────────────────────
