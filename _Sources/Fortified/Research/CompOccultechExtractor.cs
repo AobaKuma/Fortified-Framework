@@ -1,5 +1,6 @@
-using System.Collections.Generic;
 using RimWorld;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Verse;
 
@@ -17,7 +18,10 @@ namespace Fortified
         /// 搜尋知識源的方式。true（預設）＝只認正面對準的那一排格；
         /// false ＝掃描整圈相鄰格（含側面與背面）。
         /// </summary>
+        ///
         public bool requireFacing = true;
+
+        public CellRect extractionRect;
 
         /// <summary>
         /// 需要電力才能運作。設為 false 時即使沒有 CompPowerTrader（或斷電）也持續運作。
@@ -47,6 +51,62 @@ namespace Fortified
             {
                 yield return $"{nameof(CompProperties_OccultechExtractor)} requires tickerType Rare or Normal (got {parentDef.tickerType}).";
             }
+        }
+
+        public CompOccultechSource ScanForSource(ThingDef def, IntVec3 root, Map map, Rot4 rot)
+        {
+            CompOccultechSource fallback = null;
+            if (requireFacing)
+            {
+                foreach (IntVec3 item in extractionRect)
+                {
+                    IntVec3 cell = root + item.RotatedBy(rot);
+                    if (!cell.InBounds(map))
+                    {
+                        continue;
+                    }
+                    List<Thing> things = cell.GetThingList(map);
+                    for (int i = 0; i < things.Count; i++)
+                    {
+                        CompOccultechSource src = (things[i] as ThingWithComps)?.GetComp<CompOccultechSource>();
+                        if (src == null || !src.AcceptsCategory(knowledgeCategory))
+                        {
+                            continue;
+                        }
+                        if (!src.Depleted)
+                        {
+                            return src;
+                        }
+                        fallback = src; // 記住已耗盡的源，供狀態顯示用。
+                    }
+                }
+            }
+            else
+            {
+                foreach (IntVec3 cell in GenAdj.OccupiedRect(root, rot, def.Size).ExpandedBy(1).EdgeCells)
+                {
+                    if (!cell.InBounds(map))
+                    {
+                        continue;
+                    }
+                    List<Thing> things = cell.GetThingList(map);
+                    for (int i = 0; i < things.Count; i++)
+                    {
+                        CompOccultechSource src = (things[i] as ThingWithComps)?.GetComp<CompOccultechSource>();
+                        if (src == null || !src.AcceptsCategory(knowledgeCategory))
+                        {
+                            continue;
+                        }
+                        if (!src.Depleted)
+                        {
+                            return src;
+                        }
+                        fallback = src; // 記住已耗盡的源，供狀態顯示用。
+                    }
+                }
+            }
+
+            return fallback;
         }
     }
 
@@ -110,71 +170,16 @@ namespace Fortified
 
         private CompOccultechSource FindSource()
         {
+            if (!parent.Spawned)
+            {
+                return null;
+            }
             if (CacheValid())
             {
                 return cachedSource;
             }
-            cachedSource = ScanForSource();
+            cachedSource = Props.ScanForSource(parent.def, parent.Position, parent.Map, parent.Rotation);
             return cachedSource;
-        }
-
-        /// <summary>
-        /// 掃描鄰接格尋找知識源。requireFacing = true 時只看本建築「正面」
-        /// （面向方向 parent.Rotation）緊鄰的那一排格；否則掃描整圈相鄰格。
-        /// 優先回傳未耗盡的源；找不到則回傳已耗盡者（供狀態顯示），皆無則 null。
-        /// </summary>
-        private CompOccultechSource ScanForSource()
-        {
-            if (!parent.Spawned || parent.Map == null)
-            {
-                return null;
-            }
-
-            Map map = parent.Map;
-            CellRect rect = parent.OccupiedRect();
-            CompOccultechSource fallback = null;
-
-            foreach (IntVec3 cell in CandidateCells(rect))
-            {
-                if (rect.Contains(cell) || !cell.InBounds(map))
-                {
-                    continue;
-                }
-                List<Thing> things = cell.GetThingList(map);
-                for (int i = 0; i < things.Count; i++)
-                {
-                    CompOccultechSource src = (things[i] as ThingWithComps)?.GetComp<CompOccultechSource>();
-                    if (src == null || !src.AcceptsCategory(Props.knowledgeCategory))
-                    {
-                        continue;
-                    }
-                    if (!src.Depleted)
-                    {
-                        return src;
-                    }
-                    fallback = src; // 記住已耗盡的源，供狀態顯示用。
-                }
-            }
-            return fallback;
-        }
-
-        /// <summary>依 requireFacing 產生待掃描的格子。</summary>
-        private IEnumerable<IntVec3> CandidateCells(CellRect rect)
-        {
-            if (Props.requireFacing)
-            {
-                IntVec3 facing = parent.Rotation.FacingCell; // 正面單位方向
-                foreach (IntVec3 cell in rect.Cells)
-                {
-                    yield return cell + facing;
-                }
-                yield break;
-            }
-
-            foreach (IntVec3 cell in rect.ExpandedBy(1).EdgeCells)
-            {
-                yield return cell;
-            }
         }
 
         public override void CompTickRare()
@@ -271,6 +276,35 @@ namespace Fortified
         {
             base.PostExposeData();
             Scribe_Values.Look(ref buffer, "occultechExtractBuffer", 0f);
+        }
+    }
+
+    public class PlaceWorker_ShowOccultechExtractorConnection : PlaceWorker
+    {
+        public override void DrawGhost(ThingDef def, IntVec3 center, Rot4 rot, Color ghostCol, Thing thing = null)
+        {
+            Map currentMap = Find.CurrentMap;
+            CompProperties_OccultechExtractor props = def.GetCompProperties<CompProperties_OccultechExtractor>();
+            if (props == null) return;
+            CompOccultechSource source = props.ScanForSource(def, center, currentMap, rot);
+            List<IntVec3> positions = new List<IntVec3>();
+            if (props.requireFacing)
+            {
+                foreach (IntVec3 item in props.extractionRect)
+                {
+                    IntVec3 cell = center + item.RotatedBy(rot);
+                    if (!cell.InBounds(currentMap))
+                    {
+                        continue;
+                    }
+                    positions.Add(cell);
+                }
+            }
+            else
+            {
+                positions = GenAdj.OccupiedRect(center, rot, def.Size).ExpandedBy(1).EdgeCells.ToList();
+            }
+            GenDraw.DrawFieldEdges(positions, source == null ? Color.red : Color.white);
         }
     }
 }
