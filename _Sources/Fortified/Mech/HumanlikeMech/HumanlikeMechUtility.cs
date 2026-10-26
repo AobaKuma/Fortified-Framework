@@ -128,6 +128,14 @@ namespace Fortified
 				return;
 			}
 
+			// PostMake 在 ThingMaker.MakeThing 內執行，早於 PawnComponentsUtility.CreateInitialComponents，
+			// 此時 health/needs 尚未建立；Notify_DisabledWorkTypesChanged 的其他 mod postfix（如 Big and Small 讀 pawn.Dead）
+			// 會 NRE 並中斷 pawn 生成。生成結束的 GeneratePawn postfix 與 SpawnSetup 都會再套用一次，這裡直接跳過。
+			if (pawn.health == null)
+			{
+				return;
+			}
+
 			RaceProperties race = pawn.RaceProps;
 			if (race == null)
 			{
