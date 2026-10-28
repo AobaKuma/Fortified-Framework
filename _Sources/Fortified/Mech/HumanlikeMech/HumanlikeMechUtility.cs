@@ -37,7 +37,7 @@ namespace Fortified
 		private static bool HasHair(Pawn pawn) => pawn.story?.hairDef != null && pawn.story.hairDef != HairDefOf.Bald;
 
 		/// <summary>初始化人型機械的 story/style/skills/workSettings，對應原 HumanlikeMech.CheckTracker。</summary>
-		public static void CheckTracker(Pawn pawn)
+		public static void CheckTracker(Pawn pawn, bool applyRestrictions = true)
 		{
 			if (pawn == null)
 			{
@@ -55,7 +55,10 @@ namespace Fortified
 			{
 				// 沒有 extension 就不建 tracker，但 workSettings 可能由原版／其他來源建立，
 				// 仍要套用白名單，否則一樣會拿到設計外的工作權限。
-				ApplyWorkTypeRestrictions(pawn);
+				if (applyRestrictions)
+				{
+					ApplyWorkTypeRestrictions(pawn);
+				}
 				return;
 			}
 
@@ -110,7 +113,10 @@ namespace Fortified
 
 			// 不論 workSettings 是本次新建、還是讀檔／其他來源帶進來的，都重新套用白名單。
 			// 舊存檔中的非玩家機兵帶著超出設計的 priorities，只有每次都套用才能修正。
-			ApplyWorkTypeRestrictions(pawn);
+			if (applyRestrictions)
+			{
+				ApplyWorkTypeRestrictions(pawn);
+			}
 		}
 
 		/// <summary>讀檔期間延後處理的 pawn，避免同一次讀檔對同一隻重複排隊。</summary>

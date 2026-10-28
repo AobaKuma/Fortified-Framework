@@ -20,7 +20,8 @@ namespace Fortified
 		public override void PostMake()
 		{
 			base.PostMake();
-			HumanlikeMechUtility.CheckTracker(this);
+			// PawnGenerator applies work restrictions after the pawn's components are initialized.
+			HumanlikeMechUtility.CheckTracker(this, applyRestrictions: false);
 		}
 
 		public override void SpawnSetup(Map map, bool respawningAfterLoad)
