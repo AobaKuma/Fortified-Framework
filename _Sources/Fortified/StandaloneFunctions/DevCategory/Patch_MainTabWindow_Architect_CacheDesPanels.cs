@@ -74,4 +74,19 @@ namespace Fortified
             CacheSearchStateCall(__instance);
         }
     }
+
+    // 只隱藏建築選單分頁不夠：「複製」按鈕（BuildCopyCommandUtility）直接找 Designator_Build 並只看 Visible，
+    // 開發分類的建築（石碑、遺跡等）因此能被玩家複製建造。分類不顯示時一併讓其建造指示器不可見；上帝模式照舊。
+    [HarmonyPatch(typeof(Designator_Build), nameof(Designator_Build.Visible), MethodType.Getter)]
+    public static class Patch_Designator_Build_Visible
+    {
+        public static void Postfix(Designator_Build __instance, ref bool __result)
+        {
+            if (!__result || DebugSettings.godMode || Patch_MainTabWindow_Architect_CacheDesPanels.ShowDevCategory)
+                return;
+
+            if (__instance.PlacingDef?.designationCategory?.defName == "FFF_DevCategory")
+                __result = false;
+        }
+    }
 }
