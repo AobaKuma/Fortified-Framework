@@ -6,10 +6,11 @@ using System.Collections.Generic;
 
 namespace Fortified
 {
-    public class Verb_MeleeSweep : Verb_MeleeAttack
+    public class Verb_MeleeSweep : Verb_MeleeAttackDamage
     {
         private Comp_MeleeSweep cachedSweepComp;
-        private Comp_MeleeSweep SweepComp => cachedSweepComp ??= EquipmentSource.GetComp<Comp_MeleeSweep>();
+        // 武器上的掃擊優先；拳腳等天生武器沒有 EquipmentSource，改讀施放者（種族）身上的掃擊。
+        private Comp_MeleeSweep SweepComp => cachedSweepComp ??= EquipmentSource?.GetComp<Comp_MeleeSweep>() ?? CasterPawn?.GetComp<Comp_MeleeSweep>();
         private EffecterDef ExplosionEffect => SweepComp.Props.explosionEffect;
         private DamageDef DamageDef => SweepComp.Props.damageDef;
         private float Radius => SweepComp.Props.radius;
@@ -22,6 +23,11 @@ namespace Fortified
         }
         protected override DamageWorker.DamageResult ApplyMeleeDamageToTarget(LocalTargetInfo target)
         {
+            // 武器與種族都沒有掃擊設定時，照一般近戰結算。
+            if (SweepComp == null)
+            {
+                return base.ApplyMeleeDamageToTarget(target);
+            }
             DamageWorker.DamageResult result = new DamageWorker.DamageResult();
             Pawn casterPawn = CasterPawn;
             if (casterPawn != null && !casterPawn.Downed && CasterIsPawn)
@@ -45,12 +51,14 @@ namespace Fortified
 
             target.Thing.TakeDamage(new DamageInfo(DamageDefOf.Stun, 20f * Rand.Range(1f, 3f)));
 
-            //武器品質
+            //武器品質；天生武器沒有品質，傷害來源記為施放者的種族（同原版近戰）
             var q = QualityCategory.Normal;
-            EquipmentSource.TryGetQuality(out q);
+            EquipmentSource?.TryGetQuality(out q);
+            ThingDef weaponDef = EquipmentSource?.def ?? CasterPawn.def;
 
-            result = target.Thing.TakeDamage(new DamageInfo(DamageDef, Damage, armorPenetration: ArmorPenetration, weapon: EquipmentSource.def, instigator: CasterPawn, weaponQuality: q));
-            if (EquipmentSource != null && !EquipmentSource.Destroyed)
+            result = target.Thing.TakeDamage(new DamageInfo(DamageDef, Damage, armorPenetration: ArmorPenetration, weapon: weaponDef, instigator: CasterPawn, weaponQuality: q));
+            // 武器在這一擊中損毀，或施放者已離開地圖時，不再擴散
+            if ((EquipmentSource == null || !EquipmentSource.Destroyed) && CasterPawn.Spawned)
             {
                 // 友伤判断
                 List<Thing> AvoidThings = new List<Thing>();

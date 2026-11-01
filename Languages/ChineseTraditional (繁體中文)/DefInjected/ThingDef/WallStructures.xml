@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- EN: beveled wall corner -->
+  <FFF_WallStructure_Corner.label>斜面牆角</FFF_WallStructure_Corner.label>
+  <!-- EN: A beveled block that fills the corner where two walls meet, softening the right angle into a clean diagonal. Impassable, like the walls it joins. -->
+  <FFF_WallStructure_Corner.description>填補兩道牆交會處的斜面結構，將直角修飾成俐落的斜線。和相接的牆壁一樣無法通行。</FFF_WallStructure_Corner.description>
+
+  <!-- EN: curved wall corner (left) -->
+  <FFF_WallStructure_CurveCornerL.label>弧形牆角（左）</FFF_WallStructure_CurveCornerL.label>
+  <!-- EN: A sweeping curved block that rounds off a wall corner, turning to the left. Impassable, like the walls it joins. -->
+  <FFF_WallStructure_CurveCornerL.description>向左彎曲的弧形結構，讓牆角呈現圓潤的轉折。和相接的牆壁一樣無法通行。</FFF_WallStructure_CurveCornerL.description>
+
+  <!-- EN: curved wall corner (right) -->
+  <FFF_WallStructure_CurveCornerR.label>弧形牆角（右）</FFF_WallStructure_CurveCornerR.label>
+  <!-- EN: A sweeping curved block that rounds off a wall corner, turning to the right. Impassable, like the walls it joins. -->
+  <FFF_WallStructure_CurveCornerR.description>向右彎曲的弧形結構，讓牆角呈現圓潤的轉折。和相接的牆壁一樣無法通行。</FFF_WallStructure_CurveCornerR.description>
+
+  <!-- EN: octagonal wall end -->
+  <FFF_WallStructure_OctaEnd.label>八角牆端</FFF_WallStructure_OctaEnd.label>
+  <!-- EN: A broad, chamfered cap that finishes the end of a wall with an octagonal profile. Impassable, like the walls it joins. -->
+  <FFF_WallStructure_OctaEnd.description>寬大的倒角端蓋，以八角形輪廓收住牆壁的末端。和相接的牆壁一樣無法通行。</FFF_WallStructure_OctaEnd.description>
+
+  <!-- EN: tapered wall end -->
+  <FFF_WallStructure_SpikeEnd.label>尖角牆端</FFF_WallStructure_SpikeEnd.label>
+  <!-- EN: A tapered cap that finishes the end of a wall with a narrowing point. Impassable, like the walls it joins. -->
+  <FFF_WallStructure_SpikeEnd.description>逐漸收窄的端蓋，以尖角收住牆壁的末端。和相接的牆壁一樣無法通行。</FFF_WallStructure_SpikeEnd.description>
+
+  <!-- EN: wide tapered wall end -->
+  <FFF_WallStructure_SpikeWideEnd.label>寬尖角牆端</FFF_WallStructure_SpikeWideEnd.label>
+  <!-- EN: A two-wide tapered cap that finishes the end of a double wall with a narrowing point. Impassable, like the walls it joins. -->
+  <FFF_WallStructure_SpikeWideEnd.description>兩格寬、逐漸收窄的端蓋，以尖角收住雙層牆的末端。和相接的牆壁一樣無法通行。</FFF_WallStructure_SpikeWideEnd.description>
+
+</LanguageData>

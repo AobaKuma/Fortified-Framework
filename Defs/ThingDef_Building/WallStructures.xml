@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- ============================================================
+       Wall structure set.
+       Stuffable, impassable trim pieces meant to be built around
+       walls (corners, ends, curves) to dress them up.
+       Textures are 64px per tile with a 0.25-tile overhang so the
+       pieces overlap the walls they sit against; drawSize follows
+       the north texture and is swapped for east/west by Graphic_Multi.
+       ============================================================ -->
+
+  <!-- No useGridMenu: FloatMenuGrid sizes itself to round(sqrt(n)) squared, so 6 items get a 2x2 window and the last row is clipped. -->
+  <DesignatorDropdownGroupDef>
+    <defName>FFF_WallStructures</defName>
+    <label>wall structures</label>
+    <iconSource>Placed</iconSource>
+  </DesignatorDropdownGroupDef>
+
+  <ThingDef ParentName="BuildingBase" Name="FFF_WallStructureBase" Abstract="True">
+    <thingClass>Building</thingClass>
+    <category>Building</category>
+    <graphicData>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <damageData>
+        <enabled>false</enabled>
+      </damageData>
+    </graphicData>
+    <statBases>
+      <MaxHitPoints>300</MaxHitPoints>
+      <WorkToBuild>400</WorkToBuild>
+      <Flammability>1.0</Flammability>
+      <Beauty>3</Beauty>
+    </statBases>
+    <stuffCategories>
+      <li>Metallic</li>
+      <li>Woody</li>
+      <li>Stony</li>
+    </stuffCategories>
+    <costStuffCount>10</costStuffCount>
+    <leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+    <!-- Above Building so the overhang draws over adjacent walls instead of z-fighting them. -->
+    <altitudeLayer>BuildingOnTop</altitudeLayer>
+    <passability>Impassable</passability>
+    <fillPercent>1</fillPercent>
+    <blockWind>true</blockWind>
+    <blockLight>true</blockLight>
+    <holdsRoof>true</holdsRoof>
+    <noRightClickDraftAttack>true</noRightClickDraftAttack>
+    <tickerType>Never</tickerType>
+    <rotatable>true</rotatable>
+    <selectable>true</selectable>
+    <canOverlapZones>false</canOverlapZones>
+    <fertility>0</fertility>
+    <useStuffTerrainAffordance>true</useStuffTerrainAffordance>
+    <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+    <designationCategory>FFF_DevCategory</designationCategory>
+    <designatorDropdown>FFF_WallStructures</designatorDropdown>
+    <uiOrder>2010</uiOrder>
+    <building>
+      <paintable>true</paintable>
+      <isInert>true</isInert>
+      <isStuffableAirtight>true</isStuffableAirtight>
+      <ai_chillDestination>false</ai_chillDestination>
+    </building>
+    <damageMultipliers>
+      <li>
+        <damageDef>Bomb</damageDef>
+        <multiplier>2</multiplier>
+      </li>
+      <li>
+        <damageDef>Thump</damageDef>
+        <multiplier>2</multiplier>
+      </li>
+    </damageMultipliers>
+  </ThingDef>
+
+  <!-- ==================== Corners ==================== -->
+
+  <ThingDef ParentName="FFF_WallStructureBase">
+    <defName>FFF_WallStructure_Corner</defName>
+    <label>beveled wall corner</label>
+    <description>A beveled block that fills the corner where two walls meet, softening the right angle into a clean diagonal. Impassable, like the walls it joins.</description>
+    <graphicData>
+      <texPath>Things/Building/WallStructures/Corner</texPath>
+      <drawSize>(1.5,1.5)</drawSize>
+    </graphicData>
+    <size>(1,1)</size>
+  </ThingDef>
+
+  <ThingDef ParentName="FFF_WallStructureBase">
+    <defName>FFF_WallStructure_CurveCornerL</defName>
+    <label>curved wall corner (left)</label>
+    <description>A sweeping curved block that rounds off a wall corner, turning to the left. Impassable, like the walls it joins.</description>
+    <graphicData>
+      <texPath>Things/Building/WallStructures/curveCorner_L</texPath>
+      <drawSize>(2.5,1.5)</drawSize>
+    </graphicData>
+    <size>(2,1)</size>
+    <statBases>
+      <MaxHitPoints>500</MaxHitPoints>
+      <WorkToBuild>800</WorkToBuild>
+      <Beauty>8</Beauty>
+    </statBases>
+    <costStuffCount>20</costStuffCount>
+  </ThingDef>
+
+  <ThingDef ParentName="FFF_WallStructureBase">
+    <defName>FFF_WallStructure_CurveCornerR</defName>
+    <label>curved wall corner (right)</label>
+    <description>A sweeping curved block that rounds off a wall corner, turning to the right. Impassable, like the walls it joins.</description>
+    <graphicData>
+      <texPath>Things/Building/WallStructures/curveCorner_R</texPath>
+      <drawSize>(2.5,1.5)</drawSize>
+    </graphicData>
+    <size>(2,1)</size>
+    <statBases>
+      <MaxHitPoints>500</MaxHitPoints>
+      <WorkToBuild>800</WorkToBuild>
+      <Beauty>8</Beauty>
+    </statBases>
+    <costStuffCount>20</costStuffCount>
+  </ThingDef>
+
+  <!-- ==================== Wall ends ==================== -->
+
+  <ThingDef ParentName="FFF_WallStructureBase">
+    <defName>FFF_WallStructure_OctaEnd</defName>
+    <label>octagonal wall end</label>
+    <description>A broad, chamfered cap that finishes the end of a wall with an octagonal profile. Impassable, like the walls it joins.</description>
+    <graphicData>
+      <texPath>Things/Building/WallStructures/OctaEnd</texPath>
+      <drawSize>(3,1.5)</drawSize>
+    </graphicData>
+    <size>(3,1)</size>
+    <statBases>
+      <MaxHitPoints>700</MaxHitPoints>
+      <WorkToBuild>1000</WorkToBuild>
+      <Beauty>10</Beauty>
+    </statBases>
+    <costStuffCount>30</costStuffCount>
+  </ThingDef>
+
+  <ThingDef ParentName="FFF_WallStructureBase">
+    <defName>FFF_WallStructure_SpikeEnd</defName>
+    <label>tapered wall end</label>
+    <description>A tapered cap that finishes the end of a wall with a narrowing point. Impassable, like the walls it joins.</description>
+    <graphicData>
+      <texPath>Things/Building/WallStructures/spikeEnd</texPath>
+      <drawSize>(1,1.5)</drawSize>
+    </graphicData>
+    <size>(1,1)</size>
+  </ThingDef>
+
+  <ThingDef ParentName="FFF_WallStructureBase">
+    <defName>FFF_WallStructure_SpikeWideEnd</defName>
+    <label>wide tapered wall end</label>
+    <description>A two-wide tapered cap that finishes the end of a double wall with a narrowing point. Impassable, like the walls it joins.</description>
+    <graphicData>
+      <texPath>Things/Building/WallStructures/spikeWideEnd</texPath>
+      <drawSize>(2,1.5)</drawSize>
+    </graphicData>
+    <size>(2,1)</size>
+    <statBases>
+      <MaxHitPoints>500</MaxHitPoints>
+      <WorkToBuild>700</WorkToBuild>
+      <Beauty>6</Beauty>
+    </statBases>
+    <costStuffCount>20</costStuffCount>
+  </ThingDef>
+
+</Defs>
