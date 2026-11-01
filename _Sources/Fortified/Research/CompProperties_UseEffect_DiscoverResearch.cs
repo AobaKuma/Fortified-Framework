@@ -7,7 +7,8 @@ namespace Fortified
     /// <summary>
     /// 「封存科技解封物」的設定。掛在任何具有 <see cref="CompUsable"/> 的 ThingDef 上。
     ///
-    /// 使用後從 <see cref="researchProjects"/> 中隨機挑一個尚未解封的專案，
+    /// 使用後推進玩家目前選定的清單內專案（見 <see cref="preferCurrentProject"/>）；
+    /// 沒有選定時才從 <see cref="researchProjects"/> 中隨機挑一個尚未解封的專案，
     /// 將其永久探明（見 <see cref="ResearchDiscoveryUtility.ForceDiscover"/>）並推進
     /// <see cref="progressAmount"/> 點進度；若清單裡的專案已經全部研究完畢，
     /// 則改為給使用者 <see cref="fallbackXpAmount"/> 點智識（知識）技能經驗。
@@ -23,6 +24,12 @@ namespace Fortified
 
         /// <summary>解封後立刻灌入的研究進度點數。</summary>
         public float progressAmount = 100f;
+
+        /// <summary>
+        /// true（預設）＝玩家目前選定研究的專案若在清單內且未完成，就直接推進它，不隨機抽選；
+        /// 優先於下面所有抽選規則。知識型專案的逐類別選擇只有 Anomaly 有，未啟用時等同沒選。
+        /// </summary>
+        public bool preferCurrentProject = true;
 
         /// <summary>
         /// true（預設）＝只從「還能推進」的專案中抽選，清單全部研究完畢時才退回給經驗。

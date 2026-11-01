@@ -7,8 +7,8 @@ using Verse;
 namespace Fortified
 {
     /// <summary>
-    /// 封存科技解封物：使用後隨機解封 <see cref="CompProperties_UseEffect_DiscoverResearch.researchProjects"/>
-    /// 之中的一個專案（永久探明）並灌入一筆研究進度；
+    /// 封存科技解封物：玩家選定研究的專案在 <see cref="CompProperties_UseEffect_DiscoverResearch.researchProjects"/>
+    /// 之中時直接推進它；沒有選定時才隨機解封清單中的一個專案（永久探明）並灌入一筆研究進度；
     /// 清單裡已經沒有可推進的專案時，改為給使用者智識（知識）技能經驗。
     ///
     /// 防禦性設計重點：
@@ -95,7 +95,8 @@ namespace Fortified
 
         /// <summary>
         /// 依設定挑出這次要推進的專案；沒有合適目標時回傳 null。
-        /// 優先順序：未探明的封存科技 &gt; 已探明但未完成的專案。
+        /// 優先順序：玩家選定的專案 &gt; 未探明的封存科技 &gt; 已探明但未完成的專案。
+        /// 只有沒選定清單內的專案時才隨機抽選。
         /// </summary>
         private ResearchProjectDef PickTarget(CompProperties_UseEffect_DiscoverResearch p)
         {
@@ -103,6 +104,15 @@ namespace Fortified
             if (list == null || list.Count == 0)
             {
                 return null;
+            }
+
+            if (p.preferCurrentProject)
+            {
+                ResearchProjectDef selected = SelectedProjectIn(list);
+                if (selected != null)
+                {
+                    return selected;
+                }
             }
 
             // skipCompletedProjects == false：整份清單均勻抽選，抽到已完成的就當作「已經研究過」。
@@ -129,6 +139,30 @@ namespace Fortified
                 }
             }
 
+            return null;
+        }
+
+        /// <summary>
+        /// 清單中玩家目前選定研究、且尚未完成的專案；沒有則回傳 null。
+        /// 知識型專案看所屬類別的當前專案（逐類別選擇只有 Anomaly 有，未啟用時一律視為沒選），
+        /// 一般專案看主研究欄。同時選了多個時取清單順序的第一個。
+        /// </summary>
+        private static ResearchProjectDef SelectedProjectIn(List<ResearchProjectDef> source)
+        {
+            ResearchProjectDef mainProject = Find.ResearchManager.GetProject();
+            for (int i = 0; i < source.Count; i++)
+            {
+                ResearchProjectDef proj = source[i];
+                if (proj == null || proj.IsFinished || ResearchDiscoveryUtility.IsUndiscovered(proj))
+                {
+                    continue;
+                }
+                if (proj == mainProject
+                    || (proj.knowledgeCategory != null && ResearchTabUtility.GetActiveProjectForCategory(proj.knowledgeCategory) == proj))
+                {
+                    return proj;
+                }
+            }
             return null;
         }
 
