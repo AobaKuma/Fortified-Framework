@@ -84,6 +84,10 @@
     <graphicData>
       <texPath>Things/Building/WallStructures/Corner</texPath>
       <drawSize>(1.5,1.5)</drawSize>
+      <drawOffsetEast>(-0.2,0,0.2)</drawOffsetEast>
+      <drawOffsetWest>(0.2,0,-0.225)</drawOffsetWest>
+      <drawOffsetSouth>(-0.2,0,-0.225)</drawOffsetSouth>
+      <drawOffsetNorth>(0.2,0,0.2)</drawOffsetNorth>
     </graphicData>
     <size>(1,1)</size>
   </ThingDef>
@@ -95,6 +99,10 @@
     <graphicData>
       <texPath>Things/Building/WallStructures/curveCorner_L</texPath>
       <drawSize>(2.5,1.5)</drawSize>
+      <drawOffsetEast>(0,0,0)</drawOffsetEast>
+      <drawOffsetWest>(-0.04,0,0.24)</drawOffsetWest>
+      <drawOffsetSouth>(-0.2,0,0.2)</drawOffsetSouth>
+      <drawOffsetNorth>(0.24,0,0.2)</drawOffsetNorth>
     </graphicData>
     <size>(2,1)</size>
     <statBases>
@@ -112,6 +120,10 @@
     <graphicData>
       <texPath>Things/Building/WallStructures/curveCorner_R</texPath>
       <drawSize>(2.5,1.5)</drawSize>
+      <drawOffsetEast>(0.04,0,0.24)</drawOffsetEast>
+      <drawOffsetWest>(0,0,0)</drawOffsetWest>
+      <drawOffsetSouth>(0.2,0,0.2)</drawOffsetSouth>
+      <drawOffsetNorth>(-0.24,0,0.2)</drawOffsetNorth>
     </graphicData>
     <size>(2,1)</size>
     <statBases>
@@ -131,6 +143,10 @@
     <graphicData>
       <texPath>Things/Building/WallStructures/OctaEnd</texPath>
       <drawSize>(3,1.5)</drawSize>
+      <drawOffsetEast>(-0.2,0,0)</drawOffsetEast>
+      <drawOffsetWest>(0.2,0,0)</drawOffsetWest>
+      <drawOffsetSouth>(0,0,0.2)</drawOffsetSouth>
+      <drawOffsetNorth>(0,0,-0.2)</drawOffsetNorth>
     </graphicData>
     <size>(3,1)</size>
     <statBases>
@@ -148,6 +164,10 @@
     <graphicData>
       <texPath>Things/Building/WallStructures/spikeEnd</texPath>
       <drawSize>(1,1.5)</drawSize>
+      <drawOffsetEast>(-0.24,0,0)</drawOffsetEast>
+      <drawOffsetWest>(0.24,0,0)</drawOffsetWest>
+      <drawOffsetSouth>(0,0,0.2)</drawOffsetSouth>
+      <drawOffsetNorth>(0,0,-0.2)</drawOffsetNorth>
     </graphicData>
     <size>(1,1)</size>
   </ThingDef>
@@ -159,6 +179,10 @@
     <graphicData>
       <texPath>Things/Building/WallStructures/spikeWideEnd</texPath>
       <drawSize>(2,1.5)</drawSize>
+      <drawOffsetEast>(-0.24,0,-0.04)</drawOffsetEast>
+      <drawOffsetWest>(0.24,0,-0.04)</drawOffsetWest>
+      <drawOffsetSouth>(0,0,0.2)</drawOffsetSouth>
+      <drawOffsetNorth>(0,0,-0.2)</drawOffsetNorth>
     </graphicData>
     <size>(2,1)</size>
     <statBases>
