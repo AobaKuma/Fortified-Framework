@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!--
+    範例：可切換彈種的砲塔（CompAmmoSwitch + CompProperties_SwitchableAmmo）
+    Example: ammo-switching turret.
+
+    - CompProperties_AmmoSwitch 掛在「砲塔的槍身」(turretGunDef) 上，不是砲塔建築本身。
+      FFF 的 Patch_BuildingTurretGun_GetGizmos 會把切換按鈕補到砲塔的 gizmo 列。
+    - 槍身的 verb 必須用 Fortified.Verb_LaunchProjectile_AmmoSwitch。
+    - 自訂彈丸繼承 FFF_BaseSwitchableBullet（帶 CompProperties_SwitchableAmmo），
+      彈種選單裡的資訊卡才會顯示傷害 / 穿甲 / 擊倒力。
+    - 沒有 designationCategory：只能用開發者模式生成，不會出現在建築選單。
+      自動測試：啟動參數加上 -quicktest -fff_test_ammoswitch，結果寫在 Player.log。
+  -->
+
+  <ThingDef ParentName="BaseBullet" Name="FFF_BaseSwitchableBullet" Abstract="True">
+    <comps>
+      <li Class="Fortified.CompProperties_SwitchableAmmo" />
+    </comps>
+  </ThingDef>
+
+  <ThingDef ParentName="FFF_BaseSwitchableBullet">
+    <defName>FFF_Example_Bullet_TurretAP</defName>
+    <label>armor-piercing turret bullet</label>
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>9</damageAmountBase>
+      <armorPenetrationBase>0.45</armorPenetrationBase>
+      <stoppingPower>0.5</stoppingPower>
+      <speed>90</speed>
+    </projectile>
+  </ThingDef>
+
+  <ThingDef ParentName="FFF_BaseSwitchableBullet">
+    <defName>FFF_Example_Bullet_TurretShot</defName>
+    <label>turret buckshot</label>
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Shotgun</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>18</damageAmountBase>
+      <armorPenetrationBase>0.1</armorPenetrationBase>
+      <stoppingPower>2.5</stoppingPower>
+      <speed>55</speed>
+    </projectile>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseWeaponTurret">
+    <defName>FFF_Example_Gun_AmmoSwitchTurret</defName>
+    <label>ammo-switch turret gun</label>
+    <description>Example turret gun with switchable ammunition.</description>
+    <graphicData>
+      <texPath>Things/Building/Security/TurretMini_Top</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <AccuracyTouch>0.77</AccuracyTouch>
+      <AccuracyShort>0.70</AccuracyShort>
+      <AccuracyMedium>0.45</AccuracyMedium>
+      <AccuracyLong>0.24</AccuracyLong>
+      <RangedWeapon_Cooldown>4.8</RangedWeapon_Cooldown>
+      <DeteriorationRate>0</DeteriorationRate>
+      <Mass>5</Mass>
+      <Flammability>0</Flammability>
+    </statBases>
+    <comps>
+      <li Class="Fortified.CompProperties_AmmoSwitch">
+        <defaultIndex>-1</defaultIndex>
+        <switchCooldown>120</switchCooldown>
+        <soundSwitch>Artillery_ShellLoaded</soundSwitch>
+        <ammos>
+          <li>
+            <label>AP</label>
+            <description>Armor-piercing rounds. Longer reach, tighter grouping.</description>
+            <projectileDef>FFF_Example_Bullet_TurretAP</projectileDef>
+            <rangeFactor>1.2</rangeFactor>
+            <accuracyFactor>1.1</accuracyFactor>
+          </li>
+          <li>
+            <label>buckshot</label>
+            <description>Heavy close-range rounds. Short reach, slow to line up.</description>
+            <projectileDef>FFF_Example_Bullet_TurretShot</projectileDef>
+            <rangeFactor>0.5</rangeFactor>
+            <accuracyFactor>0.8</accuracyFactor>
+            <warmUpFactor>1.5</warmUpFactor>
+            <burstShotCountOverride>1</burstShotCountOverride>
+          </li>
+          <li>
+            <label>EMP</label>
+            <description>Vanilla EMP rounds.</description>
+            <projectileDef>Bullet_EMPLauncher</projectileDef>
+            <burstShotCountOverride>2</burstShotCountOverride>
+          </li>
+        </ammos>
+      </li>
+    </comps>
+    <verbs>
+      <li>
+        <verbClass>Fortified.Verb_LaunchProjectile_AmmoSwitch</verbClass>
+        <defaultProjectile>Bullet_MiniTurret</defaultProjectile>
+        <warmupTime>0</warmupTime>
+        <range>28.9</range>
+        <ticksBetweenBurstShots>8</ticksBetweenBurstShots>
+        <burstShotCount>3</burstShotCount>
+        <soundCast>GunShotA</soundCast>
+        <soundCastTail>GunTail_Light</soundCastTail>
+        <muzzleFlashScale>9</muzzleFlashScale>
+      </li>
+    </verbs>
+  </ThingDef>
+
+  <ThingDef ParentName="BuildingBase">
+    <defName>FFF_Example_Turret_AmmoSwitch</defName>
+    <label>ammo-switch turret (example)</label>
+    <description>Example turret whose gun can switch between ammunition types. Dev-spawn only.</description>
+    <thingClass>Building_TurretGun</thingClass>
+    <drawerType>MapMeshAndRealTime</drawerType>
+    <graphicData>
+      <texPath>Things/Building/Security/TurretMini_Base</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(3,3)</drawSize>
+      <damageData>
+        <rect>(0.2,0.2,0.6,0.6)</rect>
+      </damageData>
+    </graphicData>
+    <uiIconPath>Things/Building/Security/TurretMini_MenuIcon</uiIconPath>
+    <altitudeLayer>Building</altitudeLayer>
+    <rotatable>false</rotatable>
+    <statBases>
+      <MaxHitPoints>150</MaxHitPoints>
+      <Flammability>0</Flammability>
+      <WorkToBuild>1800</WorkToBuild>
+      <Mass>8</Mass>
+      <ShootingAccuracyTurret>0.96</ShootingAccuracyTurret>
+    </statBases>
+    <tickerType>Normal</tickerType>
+    <comps>
+      <li Class="CompProperties_Forbiddable"/>
+    </comps>
+    <passability>PassThroughOnly</passability>
+    <pathCost>50</pathCost>
+    <fillPercent>0.4</fillPercent>
+    <hasTooltip>true</hasTooltip>
+    <building>
+      <ai_combatDangerous>true</ai_combatDangerous>
+      <turretGunDef>FFF_Example_Gun_AmmoSwitchTurret</turretGunDef>
+      <turretBurstWarmupTime>2</turretBurstWarmupTime>
+      <turretBurstCooldownTime>3</turretBurstCooldownTime>
+      <turretTopDrawSize>1.5</turretTopDrawSize>
+    </building>
+  </ThingDef>
+</Defs>

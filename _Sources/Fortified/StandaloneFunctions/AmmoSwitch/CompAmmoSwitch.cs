@@ -337,6 +337,20 @@ namespace Fortified
             }
         }
 
+        /// <summary>
+        /// Switch without a pawn job (turrets and other non-pawn holders). Plays the switch sound
+        /// at the holder, which the pawn path gets from <see cref="JobDriver_SwitchAmmo"/>.
+        /// </summary>
+        public void SwitchInstantly(Thing user, int index)
+        {
+            int before = selectedIndex;
+            SetAmmo(index, startCooldown: true);
+            if (selectedIndex != before && user != null && user.Spawned)
+            {
+                PlaySound(new TargetInfo(user.Position, user.Map));
+            }
+        }
+
         public string GetAmmoTooltip(int index)
         {
             // Special-case for -1: represent using the weapon/verb default projectile
@@ -443,7 +457,7 @@ namespace Fortified
                         }
                         else
                         {
-                            SetAmmo(-1, startCooldown: true);
+                            SwitchInstantly(user, -1);
                         }
                     }, baseProjectile?.uiIcon ?? BaseContent.BadTex, Color.white, extraPartWidth: 29f, extraPartOnGUI: (Rect r) => Widgets.InfoCardButton(r.x + 5f, r.y + (r.height - 24f) / 2f, baseProjectile));
                     defaultOption.tooltip = new TipSignal(GetAmmoTooltip(-1));
@@ -482,7 +496,7 @@ namespace Fortified
 						}
 						else
 						{
-							SetAmmo(idx, startCooldown: true);
+							SwitchInstantly(user, idx);
 						}
 					}, icon, Color.white, extraPartWidth: 29f, extraPartOnGUI: (Rect r) => Widgets.InfoCardButton(r.x + 5f, r.y + (r.height - 24f) / 2f, projectileForCard));
 					option.tooltip = new TipSignal(GetAmmoTooltip(idx));
