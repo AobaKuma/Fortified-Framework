@@ -49,4 +49,36 @@ namespace Fortified
             __result = store.GetStored(proj);
         }
     }
+
+    /// <summary>
+    /// 讓 FinishProject 在「沒有 Anomaly DLC」時也能完成知識型專案。
+    ///
+    /// 原生 ResearchManager.FinishProject 對知識型專案（baseCost==0 且 knowledgeCost&gt;0）
+    /// 只有在 ModsConfig.AnomalyActive 時才把 anomalyKnowledge 設滿，否則不記任何進度；
+    /// 而上面的 GetProgress postfix 只讀 <see cref="GameComponent_KnowledgeStore"/>，結果「完成」後仍顯示未完成。
+    /// 受影響的有：ScenPart_StartingResearch（開局給的研究）、研究分頁的開發者「完成研究」、
+    /// 以及其他直接呼叫 FinishProject 的 mod。
+    ///
+    /// 用 prefix：原生在 FinishProject 中途（前置遞迴、解鎖通知）就會讀 IsFinished，要先補滿。
+    /// KnowledgeUtility 自己完成專案時也是先補滿再呼叫 FinishProject，重複設定無害。
+    /// </summary>
+    [HarmonyPatch(typeof(ResearchManager), nameof(ResearchManager.FinishProject))]
+    public static class Patch_ResearchManager_FinishProject
+    {
+        [HarmonyPrefix]
+        public static void Prefix(ResearchProjectDef proj)
+        {
+            // Anomaly 啟用時原生會自己設滿 anomalyKnowledge，不介入。
+            if (ModsConfig.AnomalyActive || proj == null)
+            {
+                return;
+            }
+            // 只處理知識型專案。
+            if (proj.baseCost > 0f || proj.knowledgeCost <= 0f)
+            {
+                return;
+            }
+            GameComponent_KnowledgeStore.CompSafe?.SetStored(proj, proj.knowledgeCost);
+        }
+    }
 }

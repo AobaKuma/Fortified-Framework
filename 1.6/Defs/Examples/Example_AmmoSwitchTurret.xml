@@ -10,7 +10,6 @@
     - 自訂彈丸繼承 FFF_BaseSwitchableBullet（帶 CompProperties_SwitchableAmmo），
       彈種選單裡的資訊卡才會顯示傷害 / 穿甲 / 擊倒力。
     - 沒有 designationCategory：只能用開發者模式生成，不會出現在建築選單。
-      自動測試：啟動參數加上 -quicktest -fff_test_ammoswitch，結果寫在 Player.log。
   -->
 
   <ThingDef ParentName="BaseBullet" Name="FFF_BaseSwitchableBullet" Abstract="True">
@@ -143,6 +142,10 @@
     <comps>
       <li Class="CompProperties_Forbiddable"/>
     </comps>
+    <placeWorkers>
+      <li>PlaceWorker_TurretTop</li>
+      <li>PlaceWorker_ShowTurretRadius</li>
+    </placeWorkers>
     <passability>PassThroughOnly</passability>
     <pathCost>50</pathCost>
     <fillPercent>0.4</fillPercent>

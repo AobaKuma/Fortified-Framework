@@ -562,11 +562,6 @@ namespace Fortified.Structures
 
         private static void FinishGeneration(Map map, CellRect rect, IFFF_Structure def, Rot4 rot, IntVec3 offset, bool reconnectPower, Faction faction)
         {
-            foreach (IntVec3 c in rect)
-            {
-                if (c.InBounds(map)) map.fogGrid.Unfog(c);
-            }
-
             if (reconnectPower) ReconnectPower(map);
 
             var tasks = def.GetTasks(rot, offset);
@@ -579,8 +574,67 @@ namespace Fortified.Structures
                 }
             }
 
-            // 结构生成完成后重新计算雾效
-            map.fogGrid.Refog(map.BoundsRect());
+            // 结构生成完成后重新计算雾效（只动结构占地）
+            RecomputeFog(map, rect, faction);
+        }
+
+        /// <summary>
+        /// 結構生成後重算它占地範圍內的迷霧，不碰占地以外的格子。
+        ///
+        /// 以前這裡是 <c>Refog(map.BoundsRect())</c>：整張地圖全部蓋上迷霧、卻沒有任何格子再被揭開。
+        /// 地圖生成期間沒差（之後原版的 GenStep_Fog 會整張重算），但在遊戲中生成（除錯放置、
+        /// 劇本 PostMapGenerate、其他模組在既有地圖上生成）時，玩家原本看得見的地方會整片變黑。
+        ///
+        /// 現在：
+        /// - 玩家派系的結構：整塊占地揭開（那是玩家自己的東西）。
+        /// - 其他：先把占地蓋上迷霧，再比照原版規則從「占地外已看得見的格子」揭開——
+        ///   和外面連通的空地會被看見，密閉的房間保持迷霧，貼著可見區域的牆也會被看見。
+        ///
+        /// Recomputes fog over the structure's footprint only. This used to be
+        /// <c>Refog(map.BoundsRect())</c>, which fogged the entire map and never unfogged anything:
+        /// harmless during map generation (vanilla's GenStep_Fog redoes it all afterwards), but at
+        /// runtime (debug placement, scenario PostMapGenerate, other mods spawning on a live map) it
+        /// blacked out everything the player could already see.
+        /// Player-owned structures are revealed outright. Anything else is fogged and then revealed the
+        /// vanilla way from already visible cells outside it: open ground connected to the outside is
+        /// seen, sealed rooms stay fogged, and walls bordering the visible area are seen.
+        /// </summary>
+        public static void RecomputeFog(Map map, CellRect rect, Faction faction)
+        {
+            CellRect footprint = rect.ClipInsideMap(map);
+            if (footprint.Area == 0) return;
+
+            if (faction != null && faction.IsPlayer)
+            {
+                foreach (IntVec3 c in footprint) map.fogGrid.Unfog(c);
+                return;
+            }
+
+            FogGrid fog = map.fogGrid;
+            fog.Refog(footprint);
+            foreach (IntVec3 c in footprint)
+            {
+                if (!fog.IsFogged(c) || !SeenFromOutside(map, footprint, c)) continue;
+
+                Thing edifice = c.GetEdifice(map);
+                if (edifice != null && edifice.def.MakeFog)
+                    fog.Unfog(c); // 牆：只揭開自己 / a wall: only itself
+                else
+                    FloodFillerFog.FloodUnfog(c, map);
+            }
+        }
+
+        /// <summary>占地內的格子是否緊鄰占地外一個看得見、而且不擋視線的格子。</summary>
+        private static bool SeenFromOutside(Map map, CellRect footprint, IntVec3 c)
+        {
+            for (int i = 0; i < 8; i++)
+            {
+                IntVec3 n = c + GenAdj.AdjacentCells[i];
+                if (!n.InBounds(map) || footprint.Contains(n) || map.fogGrid.IsFogged(n)) continue;
+                Thing edifice = n.GetEdifice(map);
+                if (edifice == null || !edifice.def.MakeFog) return true;
+            }
+            return false;
         }
 
         private static void InitializeBuildingState(Thing thing)

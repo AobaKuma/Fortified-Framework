@@ -42,6 +42,60 @@ namespace Fortified
 			cachedCommandRelay = GetComp<CompCommandRelay>();
 			cachedDrone = GetComp<CompDrone>();
 			cachedMechRepairable = GetComp<CompMechRepairable>();
+			if (!respawningAfterLoad)
+			{
+				TryRestoreOverseerAfterResurrection();
+			}
+		}
+
+		/// <summary>
+		/// 原版 Overseer 關係為 removeOnDeath，死亡即解除；原版只有培育器的復活帳單會重新綁定。
+		/// AMO 走其他復活途徑（血清、FFF 復活、dev）時會變成無監管者，連帶失去徵召／工作模式面板。
+		/// 這裡記住死前的監管者，復活後首次 spawn 時重新綁回。
+		/// </summary>
+		private Pawn overseerBeforeDeath;
+
+		public override void Kill(DamageInfo? dinfo, Hediff exactCulprit = null)
+		{
+			if (!Dead)
+			{
+				overseerBeforeDeath = this.GetOverseer();
+			}
+			base.Kill(dinfo, exactCulprit);
+		}
+
+		private void TryRestoreOverseerAfterResurrection()
+		{
+			Pawn overseer = overseerBeforeDeath;
+			if (overseer == null || Dead)
+			{
+				return;
+			}
+			overseerBeforeDeath = null;
+			// 已由其他途徑（例如培育器復活帳單）綁定監管者時不重複加。
+			if (this.GetOverseer() != null || OverseerSubjectComp == null)
+			{
+				return;
+			}
+			if (overseer.Dead || overseer.Destroyed || overseer.relations == null || !MechanitorUtility.IsMechanitor(overseer))
+			{
+				return;
+			}
+			if (Faction == null || overseer.Faction != Faction)
+			{
+				return;
+			}
+			overseer.relations.AddDirectRelation(PawnRelationDefOf.Overseer, this);
+		}
+
+		public override void ExposeData()
+		{
+			base.ExposeData();
+			if (Scribe.mode == LoadSaveMode.Saving && overseerBeforeDeath != null && (overseerBeforeDeath.Discarded || overseerBeforeDeath.Destroyed))
+			{
+				overseerBeforeDeath = null;
+			}
+			Scribe_References.Look(ref overseerBeforeDeath, "overseerBeforeDeath");
 		}
 
 		// —— IWeaponUsable 實作（與 WeaponUsableMech 相同簽名）——
