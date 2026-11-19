@@ -1,21 +1,28 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <LanguageData>
 
   <!-- RaidWave system -->
+  <!-- EN: Raid Wave Incoming -->
   <FFF_RaidWave_LetterLabel>突擊波次來襲</FFF_RaidWave_LetterLabel>
+  <!-- EN: A raid wave from {0} has arrived and is now attacking your colony. -->
   <FFF_RaidWave_LetterText>來自{0}的突擊波次已抵達，正在攻擊你的殖民地。</FFF_RaidWave_LetterText>
 
+  <!-- EN: Raid Wave Inbound -->
   <FFF_RaidWave_Alert>突擊波次逼近</FFF_RaidWave_Alert>
+  <!-- EN: A raid wave from {0} is en route and will arrive shortly. -->
   <FFF_RaidWave_AlertDesc>來自{0}的突擊波次正在趕來，即將抵達。</FFF_RaidWave_AlertDesc>
 
+  <!-- EN: Raid wave unavailable for {0}. -->
   <FFF_RaidWave_Cooldown>突擊波次冷卻中，還需{0}。</FFF_RaidWave_Cooldown>
+  <!-- EN: FFF: RaidWave game component not found. -->
   <FFF_RaidWave_NoGameComponent>FFF：未找到 RaidWave 遊戲組件。</FFF_RaidWave_NoGameComponent>
 
   <!-- Confirm dialog shown before triggering via UseEffect -->
-  <FFF_RaidWave_ConfirmDialog>召喚{WAVE}將派遣以下勢力攻擊你的殖民地：
+  <!-- EN: Calling {WAVE} will send the following forces against your colony:
 
 {PAWNS}
 
-確認繼續？</FFF_RaidWave_ConfirmDialog>
+Proceed? -->
+  <FFF_RaidWave_ConfirmDialog>召喚{WAVE}將派遣以下勢力攻擊你的殖民地：\n\n{PAWNS}\n\n確認繼續？</FFF_RaidWave_ConfirmDialog>
 
 </LanguageData>

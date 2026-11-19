@@ -1,8 +1,13 @@
-<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <LanguageData>
+  <!-- EN: Internal battery -->
   <FFF_InternalBattery>內部電池</FFF_InternalBattery>
+  <!-- EN: self-powered -->
   <FFF_SelfPowered>自供電中</FFF_SelfPowered>
+  <!-- EN: full -->
   <FFF_BatteryFull>已充滿</FFF_BatteryFull>
+  <!-- EN: standby, charging at {0} W -->
   <FFF_StandbyCharging>待機中，以 {0} W 充電</FFF_StandbyCharging>
+  <!-- EN: standby -->
   <FFF_StandbyIdle>待機中</FFF_StandbyIdle>
 </LanguageData>

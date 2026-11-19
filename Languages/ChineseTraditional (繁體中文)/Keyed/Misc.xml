@@ -1,12 +1,19 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <LanguageData>
 
+  <!-- EN: Camouflage -->
   <FFF_Camouflage_Label>迷彩</FFF_Camouflage_Label>
+  <!-- EN: Toggle camouflage mode. -->
   <FFF_Camouflage_Desc>切換迷彩模式。</FFF_Camouflage_Desc>
+  <!-- EN: Time left till camouflage reset: {0}. -->
   <FFF_Camouflage_CooldownDesc>距離迷彩重置剩餘時間: {0}。</FFF_Camouflage_CooldownDesc>
+  <!-- EN: A perimeter scanner has detected an invisible creature. -->
   <FFF_MessageLadarTriggered>周界掃描儀偵測到一個隱形生物。</FFF_MessageLadarTriggered>
+  <!-- EN: Invisible object nearby -->
   <FFF_LadarDetectedInvisible>附近有隱形物體</FFF_LadarDetectedInvisible>
 
+  <!-- EN: Repair {0} (self-repair order for an awakened mech) -->
+  <!-- EN: Repair {0} -->
   <RepairMech>維修{0}</RepairMech>
 
 </LanguageData>

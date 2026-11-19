@@ -7,11 +7,10 @@
   
   <!-- EN: Need mechanitor in map -->
   <FFF.Reason.NoMechanitorInMap>地圖中需有御機使</FFF.Reason.NoMechanitorInMap>
-  <!-- EN: Must be Mechanitor -->
   <!-- EN: Orbital downlink has established connection with mechanitor -->
   <FFF.Message.BandwidthSupported>軌道下行帶寬建立了與御機使的連接協議</FFF.Message.BandwidthSupported>
 
-  <!-- EN: Inventroy fulled -->
+  <!-- EN: Inventory full -->
   <FFF.Reason.NoPayloadCapacity>物品欄已滿</FFF.Reason.NoPayloadCapacity>
   <!-- EN: Take {0} -->
   <FFF.TakeToInventory>拿取{0}</FFF.TakeToInventory>
@@ -19,32 +18,25 @@
   <FFF.DropGears>卸載所有物品</FFF.DropGears>
 
   <!-- EN: work type disabled -->
-  <!-- EN: work type disabled -->
   <!-- EN: need bandwidth:{0} -->
-  <!-- EN: need bandwidths:{0} -->
   <!-- EN: altitude layer occupied -->
   <!-- EN: altitude layer occupied -->
   <FFF.Reason.AltitudeLayerOccupied>建築層被占用</FFF.Reason.AltitudeLayerOccupied>
   <!-- EN: No enough fuel -->
-  <!-- EN: No enough fuel -->
+  <!-- EN: Not enough fuel -->
   <FFF.Reason.NoEnoughFuel>燃料不足</FFF.Reason.NoEnoughFuel>
   <!-- EN: No fuel -->
   <!-- EN: No fuel -->
   <FFF.Reason.NotFueled>沒有燃料</FFF.Reason.NotFueled>
 
   <!-- EN: deactivate Mech -->
-  <!-- EN: deactivate mech -->
-  <!-- EN: Try hacking {0} -->
   <!-- EN: Try hacking {0} -->
   <FFF.DeactivatedMech_TryHack>嘗試駭入{0}</FFF.DeactivatedMech_TryHack>
   <!-- EN: Cannot hacking -->
-  <!-- EN: Cannot hack -->
   <FFF.DeactivatedMech_CannotHack>無法駭入</FFF.DeactivatedMech_CannotHack>
 
   <!-- EN: Requires total mass exceeding {0} -->
-  <!-- EN: Requires total mass exceeding {0} -->
   <FFF.BillRequires.Mass>需要總計重量超過{0}:({1})</FFF.BillRequires.Mass>
-  <!-- EN: Requires total price to exceed {0} -->
   <!-- EN: Requires total price to exceed {0} -->
   <FFF.BillRequires.MarketValue>需要總計價值超過{0}:({1})</FFF.BillRequires.MarketValue>
 
@@ -89,8 +81,10 @@
   <FFF.Armor.CE>{0}毫米等效均質鋼</FFF.Armor.CE>
   <!-- EN: {0}% protection -->
   <FFF.Armor.Vanilla>{0}%防護</FFF.Armor.Vanilla>
-  <!-- UNUSED -->
+  
+  <!-- EN: must be placed on a wall or door -->
   <FFF.Message.CannotPlaceWithoutWall>需要放置於牆體或門上</FFF.Message.CannotPlaceWithoutWall>
+  <!-- EN: must be placed on a cover building -->
   <FFF.Message.MustOnACoverBuilding>需要放置在掩體上</FFF.Message.MustOnACoverBuilding>
 
   <!-- EN: Estimated raid time: {0} -->
@@ -103,5 +97,4 @@
   <FFF_Status_Standby>待機 (等待目標)</FFF_Status_Standby>
   <!-- EN: Local monitoring (Offline) -->
   <FFF_Site_LocalMonitoring>本地監控中 (離線)</FFF_Site_LocalMonitoring>
-
 </LanguageData>

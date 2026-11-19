@@ -1,26 +1,44 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <LanguageData>
+  
+  <!-- EN: ammo switching -->
   <FFF_Info_AmmoSwitch.label>彈藥切換</FFF_Info_AmmoSwitch.label>
+  <!-- EN: This weapon can switch between multiple ammunition presets. Use the gizmo to queue a switch; the wielder walks over to change ammo and a short cooldown applies afterwards. Each preset may alter the projectile, range and accuracy. -->
   <FFF_Info_AmmoSwitch.description>此武器可在多種彈藥預設之間切換。使用指令排程切換後，持有者會前往更換彈藥，之後有短暫冷卻。各預設可能改變投射物、射程與精準度。</FFF_Info_AmmoSwitch.description>
-
-  <FFF_Info_DamageBlocker.label>閾值防護</FFF_Info_DamageBlocker.label>
-  <FFF_Info_DamageBlocker.description>受到的攻擊會與傷害閾值比較。依設定，高於或低於閾值的攻擊可被完全阻擋、壓制到閾值或直接穿透，每次阻擋可能消耗一層防護。防護層數可用材料整備或隨時間回充。詳細數值見「閾值防護」分類。</FFF_Info_DamageBlocker.description>
-
-  <FFF_Info_EnvironmentalBill.label>環境需求</FFF_Info_EnvironmentalBill.label>
-  <FFF_Info_EnvironmentalBill.description>此配方只能在工作台所在房間符合特定環境條件（清潔度、光照、溫度、氣壓或重力）時執行。條件不符時工單會被暫停。部分連結設施可豁免這些需求。</FFF_Info_EnvironmentalBill.description>
-
-  <FFF_Info_HeavyEquippable.label>重型裝備</FFF_Info_HeavyEquippable.label>
-  <FFF_Info_HeavyEquippable.description>只有體型達到需求、或屬於指定種族、穿戴指定服裝、擁有指定植入物或基因的單位才能裝備。其他單位無法將其作為武器拾取。</FFF_Info_HeavyEquippable.description>
-
-  <FFF_Info_MultiTurret.label>多重砲塔</FFF_Info_MultiTurret.label>
-  <FFF_Info_MultiTurret.description>此單位搭載一個或多個子砲塔，會獨立於主武器鎖定並攻擊目標。每座砲塔可指定強制目標、切換自動或手動開火，並可能接受各自的武器或彈藥。</FFF_Info_MultiTurret.description>
-
-  <FFF_Info_InternalBattery.label>內建電池</FFF_Info_InternalBattery.label>
-  <FFF_Info_InternalBattery.description>此建築自帶電池。連接供電電網時會為電池充電；電網斷電後改由電池維持運作直到耗盡。將建築關閉會進入待機，停止運作但充電更快。</FFF_Info_InternalBattery.description>
-
-  <FFF_Info_Deployable.label>可部署</FFF_Info_Deployable.label>
-  <FFF_Info_Deployable.description>此物品可由單位攜帶並在即時部署為建築。徵召中的攜帶者可直接命令將其放置在周圍空地上。</FFF_Info_Deployable.description>
-
+  
+  <!-- EN: biochemical protection -->
   <FFF_Info_BiochemicalProtection.label>生化防護</FFF_Info_BiochemicalProtection.label>
+  <!-- EN: While worn, this apparel prevents the wearer from contracting diseases and infections from the environment or from wounds. -->
   <FFF_Info_BiochemicalProtection.description>穿戴時，可防止穿戴者從環境或傷口感染疾病。</FFF_Info_BiochemicalProtection.description>
+  
+  <!-- EN: threshold protection -->
+  <FFF_Info_DamageBlocker.label>閾值防護</FFF_Info_DamageBlocker.label>
+  <!-- EN: Incoming hits are compared against a damage threshold. Depending on configuration, hits above or below the threshold can be fully blocked, clamped, or let through, and each block may consume a protection charge. Charges can be replenished with materials or recharge over time. See the "Threshold protection" category for the exact numbers. -->
+  <FFF_Info_DamageBlocker.description>受到的攻擊會與傷害閾值比較。依設定，高於或低於閾值的攻擊可被完全阻擋、壓制到閾值或直接穿透，每次阻擋可能消耗一層防護。防護層數可用材料整備或隨時間回充。詳細數值見「閾值防護」分類。</FFF_Info_DamageBlocker.description>
+  
+  <!-- EN: deployable -->
+  <FFF_Info_Deployable.label>可部署</FFF_Info_Deployable.label>
+  <!-- EN: This item can be carried by a pawn and deployed in the field as a building. A drafted pawn carrying it can place it directly on an open spot; deploying takes time and the area must be clear. -->
+  <FFF_Info_Deployable.description>此物品可由單位攜帶並在即時部署為建築。徵召中的攜帶者可直接命令將其放置在周圍空地上。</FFF_Info_Deployable.description>
+  
+  <!-- EN: environmental requirement -->
+  <FFF_Info_EnvironmentalBill.label>環境需求</FFF_Info_EnvironmentalBill.label>
+  <!-- EN: This recipe can only be worked when the workbench's room meets specific environmental conditions such as cleanliness, light level, temperature, pressure or gravity. Bills are suspended while the conditions are not met. Some linked facilities may waive these requirements. -->
+  <FFF_Info_EnvironmentalBill.description>此配方只能在工作台所在房間符合特定環境條件（清潔度、光照、溫度、氣壓或重力）時執行。條件不符時工單會被暫停。部分連結設施可豁免這些需求。</FFF_Info_EnvironmentalBill.description>
+  
+  <!-- EN: heavy equipment -->
+  <FFF_Info_HeavyEquippable.label>重型裝備</FFF_Info_HeavyEquippable.label>
+  <!-- EN: Only pawns that meet a body size requirement, or belong to the listed races, wear the listed apparel, or carry the listed implants or genes can equip this. Others cannot pick it up as a weapon. -->
+  <FFF_Info_HeavyEquippable.description>只有體型達到需求、或屬於指定種族、穿戴指定服裝、擁有指定植入物或基因的單位才能裝備。其他單位無法將其作為武器拾取。</FFF_Info_HeavyEquippable.description>
+  
+  <!-- EN: internal battery -->
+  <FFF_Info_InternalBattery.label>內建電池</FFF_Info_InternalBattery.label>
+  <!-- EN: This building carries its own battery. While connected to a powered grid it charges the battery; if the grid loses power it keeps running on the battery until it is drained. Switching the building off puts it in standby, where it stops working but charges faster. -->
+  <FFF_Info_InternalBattery.description>此建築自帶電池。連接供電電網時會為電池充電；電網斷電後改由電池維持運作直到耗盡。將建築關閉會進入待機，停止運作但充電更快。</FFF_Info_InternalBattery.description>
+  
+  <!-- EN: multiple turrets -->
+  <FFF_Info_MultiTurret.label>多重砲塔</FFF_Info_MultiTurret.label>
+  <!-- EN: This unit mounts one or more sub-turrets that acquire and fire at targets independently of its main weapon. Each turret can be given a forced target, toggled between automatic and manual fire, and may accept its own weapon or ammunition. -->
+  <FFF_Info_MultiTurret.description>此單位搭載一個或多個子砲塔，會獨立於主武器鎖定並攻擊目標。每座砲塔可指定強制目標、切換自動或手動開火，並可能接受各自的武器或彈藥。</FFF_Info_MultiTurret.description>
+  
 </LanguageData>

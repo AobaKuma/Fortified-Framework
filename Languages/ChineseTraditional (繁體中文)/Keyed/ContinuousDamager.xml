@@ -1,19 +1,26 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <LanguageData>
 
-  <!-- CompContinuousDamager — gizmo (showGizmo=true 備用) -->
+  <!-- CompContinuousDamager — gizmo (showGizmo=true fallback) -->
+  <!-- EN: Activate -->
   <FFF_CompContinuousDamager_Activate>啟動</FFF_CompContinuousDamager_Activate>
+  <!-- EN: Deactivate -->
   <FFF_CompContinuousDamager_Deactivate>停用</FFF_CompContinuousDamager_Deactivate>
+  <!-- EN: Activate this device. It will deal {0} {2} damage every interval for {1} seconds, then destroy itself. -->
   <FFF_CompContinuousDamager_Desc>啟動此裝置。它將在{1}秒內持續造成{0}點{2}傷害，隨後自毀。</FFF_CompContinuousDamager_Desc>
 
-  <!-- CompContinuousDamager — 檢查面板 -->
+  <!-- CompContinuousDamager — inspect string -->
+  <!-- EN: Active — time remaining: {0} -->
   <FFF_CompContinuousDamager_Remaining>已啟動 — 剩餘時間：{0}</FFF_CompContinuousDamager_Remaining>
 
-  <!-- CompUseEffect_ActivateContinuousDamager — 拒絕原因 -->
+  <!-- CompUseEffect_ActivateContinuousDamager — rejection reasons -->
+  <!-- EN: No continuous damager component found on this building. -->
   <FFF_NoContinuousDamagerComp>此建築上未找到持續傷害元件。</FFF_NoContinuousDamagerComp>
+  <!-- EN: Device is already active. -->
   <FFF_ContinuousDamagerAlreadyActive>裝置已啟動</FFF_ContinuousDamagerAlreadyActive>
 
-  <!-- CompUsable — 浮動選單標籤 -->
+  <!-- CompUsable — float menu label -->
+  <!-- EN: Arm device -->
   <FFF_ArmThermiteDevice>啟動裝置</FFF_ArmThermiteDevice>
 
 </LanguageData>

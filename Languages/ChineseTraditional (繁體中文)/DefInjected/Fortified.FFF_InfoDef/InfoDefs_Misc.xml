@@ -1,98 +1,164 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <LanguageData>
-  <FFF_Info_Camouflage.label>偽裝</FFF_Info_Camouflage.label>
-  <FFF_Info_Camouflage.description>可切換偽裝模式，對敵人隱形。敵人靠得夠近、或在偽裝中開火時都有一定機率暴露它；一旦被發現偽裝即解除，需要一段時間重置後才能再次使用。</FFF_Info_Camouflage.description>
-
-  <FFF_Info_PerimeterScanner.label>周界掃描器</FFF_Info_PerimeterScanner.label>
-  <FFF_Info_PerimeterScanner.description>監視周圍是否有隱形或偽裝的生物，偵測到時發出警告。</FFF_Info_PerimeterScanner.description>
-
-  <FFF_Info_ShieldingDevice.label>屏蔽裝置</FFF_Info_ShieldingDevice.label>
-  <FFF_Info_ShieldingDevice.description>供電時，此裝置會在特定事件（例如襲擊）抵達殖民地前將其攔截。耗電量隨地圖上的殖民者人數增加。每次攔截後裝置會進入長時間冷卻，期間不提供任何保護但仍需供電冷卻。</FFF_Info_ShieldingDevice.description>
-
-  <FFF_Info_SignalTower.label>訊號廣播</FFF_Info_SignalTower.label>
-  <FFF_Info_SignalTower.description>供電時，此裝置將能夠透過Gizmo選項呼叫商船來訪，需要冷卻。</FFF_Info_SignalTower.description>
-
-  <FFF_Info_AlertScanner.label>掃描式警報器</FFF_Info_AlertScanner.label>
-  <FFF_Info_AlertScanner.description>在視野內範圍內具有敵對目標時發出警報使監聽該訊號的其他裝置做出反應。每次偵測都會提升地圖的安全警戒等級；停用或摧毀掃描器能夠避免觸發。</FFF_Info_AlertScanner.description>
-
-  <FFF_Info_AlertEffector.label>警報響應</FFF_Info_AlertEffector.label>
-  <FFF_Info_AlertEffector.description>在地圖上的警報器觸發時做出反應，包含且可能不限於釋放防衛者、啟動裝置或以其他方式回應入侵者。部分響應措施只會觸發一次。</FFF_Info_AlertEffector.description>
-
-  <FFF_Info_SignalAreaTrigger.label>觸發式警報器</FFF_Info_SignalAreaTrigger.label>
-  <FFF_Info_SignalAreaTrigger.description>在滿足條件時發出訊號使監聽該訊號的其他裝置做出反應。每次偵測都會提升地圖的安全警戒等級。</FFF_Info_SignalAreaTrigger.description>
-
-  <FFF_Info_SignalRemote.label>遠端操作台</FFF_Info_SignalRemote.label>
-  <FFF_Info_SignalRemote.description>具有一個或多個按鈕，每個按鈕都能夠廣播訊號供連結的裝置回應。</FFF_Info_SignalRemote.description>
-
+  
+  <!-- EN: access key lock -->
   <FFF_Info_AccessKeyActivatable.label>門禁鎖</FFF_Info_AccessKeyActivatable.label>
+  <!-- EN: Sealed until a colonist uses the required access key on it. Activating it may unlock the matching security doors or release the contents stored inside. -->
   <FFF_Info_AccessKeyActivatable.description>在殖民者對其使用所需的門禁鑰匙前保持封鎖。啟動後可能解鎖對應的安全門，或釋放內部儲存的物品。</FFF_Info_AccessKeyActivatable.description>
-
+  
+  <!-- EN: security door -->
   <FFF_Info_AccessKeyDoor.label>安全門</FFF_Info_AccessKeyDoor.label>
+  <!-- EN: This door stays locked while linked to an access key lock. Once the lock is activated the door opens and becomes usable by the colonist who unlocked it and their faction. -->
   <FFF_Info_AccessKeyDoor.description>此門在連結門禁鎖期間保持上鎖。鎖被啟動後門會打開，並可供解鎖的殖民者及其陣營使用。</FFF_Info_AccessKeyDoor.description>
-
-  <FFF_Info_BuildingMover.label>可移動結構</FFF_Info_BuildingMover.label>
-  <FFF_Info_BuildingMover.description>此結構可沿其朝向軸移動、原地旋轉，或在軌道上來回穿梭，由指令、訊號或接近觸發。視構造而定，它可能碾碎路徑上的障礙並挖穿礦脈。</FFF_Info_BuildingMover.description>
-
-  <FFF_Info_ContinuousDamager.label>一次性鋁熱切割</FFF_Info_ContinuousDamager.label>
-  <FFF_Info_ContinuousDamager.description>啟動後，此裝置會在設定時間內持續對前方物體造成持續熱傷害。可用來有效切穿牆壁或工事。</FFF_Info_ContinuousDamager.description>
-
-  <FFF_Info_SelfDestruct.label>自毀程序</FFF_Info_SelfDestruct.label>
-  <FFF_Info_SelfDestruct.description>收到觸發訊號後，此物體會在短暫延遲後引發大範圍爆炸。程序開始後請遠離。</FFF_Info_SelfDestruct.description>
-
-  <FFF_Info_Substation.label>電力樞紐</FFF_Info_Substation.label>
-  <FFF_Info_Substation.description>為本地電網供電，可透過駭入將其關閉。對於敵對陣營持有的樞紐會在本地圖單位被擊敗後自動斷連。智識技能不足的單位操作有觸電風險。</FFF_Info_Substation.description>
-
-  <FFF_Info_TurretCapacity.label>有人工事</FFF_Info_TurretCapacity.label>
-  <FFF_Info_TurretCapacity.description>需要單位進入操作的強化砲塔。操作者在內部操縱武器並受結構保護；沒有操作者時砲塔不會運作。</FFF_Info_TurretCapacity.description>
-
-  <FFF_Info_AutoWorkTable.label>自動工作台</FFF_Info_AutoWorkTable.label>
-  <FFF_Info_AutoWorkTable.description>能夠半自動執行工作程序的生產機器。具備所需技能的殖民者只需在每個階段進行一次操作，工作台便會在耗電的同時無人看管地完成工作。部分工作台會自動彈出成品，其他則需要殖民者前來取件。</FFF_Info_AutoWorkTable.description>
-
-  <FFF_Info_QualityChance.label>品質優化</FFF_Info_QualityChance.label>
-  <FFF_Info_QualityChance.description>連接此建築的自動工作台生產產品時有固定機率獲得更高品質，與工作者技能無關。</FFF_Info_QualityChance.description>
-
-  <FFF_Info_EnvironmentExemption.label>環境豁免</FFF_Info_EnvironmentExemption.label>
-  <FFF_Info_EnvironmentExemption.description>連結至工作台時，此設施可豁免或放寬該工作台配方的環境需求——清潔度、光照、溫度、氣壓或重力。多個連結設施的放寬幅度會累加。</FFF_Info_EnvironmentExemption.description>
-
-  <FFF_Info_FueledSpawner.label>燃料生產</FFF_Info_FueledSpawner.label>
-  <FFF_Info_FueledSpawner.description>透過消耗燃料來定期生產物品。在燃料耗盡或附近堆積過多產品時停止生產。</FFF_Info_FueledSpawner.description>
-
-  <FFF_Info_LogisticTerminal.label>後勤終端</FFF_Info_LogisticTerminal.label>
-  <FFF_Info_LogisticTerminal.description>與終端互動以申請補給。延遲一段時間後，貨運車會載著終端庫存的一部分抵達；庫存有限，耗盡後終端便會停止運作。</FFF_Info_LogisticTerminal.description>
-
-  <FFF_Info_ListedContainer.label>備貨容器</FFF_Info_ListedContainer.label>
-  <FFF_Info_ListedContainer.description>裝有物資的容器。檢視可查看內容，與其互動可將物資卸出。</FFF_Info_ListedContainer.description>
-
-  <FFF_Info_Lootbox.label>密封儲藏箱</FFF_Info_Lootbox.label>
-  <FFF_Info_Lootbox.description>密封的容器。開啟後會取得隨機物資——偶爾也可能什麼都沒有。</FFF_Info_Lootbox.description>
-
-  <FFF_Info_TrampleBuildings.label>碾壓</FFF_Info_TrampleBuildings.label>
-  <FFF_Info_TrampleBuildings.description>此單位的重量足以壓碎擋路的結構。它移動時，佔地範圍內的非己方建築會受到傷害。</FFF_Info_TrampleBuildings.description>
-
-  <FFF_Info_MeleeSweep.label>橫掃攻擊</FFF_Info_MeleeSweep.label>
-  <FFF_Info_MeleeSweep.description>近戰攻擊會命中攻擊者前方扇形範圍內的所有目標，而非單一目標。</FFF_Info_MeleeSweep.description>
-
-  <FFF_Info_BulletproofPlate.label>裝甲板</FFF_Info_BulletproofPlate.label>
-  <FFF_Info_BulletproofPlate.description>裝有可更換的裝甲板，為覆蓋部位提供額外防護。裝甲板受擊時會損耗耐久，耗盡後停止防護；使用對應的板材補充。品質越高的服裝從裝甲板獲得的效益越大。</FFF_Info_BulletproofPlate.description>
-
+  
+  <!-- EN: active protection -->
   <FFF_Info_ActiveProtectionSystem.label>主動防護</FFF_Info_ActiveProtectionSystem.label>
+  <!-- EN: Deploys an interception field around the user for a limited time. Incoming projectiles that enter the field have a chance to be shot down before they land; only a few can be intercepted at once. -->
   <FFF_Info_ActiveProtectionSystem.description>在使用者周圍展開一段時間的攔截力場。進入範圍的來襲投射物有機率在落地前被擊落；同時只能攔截少數幾個。</FFF_Info_ActiveProtectionSystem.description>
-
-  <FFF_Info_AntiBlasterSmoke.label>遮蔽煙幕</FFF_Info_AntiBlasterSmoke.label>
-  <FFF_Info_AntiBlasterSmoke.description>在其範圍內釋放煙幕，持續期間有機率阻擋穿越的特定投射物。</FFF_Info_AntiBlasterSmoke.description>
-
-  <FFF_Info_CausePanic.label>威懾存在</FFF_Info_CausePanic.label>
-  <FFF_Info_CausePanic.description>它的存在會使附近的單位不安。每隔一段時間，範圍內的單位可能陷入精神狀態——體型較小或已瀕臨崩潰的單位最容易受影響。它被暈眩時效果會中止。</FFF_Info_CausePanic.description>
-
-  <FFF_Info_Floating.label>懸浮</FFF_Info_Floating.label>
-  <FFF_Info_Floating.description>此單位懸浮於地面之上。它不受會減緩步行者的地形影響，並能跨越深水。</FFF_Info_Floating.description>
-
+  
+  <!-- EN: air support -->
   <FFF_Info_AirSupportSummoner.label>空中支援</FFF_Info_AirSupportSummoner.label>
+  <!-- EN: Calls in an air strike or fly-over from an allied base. Pick a target on the map and the support arrives after a short delay; the exact effect depends on the support type this item is tuned to. -->
   <FFF_Info_AirSupportSummoner.description>從友軍基地呼叫空襲或飛越。在地圖上選擇目標，支援會在短暫延遲後抵達；實際效果取決於此物品對應的支援類型。</FFF_Info_AirSupportSummoner.description>
-
-  <FFF_Info_WeaponReloadable.label>可裝填武器</FFF_Info_WeaponReloadable.label>
-  <FFF_Info_WeaponReloadable.description>此武器攜帶有限的彈量，用盡後必須以對應的彈藥物品重新裝填。</FFF_Info_WeaponReloadable.description>
-
+  
+  <!-- EN: alarm response -->
+  <FFF_Info_AlertEffector.label>警報響應</FFF_Info_AlertEffector.label>
+  <!-- EN: Reacts when an alarm on the map is triggered — including, but not limited to, releasing defenders, activating devices or otherwise responding to intruders. Some responses fire only once. -->
+  <FFF_Info_AlertEffector.description>在地圖上的警報器觸發時做出反應，包含且可能不限於釋放防衛者、啟動裝置或以其他方式回應入侵者。部分響應措施只會觸發一次。</FFF_Info_AlertEffector.description>
+  
+  <!-- EN: scanning alarm -->
+  <FFF_Info_AlertScanner.label>掃描式警報器</FFF_Info_AlertScanner.label>
+  <!-- EN: Raises an alarm when a hostile target is within its field of view, causing other devices listening for that signal to react. Each detection raises the map's security alert level; disable or destroy the scanner to avoid triggering it. -->
+  <FFF_Info_AlertScanner.description>在視野內範圍內具有敵對目標時發出警報使監聽該訊號的其他裝置做出反應。每次偵測都會提升地圖的安全警戒等級；停用或摧毀掃描器能夠避免觸發。</FFF_Info_AlertScanner.description>
+  
+  <!-- EN: obscurant smoke -->
+  <FFF_Info_AntiBlasterSmoke.label>遮蔽煙幕</FFF_Info_AntiBlasterSmoke.label>
+  <!-- EN: Fills its area with smoke that has a chance to stop certain projectiles passing through it for as long as it lasts. -->
+  <FFF_Info_AntiBlasterSmoke.description>在其範圍內釋放煙幕，持續期間有機率阻擋穿越的特定投射物。</FFF_Info_AntiBlasterSmoke.description>
+  
+  <!-- EN: automated workbench -->
+  <FFF_Info_AutoWorkTable.label>自動工作台</FFF_Info_AutoWorkTable.label>
+  <!-- EN: A production machine that runs its work process semi-automatically. A colonist with the required skills only needs to perform one action at each stage; the bench then works through it unattended while consuming power. Some benches eject the finished product automatically, others need a colonist to collect it. -->
+  <FFF_Info_AutoWorkTable.description>能夠半自動執行工作程序的生產機器。具備所需技能的殖民者只需在每個階段進行一次操作，工作台便會在耗電的同時無人看管地完成工作。部分工作台會自動彈出成品，其他則需要殖民者前來取件。</FFF_Info_AutoWorkTable.description>
+  
+  <!-- EN: mobile structure -->
+  <FFF_Info_BuildingMover.label>可移動結構</FFF_Info_BuildingMover.label>
+  <!-- EN: This structure can move along its facing axis, rotate in place, or shuttle back and forth on a track, triggered by command, signal or proximity. Depending on its build it may crush obstacles in its path and mine through ore. -->
+  <FFF_Info_BuildingMover.description>此結構可沿其朝向軸移動、原地旋轉，或在軌道上來回穿梭，由指令、訊號或接近觸發。視構造而定，它可能碾碎路徑上的障礙並挖穿礦脈。</FFF_Info_BuildingMover.description>
+  
+  <!-- EN: armor plates -->
+  <FFF_Info_BulletproofPlate.label>裝甲板</FFF_Info_BulletproofPlate.label>
+  <!-- EN: Fitted with replaceable armor plates that add protection to the body parts they cover. Plates lose durability when hit and stop protecting once worn out; replenish them with the matching plate material. Higher quality apparel gets more out of its plates. -->
+  <FFF_Info_BulletproofPlate.description>裝有可更換的裝甲板，為覆蓋部位提供額外防護。裝甲板受擊時會損耗耐久，耗盡後停止防護；使用對應的板材補充。品質越高的服裝從裝甲板獲得的效益越大。</FFF_Info_BulletproofPlate.description>
+  
+  <!-- EN: camouflage -->
+  <FFF_Info_Camouflage.label>偽裝</FFF_Info_Camouflage.label>
+  <!-- EN: Can toggle a camouflage mode that renders it invisible to enemies. Enemies that get close enough, or firing while camouflaged, each carry a chance of revealing it; once detected the camouflage drops and needs time to reset before it can be used again. -->
+  <FFF_Info_Camouflage.description>可切換偽裝模式，對敵人隱形。敵人靠得夠近、或在偽裝中開火時都有一定機率暴露它；一旦被發現偽裝即解除，需要一段時間重置後才能再次使用。</FFF_Info_Camouflage.description>
+  
+  <!-- EN: intimidating presence -->
+  <FFF_Info_CausePanic.label>威懾存在</FFF_Info_CausePanic.label>
+  <!-- EN: Its presence unsettles nearby pawns. Every so often, those within range may break into a mental state — smaller pawns and pawns already close to breaking are the most vulnerable. The effect lapses while it is stunned. -->
+  <FFF_Info_CausePanic.description>它的存在會使附近的單位不安。每隔一段時間，範圍內的單位可能陷入精神狀態——體型較小或已瀕臨崩潰的單位最容易受影響。它被暈眩時效果會中止。</FFF_Info_CausePanic.description>
+  
+  <!-- EN: single-use thermite cutter -->
+  <FFF_Info_ContinuousDamager.label>一次性鋁熱切割</FFF_Info_ContinuousDamager.label>
+  <!-- EN: Once activated, this device deals continuous heat damage to whatever is in front of it for a set duration. Effective for cutting through walls and fortifications. -->
+  <FFF_Info_ContinuousDamager.description>啟動後，此裝置會在設定時間內持續對前方物體造成持續熱傷害。可用來有效切穿牆壁或工事。</FFF_Info_ContinuousDamager.description>
+  
+  <!-- EN: environmental exemption -->
+  <FFF_Info_EnvironmentExemption.label>環境豁免</FFF_Info_EnvironmentExemption.label>
+  <!-- EN: When linked to a workbench, this facility waives or relaxes the environmental requirements of that bench's recipes — cleanliness, light, temperature, pressure or gravity. The slack from several linked facilities adds up. -->
+  <FFF_Info_EnvironmentExemption.description>連結至工作台時，此設施可豁免或放寬該工作台配方的環境需求——清潔度、光照、溫度、氣壓或重力。多個連結設施的放寬幅度會累加。</FFF_Info_EnvironmentExemption.description>
+  
+  <!-- EN: hovering -->
+  <FFF_Info_Floating.label>懸浮</FFF_Info_Floating.label>
+  <!-- EN: This unit hovers above the ground. It ignores terrain that would slow a walker and can cross deep water. -->
+  <FFF_Info_Floating.description>此單位懸浮於地面之上。它不受會減緩步行者的地形影響，並能跨越深水。</FFF_Info_Floating.description>
+  
+  <!-- EN: fueled production -->
+  <FFF_Info_FueledSpawner.label>燃料生產</FFF_Info_FueledSpawner.label>
+  <!-- EN: Consumes fuel to produce items periodically. Production stops when the fuel runs out or when too many products pile up nearby. -->
+  <FFF_Info_FueledSpawner.description>透過消耗燃料來定期生產物品。在燃料耗盡或附近堆積過多產品時停止生產。</FFF_Info_FueledSpawner.description>
+  
+  <!-- EN: stocked container -->
+  <FFF_Info_ListedContainer.label>備貨容器</FFF_Info_ListedContainer.label>
+  <!-- EN: A container holding supplies. Inspect it to see the contents, then interact with it to unload them. -->
+  <FFF_Info_ListedContainer.description>裝有物資的容器。檢視可查看內容，與其互動可將物資卸出。</FFF_Info_ListedContainer.description>
+  
+  <!-- EN: logistics terminal -->
+  <FFF_Info_LogisticTerminal.label>後勤終端</FFF_Info_LogisticTerminal.label>
+  <!-- EN: Interact with the terminal to request a delivery. After a delay a cargo cart arrives carrying a portion of the terminal's stock; the stock is limited and the terminal shuts down once it is exhausted. -->
+  <FFF_Info_LogisticTerminal.description>與終端互動以申請補給。延遲一段時間後，貨運車會載著終端庫存的一部分抵達；庫存有限，耗盡後終端便會停止運作。</FFF_Info_LogisticTerminal.description>
+  
+  <!-- EN: sealed cache -->
+  <FFF_Info_Lootbox.label>密封儲藏箱</FFF_Info_Lootbox.label>
+  <!-- EN: A sealed container. Opening it yields a random selection of goods — or occasionally nothing at all. -->
+  <FFF_Info_Lootbox.description>密封的容器。開啟後會取得隨機物資——偶爾也可能什麼都沒有。</FFF_Info_Lootbox.description>
+  
+  <!-- EN: sweeping strike -->
+  <FFF_Info_MeleeSweep.label>橫掃攻擊</FFF_Info_MeleeSweep.label>
+  <!-- EN: Melee attacks hit everything in a cone in front of the attacker rather than a single target. -->
+  <FFF_Info_MeleeSweep.description>近戰攻擊會命中攻擊者前方扇形範圍內的所有目標，而非單一目標。</FFF_Info_MeleeSweep.description>
+  
+  <!-- EN: paintable -->
   <FFF_Info_Paintable.label>可塗裝</FFF_Info_Paintable.label>
+  <!-- EN: Can be repainted. Choose a color or camouflage pattern from the paint command; some models default to their faction's colors. -->
   <FFF_Info_Paintable.description>可以重新塗裝。從塗裝指令選擇顏色或迷彩圖樣；部分型號預設使用其陣營配色。</FFF_Info_Paintable.description>
+  
+  <!-- EN: perimeter scanner -->
+  <FFF_Info_PerimeterScanner.label>周界掃描器</FFF_Info_PerimeterScanner.label>
+  <!-- EN: Watches the area around it for invisible or camouflaged creatures and raises a warning when one is detected. -->
+  <FFF_Info_PerimeterScanner.description>監視周圍是否有隱形或偽裝的生物，偵測到時發出警告。</FFF_Info_PerimeterScanner.description>
+  
+  <!-- EN: quality optimization -->
+  <FFF_Info_QualityChance.label>品質優化</FFF_Info_QualityChance.label>
+  <!-- EN: Automated workbenches linked to this building have a fixed chance of producing higher-quality products, regardless of the worker's skill. -->
+  <FFF_Info_QualityChance.description>連接此建築的自動工作台生產產品時有固定機率獲得更高品質，與工作者技能無關。</FFF_Info_QualityChance.description>
+  
+  <!-- EN: self-destruct sequence -->
+  <FFF_Info_SelfDestruct.label>自毀程序</FFF_Info_SelfDestruct.label>
+  <!-- EN: On receiving its trigger signal this object detonates in a large explosion after a short delay. Keep clear once the sequence starts. -->
+  <FFF_Info_SelfDestruct.description>收到觸發訊號後，此物體會在短暫延遲後引發大範圍爆炸。程序開始後請遠離。</FFF_Info_SelfDestruct.description>
+  
+  <!-- EN: shielding device -->
+  <FFF_Info_ShieldingDevice.label>屏蔽裝置</FFF_Info_ShieldingDevice.label>
+  <!-- EN: While powered, this device intercepts certain events — such as raids — before they reach the colony. Its power draw grows with the number of colonists on the map. Each interception puts the device into a long cooldown during which it offers no protection, though it still needs power to cool down. -->
+  <FFF_Info_ShieldingDevice.description>供電時，此裝置會在特定事件（例如襲擊）抵達殖民地前將其攔截。耗電量隨地圖上的殖民者人數增加。每次攔截後裝置會進入長時間冷卻，期間不提供任何保護但仍需供電冷卻。</FFF_Info_ShieldingDevice.description>
+  
+  <!-- EN: trigger alarm -->
+  <FFF_Info_SignalAreaTrigger.label>觸發式警報器</FFF_Info_SignalAreaTrigger.label>
+  <!-- EN: Sends a signal when its condition is met, causing other devices listening for that signal to react. Each detection raises the map's security alert level. -->
+  <FFF_Info_SignalAreaTrigger.description>在滿足條件時發出訊號使監聽該訊號的其他裝置做出反應。每次偵測都會提升地圖的安全警戒等級。</FFF_Info_SignalAreaTrigger.description>
+  
+  <!-- EN: remote console -->
+  <FFF_Info_SignalRemote.label>遠端操作台</FFF_Info_SignalRemote.label>
+  <!-- EN: Carries one or more buttons, each able to broadcast a signal that linked devices respond to. -->
+  <FFF_Info_SignalRemote.description>具有一個或多個按鈕，每個按鈕都能夠廣播訊號供連結的裝置回應。</FFF_Info_SignalRemote.description>
+  
+  <!-- EN: signal broadcast -->
+  <FFF_Info_SignalTower.label>訊號廣播</FFF_Info_SignalTower.label>
+  <!-- EN: While powered, this device can call a trade ship to visit through its command button. It needs to cool down between uses. -->
+  <FFF_Info_SignalTower.description>供電時，此裝置將能夠透過Gizmo選項呼叫商船來訪，需要冷卻。</FFF_Info_SignalTower.description>
+  
+  <!-- EN: power hub -->
+  <FFF_Info_Substation.label>電力樞紐</FFF_Info_Substation.label>
+  <!-- EN: Supplies power to the local grid and can be shut down by hacking. A hub held by a hostile faction disconnects automatically once the units on this map are defeated. Pawns without enough intellectual skill risk an electric shock when operating it. -->
+  <FFF_Info_Substation.description>為本地電網供電，可透過駭入將其關閉。對於敵對陣營持有的樞紐會在本地圖單位被擊敗後自動斷連。智識技能不足的單位操作有觸電風險。</FFF_Info_Substation.description>
+  
+  <!-- EN: trampling -->
+  <FFF_Info_TrampleBuildings.label>碾壓</FFF_Info_TrampleBuildings.label>
+  <!-- EN: This unit is heavy enough to crush structures in its way. Buildings within its footprint that do not belong to its faction take damage as it moves through them. -->
+  <FFF_Info_TrampleBuildings.description>此單位的重量足以壓碎擋路的結構。它移動時，佔地範圍內的非己方建築會受到傷害。</FFF_Info_TrampleBuildings.description>
+  
+  <!-- EN: crewed emplacement -->
+  <FFF_Info_TurretCapacity.label>有人工事</FFF_Info_TurretCapacity.label>
+  <!-- EN: A fortified turret that a pawn climbs into. The occupant operates the weapon from inside and is protected by the structure; the turret does nothing without a crew. -->
+  <FFF_Info_TurretCapacity.description>需要單位進入操作的強化砲塔。操作者在內部操縱武器並受結構保護；沒有操作者時砲塔不會運作。</FFF_Info_TurretCapacity.description>
+  
+  <!-- EN: reloadable weapon -->
+  <FFF_Info_WeaponReloadable.label>可裝填武器</FFF_Info_WeaponReloadable.label>
+  <!-- EN: This weapon carries a limited number of charges and must be reloaded with the matching ammunition item once they are spent. -->
+  <FFF_Info_WeaponReloadable.description>此武器攜帶有限的彈量，用盡後必須以對應的彈藥物品重新裝填。</FFF_Info_WeaponReloadable.description>
+  
 </LanguageData>

@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: Access link tool -->
+  <FFF_ExportTool_LinkAccessKeyWanter.label>Access link tool</FFF_ExportTool_LinkAccessKeyWanter.label>
+  <!-- EN: Export tool -->
+  <FFF_ExportTool_LinkAccessKeyWanter.description>Export tool</FFF_ExportTool_LinkAccessKeyWanter.description>
+  
+  <!-- EN: Man turret tool -->
+  <FFF_ExportTool_ManTurret.label>Man turret toolW</FFF_ExportTool_ManTurret.label>
+  <!-- EN: Export tool -->
+  <FFF_ExportTool_ManTurret.description>Export tool</FFF_ExportTool_ManTurret.description>
+  
+  <!-- EN: Pawn group tool -->
+  <FFF_ExportTool_PawnGroup.label>Pawn group tool</FFF_ExportTool_PawnGroup.label>
+  <!-- EN: Export tool -->
+  <FFF_ExportTool_PawnGroup.description>Export tool</FFF_ExportTool_PawnGroup.description>
+  
+  <!-- EN: Random structure tool -->
+  <FFF_ExportTool_RandomStructure.label>Random structure tool</FFF_ExportTool_RandomStructure.label>
+  <!-- EN: Export tool -->
+  <FFF_ExportTool_RandomStructure.description>Export tool</FFF_ExportTool_RandomStructure.description>
+  
+</LanguageData>

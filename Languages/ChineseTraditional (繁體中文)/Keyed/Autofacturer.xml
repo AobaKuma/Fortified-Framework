@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <LanguageData>
 
-<!-- EN: Cancel proccess -->
+<!-- EN: Cancel process -->
   <FFF.CancelActiveBill>取消運行</FFF.CancelActiveBill>
 <!-- EN: Cancel the current process, which will return resources and stop consuming power. -->
   <FFF.CancelActiveBillDesc>取消當前運行的工序，這將返還資源並停止消耗電力。</FFF.CancelActiveBillDesc>
@@ -9,7 +9,6 @@
 <!-- EN: The currently executing work list has been canceled, but it needs to stop running. -->
   <FFF.Autofacturer.WorkerCanceled>當前執行的工作清單已取消，但需要停止運行。</FFF.Autofacturer.WorkerCanceled>
 
-<!-- EN: {0} Completed -->
 
   <!-- EN: current bill: {0} -->
   <FFF.Autofacturer.CurrentRecipe>當前進行中: {0}</FFF.Autofacturer.CurrentRecipe>

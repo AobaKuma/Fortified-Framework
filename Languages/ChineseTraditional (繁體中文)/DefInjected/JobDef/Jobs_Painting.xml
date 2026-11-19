@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <LanguageData>
   
-  <!-- EN: 正在為機械體塗裝。 -->
+  <!-- EN: painting for mech. -->
   <FFF_PaintMech.reportString>正在為機械體塗裝。</FFF_PaintMech.reportString>
   
-  <!-- EN: 正在等待塗裝。 -->
+  <!-- EN: waiting for paint -->
   <FFF_WaitForPainting.reportString>正在等待塗裝。</FFF_WaitForPainting.reportString>
   
 </LanguageData>

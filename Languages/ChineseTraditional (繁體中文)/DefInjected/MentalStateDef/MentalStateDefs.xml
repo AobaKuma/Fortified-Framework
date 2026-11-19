@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: fleeing in fear -->
+  <FFF_FleeInPlace.label>恐懼逃竄</FFF_FleeInPlace.label>
+  <!-- EN: Mental state: Fleeing in fear -->
+  <FFF_FleeInPlace.baseInspectLine>崩潰中:恐懼逃竄</FFF_FleeInPlace.baseInspectLine>
+  
+</LanguageData>

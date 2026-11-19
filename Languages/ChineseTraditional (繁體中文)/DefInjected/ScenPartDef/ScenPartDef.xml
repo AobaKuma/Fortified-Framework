@@ -7,10 +7,13 @@
   <!-- EN: forced faction relations -->
   <FFF_ForcedFactionGoodwill.label>強制陣營關係</FFF_ForcedFactionGoodwill.label>
   
-  <!-- EN: start with prefab -->
-  <FFF_PrefabGen.label>初始結構</FFF_PrefabGen.label>
-  
   <!-- EN: huntdown -->
   <FFF_Huntdown.label>追緝</FFF_Huntdown.label>
+  
+  <!-- EN: arrive on gravship -->
+  <FFF_PlayerPawnsArriveGravship.label>TODO</FFF_PlayerPawnsArriveGravship.label>
+  
+  <!-- EN: start with prefab -->
+  <FFF_PrefabGen.label>初始結構</FFF_PrefabGen.label>
   
 </LanguageData>

@@ -1,20 +1,37 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <LanguageData>
+  <!-- EN: Move forward -->
   <FFF.BuildingMover.Dir0>向前移動</FFF.BuildingMover.Dir0>
+  <!-- EN: Move backward -->
   <FFF.BuildingMover.Dir1>向後移動</FFF.BuildingMover.Dir1>
+  <!-- EN: Move right -->
   <FFF.BuildingMover.Dir2>向右移動</FFF.BuildingMover.Dir2>
+  <!-- EN: Move left -->
   <FFF.BuildingMover.Dir3>向左移動</FFF.BuildingMover.Dir3>
+  <!-- EN: Move this structure along its facing axis if the destination is clear. -->
   <FFF.BuildingMover.Desc>若目標格空閒，沿朝向移動該建築。</FFF.BuildingMover.Desc>
+  <!-- EN: The destination is blocked. -->
   <FFF.BuildingMover.Blocked>目標位置被阻擋。</FFF.BuildingMover.Blocked>
+  <!-- EN: Rotate -->
   <FFF.BuildingMover.Rotate>旋轉</FFF.BuildingMover.Rotate>
+  <!-- EN: Rotate this structure clockwise if there is room. -->
   <FFF.BuildingMover.RotateDesc>若有空間，順時針旋轉該建築。</FFF.BuildingMover.RotateDesc>
+  <!-- EN: Reciprocating track: toggles back and forth -->
   <FFF.BuildingMover.Place.Toggle>往復軌道：在兩端之間來回移動</FFF.BuildingMover.Place.Toggle>
+  <!-- EN: Moves along its facing axis -->
   <FFF.BuildingMover.Place.OneWay>沿朝向軸移動</FFF.BuildingMover.Place.OneWay>
+  <!-- EN: Crushes obstacles in its path -->
   <FFF.BuildingMover.Place.Crush>輾碎路徑上的阻擋物</FFF.BuildingMover.Place.Crush>
+  <!-- EN: Mines ore veins it crushes through -->
   <FFF.BuildingMover.Place.Mine>輾過礦脈時採集礦物</FFF.BuildingMover.Place.Mine>
+  <!-- EN: Open door -->
   <DMS.MachineCabinet.Door.Open>開門</DMS.MachineCabinet.Door.Open>
+  <!-- EN: Close door -->
   <DMS.MachineCabinet.Door.Close>關門</DMS.MachineCabinet.Door.Close>
+  <!-- EN: Slides aside to open. Anything in the way is shoved aside and bruised. -->
   <DMS.MachineCabinet.Door.OpenDesc>滑動開門，擋路者被推到旁邊並受到淤傷。</DMS.MachineCabinet.Door.OpenDesc>
+  <!-- EN: THUNDEROUS CHARGE! -->
   <DMS.MachineCabinet.Charge.Label>雷霆大衝鋒！</DMS.MachineCabinet.Charge.Label>
+  <!-- EN: Charges forward, crushing everything in its path and tearing ore from the rock. -->
   <DMS.MachineCabinet.Charge.Desc>向前衝鋒，輾碎一切阻擋，並從岩層中撕出礦物。</DMS.MachineCabinet.Charge.Desc>
 </LanguageData>

@@ -1,5 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <LanguageData>
+  <!-- FortifiedMod : mod settings window -->
+  <!-- EN: Show "Building(Dev)" category in dev mode -->
   <FFF.Settings.ShowDevCategory>開發模式下顯示「Building(Dev)」分類</FFF.Settings.ShowDevCategory>
+  <!-- EN: Contains god-mode-only map-design buildings from this framework and mods built on it. -->
   <FFF.Settings.ShowDevCategory.Desc>收錄本框架及衍生模組中僅限上帝模式使用的地圖設計建築。</FFF.Settings.ShowDevCategory.Desc>
 </LanguageData>

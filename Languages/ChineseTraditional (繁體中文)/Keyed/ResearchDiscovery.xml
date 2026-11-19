@@ -1,17 +1,26 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <LanguageData>
 
-  <!-- ==================== 研究探明（Fortified.ModExtension_ResearchDiscovery） ==================== -->
+  <!-- ==================== Research discovery (Fortified.ModExtension_ResearchDiscovery) ==================== -->
+  <!-- EN: Research revealed -->
   <FFF_Research_DiscoveredLetterLabel>研究已探明</FFF_Research_DiscoveredLetterLabel>
+  <!-- EN: Our latest findings have made sense of archived material that was previously unreadable. The following research projects are no longer unknown, and can now be started: -->
   <FFF_Research_DiscoveredLetterText>最新的研究成果已探明先前無從解讀的封存資料。以下研究專案已不再是未知，現在可以開始研究：</FFF_Research_DiscoveredLetterText>
+  <!-- EN: [an undiscovered technology] -->
   <FFF_Research_UndiscoveredProject>[一項未探明的科技]</FFF_Research_UndiscoveredProject>
+  <!-- EN: [Undiscovered] -->
   <FFF_Research_UndiscoveredUnlock>[未探明]</FFF_Research_UndiscoveredUnlock>
 
-  <!-- ==================== 封存科技解封（Fortified.CompUseEffect_DiscoverResearch） ==================== -->
+  <!-- ==================== Archived tech unsealing (Fortified.CompUseEffect_DiscoverResearch) ==================== -->
+  <!-- EN: Archived technology revealed -->
   <FFF_Research_UnsealLetterLabel>封存技術已探明</FFF_Research_UnsealLetterLabel>
+  <!-- EN: Successfully decrypted records mean the archived {PROJECT} is no longer unknown, and what we already have on file is worth {PROGRESS} points of research progress. -->
   <FFF_Research_UnsealLetterText>成功破譯的資料使被封存的{PROJECT}已不再是未知，同時根據現有的資料我們獲得了{PROGRESS}點的研究進度。</FFF_Research_UnsealLetterText>
+  <!-- EN: {PROJECT} advanced by {PROGRESS} research points. -->
   <FFF_Research_UnsealProgressMessage>{PROJECT}推進了{PROGRESS}點研究進度。</FFF_Research_UnsealProgressMessage>
+  <!-- EN: The decrypted data holds no technical material worth having, but {PAWN} still gained {XP} {SKILL} experience from it. -->
   <FFF_Research_UnsealNothingMessage>解密的數據中並沒有什麼有價值的技術資料，但{PAWN}仍從中獲得了{XP}點{SKILL}經驗。</FFF_Research_UnsealNothingMessage>
+  <!-- EN: The decrypted data holds nothing worth having, and nobody could learn anything from it. -->
   <FFF_Research_UnsealNothingNoGainMessage>破譯的數據中沒有甚麼有價值的資料，也沒有人能從中學到什麼。</FFF_Research_UnsealNothingNoGainMessage>
 
 </LanguageData>

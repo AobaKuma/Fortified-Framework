@@ -1,17 +1,30 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <LanguageData>
 
-  <!-- ==================== Occultech ==================== -->
+  <!-- ==================== Occultech knowledge extraction ==================== -->
+  <!-- Source (font) inspect -->
+  <!-- EN: Occult knowledge: {0} / {1} remaining -->
   <FFF_Occultech_SourceRemaining>可提取數據：剩餘 {0} / {1}</FFF_Occultech_SourceRemaining>
-  <FFF_Occultech_SourceDepleted>已耗盡——剩餘數據已完全損毀，無法提取</FFF_Occultech_SourceDepleted>
-  <FFF_Occultech_SourceStatLabel>數據存量</FFF_Occultech_SourceStatLabel>
-  <FFF_Occultech_SourceStatDesc>此數據源尚可被提取的封存技術數據量。</FFF_Occultech_SourceStatDesc>
+  <!-- EN: Depleted — an inert husk; no knowledge remains -->
+  <FFF_Occultech_SourceDepleted>已耗盡，無法進一步提取</FFF_Occultech_SourceDepleted>
+  <!-- EN: Knowledge reserve -->
+  <FFF_Occultech_SourceStatLabel>研究點數存量</FFF_Occultech_SourceStatLabel>
+  <!-- EN: Occult knowledge points still extractable from this font. -->
+  <FFF_Occultech_SourceStatDesc>此數據源尚可被提取的研究點數。</FFF_Occultech_SourceStatDesc>
+  <!-- Extractor inspect -->
+  <!-- EN: Inactive: no power -->
   <FFF_Occultech_ExtractorNoPower>停止運作：無電力</FFF_Occultech_ExtractorNoPower>
+  <!-- EN: Inactive: no knowledge font in front -->
   <FFF_Occultech_ExtractorNoSource>停止運作：需要面向數據源</FFF_Occultech_ExtractorNoSource>
-  <FFF_Occultech_ExtractorSourceDepleted>停止運作：數據源內的數據已完全損毀</FFF_Occultech_ExtractorSourceDepleted>
-  <FFF_Occultech_ExtractorNoResearch>停止運作：目前沒有研究中的封存技術</FFF_Occultech_ExtractorNoResearch>
+  <!-- EN: Inactive: font depleted -->
+  <FFF_Occultech_ExtractorSourceDepleted>停止運作：數據源耗盡</FFF_Occultech_ExtractorSourceDepleted>
+  <!-- EN: Inactive: no project in progress -->
+  <FFF_Occultech_ExtractorNoResearch>停止運作：目前沒有研究中的科研項目</FFF_Occultech_ExtractorNoResearch>
+  <!-- EN: Extracting {0} knowledge/day (font: {1} left) -->
   <FFF_Occultech_ExtractorWorking>正在提取 {0} 數據/日（尚餘 {1}）</FFF_Occultech_ExtractorWorking>
+  <!-- EN: Extraction rate -->
   <FFF_Occultech_ExtractorStatLabel>提取速率</FFF_Occultech_ExtractorStatLabel>
-  <FFF_Occultech_ExtractorStatDesc>運作時每日提取的數據點數。數據會歸檔進「{0}」類別，滿溢後依研究分頁順序流向後續類別。</FFF_Occultech_ExtractorStatDesc>
+  <!-- EN: Knowledge points extracted per day while running. Knowledge is filed into the {0} category, overflowing into later categories of the same research tab. -->
+  <FFF_Occultech_ExtractorStatDesc>運作時每日提取的研究點數。數據會歸檔進「{0}」類別，滿溢後依研究分頁順序流向後續類別。</FFF_Occultech_ExtractorStatDesc>
 
 </LanguageData>

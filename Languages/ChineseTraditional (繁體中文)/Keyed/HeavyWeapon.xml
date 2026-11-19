@@ -1,12 +1,9 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <LanguageData>
     <!-- EN: Mounted weapon -->
-    <!-- EN: Mounted weapon -->
   <FFF.MountedWeapon>掛載型武器</FFF.MountedWeapon>
-    <!-- EN: This weapon can only be equipped with listed automatroid or mechframe -->
     <!-- EN: This weapon can only be equipped with listed automatroid or mech frame -->
   <FFF.MountedWeaponCanOnlyBeEquippedBySpecificApparelOrRaces>此掛載型武器只能由下列機械體或裝備衣物與仿生後所使用</FFF.MountedWeaponCanOnlyBeEquippedBySpecificApparelOrRaces>
-    <!-- EN: This weapon can be equipped with listed specific apparel or bionics -->
     <!-- EN: This weapon can be equipped with listed specific apparel or bionics -->
   <FFF.WeaponCanBeEquippedBySpecificApparelOrRaces>此武器也可以由下列機械體或裝備衣物與仿生後所使用</FFF.WeaponCanBeEquippedBySpecificApparelOrRaces>
 
@@ -23,7 +20,6 @@
   <FFF.Req_NoWeaponFilter>沒有其他裝備限制</FFF.Req_NoWeaponFilter>
 
     <!-- EN: bodysize not supported (need:{0}) -->
-    <!-- EN: bodysize not supported (need:{0}) -->
   <FFF.BodysizeNotSupported>體型尺寸不支持(需要:{0})</FFF.BodysizeNotSupported>
 
     <!-- EN: mounted weapon, needs a supporting frame, apparel or bionics -->
@@ -32,8 +28,10 @@
     <!-- EN: View Usable Weapons -->
   <FFF.ViewUsableWeapons>查看可用武器</FFF.ViewUsableWeapons>
 
+    <!-- Used in CanEquip failure: weapon type not supported by this frame -->
     <!-- EN: Weapon not supported -->
   <FFF.WeaponNotSupported>武器不受支援</FFF.WeaponNotSupported>
+    <!-- Used in float menu option when mech frame cannot mount the weapon -->
     <!-- EN: Mech frame not supported -->
   <FFF.FrameNotSupported>機械框架不受支援</FFF.FrameNotSupported>
 </LanguageData>

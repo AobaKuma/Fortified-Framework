@@ -1,81 +1,129 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <LanguageData>
 
-  <!-- ═══ 預覽視窗 ═══ -->
+  <!-- === Preview dialog === -->
+  <!-- EN: Workshop upload — excluded content -->
   <FFF_RimIgnore_Title>上傳創意工坊 — 排除內容預覽</FFF_RimIgnore_Title>
+  <!-- EN: {0} — upload filtered by {1} -->
   <FFF_RimIgnore_Subtitle>{0} — 依 {1} 過濾上傳內容</FFF_RimIgnore_Subtitle>
+  <!-- EN: Will upload: {0} files ({1})\n\nExcluded: {2} entries / {3} files ({4}) -->
   <FFF_RimIgnore_Summary>即將上傳：{0} 個檔案（{1}）\n\n已排除：{2} 個項目 / {3} 個檔案（{4}）</FFF_RimIgnore_Summary>
+  <!-- EN: Entry -->
   <FFF_RimIgnore_ColPath>項目</FFF_RimIgnore_ColPath>
+  <!-- EN: Size -->
   <FFF_RimIgnore_ColSize>大小</FFF_RimIgnore_ColSize>
+  <!-- EN: Matched rule -->
   <FFF_RimIgnore_ColRule>命中規則</FFF_RimIgnore_ColRule>
+  <!-- EN: {0} files / {1} -->
   <FFF_RimIgnore_DirSize>{0} 檔 / {1}</FFF_RimIgnore_DirSize>
+  <!-- EN: Nothing is excluded. -->
   <FFF_RimIgnore_NothingExcluded>沒有任何項目被排除。</FFF_RimIgnore_NothingExcluded>
+  <!-- EN: Open .rimignore -->
   <FFF_RimIgnore_OpenFile>開啟 .rimignore</FFF_RimIgnore_OpenFile>
+  <!-- EN: Rescan -->
   <FFF_RimIgnore_Rescan>重新掃描</FFF_RimIgnore_Rescan>
+  <!-- EN: Upload -->
   <FFF_RimIgnore_Confirm>確認上傳</FFF_RimIgnore_Confirm>
+  <!-- EN: The scan is incomplete, or no file would be uploaded. -->
   <FFF_RimIgnore_CannotUpload>掃描結果不完整，或過濾後沒有任何檔案可上傳。</FFF_RimIgnore_CannotUpload>
+  <!-- EN: Rescan failed. -->
   <FFF_RimIgnore_RescanFailed>重新掃描失敗。</FFF_RimIgnore_RescanFailed>
+  <!-- EN: .rimignore not found. -->
   <FFF_RimIgnore_FileMissing>找不到 .rimignore。</FFF_RimIgnore_FileMissing>
+  <!-- EN: Upload everything anyway -->
   <FFF_RimIgnore_UploadAnyway>仍要完整上傳</FFF_RimIgnore_UploadAnyway>
+  <!-- EN: Upload ignore rules failed -->
   <FFF_RimIgnore_ErrorTitle>忽略規則處理失敗</FFF_RimIgnore_ErrorTitle>
+  <!-- EN: … ({0} more) -->
   <FFF_RimIgnore_MoreWarnings>…（尚有 {0} 則）</FFF_RimIgnore_MoreWarnings>
+  <!-- EN: [built-in] {0} -->
   <FFF_RimIgnore_RuleImplicit>[內建] {0}</FFF_RimIgnore_RuleImplicit>
+  <!-- EN: L{0}: {1} -->
   <FFF_RimIgnore_RuleLine>L{0}: {1}</FFF_RimIgnore_RuleLine>
+  <!-- EN: [mod root] -->
   <FFF_RimIgnore_ModRootLabel>「模組根目錄」</FFF_RimIgnore_ModRootLabel>
 
-  <!-- ═══ 規則解析警告 ═══ -->
+  <!-- === Rule parsing warnings === -->
+  <!-- EN: Line {0}: no pattern after '!', ignored. -->
   <FFF_RimIgnore_Warn_NoPatternAfterBang>第 {0} 行：'!' 之後沒有樣式，已忽略。</FFF_RimIgnore_Warn_NoPatternAfterBang>
+  <!-- EN: Line {0}: pattern is just '/', ignored. -->
   <FFF_RimIgnore_Warn_SlashOnly>第 {0} 行：樣式僅有 '/'，已忽略。</FFF_RimIgnore_Warn_SlashOnly>
+  <!-- EN: Line {0}: empty pattern, ignored. -->
   <FFF_RimIgnore_Warn_EmptyPattern>第 {0} 行：樣式為空，已忽略。</FFF_RimIgnore_Warn_EmptyPattern>
+  <!-- EN: Line {0}: could not parse pattern ({1}), ignored. -->
   <FFF_RimIgnore_Warn_ParseFailed>第 {0} 行：樣式無法解析（{1}），已忽略。</FFF_RimIgnore_Warn_ParseFailed>
+  <!-- EN: Line {0}: pattern failed to compile ({1}), ignored. -->
   <FFF_RimIgnore_Warn_CompileFailed>第 {0} 行：樣式編譯失敗（{1}），已忽略。</FFF_RimIgnore_Warn_CompileFailed>
+  <!-- EN: {0} exceeds {1} lines; the rest was skipped. -->
   <FFF_RimIgnore_Warn_TooManyLines>{0} 超過 {1} 行，其餘內容已略過。</FFF_RimIgnore_Warn_TooManyLines>
 
-  <!-- ═══ 掃描警告 ═══ -->
+  <!-- === Scan warnings === -->
+  <!-- EN: Directory nesting exceeds {0} levels; stopped descending at: {1} -->
   <FFF_RimIgnore_Warn_DepthLimit>資料夾巢狀超過 {0} 層，已停止深入：{1}</FFF_RimIgnore_Warn_DepthLimit>
+  <!-- EN: Could not list directory contents ({0}): {1} -->
   <FFF_RimIgnore_Warn_ListDirFailed>無法列出資料夾內容（{0}）：{1}</FFF_RimIgnore_Warn_ListDirFailed>
+  <!-- EN: Could not read entry attributes ({0}): {1} -->
   <FFF_RimIgnore_Warn_AttributeFailed>無法讀取項目屬性（{0}）：{1}</FFF_RimIgnore_Warn_AttributeFailed>
+  <!-- EN: Skipped symlink / junction: {0} -->
   <FFF_RimIgnore_Warn_SkippedSymlink>已跳過符號連結／連結點：{0}</FFF_RimIgnore_Warn_SkippedSymlink>
+  <!-- EN: More than {0} entries; the scan was cut short. Check the paths in {1}. -->
   <FFF_RimIgnore_Warn_EntryLimit>項目數超過 {0}，掃描已提前中止。請確認 {1} 的路徑設定是否正確。</FFF_RimIgnore_Warn_EntryLimit>
 
-  <!-- ═══ 錯誤訊息 ═══ -->
+  <!-- === Errors === -->
+  <!-- EN: Could not read {0}; upload aborted. See the dev console for details. -->
   <FFF_RimIgnore_Err_LoadFailed>無法讀取 {0}，已中止上傳。詳情請見開發者主控台。</FFF_RimIgnore_Err_LoadFailed>
+  <!-- EN: Could not scan the mod folder; upload aborted. See the dev console for details. -->
   <FFF_RimIgnore_Err_ScanFailed>無法掃描模組資料夾，已中止上傳。詳情請見開發者主控台。</FFF_RimIgnore_Err_ScanFailed>
+  <!-- EN: Unexpected error while applying the ignore rules; upload aborted. See the dev console for details. -->
   <FFF_RimIgnore_Err_Unexpected>套用忽略規則時發生未預期的錯誤，已中止上傳。詳情請見開發者主控台。</FFF_RimIgnore_Err_Unexpected>
+  <!-- EN: Failed to build the staging mirror; upload aborted (your original mod files were not touched).\n\n{0} -->
   <FFF_RimIgnore_Err_StagingFailed>建立暫存鏡像失敗，已中止上傳（模組原始檔案未被更動）。\n\n{0}</FFF_RimIgnore_Err_StagingFailed>
+  <!-- EN: The scan is incomplete (safety limit exceeded); mirror creation aborted. -->
   <FFF_RimIgnore_Err_PlanTruncated>掃描結果不完整（超出安全上限），已中止建立鏡像。</FFF_RimIgnore_Err_PlanTruncated>
+  <!-- EN: No file would be uploaded after applying {0}; aborted. -->
   <FFF_RimIgnore_Err_NothingToUpload>套用 {0} 之後沒有任何檔案會被上傳，已中止。</FFF_RimIgnore_Err_NothingToUpload>
+  <!-- EN: Mirrored file count mismatch (expected {0}, got {1}). -->
   <FFF_RimIgnore_Err_MirrorCountMismatch>鏡像檔案數不符（預期 {0}、實得 {1}）。</FFF_RimIgnore_Err_MirrorCountMismatch>
+  <!-- EN: Could not clear the existing staging mirror: {0} -->
   <FFF_RimIgnore_Err_StaleStagingLocked>無法清除既有的暫存鏡像：{0}</FFF_RimIgnore_Err_StaleStagingLocked>
 
-  <!-- ═══ 開發者模式除錯動作 ═══ -->
+  <!-- === Dev-mode debug actions === -->
+  <!-- EN: No local mod folder found. -->
   <FFF_RimIgnore_Dbg_NoLocalMods>找不到任何本機模組資料夾。</FFF_RimIgnore_Dbg_NoLocalMods>
+  <!-- EN: Every local mod already has a {0}. -->
   <FFF_RimIgnore_Dbg_AllHaveIgnore>所有本機模組都已經有 {0} 了。</FFF_RimIgnore_Dbg_AllHaveIgnore>
+  <!-- EN: Could not read {0}. -->
   <FFF_RimIgnore_Dbg_LoadFailed>無法讀取 {0}。</FFF_RimIgnore_Dbg_LoadFailed>
+  <!-- EN: Could not scan the mod folder. -->
   <FFF_RimIgnore_Dbg_ScanFailed>無法掃描模組資料夾。</FFF_RimIgnore_Dbg_ScanFailed>
+  <!-- EN: Created {0} -->
   <FFF_RimIgnore_Dbg_TemplateCreated>已建立 {0}</FFF_RimIgnore_Dbg_TemplateCreated>
+  <!-- EN: Creation failed. See the dev console for details. -->
   <FFF_RimIgnore_Dbg_TemplateFailed>建立失敗，詳情請見主控台。</FFF_RimIgnore_Dbg_TemplateFailed>
+  <!-- EN:  (no {0}) -->
   <FFF_RimIgnore_Dbg_NoIgnoreSuffix>（無 {0}）</FFF_RimIgnore_Dbg_NoIgnoreSuffix>
 
-  <!-- ═══ 由除錯動作寫出的 .rimignore 範本內容 ═══ -->
-  <FFF_RimIgnore_Template># .rimignore — 上傳 Steam 創意工坊時要排除的檔案／資料夾
+  <!-- === Template written by the debug action === -->
+  <!-- EN: # .rimignore — files and folders to exclude when uploading to the Steam Workshop
 #
-# 語法與 GitHub 的 .gitignore 完全相同：
-#   #        註解（\# 可轉義為字面井號）
-#   !xxx     反選（重新納入），後出現的規則覆蓋先出現的規則
-#   /xxx     錨定於模組根目錄
-#   xxx/     僅匹配目錄
-#   *        任意字元（不跨越 /）
-#   ?        單一字元（不跨越 /）
-#   [abc]    字元集，[!abc] 為排除
-#   **/xxx   任意深度；xxx/** 代表該目錄底下全部
+# The syntax is identical to GitHub's .gitignore:
+#   #        comment (\# for a literal hash)
+#   !xxx     re-include; later rules override earlier ones
+#   /xxx     anchored to the mod root
+#   xxx/     directories only
+#   *        any characters, but never across /
+#   ?        a single character, but never across /
+#   [abc]    character set; [!abc] to negate
+#   **/xxx   at any depth; xxx/** for everything inside that folder
 #
-# 注意：與 Git 相同，資料夾一旦被排除，其中的內容就無法再用 ! 重新納入。
-# 內建已自動排除：本檔案、.git/ .gitignore .gitattributes .svn/ .hg/
-#                 .vs/ .idea/ .vscode/ Thumbs.db desktop.ini .DS_Store
-# 這些內建規則同樣可以用 ! 覆寫，例如：!.rimignore 會讓本檔案一起上傳。
+# Note: as in Git, once a directory is excluded its contents cannot be
+# re-included with !.
+# Always excluded by default: this file, .git/ .gitignore .gitattributes
+#                             .svn/ .hg/ .vs/ .idea/ .vscode/
+#                             Thumbs.db desktop.ini .DS_Store
+# Those built-in rules can be overridden with !, e.g. !.rimignore uploads this file too.
 
-# ── 原始碼與建置產物 ──
+# - - Source code and build output - -
 /_Sources/
 /Source/
 **/obj/
@@ -85,24 +133,25 @@
 *.sln
 *.suo
 
-# ── Unity 專案 ──
+# - - Unity project - -
 /UnityProject/
 
-# ── 開發用工具與捷徑 ──
+# - - Dev tools and shortcuts - -
 /_Tools/
 *.lnk
 *.bat
 
-# ── 編輯器與備份雜訊 ──
+# - - Editor and backup noise - -
 *.orig
 *.rej
 *.bak
 *~
 
-# ── 範例：排除整個資料夾但保留其中一個檔案 ──
-# 先排除「內容」而非資料夾本身，再反選要保留的檔案：
+# - - Example: exclude a folder's contents but keep one file - -
+# Exclude the *contents* rather than the folder itself, then re-include:
 # /Docs/*
 # !/Docs/Manual.md
-</FFF_RimIgnore_Template>
+ -->
+  <FFF_RimIgnore_Template># .rimignore — 上傳 Steam 創意工坊時要排除的檔案／資料夾\n#\n# 語法與 GitHub 的 .gitignore 完全相同：\n#   #        註解（\# 可轉義為字面井號）\n#   !xxx     反選（重新納入），後出現的規則覆蓋先出現的規則\n#   /xxx     錨定於模組根目錄\n#   xxx/     僅匹配目錄\n#   *        任意字元（不跨越 /）\n#   ?        單一字元（不跨越 /）\n#   [abc]    字元集，[!abc] 為排除\n#   **/xxx   任意深度；xxx/** 代表該目錄底下全部\n#\n# 注意：與 Git 相同，資料夾一旦被排除，其中的內容就無法再用 ! 重新納入。\n# 內建已自動排除：本檔案、.git/ .gitignore .gitattributes .svn/ .hg/\n#                 .vs/ .idea/ .vscode/ Thumbs.db desktop.ini .DS_Store\n# 這些內建規則同樣可以用 ! 覆寫，例如：!.rimignore 會讓本檔案一起上傳。\n\n# ── 原始碼與建置產物 ──\n/_Sources/\n/Source/\n**/obj/\n**/bin/\n*.pdb\n*.csproj.user\n*.sln\n*.suo\n\n# ── Unity 專案 ──\n/UnityProject/\n\n# ── 開發用工具與捷徑 ──\n/_Tools/\n*.lnk\n*.bat\n\n# ── 編輯器與備份雜訊 ──\n*.orig\n*.rej\n*.bak\n*~\n\n# ── 範例：排除整個資料夾但保留其中一個檔案 ──\n# 先排除「內容」而非資料夾本身，再反選要保留的檔案：\n# /Docs/*\n# !/Docs/Manual.md\n</FFF_RimIgnore_Template>
 
 </LanguageData>

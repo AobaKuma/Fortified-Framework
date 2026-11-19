@@ -12,11 +12,6 @@
     - 沒有 designationCategory：只能用開發者模式生成，不會出現在建築選單。
   -->
 
-  <ThingDef ParentName="BaseBullet" Name="FFF_BaseSwitchableBullet" Abstract="True">
-    <comps>
-      <li Class="Fortified.CompProperties_SwitchableAmmo" />
-    </comps>
-  </ThingDef>
 
   <ThingDef ParentName="FFF_BaseSwitchableBullet">
     <defName>FFF_Example_Bullet_TurretAP</defName>

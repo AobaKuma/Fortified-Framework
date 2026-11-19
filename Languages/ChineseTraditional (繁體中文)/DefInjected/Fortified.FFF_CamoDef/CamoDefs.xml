@@ -1,22 +1,22 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <LanguageData>
-
-  <!-- EN: 陸軍迷彩 -->
+  
+  <!-- EN: Army camo -->
   <FFF_Camo_Army.label>陸軍迷彩</FFF_Camo_Army.label>
-
-  <!-- EN: 陸軍暗色 -->
+  
+  <!-- EN: Army camo dark -->
   <FFF_Camo_ArmyDark.label>陸軍暗色</FFF_Camo_ArmyDark.label>
-
-  <!-- EN: 數碼迷彩 -->
+  
+  <!-- EN: Digital camo -->
   <FFF_Camo_Digital.label>數位迷彩</FFF_Camo_Digital.label>
-
-  <!-- EN: 數碼暗色 -->
+  
+  <!-- EN: Digital camo dark -->
   <FFF_Camo_DigitalDark.label>數位迷彩</FFF_Camo_DigitalDark.label>
-
-  <!-- EN: 六角迷彩 -->
+  
+  <!-- EN: Hexagon camo -->
   <FFF_Camo_Hex.label>六角迷彩</FFF_Camo_Hex.label>
-
-  <!-- EN: 海軍迷彩 -->
+  
+  <!-- EN: Navy camo -->
   <FFF_Camo_Marine.label>海軍迷彩</FFF_Camo_Marine.label>
-
+  
 </LanguageData>

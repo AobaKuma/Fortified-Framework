@@ -1,24 +1,29 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <LanguageData>
   
-  <!-- 體型標籤 -->
+  <!-- EN: fear resistance -->
+  <FFF_FearResistance.label>恐懼抗性</FFF_FearResistance.label>
+  <!-- EN: Determines the effect of fear on this pawn when facing large mechanoids. Raise to 100% to fully resist. -->
+  <FFF_FearResistance.description>決定PAWN在面對大型機械體時，恐懼所產生的影響。提升至100%以完全抵抗。</FFF_FearResistance.description>
+  
+  <!-- EN: supported body size -->
   <FFF_HeavyGears.label>支援體型</FFF_HeavyGears.label>
-  <!-- 體型說明 -->
+  <!-- EN: Required pawn body size to equip this weapon. -->
   <FFF_HeavyGears.description>裝備者至少要具有相當程度的體型才能夠裝備這個武器。</FFF_HeavyGears.description>
   
-  <!-- 負重標籤 -->
+  <!-- EN: mass carry capacity -->
   <FFF_MassCarryCapacity.label>重量攜帶能力</FFF_MassCarryCapacity.label>
-  <!-- 負重說明 -->
+  <!-- EN: The total mass this person can carry in their inventory and as equipment. -->
   <FFF_MassCarryCapacity.description>可攜帶的物品及裝備最大重量。</FFF_MassCarryCapacity.description>
   
-  <!-- 武器標籤 -->
+  <!-- EN: mech command range -->
+  <FFF_MechCommandRange.label>TODO</FFF_MechCommandRange.label>
+  <!-- EN: The radius within which this overseer can command the mechanoids it controls. Mechanoids outside this radius cannot be given orders. -->
+  <FFF_MechCommandRange.description>TODO</FFF_MechCommandRange.description>
+  
+  <!-- EN: supported weapons -->
   <FFF_UsableWeapons.label>武器系統</FFF_UsableWeapons.label>
-  <!-- 武器說明 -->
+  <!-- EN: Usable weapons that are supported by the OS of this model. -->
   <FFF_UsableWeapons.description>該機械體在沒有任何額外改造或升級時所能夠使用的武器。</FFF_UsableWeapons.description>
-
-  <!-- 恐懼標籤 -->
-  <FFF_FearResistance.label>恐懼抗性</FFF_FearResistance.label>
-  <!-- 恐懼說明 -->
-  <FFF_FearResistance.description>決定PAWN在面對大型機械體時，恐懼所產生的影響。提升至100%以完全抵抗。</FFF_FearResistance.description>
-
+  
 </LanguageData>

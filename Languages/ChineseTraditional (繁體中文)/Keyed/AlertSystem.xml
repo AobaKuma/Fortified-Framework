@@ -1,57 +1,98 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <LanguageData>
 
-  <!-- Alert_FFF_AlertLevel：地圖存在警報掃描建築且警戒值被拉高時顯示 -->
+  <!-- Alert_FFF_AlertLevel : shown when alert-scanner buildings exist and the map alert level is raised -->
+  <!-- EN: Alert level {0} -->
   <FFF_Alert_AlertLevel_Label>警戒等級 {0}</FFF_Alert_AlertLevel_Label>
+  <!-- EN: Alert triggered! -->
   <FFF_Alert_AlertLevel_Label_Triggered>警戒已觸發！</FFF_Alert_AlertLevel_Label_Triggered>
+  <!-- EN: Alert-detection buildings on this map have raised the security alert level to {0}.\n\nIf the level reaches maximum, an automated countermeasure will be triggered. Neutralize the scanners to let it decay.\n\nMonitored buildings: {1} -->
   <FFF_Alert_AlertLevel_Desc>此地圖上的警報偵測建築已將安全警戒等級提升至 {0}。\n\n警戒值達到上限時將觸發自動反制措施。肅清掃描器，讓警戒值自然衰減。\n\n監控建築數：{1}</FFF_Alert_AlertLevel_Desc>
+  <!-- EN: The security alert level has reached maximum and an automated countermeasure is now active.\n\nMonitored buildings: {0} -->
   <FFF_Alert_AlertLevel_Desc_Triggered>安全警戒等級已達上限，自動反制措施正在執行中。\n\n監控建築數：{0}</FFF_Alert_AlertLevel_Desc_Triggered>
 
-  <!-- CompAlertScanner：警報掃描建築（攝影機、感測器、掃描器）的檢視字串 -->
+  <!-- CompAlertScanner : inspect string of alert-scanner buildings (cameras, sensors, scanners) -->
+  <!-- EN: Scanner offline -->
   <FFF_AlertScanner_Offline>掃描器離線</FFF_AlertScanner_Offline>
+  <!-- EN: Scanner re-arming: {0} -->
   <FFF_AlertScanner_Rearming>掃描器重新武裝中：{0}</FFF_AlertScanner_Rearming>
+  <!-- EN: Intruder detected! -->
   <FFF_AlertScanner_Detecting>偵測到入侵者！</FFF_AlertScanner_Detecting>
+  <!-- EN: Scanning for intruders -->
   <FFF_AlertScanner_Watching>正在掃描入侵者</FFF_AlertScanner_Watching>
 
-  <!-- 設施封鎖（Fortified.MapComponent_FacilityLockdown）：中控建築驅動的封鎖 -->
+  <!-- 設施封鎖（Fortified.MapComponent_FacilityLockdown）：中控建築驅動的封鎖 / facility lockdown driven by a controller building -->
+  <!-- EN: Standing by -->
   <FFF_Lockdown_InspectIdle>待命中</FFF_Lockdown_InspectIdle>
+  <!-- EN: Lockdown in {0} -->
   <FFF_Lockdown_InspectCountdown>{0}後封鎖</FFF_Lockdown_InspectCountdown>
+  <!-- EN: Facility locked down -->
   <FFF_Lockdown_InspectLocked>設施已封鎖</FFF_Lockdown_InspectLocked>
+  <!-- EN: Disarmed -->
   <FFF_Lockdown_InspectDisarmed>已解除</FFF_Lockdown_InspectDisarmed>
+  <!-- EN: Facility lockdown -->
   <FFF_Lockdown_StartedLabel>設施封鎖</FFF_Lockdown_StartedLabel>
+  <!-- EN: The facility's alert level has maxed out and the lockdown controller has engaged. In {0}, the blast gates will close and the lifts will stop working.\n\nGet out now, or hack the lockdown controller to stop it. Do not destroy it: it is built to seal the facility completely if it goes down. -->
   <FFF_Lockdown_StartedText>設施的警戒值已達上限，封鎖中控已經啟動。{0}後，出入口的閘門將會關閉，電梯也將無法使用。\n\n立刻撤離，或是駭入封鎖中控阻止它。不要摧毀它：這類裝置在被摧毀時會將整座設施完全封死。</FFF_Lockdown_StartedText>
+  <!-- EN: Facility lockdown in {0}. -->
   <FFF_Lockdown_Countdown>設施將在{0}後封鎖。</FFF_Lockdown_Countdown>
+  <!-- EN: Facility locked down -->
   <FFF_Lockdown_LockedLabel>設施已封鎖</FFF_Lockdown_LockedLabel>
+  <!-- EN: The blast gates have closed and the entrance hack has been wiped. Nobody is getting in or out until someone hacks the lockdown controller, or hacks the entrance open again from the surface. -->
   <FFF_Lockdown_LockedText>閘門已經關閉，入口的駭入也已失效。在有人駭入封鎖中控，或從地表重新駭開入口之前，任何人都無法進出。</FFF_Lockdown_LockedText>
+  <!-- EN: Facility sealed -->
   <FFF_Lockdown_SealedLabel>設施完全封死</FFF_Lockdown_SealedLabel>
+  <!-- EN: The lockdown controller has been destroyed, and the facility has sealed itself completely. It can no longer be opened from inside.\n\nSomeone on the surface has to work the entrance's emergency override, or hack the entrance open again, to get the doors open. -->
   <FFF_Lockdown_SealedText>封鎖中控已被摧毀，設施自行進入了完全封鎖，從內部再也無法開啟。\n\n必須有人在地表對入口執行緊急解鎖，或重新駭開入口，才能打開閘門。</FFF_Lockdown_SealedText>
+  <!-- EN: {HACKER_nameDef} has disarmed the lockdown controller. It will no longer seal the facility. -->
   <FFF_Lockdown_Disarmed>{HACKER_nameDef}解除了封鎖中控，它不會再封鎖設施了。</FFF_Lockdown_Disarmed>
+  <!-- EN: {HACKER_nameDef} has hacked the lockdown controller. The blast gates are opening. -->
   <FFF_Lockdown_Lifted>{HACKER_nameDef}駭入了封鎖中控，閘門正在開啟。</FFF_Lockdown_Lifted>
+  <!-- EN: The lockdown controller has been disarmed. It will no longer seal the facility. -->
   <FFF_Lockdown_Disarmed_NoHacker>封鎖中控已被解除，它不會再封鎖設施了。</FFF_Lockdown_Disarmed_NoHacker>
+  <!-- EN: The lockdown controller has been hacked. The blast gates are opening. -->
   <FFF_Lockdown_Lifted_NoHacker>封鎖中控已被駭入，閘門正在開啟。</FFF_Lockdown_Lifted_NoHacker>
+  <!-- EN: {PAWN_nameDef} has forced the entrance open from the surface. The facility is accessible again. -->
   <FFF_Lockdown_Overridden>{PAWN_nameDef}從地表強制開啟了入口，設施可以再次進出了。</FFF_Lockdown_Overridden>
+  <!-- EN: Locked down -->
   <FFF_Lockdown_GateLocked>封鎖中</FFF_Lockdown_GateLocked>
+  <!-- EN: Sealed: needs an emergency override from the surface -->
   <FFF_Lockdown_GateSealed>完全封死：需要從地表執行緊急解鎖</FFF_Lockdown_GateSealed>
+  <!-- EN: Permanently sealed -->
   <FFF_Lockdown_GateLost>已永久封死</FFF_Lockdown_GateLost>
+  <!-- EN: Emergency override on {0} -->
   <FFF_Lockdown_Override>對{0}執行緊急解鎖</FFF_Lockdown_Override>
+  <!-- EN: Cannot override -->
   <FFF_Lockdown_CannotOverride>無法執行緊急解鎖</FFF_Lockdown_CannotOverride>
+  <!-- EN: Override progress: {0} -->
   <FFF_Lockdown_OverrideProgress>解鎖進度：{0}</FFF_Lockdown_OverrideProgress>
+  <!-- EN: Anyone trapped below will be lost in {0} -->
   <FFF_Lockdown_GraceLeft>受困者將在{0}後判定失蹤</FFF_Lockdown_GraceLeft>
+  <!-- EN: Trapped below -->
   <FFF_Lockdown_TrappedLabel>受困地下</FFF_Lockdown_TrappedLabel>
-  <FFF_Lockdown_TrappedText>我們的人被封在設施裡，而且沒有任何人能救他們出來：地下沒有人能駭入封鎖中控，地表也沒有人能對入口執行緊急解鎖或重新駭入。\n\n如果{0}內情況沒有改變，他們將被判定為失蹤。</FFF_Lockdown_TrappedText>
-  <FFF_Lockdown_GraceCancelled>已經有人能處理封鎖了，受困的人還有機會。</FFF_Lockdown_GraceCancelled>
+  <!-- EN: Our people are sealed inside the facility, and nobody can get them out: no one below can hack the lockdown controller, and no one on the surface can override or re-hack the entrance.\n\nIf nothing changes within {0}, they will be given up as lost. -->
+  <FFF_Lockdown_TrappedText>地下沒有人能駭入封鎖中控，而地表也沒有人能進行重新駭入。\n\n如果在{0}內情況沒有改變，這些受困地下的殖民者將被會失蹤。</FFF_Lockdown_TrappedText>
+  <!-- EN: Someone can deal with the lockdown again. The people trapped below still have a chance. -->
+  <FFF_Lockdown_GraceCancelled>已經有人能處理封鎖了。</FFF_Lockdown_GraceCancelled>
+  <!-- EN: Lost in the facility -->
   <FFF_Lockdown_LostLabel>失蹤於設施中</FFF_Lockdown_LostLabel>
-  <FFF_Lockdown_LostText>沒有人來。設施維持封死，所有受困其中的人都被判定為失蹤：\n\n{0}</FFF_Lockdown_LostText>
+  <!-- EN: Nobody came. The facility stays sealed, and everyone trapped inside is now counted as missing:\n\n{0} -->
+  <FFF_Lockdown_LostText>由於設施維持封死，所有受困其中的人都被判定為失蹤：\n\n{0}</FFF_Lockdown_LostText>
 
-  <!-- AlertEffect_AirspaceBlockade：期間內穿梭機與運輸艙無法起飛 -->
+  <!-- AlertEffect_AirspaceBlockade : shuttles and pods are grounded for the duration -->
+  <!-- EN: Airspace blockade in effect. Shuttles and transport pods cannot take off from this map. -->
   <FFF_Alert_AirspaceBlockade_Start>空域封鎖生效中。穿梭機與運輸艙無法從此地圖起飛。</FFF_Alert_AirspaceBlockade_Start>
+  <!-- EN: The airspace blockade has lifted. -->
   <FFF_Alert_AirspaceBlockade_End>空域封鎖已解除。</FFF_Alert_AirspaceBlockade_End>
 
-  <!-- AlertEffect_PrecisionBombardment：週期性砲擊地圖 -->
+  <!-- AlertEffect_PrecisionBombardment : periodic strikes on the map -->
+  <!-- EN: Precision bombardment incoming. Strikes will keep landing on this map until the countermeasure expires. -->
   <FFF_Alert_PrecisionBombardment_Start>精準轟炸來襲。在反制措施結束前，砲火會持續落在此地圖上。</FFF_Alert_PrecisionBombardment_Start>
+  <!-- EN: The precision bombardment has ended. -->
   <FFF_Alert_PrecisionBombardment_End>精準轟炸已結束。</FFF_Alert_PrecisionBombardment_End>
 
-  <!-- CompAlertEffector_ReleaseEntity：{0} 數量、{1} 機種標籤 -->
-  <FFF_Alert_ReleaseEntity_Triggered>安全反制：{0} 台{1}已被釋放！</FFF_Alert_ReleaseEntity_Triggered>
+  <!-- CompAlertEffector_ReleaseEntity : {0} count, {1} pawn kind label -->
+  <!-- EN: Security response: {0} {1} released! -->
+  <FFF_Alert_ReleaseEntity_Triggered>安全反制：{0} 台{1}已被釋放。</FFF_Alert_ReleaseEntity_Triggered>
 
 </LanguageData>

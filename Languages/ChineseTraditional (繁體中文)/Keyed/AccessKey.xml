@@ -1,6 +1,10 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <LanguageData>
+  <!-- CompAccessKeyDoorLink : sensor door locked until its linked access keys are spent -->
+  <!-- EN: Access locked -->
   <FFF.AccessKeyDoor.Locked>門禁鎖定</FFF.AccessKeyDoor.Locked>
+  <!-- EN: Access locked: {0} more access key use(s) required -->
   <FFF.AccessKeyDoor.LockedKeysRemaining>門禁鎖定：尚需使用 {0} 次門禁鑰匙</FFF.AccessKeyDoor.LockedKeysRemaining>
+  <!-- EN: The {0} accepts the access key and slides open. -->
   <FFF.AccessKeyDoor.Unlocked>{0}認可門禁鑰匙，向兩側滑開。</FFF.AccessKeyDoor.Unlocked>
 </LanguageData>

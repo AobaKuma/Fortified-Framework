@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <LanguageData>
 
-  <!-- 機兵休眠容器 -->
+  <!-- 机兵休眠容器 -->
   <!-- EN: Deactivate -->
   <FFF.DeactivateMech>休眠</FFF.DeactivateMech>
   <!-- EN: Put this mech into hibernation mode. It will become a dormant structure that can be reactivated later by a mechanitor. -->
@@ -10,6 +10,7 @@
   <FFF.MechDeactivated>{0}已進入休眠模式。</FFF.MechDeactivated>
   <!-- EN: {0} has been activated and is now under {1}'s control. -->
   <FFF.MechActivated>{0}已被啟動，現在由{1}控制。</FFF.MechActivated>
+  <!-- EN: The alarm has reactivated {0}! -->
   <FFF.CapsuleMechAlarmed>警報喚醒了{0}！</FFF.CapsuleMechAlarmed>
   <!-- EN: Contains: {0} -->
   <FFF.ContainsMech>內含：{0}</FFF.ContainsMech>
@@ -18,14 +19,13 @@
   <!-- EN: Need {0} bandwidth to control this mech. -->
   <FFF.NeedMoreBandwidth>需要{0}帶寬才能控制此機兵。</FFF.NeedMoreBandwidth>
 
-  <!-- 右鍵菜單選項 -->
+  <!-- 右键菜单选项 -->
   <!-- EN: Control {0} -->
   <FFF.DeactivatedMech_Control>控制{0}</FFF.DeactivatedMech_Control>
-  <!-- EN: Destroy mech -->
   <!-- EN: Cannot control -->
   <FFF.DeactivatedMech_CannotControl>無法控制</FFF.DeactivatedMech_CannotControl>
 
-  <!-- 無法控制的原因 -->
+  <!-- 无法控制的原因 -->
   <!-- EN: Research work disabled -->
   <FFF.Reason.WorkTypeDisabled>研究工作已禁用</FFF.Reason.WorkTypeDisabled>
   <!-- EN: Not a mechanitor -->
@@ -33,7 +33,7 @@
   <!-- EN: Need {0} bandwidth -->
   <FFF.Reason.NeedBandwidth>需要{0}帶寬</FFF.Reason.NeedBandwidth>
 
-  <!-- 駭入失敗 -->
+  <!-- 骇入失败 -->
   <!-- EN: Hack Failed -->
   <FFF.HackFailed>駭入失敗</FFF.HackFailed>
   <!-- EN: {0} failed to hack the mech. The mech has awakened and is now hostile! -->
@@ -41,11 +41,17 @@
 
 
   <!-- 原地封存技能（CompAbilityEffect_DeactivateToCapsule）-->
+  <!-- EN: Not deployed -->
   <FFF.Mothball.Reason.NotSpawned>未展開</FFF.Mothball.Reason.NotSpawned>
+  <!-- EN: Not a mechanoid -->
   <FFF.Mothball.Reason.NotMech>並非機械體</FFF.Mothball.Reason.NotMech>
+  <!-- EN: Not under your control -->
   <FFF.Mothball.Reason.NotPlayer>不受你控制</FFF.Mothball.Reason.NotPlayer>
+  <!-- EN: Cannot mothball while drafted -->
   <FFF.Mothball.Reason.Drafted>徵召狀態下無法封存</FFF.Mothball.Reason.Drafted>
+  <!-- EN: Cannot mothball while downed -->
   <FFF.Mothball.Reason.Downed>倒地狀態下無法封存</FFF.Mothball.Reason.Downed>
+  <!-- EN: No suitable storage frame for this chassis -->
   <FFF.Mothball.Reason.NoCapsule>沒有適合此底盤的封存框架</FFF.Mothball.Reason.NoCapsule>
 
 </LanguageData>

@@ -43,20 +43,20 @@
 
   <!-- EN: Vacuum between: {0} ~ {1} -->
   <FFF.PressureVacuum>室內真空處於: {0}~{1}之間</FFF.PressureVacuum>
-  <!-- EN: Vacuum below: {0} -->
   <!-- EN: Vacuum above: {0} -->
   <FFF.Vacuum>室內真空高於: {0}</FFF.Vacuum>
 
   <!-- EN: Microgravity -->
   <FFF.MicroGravity>微重力環境</FFF.MicroGravity>
 
+  <!-- Used in ModExt_EnvironmentalBill.ValidateBillOnce with pressure percentage arg -->
   <!-- EN: Requires pressure: {0} -->
   <FFF.PressureRestriction>需要壓力: {0}</FFF.PressureRestriction>
 
   <!-- EN: the environment around the workbench cannot be determined. -->
   <FFF.Cannot.TableEnvironmentUnknown>無法判定生產建築所處的環境</FFF.Cannot.TableEnvironmentUnknown>
 
-  <!-- ===== 連接設施提供的環境豁免 (CompEnvironmentExemption) ===== -->
+  <!-- ===== Facility-granted environmental exemptions (CompEnvironmentExemption) ===== -->
   <!-- EN: Environmental exemption -->
   <FFF.EnvironmentExemption.Label>環境豁免</FFF.EnvironmentExemption.Label>
   <!-- EN: While linked and active, this facility waives or relaxes the environmental requirements of recipes crafted at the connected workbench. -->

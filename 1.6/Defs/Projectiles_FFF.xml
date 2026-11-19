@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
 
+  <ThingDef ParentName="BaseBullet" Name="FFF_BaseSwitchableBullet" Abstract="True">
+    <comps>
+      <li Class="Fortified.CompProperties_SwitchableAmmo" />
+    </comps>
+  </ThingDef>
   <!-- 照明弹 飞越屋顶式抛射 -->
   <ThingDef ParentName="BaseBullet">
     <defName>FFF_FlareShell</defName>
@@ -29,5 +34,4 @@
       </li>
     </comps>
   </ThingDef>
-
 </Defs>

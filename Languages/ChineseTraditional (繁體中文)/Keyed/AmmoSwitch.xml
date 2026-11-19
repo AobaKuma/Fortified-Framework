@@ -1,12 +1,20 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <LanguageData>
-
+  
+  <!-- EN: {0} -->
   <FFF.AmmoSwitch.Label>{0}</FFF.AmmoSwitch.Label>
+  <!-- EN: click to switch ammo type -->
   <FFF.AmmoSwitch.Desc>點擊切換彈藥類型</FFF.AmmoSwitch.Desc>
+  <!-- EN: {0} - {1} -->
   <FFF.AmmoSwitch.AmmoTooltip>{0} - {1}</FFF.AmmoSwitch.AmmoTooltip>
+  <!-- EN: Default Ammo -->
   <FFF.AmmoSwitch.DefaultAmmo>預設彈藥</FFF.AmmoSwitch.DefaultAmmo>
+  <!-- EN: Default Projectile -->
   <FFF.AmmoSwitch.DefaultProjectile>預設彈丸</FFF.AmmoSwitch.DefaultProjectile>
+  <!-- EN: Accuracy Factor -->
   <FFF.AmmoSwitch.StatFactor>精度係數</FFF.AmmoSwitch.StatFactor>
+  <!-- EN: Using default -->
   <FFF.AmmoSwitch.UsingDefault>使用預設</FFF.AmmoSwitch.UsingDefault>
+  <!-- EN: Only player-controlled units can switch ammo. -->
   <FFF.AmmoSwitch.NotPlayerControlled>只有玩家控制的單位才能切換彈藥。</FFF.AmmoSwitch.NotPlayerControlled>
 </LanguageData>

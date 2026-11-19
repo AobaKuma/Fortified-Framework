@@ -1,33 +1,61 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <LanguageData>
+  <!-- EN: Paint & Color System -->
   <FFF_PaintSystemTitle>塗裝與著色系統</FFF_PaintSystemTitle>
+  <!-- EN: Change Paint -->
   <FFF_ChangePaint>更改塗裝</FFF_ChangePaint>
+  <!-- EN: Open the custom paint interface. -->
   <FFF_ChangePaintDesc>打開自定義塗裝介面。</FFF_ChangePaintDesc>
+  <!-- EN: No dye available nearby -->
   <FFF_NoDye>附近沒有可用的染料</FFF_NoDye>
+  <!-- EN: Cancel Paint -->
   <FFF_CancelPaint>取消塗裝</FFF_CancelPaint>
+  <!-- EN: Cancel the pending paint job -->
   <FFF_CancelPaintDesc>取消等待中的塗裝任務</FFF_CancelPaintDesc>
+  <!-- EN: Paint job dispatched -->
   <FFF_PaintRequestSent>塗裝任務已下達</FFF_PaintRequestSent>
+  <!-- EN: Confirm Color -->
   <FFF_ConfirmPaint>確認著色</FFF_ConfirmPaint>
+  <!-- EN: Camouflage Scheme -->
   <FFF_CamoScheme>迷彩方案</FFF_CamoScheme>
+  <!-- EN: 2 Columns -->
   <FFF_2Columns>2列</FFF_2Columns>
+  <!-- EN: 4 Columns -->
   <FFF_4Columns>4列</FFF_4Columns>
+  <!-- EN: 6 Columns -->
   <FFF_6Columns>6列</FFF_6Columns>
+  <!-- EN: Standard -->
   <FFF_CamoStandard>標準</FFF_CamoStandard>
+  <!-- EN: Standard (no camouflage) -->
   <FFF_CamoStandardDesc>標準 (無迷彩)</FFF_CamoStandardDesc>
+  <!-- EN: Color 1 (R) -->
   <FFF_Color1>顏色1 (R)</FFF_Color1>
+  <!-- EN: Color 2 (G) -->
   <FFF_Color2>顏色2 (G)</FFF_Color2>
+  <!-- EN: Color 3 (B) -->
   <FFF_Color3>顏色3 (B)</FFF_Color3>
+  <!-- EN: Red -->
   <FFF_Red>紅</FFF_Red>
+  <!-- EN: Green -->
   <FFF_Green>綠</FFF_Green>
+  <!-- EN: Blue -->
   <FFF_Blue>藍</FFF_Blue>
+  <!-- EN: Base Brightness -->
   <FFF_BaseBrightness>底色提亮</FFF_BaseBrightness>
+  <!-- EN:  [Multiply] -->
   <FFF_OverlayMultiply> [疊乘]</FFF_OverlayMultiply>
+  <!-- EN:  [Direct] -->
   <FFF_OverlayDirect> [直接]</FFF_OverlayDirect>
+  <!-- EN: Overlay -->
   <FFF_OverlayTitle>疊加層</FFF_OverlayTitle>
+  <!-- EN: No overlay -->
   <FFF_OverlayNone>無疊加層</FFF_OverlayNone>
-
+  <!-- EN: Copy Config -->
   <FFF_CopyPaintConfig>複製配置</FFF_CopyPaintConfig>
+  <!-- EN: Config copied -->
   <FFF_PaintConfigCopied>配置已複製</FFF_PaintConfigCopied>
+  <!-- EN: Paste Config -->
   <FFF_PastePaintConfig>貼上配置</FFF_PastePaintConfig>
+  <!-- EN: Paste the copied paint configuration -->
   <FFF_PastePaintConfigDesc>貼上已複製的著色配置</FFF_PastePaintConfigDesc>
 </LanguageData>

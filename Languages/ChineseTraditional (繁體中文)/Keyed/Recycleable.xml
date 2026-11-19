@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <LanguageData>
 
   <!-- EN: Recycle -->
@@ -6,9 +6,7 @@
   <!-- EN: Mark this unit to be dismantled on the spot for materials. A colonist with construction work enabled will come and take it apart.
 
 Expected yield: {0} -->
-  <FFF.Recycle.GizmoDesc>標記此單位就地拆解為材料。啟用建造工作的殖民者會前來將其拆除。
-
-預估產出：{0}</FFF.Recycle.GizmoDesc>
+  <FFF.Recycle.GizmoDesc>標記此單位就地拆解為材料。啟用建造工作的殖民者會前來將其拆除。\n\n預估產出：{0}</FFF.Recycle.GizmoDesc>
   <!-- EN: Marked for recycling -->
   <FFF.Recycle.Marked>已標記拆解回收</FFF.Recycle.Marked>
   <!-- EN: Recycle {0} -->

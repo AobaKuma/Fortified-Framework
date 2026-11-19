@@ -1,5 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <LanguageData>
+  
+  <!-- EN: taking control of TargetA. -->
+  <FFF_ControlMech_Overseer.reportString>TODO</FFF_ControlMech_Overseer.reportString>
   
   <!-- EN: working. -->
   <FFF_DoAutonomousBill.reportString>處理生產</FFF_DoAutonomousBill.reportString>
@@ -10,20 +13,32 @@
   <!-- EN: entering facility -->
   <FFF_EnterBunkerFacility.reportString>進入設施</FFF_EnterBunkerFacility.reportString>
   
+  <!-- EN: equipping TargetA. -->
+  <FFF_EquipDeployable.reportString>TODO</FFF_EquipDeployable.reportString>
+  
+  <!-- EN: Equiping turret -->
+  <FFF_EquipTurret.reportString>TODO</FFF_EquipTurret.reportString>
+  
   <!-- EN: working. -->
   <FFF_FinishAutonomousBill.reportString>完成生產</FFF_FinishAutonomousBill.reportString>
   
   <!-- EN: hacking mech -->
   <FFF_HackDeactivatedMech.reportString>駭入機械體</FFF_HackDeactivatedMech.reportString>
   
+  <!-- EN: overriding the lockdown on TargetA. -->
+  <FFF_LockdownOverride.reportString>正在對TargetA執行緊急解鎖。</FFF_LockdownOverride.reportString>
+  
   <!-- EN: leaving. -->
   <FFF_MechLeave.reportString>離開</FFF_MechLeave.reportString>
   
-  <!-- EN: modifing TargetA. -->
+  <!-- EN: modifying TargetA. -->
   <FFF_Modification.reportString>改裝{0}</FFF_Modification.reportString>
   
-  <!-- EN: modifing TargetA. -->
+  <!-- EN: removing modification from TargetA. -->
   <FFF_ModificationRemove.reportString>拆除{0}的改造</FFF_ModificationRemove.reportString>
+  
+  <!-- EN: repairing TargetA. -->
+  <FFF_RepairMech_Overseer.reportString>TODO</FFF_RepairMech_Overseer.reportString>
   
   <!-- EN: repairing TargetA. -->
   <FFF_RepairSelf.reportString>維修{0}</FFF_RepairSelf.reportString>
@@ -36,7 +51,11 @@
   
   <!-- EN: returning to platform -->
   <FFF_ReturnToDronePlatform.reportString>返回平台</FFF_ReturnToDronePlatform.reportString>
-
-  <FFF_LockdownOverride.reportString>正在對TargetA執行緊急解鎖。</FFF_LockdownOverride.reportString>
-
+  
+  <!-- EN: Switching ammo -->
+  <FFF_SwitchAmmo.reportString>TODO</FFF_SwitchAmmo.reportString>
+  
+  <!-- EN: activating TargetA. -->
+  <FFF_UseAccessKey.reportString>TODO</FFF_UseAccessKey.reportString>
+  
 </LanguageData>

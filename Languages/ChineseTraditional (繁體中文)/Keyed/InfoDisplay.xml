@@ -1,4 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <LanguageData>
+  <!-- {0} = 條目標題, {1} = 來源（Hediff / 服裝 / 武器 / 基因） -->
+  <!-- EN: {0} ({1}) -->
   <FFF.InfoDisplay.SourceSuffix>{0}（{1}）</FFF.InfoDisplay.SourceSuffix>
 </LanguageData>

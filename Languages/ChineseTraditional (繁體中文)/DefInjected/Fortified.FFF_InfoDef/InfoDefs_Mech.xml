@@ -1,72 +1,119 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <LanguageData>
-  <FFF_Info_DronePlatform.label>無人機平台</FFF_Info_DronePlatform.label>
-  <FFF_Info_DronePlatform.description>儲存並消耗材料部署無人機。收回無人機會讓它回到平台並退還所耗材料。已部署的無人機遵守平台設定的活動區域；平台被摧毀時，受其控制的所有無人機都會停機。支援多種型號的平台可選擇要部署的型號，也可設為依固定間隔自動部署與召回。</FFF_Info_DronePlatform.description>
-
-  <FFF_Info_Drone.label>無人機</FFF_Info_Drone.label>
-  <FFF_Info_Drone.description>綁定於部署平台的遙控單位。只有在平台供電且受你控制時才能徵召——若是穿戴式平台，則需穿戴者在同一地圖上處於徵召狀態。它靠內建電池運作，電量不足時會自動返回平台；使用返回指令可提前召回並退還所耗材料。由你部署的無人機被摧毀時會掉落裝備。</FFF_Info_Drone.description>
-
-  <FFF_Info_DronePack.label>無人機背包</FFF_Info_DronePack.label>
-  <FFF_Info_DronePack.description>可穿戴的發射器。穿戴者可主動觸發釋放無人機；由NPC控制的穿戴者在地圖上有敵人時會自行使用。</FFF_Info_DronePack.description>
-
-  <FFF_Info_ExplosiveOnMelee.label>接觸引爆</FFF_Info_ExplosiveOnMelee.label>
-  <FFF_Info_ExplosiveOnMelee.description>此單位命中近戰攻擊時會引爆攜帶或持有的所有爆炸物，並在過程中自毀。敵對的此類單位生成時可能會攜帶爆炸物。</FFF_Info_ExplosiveOnMelee.description>
-
-  <FFF_Info_Recycleable.label>原地拆解回收</FFF_Info_Recycleable.label>
-  <FFF_Info_Recycleable.description>此單位倒地或損毀後可就地拆解。將其標記為拆解回收、或直接對殖民者下令，殖民者便會在原地將其拆除：攜帶的裝備會掉落，並留下部分建造所用的材料。殘骸的產出低於倒地單位。</FFF_Info_Recycleable.description>
-
-  <FFF_Info_HumanlikeMech.label>人形機械體</FFF_Info_HumanlikeMech.label>
-  <FFF_Info_HumanlikeMech.description>以人體工學構造設計的機械體。它可穿戴服裝並使用服裝的效果，同時在控制、維修與頻寬方面仍視為機械體。</FFF_Info_HumanlikeMech.description>
-
-  <FFF_Info_MechWeaponUsable.label>武器系統</FFF_Info_MechWeaponUsable.label>
-  <FFF_Info_MechWeaponUsable.description>此機械體可拾取並使用武器。可用的武器受該型號的篩選限制——武器標籤、科技等級、武器分類或明確白名單——或武器本身的體型需求。在機械體的武器系統一欄中可查看完整清單。</FFF_Info_MechWeaponUsable.description>
-
-  <FFF_Info_TurretMannable.label>砲塔操作</FFF_Info_TurretMannable.label>
-  <FFF_Info_TurretMannable.description>此機械體可像殖民者一樣操作砲塔與其他需要操作員的工事，是否能夠操作則由武器系統定義。</FFF_Info_TurretMannable.description>
-
-  <FFF_Info_MechMothball.label>休眠</FFF_Info_MechMothball.label>
-  <FFF_Info_MechMothball.description>此型號的殖民地機械體可進入休眠。它會變成不再佔用頻寬的休眠結構，之後可由具備足夠空閒頻寬的機械師重新啟動。徵召中或倒地時無法休眠。</FFF_Info_MechMothball.description>
-
-  <FFF_Info_DeactivatedMech.label>封存機械體</FFF_Info_DeactivatedMech.label>
-  <FFF_Info_DeactivatedMech.description>處於封存狀態的機械體。具備足夠空閒頻寬的機械師可直接接管它；敵對或無主的單位則可由開啟研究工作的殖民者嘗試駭入。駭入失敗會讓機甲以敵對狀態甦醒。也可以將其拆解。</FFF_Info_DeactivatedMech.description>
-
-  <FFF_Info_MechCapsule.label>休眠機械體</FFF_Info_MechCapsule.label>
-  <FFF_Info_MechCapsule.description>一架臨時休眠的機械體。休眠的機械體不佔用控制帶寬，並能夠由具備足夠頻寬的機械師重啟；若屬於他人，則可由殖民者駭入。野外發現的封存機械體可能有時仍持有武器。</FFF_Info_MechCapsule.description>
-
-  <FFF_Info_OverseerMech.label>機控單位</FFF_Info_OverseerMech.label>
-  <FFF_Info_OverseerMech.description>能夠自行指揮其他機械體的機械體，擁有自己的頻寬與控制組，不需要機械師。置於其控制下的機械體會如同服從機械師一般服從它，並在戰場上跟隨它行動。它可以重啟封存機械體，並維修受監督的機械體。</FFF_Info_OverseerMech.description>
-
-  <FFF_Info_OverseerBuilding.label>機控核心</FFF_Info_OverseerBuilding.label>
-  <FFF_Info_OverseerBuilding.description>固定式的指揮結構，擁有自己的頻寬與控制組。指派給它的機械體在其指揮範圍內會如同服從機械師一般服從它。連結設施可擴充其能力。</FFF_Info_OverseerBuilding.description>
-
-  <FFF_Info_DeadManSwitch.label>失能開關</FFF_Info_DeadManSwitch.label>
-  <FFF_Info_DeadManSwitch.description>此機械體裝有保險機制，一旦與監督者失去聯繫就會自我終止。走失或遊蕩的單位仍可能自行返回——但偶爾開關會重置失敗。</FFF_Info_DeadManSwitch.description>
-
+  
+  <!-- EN: artificial life -->
   <FFF_Info_ArtificialOrganism.label>人工生命</FFF_Info_ArtificialOrganism.label>
+  <!-- EN: A bio-engineered artificial living construct. Its wounds regenerate over time on their own, and when its energy runs low it can eat to recharge instead of needing a charger. -->
   <FFF_Info_ArtificialOrganism.description>一種由生物工程製造的人工活體構造。其傷勢會隨時間自行再生；能量不足時能夠進食充能，不需要充電。</FFF_Info_ArtificialOrganism.description>
-
-  <FFF_Info_MechHeal.label>自我修復</FFF_Info_MechHeal.label>
-  <FFF_Info_MechHeal.description>此狀態存在期間，機械體會隨時間緩慢修復自身損傷，不需要機械師。</FFF_Info_MechHeal.description>
-
-  <FFF_Info_ProtectiveShield.label>陶瓷護板</FFF_Info_ProtectiveShield.label>
-  <FFF_Info_ProtectiveShield.description>具有獨立耐久的拋棄式裝甲。受到的傷害會先由護板吸收，直到耐久耗盡而損毀，屆時必須更換。體型較大的機甲可裝載更多護板。</FFF_Info_ProtectiveShield.description>
-
-  <FFF_Info_MechModification.label>機械體改裝件</FFF_Info_MechModification.label>
-  <FFF_Info_MechModification.description>此物品是機械體的改造模組。開啟機械體的改造視窗，選擇身體槽位並排入安裝，之後由殖民者進行裝配。每個槽位容納一個模組，部分模組可在上限內堆疊或合併。模組之後可以拆除。</FFF_Info_MechModification.description>
-
+  
+  <!-- EN: command relay -->
   <FFF_Info_CommandRelay.label>指令中繼</FFF_Info_CommandRelay.label>
+  <!-- EN: A command unit. It ignores its mechanitor's control range entirely, and other mechanoids near it are treated as within range as well. On expeditions away from the mechanitor the relay radius shrinks with distance on the world map, down to a minimum once too far away. While drafted it shows its current coverage on the map. -->
   <FFF_Info_CommandRelay.description>不受機械師控制範圍限制的中控機體，其中繼範圍內能夠使其他機械體同樣受控。遠征時若與機械師分處不同地圖，中繼半徑會隨世界地圖距離衰減，超出距離後降至最小值。徵召時會在地圖上顯示目前的覆蓋範圍。</FFF_Info_CommandRelay.description>
-
-  <FFF_Info_SubRelay.label>控制中繼</FFF_Info_SubRelay.label>
-  <FFF_Info_SubRelay.description>延伸其周圍的機械體控制範圍——對所有機械師都有效，不限於單一機械師。作為建築時需供電、運作正常且屬於殖民地；作為服裝時需由你的單位穿戴。部分中繼可覆蓋整張地圖。選取徵召中的機甲時會顯示覆蓋範圍。</FFF_Info_SubRelay.description>
-
+  
+  <!-- EN: deactivated mechanoid -->
+  <FFF_Info_DeactivatedMech.label>封存機械體</FFF_Info_DeactivatedMech.label>
+  <!-- EN: A deactivated mechanoid in storage. A mechanitor with enough free bandwidth can take control of it directly; hostile or unowned units can instead be hacked by a colonist with research work enabled. A failed hack wakes the mech up hostile. It can also be scrapped. -->
+  <FFF_Info_DeactivatedMech.description>處於封存狀態的機械體。具備足夠空閒頻寬的機械師可直接接管它；敵對或無主的單位則可由開啟研究工作的殖民者嘗試駭入。駭入失敗會讓機甲以敵對狀態甦醒。也可以將其拆解。</FFF_Info_DeactivatedMech.description>
+  
+  <!-- EN: dead man's switch -->
+  <FFF_Info_DeadManSwitch.label>失能開關</FFF_Info_DeadManSwitch.label>
+  <!-- EN: This mechanoid carries a fail-safe that terminates it if it is ever cut off from its overseer. Units that are lost or wander off may still find their way home — but occasionally the switch fails to reset. -->
+  <FFF_Info_DeadManSwitch.description>此機械體裝有保險機制，一旦與監督者失去聯繫就會自我終止。走失或遊蕩的單位仍可能自行返回——但偶爾開關會重置失敗。</FFF_Info_DeadManSwitch.description>
+  
+  <!-- EN: drone -->
+  <FFF_Info_Drone.label>無人機</FFF_Info_Drone.label>
+  <!-- EN: A remotely operated unit bound to its deployment platform. \n\nDrone can only be controlled while the platform is powered and under your control, or for a wearable platform, while the wearer is drafted on the same map. It runs on an internal battery and automatically returns to the platform when the charge runs low; use the return command to recall it early and recover the material it cost. Drones deployed by you drop their equipment when destroyed. -->
+  <FFF_Info_Drone.description>綁定於部署平台的遙控單位。只有在平台供電且受你控制時才能徵召——若是穿戴式平台，則需穿戴者在同一地圖上處於徵召狀態。它靠內建電池運作，電量不足時會自動返回平台；使用返回指令可提前召回並退還所耗材料。由你部署的無人機被摧毀時會掉落裝備。</FFF_Info_Drone.description>
+  
+  <!-- EN: drone pack -->
+  <FFF_Info_DronePack.label>無人機背包</FFF_Info_DronePack.label>
+  <!-- EN: A wearable drone platform. The wearer can release its drones. for NPC-controlled wearers, they will use it on their own when hostiles are present on the map. -->
+  <FFF_Info_DronePack.description>可穿戴的發射器。穿戴者可主動觸發釋放無人機；由NPC控制的穿戴者在地圖上有敵人時會自行使用。</FFF_Info_DronePack.description>
+  
+  <!-- EN: drone platform -->
+  <FFF_Info_DronePlatform.label>無人機平台</FFF_Info_DronePlatform.label>
+  <!-- EN: Stores material and spends it to deploy drones.\n\nRetracting a drone returns it to the platform and refunds the material it cost. Deployed drones obey the allowed area set on the platform, and every drone controlled by the platform shuts down if the platform is destroyed. Platforms that support several unit types let you choose which one to deploy, and can be set to deploy and recall automatically on a fixed interval. -->
+  <FFF_Info_DronePlatform.description>儲存並消耗材料部署無人機。收回無人機會讓它回到平台並退還所耗材料。已部署的無人機遵守平台設定的活動區域；平台被摧毀時，受其控制的所有無人機都會停機。支援多種型號的平台可選擇要部署的型號，也可設為依固定間隔自動部署與召回。</FFF_Info_DronePlatform.description>
+  
+  <!-- EN: contact detonation -->
+  <FFF_Info_ExplosiveOnMelee.label>接觸引爆</FFF_Info_ExplosiveOnMelee.label>
+  <!-- EN: When this unit lands a melee attack it detonates every explosive it is carrying or holding, destroying itself in the process. Hostile units of this type may spawn carrying explosives. -->
+  <FFF_Info_ExplosiveOnMelee.description>此單位命中近戰攻擊時會引爆攜帶或持有的所有爆炸物，並在過程中自毀。敵對的此類單位生成時可能會攜帶爆炸物。</FFF_Info_ExplosiveOnMelee.description>
+  
+  <!-- EN: humanlike mechanoid -->
+  <FFF_Info_HumanlikeMech.label>人形機械體</FFF_Info_HumanlikeMech.label>
+  <!-- EN: A mechanoid built on an ergonomic humanlike frame. It can wear apparel and benefits from its effects, while still counting as a mechanoid for control, repair and bandwidth. -->
+  <FFF_Info_HumanlikeMech.description>以人體工學構造設計的機械體。它可穿戴服裝並使用服裝的效果，同時在控制、維修與頻寬方面仍視為機械體。</FFF_Info_HumanlikeMech.description>
+  
+  <!-- EN: signal attenuation -->
   <FFF_Info_MechanitorRange.label>訊號衰減</FFF_Info_MechanitorRange.label>
+  <!-- EN: While drafted, this mechanoid's performance depends on how far it is from its mechanitor. Close by it suffers little; the further away, the heavier the penalty, reaching its worst when the mechanitor is on another map. The penalty clears as soon as the mech is undrafted. -->
   <FFF_Info_MechanitorRange.description>徵召期間，此機械體的表現取決於它與機械師的距離。靠近時影響輕微；距離越遠懲罰越重，機械師在其他地圖時達到最差。解除徵召後懲罰立即消失。</FFF_Info_MechanitorRange.description>
-
-  <FFF_Info_WeaponImprint.label>武器銘印</FFF_Info_WeaponImprint.label>
-  <FFF_Info_WeaponImprint.description>此機械體裝備的第一把武器會被銘印進其自適應系統。持續使用該類武器越久，銘印等級越高並獲得遞增加成；換用其他類型的武器會捨棄銘印。</FFF_Info_WeaponImprint.description>
-
+  
+  <!-- EN: apparel support -->
   <FFF_Info_MechApparel.label>服裝支援</FFF_Info_MechApparel.label>
+  <!-- EN: This mechanoid can wear apparel. Some apparel layers are blocked by its frame and cannot be equipped. -->
   <FFF_Info_MechApparel.description>此機械體可穿戴服裝。部分服裝層級受骨架限制而無法裝備。</FFF_Info_MechApparel.description>
-
+  
+  <!-- EN: hibernatable mechanoid -->
+  <FFF_Info_MechCapsule.label>休眠機械體</FFF_Info_MechCapsule.label>
+  <!-- EN: A mechanoid that can temporary shutdown for storage. Hibernating mechs use no control bandwidth and can be restarted by a mechanitor with enough bandwidth; if it belongs to someone else it can be hacked by a colonist. Mothballed mechs found in the wild may sometimes still be holding their weapon. -->
+  <FFF_Info_MechCapsule.description>一架臨時休眠的機械體。休眠的機械體不佔用控制帶寬，並能夠由具備足夠頻寬的機械師重啟；若屬於他人，則可由殖民者駭入。野外發現的封存機械體可能有時仍持有武器。</FFF_Info_MechCapsule.description>
+  
+  <!-- EN: self-repair -->
+  <FFF_Info_MechHeal.label>自我修復</FFF_Info_MechHeal.label>
+  <!-- EN: While this condition is present the mechanoid slowly repairs its own damage over time without a mechanitor. -->
+  <FFF_Info_MechHeal.description>此狀態存在期間，機械體會隨時間緩慢修復自身損傷，不需要機械師。</FFF_Info_MechHeal.description>
+  
+  <!-- EN: mech modification -->
+  <FFF_Info_MechModification.label>機械體改裝件</FFF_Info_MechModification.label>
+  <!-- EN: This item is a modification module for mechanoids. Open a mech's modification window, pick a body slot and queue the install; a colonist then fits it. Each slot holds one module, and some modules can be stacked or merged up to a limit. Modules can be removed later. -->
+  <FFF_Info_MechModification.description>此物品是機械體的改造模組。開啟機械體的改造視窗，選擇身體槽位並排入安裝，之後由殖民者進行裝配。每個槽位容納一個模組，部分模組可在上限內堆疊或合併。模組之後可以拆除。</FFF_Info_MechModification.description>
+  
+  <!-- EN: hibernation -->
+  <FFF_Info_MechMothball.label>休眠</FFF_Info_MechMothball.label>
+  <!-- EN: This Mechanoid can put into hibernation. It becomes a dormant structure that no longer uses bandwidth and can later be reactivated by any mechanitor with enough free bandwidth. It cannot be hibernated while downed. -->
+  <FFF_Info_MechMothball.description>此型號的殖民地機械體可進入休眠。它會變成不再佔用頻寬的休眠結構，之後可由具備足夠空閒頻寬的機械師重新啟動。徵召中或倒地時無法休眠。</FFF_Info_MechMothball.description>
+  
+  <!-- EN: weapon systems -->
+  <FFF_Info_MechWeaponUsable.label>武器系統</FFF_Info_MechWeaponUsable.label>
+  <!-- EN: This mechanoid can pick up and use weapons. Which weapons it accepts is limited by its model's filters — weapon tags, tech level, weapon class, or an explicit whitelist — or by the weapon's own body size requirement. The full list is shown under the mechanoid's weapon systems entry. -->
+  <FFF_Info_MechWeaponUsable.description>此機械體可拾取並使用武器。可用的武器受該型號的篩選限制——武器標籤、科技等級、武器分類或明確白名單——或武器本身的體型需求。在機械體的武器系統一欄中可查看完整清單。</FFF_Info_MechWeaponUsable.description>
+  
+  <!-- EN: overseer core -->
+  <FFF_Info_OverseerBuilding.label>機控核心</FFF_Info_OverseerBuilding.label>
+  <!-- EN: A stationary command structure with its own bandwidth and control groups. Mechanoids assigned to it obey it as they would a mechanitor within its command range — some cores cover the whole map. It can restart mothballed mechanoids directly, and repair the mechs it oversees while they are nearby. Linked facilities extend its capabilities. -->
+  <FFF_Info_OverseerBuilding.description>固定式的指揮結構，擁有自己的頻寬與控制組。指派給它的機械體在其指揮範圍內會如同服從機械師一般服從它。連結設施可擴充其能力。</FFF_Info_OverseerBuilding.description>
+  
+  <!-- EN: overseer unit -->
+  <FFF_Info_OverseerMech.label>機控單位</FFF_Info_OverseerMech.label>
+  <!-- EN: A mechanoid that commands other mechanoids on its own, with its own bandwidth and control groups, and needs no mechanitor. Mechanoids placed under its control obey it as they would a mechanitor and follow it in the field. It can restart mothballed mechanoids it comes across, and repair the mechs it oversees while they are nearby. -->
+  <FFF_Info_OverseerMech.description>能夠自行指揮其他機械體的機械體，擁有自己的頻寬與控制組，不需要機械師。置於其控制下的機械體會如同服從機械師一般服從它，並在戰場上跟隨它行動。它可以重啟封存機械體，並維修受監督的機械體。</FFF_Info_OverseerMech.description>
+  
+  <!-- EN: ceramic plating -->
+  <FFF_Info_ProtectiveShield.label>陶瓷護板</FFF_Info_ProtectiveShield.label>
+  <!-- EN: Disposable armor with its own hit points. Incoming damage is absorbed by the plating until its durability is exhausted, after which it breaks and must be replaced. Larger mechs can carry more plates. -->
+  <FFF_Info_ProtectiveShield.description>具有獨立耐久的拋棄式裝甲。受到的傷害會先由護板吸收，直到耐久耗盡而損毀，屆時必須更換。體型較大的機甲可裝載更多護板。</FFF_Info_ProtectiveShield.description>
+  
+  <!-- EN: field recycling -->
+  <FFF_Info_Recycleable.label>原地拆解回收</FFF_Info_Recycleable.label>
+  <!-- EN: Once this unit is downed or destroyed it can be dismantled where it lies. Mark it for recycling, or order a colonist directly, and they will take it apart on the spot, dropping any gear it carried and leaving behind part of the materials it was built from. Wrecks yield less than downed units. -->
+  <FFF_Info_Recycleable.description>此單位倒地或損毀後可就地拆解。將其標記為拆解回收、或直接對殖民者下令，殖民者便會在原地將其拆除：攜帶的裝備會掉落，並留下部分建造所用的材料。殘骸的產出低於倒地單位。</FFF_Info_Recycleable.description>
+  
+  <!-- EN: control relay -->
+  <FFF_Info_SubRelay.label>控制中繼</FFF_Info_SubRelay.label>
+  <!-- EN: Extends mechanoid control range around it — for every mechanitor, not just one. As a building it works while powered, in working order and owned by your colony; as apparel it works while worn by one of your pawns. Some relays cover the whole map. The coverage ring is shown while a drafted mech is selected. -->
+  <FFF_Info_SubRelay.description>延伸其周圍的機械體控制範圍——對所有機械師都有效，不限於單一機械師。作為建築時需供電、運作正常且屬於殖民地；作為服裝時需由你的單位穿戴。部分中繼可覆蓋整張地圖。選取徵召中的機甲時會顯示覆蓋範圍。</FFF_Info_SubRelay.description>
+  
+  <!-- EN: turret operation -->
+  <FFF_Info_TurretMannable.label>砲塔操作</FFF_Info_TurretMannable.label>
+  <!-- EN: This mechanoid can man turrets and other crewed emplacements just like a colonist; whether a given emplacement can be operated is defined by its weapon systems. -->
+  <FFF_Info_TurretMannable.description>此機械體可像殖民者一樣操作砲塔與其他需要操作員的工事，是否能夠操作則由武器系統定義。</FFF_Info_TurretMannable.description>
+  
+  <!-- EN: weapon imprint -->
+  <FFF_Info_WeaponImprint.label>武器銘印</FFF_Info_WeaponImprint.label>
+  <!-- EN: The first weapon this mechanoid equips is imprinted into its adaptive systems. The longer it keeps using that weapon type the higher its imprint level grows, granting increasing bonuses; switching to a different weapon type discards the imprint. -->
+  <FFF_Info_WeaponImprint.description>此機械體裝備的第一把武器會被銘印進其自適應系統。持續使用該類武器越久，銘印等級越高並獲得遞增加成；換用其他類型的武器會捨棄銘印。</FFF_Info_WeaponImprint.description>
+  
 </LanguageData>

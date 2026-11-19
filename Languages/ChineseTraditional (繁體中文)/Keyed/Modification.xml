@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <LanguageData>
   
   <!-- EN: Weapon system not supported -->
   <!-- EN: Weapon system not supported -->
   <FFF.Reason.WeaponNotSupported>機體系統不支持</FFF.Reason.WeaponNotSupported>
   <!-- EN: Mech frame not supported -->
-  <!-- EN: Mech frame not supported  -->
+  <!-- EN: Mech frame not supported -->
   <FFF.Reason.FrameNotSupported>機體框架不支持</FFF.Reason.FrameNotSupported>
   
   <!-- EN: model not supported -->
@@ -34,44 +34,82 @@
   <FFF.PlatingTooltip>能夠抵禦大多數傷害的一次性防護片，其上限值與機械體體型正相關，無法自然恢復耐久。</FFF.PlatingTooltip>
 
   <!-- Weapon mod targeting rejection reasons -->
+  <!-- EN: This weapon mod cannot be applied here -->
   <FFF.Mod.CannotUseDueToNotSupport>此改裝件無法應用於此處</FFF.Mod.CannotUseDueToNotSupport>
+  <!-- EN: Target is not a weapon -->
   <FFF.Mod.NotAGun>目標不是武器</FFF.Mod.NotAGun>
+  <!-- EN: This weapon does not support modifications -->
   <FFF.Mod.NotModifiable>該武器不支援改裝</FFF.Mod.NotModifiable>
+  <!-- EN: This modification is not valid for this weapon -->
   <FFF.Mod.NotValidForThisWeapon>該改裝件不適用於此武器</FFF.Mod.NotValidForThisWeapon>
 
+  <!-- EN: Name: {0} -->
   <FFF.MechModification.InfoName>名稱：{0}</FFF.MechModification.InfoName>
+  <!-- EN: Model: {0} -->
   <FFF.MechModification.InfoRace>型號：{0}</FFF.MechModification.InfoRace>
+  <!-- EN: Service age: {0} -->
   <FFF.MechModification.InfoAge>服役年齡：{0}</FFF.MechModification.InfoAge>
+  <!-- EN: Mech modification -->
   <FFF.MechModification.GizmoLabel>機械體改裝</FFF.MechModification.GizmoLabel>
+  <!-- EN: Open this mech's modification window. Requires microelectronics. -->
   <FFF.MechModification.GizmoDesc>開啟此機械體的改裝視窗。需要完成微電子基礎研究。</FFF.MechModification.GizmoDesc>
+  <!-- EN: Available modifications for {0} -->
   <FFF.MechModification.SelectModsFor>{0} 可用的改件</FFF.MechModification.SelectModsFor>
+  <!-- EN: Select a body slot. -->
   <FFF.MechModification.SelectPartPrompt>請選擇身體槽位。</FFF.MechModification.SelectPartPrompt>
+  <!-- EN: No compatible modification is available on this map. -->
   <FFF.MechModification.NoModsOnMap>地圖上沒有可用於該槽位的改件。</FFF.MechModification.NoModsOnMap>
+  <!-- EN: No queued operations. -->
   <FFF.MechModification.QueueEmpty>目前沒有排隊操作。</FFF.MechModification.QueueEmpty>
+  <!-- EN: Install {0} on {1} -->
   <FFF.MechModification.QueueInstall>將 {0} 安裝到 {1}</FFF.MechModification.QueueInstall>
+  <!-- EN: Remove {0} from {1} -->
   <FFF.MechModification.QueueUninstall>從 {1} 移除 {0}</FFF.MechModification.QueueUninstall>
+  <!-- EN: missing -->
   <FFF.MechModification.Missing>缺失</FFF.MechModification.Missing>
+  <!-- EN: frame -->
   <FFF.MechModification.PartFallback>機體</FFF.MechModification.PartFallback>
+  <!-- EN: Save preset -->
   <FFF.MechModification.SavePreset>儲存預設</FFF.MechModification.SavePreset>
+  <!-- EN: Load preset -->
   <FFF.MechModification.LoadPreset>載入預設</FFF.MechModification.LoadPreset>
+  <!-- EN: Mech preset -->
   <FFF.MechModification.PresetDefaultName>機械體預設</FFF.MechModification.PresetDefaultName>
+  <!-- EN: Preset saved: {0} -->
   <FFF.MechModification.PresetSaved>已儲存預設：{0}</FFF.MechModification.PresetSaved>
+  <!-- EN: Preset loaded: {0} -->
   <FFF.MechModification.PresetLoaded>已載入預設：{0}</FFF.MechModification.PresetLoaded>
+  <!-- EN: Could not load preset: {0} -->
   <FFF.MechModification.PresetLoadFailed>無法載入預設：{0}</FFF.MechModification.PresetLoadFailed>
+  <!-- EN: Apply -->
   <FFF.MechModification.Apply>套用</FFF.MechModification.Apply>
+  <!-- EN: Reset -->
   <FFF.MechModification.Reset>重設</FFF.MechModification.Reset>
+  <!-- EN: Return -->
   <FFF.MechModification.Return>返回</FFF.MechModification.Return>
+  <!-- EN: Settings applied; {0} operation(s) queued. -->
   <FFF.MechModification.AppliedQueued>設定已套用，已排入 {0} 個操作。</FFF.MechModification.AppliedQueued>
+  <!-- EN: This item does not define a valid mech modification. -->
   <FFF.MechModification.InvalidModification>該物品沒有定義有效的機械體改件。</FFF.MechModification.InvalidModification>
+  <!-- EN: There are not enough reachable {0} on this map. -->
   <FFF.MechModification.NotEnoughItems>地圖上可到達的 {0} 數量不足。</FFF.MechModification.NotEnoughItems>
+  <!-- EN: {0} already has another modification installed or queued. -->
   <FFF.MechModification.PartOccupied>{0} 已安裝或已排隊安裝其他改件。</FFF.MechModification.PartOccupied>
+  <!-- EN: {0} is unique and cannot be installed more than once in the same slot. -->
   <FFF.MechModification.Unique>{0} 具有唯一性，無法在同一槽位重複安裝。</FFF.MechModification.Unique>
+  <!-- EN: {0} has reached its installation limit ({1}). -->
   <FFF.MechModification.StackFull>{0} 已達到安裝數量上限（{1}）。</FFF.MechModification.StackFull>
+  <!-- EN: {0} could not be merged into the modification already installed on {1}. -->
   <FFF.MechModification.MergeFailed>{0} 無法與 {1} 身上已安裝的改造合併。</FFF.MechModification.MergeFailed>
+  <!-- EN: Only mechanoids of your colony can be modified. -->
   <FFF.Modification_NotColonyMech>只能改造殖民地的機械體。</FFF.Modification_NotColonyMech>
+  <!-- EN: Modify {0} -->
   <FFF.MechModification.WindowTitle>改造 {0}</FFF.MechModification.WindowTitle>
+  <!-- EN: Queued operations -->
   <FFF.MechModification.QueueTitle>排程作業</FFF.MechModification.QueueTitle>
+  <!-- EN: Body slots and installed modifications -->
   <FFF.MechModification.SlotsTitle>部位與已安裝改造</FFF.MechModification.SlotsTitle>
+  <!-- EN: queued for removal -->
   <FFF.MechModification.PendingUninstall>待拆除</FFF.MechModification.PendingUninstall>
 
 </LanguageData>

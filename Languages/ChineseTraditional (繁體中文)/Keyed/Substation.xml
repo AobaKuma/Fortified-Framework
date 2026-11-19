@@ -1,16 +1,24 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <LanguageData>
-  <!-- CompHackable 字串 -->
+  <!-- CompHackable strings (referenced by defName key, not translated inline) -->
+  <!-- EN: Hack to shut down -->
   <FFF_Substation_HackPrompt>駭入以關閉</FFF_Substation_HackPrompt>
+  <!-- EN: Offline (shut down) -->
   <FFF_Substation_HackedLabel>離線（已關閉）</FFF_Substation_HackedLabel>
+  <!-- EN: {HACKER_labelShort} shut down {SUBJECT_label}. -->
   <FFF_Substation_HackedMsg>{HACKER_labelShort} 已關閉 {SUBJECT_label}。</FFF_Substation_HackedMsg>
 
-  <!-- 設施狀態 -->
+  <!-- Inspect strings -->
+  <!-- EN: Status: Online — generating 3000 W -->
   <FFF_Substation_Online>狀態：運作中</FFF_Substation_Online>
+  <!-- EN: Status: Offline (manually shut down) -->
   <FFF_Substation_Offline>狀態：離線（手動關閉）</FFF_Substation_Offline>
+  <!-- EN: Status: Disabled by EMP -->
   <FFF_Substation_EMPDisabled>狀態：電磁脈衝保護</FFF_Substation_EMPDisabled>
 
-  <!-- 事件訊息 -->
+  <!-- Event messages -->
+  <!-- EN: {PAWN_labelShort} was shocked while shutting down the substation! -->
   <FFF_Substation_ShockMessage>{PAWN_labelShort} 在關閉配電箱時遭到電擊！</FFF_Substation_ShockMessage>
+  <!-- EN: With {SUBSTATION_label} down, {BUILDING_label} has switched off. -->
   <FFF_Substation_FlickedOffMessage>{SUBSTATION_label}斷電，{BUILDING_label}跟著關閉了。</FFF_Substation_FlickedOffMessage>
 </LanguageData>

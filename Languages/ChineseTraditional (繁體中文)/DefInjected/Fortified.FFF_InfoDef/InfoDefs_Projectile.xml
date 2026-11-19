@@ -1,8 +1,14 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <LanguageData>
+  
+  <!-- EN: cluster munition -->
   <FFF_Info_ClusterBomb.label>集束彈藥</FFF_Info_ClusterBomb.label>
+  <!-- EN: Partway through its flight this projectile breaks apart and releases a spread of submunitions that rain down around the target point rather than striking a single cell. Depending on the munition it may also detonate at the moment it splits. It will not split until it is a safe distance from the shooter. -->
   <FFF_Info_ClusterBomb.description>此投射物在飛行途中會解體，釋放一批子彈藥散佈在目標點周圍，而非命中單一格。依彈種不同，解體時也可能同時引爆。它會在距離射手足夠安全的距離後才分裂。</FFF_Info_ClusterBomb.description>
-
+  
+  <!-- EN: directional blast -->
   <FFF_Info_ConeExplosive.label>定向爆炸</FFF_Info_ConeExplosive.label>
+  <!-- EN: On impact this projectile explodes in a cone pointing along its direction of travel instead of a full circle. Anything in the arc ahead of the impact point is hit; things behind or beside it are spared. Aim it so the cone sweeps across the enemy line. -->
   <FFF_Info_ConeExplosive.description>此投射物命中時會沿飛行方向產生錐形爆炸，而非全向圓形。落點前方扇形範圍內的一切都會被波及；後方與側面則不受影響。瞄準時讓錐形掃過敵方戰線。</FFF_Info_ConeExplosive.description>
+  
 </LanguageData>
