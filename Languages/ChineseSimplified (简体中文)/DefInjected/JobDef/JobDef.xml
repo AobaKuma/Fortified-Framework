@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <LanguageData>
   
   <!-- EN: working. -->
@@ -20,16 +20,16 @@
   <FFF_MechLeave.reportString>离开</FFF_MechLeave.reportString>
   
   <!-- EN: modifing TargetA. -->
-  <FFF_Modification.reportString>改装{0}</FFF_Modification.reportString>
+  <FFF_Modification.reportString>改装TargetA</FFF_Modification.reportString>
   
   <!-- EN: modifing TargetA. -->
-  <FFF_ModificationRemove.reportString>拆除{0}的改造</FFF_ModificationRemove.reportString>
+  <FFF_ModificationRemove.reportString>拆除TargetA的改造</FFF_ModificationRemove.reportString>
   
   <!-- EN: repairing TargetA. -->
-  <FFF_RepairSelf.reportString>维修{0}</FFF_RepairSelf.reportString>
+  <FFF_RepairSelf.reportString>维修TargetA</FFF_RepairSelf.reportString>
   
   <!-- EN: rebooting TargetA. -->
-  <FFF_ResurrectMech.reportString>重启{0}</FFF_ResurrectMech.reportString>
+  <FFF_ResurrectMech.reportString>重启TargetA</FFF_ResurrectMech.reportString>
   
   <!-- EN: returning to platform -->
   <FFF_ReturnToDronePlatform.reportString>返回平台</FFF_ReturnToDronePlatform.reportString>
@@ -38,5 +38,23 @@
   <FFF_Replenish.reportString>补给中</FFF_Replenish.reportString>
 
   <FFF_LockdownOverride.reportString>正在对TargetA执行紧急解锁。</FFF_LockdownOverride.reportString>
-
+  
+  <!-- EN: taking control of TargetA. -->
+  <FFF_ControlMech_Overseer.reportString>正在接管TargetA。</FFF_ControlMech_Overseer.reportString>
+  
+  <!-- EN: equipping TargetA. -->
+  <FFF_EquipDeployable.reportString>正在装备TargetA。</FFF_EquipDeployable.reportString>
+  
+  <!-- EN: Equiping turret -->
+  <FFF_EquipTurret.reportString>装备炮塔</FFF_EquipTurret.reportString>
+  
+  <!-- EN: repairing TargetA. -->
+  <FFF_RepairMech_Overseer.reportString>正在维修TargetA。</FFF_RepairMech_Overseer.reportString>
+  
+  <!-- EN: Switching ammo -->
+  <FFF_SwitchAmmo.reportString>切换弹药</FFF_SwitchAmmo.reportString>
+  
+  <!-- EN: activating TargetA. -->
+  <FFF_UseAccessKey.reportString>正在启动TargetA。</FFF_UseAccessKey.reportString>
+  
 </LanguageData>

@@ -13,4 +13,7 @@
   <!-- EN: huntdown -->
   <FFF_Huntdown.label>追缉</FFF_Huntdown.label>
   
+  <!-- EN: arrive on gravship -->
+  <FFF_PlayerPawnsArriveGravship.label>搭乘重力船抵达</FFF_PlayerPawnsArriveGravship.label>
+  
 </LanguageData>

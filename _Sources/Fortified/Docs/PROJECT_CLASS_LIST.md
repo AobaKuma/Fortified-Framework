@@ -88,6 +88,24 @@ Patch/整合：相關 Patch 補入 turret / pawn equipment 的 gizmo，使 UI �
 
 功能要點：防彈板/護甲補給機制（Comp + JobDriver + Gizmo）。
 
+### MaskedApparel（Apparel/PawnRenderNode_MaskedApparel.cs，2026-11-23 從 DepthRim 移來）
+- PawnRenderNode_MaskedApparel, PawnRenderNodeProperties_MaskedApparel, PawnRenderNodeWorker_BodyApparel
+
+功能要點：不分體型、可染色的衣物節點，給連頭盔全身衣物／外骨骼這類一套圖蓋住整個人的衣物。掛在 `apparel.renderNodeProperties`、`wornGraphicPath` 留空；`texPath` 只要北／東／南三張圖加同名 `m` 遮罩。遮罩紅色 = 衣物 DrawColor（`useApparelColor=false` 時用 `color`），黑色 = `colorTwo`（預設白 = 原圖）。著色器預設 CutoutComplex（可用 `shaderTypeDef` 換），雕像單色 Cutout。Worker 的顯示條件同原版身體衣物（躺床隱藏、需 Clothes 旗標）。
+
+```xml
+<renderNodeProperties>
+  <li Class="Fortified.PawnRenderNodeProperties_MaskedApparel"> <!-- 可省略 Class，全部取預設 -->
+    <nodeClass>Fortified.PawnRenderNode_MaskedApparel</nodeClass>
+    <workerClass>Fortified.PawnRenderNodeWorker_BodyApparel</workerClass>
+    <texPath>Things/Apparel/MySuit/MySuit</texPath>
+    <parentTagDef>Root</parentTagDef>
+    <baseLayer>68</baseLayer>
+    <colorTwo>(1,1,1)</colorTwo>
+  </li>
+</renderNodeProperties>
+```
+
 ### BiochemicalProtection
 - BiochemicalProtectionExtension (ModExtension)
 - Patch_CanBeInfected, Patch_DiseaseContractChanceFactor

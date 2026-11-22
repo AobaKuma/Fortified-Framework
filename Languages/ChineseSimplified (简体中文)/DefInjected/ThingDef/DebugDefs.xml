@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: Access link tool -->
+  <FFF_ExportTool_LinkAccessKeyWanter.label>Access link tool</FFF_ExportTool_LinkAccessKeyWanter.label>
+  
+  <!-- EN: Man turret tool -->
+  <FFF_ExportTool_ManTurret.label>Man turret tool</FFF_ExportTool_ManTurret.label>
+  
+  <!-- EN: Pawn group tool -->
+  <FFF_ExportTool_PawnGroup.label>Pawn group tool</FFF_ExportTool_PawnGroup.label>
+  
+  <!-- EN: Random structure tool -->
+  <FFF_ExportTool_RandomStructure.label>Random structure tool</FFF_ExportTool_RandomStructure.label>
+  
+</LanguageData>

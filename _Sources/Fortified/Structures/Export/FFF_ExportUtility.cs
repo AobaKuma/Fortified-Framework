@@ -48,6 +48,9 @@ namespace Fortified.Structures
             if (options.includeThings)
             {
                 ExportThingsOptimized(rect, map, origin, options, sb);
+
+                // 1b. 物件之间的连结（IFFF_StructureLinkable，例如船体骨架的结构桩钢梁）
+                FFF_StructureLinkUtility.ExportLinks(CollectExportedThings(rect, map, options), origin, sb);
             }
 
             // 2. 导出地形 (带有横向合并优化)
@@ -194,6 +197,19 @@ namespace Fortified.Structures
                 }
             }
             return rows;
+        }
+
+        private static HashSet<Thing> CollectExportedThings(CellRect rect, Map map, ExportOptions options)
+        {
+            var things = new HashSet<Thing>();
+            foreach (IntVec3 cell in rect)
+            {
+                foreach (Thing thing in cell.GetThingList(map))
+                {
+                    if (!ShouldSkipThing(thing, options)) things.Add(thing);
+                }
+            }
+            return things;
         }
 
         private static bool ShouldSkipThing(Thing thing, ExportOptions options)

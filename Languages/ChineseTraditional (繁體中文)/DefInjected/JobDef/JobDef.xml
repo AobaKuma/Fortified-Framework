@@ -2,7 +2,7 @@
 <LanguageData>
   
   <!-- EN: taking control of TargetA. -->
-  <FFF_ControlMech_Overseer.reportString>TODO</FFF_ControlMech_Overseer.reportString>
+  <FFF_ControlMech_Overseer.reportString>正在接管TargetA。</FFF_ControlMech_Overseer.reportString>
   
   <!-- EN: working. -->
   <FFF_DoAutonomousBill.reportString>處理生產</FFF_DoAutonomousBill.reportString>
@@ -14,10 +14,10 @@
   <FFF_EnterBunkerFacility.reportString>進入設施</FFF_EnterBunkerFacility.reportString>
   
   <!-- EN: equipping TargetA. -->
-  <FFF_EquipDeployable.reportString>TODO</FFF_EquipDeployable.reportString>
+  <FFF_EquipDeployable.reportString>正在裝備TargetA。</FFF_EquipDeployable.reportString>
   
   <!-- EN: Equiping turret -->
-  <FFF_EquipTurret.reportString>TODO</FFF_EquipTurret.reportString>
+  <FFF_EquipTurret.reportString>裝備砲塔</FFF_EquipTurret.reportString>
   
   <!-- EN: working. -->
   <FFF_FinishAutonomousBill.reportString>完成生產</FFF_FinishAutonomousBill.reportString>
@@ -32,30 +32,30 @@
   <FFF_MechLeave.reportString>離開</FFF_MechLeave.reportString>
   
   <!-- EN: modifying TargetA. -->
-  <FFF_Modification.reportString>改裝{0}</FFF_Modification.reportString>
+  <FFF_Modification.reportString>改裝TargetA</FFF_Modification.reportString>
   
   <!-- EN: removing modification from TargetA. -->
-  <FFF_ModificationRemove.reportString>拆除{0}的改造</FFF_ModificationRemove.reportString>
+  <FFF_ModificationRemove.reportString>拆除TargetA的改造</FFF_ModificationRemove.reportString>
   
   <!-- EN: repairing TargetA. -->
-  <FFF_RepairMech_Overseer.reportString>TODO</FFF_RepairMech_Overseer.reportString>
+  <FFF_RepairMech_Overseer.reportString>正在維修TargetA。</FFF_RepairMech_Overseer.reportString>
   
   <!-- EN: repairing TargetA. -->
-  <FFF_RepairSelf.reportString>維修{0}</FFF_RepairSelf.reportString>
+  <FFF_RepairSelf.reportString>維修TargetA</FFF_RepairSelf.reportString>
   
   <!-- EN: Replenishing -->
   <FFF_Replenish.reportString>替換</FFF_Replenish.reportString>
   
   <!-- EN: rebooting TargetA. -->
-  <FFF_ResurrectMech.reportString>重啟{0}</FFF_ResurrectMech.reportString>
+  <FFF_ResurrectMech.reportString>重啟TargetA</FFF_ResurrectMech.reportString>
   
   <!-- EN: returning to platform -->
   <FFF_ReturnToDronePlatform.reportString>返回平台</FFF_ReturnToDronePlatform.reportString>
   
   <!-- EN: Switching ammo -->
-  <FFF_SwitchAmmo.reportString>TODO</FFF_SwitchAmmo.reportString>
+  <FFF_SwitchAmmo.reportString>切換彈藥</FFF_SwitchAmmo.reportString>
   
   <!-- EN: activating TargetA. -->
-  <FFF_UseAccessKey.reportString>TODO</FFF_UseAccessKey.reportString>
+  <FFF_UseAccessKey.reportString>正在啟動TargetA。</FFF_UseAccessKey.reportString>
   
 </LanguageData>

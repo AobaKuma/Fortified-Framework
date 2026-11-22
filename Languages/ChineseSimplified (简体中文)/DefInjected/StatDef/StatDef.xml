@@ -20,5 +20,11 @@
   <FFF_FearResistance.label>恐惧抗性</FFF_FearResistance.label>
   <!-- 恐惧说明 -->
   <FFF_FearResistance.description>决定PAWN在面对大型机械体时，恐惧所产生的影响。提升至100%以完全抵抗。</FFF_FearResistance.description>
-
+  
+  <!-- EN: mech command range -->
+  <FFF_MechCommandRange.label>机械体指挥范围</FFF_MechCommandRange.label>
+  
+  <!-- EN: The radius within which this overseer can command the mechanoids it controls. Mechanoids outside this radius cannot be given orders. -->
+  <FFF_MechCommandRange.description>此监督者能够指挥其所控制机械体的半径范围。超出此范围的机械体将无法接受命令。</FFF_MechCommandRange.description>
+  
 </LanguageData>

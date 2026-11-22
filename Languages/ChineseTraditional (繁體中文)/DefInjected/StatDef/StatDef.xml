@@ -17,9 +17,9 @@
   <FFF_MassCarryCapacity.description>可攜帶的物品及裝備最大重量。</FFF_MassCarryCapacity.description>
   
   <!-- EN: mech command range -->
-  <FFF_MechCommandRange.label>TODO</FFF_MechCommandRange.label>
+  <FFF_MechCommandRange.label>機械體指揮範圍</FFF_MechCommandRange.label>
   <!-- EN: The radius within which this overseer can command the mechanoids it controls. Mechanoids outside this radius cannot be given orders. -->
-  <FFF_MechCommandRange.description>TODO</FFF_MechCommandRange.description>
+  <FFF_MechCommandRange.description>此監督者能夠指揮其所控制機械體的半徑範圍。超出此範圍的機械體將無法接受命令。</FFF_MechCommandRange.description>
   
   <!-- EN: supported weapons -->
   <FFF_UsableWeapons.label>武器系統</FFF_UsableWeapons.label>
