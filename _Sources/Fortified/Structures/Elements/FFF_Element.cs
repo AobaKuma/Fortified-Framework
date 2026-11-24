@@ -13,6 +13,17 @@ namespace Fortified.Structures
     {
         public FFF_Element() { }
         public abstract void AddToSketch(Sketch sketch);
+
+        /// <summary>
+        /// 純地形元素：<see cref="FFF_StructureDef.GetSketch"/> 先加入這些，再加其他元素。
+        /// 原版 Sketch 加入地形時會擦掉「需要該地形沒有的 affordance」的建築（Sketch.WipeColliding），
+        /// 例如鋪面會把需要特殊 affordance 的支柱從 sketch 拿掉；先鋪地形、後放建築，建築只會換掉它底下不合用的地形。
+        ///
+        /// Pure terrain elements. GetSketch adds them before everything else: vanilla Sketch.Add wipes any thing
+        /// whose terrainAffordanceNeeded the added terrain lacks, so a floor listed after a building would silently
+        /// delete it. With terrain first, a building only replaces the unsuitable terrain under itself.
+        /// </summary>
+        public virtual bool IsTerrainLayer => false;
     }
 
     public enum FFF_FacingMode
@@ -54,6 +65,8 @@ namespace Fortified.Structures
         public FFF_Element_Terrain() { }
         public TerrainDef def;
         public IntVec3 pos;
+
+        public override bool IsTerrainLayer => true;
 
         public override void AddToSketch(Sketch sketch)
         {
@@ -100,6 +113,8 @@ namespace Fortified.Structures
         public TerrainDef def;
         public IntVec3 pos;
         public IntVec2 size;
+
+        public override bool IsTerrainLayer => true;
 
         public override void AddToSketch(Sketch sketch)
         {
@@ -220,6 +235,8 @@ namespace Fortified.Structures
         public FFF_Element_TerrainScatter() { }
         public TerrainDef def;
         public List<IntVec3> posList = new List<IntVec3>();
+
+        public override bool IsTerrainLayer => true;
 
         public override void AddToSketch(Sketch sketch)
         {

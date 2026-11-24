@@ -44,19 +44,21 @@ namespace Fortified.Structures
 
             IntVec3 origin = rect.Min;
 
-            // 1. 导出建筑/物品 (带有横向合并优化)
+            // 1. 导出地形 (带有横向合并优化)。寫在建築之前：讀取時地形先進 sketch，才不會擦掉需要特殊 affordance 的建築
+            //    （GetSketch 也會自己先加地形，這裡讓 XML 的順序和生成順序一致）。
+            //    Terrain is written before things so the XML order matches the generation order (terrain first).
+            if (options.includeTerrain)
+            {
+                ExportTerrainOptimized(rect, map, origin, options, sb);
+            }
+
+            // 2. 导出建筑/物品 (带有横向合并优化)
             if (options.includeThings)
             {
                 ExportThingsOptimized(rect, map, origin, options, sb);
 
-                // 1b. 物件之间的连结（IFFF_StructureLinkable，例如船体骨架的结构桩钢梁）
+                // 2b. 物件之间的连结（IFFF_StructureLinkable，例如船体骨架的结构桩钢梁）
                 FFF_StructureLinkUtility.ExportLinks(CollectExportedThings(rect, map, options), origin, sb);
-            }
-
-            // 2. 导出地形 (带有横向合并优化)
-            if (options.includeTerrain)
-            {
-                ExportTerrainOptimized(rect, map, origin, options, sb);
             }
 
             // 3. 导出颜色 (带有横向合并优化)

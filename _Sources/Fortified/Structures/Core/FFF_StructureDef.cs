@@ -36,7 +36,10 @@ namespace Fortified.Structures
                 cachedSketch = new Sketch();
                 if (elements != null)
                 {
-                    foreach (var element in elements) element.AddToSketch(cachedSketch);
+                    // 先地形、後其他（見 FFF_Element.IsTerrainLayer）；各自保持 XML 裡的順序。
+                    // Terrain first, then the rest, each in XML order (see FFF_Element.IsTerrainLayer).
+                    foreach (var element in elements) if (element != null && element.IsTerrainLayer) element.AddToSketch(cachedSketch);
+                    foreach (var element in elements) if (element != null && !element.IsTerrainLayer) element.AddToSketch(cachedSketch);
                 }
             }
             return cachedSketch.DeepCopy();
