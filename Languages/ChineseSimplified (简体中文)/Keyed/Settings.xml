@@ -2,4 +2,10 @@
 <LanguageData>
   <FFF.Settings.ShowDevCategory>开发模式下显示“Building(Dev)”分类</FFF.Settings.ShowDevCategory>
   <FFF.Settings.ShowDevCategory.Desc>收录本框架及衍生模组中仅限上帝模式使用的地图设计建筑。</FFF.Settings.ShowDevCategory.Desc>
+  <!-- FortifiedMod : feature switches -->
+  <FFF.Settings.Features>功能</FFF.Settings.Features>
+  <FFF.Settings.Features.Desc>功能只有在已加载的模组用到时才会开启。鼠标移到行上可以查看各模组如何用到它。</FFF.Settings.Features.Desc>
+  <FFF.Settings.Features.EnabledBy>启用者：</FFF.Settings.Features.EnabledBy>
+  <FFF.Settings.Features.Unused>没有模组使用（关闭）</FFF.Settings.Features.Unused>
+  <FFF.Settings.Features.Blocked>关闭：{0}</FFF.Settings.Features.Blocked>
 </LanguageData>

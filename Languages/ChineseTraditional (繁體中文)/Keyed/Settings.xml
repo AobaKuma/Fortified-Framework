@@ -5,4 +5,15 @@
   <FFF.Settings.ShowDevCategory>開發模式下顯示「Building(Dev)」分類</FFF.Settings.ShowDevCategory>
   <!-- EN: Contains god-mode-only map-design buildings from this framework and mods built on it. -->
   <FFF.Settings.ShowDevCategory.Desc>收錄本框架及衍生模組中僅限上帝模式使用的地圖設計建築。</FFF.Settings.ShowDevCategory.Desc>
+  <!-- FortifiedMod : feature switches -->
+  <!-- EN: Features -->
+  <FFF.Settings.Features>功能</FFF.Settings.Features>
+  <!-- EN: Features turn on only when a loaded mod uses them. Hover a row to see how each mod uses it. -->
+  <FFF.Settings.Features.Desc>功能只有在已載入的模組用到時才會開啟。滑鼠移到列上可以看各模組怎麼用到它。</FFF.Settings.Features.Desc>
+  <!-- EN: Enabled by: -->
+  <FFF.Settings.Features.EnabledBy>啟用者：</FFF.Settings.Features.EnabledBy>
+  <!-- EN: Not used by any mod (off) -->
+  <FFF.Settings.Features.Unused>沒有模組使用（關閉）</FFF.Settings.Features.Unused>
+  <!-- EN: Off: {0} -->
+  <FFF.Settings.Features.Blocked>關閉：{0}</FFF.Settings.Features.Blocked>
 </LanguageData>

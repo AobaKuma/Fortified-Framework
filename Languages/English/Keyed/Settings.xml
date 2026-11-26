@@ -3,4 +3,10 @@
   <!-- FortifiedMod : mod settings window -->
   <FFF.Settings.ShowDevCategory>Show "Building(Dev)" category in dev mode</FFF.Settings.ShowDevCategory>
   <FFF.Settings.ShowDevCategory.Desc>Contains god-mode-only map-design buildings from this framework and mods built on it.</FFF.Settings.ShowDevCategory.Desc>
+  <!-- FortifiedMod : feature switches -->
+  <FFF.Settings.Features>Features</FFF.Settings.Features>
+  <FFF.Settings.Features.Desc>Features turn on only when a loaded mod uses them. Hover a row to see how each mod uses it.</FFF.Settings.Features.Desc>
+  <FFF.Settings.Features.EnabledBy>Enabled by:</FFF.Settings.Features.EnabledBy>
+  <FFF.Settings.Features.Unused>Not used by any mod (off)</FFF.Settings.Features.Unused>
+  <FFF.Settings.Features.Blocked>Off: {0}</FFF.Settings.Features.Blocked>
 </LanguageData>
