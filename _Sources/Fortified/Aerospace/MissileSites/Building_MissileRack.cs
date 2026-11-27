@@ -123,7 +123,13 @@ namespace Fortified
 
         public IReadOnlyList<Thing> HeldThings => innerContainer.InnerListForReading;
         public int StoredCount => innerContainer.TotalStackCount;
-        public bool Full => StoredCount >= MaxStored;
+        /// <summary>
+        /// 人工瞄準中、還沒升空的導彈（已從容器扣掉）仍佔著架上的位置：瞄準完升空前不會被裝填新彈
+        /// （<see cref="MissileLauncherExtension.aimTicks"/>，見 <see cref="MapComponent_MissileLaunchQueue"/>）。
+        /// </summary>
+        public int AimingCount => MapComponent_MissileLaunchQueue.AimingCountFor(this);
+
+        public bool Full => StoredCount + AimingCount >= MaxStored;
         public Thing RackThing => this;
 
         // ---------------- IThingHolder ----------------
@@ -178,7 +184,7 @@ namespace Fortified
             return innerContainer.CanAcceptAnyOf(t);
         }
 
-        public int SpaceRemainingFor(ThingDef _) => Mathf.Max(0, MaxStored - StoredCount);
+        public int SpaceRemainingFor(ThingDef _) => Mathf.Max(0, MaxStored - StoredCount - AimingCount);
 
         // ---------------- 生命週期 ----------------
         public override void PostMake()

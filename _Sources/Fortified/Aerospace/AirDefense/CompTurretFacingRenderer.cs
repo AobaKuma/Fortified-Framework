@@ -386,18 +386,37 @@ namespace Fortified
             if (owner == null) { return false; }
 
             List<Vector3> slots = AmmoSlots;
-            int count = Mathf.Min(owner.Count, slots.Count);
+            int skip = AimingRounds?.Count ?? 0;   // 瞄準中的導彈佔前面的槽位（見 DrawLoadedAmmo）
+            int count = Mathf.Min(owner.Count, slots.Count - skip);
             for (int i = 0; i < count; i++)
             {
                 if (!ReferenceEquals(owner[i], ammo)) { continue; }
                 Vector3 renderedPos = parent.DrawPos + Props.offset
-                    + (Quaternion.Euler(0f, curRotation, 0f) * slots[i]);
+                    + (Quaternion.Euler(0f, curRotation, 0f) * slots[i + skip]);
                 renderedPos.y = AltitudeLayer.BuildingOnTop.AltitudeFor() + Props.altitudeOffset + Props.ammoAltitudeOffset;
                 Vector3 projectileCenter = parent.TrueCenter();
                 offset = renderedPos - projectileCenter;
                 return true;
             }
             return false;
+        }
+
+        /// <summary>這座發射架人工瞄準中、還沒升空的導彈（沒有時為 null 或空）。</summary>
+        private List<PendingMissileLaunch> AimingRounds
+            => parent != null && parent.Spawned ? MapComponent_MissileLaunchQueue.For(parent.Map)?.AimingRoundsFor(parent) : null;
+
+        /// <summary>第 <paramref name="aimingIndex"/> 枚瞄準中導彈（佔前面的槽位，見 DrawLoadedAmmo）相對建築中心的畫面位置偏移。</summary>
+        public bool TryGetAimingRoundOffset(int aimingIndex, out Vector3 offset)
+        {
+            offset = Vector3.zero;
+            if (!Props.drawLoadedAmmo || aimingIndex < 0) { return false; }
+            int slot = aimingIndex;
+            List<Vector3> slots = AmmoSlots;
+            if (slot >= slots.Count) { return false; }
+            Vector3 renderedPos = parent.DrawPos + Props.offset + (Quaternion.Euler(0f, curRotation, 0f) * slots[slot]);
+            renderedPos.y = AltitudeLayer.BuildingOnTop.AltitudeFor() + Props.altitudeOffset + Props.ammoAltitudeOffset;
+            offset = renderedPos - parent.TrueCenter();
+            return true;
         }
 
         /// <summary>
@@ -409,10 +428,15 @@ namespace Fortified
         private void DrawLoadedAmmo()
         {
             ThingOwner owner = (parent as IThingHolder)?.GetDirectlyHeldThings();
-            if (owner == null || owner.Count == 0) { return; }
+            int held = owner?.Count ?? 0;
+            // 人工瞄準中的導彈已從容器扣掉、但還沒升空：仍在架上，佔前面的槽位（MapComponent_MissileLaunchQueue）；
+            // 容器裡的彈藥接在後面。
+            List<PendingMissileLaunch> aiming = AimingRounds;
+            int aimingCount = aiming?.Count ?? 0;
+            if (held + aimingCount == 0) { return; }
 
             List<Vector3> slots = AmmoSlots;
-            int count = Mathf.Min(owner.Count, slots.Count);
+            int count = Mathf.Min(held + aimingCount, slots.Count);
             if (count <= 0) { return; }
 
             Quaternion headQuat = Quaternion.Euler(0f, curRotation, 0f);
@@ -420,8 +444,7 @@ namespace Fortified
 
             for (int i = 0; i < count; i++)
             {
-                Thing ammo = owner[i];
-                Graphic graphic = ammo?.Graphic;
+                Graphic graphic = i < aimingCount ? aiming[i].roundDef?.graphic : owner[i - aimingCount]?.Graphic;
                 if (graphic == null) { continue; }
 
                 Vector3 pos = parent.DrawPos + Props.offset + (headQuat * slots[i]);

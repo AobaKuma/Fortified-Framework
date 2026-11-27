@@ -93,7 +93,10 @@ namespace Fortified
             }
         }
 
-        public bool Full => StoredCount >= MaxStored;
+        /// <summary>人工瞄準中、還沒升空的導彈仍佔著架上的位置（見 <see cref="MapComponent_MissileLaunchQueue"/>）。</summary>
+        public int AimingCount => MapComponent_MissileLaunchQueue.AimingCountFor(parent);
+
+        public bool Full => StoredCount + AimingCount >= MaxStored;
         public Thing RackThing => parent;
         public CompMissileRackRenderer Renderer => parent.GetComp<CompMissileRackRenderer>();
 
@@ -109,7 +112,7 @@ namespace Fortified
             return innerContainer.CanAcceptAnyOf(t);
         }
 
-        public int SpaceRemainingFor(ThingDef _) => Mathf.Max(0, MaxStored - StoredCount);
+        public int SpaceRemainingFor(ThingDef _) => Mathf.Max(0, MaxStored - StoredCount - AimingCount);
 
         // ---------------- IStoreSettingsParent ----------------
 

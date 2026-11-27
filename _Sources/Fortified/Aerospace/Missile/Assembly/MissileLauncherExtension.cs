@@ -14,12 +14,22 @@ namespace Fortified
     ///
     /// 注意：垂直發射的「不可上重力船 + 單一朝向」限制由 XML 達成（rotatable=false 並掛
     /// 原版 PlaceWorker_InvalidOverSubstructure），此擴充僅描述資料，不重複實作該限制。
-    /// 參見抽象母 Def DMSE_VerticalLauncherBase / DMSE_TiltLauncherBase。
+    /// 參見抽象母 Def FFF_VerticalLauncherBase / FFF_TiltLauncherBase（1.7/Missiles/Defs/Missile/FFF_MissileBases.xml）。
     /// </summary>
     public class MissileLauncherExtension : MissileRackExtension
     {
         /// <summary>是否為儲存類建築（彈架／彈藥庫），而非發射平台。</summary>
         public bool isStorage = false;
+
+        /// <summary>
+        /// 每次發射前的瞄準時間（ticks），給手搖／人工操作的發射架用；0 = 下令即射。
+        /// 對地：下令後導彈留在架上，砲頭轉向出發方位，瞄準時間到才升空（打擊時間軸計入）；操作員離開時瞄準暫停。
+        /// 攔截：砲頭對準同一個目標並持續追蹤滿這段時間才發射，換目標重新計時。
+        /// </summary>
+        public int aimTicks = 0;
+
+        /// <summary>建築的瞄準時間（沒有本擴充時為 0）。</summary>
+        public static int AimTicksOf(Thing launcher) => launcher?.def?.GetModExtension<MissileLauncherExtension>()?.aimTicks ?? 0;
 
         public MissileLauncherExtension()
         {

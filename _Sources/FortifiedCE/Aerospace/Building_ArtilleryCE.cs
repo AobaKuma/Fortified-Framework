@@ -31,6 +31,9 @@ namespace FortifiedCE
         /// <summary>世界砲擊正在持續射擊：砲管被占用，本地圖武器暫停。</summary>
         public bool WorldFiring => Artillery != null && Artillery.IsSustainedFiring;
 
+        /// <summary>世界砲擊進行中不能指定本地目標（CE 的 Tick 會解除既有的強制目標）；世界砲擊與本地強制攻擊同時只有一個。</summary>
+        protected override bool CanSetForcedTarget => base.CanSetForcedTarget && !WorldFiring;
+
         public override LocalTargetInfo TryFindNewTarget()
             => WorldFiring ? LocalTargetInfo.Invalid : base.TryFindNewTarget();
 

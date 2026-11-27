@@ -192,6 +192,24 @@ namespace Fortified
 
         }
 
+        // 攔截的人工瞄準追蹤（不存檔：讀檔後重新瞄準）。
+        private const int AimTrackGapTicks = 5;
+        private int aimTargetId = int.MinValue;
+        private int aimSinceTick;
+        private int aimLastTick = -100000;
+
+        /// <summary>只回報攔截的追蹤瞄準；對地發射的排程瞄準由同一座建築的對地發射 comp 顯示，避免重複一行。</summary>
+        public override int AimingTicksLeft(int now)
+        {
+            int left = 0;
+            int aim = MissileLauncherExtension.AimTicksOf(parent);
+            if (aim > 0 && now - aimLastTick <= AimTrackGapTicks)
+            {
+                left = Mathf.Max(left, aim - (now - aimSinceTick));
+            }
+            return left;
+        }
+
         /// <summary>
         /// 試射地圖目標。旋轉發射架先對準本次指派目標，砲頭進入容許角度後才發射；
         /// 避免渲染器追蹤另一個更急迫的波次時，導彈沿著錯的砲頭角度離架。
@@ -208,6 +226,20 @@ namespace Fortified
                 facing.ForceFaceTarget(aimPoint, 2);
                 float tolerance = Mathf.Max(1f, facing.Props.rotationSpeedDegPerTick * 0.5f);
                 if (!facing.IsFacing(aimPoint, tolerance)) { return false; }
+            }
+
+            // 人工瞄準（MissileLauncherExtension.aimTicks）：對準後還要持續追蹤同一個目標滿這段時間；
+            // 換目標或中斷追蹤（火控不再逐 tick 重試）就重新計時。
+            int aim = MissileLauncherExtension.AimTicksOf(parent);
+            if (aim > 0)
+            {
+                if (target.id != aimTargetId || now - aimLastTick > AimTrackGapTicks)
+                {
+                    aimTargetId = target.id;
+                    aimSinceTick = now;
+                }
+                aimLastTick = now;
+                if (now - aimSinceTick < aim) { return false; }
             }
 
             roundsFired = FireInterceptorRounds(target, hitChance, now, heading, Props.interceptorSalvoSize, out lastSpawnTick);

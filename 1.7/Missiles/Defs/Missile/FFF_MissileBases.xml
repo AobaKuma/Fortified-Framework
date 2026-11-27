@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- ==================================================================
+       導彈系統的抽象母 Def（2026-11-27 自 DMSE 移入；DMSE 保留同名 DMSE_* 母 Def 指向這裡，舊引用不受影響）。
+       Abstract parents for missile content. Moved from DMSE on 2026-11-27; DMSE keeps DMSE_* aliases pointing here.
+       ================================================================== -->
+
+  <!-- 升空彈：彈體的 launchProjectile／發射平台的 skyfaller、interceptorSkyfaller 用。
+       Launch projectile used by MissileBodyDef.launchProjectile and launcher skyfaller / interceptorSkyfaller. -->
+  <ThingDef Name="FFF_MissileLaunchProjectileBase" Abstract="True">
+    <thingClass>Fortified.Projectile_MissileLaunch</thingClass>
+    <category>Projectile</category>
+    <tickerType>Normal</tickerType>
+    <altitudeLayer>Skyfaller</altitudeLayer>
+    <drawerType>RealtimeOnly</drawerType>
+    <drawOffscreen>true</drawOffscreen>
+    <useHitPoints>false</useHitPoints>
+    <neverMultiSelect>true</neverMultiSelect>
+    <size>(1,1)</size>
+    <projectile>
+      <flyOverhead>true</flyOverhead>
+      <speed>1</speed>
+      <damageDef>Bomb</damageDef>
+    </projectile>
+  </ThingDef>
+
+  <!-- 落點彈：彈體的 incomingSkyfaller／發射平台的 skyfallerIncoming 用。
+       Incoming projectile used by MissileBodyDef.incomingSkyfaller and launcher skyfallerIncoming. -->
+  <ThingDef Name="FFF_MissileIncomingProjectileBase" Abstract="True">
+    <thingClass>Fortified.Projectile_MissileIncoming</thingClass>
+    <category>Projectile</category>
+    <tickerType>Normal</tickerType>
+    <altitudeLayer>Skyfaller</altitudeLayer>
+    <drawerType>RealtimeOnly</drawerType>
+    <drawOffscreen>true</drawOffscreen>
+    <useHitPoints>false</useHitPoints>
+    <neverMultiSelect>true</neverMultiSelect>
+    <size>(1,1)</size>
+    <projectile>
+      <flyOverhead>true</flyOverhead>
+      <speed>1</speed>
+      <damageDef>Bomb</damageDef>
+    </projectile>
+  </ThingDef>
+
+  <!-- 傾斜發射平台（可旋轉、可上重力船；同層建築不得貼靠）。建造分頁由子 Def 指定。
+       Tilt launcher: rotatable, allowed on gravships, keeps a 1-cell gap from same-layer buildings. Set designationCategory in the child. -->
+  <ThingDef Name="FFF_TiltLauncherBase" ParentName="BuildingBase" Abstract="True">
+    <category>Building</category>
+    <rotatable>true</rotatable>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <tickerType>Normal</tickerType>
+    <drawerType>RealtimeOnly</drawerType>
+    <selectable>true</selectable>
+    <leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+    <drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
+    <placeWorkers>
+      <!-- 傾斜發射時排焰/後座範圍較大，禁止同層建築在 1 格範圍內貼靠。 -->
+      <li>Fortified.PlaceWorker_NoAdjacentSameLayer</li>
+    </placeWorkers>
+  </ThingDef>
+
+  <!-- 垂直發射平台（單一朝向、禁止建於重力船 substructure）。建造分頁由子 Def 指定。
+       Vertical launcher: single facing, not allowed on gravship substructure. Set designationCategory in the child. -->
+  <ThingDef Name="FFF_VerticalLauncherBase" ParentName="BuildingBase" Abstract="True">
+    <category>Building</category>
+    <rotatable>false</rotatable>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <tickerType>Normal</tickerType>
+    <drawerType>RealtimeOnly</drawerType>
+    <selectable>true</selectable>
+    <leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
+    <drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
+    <placeWorkers>
+      <!-- 原版：落在 substructure（重力船地板）時禁止放置。 -->
+      <li>PlaceWorker_InvalidOverSubstructure</li>
+    </placeWorkers>
+  </ThingDef>
+
+</Defs>

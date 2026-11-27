@@ -703,4 +703,9 @@ Click to cycle through the remaining targets.</FFF.MissileBase.ObjectivesAlertDe
   <FFF.BVR.EngagementVetoed>Engagement blocked by another mod's rule.</FFF.BVR.EngagementVetoed>
   <FFF.Aerospace.Settings.MultiplayerWarning>Multiplayer is active. Missiles, air defense and the transfer ship are not synchronized for multiplayer: using them in a multiplayer game will desync. Combat settings on this page must be the same for every player.</FFF.Aerospace.Settings.MultiplayerWarning>
   <FFF.Alert.Exist.Label>Map visible countdown: {0}</FFF.Alert.Exist.Label>
+  <!-- 2026-11-27 自 DMSE 移入（FFF 程式使用的字串） -->
+  <ScorerLaunch>Launch Missile</ScorerLaunch>
+  <ScorerLaunchDesc>Launch the loaded tactical missile at a target beyond this map. The target map stays visible for 2 days to assess damage; launching again resets the timer.</ScorerLaunchDesc>
+  <DMSE_MissileRackStored>Stored missiles: {0} / {1}</DMSE_MissileRackStored>
+  <FFF.MissileLauncher.Aiming>Aiming: {0}</FFF.MissileLauncher.Aiming>
 </LanguageData>

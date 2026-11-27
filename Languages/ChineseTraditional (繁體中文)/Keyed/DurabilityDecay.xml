@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  <!-- CompDurabilityDecay / PlaceWorker_NoAdjacentSameLayer（2026-11-27 自 DMSE 移入） -->
+  <!-- EN: {0} has degraded beyond use and fallen apart. -->
+  <FFF.DurabilityDecay.DecayedAway>{0} 已劣化至無法使用而解體。</FFF.DurabilityDecay.DecayedAway>
+  <!-- EN: Sheltered: durability stable -->
+  <FFF.DurabilityDecay.Sheltered>已庇護：耐久穩定</FFF.DurabilityDecay.Sheltered>
+  <!-- EN: Unsheltered: losing {0} durability/day -->
+  <FFF.DurabilityDecay.Unsheltered>未庇護：每日損失 {0} 點耐久</FFF.DurabilityDecay.Unsheltered>
+  <!-- EN: Too close to {0} (same placement layer). -->
+  <FFF.PlaceWorker.TooCloseSameLayer>與 {0} 太近。</FFF.PlaceWorker.TooCloseSameLayer>
+</LanguageData>

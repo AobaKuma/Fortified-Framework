@@ -99,7 +99,7 @@ namespace Fortified
             List<ThingDef> pool = PoolFor(rack, supply, out int count);
             if (pool.NullOrEmpty()) return result;
 
-            int space = rack.MaxStored - rack.StoredCount;
+            int space = rack.SpaceRemainingFor(null);   // 含人工瞄準中、還沒升空的導彈
             int n = count < 0 ? space : System.Math.Min(count, space);
             for (int i = 0; i < n; i++)
                 result.Add(ThingMaker.MakeThing(pool.RandomElement()));

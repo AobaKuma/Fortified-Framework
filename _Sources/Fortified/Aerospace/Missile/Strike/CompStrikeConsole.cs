@@ -413,7 +413,7 @@ namespace Fortified
                     // 升空後離場 skyfaller 飛出地圖才出現世界航跡，所以飛行時間要加上離場時間
                     MissileConfig slotConfig = launcher?.BuildFiringConfig(slot.round);
                     int flight = launcher != null
-                        ? launcher.DepartureTicksFor(slotConfig, to) + StrikeRoundUtility.FlightTicks(slotConfig, from, to) : 0;
+                        ? launcher.AimTicks + launcher.DepartureTicksFor(slotConfig, to) + StrikeRoundUtility.FlightTicks(slotConfig, from, to) : 0;
                     if (slot.state == StrikeSlotState.Queued)
                     {
                         list.Add(new StrikePlanSlot { launched = true, arrivalTick = now + 1 + flight });

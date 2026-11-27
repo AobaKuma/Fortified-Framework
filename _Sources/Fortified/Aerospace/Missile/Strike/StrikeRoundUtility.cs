@@ -143,7 +143,8 @@ namespace Fortified
                 round = round,
                 config = config,
                 distance = MissileWorldUtility.RangeDistance(from, target),
-                flightTicks = launcher.DepartureTicksFor(config, target) + FlightTicks(config, from, target),
+                // 人工瞄準的發射架：下令到升空之間多一段瞄準時間
+                flightTicks = launcher.AimTicks + launcher.DepartureTicksFor(config, target) + FlightTicks(config, from, target),
                 groupKey = GroupKey(config, round),
                 groupLabel = GroupLabel(config, round),
                 value = RoundValue(round, config),

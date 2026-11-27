@@ -54,7 +54,7 @@ namespace Fortified
 
         /// <summary>
         /// NPC 砲塔彈匣低於 <paramref name="refillBelowPercent"/> 時，要空投哪種彈藥、幾個物品才補到
-        /// <paramref name="refillToPercent"/>。沒有彈匣或不缺彈時回 false。
+        /// <paramref name="refillToPercent"/>（以彈匣容量計，可大於 1：超過的部分是放在砲塔旁的備彈）。沒有彈匣或不缺彈時回 false。
         /// </summary>
         bool TryGetMagazineRefill(Building turret, float refillBelowPercent, float refillToPercent,
             out ThingDef ammoDef, out int count);

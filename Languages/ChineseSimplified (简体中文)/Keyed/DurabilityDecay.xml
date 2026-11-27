@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  <!-- CompDurabilityDecay / PlaceWorker_NoAdjacentSameLayer（2026-11-27 自 DMSE 移入） -->
+  <FFF.DurabilityDecay.DecayedAway>{0} 已劣化至无法使用而解体。</FFF.DurabilityDecay.DecayedAway>
+  <FFF.DurabilityDecay.Sheltered>已庇护：耐久稳定</FFF.DurabilityDecay.Sheltered>
+  <FFF.DurabilityDecay.Unsheltered>未庇护：每日损失 {0} 点耐久</FFF.DurabilityDecay.Unsheltered>
+  <FFF.PlaceWorker.TooCloseSameLayer>与 {0} 太近（同一放置图层）。</FFF.PlaceWorker.TooCloseSameLayer>
+</LanguageData>

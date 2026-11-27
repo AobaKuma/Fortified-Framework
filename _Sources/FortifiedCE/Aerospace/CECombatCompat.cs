@@ -170,7 +170,11 @@ namespace FortifiedCE
             projectile.canTargetSelf = false;
             projectile.Position = entry;
             projectile.SpawnSetup(map, false);
-            projectile.Launch(null, new Vector2(source.x, source.z), shotAngle, shotRotation, ArrivedShotHeight, speed);
+            // CE 的 ProjectileCE.Launch 在 shotHeight ≥ 牆高（2）時會讀 launcher.Spawned／launcher.Map 判斷是否忽略屋頂，
+            // launcher 為 null 會 NRE（CE 自己的 TravelingShell 一定傳發射砲塔）。這裡沒有發射者（只帶攻擊方陣營），
+            // 先拿砲彈自己過這道檢查（已生成、在本圖），發射後再把 launcher 清回 null，傷害歸因維持「無發射者」。
+            projectile.Launch(projectile, new Vector2(source.x, source.z), shotAngle, shotRotation, ArrivedShotHeight, speed);
+            projectile.launcher = null;
             return true;
         }
 
@@ -190,7 +194,8 @@ namespace FortifiedCE
             if (ammoDef == null && ammo.CurAmmoSet?.ammoTypes?.Count > 0) { ammoDef = ammo.CurAmmoSet.ammoTypes[0].ammo; }
             if (ammoDef == null) { return false; }
 
-            int target = Mathf.CeilToInt(ammo.MagSize * Mathf.Clamp01(refillToPercent));
+            // refillToPercent 可以大於 1：補滿彈匣之外再多給幾匣備彈（MissileBaseTurretAmmoSupply.magazineStock）。
+            int target = Mathf.CeilToInt(ammo.MagSize * Mathf.Max(0f, refillToPercent));
             count = Mathf.Max(1, target - ammo.CurMagCount);
             return true;
         }

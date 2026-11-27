@@ -1365,4 +1365,13 @@
   <FFF.BVR.EngagementVetoed>這次接戰被其他模組的規則擋下。</FFF.BVR.EngagementVetoed>
   <FFF.Aerospace.Settings.MultiplayerWarning>已啟用 Multiplayer。導彈、防空與轉移艦沒有做聯機同步，在聯機遊戲中使用會不同步；本頁影響戰鬥的設定，每位玩家都必須相同。</FFF.Aerospace.Settings.MultiplayerWarning>
   <FFF.Alert.Exist.Label>地圖可見計時：{0}</FFF.Alert.Exist.Label>
+  <!-- 2026-11-27 自 DMSE 移入（FFF 程式使用的字串） -->
+  <!-- EN: Launch Missile -->
+  <ScorerLaunch>發射導彈</ScorerLaunch>
+  <!-- EN: Launch the loaded tactical missile at a target beyond this map. The target map stays visible for 2 days to assess damage; launching again resets the timer. -->
+  <ScorerLaunchDesc>發射已裝填的戰術導彈，可遠程打擊地圖外的目標；目標地圖保留 2 天視野以評估戰果，再次發射會重置計時。</ScorerLaunchDesc>
+  <!-- EN: Stored missiles: {0} / {1} -->
+  <DMSE_MissileRackStored>已存放導彈：{0} / {1}</DMSE_MissileRackStored>
+  <!-- EN: Aiming: {0} -->
+  <FFF.MissileLauncher.Aiming>瞄準中：{0}</FFF.MissileLauncher.Aiming>
 </LanguageData>

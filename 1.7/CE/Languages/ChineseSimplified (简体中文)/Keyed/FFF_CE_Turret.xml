@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- CE 的砲塔面板用原版 GunInstalled 顯示「砲管 (彈種)」：CE 下這行表示目前裝填的彈藥，改稱「已裝填」。只在 CE 啟用時載入。 -->
+  <!-- EN: Gun installed -->
+  <GunInstalled>已装填</GunInstalled>
+</LanguageData>

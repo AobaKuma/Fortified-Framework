@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- 轉移引擎與可拆平台地形的抽象母 Def（2026-11-27 自 DMSE 移入；DMSE 保留 DMSE_* 別名指向這裡）。
+       Abstract parents for transfer engines and removable platform terrain. Moved from DMSE on 2026-11-27. -->
+
+  <!-- 轉移引擎：Heavy 地形即可（不需重力船底板），可旋轉，尾焰朝背面；放置規則 PlaceWorker_TransferEngine。 -->
+  <ThingDef ParentName="BuildingBase" Name="FFF_TransferEngineBase" Abstract="True">
+    <rotatable>true</rotatable>
+    <passability>Impassable</passability>
+    <fillPercent>1</fillPercent>
+    <holdsRoof>true</holdsRoof>
+    <blockWind>true</blockWind>
+    <blockLight>true</blockLight>
+    <canOverlapZones>false</canOverlapZones>
+    <castEdgeShadows>true</castEdgeShadows>
+    <staticSunShadowHeight>0.5</staticSunShadowHeight>
+    <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+    <designationCategory>Odyssey</designationCategory>
+    <tickerType>Rare</tickerType>
+    <!-- 與原版推進器（GravshipComponentBase）相同：可打包搬運。 -->
+    <minifiedDef>MinifiedThing</minifiedDef>
+    <thingCategories>
+      <li>BuildingsMisc</li>
+    </thingCategories>
+    <genericMarketSellable>false</genericMarketSellable>
+    <placeWorkers>
+      <li>Fortified.PlaceWorker_TransferEngine</li>
+    </placeWorkers>
+    <drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
+    <drawPlaceWorkersWhileInstallBlueprintSelected>true</drawPlaceWorkersWhileInstallBlueprintSelected>
+    <statBases>
+      <Flammability>0</Flammability>
+      <Beauty>-10</Beauty>
+    </statBases>
+    <building>
+      <isAirtight>true</isAirtight>
+      <isInert>true</isInert>
+      <destroySound>BuildingDestroyed_Metal_Big</destroySound>
+    </building>
+    <uiOrder>2200</uiOrder>
+  </ThingDef>
+
+  <!-- 可拆平台地形：基底地形（非 foundation、非 layerable），spaceEdgeGraphicData 的邊緣貼圖才會繪製
+       （原版 SectionLayer_TerrainEdges 以 BaseTerrainAt 判斷）；「拆除平台」指令拆回虛空，返還 costList 的一半。 -->
+  <TerrainDef Name="FFF_PlatformBase" Abstract="True">
+    <renderPrecedence>240</renderPrecedence>
+    <preventCraters>true</preventCraters>
+    <layerable>false</layerable>
+    <fertility>0</fertility>
+    <canEverTerraform>false</canEverTerraform>
+    <pollutionOverlayTexturePath>Terrain/Surfaces/PollutionSoil</pollutionOverlayTexturePath>
+    <pollutionColor>(1, 1, 1, 0.43)</pollutionColor>
+    <pollutionOverlayScale>(0.66, 0.66)</pollutionOverlayScale>
+    <natural>true</natural>
+    <statBases>
+      <Beauty>-3</Beauty>
+    </statBases>
+    <filthAcceptanceMask>
+      <li>Unnatural</li>
+    </filthAcceptanceMask>
+    <affordances>
+      <li>Light</li>
+      <li>Medium</li>
+      <li>Heavy</li>
+      <li>Walkable</li>
+    </affordances>
+    <designationCategory>Odyssey</designationCategory>
+    <modExtensions>
+      <li Class="Fortified.RemovablePlatformExtension">
+        <refundFraction>0.5</refundFraction>
+      </li>
+    </modExtensions>
+  </TerrainDef>
+
+</Defs>

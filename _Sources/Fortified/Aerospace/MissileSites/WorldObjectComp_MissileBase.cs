@@ -170,6 +170,13 @@ namespace Fortified
         /// <summary>空投時把砲塔補到最大量的這個比例（1 = 補滿）。</summary>
         public float refillToPercent = 1f;
 
+        /// <summary>
+        /// 相容層彈匣（CE 的 CompAmmoUser）一次空投幾個彈匣的量（含補滿目前彈匣）：1 = 只補滿彈匣，3 = 補滿再多兩匣備彈。
+        /// 備彈留在砲塔旁，彈匣低於 <see cref="refillBelowPercent"/> 時守軍再拿去裝；備彈用完前不會再空投。
+        /// 原版 CompRefuelable 不受影響（燃料槽本身就是全部的量）。
+        /// </summary>
+        public float magazineStock = 1f;
+
         /// <summary>空投落地後多久，守軍才會開始搬（tick）；期間玩家可以搶走或打爛。</summary>
         public int haulDelayTicks = 300;
 

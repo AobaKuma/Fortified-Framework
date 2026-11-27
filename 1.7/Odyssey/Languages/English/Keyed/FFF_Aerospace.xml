@@ -242,4 +242,6 @@
   <FFF.Transfer.Land.LandedLabel>Ship landed</FFF.Transfer.Land.LandedLabel>
   <FFF.Transfer.Land.LandedText>{0} has landed at {1}.</FFF.Transfer.Land.LandedText>
   <FFF.Transfer.Land.Moved>The chosen spot was blocked, so it landed at the nearest open spot.</FFF.Transfer.Land.Moved>
+  <!-- 2026-11-27 自 DMSE 移入（FFF 程式使用的字串） -->
+  <DMSE_ShipWarmUpCountdown>Launching procedure in {0}</DMSE_ShipWarmUpCountdown>
 </LanguageData>

@@ -62,7 +62,11 @@ namespace FortifiedCE
                 List<IntVec3> list = GenRadial.RadialCellsAround(new Vector3(Destination.x,0, Destination.y).ToIntVec3(), errorRange, useCenter: true).ToList();
                 IntVec3 intVec2 = list.RandomElement();
                 this.TryGetComp<CompFragments>()?.Throw(intVec2.ToVector3(), Map, this);
-                projectile2.Launch(launcher, new Vector2(ExactPosition.x, ExactPosition.z), shotAngle + Rand.Range(-baseOffsetAngle, baseOffsetAngle), shotAngle + Rand.Range(-baseOffsetAngle, baseOffsetAngle), Height, shotSpeed, ThingMaker.MakeThing(equipmentDef));
+                // 世界砲擊落進來的子母彈沒有發射者與武器（launcher／equipmentDef 為 null）：CE 的 Launch 在高處會讀
+                // launcher.Spawned，ThingMaker.MakeThing(null) 也會出錯；暫借子彈自己當 launcher，發射後再清回原值。
+                Thing equipment = equipmentDef != null ? ThingMaker.MakeThing(equipmentDef) : null;
+                projectile2.Launch(launcher ?? projectile2, new Vector2(ExactPosition.x, ExactPosition.z), shotAngle + Rand.Range(-baseOffsetAngle, baseOffsetAngle), shotAngle + Rand.Range(-baseOffsetAngle, baseOffsetAngle), Height, shotSpeed, equipment);
+                if (launcher == null) { projectile2.launcher = null; }
                 GoodwillCorrection(list);
             }
             Destroy();

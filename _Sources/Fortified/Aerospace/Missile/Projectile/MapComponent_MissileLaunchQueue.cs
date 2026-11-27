@@ -37,6 +37,18 @@ namespace Fortified
         /// <summary>發射架有井蓋、下令時還沒全開：等井蓋全開才升空（不佔排程時段，到時再補間隔）。</summary>
         public bool holdForHatch;
 
+        /// <summary>
+        /// 人工瞄準中（<see cref="MissileLauncherExtension.aimTicks"/>）：砲頭轉向 <see cref="heading"/>，到 <see cref="tick"/> 才升空；
+        /// 操作員不在時暫停。導彈在這段期間仍畫在發射架上（<see cref="roundDef"/>）。
+        /// </summary>
+        public bool holdForAim;
+
+        /// <summary>排入時要求的瞄準時間（只在 <see cref="MapComponent_MissileLaunchQueue.Request"/> 使用，不存檔）。</summary>
+        public int aimTicks;
+
+        /// <summary>這一發的導彈物品 def：瞄準期間由 <see cref="CompTurretFacingRenderer"/> 畫在發射架上。</summary>
+        public ThingDef roundDef;
+
         public float? Heading => hasHeading ? heading : (float?)null;
 
         public void ExposeData()
@@ -59,6 +71,8 @@ namespace Fortified
             Scribe_Values.Look(ref hasHeading, "hasHeading", false);
             Scribe_Values.Look(ref heading, "heading", 0f);
             Scribe_Values.Look(ref holdForHatch, "holdForHatch", false);
+            Scribe_Values.Look(ref holdForAim, "holdForAim", false);
+            Scribe_Defs.Look(ref roundDef, "roundDef");
         }
     }
 
@@ -113,9 +127,15 @@ namespace Fortified
             // 發射井：井蓋還沒全開就先開蓋，升空彈等全開才生成（預估時刻回報給打擊時間軸）。
             CompSiloHatch hatch = launch.interceptor ? null : CompSiloHatch.For(launch.launcher);
             int hold = hatch?.TicksUntilOpen ?? 0;
+            if (hold > 0) { launch.holdForHatch = true; }
+            // 人工瞄準：與井蓋同樣先扣住，不佔排程時段，到時再補最小間隔。
+            if (launch.aimTicks > 0)
+            {
+                launch.holdForAim = true;
+                hold = Mathf.Max(hold, launch.aimTicks);
+            }
             if (hold > 0)
             {
-                launch.holdForHatch = true;
                 spawnTick = Mathf.Max(now + hold, lastSlotTick + SpacingTicks);
                 launch.tick = spawnTick;
                 pending.Add(launch);
@@ -136,16 +156,18 @@ namespace Fortified
             for (int i = 0; i < pending.Count; i++)
             {
                 PendingMissileLaunch launch = pending[i];
+                if (launch.holdForAim && !DepartureLost(launch)) { AimTick(launch, now); }
                 if (launch.tick > now) { continue; }
-                if (launch.holdForHatch && !DepartureLost(launch))
+                if ((launch.holdForHatch || launch.holdForAim) && !DepartureLost(launch))
                 {
-                    CompSiloHatch hatch = CompSiloHatch.For(launch.launcher);
+                    CompSiloHatch hatch = launch.holdForHatch ? CompSiloHatch.For(launch.launcher) : null;
                     if (hatch != null && !hatch.FullyOpen)
                     {
                         hatch.EnsureLaunchOpen();
                         continue;
                     }
-                    // 井蓋開好了，但別的發射剛升空：補上最小間隔。
+                    if (launch.holdForAim) { FinishAim(launch); }
+                    // 井蓋開好了／瞄準完成，但別的發射剛升空：補上最小間隔。
                     if (now < lastSlotTick + SpacingTicks)
                     {
                         launch.tick = lastSlotTick + SpacingTicks;
@@ -186,6 +208,74 @@ namespace Fortified
                 : MissileProjectileMaker.LaunchDeparture(launch.def, cell, map, launch.rotation, launcher, launch.worldObject,
                     launch.Heading, launch.hasLaunchAngle ? launch.launchAngle : (float?)null,
                     launch.hasLaunchOffset ? launch.launchOffset : Vector3.zero);
+        }
+
+        /// <summary>人工瞄準中：砲頭轉向出發方位；操作員不在（砲頭不運作）時瞄準暫停，升空時刻跟著順延。</summary>
+        private static void AimTick(PendingMissileLaunch launch, int now)
+        {
+            CompTurretFacingRenderer facing = (launch.launcher as ThingWithComps)?.GetComp<CompTurretFacingRenderer>();
+            if (facing == null) { return; }
+            if (facing.Props.requireActive && !facing.DeviceActive)
+            {
+                if (launch.tick >= now) { launch.tick++; }
+                return;
+            }
+            if (launch.hasHeading)
+            {
+                facing.ForceFaceTarget(launch.launcher.DrawPos + MissileMapEntryUtility.HeadingVector(launch.heading) * 10f, 2);
+            }
+        }
+
+        /// <summary>瞄準完成：升空角度與離架位置改用砲頭現在的角度（下令時記下的是瞄準前的角度）。</summary>
+        private void FinishAim(PendingMissileLaunch launch)
+        {
+            CompTurretFacingRenderer facing = (launch.launcher as ThingWithComps)?.GetComp<CompTurretFacingRenderer>();
+            if (facing == null) { return; }
+            int slot = AimingRoundsFor(launch.launcher).IndexOf(launch);
+            if (slot >= 0 && facing.TryGetAimingRoundOffset(slot, out Vector3 offset))
+            {
+                launch.launchOffset = offset;
+                launch.hasLaunchOffset = true;
+            }
+            launch.launchAngle = facing.CurRotation;
+            launch.hasLaunchAngle = true;
+        }
+
+        /// <summary>這座發射架正在瞄準、還沒升空的導彈（依排入順序）。</summary>
+        public List<PendingMissileLaunch> AimingRoundsFor(Thing launcher)
+        {
+            List<PendingMissileLaunch> result = new List<PendingMissileLaunch>();
+            if (launcher == null) { return result; }
+            for (int i = 0; i < pending.Count; i++)
+            {
+                if (pending[i].holdForAim && pending[i].launcher == launcher) { result.Add(pending[i]); }
+            }
+            return result;
+        }
+
+        /// <summary>這座發射架瞄準中、還沒升空的導彈數（不配置清單；彈架容量判定每 tick 會呼叫多次）。</summary>
+        public static int AimingCountFor(Thing launcher)
+        {
+            if (launcher == null || !launcher.Spawned) { return 0; }
+            MapComponent_MissileLaunchQueue queue = For(launcher.Map);
+            if (queue == null || queue.pending.Count == 0) { return 0; }
+            int n = 0;
+            for (int i = 0; i < queue.pending.Count; i++)
+            {
+                if (queue.pending[i].holdForAim && queue.pending[i].launcher == launcher) { n++; }
+            }
+            return n;
+        }
+
+        /// <summary>這座發射架最晚一發瞄準完成還要多久（沒有瞄準中的發射時為 0）。</summary>
+        public int AimTicksLeft(Thing launcher, int now)
+        {
+            int left = 0;
+            for (int i = 0; i < pending.Count; i++)
+            {
+                if (pending[i].holdForAim && pending[i].launcher == launcher) { left = Mathf.Max(left, pending[i].tick - now); }
+            }
+            return left;
         }
 
         /// <summary>對地離場的發射架已不在本圖運作：被摧毀、被拆除／收起，或已不屬於發射方陣營（被佔領）。</summary>

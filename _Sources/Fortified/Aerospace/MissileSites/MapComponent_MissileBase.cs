@@ -251,8 +251,10 @@ namespace Fortified
                     }
                     else
                     {
+                        // 彈匣很小（例如 Flak 43 一匣 8 發）：一次多投幾匣備彈（magazineStock），守軍之後從備彈再裝。
+                        float stockTo = supply.refillToPercent * Mathf.Max(1f, supply.magazineStock);
                         if (CombatCompat.Active == null
-                            || !CombatCompat.Active.TryGetMagazineRefill(b, supply.refillBelowPercent, supply.refillToPercent, out fuelDef, out count))
+                            || !CombatCompat.Active.TryGetMagazineRefill(b, supply.refillBelowPercent, stockTo, out fuelDef, out count))
                             continue;
                     }
                     // 上一批補給還在等守軍搬／搬運中：不要重複空投。
@@ -358,6 +360,10 @@ namespace Fortified
                     if (now < e.readyTick) continue;
 
                     if (!(e.turret is Building turretBuilding) || StoreFull(e)) continue;
+                    // 彈匣的備彈：彈匣還有一半以上就先放著，低於空投門檻才去裝（不必每打一輪就補）。
+                    if (e.magazine && (CombatCompat.Active == null
+                        || !CombatCompat.Active.TryGetMagazineRefill(turretBuilding, ammoSupply.refillBelowPercent, 1f, out _, out _)))
+                        continue;
                     Thing fuel = e.fuel?.FirstOrDefault(IsHaulableOnMap);
                     if (fuel == null) continue;
 
@@ -595,7 +601,8 @@ namespace Fortified
                 }
                 e.fuel ??= new List<Thing>();
                 e.fuel.RemoveAll(t => t == null || t.Destroyed);
-                if (StoreFull(e) || e.fuel.Count == 0) { pendingTurretRefuels.RemoveAt(i); continue; }
+                // 原版燃料槽裝滿就結束；彈匣（CE）的備彈要留著追蹤，彈匣打空後守軍還要再拿來裝。
+                if (e.fuel.Count == 0 || (!e.magazine && StoreFull(e))) { pendingTurretRefuels.RemoveAt(i); continue; }
                 // 還在補給艙裡（剛空投，艙門未開）、正被本陣營守軍搬著 → 繼續追蹤；
                 // 全部被搬離這張圖（存進容器、被玩家帶走）→ 不再追蹤。
                 if (!e.fuel.Any(t => IsHaulableOnMap(t) || IsInTransit(t))) pendingTurretRefuels.RemoveAt(i);

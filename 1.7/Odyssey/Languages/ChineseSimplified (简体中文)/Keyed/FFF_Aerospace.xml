@@ -242,4 +242,7 @@
   <FFF.Transfer.Land.LandedLabel>船已降落</FFF.Transfer.Land.LandedLabel>
   <FFF.Transfer.Land.LandedText>{0} 已降落在{1}。</FFF.Transfer.Land.LandedText>
   <FFF.Transfer.Land.Moved>选定位置受阻，已改降落在最近的空位。</FFF.Transfer.Land.Moved>
+  <!-- 2026-11-27 自 DMSE 移入（FFF 程式使用的字串） -->
+  <!-- EN: Launching procedure in {0} -->
+  <DMSE_ShipWarmUpCountdown>推进器点火倒数: {0}</DMSE_ShipWarmUpCountdown>
 </LanguageData>

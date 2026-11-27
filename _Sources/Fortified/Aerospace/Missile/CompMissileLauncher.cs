@@ -82,9 +82,18 @@ namespace Fortified
         /// 平台當前詳情：冷卻中優先顯示剩餘時間；冷卻結束則交由子類別的
         /// <see cref="LoadedStatusText"/> 顯示裝填/裝配狀態。
         /// </summary>
+        /// <summary>人工瞄準還要多久（沒有在瞄準時為 0）。</summary>
+        public virtual int AimingTicksLeft(int now)
+            => parent.Spawned ? MapComponent_MissileLaunchQueue.For(parent.Map)?.AimTicksLeft(parent, now) ?? 0 : 0;
+
         public override string CompInspectStringExtra()
         {
             int now = Find.TickManager.TicksGame;
+            int aiming = AimingTicksLeft(now);
+            if (aiming > 0)
+            {
+                return "FFF.MissileLauncher.Aiming".Translate(aiming.ToStringTicksToPeriod());
+            }
             int remaining = CooldownTicksRemaining(now);
             if (remaining > 0)
             {
@@ -137,6 +146,12 @@ namespace Fortified
 
         /// <summary>升空到世界航跡出現的時間（平台預設離場 def）。時間軸估算用；知道彈藥時用 <see cref="DepartureTicksFor"/>。</summary>
         public int DepartureTicks => MissileProjectileMaker.DepartureTicksOf(LaunchSkyfallerDef);
+
+        /// <summary>
+        /// 下令到升空彈生成之間的人工瞄準時間（<see cref="MissileLauncherExtension.aimTicks"/>）。
+        /// 還沒發射的打擊估算要加上它；已發射的以 <see cref="WorldObject_OutgoingMissile.launchSpawnTick"/> 為準（已含瞄準）。
+        /// </summary>
+        public int AimTicks => MissileLauncherExtension.AimTicksOf(parent);
 
         /// <summary>以此設定發射時實際使用的離場 def：彈體的發射 Projectile 優先，沒有時退回平台的 skyfaller。</summary>
         public ThingDef LaunchDefFor(MissileConfig config) => config?.body?.launchProjectile ?? LaunchSkyfallerDef;
@@ -475,6 +490,9 @@ namespace Fortified
                 launchOffset = hasLaunchOffset ? launchOffset : Vector3.zero,
                 launcher = parent,
                 worldObject = worldObject,
+                // 人工瞄準（手搖發射架）：導彈留在架上、砲頭轉向出發方位，時間到才升空。NPC 陣地同樣適用。
+                aimTicks = AimTicks,
+                roundDef = round?.def,
                 hasHeading = heading != null,
                 heading = heading ?? 0f,
             });

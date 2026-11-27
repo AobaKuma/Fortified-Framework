@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- ModExt_EnvironmentalBill 的三種常用配方母 Def（2026-11-27 自 DMSE 移入；DMSE 保留 DMSE_*_Recipe 別名指向這裡）。
+       Recipe parents for ModExt_EnvironmentalBill: clean room, microgravity, vacuum. Moved from DMSE on 2026-11-27. -->
+
+  <RecipeDef Name="FFF_CleanRoomRecipeBase" Abstract="True">
+    <modExtensions>
+      <li Class="Fortified.ModExt_EnvironmentalBill">
+        <OnlyInCleanliness>true</OnlyInCleanliness>
+      </li>
+    </modExtensions>
+  </RecipeDef>
+
+  <RecipeDef Name="FFF_MicroGravRecipeBase" Abstract="True">
+    <modExtensions>
+      <li Class="Fortified.ModExt_EnvironmentalBill">
+        <OnlyInMicroGravity>true</OnlyInMicroGravity>
+      </li>
+    </modExtensions>
+  </RecipeDef>
+
+  <RecipeDef Name="FFF_VacuumRecipeBase" Abstract="True">
+    <modExtensions>
+      <li Class="Fortified.ModExt_EnvironmentalBill">
+        <OnlyInVacuum>true</OnlyInVacuum>
+      </li>
+    </modExtensions>
+  </RecipeDef>
+
+</Defs>
