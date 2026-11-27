@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!--
+    導引頭零件：只有 DMSE 啟用時載入（LoadFolders.xml），因為 compatibleBodies 指向 DMSE 的彈體。
+    FFF 只提供裝配框架，不帶彈體；自己的 mod 也可以定義 MissileBodyDef 再把導引頭掛上去。
+    Seeker part. Loaded only with DMSE because compatibleBodies points at DMSE's bodies.
+  -->
+  <Fortified.MissilePartDef>
+    <defName>AerospaceSample_Light_Guidance_PowerPlant</defName>
+    <label>power-plant seeker</label>
+    <designWord>PP</designWord>
+    <description>An emission seeker tuned to the electromagnetic noise of generators. It homes on the strongest running power plant on the target map and falls back to inertial guidance if it finds none.</description>
+    <category>Guidance</category>
+    <compatibleBodies>
+      <li>DMSE_MissileBody_Light</li>
+      <li>DMSE_MissileBody_Maverick</li>
+    </compatibleBodies>
+    <guidanceType Class="AerospaceSample.GuidanceType_PowerPlant">
+      <minOutput>500</minOutput>
+    </guidanceType>
+    <scatterOffset>-1</scatterOffset>
+    <costList>
+      <ComponentIndustrial>2</ComponentIndustrial>
+    </costList>
+  </Fortified.MissilePartDef>
+
+</Defs>

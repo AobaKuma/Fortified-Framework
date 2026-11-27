@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <FFF_Interceptor.label>interceptor missile</FFF_Interceptor.label>
+  <FFF_Interceptor.description>A surface-to-air interceptor heading toward a predicted meeting point.</FFF_Interceptor.description>
+  <FFF_BlockadeInterceptor.label>blockade interceptor</FFF_BlockadeInterceptor.label>
+  <FFF_BlockadeInterceptor.description>A surface-to-air interceptor fired at a craft flying through a closed airspace.</FFF_BlockadeInterceptor.description>
+</LanguageData>

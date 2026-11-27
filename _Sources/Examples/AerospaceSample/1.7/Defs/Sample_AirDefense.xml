@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!--
+    偵察機：worldObjectClass 實作 IAirTrack，加入世界就會被防空追蹤。
+    開發者模式 → Debug actions → FFF Aerospace Sample → Send hostile recon aircraft to current map。
+    Recon aircraft: worldObjectClass implements IAirTrack. Spawn one with the debug action.
+  -->
+  <WorldObjectDef>
+    <defName>AerospaceSample_ReconAircraft</defName>
+    <label>recon aircraft</label>
+    <description>A reconnaissance aircraft on its way to look at a settlement.</description>
+    <worldObjectClass>AerospaceSample.WorldObject_ReconAircraft</worldObjectClass>
+    <texture>World/WorldObjects/TravelingTransportPods</texture>
+    <useDynamicDrawer>true</useDynamicDrawer>
+    <expandingIcon>true</expandingIcon>
+    <expandingIconTexture>World/WorldObjects/Expanding/TravelingTransportPods</expandingIconTexture>
+    <expandingIconPriority>60</expandingIconPriority>
+    <expandMore>true</expandMore>
+    <validLaunchTarget>false</validLaunchTarget>
+    <modExtensions>
+      <li Class="AerospaceSample.AircraftExtension">
+        <distanceLevel>1.2</distanceLevel>
+        <stealthLevel>0</stealthLevel>
+        <speed>12</speed>
+        <altitude>8000</altitude>
+        <tilesPerDay>40</tilesPerDay>
+      </li>
+    </modExtensions>
+  </WorldObjectDef>
+
+  <!--
+    不寫啟動程式碼的註冊：修正鏈、事件處理者、航跡來源都寫在這裡，遊戲載入時生效。
+    內建的 Fortified.AirDefenseModifier_Factor 不必寫 C#：value = value × factor + offset。
+    Registration without startup code: modifiers, listeners and track providers.
+  -->
+  <Fortified.AirDefenseExtensionDef>
+    <defName>AerospaceSample_Extensions</defName>
+    <modifiers>
+      <li Class="AerospaceSample.AirDefenseModifier_Weather">
+        <strength>0.5</strength>
+      </li>
+      <!-- 世界層鎖定時間 ×0.9：純 XML 的修正 -->
+      <li Class="Fortified.AirDefenseModifier_Factor">
+        <stat>LockTicks</stat>
+        <factor>0.9</factor>
+        <worldOnly>true</worldOnly>
+      </li>
+    </modifiers>
+    <listeners>
+      <li Class="AerospaceSample.AirCombatListener_DevLog" />
+    </listeners>
+    <!-- 否決者：動作之前詢問，回傳 false 就不做。這裡讓玩家的防空在預計命中率低於 15% 時不開火（省彈藥）。 -->
+    <vetoes>
+      <li Class="AerospaceSample.AirCombatVeto_MinHitChance">
+        <minHitChance>0.15</minHitChance>
+        <playerOnly>true</playerOnly>
+      </li>
+    </vetoes>
+  </Fortified.AirDefenseExtensionDef>
+
+  <!--
+    陣營準則：選目標方式、威脅評估、是否使用分導彈頭。沒有指定的陣營依科技等級用 FFF 或內容 mod 的預設。
+    settlementDefense（無地圖據點的合成防空）需要火控雷達與攔截彈的 Def，FFF 本身不帶內容，這裡不設定。
+    Faction doctrine. settlementDefense needs fire-control and interceptor Defs from a content mod, so it is left out.
+  -->
+  <Fortified.MissileDoctrineDef>
+    <defName>AerospaceSample_AggressiveDoctrine</defName>
+    <label>aggressive strike doctrine</label>
+    <threatAssessment>true</threatAssessment>
+    <allowsMirv>false</allowsMirv>
+    <!-- 打所有敵對陣營（含其他 NPC）有地圖的據點 -->
+    <targetWorker Class="Fortified.StrikeTargetWorker_Hostile">
+      <includePlayer>true</includePlayer>
+      <includeNpc>true</includeNpc>
+      <requireMap>true</requireMap>
+    </targetWorker>
+  </Fortified.MissileDoctrineDef>
+
+</Defs>

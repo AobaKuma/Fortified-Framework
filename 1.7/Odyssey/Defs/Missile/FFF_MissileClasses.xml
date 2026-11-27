@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 2026-11 由列舉改成 Def（Framework/AerospaceClassDefs.cs）。defName 與原列舉名稱相同，既有 XML 與存檔照樣讀得到。
+     其他 mod 可以加新的類別、分級、禁射類別與交戰領域。 -->
+<Defs>
+
+  <Fortified.MissilePartCategoryDef>
+    <defName>Warhead</defName>
+    <label>warhead</label>
+    <order>0</order>
+  </Fortified.MissilePartCategoryDef>
+
+  <Fortified.MissilePartCategoryDef>
+    <defName>Guidance</defName>
+    <label>guidance</label>
+    <order>10</order>
+  </Fortified.MissilePartCategoryDef>
+
+  <Fortified.MissilePartCategoryDef>
+    <defName>Propulsion</defName>
+    <label>propulsion</label>
+    <order>20</order>
+  </Fortified.MissilePartCategoryDef>
+
+  <Fortified.MissilePartCategoryDef>
+    <defName>Payload</defName>
+    <label>payload</label>
+    <order>30</order>
+  </Fortified.MissilePartCategoryDef>
+
+  <Fortified.MissileSizeClassDef>
+    <defName>Loitering</defName>
+    <label>loitering munitions</label>
+    <description>Loitering munition: the earliest beyond-visual-range weapon. Tilt-launched and allowed on gravships. It is slow, but its small radar signature means it is detected later.</description>
+    <order>0</order>
+    <allowsLoiter>true</allowsLoiter>
+    <holdFireClass>Loitering</holdFireClass>
+  </Fortified.MissileSizeClassDef>
+
+  <Fortified.MissileSizeClassDef>
+    <defName>Light</defName>
+    <label>light missiles</label>
+    <description>Light missile: short- to medium-range air defense or ground attack, loaded into multi-round launchers.</description>
+    <order>10</order>
+  </Fortified.MissileSizeClassDef>
+
+  <Fortified.MissileSizeClassDef>
+    <defName>Medium</defName>
+    <label>medium missiles</label>
+    <description>Medium missile: cruise or anti-ballistic missions. Parts can be customized on the item or on a storage rack.</description>
+    <order>20</order>
+  </Fortified.MissileSizeClassDef>
+
+  <Fortified.MissileSizeClassDef>
+    <defName>Ballistic</defName>
+    <label>ballistic missiles</label>
+    <description>Ballistic missile: long-range strike. Vertical launch only and cannot be built on a gravship. It is built and configured directly on the launch silo.</description>
+    <order>30</order>
+    <groundChannelCost>2</groundChannelCost>
+    <holdFireClass>Ballistic</holdFireClass>
+  </Fortified.MissileSizeClassDef>
+
+  <Fortified.HoldFireClassDef>
+    <defName>Loitering</defName>
+    <label>loitering munitions</label>
+    <order>0</order>
+  </Fortified.HoldFireClassDef>
+
+  <Fortified.HoldFireClassDef>
+    <defName>DropPod</defName>
+    <label>drop pods</label>
+    <order>10</order>
+  </Fortified.HoldFireClassDef>
+
+  <Fortified.HoldFireClassDef>
+    <defName>Ballistic</defName>
+    <label>ballistic missiles</label>
+    <order>20</order>
+  </Fortified.HoldFireClassDef>
+
+  <Fortified.CombatDomainDef>
+    <defName>Air</defName>
+    <label>air</label>
+    <description>Aircraft, missiles, drop pods and interceptors.</description>
+  </Fortified.CombatDomainDef>
+
+  <Fortified.CombatDomainDef>
+    <defName>Underwater</defName>
+    <label>underwater</label>
+    <description>Torpedoes and submersibles.</description>
+  </Fortified.CombatDomainDef>
+
+</Defs>

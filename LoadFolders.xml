@@ -15,6 +15,7 @@
 		（Assemblies 的 .NET 10 組件、AssetBundles 的 Vulkan 著色器）。
 		CE 啟用時同理：1.7/CE 的 .NET 10 版 FortifiedCE.dll 蓋掉 1.6/CE 的版本。
 		CE 尚無 1.7 版，1.7 下由遊戲的相容層載入 CE 的 1.6 版。
+		1.7/Odyssey：轉移船、結構樁、平台拆除（2026-11 從 DMSE 移入）的 Def、翻譯與貼圖，只在 Odyssey 啟用時載入。
 	-->
 	<v1.7>
 		<li>/</li>
@@ -22,5 +23,6 @@
 		<li IfModActive="CETeam.CombatExtended,CETeam.CombatExtended_steam">1.6/CE</li>
 		<li>1.7</li>
 		<li IfModActive="CETeam.CombatExtended,CETeam.CombatExtended_steam">1.7/CE</li>
+		<li IfModActive="Ludeon.RimWorld.Odyssey">1.7/Odyssey</li>
 	</v1.7>
 </loadFolders>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- 柱身（往下伸）：海面（1900）之後、甲板（2000）與平台側面之前。柱身依高度自己算平台的影子，要世界座標，所以用 DMSE_WorldPos.vert.glsl。 -->
+  <ShaderDef>
+    <defName>FFF_SeaPlatformPillar</defName>
+    <shaderProgram>
+      <vertexShaderFileName>DMSE_WorldPos.vert.glsl</vertexShaderFileName>
+      <fragmentShaderFileName>DMSE_SeaPlatformPillar.frag.glsl</fragmentShaderFileName>
+      <transparent>true</transparent>
+      <depthTest>false</depthTest>
+      <depthWrite>false</depthWrite>
+      <renderQueue>1950</renderQueue>
+      <textureWrapOverrides>
+        <li>
+          <key>_MainTex</key>
+          <value>Clamp</value>
+        </li>
+        <li>
+          <key>_MaskTex</key>
+          <value>Clamp</value>
+        </li>
+      </textureWrapOverrides>
+    </shaderProgram>
+  </ShaderDef>
+  <!-- 海面背景：只畫在高空格，最先畫（1900），不做深度測試。原版深海的貼圖要設成重複（引擎預設 Clamp，漣漪會平掉）。 -->
+  <ShaderDef>
+    <defName>FFF_SeaPlatformSea</defName>
+    <shaderProgram>
+      <vertexShaderFileName>MapWorldUV.vert.glsl</vertexShaderFileName>
+      <fragmentShaderFileName>DMSE_SeaPlatformSea.frag.glsl</fragmentShaderFileName>
+      <flipTextureST>false</flipTextureST>
+      <transparent>false</transparent>
+      <depthTest>false</depthTest>
+      <depthWrite>false</depthWrite>
+      <cullMode>None</cullMode>
+      <renderQueue>1900</renderQueue>
+      <textureWrapOverrides>
+        <li>
+          <key>_MaskTex</key>
+          <value>Clamp</value>
+        </li>
+        <li>
+          <key>_RampTex</key>
+          <value>Repeat</value>
+        </li>
+        <li>
+          <key>_RippleTex</key>
+          <value>Repeat</value>
+        </li>
+        <li>
+          <key>_WaterReflectionTex</key>
+          <value>Repeat</value>
+        </li>
+        <li>
+          <key>_NoiseTex</key>
+          <value>Repeat</value>
+        </li>
+      </textureWrapOverrides>
+    </shaderProgram>
+  </ShaderDef>
+  <ShaderTypeDef>
+    <defName>FFF_SeaPlatformPillar</defName>
+    <shaderPath>Map/FFF_SeaPlatformPillar</shaderPath>
+  </ShaderTypeDef>
+  <ShaderTypeDef>
+    <defName>FFF_SeaPlatformSea</defName>
+    <shaderPath>Map/FFF_SeaPlatformSea</shaderPath>
+  </ShaderTypeDef>
+  <!-- 只有高空有：海上平台只能鋪在這裡 -->
+  <TerrainAffordanceDef>
+    <defName>FFF_OpenAir</defName>
+    <label>open air</label>
+    <order>2420</order>
+  </TerrainAffordanceDef>
+  <!-- 高空與海上平台都有：支柱可以蓋在兩者上（第一根支柱蓋在起始平台上，之後的往外蓋到高空裡） -->
+  <TerrainAffordanceDef>
+    <defName>FFF_SeaPlatformPillarBase</defName>
+    <label>sea platform pillar base</label>
+    <order>2425</order>
+  </TerrainAffordanceDef>
+  <TerrainDef>
+    <defName>FFF_OpenAir</defName>
+    <label>open air</label>
+    <description>Empty air high above the sea. Sea platform can be laid here within reach of a platform pillar.</description>
+    <dontRender>true</dontRender>
+    <color>(0.08, 0.22, 0.32)</color>
+    <fertility>0</fertility>
+    <passability>Impassable</passability>
+    <natural>true</natural>
+    <holdSnowOrSand>false</holdSnowOrSand>
+    <avoidWander>true</avoidWander>
+    <affordances>
+      <li>FFF_OpenAir</li>
+      <li>FFF_SeaPlatformPillarBase</li>
+    </affordances>
+  </TerrainDef>
+</Defs>

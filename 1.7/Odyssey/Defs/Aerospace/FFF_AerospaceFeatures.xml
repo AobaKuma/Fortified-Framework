@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- 轉移船與結構樁的功能開關（Fortified/Docs/FeatureSwitch_Usage.md）。只有 Odyssey 啟用時載入（LoadFolders.xml 的 1.7/Odyssey）。
+       沒有模組的 Def 用到下列型別時，補丁不掛、元件不建立。 -->
+  <Fortified.FFF_FeatureDef>
+    <defName>FFF_Feature_StructuralPiles</defName>
+    <label>structural piles</label>
+    <description>Structural piles and the steel beams that link them into networks.</description>
+    <autoEnableIfDefUses>
+      <li>Fortified.CompProperties_StructuralPile</li>
+    </autoEnableIfDefUses>
+    <requiredModIds>
+      <li>ludeon.rimworld.odyssey</li>
+    </requiredModIds>
+  </Fortified.FFF_FeatureDef>
+
+  <Fortified.FFF_FeatureDef>
+    <defName>FFF_Feature_Transfer</defName>
+    <label>transfer ships</label>
+    <description>Transfer flights: a pile network carries a section of the map to another tile or planet layer, with takeoff, coast, landing and impact flights.</description>
+    <harmonyCategory>FFF.Transfer</harmonyCategory>
+    <dependsOn>
+      <li>FFF_Feature_StructuralPiles</li>
+    </dependsOn>
+    <autoEnableIfDefUses>
+      <li>Fortified.CompProperties_TransferConsole</li>
+      <li>Fortified.CompProperties_TransferEngine</li>
+      <li>Fortified.TransferEnvironmentExtension</li>
+    </autoEnableIfDefUses>
+    <requiredModIds>
+      <li>ludeon.rimworld.odyssey</li>
+    </requiredModIds>
+  </Fortified.FFF_FeatureDef>
+</Defs>

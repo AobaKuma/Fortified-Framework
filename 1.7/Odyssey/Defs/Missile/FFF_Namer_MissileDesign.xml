@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- 通用樣板：沒有綁 Namer 的彈體（只有部件詞、沒有型號代字）。 -->
+  <RulePackDef>
+    <defName>FFF_NamerMissileDesign</defName>
+    <rulePack>
+      <rulesStrings>
+        <li>r_name(p=3)->[body] [warhead]</li>
+        <li>r_name(p=2)->[body] [warhead] [guidance]</li>
+        <li>r_name->[body]-[guidance]</li>
+        <li>r_name->[warhead] [payload] [body]</li>
+        <li>r_name->[guidance] [propulsion] [body]</li>
+      </rulesStrings>
+    </rulePack>
+  </RulePackDef>
+</Defs>

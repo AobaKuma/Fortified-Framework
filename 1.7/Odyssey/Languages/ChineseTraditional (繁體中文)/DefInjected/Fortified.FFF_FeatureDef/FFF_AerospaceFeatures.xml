@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- EN: structural piles -->
+  <FFF_Feature_StructuralPiles.label>結構樁</FFF_Feature_StructuralPiles.label>
+  <!-- EN: Structural piles and the steel beams that link them into networks. -->
+  <FFF_Feature_StructuralPiles.description>結構樁，以及把它們連成網路的鋼樑。</FFF_Feature_StructuralPiles.description>
+  <!-- EN: transfer ships -->
+  <FFF_Feature_Transfer.label>轉移船</FFF_Feature_Transfer.label>
+  <!-- EN: Transfer flights: a pile network carries a section of the map to another tile or planet layer, with takeoff, coast, landing and impact flights. -->
+  <FFF_Feature_Transfer.description>轉移飛行：結構樁網路把地圖的一部分帶到另一個地塊或星球圖層，包括起飛、滑行、降落與撞擊飛行。</FFF_Feature_Transfer.description>
+</LanguageData>

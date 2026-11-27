@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <AerospaceSample.IRSensorInspect>IR search range: {0} tiles ({1})</AerospaceSample.IRSensorInspect>
+  <AerospaceSample.LaserInspect>Laser point defence: {0} tiles, {1} per shot, {2}</AerospaceSample.LaserInspect>
+  <AerospaceSample.Online>online</AerospaceSample.Online>
+  <AerospaceSample.Offline>offline</AerospaceSample.Offline>
+  <AerospaceSample.Ready>ready</AerospaceSample.Ready>
+  <AerospaceSample.AircraftArrived>{0} reached {1}.</AerospaceSample.AircraftArrived>
+  <AerospaceSample.AircraftShotDown>{0} was shot down by {1}.</AerospaceSample.AircraftShotDown>
+  <AerospaceSample.Guidance.PowerPlant>Homes on the strongest running power plant (at least {0} W) on the target map.</AerospaceSample.Guidance.PowerPlant>
+</LanguageData>

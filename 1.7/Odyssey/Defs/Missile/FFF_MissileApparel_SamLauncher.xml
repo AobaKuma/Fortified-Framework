@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- 防空 Gizmo 派的工作：原地瞄準後發射（目標 id 放在 job.count）。 -->
+  <JobDef>
+    <defName>FFF_FireManPortableSAM</defName>
+    <driverClass>Fortified.JobDriver_FireManPortableSAM</driverClass>
+    <reportString>aiming a surface-to-air missile.</reportString>
+    <casualInterruptible>false</casualInterruptible>
+    <suspendable>false</suspendable>
+  </JobDef>
+</Defs>

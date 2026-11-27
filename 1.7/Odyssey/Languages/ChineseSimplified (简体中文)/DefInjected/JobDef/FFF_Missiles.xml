@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <FFF_OperateWarRoom.reportString>正在操作战情终端。</FFF_OperateWarRoom.reportString>
+  <FFF_ComputeFiringSolution.reportString>正在 TargetA 计算弹道。</FFF_ComputeFiringSolution.reportString>
+  <FFF_DeliverMissileResource.reportString>正在将零件运送至TargetA。</FFF_DeliverMissileResource.reportString>
+  <FFF_AssembleMissile.reportString>正在装配TargetA。</FFF_AssembleMissile.reportString>
+  <FFF_LoadMissileLauncher.reportString>正在将导弹装填至TargetA。</FFF_LoadMissileLauncher.reportString>
+  <FFF_UnloadMissileRack.reportString>正在从TargetA取下导弹。</FFF_UnloadMissileRack.reportString>
+  <FFF_ManMissileLauncher.reportString>正在操作导弹发射器。</FFF_ManMissileLauncher.reportString>
+  <FFF_AssembleBallisticSilo.reportString>正在TargetA中装配弹道导弹。</FFF_AssembleBallisticSilo.reportString>
+  <FFF_FireManPortableSAM.reportString>正在瞄准防空导弹。</FFF_FireManPortableSAM.reportString>
+</LanguageData>

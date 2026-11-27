@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <FFF_Feature_StructuralPiles.label>结构桩</FFF_Feature_StructuralPiles.label>
+  <FFF_Feature_StructuralPiles.description>结构桩，以及把它们连成网络的钢梁。</FFF_Feature_StructuralPiles.description>
+  <FFF_Feature_Transfer.label>转移船</FFF_Feature_Transfer.label>
+  <FFF_Feature_Transfer.description>转移飞行：结构桩网络把地图的一部分带到另一个地块或星球图层，包括起飞、滑行、降落与撞击飞行。</FFF_Feature_Transfer.description>
+</LanguageData>

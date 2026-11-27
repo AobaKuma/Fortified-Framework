@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <FFF_ConstructRemovePlatform.label>拆除平台</FFF_ConstructRemovePlatform.label>
+  <FFF_ConstructRemovePlatform.verb>拆除平台</FFF_ConstructRemovePlatform.verb>
+  <FFF_ConstructRemovePlatform.gerund>正在拆除平台</FFF_ConstructRemovePlatform.gerund>
+  <FFF_InitiateTransfer.label>执行转移点火程序</FFF_InitiateTransfer.label>
+  <FFF_InitiateTransfer.verb>执行点火程序于</FFF_InitiateTransfer.verb>
+  <FFF_InitiateTransfer.gerund>执行点火程序于</FFF_InitiateTransfer.gerund>
+  <FFF_DeliverPileBeamMaterials.label>运送钢梁材料</FFF_DeliverPileBeamMaterials.label>
+  <FFF_DeliverPileBeamMaterials.verb>运送材料到</FFF_DeliverPileBeamMaterials.verb>
+  <FFF_DeliverPileBeamMaterials.gerund>运送材料到</FFF_DeliverPileBeamMaterials.gerund>
+  <FFF_BuildPileBeam.label>施工钢梁</FFF_BuildPileBeam.label>
+  <FFF_BuildPileBeam.verb>施工钢梁于</FFF_BuildPileBeam.verb>
+  <FFF_BuildPileBeam.gerund>施工钢梁于</FFF_BuildPileBeam.gerund>
+</LanguageData>

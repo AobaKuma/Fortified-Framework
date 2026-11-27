@@ -1,0 +1,705 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 飛彈、防空、電子戰、砲兵、導彈陣地、海上平台（2026-11 從 DMSE 移入，鍵名由 DMSE.* 改成 FFF.*） -->
+  <FFF.AirAlert.Stage1>no detection</FFF.AirAlert.Stage1>
+  <FFF.AirAlert.Stage2>early warning</FFF.AirAlert.Stage2>
+  <FFF.AirAlert.Stage3>passive intercept</FFF.AirAlert.Stage3>
+  <FFF.AirAlert.Stage4>active intercept</FFF.AirAlert.Stage4>
+  <FFF.AirAlert.Stage5>blockade</FFF.AirAlert.Stage5>
+  <FFF.AirAlert.InspectStage>Air alert: {0} ({1})</FFF.AirAlert.InspectStage>
+  <FFF.AirAlert.InspectUnavailable>Disabled: {0}</FFF.AirAlert.InspectUnavailable>
+  <FFF.AirAlert.InspectBlockadePending>Blockade in {0}</FFF.AirAlert.InspectBlockadePending>
+  <FFF.AirAlert.InspectBlockadeActive>Blockade: {0} tiles</FFF.AirAlert.InspectBlockadeActive>
+  <FFF.AirAlert.Unavailable.NoEquipment>no air defense</FFF.AirAlert.Unavailable.NoEquipment>
+  <FFF.AirAlert.Unavailable.NoNode>no air-defense node</FFF.AirAlert.Unavailable.NoNode>
+  <FFF.AirAlert.Unavailable.WarmingUp>radar starting</FFF.AirAlert.Unavailable.WarmingUp>
+  <FFF.AirAlert.Unavailable.RadarDown>radar suppressed</FFF.AirAlert.Unavailable.RadarDown>
+  <FFF.AirAlert.Unavailable.NoAmmo>no interceptors</FFF.AirAlert.Unavailable.NoAmmo>
+  <FFF.AirAlert.Unavailable.NoFireControl>no fire control</FFF.AirAlert.Unavailable.NoFireControl>
+  <FFF.AirAlert.Unavailable.NoTracking>no radar coverage</FFF.AirAlert.Unavailable.NoTracking>
+  <FFF.AirAlert.BlockadeNoticeLabel>Blockade announced</FFF.AirAlert.BlockadeNoticeLabel>
+  <FFF.AirAlert.BlockadeNoticeText>In {3}, {0} will close the airspace within {2} tiles of {1}. Its air defense will fire on any non-allied craft flying through.</FFF.AirAlert.BlockadeNoticeText>
+  <FFF.AirAlert.BlockadeActiveLabel>Blockade in effect</FFF.AirAlert.BlockadeActiveLabel>
+  <FFF.AirAlert.BlockadeActiveText>{0} has closed the airspace within {2} tiles of {1}. Non-allied craft flying through will be fired on.</FFF.AirAlert.BlockadeActiveText>
+  <FFF.AirAlert.BlockadeCancelled>{0} called off the blockade at {1}.</FFF.AirAlert.BlockadeCancelled>
+  <FFF.AirAlert.BlockadeLifted>{0} lifted the blockade at {1}.</FFF.AirAlert.BlockadeLifted>
+  <FFF.AirAlert.EngagingPlayer>{1} is intercepting your missile.</FFF.AirAlert.EngagingPlayer>
+  <FFF.AirAlert.NeutralInterceptLabel>Neutral air defense</FFF.AirAlert.NeutralInterceptLabel>
+  <FFF.AirAlert.NeutralInterceptText>{1} ({0}) will intercept non-allied missiles in its airspace, including yours.</FFF.AirAlert.NeutralInterceptText>
+  <FFF.AirAlert.InterceptorSafed>Interceptor disarmed: {0} is allied.</FFF.AirAlert.InterceptorSafed>
+  <FFF.Airspace.Blocked>Route crosses {0}'s blockade ({1}, {2} tiles); its air defense will fire on you.</FFF.Airspace.Blocked>
+  <FFF.Missile.DesignNameLabel>{0} "{1}"</FFF.Missile.DesignNameLabel>
+  <FFF.Bench.Open>Configure assembly</FFF.Bench.Open>
+  <FFF.Bench.OpenDesc>Choose a missile body and its parts, name the design and place an order. Colonists bring the materials and assemble the missiles here.</FFF.Bench.OpenDesc>
+  <FFF.Bench.CancelOrder>Cancel order</FFF.Bench.CancelOrder>
+  <FFF.Bench.CancelOrderDesc>Cancel the current order. Materials already delivered are returned next to the bench.</FFF.Bench.CancelOrderDesc>
+  <FFF.Bench.CancelOrderConfirm>Cancel this order? Materials already delivered will be returned next to the bench.</FFF.Bench.CancelOrderConfirm>
+  <FFF.Bench.OrderDone>Missile order finished: {0}.</FFF.Bench.OrderDone>
+  <FFF.Bench.OutputFull>Output rack full: move finished missiles off the bench.</FFF.Bench.OutputFull>
+  <FFF.Bench.InspectOrder>Order: {0} ({1} left)</FFF.Bench.InspectOrder>
+  <FFF.Bench.InspectProgress>Assembly progress: {0}</FFF.Bench.InspectProgress>
+  <FFF.Bench.NotProducible>This missile body cannot be built at an assembly bench.</FFF.Bench.NotProducible>
+  <FFF.Bench.NeedsResearch>Requires research: {0}</FFF.Bench.NeedsResearch>
+  <FFF.Bench.EmptyHint>Choose a missile body on the left to start a design.</FFF.Bench.EmptyHint>
+  <FFF.Bench.LoadDesign>Load design</FFF.Bench.LoadDesign>
+  <FFF.Bench.SaveDesign>Save design</FFF.Bench.SaveDesign>
+  <FFF.Bench.LockedWhileOrdered>Order in progress. Cancel the order to change the design.</FFF.Bench.LockedWhileOrdered>
+  <FFF.Bench.IfEquipped>If equipped:</FFF.Bench.IfEquipped>
+  <FFF.Bench.NameCandidates>Name suggestions</FFF.Bench.NameCandidates>
+  <FFF.Bench.Group.Strike>Strike</FFF.Bench.Group.Strike>
+  <FFF.Bench.Group.Guidance>Guidance</FFF.Bench.Group.Guidance>
+  <FFF.Bench.Group.Survival>Survivability</FFF.Bench.Group.Survival>
+  <FFF.Bench.Stat.Radius>Blast radius</FFF.Bench.Stat.Radius>
+  <FFF.Bench.Stat.Guidance>Targeting</FFF.Bench.Stat.Guidance>
+  <FFF.Bench.Stat.Scatter>Scatter</FFF.Bench.Stat.Scatter>
+  <FFF.Bench.Stat.DamageType>Damage type</FFF.Bench.Stat.DamageType>
+  <FFF.Bench.Stat.ThickRoof>Penetrates thick roof</FFF.Bench.Stat.ThickRoof>
+  <FFF.Bench.Stat.Speed>World speed</FFF.Bench.Stat.Speed>
+  <FFF.Bench.Stat.TerminalUpdates>Terminal updates</FFF.Bench.Stat.TerminalUpdates>
+  <FFF.Bench.Stat.Channels>Fire-control channels</FFF.Bench.Stat.Channels>
+  <FFF.Bench.Stat.Loiter>Loiter time</FFF.Bench.Stat.Loiter>
+  <FFF.Bench.Stat.Signature>Radar signature</FFF.Bench.Stat.Signature>
+  <FFF.Bench.Stat.Chaff>Chaff charges</FFF.Bench.Stat.Chaff>
+  <FFF.Bench.Stat.Jam>Jamming strength</FFF.Bench.Stat.Jam>
+  <FFF.Bench.NoMaterials>No materials needed</FFF.Bench.NoMaterials>
+  <FFF.Bench.Short>short {0}</FFF.Bench.Short>
+  <FFF.Bench.Output.KeepOnBench>Keep on bench</FFF.Bench.Output.KeepOnBench>
+  <FFF.Bench.Output.KeepOnBenchDesc>Finished missiles wait on the bench. Launchers that accept them load straight from it.</FFF.Bench.Output.KeepOnBenchDesc>
+  <FFF.Bench.Output.SendToStorageDesc>Finished missiles are taken off the bench and hauled to the best storage.</FFF.Bench.Output.SendToStorageDesc>
+  <FFF.Bench.Progress>Missile {0} of {1} · {2}</FFF.Bench.Progress>
+  <FFF.Bench.State.Collecting>gathering materials</FFF.Bench.State.Collecting>
+  <FFF.Bench.State.Ready>ready to assemble</FFF.Bench.State.Ready>
+  <FFF.Bench.State.Working>assembling</FFF.Bench.State.Working>
+  <FFF.Bench.State.OutputBlocked>waiting for space on the bench</FFF.Bench.State.OutputBlocked>
+  <FFF.Bench.PlaceOrder>Place order</FFF.Bench.PlaceOrder>
+  <FFF.Bench.InstantComplete>Complete now</FFF.Bench.InstantComplete>
+  <FFF.Bench.Block.NoBody>Choose a missile body.</FFF.Bench.Block.NoBody>
+  <FFF.Bench.Block.BadName>The design name contains unsupported characters.</FFF.Bench.Block.BadName>
+  <FFF.Bench.Warn.Short>Not enough {0} yet (short {1}); colonists will wait for it.</FFF.Bench.Warn.Short>
+  <FFF.Bench.Warn.NoLauncher>No launcher on this map accepts this missile yet.</FFF.Bench.Warn.NoLauncher>
+  <FFF.Bench.Summary>{0} missile(s), about {1} h of work</FFF.Bench.Summary>
+  <FFF.Bench.LockNameButtonDesc>Lock or unlock the design's name. When locked, the name will not regenerate when parts are changed.</FFF.Bench.LockNameButtonDesc>
+  <FFF.Bench.LockNameOn>Design name lock is on. The name will not regenerate when changing parts.</FFF.Bench.LockNameOn>
+  <FFF.Bench.LockNameOff>Design name lock is off. The name will regenerate when changing parts.</FFF.Bench.LockNameOff>
+  <FFF.Bench.MaterialTip>Per missile: {0}\nThis order: {1}\nIn storage: {2}</FFF.Bench.MaterialTip>
+  <FFF.Bench.WorkTimeTip>About {0} h with your fastest available crafter (work speed {1}).</FFF.Bench.WorkTimeTip>
+  <FFF.Blueprint.Title>Missile designs</FFF.Blueprint.Title>
+  <FFF.Blueprint.Empty>No saved designs yet. Use "Save design" at an assembly bench.</FFF.Blueprint.Empty>
+  <FFF.Blueprint.OpenFolder>Open folder</FFF.Blueprint.OpenFolder>
+  <FFF.Blueprint.OverwriteConfirm>A design named "{0}" already exists. Overwrite it?</FFF.Blueprint.OverwriteConfirm>
+  <FFF.Blueprint.Saved>Design saved: {0}</FFF.Blueprint.Saved>
+  <FFF.Blueprint.SaveFailed>Could not save the design: {0}</FFF.Blueprint.SaveFailed>
+  <FFF.Blueprint.MissingDef>Missing definition: {0}</FFF.Blueprint.MissingDef>
+  <FFF.Blueprint.Incompatible>Part does not fit this body: {0}</FFF.Blueprint.Incompatible>
+  <FFF.BVR.World.Undetected>Undetected</FFF.BVR.World.Undetected>
+  <FFF.BVR.World.Detected>Detected</FFF.BVR.World.Detected>
+  <FFF.BVR.World.Locking>Fire-control lock</FFF.BVR.World.Locking>
+  <FFF.BVR.World.InFlight>Interceptor inbound</FFF.BVR.World.InFlight>
+  <FFF.BVR.World.TrackInspect>Destination: {0}\nETA: {1}\nStatus: {2}\nIntercept attempts: {3}</FFF.BVR.World.TrackInspect>
+  <FFF.BVR.World.RadarRange>World search radius: {0} tiles (before target modifiers)</FFF.BVR.World.RadarRange>
+  <FFF.BVR.World.EffectiveRanges>Effective radius: {0} tiles</FFF.BVR.World.EffectiveRanges>
+  <FFF.BVR.World.EffectiveRangeEntry>{0} {1}</FFF.BVR.World.EffectiveRangeEntry>
+  <FFF.BVR.World.DetectedLetter>Incoming missile detected</FFF.BVR.World.DetectedLetter>
+  <FFF.BVR.World.DetectedLetterText>Radar has detected {0} approaching {1}.\n\nEstimated arrival: {2}. World air defense is attempting to engage; any surviving missile will face local terminal defenses.</FFF.BVR.World.DetectedLetterText>
+  <FFF.BVR.World.Intercepted>{0} was intercepted by {1}.</FFF.BVR.World.Intercepted>
+  <FFF.BVR.World.Missed>An interceptor missed {0}.</FFF.BVR.World.Missed>
+  <FFF.BVR.World.Evaded>{0} changed course and evaded the interceptor.</FFF.BVR.World.Evaded>
+  <FFF.BVR.World.Chaff>{0} dispensed chaff and broke the fire-control lock.</FFF.BVR.World.Chaff>
+  <FFF.BVR.World.AbstractStrike>{0} hit the air-defense node at {1}: stocks damaged, radar suppressed.</FFF.BVR.World.AbstractStrike>
+  <FFF.BVR.World.InterceptorInspect>Target: {0}\nTime to intercept: {1}</FFF.BVR.World.InterceptorInspect>
+  <FFF.BVR.World.AbstractInspect>Air defense: {0}/{1} interceptors\nSearch radius: {2} tiles; fire-control channels: {3}</FFF.BVR.World.AbstractInspect>
+  <FFF.BVR.World.IncomingAlert>Detected incoming missiles</FFF.BVR.World.IncomingAlert>
+  <FFF.BVR.World.IncomingLabel>Incoming missiles: {0} ({1})</FFF.BVR.World.IncomingLabel>
+  <FFF.BVR.World.ClickHint>Left/right click to cycle between world missile tracks.</FFF.BVR.World.ClickHint>
+  <FFF.BVR.World.ShowCoverage>Show air-defense coverage</FFF.BVR.World.ShowCoverage>
+  <FFF.BVR.World.ShowCoverageDesc>Always display all player radar coverage circles on the world map. Selected sites always show their own coverage. Circles assume an unstealthed target of size 1.</FFF.BVR.World.ShowCoverageDesc>
+  <FFF.BVR.World.ChannelBreakdown>Channels: artillery {0}, local {1}, world {2}, strike {3}; free {4}</FFF.BVR.World.ChannelBreakdown>
+  <FFF.BVR.World.MissileType>Missile type: {0}</FFF.BVR.World.MissileType>
+  <FFF.BVR.PawnsMissingLabel>Pod shot down: colonists missing</FFF.BVR.PawnsMissingLabel>
+  <FFF.BVR.PawnsMissingText>A transport carrying your people was shot down by air defense. No bodies were recovered; the following are missing:\n\n{0}</FFF.BVR.PawnsMissingText>
+  <FFF.BVR.InterceptRiskRoute>The route crosses {0}'s blockade around {1} ({2} tiles). Its air defense fires on anything flying through.</FFF.BVR.InterceptRiskRoute>
+  <FFF.BVR.InterceptRiskDestination>{0} is covered by {1} air-defense radar. Drop pods and shuttles landing there may be shot down.</FFF.BVR.InterceptRiskDestination>
+  <FFF.BVR.InterceptRiskFooter>Anyone aboard a downed drop pod or shuttle goes missing. Gravships and transfer ships are damaged instead of destroyed.\n\nLaunch anyway?</FFF.BVR.InterceptRiskFooter>
+  <FFF.Blockade.Engaging>{0}'s air defense at {1} fired on {2}.</FFF.Blockade.Engaging>
+  <FFF.Blockade.PodDown>{0}: one transport was shot down by {1}. {2} remaining.</FFF.Blockade.PodDown>
+  <FFF.Blockade.GravshipHit>{0} was hit by {1}'s air defense. {2} structures aboard were damaged.</FFF.Blockade.GravshipHit>
+  <FFF.Blockade.TransferHitLabel>Transfer ship hit</FFF.Blockade.TransferHitLabel>
+  <FFF.Blockade.TransferHitText>{0} was hit by {1}'s air defense while flying through its blockade. Explosions tore through {2} spots aboard.</FFF.Blockade.TransferHitText>
+  <FFF.BVR.World.TrackAltitude>Flight altitude: {0}</FFF.BVR.World.TrackAltitude>
+  <FFF.BVR.World.AltitudeDenied>Outside intercept altitude</FFF.BVR.World.AltitudeDenied>
+  <FFF.BVR.FireControlAltitude>Intercept altitude: {0} – {1}</FFF.BVR.FireControlAltitude>
+  <FFF.Mirv.Role.Warhead>MIRV warhead (group #{0})</FFF.Mirv.Role.Warhead>
+  <FFF.Mirv.Role.Decoy>MIRV decoy (group #{0})</FFF.Mirv.Role.Decoy>
+  <FFF.Mirv.WillRelease>Releases {0} warheads and {1} decoys in {2}</FFF.Mirv.WillRelease>
+  <FFF.Mirv.Releasing>Releasing: {0}/{1}</FFF.Mirv.Releasing>
+  <FFF.BVR.World.DecoyIdentified>Decoy identified: {0} is not a real warhead. Our air defense will ignore it.</FFF.BVR.World.DecoyIdentified>
+  <FFF.BVR.World.Status.DecoyIdentified>Identified as a decoy</FFF.BVR.World.Status.DecoyIdentified>
+  <FFF.BVR.FireControlDecoy>Decoy recognition: {0}</FFF.BVR.FireControlDecoy>
+  <FFF.Mirv.Short.Warheads>{0} warheads</FFF.Mirv.Short.Warheads>
+  <FFF.Mirv.Short.Continues>warhead flies on</FFF.Mirv.Short.Continues>
+  <FFF.Mirv.Short.WithDecoys>{0} + {1} decoys</FFF.Mirv.Short.WithDecoys>
+  <FFF.Mirv.Detail.WhenTicks>Releases {0} before arrival, one every {1} ticks in random order.</FFF.Mirv.Detail.WhenTicks>
+  <FFF.Mirv.Detail.WhenProgress>Releases at {0} of the flight, one every {1} ticks in random order.</FFF.Mirv.Detail.WhenProgress>
+  <FFF.Mirv.Detail.Group>{0}× {1}</FFF.Mirv.Detail.Group>
+  <FFF.Mirv.Detail.Inherits>(carries the missile's {0})</FFF.Mirv.Detail.Inherits>
+  <FFF.Mirv.Detail.DecoyReachesMap>(survives re-entry and falls on the target, inert)</FFF.Mirv.Detail.DecoyReachesMap>
+  <FFF.Mirv.Detail.DecoyBurnsUp>(burns up on re-entry)</FFF.Mirv.Detail.DecoyBurnsUp>
+  <FFF.Mirv.Detail.DecoySurvives>({0} chance to survive re-entry)</FFF.Mirv.Detail.DecoySurvives>
+  <FFF.Mirv.Detail.BusRetires>The bus is gone once everything is released; shooting it down earlier destroys all warheads at once.</FFF.Mirv.Detail.BusRetires>
+  <FFF.Mirv.Detail.BusContinues>The missile itself keeps flying as the real warhead.</FFF.Mirv.Detail.BusContinues>
+  <FFF.Mirv.Detail.SameTarget>All warheads strike the same target. Decoys look like the warhead on radar until a fire control radar recognises them.</FFF.Mirv.Detail.SameTarget>
+  <FFF.Mirv.AlertLine>MIRV group #{0}: {1} tracks ({2} warheads, {3} decoys), arriving in {4}–{5}</FFF.Mirv.AlertLine>
+  <FFF.EW.Tab>War room</FFF.EW.Tab>
+  <FFF.EW.Throttle.Standby>Standby</FFF.EW.Throttle.Standby>
+  <FFF.EW.Throttle.Inspect>Power level: {0} ({1} W)</FFF.EW.Throttle.Inspect>
+  <FFF.EW.Throttle.Gizmo>Power: {0}</FFF.EW.Throttle.Gizmo>
+  <FFF.EW.Throttle.GizmoDesc>Set the power level. Lower power shortens range and weakens the effect but draws less and is harder for anti-radiation missiles to pick. Standby stops the device completely and still draws idle power.</FFF.EW.Throttle.GizmoDesc>
+  <FFF.EW.Jammer.Inspect>Jamming radius {0} world tiles, strength {1}, covering {2} hostile tracks</FFF.EW.Jammer.Inspect>
+  <FFF.EW.Jammer.CommsBlocked>Comms consoles on this map are disabled while jamming.</FFF.EW.Jammer.CommsBlocked>
+  <FFF.EW.Jammer.CommsBlockedReason>comms are being jammed</FFF.EW.Jammer.CommsBlockedReason>
+  <FFF.EW.Jammer.CommsBlockedMessage>A jammer is transmitting: comms consoles on this map are disabled.</FFF.EW.Jammer.CommsBlockedMessage>
+  <FFF.EW.Jammer.ShowRing>Show jamming ring</FFF.EW.Jammer.ShowRing>
+  <FFF.EW.Jammer.ShowRingDesc>Jamming radius {0} tiles (red ring on the world map). Jump to this colony on the world map.</FFF.EW.Jammer.ShowRingDesc>
+  <FFF.EW.Jammer.GuidanceDenied>{0} lost its seeker to jamming and will fall on inertial guidance.</FFF.EW.Jammer.GuidanceDenied>
+  <FFF.EW.Jammer.JammedOut>{0} lost guidance to {1}'s jamming and went down off-map.</FFF.EW.Jammer.JammedOut>
+  <FFF.EW.Jammer.ArrivedInertial>Seeker jammed: the missile is falling on inertial guidance.</FFF.EW.Jammer.ArrivedInertial>
+  <FFF.EW.Alert.CommsJammed>Comms jammed</FFF.EW.Alert.CommsJammed>
+  <FFF.EW.Alert.CommsJammedDesc>A jammer is transmitting on this map, so its comms consoles cannot be used. Set the jammer to standby or switch it off to restore comms.</FFF.EW.Alert.CommsJammedDesc>
+  <FFF.EW.Console.NoOperator>No operator: no skill bonus</FFF.EW.Console.NoOperator>
+  <FFF.EW.Console.Operator>Operator: {0}</FFF.EW.Console.Operator>
+  <FFF.EW.Tab.NoPower>No power: remote control and rules cannot be changed. The current rules stay in effect.</FFF.EW.Tab.NoPower>
+  <FFF.EW.Tab.RadarsOnline>Radars online</FFF.EW.Tab.RadarsOnline>
+  <FFF.EW.Tab.JammerRow>strength {0}, covering {1} tracks</FFF.EW.Tab.JammerRow>
+  <FFF.EW.Tab.LocalJam>Enemy jamming</FFF.EW.Tab.LocalJam>
+  <FFF.EW.Tab.RadarRow>base {0} × power {1} × operator {2}</FFF.EW.Tab.RadarRow>
+  <FFF.EW.Tab.SilencedWarning>Emissions silence is on: radars and jammers are off.</FFF.EW.Tab.SilencedWarning>
+  <FFF.EW.Tab.Remote>Remote control</FFF.EW.Tab.Remote>
+  <FFF.EW.Tab.PowerOn>On</FFF.EW.Tab.PowerOn>
+  <FFF.EW.Tab.PowerOff>Off</FFF.EW.Tab.PowerOff>
+  <FFF.EW.Tab.Silence>Emissions silence</FFF.EW.Tab.Silence>
+  <FFF.EW.Tab.Restore>End silence</FFF.EW.Tab.Restore>
+  <FFF.EW.Tab.Roe>Rules of engagement</FFF.EW.Tab.Roe>
+  <FFF.EW.Tab.Operator>Operator bonus</FFF.EW.Tab.Operator>
+  <FFF.EW.Tab.OperatorRange>Intellectual total {0}/{1}: radar range × {2}</FFF.EW.Tab.OperatorRange>
+  <FFF.EW.Tab.OperatorCooldown>Shooting total {0}/{1}: launcher cooldown × {2}</FFF.EW.Tab.OperatorCooldown>
+  <FFF.EW.Group.Jammers>Jammers</FFF.EW.Group.Jammers>
+  <FFF.EW.Group.SearchRadars>Search radars</FFF.EW.Group.SearchRadars>
+  <FFF.EW.Group.FireControlRadars>Fire-control radars</FFF.EW.Group.FireControlRadars>
+  <FFF.EW.Group.All>All</FFF.EW.Group.All>
+  <FFF.EW.Roe.AutoEngage>Automatic engagement</FFF.EW.Roe.AutoEngage>
+  <FFF.EW.Roe.AutoEngageDesc>When off, targets are still detected and alerts still fire, but interceptors are not launched. Close-in weapons keep firing.</FFF.EW.Roe.AutoEngageDesc>
+  <FFF.EW.Roe.PolicyAll>All</FFF.EW.Roe.PolicyAll>
+  <FFF.EW.Roe.Neutral>Fire on neutral factions</FFF.EW.Roe.Neutral>
+  <FFF.EW.Roe.ChannelCap>Air-defense channel limit</FFF.EW.Roe.ChannelCap>
+  <FFF.EW.Roe.CapUnlimited>No limit</FFF.EW.Roe.CapUnlimited>
+  <FFF.EW.Tab.StateLabel>Air defense</FFF.EW.Tab.StateLabel>
+  <FFF.EW.Tab.StateSelfDefense>Auto, self-defense</FFF.EW.Tab.StateSelfDefense>
+  <FFF.EW.Tab.StateAll>Auto, all targets</FFF.EW.Tab.StateAll>
+  <FFF.EW.Tab.StateSilenced>Emissions silence</FFF.EW.Tab.StateSilenced>
+  <FFF.EW.Tab.StateHold>Holding interceptors</FFF.EW.Tab.StateHold>
+  <FFF.EW.Tab.StateNoRadar>No radar online</FFF.EW.Tab.StateNoRadar>
+  <FFF.EW.Tab.Channels>AD channels</FFF.EW.Tab.Channels>
+  <FFF.EW.Tab.ChannelsDesc>Channels air defense is using / channels it can use now. The second number excludes channels held by artillery and strike guidance and applies the channel limit.</FFF.EW.Tab.ChannelsDesc>
+  <FFF.EW.Tab.Performance>Device performance</FFF.EW.Tab.Performance>
+  <FFF.EW.Tab.RadarRange>{0} tiles</FFF.EW.Tab.RadarRange>
+  <FFF.EW.Tab.GroupStatus>{0}/{1} on</FFF.EW.Tab.GroupStatus>
+  <FFF.EW.Tab.NotDeployed>Not deployed</FFF.EW.Tab.NotDeployed>
+  <FFF.EW.Tab.ThrottleMixed>Mixed</FFF.EW.Tab.ThrottleMixed>
+  <FFF.EW.Tab.SilenceDesc>Switch off every radar and jammer that is on. You can restore them in one click.</FFF.EW.Tab.SilenceDesc>
+  <FFF.EW.Tab.RestoreDesc>Switch back on the devices that were on before silence.</FFF.EW.Tab.RestoreDesc>
+  <FFF.EW.Tab.OperatorBonus>bonus</FFF.EW.Tab.OperatorBonus>
+  <FFF.EW.Tab.OperatorPenalty>penalty</FFF.EW.Tab.OperatorPenalty>
+  <FFF.EW.Roe.Policy>Engagement scope</FFF.EW.Roe.Policy>
+  <FFF.EW.Roe.PolicySelfDefense>Self-defense</FFF.EW.Roe.PolicySelfDefense>
+  <FFF.EW.Roe.PolicyDesc>Self-defense only engages missiles aimed at this colony or an ally and leaves passing missiles alone. All also intercepts passing missiles.</FFF.EW.Roe.PolicyDesc>
+  <FFF.EW.Roe.Priority>Target priority</FFF.EW.Roe.Priority>
+  <FFF.EW.Roe.PriorityFirstCome>First come</FFF.EW.Roe.PriorityFirstCome>
+  <FFF.EW.Roe.PriorityLargest>Largest</FFF.EW.Roe.PriorityLargest>
+  <FFF.EW.Roe.PriorityDesc>When channels run short, engage the soonest arrival first, or the largest radar signature first.</FFF.EW.Roe.PriorityDesc>
+  <FFF.EW.Roe.ChannelCapDesc>Limits how many fire-control channels air defense may hold, leaving the rest for artillery and strike guidance. At 0, no interceptors are launched.</FFF.EW.Roe.ChannelCapDesc>
+  <FFF.EW.Roe.Intercept>Intercept</FFF.EW.Roe.Intercept>
+  <FFF.ManPortableSAM.Fire>fire SAM</FFF.ManPortableSAM.Fire>
+  <FFF.ManPortableSAM.FireDesc>Lock onto an incoming threat that your radar network is tracking on this map and fire a light surface-to-air missile at it. The wielder stands still while locking on; no fire-control channel is used.\n\nMissiles loaded: {0}</FFF.ManPortableSAM.FireDesc>
+  <FFF.ManPortableSAM.NoTargets>No radar-tracked incoming threat in range.</FFF.ManPortableSAM.NoTargets>
+  <FFF.ManPortableSAM.NotReady>The wielder cannot fire right now.</FFF.ManPortableSAM.NotReady>
+  <FFF.ManPortableSAM.TargetLost>The target is gone or already engaged by another interceptor.</FFF.ManPortableSAM.TargetLost>
+  <FFF.ManPortableSAM.TargetOption>{0} (arrives in {1}, hit chance {2})</FFF.ManPortableSAM.TargetOption>
+  <FFF.ManPortableSAM.CannotIntercept>The next round loaded is a {0}, which cannot intercept. Fire it at a ground target first.</FFF.ManPortableSAM.CannotIntercept>
+  <FFF.TurretGun.Engaging>Engaging: {0}</FFF.TurretGun.Engaging>
+  <FFF.TurretGun.TooClose>Target is too close: minimum range is {0} cells.</FFF.TurretGun.TooClose>
+  <FFF.TurretGun.OutOfRange>Target is out of range: maximum range is {0} cells.</FFF.TurretGun.OutOfRange>
+  <FFF.TurretGun.RangeBand>Range: {0} to {1} cells. Targets inside the minimum range cannot be engaged.</FFF.TurretGun.RangeBand>
+  <FFF.TurretGun.BarrelBusy>The gun is busy shelling a world map target.</FFF.TurretGun.BarrelBusy>
+  <FFF.Card.Body>Missile body</FFF.Card.Body>
+  <FFF.Card.Item>Missile item</FFF.Card.Item>
+  <FFF.Card.SizeClass>Size class</FFF.Card.SizeClass>
+  <FFF.Card.LaunchMode>Launch mode</FFF.Card.LaunchMode>
+  <FFF.Card.LaunchMode.Tilt>Tilt launch</FFF.Card.LaunchMode.Tilt>
+  <FFF.Card.LaunchMode.Vertical>Vertical launch</FFF.Card.LaunchMode.Vertical>
+  <FFF.Card.LaunchMode.Both>Tilt or vertical</FFF.Card.LaunchMode.Both>
+  <FFF.Card.LaunchModeDesc>Determines which launch platforms can load this missile. Tilt launchers can rotate and can be built on gravships. Vertical launchers have one facing and cannot be built on gravships. Launch mode does not change flight stats.</FFF.Card.LaunchModeDesc>
+  <FFF.Card.Platforms>Launch platforms</FFF.Card.Platforms>
+  <FFF.Card.PlatformsDesc>Launch platforms that can load this missile, based on each platform's fixed storage settings. Click the links below to view them.</FFF.Card.PlatformsDesc>
+  <FFF.Card.Customize>Configured on</FFF.Card.Customize>
+  <FFF.Card.Customize.None>Not configurable</FFF.Card.Customize.None>
+  <FFF.Card.Customize.Item>Missile item</FFF.Card.Customize.Item>
+  <FFF.Card.Customize.StorageBuilding>Storage building</FFF.Card.Customize.StorageBuilding>
+  <FFF.Card.Customize.Launcher>Launch platform</FFF.Card.Customize.Launcher>
+  <FFF.Card.CustomizeDesc.None>Fixed configuration. Parts cannot be changed.</FFF.Card.CustomizeDesc.None>
+  <FFF.Card.CustomizeDesc.Item>Select the missile item and change parts in its Assembly tab. After you confirm, colonists bring the materials and do the work. You can also order it built to spec at a missile assembly bench.</FFF.Card.CustomizeDesc.Item>
+  <FFF.Card.CustomizeDesc.StorageBuilding>Parts are changed on a dedicated storage building, consuming resources.</FFF.Card.CustomizeDesc.StorageBuilding>
+  <FFF.Card.CustomizeDesc.Launcher>No item form: choose the body and configure parts directly on the launch platform.</FFF.Card.CustomizeDesc.Launcher>
+  <FFF.Card.Slots>Part slots</FFF.Card.Slots>
+  <FFF.Card.SlotsDesc>The part slots this body offers. Each slot holds at most one part. Slots the body does not have cannot be used.</FFF.Card.SlotsDesc>
+  <FFF.Card.EmptySlotDesc>No part is installed in this slot.</FFF.Card.EmptySlotDesc>
+  <FFF.Card.DamageDesc>Damage and damage type of the main blast at the impact point. Warhead parts can add or remove damage and override the damage type.</FFF.Card.DamageDesc>
+  <FFF.Card.RadiusDesc>Radius of the main blast, in cells. Warhead and payload effects use the payload capacity N for their own area and are not affected by this value.</FFF.Card.RadiusDesc>
+  <FFF.Card.ScatterDesc>Random offset radius of the impact point from the aim point, in cells. Guidance parts tighten it. Inertial guidance has the most scatter.</FFF.Card.ScatterDesc>
+  <FFF.Card.RangeTiles>{0} tiles</FFF.Card.RangeTiles>
+  <FFF.Card.Unlimited>Unlimited</FFF.Card.Unlimited>
+  <FFF.Card.RangeDesc>Maximum strike distance on the world map.\nRange = (fuel × specific impulse × conversion factor + flat bonus + warhead range) × payload factor\n\nFuel: {0}\nSpecific impulse: {1}\nConversion factor: {2}\nFlat bonus: {3}\nWarhead range: {4}\nPayload factor: {5}\n\nResult: {6}</FFF.Card.RangeDesc>
+  <FFF.Card.SpeedDesc>Flight speed multiplier on the world map. Faster missiles give enemy air defense less time to engage.</FFF.Card.SpeedDesc>
+  <FFF.Card.PayloadCapacity>Payload capacity N</FFF.Card.PayloadCapacity>
+  <FFF.Card.PayloadCapacityDesc>Set by the body. The area, count and strength of every warhead and payload effect scale with N (for example, an incendiary warhead ignites everything within N cells), so the same part is stronger on a bigger body.</FFF.Card.PayloadCapacityDesc>
+  <FFF.Card.ThickRoofDesc>Missiles that penetrate thick roofs breach the rock before detonating, and their seekers also lock onto targets under thick roofs. Other missiles that hit a thick roof only explode on the rock surface.</FFF.Card.ThickRoofDesc>
+  <FFF.Card.NoGuidance>No guidance</FFF.Card.NoGuidance>
+  <FFF.Card.TerminalUpdatesDesc>With terminal guidance, how many times the missile can correct its impact point to the target's new position in flight (body base count plus seeker bonus). When they run out, it flies to the last known position and misses if the target has left.</FFF.Card.TerminalUpdatesDesc>
+  <FFF.Card.ChannelsDesc>Fire-control channels the missile occupies for the whole flight. Only radio command, fire-control radar and TV guidance need continuous ground support. Autonomous seekers and preset guidance use none. Ballistic missiles use 2 channels each, others use 1; TV guidance adds 1 more.</FFF.Card.ChannelsDesc>
+  <FFF.Card.ChannelsPerMissile>1 per missile (2 ballistic, TV +1)</FFF.Card.ChannelsPerMissile>
+  <FFF.Card.LoiterRetry>While loitering, the seeker searches again every {0}. Terminal defenses can still engage it during this time.</FFF.Card.LoiterRetry>
+  <FFF.Card.LoiterOnlyLoitering>Only loitering munitions can loiter. Other bodies with this part do not.</FFF.Card.LoiterOnlyLoitering>
+  <FFF.Card.BuiltInGuidance>No guidance part installed: uses the body's built-in targeting.</FFF.Card.BuiltInGuidance>
+  <FFF.Card.TracksMobile>Built for moving targets on the world map: the flight path re-aims more often.</FFF.Card.TracksMobile>
+  <FFF.Card.TerminalGuidance>Terminal guidance</FFF.Card.TerminalGuidance>
+  <FFF.Card.TerminalGuidanceYes>Provides terminal guidance: can strike across map layers and track moving targets using the body's terminal updates.</FFF.Card.TerminalGuidanceYes>
+  <FFF.Card.TerminalGuidanceNo>No terminal guidance: cannot strike across map layers or track moving targets.</FFF.Card.TerminalGuidanceNo>
+  <FFF.Card.TargetSelection>Impact point</FFF.Card.TargetSelection>
+  <FFF.Card.TargetManual>Chosen by player</FFF.Card.TargetManual>
+  <FFF.Card.TargetAuto>Automatic lock</FFF.Card.TargetAuto>
+  <FFF.Card.SpreadNote>A salvo of missiles with the same seeker type spreads its locks over different targets instead of all hitting the same one.</FFF.Card.SpreadNote>
+  <FFF.Card.Intercept>Intercept hit factor</FFF.Card.Intercept>
+  <FFF.Card.InterceptDesc>When fired as an interceptor, this multiplies the hit chance computed by the fire-control radar (on both the map and the world map).</FFF.Card.InterceptDesc>
+  <FFF.Card.InterceptBonus>Warhead bonus: hit chance +{0}</FFF.Card.InterceptBonus>
+  <FFF.Card.InterceptRolls>Extra intercept rolls: {0} (can hit other targets in the same wave)</FFF.Card.InterceptRolls>
+  <FFF.Card.SignatureDesc>Multiplies the detection range level of the world-map track. Above 1, the missile is detected earlier and draws air defenses that use threat assessment (a decoy). Below 1, it is detected later (penetration).</FFF.Card.SignatureDesc>
+  <FFF.Card.ChaffDesc>Chaff charges and jamming strength. On the world map, a charge is used whenever enemy fire control locks on, with a {0} chance to break the lock and delay the next one. Charges are not replenished in flight. When intercepted on a map, the enemy hit chance is reduced by {1}.</FFF.Card.ChaffDesc>
+  <FFF.Card.WarheadEffect>Warhead effect</FFF.Card.WarheadEffect>
+  <FFF.Card.PayloadEffect>Payload effect</FFF.Card.PayloadEffect>
+  <FFF.Card.ScaledByN>Values above are for payload capacity N = {0}.</FFF.Card.ScaledByN>
+  <FFF.Card.ScaledByNGroups>The effect scales with the body's payload capacity N:</FFF.Card.ScaledByNGroups>
+  <FFF.Card.NGroup>N = {0} ({1})</FFF.Card.NGroup>
+  <FFF.Card.Warhead.ContinuousRod>When used as an interceptor, hit chance +{0} (N × 5%). No extra effect against ground targets.</FFF.Card.Warhead.ContinuousRod>
+  <FFF.Card.Warhead.ExtendedFuel>Range +{0} tiles (N × 2). No extra effect at the impact point.</FFF.Card.Warhead.ExtendedFuel>
+  <FFF.Card.Warhead.Airburst>Against ground targets: an extra blast with radius {0} and {1} damage at the impact point. As an interceptor: {2} extra independent intercept rolls (N ÷ 5, rounded down) that can hit other targets in the same wave.</FFF.Card.Warhead.Airburst>
+  <FFF.Card.Warhead.TungstenPenetrator>Penetrates thick roofs and locks onto targets under them. After the main blast, an extra blast with radius 2 and {0} damage hits the impact point.</FFF.Card.Warhead.TungstenPenetrator>
+  <FFF.Card.Warhead.Incendiary>Ignores line of sight and sets fires within {0} cells of the impact point.</FFF.Card.Warhead.Incendiary>
+  <FFF.Card.Warhead.EMP>Ignores line of sight. An EMP blast with radius {0} and {1} damage disables electronics and mechanoids.</FFF.Card.Warhead.EMP>
+  <FFF.Card.Warhead.AnimalBerserk>Every animal on the target map immediately goes berserk.</FFF.Card.Warhead.AnimalBerserk>
+  <FFF.Card.Warhead.ClusterBomblets>Releases {0} physical bomblets ({1}) that land within {2} cells. The bomblets fly and can hit anyone in their path.</FFF.Card.Warhead.ClusterBomblets>
+  <FFF.Card.Warhead.ClusterGoodwill>When fired by the player, each pawn of a non-hostile faction in the spread area costs {0} goodwill with that faction.</FFF.Card.Warhead.ClusterGoodwill>
+  <FFF.Card.Warhead.Thermobaric>Every creature within radius {0} takes {1} burn damage, and each cell has a {2} chance to catch fire. Most effective in enclosed rooms.</FFF.Card.Warhead.Thermobaric>
+  <FFF.Card.Warhead.KineticBlades>Almost no blast: strikes the nearest creature within 3 cells of the impact point with {0} blades, each dealing {1} cut damage.</FFF.Card.Warhead.KineticBlades>
+  <FFF.Card.Payload.HighExplosive>An extra blast with radius {0} and {1} damage at the impact point.</FFF.Card.Payload.HighExplosive>
+  <FFF.Card.Payload.BunkerBuster>Penetrates thick roofs and locks onto targets under them. Detonates inside with radius {0} and {1} damage ({2} armor penetration), and deals an extra {4} structural damage to buildings within {3} cells of the center.</FFF.Card.Payload.BunkerBuster>
+  <FFF.Card.Payload.Cluster>Scatters {1} sub-explosions within {0} cells, each with radius {2} and {3} damage.</FFF.Card.Payload.Cluster>
+  <FFF.Card.Payload.Defoliant>Each plant within {0} cells has a {1} chance to die.</FFF.Card.Payload.Defoliant>
+  <FFF.Card.Payload.FireFoam>Puts out fires within {0} cells and covers the area in firefoam.</FFF.Card.Payload.FireFoam>
+  <FFF.Card.Payload.Antiparticle>A vaporizing blast with radius {0} and {1} damage at the impact point.</FFF.Card.Payload.Antiparticle>
+  <FFF.Card.Payload.ToxicGas>Floods every cell within {0} cells with toxic gas.</FFF.Card.Payload.ToxicGas>
+  <FFF.Card.Payload.EMP>An EMP blast with radius {0} and {1} damage at the impact point: disables electronics and stuns mechanoids.</FFF.Card.Payload.EMP>
+  <FFF.Card.Payload.AirburstTungsten>Range becomes {0}. Every creature within radius {1} takes (body size rounded up + 1) hits of {2} stab damage ({3} armor penetration).</FFF.Card.Payload.AirburstTungsten>
+  <FFF.Card.Payload.Extra>An extra blast with radius {0} and {1} damage ({2}).</FFF.Card.Payload.Extra>
+  <FFF.Card.Payload.Spawn>Drops {0} × {1} ({2} chance).</FFF.Card.Payload.Spawn>
+  <FFF.Card.Guidance.Inertial>Does not search for targets: impacts scatter randomly around the center of the target map and never lock onto buildings or creatures.</FFF.Card.Guidance.Inertial>
+  <FFF.Card.Guidance.AntiRadiation>Locks onto the active enemy radar with the highest power level (ties go to the one drawing more power). Purely passive warning equipment is ignored.</FFF.Card.Guidance.AntiRadiation>
+  <FFF.Card.Guidance.AntiRadiationFallback>With no active radar, it targets the powered enemy building drawing the most electricity, then falls back to inertial guidance.</FFF.Card.Guidance.AntiRadiationFallback>
+  <FFF.Card.Guidance.AntiRadiationNoFallback>With no active radar, it does not pick another target. With loitering flight control it can wait overhead until a radar switches on.</FFF.Card.Guidance.AntiRadiationNoFallback>
+  <FFF.Card.Guidance.HeatSource>Locks onto the hottest indoor room at least {0} warmer than outdoors. Otherwise it targets the largest creature (wild animals included, the attacker and its allies excluded). If there is neither, it falls back to inertial guidance.</FFF.Card.Guidance.HeatSource>
+  <FFF.Card.Guidance.ElectromagneticSignal>Locks onto the powered enemy building drawing the most electricity. Falls back to inertial guidance if nothing is powered.</FFF.Card.Guidance.ElectromagneticSignal>
+  <FFF.Card.Guidance.TV>When you launch it, the game pauses on arrival and you choose the impact point freely. Enemy launches have no operator and use inertial guidance instead.</FFF.Card.Guidance.TV>
+  <FFF.Card.Guidance.Laser>Locks onto the most recent laser designation your side placed on the target map. Falls back to inertial guidance if there is none.</FFF.Card.Guidance.Laser>
+  <FFF.Card.Guidance.FireControl>Mainly for air-defense interception, guided by fire-control radar illumination. Against ground targets it aims inertially. Occupies a fire-control channel for the whole flight.</FFF.Card.Guidance.FireControl>
+  <FFF.Card.Guidance.RadioCommand>The ground station sends continuous corrections. Against ground targets it aims inertially. Occupies a fire-control channel for the whole flight.</FFF.Card.Guidance.RadioCommand>
+  <FFF.Card.Guidance.Imaging>Locks only onto enemy creatures in the open (not under a roof), preferring higher combat power, then larger body size. Falls back to inertial guidance if none are found.</FFF.Card.Guidance.Imaging>
+  <FFF.Card.Guidance.ActiveRadar>Fire-and-forget: locks onto the largest enemy building, then the largest enemy creature. Falls back to inertial guidance if there are neither.</FFF.Card.Guidance.ActiveRadar>
+  <FFF.Card.Guidance.AntiShip>Built for moving targets on the world map (ships, mobile bases): the flight path corrects more often, with {0} extra terminal updates. On arrival it hits the toughest enemy building first, then the largest enemy creature.</FFF.Card.Guidance.AntiShip>
+  <FFF.Card.PartSlot>Part slot</FFF.Card.PartSlot>
+  <FFF.Card.PartSlotDesc>The slot this part goes into. Each slot holds one part, and installing this replaces the current one.</FFF.Card.PartSlotDesc>
+  <FFF.Card.CompatibleBodies>Compatible bodies</FFF.Card.CompatibleBodies>
+  <FFF.Card.CompatibleBodiesDesc>Missile bodies that can take this part (they must have the matching slot). Click the links below to view them.</FFF.Card.CompatibleBodiesDesc>
+  <FFF.Card.RequiresLoitering>Loitering munitions only.</FFF.Card.RequiresLoitering>
+  <FFF.Card.Research>Research required</FFF.Card.Research>
+  <FFF.Card.ResearchDesc>Can be selected once these research projects are finished.</FFF.Card.ResearchDesc>
+  <FFF.Card.Cost>Assembly materials</FFF.Card.Cost>
+  <FFF.Card.CostDesc>Materials that must be hauled in and consumed to install this part during a refit. A body's default parts are already included in its build cost. When the part is removed or replaced, part of the materials is refunded according to the body's refund rate.</FFF.Card.CostDesc>
+  <FFF.Card.ModifierDesc>Added to the body's base value.</FFF.Card.ModifierDesc>
+  <FFF.Card.DamageTypeDesc>Overrides the damage type of the main blast.</FFF.Card.DamageTypeDesc>
+  <FFF.Card.Fuel>Fuel</FFF.Card.Fuel>
+  <FFF.Card.Impulse>Specific impulse</FFF.Card.Impulse>
+  <FFF.Card.FuelImpulseDesc>Range is roughly fuel × specific impulse × the body's conversion factor, so both increase range.</FFF.Card.FuelImpulseDesc>
+  <FFF.Card.AssembleWork>Refit work</FFF.Card.AssembleWork>
+  <FFF.Card.AssembleWorkDesc>Work needed to apply one configuration change. Affected by the working colonist's work speed.</FFF.Card.AssembleWorkDesc>
+  <FFF.Card.Refund>Removal refund</FFF.Card.Refund>
+  <FFF.Card.RefundDesc>Share of a part's materials returned when it is removed or replaced.</FFF.Card.RefundDesc>
+  <FFF.Card.Release>Mid-flight release</FFF.Card.Release>
+  <FFF.Card.ReleaseDesc>The missile carries a post-boost bus. Before arrival it releases separate tracks that enemy air defense must engage one by one.</FFF.Card.ReleaseDesc>
+  <FFF.Strike.AllRoundsReserved>Every loaded missile is reserved for a strike mission</FFF.Strike.AllRoundsReserved>
+  <FFF.Strike.ReservedInspect>Reserved for strike missions: {0}</FFF.Strike.ReservedInspect>
+  <FFF.Strike.ReservedNoEdit>Reserved for a strike mission: this missile cannot be refitted until the mission ends.</FFF.Strike.ReservedNoEdit>
+  <FFF.Strike.Console.Plan>Plan wave strike</FFF.Strike.Console.Plan>
+  <FFF.Strike.Console.PlanDesc>Pick a world target, then assign the strike missiles loaded on this map's launchers to waves. Each wave is limited by the free guidance channels of this map's fire-control radars.</FFF.Strike.Console.PlanDesc>
+  <FFF.Strike.Console.Open>Open strike plan</FFF.Strike.Console.Open>
+  <FFF.Strike.Console.OpenDesc>Show the waves of the current strike mission and fire them.</FFF.Strike.Console.OpenDesc>
+  <FFF.Strike.Console.FireWave>Fire wave {0}</FFF.Strike.Console.FireWave>
+  <FFF.Strike.Console.FireWaveDesc>Launch the next wave now. Shift-click to launch only what the free channels and ready launchers allow; the rest stays in the wave.</FFF.Strike.Console.FireWaveDesc>
+  <FFF.Strike.Console.Cancel>Cancel strike mission</FFF.Strike.Console.Cancel>
+  <FFF.Strike.Console.CancelDesc>Cancel the current strike mission. Missiles already launched keep flying; the rest are released.</FFF.Strike.Console.CancelDesc>
+  <FFF.Strike.Console.CancelConfirm>Cancel {0}? Missiles not yet launched are released.</FFF.Strike.Console.CancelConfirm>
+  <FFF.Strike.NoFireControl>No working fire-control radar on this map can guide strike missiles</FFF.Strike.NoFireControl>
+  <FFF.Strike.NoStrikeRounds>No strike missile is loaded on this map</FFF.Strike.NoStrikeRounds>
+  <FFF.Strike.NoRoundReaches>No loaded strike missile can reach this target</FFF.Strike.NoRoundReaches>
+  <FFF.Strike.TargetLabel.Distance>Distance: {0} tiles</FFF.Strike.TargetLabel.Distance>
+  <FFF.Strike.TargetLabel.Reach>In range: {0} of {1} loaded</FFF.Strike.TargetLabel.Reach>
+  <FFF.Strike.NoRoundsAssigned>Assign at least one missile to a wave</FFF.Strike.NoRoundsAssigned>
+  <FFF.Strike.TooManyRounds>At most {0} missiles per mission</FFF.Strike.TooManyRounds>
+  <FFF.Strike.WaveRoundLimit>At most {0} missiles per wave</FFF.Strike.WaveRoundLimit>
+  <FFF.Strike.TooManyWaves>At most {0} waves per mission</FFF.Strike.TooManyWaves>
+  <FFF.Strike.WaveOverCap>Wave {0} requires {1} guidance channels; capacity is {2}</FFF.Strike.WaveOverCap>
+  <FFF.Strike.RoundTaken>A missile is already reserved by another strike mission</FFF.Strike.RoundTaken>
+  <FFF.Strike.RoundUnavailable>A missile is no longer loaded or can no longer reach the target</FFF.Strike.RoundUnavailable>
+  <FFF.Strike.NotReady>Firing solutions are not ready</FFF.Strike.NotReady>
+  <FFF.Strike.Computing>Computing firing solutions ({0} left)</FFF.Strike.Computing>
+  <FFF.Strike.WaveDone>This wave has nothing left to launch</FFF.Strike.WaveDone>
+  <FFF.Strike.NotEnoughChannels>Not enough guidance channels: {0} free, {1} needed</FFF.Strike.NotEnoughChannels>
+  <FFF.Strike.NotEnoughChannelsRelease>Not enough guidance channels: {0} free, {1} needed; the next one frees in {2}</FFF.Strike.NotEnoughChannelsRelease>
+  <FFF.Strike.PlatformsNotReady>{0} launcher(s) not ready (unpowered, switched off, unmanned or reloading)</FFF.Strike.PlatformsNotReady>
+  <FFF.Strike.Skip.RoundGone>the missile is no longer in its launcher</FFF.Strike.Skip.RoundGone>
+  <FFF.Strike.Skip.Refitted>the missile was refitted</FFF.Strike.Skip.Refitted>
+  <FFF.Strike.State.Computing>computing firing solutions ({0} left)</FFF.Strike.State.Computing>
+  <FFF.Strike.State.Ready>ready to fire</FFF.Strike.State.Ready>
+  <FFF.Strike.State.Executing>in progress</FFF.Strike.State.Executing>
+  <FFF.Strike.Inspect.Channels>Strike guidance channels: {0} free of {1}</FFF.Strike.Inspect.Channels>
+  <FFF.Strike.Inspect.Mission>{0} on {1}: {2}, launched {3}/{4}</FFF.Strike.Inspect.Mission>
+  <FFF.Strike.Msg.Confirmed>{0}: {1} missiles in {2} waves reserved; computing firing solutions.</FFF.Strike.Msg.Confirmed>
+  <FFF.Strike.Msg.Ready>{0}: firing solutions ready.</FFF.Strike.Msg.Ready>
+  <FFF.Strike.Msg.WaveFired>{0}, wave {1}: {2} launching, {3} skipped.</FFF.Strike.Msg.WaveFired>
+  <FFF.Strike.Msg.Skipped>{0}: {1} skipped ({2}).</FFF.Strike.Msg.Skipped>
+  <FFF.Strike.Msg.Deferred>{0}: {1} could not launch yet and stays in wave {2}.</FFF.Strike.Msg.Deferred>
+  <FFF.Strike.Msg.Completed>{0} complete: {1} launched, {2} skipped.</FFF.Strike.Msg.Completed>
+  <FFF.Strike.Msg.Cancelled>{0} cancelled; missiles not yet launched are released.</FFF.Strike.Msg.Cancelled>
+  <FFF.Strike.Msg.TargetLost>{0} cancelled: the target is gone.</FFF.Strike.Msg.TargetLost>
+  <FFF.Strike.Msg.ConsoleLost>{0} cancelled: its strike command center was removed.</FFF.Strike.Msg.ConsoleLost>
+  <FFF.Strike.Plan.Title>Wave strike plan: {0}</FFF.Strike.Plan.Title>
+  <FFF.Strike.Plan.Target>Target: {0} ({1} tiles)</FFF.Strike.Plan.Target>
+  <FFF.Strike.Plan.Channels>Guidance channels: {0} (free {1}) · guidance period {2}</FFF.Strike.Plan.Channels>
+  <FFF.Strike.Plan.WaveRoundLimit>Wave limit: {0} missiles</FFF.Strike.Plan.WaveRoundLimit>
+  <FFF.Strike.Plan.SiteWarning>This site has no map yet. The first missile to arrive generates it, and the site's own air defense, with fully loaded SAMs, then engages the missiles still in flight.</FFF.Strike.Plan.SiteWarning>
+  <FFF.Strike.Plan.Available>Available missiles: {0}</FFF.Strike.Plan.Available>
+  <FFF.Strike.Plan.AddHint>Click a row to add one to the selected wave; shift-click to add as many as fit. Yellow rows are not ready right now and are checked again at launch.</FFF.Strike.Plan.AddHint>
+  <FFF.Strike.Plan.Unavailable>Unavailable {0}: {1}</FFF.Strike.Plan.Unavailable>
+  <FFF.Strike.Plan.ReservedElsewhere>{0} more reserved by other strike missions</FFF.Strike.Plan.ReservedElsewhere>
+  <FFF.Strike.Plan.NotReadyTag>Not ready now:</FFF.Strike.Plan.NotReadyTag>
+  <FFF.Strike.Plan.Flight>flight {0}</FFF.Strike.Plan.Flight>
+  <FFF.Strike.Plan.Margin>range +{0}</FFF.Strike.Plan.Margin>
+  <FFF.Strike.Plan.WaveTitle>Wave {0}</FFF.Strike.Plan.WaveTitle>
+  <FFF.Strike.Plan.WaveChannelsTip>Uses {0} of {1} strike guidance channels. Ordinary missiles cost 1; ballistic missiles cost 2; TV adds 1. A wave needs enough channels for all its pending missiles.</FFF.Strike.Plan.WaveChannelsTip>
+  <FFF.Strike.Plan.AddWave>+ Add wave</FFF.Strike.Plan.AddWave>
+  <FFF.Strike.Plan.AutoAssign>Auto-assign</FFF.Strike.Plan.AutoAssign>
+  <FFF.Strike.Plan.AutoAssignDesc>Fill waves starting with the cheapest missiles, so the most valuable ones end up in the last wave.</FFF.Strike.Plan.AutoAssignDesc>
+  <FFF.Strike.Plan.Clear>Clear</FFF.Strike.Plan.Clear>
+  <FFF.Strike.Plan.Confirm>Confirm plan</FFF.Strike.Plan.Confirm>
+  <FFF.Strike.Exec.Title>Wave strike: {0}</FFF.Strike.Exec.Title>
+  <FFF.Strike.Exec.State>Status: {0}</FFF.Strike.Exec.State>
+  <FFF.Strike.Exec.NextRelease>(next channel frees in {0})</FFF.Strike.Exec.NextRelease>
+  <FFF.Strike.Exec.Wave>Wave {0}: {1}</FFF.Strike.Exec.Wave>
+  <FFF.Strike.Exec.WavePending>waiting {0}</FFF.Strike.Exec.WavePending>
+  <FFF.Strike.Exec.WaveQueued>launching {0}</FFF.Strike.Exec.WaveQueued>
+  <FFF.Strike.Exec.WaveLaunched>launched {0}/{1}, {2} in flight</FFF.Strike.Exec.WaveLaunched>
+  <FFF.Strike.Exec.WaveSkipped>skipped {0}</FFF.Strike.Exec.WaveSkipped>
+  <FFF.Strike.Exec.Fire>Fire</FFF.Strike.Exec.Fire>
+  <FFF.Strike.Exec.FireTip>Shift-click to launch only what the free channels and ready launchers allow; the rest stays in the wave.</FFF.Strike.Exec.FireTip>
+  <FFF.Strike.Exec.CancelMission>Cancel mission</FFF.Strike.Exec.CancelMission>
+  <FFF.Strike.ComputingManual>Firing solutions {0} computed; a researcher must finish this wave at the planning table</FFF.Strike.ComputingManual>
+  <FFF.Strike.State.ComputingManual>awaiting firing-solution computation ({0})</FFF.Strike.State.ComputingManual>
+  <FFF.Strike.State.ExecutingComputing>in progress; firing solutions {0}</FFF.Strike.State.ExecutingComputing>
+  <FFF.Strike.Msg.ConfirmedManual>{0}: {1} missiles in {2} waves reserved; a researcher must compute the firing solutions at the {3}.</FFF.Strike.Msg.ConfirmedManual>
+  <FFF.Strike.Msg.WaveSolved>{0}: firing solutions for wave {1} are ready.</FFF.Strike.Msg.WaveSolved>
+  <FFF.Strike.Plan.ComputeWork>Computation work: {0} (about {1} for the fastest researcher here)</FFF.Strike.Plan.ComputeWork>
+  <FFF.Strike.Plan.NoResearcher>no colonist here can do research</FFF.Strike.Plan.NoResearcher>
+  <FFF.Strike.Alert.ComputationPending>Firing solutions waiting</FFF.Strike.Alert.ComputationPending>
+  <FFF.Strike.Alert.ComputationPendingDesc>A strike mission is waiting for a researcher to compute its firing solutions at a strike planning table, but no colonist on that map can do research work.
+
+Enable research work for a colonist on that map.</FFF.Strike.Alert.ComputationPendingDesc>
+  <FFF.Strike.Adjust.Title>Adjust waves: {0}</FFF.Strike.Adjust.Title>
+  <FFF.Strike.Adjust.Button>Adjust waves</FFF.Strike.Adjust.Button>
+  <FFF.Strike.Adjust.Apply>Apply</FFF.Strike.Adjust.Apply>
+  <FFF.Strike.Adjust.Cancel>Cancel adjustment</FFF.Strike.Adjust.Cancel>
+  <FFF.Strike.Adjust.ClearPending>Clear unlaunched</FFF.Strike.Adjust.ClearPending>
+  <FFF.Strike.Adjust.Launching>Missiles are launching; wait for the ripple to finish</FFF.Strike.Adjust.Launching>
+  <FFF.Strike.Adjust.FixedRemoved>Launched or skipped missiles cannot be removed</FFF.Strike.Adjust.FixedRemoved>
+  <FFF.Strike.Msg.Adjusted>{0} adjusted: {1} missiles in {2} waves ({3} added).</FFF.Strike.Msg.Adjusted>
+  <FFF.Strike.Slot.Launched>launched</FFF.Strike.Slot.Launched>
+  <FFF.Strike.Slot.Queued>launching</FFF.Strike.Slot.Queued>
+  <FFF.Strike.Slot.Skipped>skipped</FFF.Strike.Slot.Skipped>
+  <FFF.Strike.Plan.Now>now</FFF.Strike.Plan.Now>
+  <FFF.Strike.Plan.Arrival>launch {0} · arrive {1}–{2}</FFF.Strike.Plan.Arrival>
+  <FFF.Strike.Plan.ArrivalFlying>in flight · arrive {0}–{1}</FFF.Strike.Plan.ArrivalFlying>
+  <FFF.Strike.Plan.EarlyWarning>Arrives before wave {0}; delay it by about {1}</FFF.Strike.Plan.EarlyWarning>
+  <FFF.Strike.Plan.TimelineTip>Estimated timeline if every wave fires as soon as guidance channels and launchers allow. Ticks mark launches, bars mark arrival windows. A yellow bar arrives before an earlier wave, so it would not be covered by that wave's decoys.</FFF.Strike.Plan.TimelineTip>
+  <FFF.Strike.Alert.WaveLine>{0}, wave {1}: {2} in flight, arriving in {3}–{4}; detected {5}, engaged {6}</FFF.Strike.Alert.WaveLine>
+  <FFF.Strike.Alert.WaveReady>Strike wave ready</FFF.Strike.Alert.WaveReady>
+  <FFF.Strike.Alert.WaveReadyDesc>These strike missions can fire their next wave now. This alert can be turned off in the mod settings.</FFF.Strike.Alert.WaveReadyDesc>
+  <FFF.Strike.Alert.WaveReadyLine>{0}: wave {1} on {2}</FFF.Strike.Alert.WaveReadyLine>
+  <FFF.Strike.Report.Label>{0} results</FFF.Strike.Report.Label>
+  <FFF.Strike.Report.Header>{0} on {1}, launched from {2}:</FFF.Strike.Report.Header>
+  <FFF.Strike.Report.Wave>Wave {0}: {1} launched: {2} intercepted in flight, {3} hit, {4} shot down at the target, {5} missed</FFF.Strike.Report.Wave>
+  <FFF.Strike.Report.WaveShieldBlocked>, {0} stopped by shields</FFF.Strike.Report.WaveShieldBlocked>
+  <FFF.Strike.Report.Unknown>{0} arrived but their result is unknown.</FFF.Strike.Report.Unknown>
+  <FFF.Strike.Report.Mirv>Wave {0} MIRV: {1} warheads – {2} hit, {3} intercepted, {4} killed near the target, {5} missed.</FFF.Strike.Report.Mirv>
+  <FFF.Strike.Report.MirvDecoys>Decoys: {0} released, {1} drew interceptors and were shot down, {2} were identified by enemy radar.</FFF.Strike.Report.MirvDecoys>
+  <FFF.Strike.Plan.AutoFire>Timed</FFF.Strike.Plan.AutoFire>
+  <FFF.Strike.Plan.AutoFireTip>Timed launch: fire this wave automatically when its turn comes, but only once it would arrive after the earlier waves (plus a short gap).</FFF.Strike.Plan.AutoFireTip>
+  <FFF.Strike.Msg.AutoFire>{0}: timed launch of wave {1}.</FFF.Strike.Msg.AutoFire>
+  <FFF.Strike.Msg.TargetMoved>{0}: the target moved {1} tiles; {2} unlaunched missiles need new firing solutions.</FFF.Strike.Msg.TargetMoved>
+  <FFF.Missile.Stat.Signature>Radar signature: ×{0}</FFF.Missile.Stat.Signature>
+  <FFF.Missile.Stat.Chaff>Chaff: {0} charges (jam strength {1})</FFF.Missile.Stat.Chaff>
+  <FFF.Strike.MissionDefault>Strike mission #{0}</FFF.Strike.MissionDefault>
+  <FFF.Strike.RenameTip>Rename this strike mission (you can roll a random name).</FFF.Strike.RenameTip>
+  <FFF.Strike.ChannelCost>Guidance channels per missile: {0}</FFF.Strike.ChannelCost>
+  <FFF.Missile.Stat.Release>Mid-flight release: {0}</FFF.Missile.Stat.Release>
+  <FFF.Strike.Plan.Release>Mid-flight release: {0} ({1} tracks for enemy air defense)</FFF.Strike.Plan.Release>
+  <FFF.BVR.Marker.Hostile>{0} hostile · {1}</FFF.BVR.Marker.Hostile>
+  <FFF.BVR.Marker.Friendly>{0} friendly · {1}</FFF.BVR.Marker.Friendly>
+  <FFF.BVR.Marker.Loitering>{0} loitering · {1}</FFF.BVR.Marker.Loitering>
+  <FFF.UI.ActiveConfig>Currently active</FFF.UI.ActiveConfig>
+  <FFF.UI.PendingConfig>Pending assembly: not yet active</FFF.UI.PendingConfig>
+  <FFF.UI.DamageChange>Damage</FFF.UI.DamageChange>
+  <FFF.UI.AddToWave>Adding to wave {0}</FFF.UI.AddToWave>
+  <FFF.UI.NoMissiles>No missile candidates. Load compatible missiles into launchers to begin.</FFF.UI.NoMissiles>
+  <FFF.UI.AllAssigned>All available missiles are assigned. Select a wave to review its contents, or remove missiles to reassign them.</FFF.UI.AllAssigned>
+  <FFF.UI.NoAvailableMissiles>No missiles can be assigned. Review unavailable missiles below; some may be reserved by another mission.</FFF.UI.NoAvailableMissiles>
+  <FFF.UI.AllowPartialFire>Allow partial launch: fire only missiles that are ready (also Shift-click)</FFF.UI.AllowPartialFire>
+  <FFF.UI.ShowStats>▸ Full performance after assembly</FFF.UI.ShowStats>
+  <FFF.UI.HideStats>▾ Hide full performance</FFF.UI.HideStats>
+  <FFF.UI.RangeChange>Range</FFF.UI.RangeChange>
+  <FFF.UI.Comparison>Currently active → after assembly</FFF.UI.Comparison>
+  <FFF.MissileBase.NextFireIn>Next missile strike in: {0}</FFF.MissileBase.NextFireIn>
+  <FFF.MissileBase.LocalMonitoring>Position detected (local map under observation)</FFF.MissileBase.LocalMonitoring>
+  <FFF.MissileBase.RelocationIn>Position relocating in: {0}</FFF.MissileBase.RelocationIn>
+  <FFF.MissileBase.Relocated>Missile position relocated</FFF.MissileBase.Relocated>
+  <FFF.MissileBase.RelocatedDesc>An enemy missile launch position has completed its strike mission and relocated to avoid counteraction.</FFF.MissileBase.RelocatedDesc>
+  <FFF.MissileBase.Destroyed>Missile position destroyed</FFF.MissileBase.Destroyed>
+  <FFF.MissileBase.DestroyedDesc>Your colonists have destroyed every fire-control radar at the enemy missile position. Without fire control it can no longer launch, and the missile threat from this position has been neutralized.\n\nThe position's map stays open until observation ends and no colonists remain there, so you can still send a shuttle to loot it.</FFF.MissileBase.DestroyedDesc>
+  <FFF.MissileBase.ReentryBlockedIn>Ground access denied: enemy regrouping ({0})</FFF.MissileBase.ReentryBlockedIn>
+  <FFF.MissileBase.ReentryBlocked>Access denied: enemy regrouping ({0})</FFF.MissileBase.ReentryBlocked>
+  <FFF.MissileBase.ReentryBlockStarted>{0}: its fire-control radars still stand and the enemy is regrouping. Ground access is blocked for {1}; the position will be fully rebuilt.</FFF.MissileBase.ReentryBlockStarted>
+  <FFF.MissileBase.ObjectivesAlert>Missile position: {0} fire-control radars left</FFF.MissileBase.ObjectivesAlert>
+  <FFF.MissileBase.ObjectivesAlertDesc>Destroy every fire-control radar to neutralize this position ({0} left). Launchers and search radars do not need to be destroyed.
+
+If you withdraw while a fire-control radar still stands, the enemy regroups: the position stays on the world map and keeps firing, your return is blocked for a while, and it is fully rebuilt on your next visit.
+
+Click to cycle through the remaining targets.</FFF.MissileBase.ObjectivesAlertDesc>
+  <FFF.MissileBase.ArrivedLetter>Your pawns have arrived at a missile launch position. The enemy has deployed fire control radars and launch vehicles here, continuously striking nearby colonies. Destroy every fire-control radar to neutralize the position; if you withdraw while a fire-control radar still stands, the enemy regroups and blocks your return for a while.</FFF.MissileBase.ArrivedLetter>
+  <FFF.MissileBase.SupplyDrop>Enemy supply drop: {0} ×{1}</FFF.MissileBase.SupplyDrop>
+  <FFF.MissileBase.RackResupply>Enemy missile airdrop: {1} missiles</FFF.MissileBase.RackResupply>
+  <FFF.MissileBase.TurretAmmoDrop>Enemy ammo airdrop: {1} ×{0}</FFF.MissileBase.TurretAmmoDrop>
+  <FFF.FieldLaunchSite.ArrivedLetter>Your pawns have arrived at an enemy field launch position. A search radar sits at its centre, with launch positions, ammunition carriers and crew shelters spread around it. Supply pods keep the garrison fed while any radar is operational. Destroy every fire-control radar to neutralize the position; if you withdraw while a fire-control radar still stands, the enemy regroups and blocks your return for a while.</FFF.FieldLaunchSite.ArrivedLetter>
+  <FFF.FieldLaunchSite.SpawnedLetter>{0} has deployed a field missile launch position {3} tiles {2} of {1}. Its launchers can strike your colony; supply pods will keep its garrison fed while its radars run.\n\nDestroy every fire-control radar to neutralize it; knocking out all its radars also cuts off its supplies.</FFF.FieldLaunchSite.SpawnedLetter>
+  <FFF.EarlyLaunchSite.ArrivedLetter>Your pawns have arrived at an enemy missile position. Acoustic mirrors listen for aircraft while a hand-aimed fire-control radar and launch rails send out slow pulsejet loitering munitions. Destroy its fire-control radar to neutralize it; the radar stops firing if its crew or its wood-fired generators are lost. If you retreat with a fire-control radar still standing, the enemy will rebuild its defenses and you cannot return for a while.</FFF.EarlyLaunchSite.ArrivedLetter>
+  <FFF.Alert.Pods>{0} incoming threats, interception window: {1} left</FFF.Alert.Pods>
+  <FFF.Alert.Pods.Loitering>{0} missiles loitering overhead, {1} before they dive</FFF.Alert.Pods.Loitering>
+  <FFF.Alert.Pods.Window.Midcourse>Midcourse intercept window: {0}</FFF.Alert.Pods.Window.Midcourse>
+  <FFF.Alert.Pods.Window.Terminal>Terminal (CIWS) window: {0}</FFF.Alert.Pods.Window.Terminal>
+  <FFF.Alert.Pods.Window.Loitering>Loiter time left: {0}</FFF.Alert.Pods.Window.Loitering>
+  <FFF.Alert.Pods.Target>  · {0}  [{1}]</FFF.Alert.Pods.Target>
+  <FFF.Alert.Pods.Status.InFlight>interceptor in flight</FFF.Alert.Pods.Status.InFlight>
+  <FFF.Alert.Pods.Status.Locking>fire control locking</FFF.Alert.Pods.Status.Locking>
+  <FFF.Alert.Pods.Status.Unengaged>unengaged</FFF.Alert.Pods.Status.Unengaged>
+  <FFF.Alert.Pods.Status.Loitering>loitering, waiting for a target</FFF.Alert.Pods.Status.Loitering>
+  <FFF.Alert.BVRStatus.Label>BVR System</FFF.Alert.BVRStatus.Label>
+  <FFF.Alert.BVRStatus.SearchRadars>Search radars:</FFF.Alert.BVRStatus.SearchRadars>
+  <FFF.Alert.BVRStatus.SearchRadar.Line>  · {0}  range {1}, anti-stealth {2}, power {3}  [{4}]</FFF.Alert.BVRStatus.SearchRadar.Line>
+  <FFF.Alert.BVRStatus.FireControlRadars>Fire control radars:</FFF.Alert.BVRStatus.FireControlRadars>
+  <FFF.Alert.BVRStatus.FireControl.Line>  · {0}  {1} ch, power {2}  [{3}]</FFF.Alert.BVRStatus.FireControl.Line>
+  <FFF.Alert.BVRStatus.FireControl.Occupied>  Channels occupied: {0} / {1}</FFF.Alert.BVRStatus.FireControl.Occupied>
+  <FFF.Alert.BVRStatus.None>  (none installed)</FFF.Alert.BVRStatus.None>
+  <FFF.Alert.Exist.Observing>Observing: {0}</FFF.Alert.Exist.Observing>
+  <FFF.Alert.Exist.TimeLeft>Observation ends in: {0}</FFF.Alert.Exist.TimeLeft>
+  <FFF.Alert.Exist.EnemiesAlive>Enemy combatants remaining: {0}</FFF.Alert.Exist.EnemiesAlive>
+  <FFF.Alert.Exist.IsMissileBase>This is an active missile launch position. Ending observation early will allow the crew to regroup and reset their defenses.</FFF.Alert.Exist.IsMissileBase>
+  <FFF.Alert.Exist.MissileBaseDestroyed>This missile position's fire-control radars are destroyed. Its map stays open until observation ends and no colonists remain there; send a shuttle or transport pods before then to loot it.</FFF.Alert.Exist.MissileBaseDestroyed>
+  <FFF.Alert.Exist.ClickHint>Click to end observation early.</FFF.Alert.Exist.ClickHint>
+  <FFF.Alert.Exist.EndEarly.Confirm>End observation now? The map will no longer be held open and may be cleaned up by the game.</FFF.Alert.Exist.EndEarly.Confirm>
+  <FFF.Alert.Exist.EndEarly.Confirm.MissileBase>End observation early?\n\nThe enemy crew will have the opportunity to regroup. The launch position's defenses and timers will reset, as if the observation never happened.\n\nThis cannot be undone.</FFF.Alert.Exist.EndEarly.Confirm.MissileBase>
+  <FFF.Alert.Exist.ObservationEnded>Observation ended early. Enemy forces may regroup.</FFF.Alert.Exist.ObservationEnded>
+  <FFF.Alert.PlayerMissiles.Label>{0} missiles outbound: first impact in {1}</FFF.Alert.PlayerMissiles.Label>
+  <FFF.Alert.PlayerMissiles.MapHeader>Target: {0}</FFF.Alert.PlayerMissiles.MapHeader>
+  <FFF.Alert.PlayerMissiles.WaveImpact>  Impact in {0}:</FFF.Alert.PlayerMissiles.WaveImpact>
+  <FFF.Alert.PlayerMissiles.Target>    · {0}  ({1},{2})  [{3}]</FFF.Alert.PlayerMissiles.Target>
+  <FFF.Alert.PlayerMissiles.ClickHint>Left-click to cycle to next impact site. Right-click to cycle back.</FFF.Alert.PlayerMissiles.ClickHint>
+  <FFF.BVR.Online>online</FFF.BVR.Online>
+  <FFF.BVR.Offline>offline</FFF.BVR.Offline>
+  <FFF.BVR.SearchRadar>Search radar: range {0}, anti-stealth {1} ({2})</FFF.BVR.SearchRadar>
+  <FFF.BVR.FireControl>Fire control: {0} channel(s) ({1})</FFF.BVR.FireControl>
+  <FFF.BVR.ArtilleryChannels>Artillery guidance channels: {0} / {1} free</FFF.BVR.ArtilleryChannels>
+  <FFF.Missile.Tab>Assembly</FFF.Missile.Tab>
+  <FFF.Missile.Body>Missile body</FFF.Missile.Body>
+  <FFF.Missile.BodyFixed>fixed by the launch platform</FFF.Missile.BodyFixed>
+  <FFF.Missile.None>None</FFF.Missile.None>
+  <FFF.Missile.Locked>locked</FFF.Missile.Locked>
+  <FFF.Missile.GodModeInstant>God mode: changes are assembled at once, free and without research.</FFF.Missile.GodModeInstant>
+  <FFF.Missile.Stats>Pending stats (after assembly)</FFF.Missile.Stats>
+  <FFF.Missile.Stat.Radius>Blast radius: {0}</FFF.Missile.Stat.Radius>
+  <FFF.Missile.Stat.Damage>Warhead: {0} ({1})</FFF.Missile.Stat.Damage>
+  <FFF.Missile.Stat.Scatter>Impact dispersion: {0}</FFF.Missile.Stat.Scatter>
+  <FFF.Missile.Stat.Speed>Travel speed: x{0}</FFF.Missile.Stat.Speed>
+  <FFF.Missile.Stat.Fuel>Fuel: {0}</FFF.Missile.Stat.Fuel>
+  <FFF.Missile.Stat.Impulse>Specific impulse: {0}</FFF.Missile.Stat.Impulse>
+  <FFF.Missile.Stat.Range>Range: {0} tiles</FFF.Missile.Stat.Range>
+  <FFF.Missile.Stat.TerminalGuidance>Guided: can update its target position {0} time(s) in flight and strike across orbital layers</FFF.Missile.Stat.TerminalGuidance>
+  <FFF.Missile.Stat.NoTerminalGuidance>Unguided: cannot track moving targets or strike across orbital layers</FFF.Missile.Stat.NoTerminalGuidance>
+  <FFF.Missile.Stat.Loiter>Loiter flight control: waits up to {0} before falling back</FFF.Missile.Stat.Loiter>
+  <FFF.MissileLauncher.OutOfRange>Target is beyond missile range ({0} tiles).</FFF.MissileLauncher.OutOfRange>
+  <FFF.MissileLauncher.RangeLabel>{0} / {1} tiles</FFF.MissileLauncher.RangeLabel>
+  <FFF.MissileLauncher.NoTargetHere>No target at this location: the missile will be wasted</FFF.MissileLauncher.NoTargetHere>
+  <FFF.Missile.CrossLayerNeedsGuidance>Striking across orbital layers requires a guided missile. Inertial guidance and unguided munitions cannot.</FFF.Missile.CrossLayerNeedsGuidance>
+  <FFF.Missile.Inspect>Body: {0}\nWarhead: {1}\nBlast: {2} / {3} dmg</FFF.Missile.Inspect>
+  <FFF.Missile.NeedResources>Needs (for assembly): {0}</FFF.Missile.NeedResources>
+  <FFF.Missile.ReadyToAssemble>Resources ready: confirm to begin assembly</FFF.Missile.ReadyToAssemble>
+  <FFF.Missile.NoResources>No resources available to assemble</FFF.Missile.NoResources>
+  <FFF.Missile.EditingSlot>Editing missile {0} of {1} in rack</FFF.Missile.EditingSlot>
+  <FFF.Missile.ConfirmAssembly>Queue for assembly</FFF.Missile.ConfirmAssembly>
+  <FFF.Missile.AssemblyQueued>Assembly queued: colonists will begin shortly</FFF.Missile.AssemblyQueued>
+  <FFF.Missile.ResetToCurrent>Reset to assembled config</FFF.Missile.ResetToCurrent>
+  <FFF.MissileLauncher.LaunchCooldown>Reloading launch rail: {0}</FFF.MissileLauncher.LaunchCooldown>
+  <FFF.MissileLauncher.Rail.NoMissileLoaded>No missile loaded</FFF.MissileLauncher.Rail.NoMissileLoaded>
+  <FFF.Missile.NoRackAvailable>No missile rack with compatible missiles found</FFF.Missile.NoRackAvailable>
+  <FFF.MissileLauncher.Interceptor.Reloading>Reloading: {0}</FFF.MissileLauncher.Interceptor.Reloading>
+  <FFF.MissileLauncher.Interceptor.Ready>Ready to fire</FFF.MissileLauncher.Interceptor.Ready>
+  <FFF.Missile.IncomingLetter>Incoming missile</FFF.Missile.IncomingLetter>
+  <FFF.Missile.IncomingLetterDesc>A missile launched by {0} is inbound and will strike the colony shortly.</FFF.Missile.IncomingLetterDesc>
+  <FFF.Missile.Missed>Our missile found no target and was wasted.</FFF.Missile.Missed>
+  <FFF.Missile.IncomingMissed>A missile launched by {0} lost its target and missed.</FFF.Missile.IncomingMissed>
+  <FFF.Missile.SeekerLocked>{0} locked onto a target. The missile is coming down.</FFF.Missile.SeekerLocked>
+  <FFF.Missile.Loitering>The seeker found no target: the missile is loitering overhead and will wait {0} before falling back to inertial guidance.</FFF.Missile.Loitering>
+  <FFF.Guidance.Inertial>inertial guidance</FFF.Guidance.Inertial>
+  <FFF.Guidance.RadioCommand>radio-command guidance</FFF.Guidance.RadioCommand>
+  <FFF.Guidance.ManualTarget>{0}: you choose the impact point on arrival</FFF.Guidance.ManualTarget>
+  <FFF.Guidance.AutoTarget>{0}: locks a target automatically on arrival</FFF.Guidance.AutoTarget>
+  <FFF.LaserMark.Inspect>Designated by: {0}\nExpires in: {1}</FFF.LaserMark.Inspect>
+  <FFF.LaserMark.InspectPermanent>Designated by: {0}</FFF.LaserMark.InspectPermanent>
+  <FFF.LaserMark.Placed>Laser designation placed. It expires in {0}.</FFF.LaserMark.Placed>
+  <FFF.LaserMark.PlacedPermanent>Laser designation placed.</FFF.LaserMark.PlacedPermanent>
+  <FFF.Missile.TerminalUpdatesRemaining>Terminal updates remaining: {0} / {1}</FFF.Missile.TerminalUpdatesRemaining>
+  <FFF.Tab.MissileInventory>Inventory</FFF.Tab.MissileInventory>
+  <FFF.MissileInventory.Features>Features</FFF.MissileInventory.Features>
+  <FFF.MissileInventory.Stat.BlastRadius>Blast</FFF.MissileInventory.Stat.BlastRadius>
+  <FFF.MissileInventory.Stat.Damage>Damage</FFF.MissileInventory.Stat.Damage>
+  <FFF.MissileInventory.Unit.Tiles>tiles</FFF.MissileInventory.Unit.Tiles>
+  <FFF.MissileInventory.Feature.Mechanics>Active mechanics for this missile</FFF.MissileInventory.Feature.Mechanics>
+  <FFF.MissileInventory.Feature.Warhead>Primary warhead damage type: {0}; damage: {1}; blast radius: {2} tiles. Payload capacity N = {3}.</FFF.MissileInventory.Feature.Warhead>
+  <FFF.MissileInventory.Feature.InterceptBonus>Intercept hit chance bonus: {0}%</FFF.MissileInventory.Feature.InterceptBonus>
+  <FFF.MissileInventory.Feature.ExtraRolls>Additional intercept rolls per engagement: {0}</FFF.MissileInventory.Feature.ExtraRolls>
+  <FFF.MissileInventory.Feature.RangeOffset>Warhead range adjustment: {0} tiles</FFF.MissileInventory.Feature.RangeOffset>
+  <FFF.MissileInventory.Feature.PenetratesRoof>Can penetrate thick rock roofs and target objects beneath them.</FFF.MissileInventory.Feature.PenetratesRoof>
+  <FFF.MissileInventory.Feature.Guidance>Scatter radius: {0} tiles; terminal position updates: {1}; {2}</FFF.MissileInventory.Feature.Guidance>
+  <FFF.MissileInventory.Feature.Guided>Terminal guidance can update the target position in flight.</FFF.MissileInventory.Feature.Guided>
+  <FFF.MissileInventory.Feature.Unguided>No terminal guidance; uses the default impact point dispersion.</FFF.MissileInventory.Feature.Unguided>
+  <FFF.MissileInventory.Feature.Propulsion>Effective range: {0} tiles; world speed factor: {1}; fuel: {2}; specific impulse: {3}.</FFF.MissileInventory.Feature.Propulsion>
+  <FFF.MissileInventory.Feature.Payload>Payload effect scales with body capacity N = {0}; effective range: {1} tiles.</FFF.MissileInventory.Feature.Payload>
+  <FFF.MissileInventory.Feature.Signature>Radar cross-section factor: {0}.</FFF.MissileInventory.Feature.Signature>
+  <FFF.MissileInventory.Feature.Jamming>Jamming strength: {0}%.</FFF.MissileInventory.Feature.Jamming>
+  <FFF.MissileInventory.Feature.Chaff>Chaff / streamer charges: {0}.</FFF.MissileInventory.Feature.Chaff>
+  <FFF.MissileInventory.Count>Loaded: {0} / {1}</FFF.MissileInventory.Count>
+  <FFF.MissileInventory.Empty>No missiles loaded.</FFF.MissileInventory.Empty>
+  <FFF.MissileInventory.Stats>Blast {0}  ·  Dmg {1}</FFF.MissileInventory.Stats>
+  <FFF.MissileInventory.EjectDesc>Eject this missile as an item onto the ground next to the rack. It is dropped forbidden so haulers do not carry it straight back.</FFF.MissileInventory.EjectDesc>
+  <FFF.MissileInventory.EjectFailed>No room next to the rack to eject the missile.</FFF.MissileInventory.EjectFailed>
+  <FFF.MissileLauncher.Ballistic.Fire>Fire Ballistic Missile</FFF.MissileLauncher.Ballistic.Fire>
+  <FFF.MissileLauncher.Ballistic.FireDesc>Launch the assembled ballistic missile at a world-map target. The missile follows a lofted trajectory and is nearly impossible to intercept once launched.</FFF.MissileLauncher.Ballistic.FireDesc>
+  <FFF.MissileLauncher.Ballistic.NotLoaded>Missile not assembled. Set it up in the Assembly tab; colonists will deliver materials and assemble it.</FFF.MissileLauncher.Ballistic.NotLoaded>
+  <FFF.MissileLauncher.Ballistic.Loaded>Ballistic missile: assembled and ready</FFF.MissileLauncher.Ballistic.Loaded>
+  <FFF.MissileLauncher.Ballistic.LoadedWith>Ballistic missile loaded: {0}</FFF.MissileLauncher.Ballistic.LoadedWith>
+  <FFF.MissileLauncher.Ballistic.AwaitingAssembly>Ballistic missile: awaiting assembly by colonists</FFF.MissileLauncher.Ballistic.AwaitingAssembly>
+  <FFF.MissileLauncher.Ballistic.Unloaded>Ballistic missile silo: unloaded, configure in Assembly tab</FFF.MissileLauncher.Ballistic.Unloaded>
+  <FFF.Artillery.Fire>Fire Artillery</FFF.Artillery.Fire>
+  <FFF.Artillery.FireDesc>Select a target on the world map. Keeps firing until stopped.</FFF.Artillery.FireDesc>
+  <FFF.Artillery.Stop>Stop Firing</FFF.Artillery.Stop>
+  <FFF.Artillery.StopDesc>Halt sustained fire. Current status: {0}</FFF.Artillery.StopDesc>
+  <FFF.Artillery.ModeRanging>Fire mode: Ranging</FFF.Artillery.ModeRanging>
+  <FFF.Artillery.ModeEffect>Fire mode: Fire for effect</FFF.Artillery.ModeEffect>
+  <FFF.Artillery.ModeDesc>Switch fire mode. Ranging: scatter around the centre of the target map; every impact is logged as that map's fire-for-effect point. Fire for effect: scatter around the last logged ranging impact on that map, shared by every gun of the same faction shelling it; each shot tightens the scatter by a quarter of the base scatter (per gun, minimum 1 cell) and radar guidance is not used.</FFF.Artillery.ModeDesc>
+  <FFF.Artillery.EffectPoint>Impact point ({0}, {1}), next shot scatters {2} cells</FFF.Artillery.EffectPoint>
+  <FFF.Artillery.NoAmmo>No shell loaded: sustained fire halted.</FFF.Artillery.NoAmmo>
+  <FFF.Artillery.CrossLayer>Artillery shells are unguided and cannot strike across orbital layers.</FFF.Artillery.CrossLayer>
+  <FFF.Artillery.Missed>The artillery salvo found no target and was wasted.</FFF.Artillery.Missed>
+  <FFF.Artillery.NoBarrel>Barrel worn out: sustained fire halted. Replace the reinforced barrel.</FFF.Artillery.NoBarrel>
+  <FFF.Artillery.TargetIsHome>Cannot shell your own map tile.</FFF.Artillery.TargetIsHome>
+  <FFF.Artillery.OutOfRange>Target is beyond gun range ({0} tiles).</FFF.Artillery.OutOfRange>
+  <FFF.Artillery.MapNotSpawned>The target map is not loaded. Artillery can only shell a map that is currently active.</FFF.Artillery.MapNotSpawned>
+  <FFF.Artillery.NoCrew>Needs a gunner: right-click the mortar and order a pawn to man it; the gunner loads shells automatically.</FFF.Artillery.NoCrew>
+  <FFF.Artillery.NoLoadedShell>No shell loaded: have a gunner load a mortar shell before firing.</FFF.Artillery.NoLoadedShell>
+  <FFF.Artillery.WaitingForShell>Waiting for the gunner to reload: the mission is paused.</FFF.Artillery.WaitingForShell>
+  <FFF.Artillery.WaitingForAutoloader>Waiting for the shell autoloader to load a shell: the mission is paused.</FFF.Artillery.WaitingForAutoloader>
+  <FFF.Artillery.NoLoadedShellAutoloader>No shell loaded: stock mortar shells on a linked shell autoloader before firing.</FFF.Artillery.NoLoadedShellAutoloader>
+  <FFF.Artillery.WaitingForBarrel>Barrel worn out: waiting for a new reinforced barrel. The mission is paused.</FFF.Artillery.WaitingForBarrel>
+  <FFF.Artillery.HoldFirePaused>Hold fire: the world fire mission is paused and resumes when hold fire is lifted.</FFF.Artillery.HoldFirePaused>
+  <FFF.Artillery.NoRegistration>No ranging impact has been logged on this map: fire a ranging shot first.</FFF.Artillery.NoRegistration>
+  <FFF.Artillery.GroupPartial>{0} of {1} selected guns can fire at this target. Others: {2}</FFF.Artillery.GroupPartial>
+  <FFF.BVR.DeviceInactive>Device is inactive (no power, broken down, or switched off).</FFF.BVR.DeviceInactive>
+  <FFF.Artillery.StateCooldown>reloading, {0} remaining</FFF.Artillery.StateCooldown>
+  <FFF.Artillery.StateAiming>aiming ({0}%)</FFF.Artillery.StateAiming>
+  <FFF.Artillery.StateReady>ready to fire</FFF.Artillery.StateReady>
+  <FFF.Artillery.GuidanceOnline>Radar guidance: available (scatter {0} cells)</FFF.Artillery.GuidanceOnline>
+  <FFF.Artillery.GuidanceOffline>Radar guidance: no free fire-control channel (unguided, scatter {0} cells)</FFF.Artillery.GuidanceOffline>
+  <FFF.Missile.PreviousMissile>Previous missile in rack</FFF.Missile.PreviousMissile>
+  <FFF.Missile.NextMissile>Next missile in rack</FFF.Missile.NextMissile>
+  <FFF.Missile.SaveDesignTip>Save the configuration being edited as a design. Designs are shared with the assembly bench and kept across saves.</FFF.Missile.SaveDesignTip>
+  <FFF.Missile.LoadDesignTip>Load a saved design into this missile. Only designs for the same airframe can be loaded; the parts still have to be assembled.</FFF.Missile.LoadDesignTip>
+  <FFF.Missile.DesignBodyMismatch>Different airframe: {0}</FFF.Missile.DesignBodyMismatch>
+  <FFF.Missile.ApplyDesignThis>Apply to this missile</FFF.Missile.ApplyDesignThis>
+  <FFF.Missile.ApplyDesignAll>Apply to all {0} matching missiles in this rack</FFF.Missile.ApplyDesignAll>
+  <FFF.Missile.DesignApplied>Design "{0}" loaded into {1}.</FFF.Missile.DesignApplied>
+  <FFF.SiloHatch.KeepClosed>Keep hatch closed</FFF.SiloHatch.KeepClosed>
+  <FFF.SiloHatch.KeepClosedDesc>When on, the silo hatch stays shut except while launching. A fully closed hatch reduces damage to the silo to {0}.\n\nA launch opens the hatch first; the missile leaves only once it is fully open, and the hatch closes again a few seconds later.\n\nMissiles cannot be assembled while the hatch is not fully open.</FFF.SiloHatch.KeepClosedDesc>
+  <FFF.SiloHatch.Closed>Hatch: closed (damage taken {0})</FFF.SiloHatch.Closed>
+  <FFF.SiloHatch.Open>Hatch: open</FFF.SiloHatch.Open>
+  <FFF.SiloHatch.Opening>Hatch: opening</FFF.SiloHatch.Opening>
+  <FFF.SiloHatch.Closing>Hatch: closing</FFF.SiloHatch.Closing>
+  <FFF.SiloHatch.StatLabel>Damage taken with hatch closed</FFF.SiloHatch.StatLabel>
+  <FFF.SiloHatch.StatDesc>Damage the silo takes while its hatch is fully closed, as a share of normal damage. It does not apply while the hatch is opening, closing or open after a launch.</FFF.SiloHatch.StatDesc>
+  <FFF.SiloHatch.OpeningForLaunch>Hatch: opening for launch</FFF.SiloHatch.OpeningForLaunch>
+  <FFF.SiloHatch.AssemblyBlocked>Hatch closed: open the hatch to assemble the missile.</FFF.SiloHatch.AssemblyBlocked>
+  <FFF.BallisticLaunchSite.ArrivedLetter>Your pawns have arrived at an enemy ballistic launch site. Hardened strategic silos are spread around a search radar and its fire-control radars; the garrison reloads each silo a few days after it fires. Destroy every fire-control radar to neutralize the site; if you withdraw while a fire-control radar still stands, the enemy blocks your return for a while.</FFF.BallisticLaunchSite.ArrivedLetter>
+  <FFF.SeaLaunchSite.ArrivedLetter>Your pawns have arrived at a colonial fleet sea launch station. Its radars, launch positions, ammunition carriers and crew quarters stand on sea platforms joined by deck walkways, held up above the waves by steel pillars. Destroy every fire-control radar to neutralize the station; destroying a pillar sends the decks it alone supports into the sea, along with everything on them. There is no way back by land: leave by shuttle or transport pod.</FFF.SeaLaunchSite.ArrivedLetter>
+  <FFF.SeaPlatform.SupportRadius>Supports sea platform within {0} cells.</FFF.SeaPlatform.SupportRadius>
+  <FFF.SeaPlatform.NeedsSupport>Must be within the support radius of a platform pillar.</FFF.SeaPlatform.NeedsSupport>
+  <FFF.SeaPlatform.OnlySeaPlatformMap>Can only be built on a sea platform map.</FFF.SeaPlatform.OnlySeaPlatformMap>
+  <FFF.SeaPlatform.PillarNeedsOpenAir>Must be built over open air or sea platform.</FFF.SeaPlatform.PillarNeedsOpenAir>
+  <FFF.SeaPlatform.PillarNeedsAccess>Needs a spot next to it that a builder can stand on.</FFF.SeaPlatform.PillarNeedsAccess>
+  <FFF.SeaPlatform.Unsupported>{0} cells of sea platform have lost their support (out of pillar range, or cut off from the platform on a pillar) and will collapse in {1} seconds unless they are joined back or a platform pillar is built in range.</FFF.SeaPlatform.Unsupported>
+  <FFF.SeaPlatform.PillarDestroyed>A platform pillar was destroyed. {0} cells of sea platform are no longer supported and will collapse in {1} seconds unless they are joined to another pillar or a new platform pillar is built in range.</FFF.SeaPlatform.PillarDestroyed>
+  <FFF.SeaPlatform.Collapsed>{0} cells of sea platform collapsed into the sea.</FFF.SeaPlatform.Collapsed>
+  <FFF.SeaPlatform.PawnFell>{0} fell with the collapsing platform and climbed back up, injured.</FFF.SeaPlatform.PawnFell>
+  <FFF.SeaPlatform.PawnLost>{0} fell into the sea with the collapsing platform and was lost.</FFF.SeaPlatform.PawnLost>
+  <FFF.SeaPlatform.NeedWaterTile>Pick a water tile on the surface.</FFF.SeaPlatform.NeedWaterTile>
+  <FFF.SeaPlatform.TileOccupied>There is already a map on that tile.</FFF.SeaPlatform.TileOccupied>
+  <!-- 設定頁（FFF_AerospaceMod） -->
+  <FFF.Strike.Settings.WaveReadyAlert>Strike wave ready alert</FFF.Strike.Settings.WaveReadyAlert>
+  <FFF.Strike.Settings.WaveReadyAlertDesc>Show an alert when a strike mission can fire its next wave.</FFF.Strike.Settings.WaveReadyAlertDesc>
+  <FFF.BVR.Settings.TerminalImpactMarkers>Terminal impact markers</FFF.BVR.Settings.TerminalImpactMarkers>
+  <FFF.BVR.Settings.TerminalImpactMarkersDesc>Marks the predicted impact point of incoming and outgoing missiles on the map once they enter the terminal (close-in defense) window, while the missile itself cannot be seen.</FFF.BVR.Settings.TerminalImpactMarkersDesc>
+  <FFF.Missile.Settings.GodModeInstantAssembly>God mode: instant missile assembly</FFF.Missile.Settings.GodModeInstantAssembly>
+  <FFF.Missile.Settings.GodModeInstantAssemblyDesc>While god mode is on, missile and ballistic silo refits finish immediately: no confirmation, hauling or assembly work, and no resources are used. Parts are available without research. Removed parts are not refunded.</FFF.Missile.Settings.GodModeInstantAssemblyDesc>
+  <FFF.BVR.Settings.InterceptDebrisDamage>Intercept debris causes damage</FFF.BVR.Settings.InterceptDebrisDamage>
+  <FFF.BVR.Settings.InterceptDebrisDamageDesc>Large debris from intercepted missiles and drop pods deals light blunt damage where it lands. Roofs stop it. When off, debris only leaves dust, sparks and rubble.</FFF.BVR.Settings.InterceptDebrisDamageDesc>
+  <FFF.BVR.Settings.InterceptFxDensity>Intercept effect density</FFF.BVR.Settings.InterceptFxDensity>
+  <FFF.BVR.Settings.InterceptFxDensityDesc>How many fragments, smoke puffs and trail puffs an interception makes. Lower it if large salvos slow the game down. Large debris still lands at every setting.</FFF.BVR.Settings.InterceptFxDensityDesc>
+  <FFF.BVR.Settings.CiwsInterceptMultiplier>CIWS intercept rate: {0}</FFF.BVR.Settings.CiwsInterceptMultiplier>
+  <FFF.BVR.Settings.CiwsInterceptMultiplierDesc>Scales the hit chance of every close-in defense turret (CIWS). 100% keeps each turret's own rate; 0% means they never shoot anything down. Ballistic missiles stay very hard to hit whatever this is set to.</FFF.BVR.Settings.CiwsInterceptMultiplierDesc>
+  <FFF.BVR.Settings.NpcMirv>NPC MIRV and decoy warheads</FFF.BVR.Settings.NpcMirv>
+  <FFF.BVR.Settings.NpcMirvDesc>Let NPC sites fire strategic missiles with MIRV or decoy payloads at strong air defenses: ballistic launch sites of any faction, and missile bases of factions whose doctrine allows it (by default only ultra-tech factions). Each one splits into several tracks in flight.</FFF.BVR.Settings.NpcMirvDesc>
+  <FFF.Aerospace.Settings.Category>Fortified - missiles and air defense</FFF.Aerospace.Settings.Category>
+  <FFF.BVR.EngagementVetoed>Engagement blocked by another mod's rule.</FFF.BVR.EngagementVetoed>
+  <FFF.Aerospace.Settings.MultiplayerWarning>Multiplayer is active. Missiles, air defense and the transfer ship are not synchronized for multiplayer: using them in a multiplayer game will desync. Combat settings on this page must be the same for every player.</FFF.Aerospace.Settings.MultiplayerWarning>
+</LanguageData>

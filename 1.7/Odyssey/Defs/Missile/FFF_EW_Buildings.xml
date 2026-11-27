@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <JobDef>
+    <defName>FFF_OperateWarRoom</defName>
+    <driverClass>Fortified.JobDriver_OperateWarRoom</driverClass>
+    <reportString>operating war room console.</reportString>
+    <allowOpportunisticPrefix>true</allowOpportunisticPrefix>
+    <casualInterruptible>false</casualInterruptible>
+  </JobDef>
+</Defs>

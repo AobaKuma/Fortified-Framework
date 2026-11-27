@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <!--
+    把準則掛到原版的海盜陣營：MissileDoctrineExtension 指定的準則優先於科技等級預設。
+    Attach the doctrine to vanilla pirates; an explicit MissileDoctrineExtension wins over tech-level defaults.
+  -->
+  <Operation Class="PatchOperationAddModExtension">
+    <xpath>/Defs/FactionDef[defName="Pirate"]</xpath>
+    <value>
+      <li Class="Fortified.MissileDoctrineExtension">
+        <doctrine>AerospaceSample_AggressiveDoctrine</doctrine>
+      </li>
+    </value>
+  </Operation>
+
+</Patch>

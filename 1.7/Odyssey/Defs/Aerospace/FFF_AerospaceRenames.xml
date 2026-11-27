@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 轉移船、結構樁、平台拆除從 DMSE 移入 FFF（2026-11）的改名對照：舊存檔裡的 DMSE 型別與 defName。
+     由 DMSE 的 .source/Tools/gen_fff_rename_table.py 產生的完整表切出。 -->
+<Defs>
+  <Fortified.DefRenameDef>
+    <defName>FFF_AerospaceRenames</defName>
+    <typeRenames>
+      <li><oldTypeName>DMSE.Alert_TransferCountdown</oldTypeName><newType>Fortified.Alert_TransferCountdown</newType></li>
+      <li><oldTypeName>DMSE.Alert_TransferExhaustDanger</oldTypeName><newType>Fortified.Alert_TransferExhaustDanger</newType></li>
+      <li><oldTypeName>DMSE.Alert_TransferPawnsOutside</oldTypeName><newType>Fortified.Alert_TransferPawnsOutside</newType></li>
+      <li><oldTypeName>DMSE.AngledHullExtension</oldTypeName><newType>Fortified.AngledHullExtension</newType></li>
+      <li><oldTypeName>DMSE.CompProperties_Renameable</oldTypeName><newType>Fortified.CompProperties_Renameable</newType></li>
+      <li><oldTypeName>DMSE.CompProperties_StructuralPile</oldTypeName><newType>Fortified.CompProperties_StructuralPile</newType></li>
+      <li><oldTypeName>DMSE.CompProperties_TransferConsole</oldTypeName><newType>Fortified.CompProperties_TransferConsole</newType></li>
+      <li><oldTypeName>DMSE.CompProperties_TransferEngine</oldTypeName><newType>Fortified.CompProperties_TransferEngine</newType></li>
+      <li><oldTypeName>DMSE.CompProperties_TransferReactor</oldTypeName><newType>Fortified.CompProperties_TransferReactor</newType></li>
+      <li><oldTypeName>DMSE.CompRenameable</oldTypeName><newType>Fortified.CompRenameable</newType></li>
+      <li><oldTypeName>DMSE.CompStructuralPile</oldTypeName><newType>Fortified.CompStructuralPile</newType></li>
+      <li><oldTypeName>DMSE.CompTransferConsole</oldTypeName><newType>Fortified.CompTransferConsole</newType></li>
+      <li><oldTypeName>DMSE.CompTransferEngine</oldTypeName><newType>Fortified.CompTransferEngine</newType></li>
+      <li><oldTypeName>DMSE.CompTransferReactor</oldTypeName><newType>Fortified.CompTransferReactor</newType></li>
+      <li><oldTypeName>DMSE.Designator_LandTransferShip</oldTypeName><newType>Fortified.Designator_LandTransferShip</newType></li>
+      <li><oldTypeName>DMSE.Designator_RemovePlatform</oldTypeName><newType>Fortified.Designator_RemovePlatform</newType></li>
+      <li><oldTypeName>DMSE.GameComponent_TransferLanding</oldTypeName><newType>Fortified.GameComponent_TransferLanding</newType></li>
+      <li><oldTypeName>DMSE.ITab_TransferShip</oldTypeName><newType>Fortified.ITab_TransferShip</newType></li>
+      <li><oldTypeName>DMSE.JobDriver_BuildPileBeam</oldTypeName><newType>Fortified.JobDriver_BuildPileBeam</newType></li>
+      <li><oldTypeName>DMSE.JobDriver_InitiateTransfer</oldTypeName><newType>Fortified.JobDriver_InitiateTransfer</newType></li>
+      <li><oldTypeName>DMSE.JobDriver_RemovePlatform</oldTypeName><newType>Fortified.JobDriver_RemovePlatform</newType></li>
+      <li><oldTypeName>DMSE.MapComponent_PileNetwork</oldTypeName><newType>Fortified.MapComponent_PileNetwork</newType></li>
+      <li><oldTypeName>DMSE.MapComponent_TransferBurn</oldTypeName><newType>Fortified.MapComponent_TransferBurn</newType></li>
+      <li><oldTypeName>DMSE.MapDrawLayer_StructuralBeams</oldTypeName><newType>Fortified.MapDrawLayer_StructuralBeams</newType></li>
+      <li><oldTypeName>DMSE.PileBeamOrder</oldTypeName><newType>Fortified.PileBeamOrder</newType></li>
+      <li><oldTypeName>DMSE.PlaceWorker_StructuralPile</oldTypeName><newType>Fortified.PlaceWorker_StructuralPile</newType></li>
+      <li><oldTypeName>DMSE.PlaceWorker_TransferEngine</oldTypeName><newType>Fortified.PlaceWorker_TransferEngine</newType></li>
+      <li><oldTypeName>DMSE.RemovablePlatformExtension</oldTypeName><newType>Fortified.RemovablePlatformExtension</newType></li>
+      <li><oldTypeName>DMSE.SectionLayer_PlatformHull</oldTypeName><newType>Fortified.SectionLayer_PlatformHull</newType></li>
+      <li><oldTypeName>DMSE.TransferEnvironmentExtension</oldTypeName><newType>Fortified.TransferEnvironmentExtension</newType></li>
+      <li><oldTypeName>DMSE.TransferFlightTuningDef</oldTypeName><newType>Fortified.TransferFlightTuningDef</newType></li>
+      <li><oldTypeName>DMSE.TransferFuelSourceExtension</oldTypeName><newType>Fortified.TransferFuelSourceExtension</newType></li>
+      <li><oldTypeName>DMSE.TransferPlan</oldTypeName><newType>Fortified.TransferPlan</newType></li>
+      <li><oldTypeName>DMSE.WorkGiver_BuildPileBeam</oldTypeName><newType>Fortified.WorkGiver_BuildPileBeam</newType></li>
+      <li><oldTypeName>DMSE.WorkGiver_DeliverPileBeamMaterials</oldTypeName><newType>Fortified.WorkGiver_DeliverPileBeamMaterials</newType></li>
+      <li><oldTypeName>DMSE.WorkGiver_InitiateTransfer</oldTypeName><newType>Fortified.WorkGiver_InitiateTransfer</newType></li>
+      <li><oldTypeName>DMSE.WorkGiver_RemovePlatform</oldTypeName><newType>Fortified.WorkGiver_RemovePlatform</newType></li>
+      <li><oldTypeName>DMSE.WorldDrawLayer_SpaceTiles</oldTypeName><newType>Fortified.WorldDrawLayer_SpaceTiles</newType></li>
+      <li><oldTypeName>DMSE.WorldObject_TransferShip</oldTypeName><newType>Fortified.WorldObject_TransferShip</newType></li>
+    </typeRenames>
+    <renames>
+      <li><defType>DesignationDef</defType><oldDefName>DMSE_RemovePlatform</oldDefName><newDefName>FFF_RemovePlatform</newDefName></li>
+      <li><defType>Fortified.TransferFlightTuningDef</defType><oldDefName>DMSE_TransferFlightTuning</oldDefName><newDefName>FFF_TransferFlightTuning</newDefName></li>
+      <li><defType>GameConditionDef</defType><oldDefName>DMSE_TransferGrace</oldDefName><newDefName>FFF_TransferGrace</newDefName></li>
+      <li><defType>JobDef</defType><oldDefName>DMSE_BuildPileBeam</oldDefName><newDefName>FFF_BuildPileBeam</newDefName></li>
+      <li><defType>JobDef</defType><oldDefName>DMSE_InitiateTransfer</oldDefName><newDefName>FFF_InitiateTransfer</newDefName></li>
+      <li><defType>JobDef</defType><oldDefName>DMSE_RemovePlatformJob</oldDefName><newDefName>FFF_RemovePlatformJob</newDefName></li>
+      <li><defType>MapGeneratorDef</defType><oldDefName>DMSE_ShipVoid</oldDefName><newDefName>FFF_ShipVoid</newDefName></li>
+      <li><defType>TerrainAffordanceDef</defType><oldDefName>DMSE_Platform</oldDefName><newDefName>FFF_Platform</newDefName></li>
+      <li><defType>WorkGiverDef</defType><oldDefName>DMSE_BuildPileBeam</oldDefName><newDefName>FFF_BuildPileBeam</newDefName></li>
+      <li><defType>WorkGiverDef</defType><oldDefName>DMSE_ConstructRemovePlatform</oldDefName><newDefName>FFF_ConstructRemovePlatform</newDefName></li>
+      <li><defType>WorkGiverDef</defType><oldDefName>DMSE_DeliverPileBeamMaterials</oldDefName><newDefName>FFF_DeliverPileBeamMaterials</newDefName></li>
+      <li><defType>WorkGiverDef</defType><oldDefName>DMSE_InitiateTransfer</oldDefName><newDefName>FFF_InitiateTransfer</newDefName></li>
+      <li><defType>WorldObjectDef</defType><oldDefName>DMSE_TransferShip</oldDefName><newDefName>FFF_TransferShip</newDefName></li>
+    </renames>
+  </Fortified.DefRenameDef>
+</Defs>

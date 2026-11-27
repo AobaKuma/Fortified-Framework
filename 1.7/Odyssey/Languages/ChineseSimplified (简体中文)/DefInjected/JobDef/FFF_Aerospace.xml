@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <FFF_RemovePlatformJob.reportString>拆除平台中。</FFF_RemovePlatformJob.reportString>
+  <FFF_BuildPileBeam.reportString>正在 TargetA 架设钢梁。</FFF_BuildPileBeam.reportString>
+  <FFF_InitiateTransfer.reportString>正在 TargetA 执行转移点火程序。</FFF_InitiateTransfer.reportString>
+</LanguageData>

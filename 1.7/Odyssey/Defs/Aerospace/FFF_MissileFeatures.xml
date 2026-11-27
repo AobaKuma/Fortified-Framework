@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- 飛彈與海上平台的功能開關（Fortified/Docs/FeatureSwitch_Usage.md）。2026-11 從 DMSE 移入。
+       飛彈本體、裝配、打擊、BVR 防空、雷達、電子戰、砲兵、導彈陣地、封鎖空域目前互相取用元件，先合成一項功能。 -->
+  <Fortified.FFF_FeatureDef>
+    <defName>FFF_Feature_Missiles</defName>
+    <label>missiles and air defense</label>
+    <description>Missile bodies, assembly benches and launchers, strike planning, beyond-visual-range air defense, radars, electronic warfare, radar-guided artillery, NPC missile sites and airspace blockades.</description>
+    <harmonyCategory>FFF.Missiles</harmonyCategory>
+    <autoEnableIfDefUses>
+      <li>Fortified.MissileBodyDef</li>
+      <li>Fortified.MissilePartDef</li>
+      <li>Fortified.CompProperties_MissileConfig</li>
+      <li>Fortified.CompProperties_MissileLauncher</li>
+      <li>Fortified.CompProperties_SearchRadar</li>
+      <li>Fortified.CompProperties_FireControlRadar</li>
+      <li>Fortified.CompProperties_TerminalCIWS</li>
+      <li>Fortified.CompProperties_ArtilleryStrike</li>
+      <li>Fortified.WorldObjectCompProperties_MissileBase</li>
+      <li>Fortified.WorldObjectCompProperties_AirDefense</li>
+      <li>Fortified.AirTargetExtension</li>
+    </autoEnableIfDefUses>
+  </Fortified.FFF_FeatureDef>
+
+  <Fortified.FFF_FeatureDef>
+    <defName>FFF_Feature_SeaPlatform</defName>
+    <label>sea platforms</label>
+    <description>Sea platform maps: a deck held up by pillars above the open sea, with support checks and collapse.</description>
+    <harmonyCategory>FFF.SeaPlatform</harmonyCategory>
+    <autoEnableIfDefUses>
+      <li>Fortified.SeaPlatformMapExtension</li>
+      <li>Fortified.SeaPlatformPillarExtension</li>
+    </autoEnableIfDefUses>
+  </Fortified.FFF_FeatureDef>
+</Defs>

@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 轉移船、結構樁、平台拆除（2026-11 從 DMSE 移入，鍵名由 DMSE.* 改成 FFF.*） -->
+  <FFF.UI.TransferBlocked>Departure blocked: {0} errors, {1} warnings</FFF.UI.TransferBlocked>
+  <FFF.UI.TransferReady>Readiness checks passed · {1} warnings</FFF.UI.TransferReady>
+  <FFF.UI.FuelRequiredAvailable>Fuel: required / available</FFF.UI.FuelRequiredAvailable>
+  <FFF.UI.Locate>Locate</FFF.UI.Locate>
+  <FFF.UI.ShowDetails>▸ Engineering and equipment details</FFF.UI.ShowDetails>
+  <FFF.UI.HideDetails>▾ Hide engineering and equipment details</FFF.UI.HideDetails>
+  <FFF.UI.EngineeringDetails>Engineering details</FFF.UI.EngineeringDetails>
+  <FFF.Flight.Select>Select flight mode</FFF.Flight.Select>
+  <FFF.Flight.Regular>Regular flight</FFF.Flight.Regular>
+  <FFF.Flight.Transfer>Transfer flight</FFF.Flight.Transfer>
+  <FFF.Flight.ShowAdvanced>Show advanced options</FFF.Flight.ShowAdvanced>
+  <FFF.Flight.Impact>Impact flight</FFF.Flight.Impact>
+  <FFF.Flight.ImpactHard>Hard impact flight</FFF.Flight.ImpactHard>
+  <FFF.Flight.Select.Desc>A valid flight module is installed on this ship. Please choose a flight mode:</FFF.Flight.Select.Desc>
+  <FFF.Flight.Impact.Header>Your colonists know this is a real option, but not a wise one.</FFF.Flight.Impact.Header>
+  <FFF.Flight.Impact.Confirm>Even while the navigation console flashes crimson warnings, it still shows a feasible acceleration profile.\n\nBy activating the hard impact protocol, the fusion core will output full power under overload conditions, allowing the nuclear-thermal engines to accelerate this ship toward the planet at maximum thrust and collide with the surface.\n\nThis will turn both the ship and its momentum into an effective high-yield kinetic weapon, causing irreversible damage to the planet.\n\n\n\nAre you sure you want to proceed?</FFF.Flight.Impact.Confirm>
+  <FFF.Impact.Ending.Intro>The gravship streaked across the sky with a blazing trail, carrying immense mass into the ground. The horizon turned to light, and violent shockwaves followed, becoming storms and earthquakes that swept across the planet's surface. In a short span, countless lives and landscapes were erased in this world-shattering impact.</FFF.Impact.Ending.Intro>
+  <FFF.Impact.Ending.Outro>Fortunately, this was not the maximum output the nuclear-thermal engines could produce. After the disaster subsided, most people on the surface survived. Whatever the purpose behind it, this impact will be remembered forever in the history of this world.</FFF.Impact.Ending.Outro>
+  <FFF.Impact.Ending.Aboard>We may never know whether the crew aboard the gravship escaped at the last moment, or vanished entirely in the impact.</FFF.Impact.Ending.Aboard>
+  <FFF.Impact.Planetkiller.Ending.Intro>The gravship cut across the sky, every thermonuclear engine roaring with overwhelming thrust, before driving its colossal mass into the ground. A wall of rising crust surged along the horizon, and the following superheated shockwave became a sea of fire that swept across the planet's surface.</FFF.Impact.Planetkiller.Ending.Intro>
+  <FFF.Impact.Planetkiller.Ending.Outro>This was heavenly fire, a supreme judgment said in sacred texts to belong only to gods.\n\nWhatever the purpose behind it, this world may not recover life for a hundred years.</FFF.Impact.Planetkiller.Ending.Outro>
+  <FFF.Impact.Planetkiller.Ending.Aboard>No one could survive a cataclysm of this scale.</FFF.Impact.Planetkiller.Ending.Aboard>
+  <FFF.Platform.Remove>Remove platform</FFF.Platform.Remove>
+  <FFF.Platform.RemoveDesc>Remove space platforms or vacstone ground, leaving open space and recovering some materials.</FFF.Platform.RemoveDesc>
+  <FFF.Platform.FloorOnTop>Remove the floor first.</FFF.Platform.FloorOnTop>
+  <FFF.Platform.Blocked>{0} is built here.</FFF.Platform.Blocked>
+  <FFF.Platform.Settings.SpaceTraversal>Allow walking on open space (restart required)</FFF.Platform.Settings.SpaceTraversal>
+  <FFF.Platform.Settings.SpaceTraversalDesc>Enable the patch that makes vanilla open space passable. Disabled by default. Changes take effect after restarting the game. Other mods may also change space passability.</FFF.Platform.Settings.SpaceTraversalDesc>
+  <FFF.Pile.BuildBeam>Build beam</FFF.Pile.BuildBeam>
+  <FFF.Pile.BuildBeamDesc>Order a steel beam to another structural pile in range. Only piles joined by finished beams move together as one ship.\n\nShift-click to keep building from the target pile.</FFF.Pile.BuildBeamDesc>
+  <FFF.Pile.DismantleBeam>Dismantle beam</FFF.Pile.DismantleBeam>
+  <FFF.Pile.DismantleBeamDesc>Dismantle a finished beam. Part of the materials is refunded.</FFF.Pile.DismantleBeamDesc>
+  <FFF.Pile.DismantleAll>Dismantle all</FFF.Pile.DismantleAll>
+  <FFF.Pile.CancelBeam>Cancel beam order</FFF.Pile.CancelBeam>
+  <FFF.Pile.CancelBeamDesc>Cancel a beam order. Delivered materials are dropped next to the pile.</FFF.Pile.CancelBeamDesc>
+  <FFF.Pile.CancelAll>Cancel all</FFF.Pile.CancelAll>
+  <FFF.Pile.LinkSelected>Link selected piles</FFF.Pile.LinkSelected>
+  <FFF.Pile.LinkSelectedDesc>Order a steel beam between the two selected structural piles.</FFF.Pile.LinkSelectedDesc>
+  <FFF.Pile.SelectNetwork>Select network</FFF.Pile.SelectNetwork>
+  <FFF.Pile.SelectNetworkDesc>Select every structural pile connected to this one by finished beams.</FFF.Pile.SelectNetworkDesc>
+  <FFF.Pile.Disabled.NoLinks>This pile has no finished beams.</FFF.Pile.Disabled.NoLinks>
+  <FFF.Pile.Disabled.AllDismantling>All beams are already being dismantled.</FFF.Pile.Disabled.AllDismantling>
+  <FFF.Pile.Disabled.NoOrders>This pile has no beam orders.</FFF.Pile.Disabled.NoOrders>
+  <FFF.Pile.Link.NotPile>Must target one of your structural piles.</FFF.Pile.Link.NotPile>
+  <FFF.Pile.Link.OutOfRange>Out of range: {0} cells (max {1}).</FFF.Pile.Link.OutOfRange>
+  <FFF.Pile.Link.AlreadyLinked>Already linked or ordered.</FFF.Pile.Link.AlreadyLinked>
+  <FFF.Pile.Link.MaxLinks>{0} has reached its beam limit ({1}, including orders).</FFF.Pile.Link.MaxLinks>
+  <FFF.Pile.Link.CostLabel>Beam: {0} cells · {1} · work {2}</FFF.Pile.Link.CostLabel>
+  <FFF.Pile.Link.Locked>Beams cannot be changed during the countdown.</FFF.Pile.Link.Locked>
+  <FFF.Pile.Link.NoRange>Small structural piles cannot be linked to each other.</FFF.Pile.Link.NoRange>
+  <FFF.Pile.LinkOption>→ ({0}, {1}) · {2} cells</FFF.Pile.LinkOption>
+  <FFF.Pile.OrderKind.Build>Build</FFF.Pile.OrderKind.Build>
+  <FFF.Pile.OrderKind.Dismantle>Dismantle</FFF.Pile.OrderKind.Dismantle>
+  <FFF.Pile.Inspect.Network>Structural network: {0} piles, {1} beams, hull {2} cells</FFF.Pile.Inspect.Network>
+  <FFF.Pile.Inspect.Links>Beams: {0} finished, {1} / {2} including orders</FFF.Pile.Inspect.Links>
+  <FFF.Pile.Inspect.LinksUnlimited>Beams: {0} finished</FFF.Pile.Inspect.LinksUnlimited>
+  <FFF.Pile.Inspect.Building>Beam construction: → ({0}, {1}) {2} cells | materials {3} | progress {4}</FFF.Pile.Inspect.Building>
+  <FFF.Pile.Inspect.Dismantling>Beam dismantling: → ({0}, {1}) {2} cells | progress {3}</FFF.Pile.Inspect.Dismantling>
+  <FFF.Pile.Inspect.Queued>{0} more beam orders queued</FFF.Pile.Inspect.Queued>
+  <FFF.Pile.NetworkSplit>A structural network has split into separate ships.</FFF.Pile.NetworkSplit>
+  <FFF.Pile.Place.OverVoid>Must be placed on solid ground.</FFF.Pile.Place.OverVoid>
+  <FFF.Pile.Place.NeedProviderRange>Must be placed within the link range of a large structural pile or a structural anchor pile.</FFF.Pile.Place.NeedProviderRange>
+  <FFF.Pile.Place.WrongTerrain>Cannot be placed on {0}.</FFF.Pile.Place.WrongTerrain>
+  <FFF.Pile.Place.SpaceOnly>Can only be built in space.</FFF.Pile.Place.SpaceOnly>
+  <FFF.Pile.Report.Dismantle>dismantling steel beam at {0}.</FFF.Pile.Report.Dismantle>
+  <FFF.Transfer.Tab>Transfer</FFF.Transfer.Tab>
+  <FFF.Transfer.Console.Plan>Plan transfer</FFF.Transfer.Console.Plan>
+  <FFF.Transfer.Console.PlanDesc>Choose a destination and review fuel, travel time and readiness.</FFF.Transfer.Console.PlanDesc>
+  <FFF.Transfer.Console.Abort>Abort transfer</FFF.Transfer.Console.Abort>
+  <FFF.Transfer.Console.AbortDesc>Discard the current transfer plan.</FFF.Transfer.Console.AbortDesc>
+  <FFF.Transfer.Console.ShowFootprint>Show hull</FFF.Transfer.Console.ShowFootprint>
+  <FFF.Transfer.Console.ShowFootprintDesc>Always show this ship's hull area and engine exhaust zones.</FFF.Transfer.Console.ShowFootprintDesc>
+  <FFF.Transfer.Console.AlreadyLaunching>A transfer is already under way.</FFF.Transfer.Console.AlreadyLaunching>
+  <FFF.Transfer.Console.NotOnShip>Not on a ship.</FFF.Transfer.Console.NotOnShip>
+  <FFF.Transfer.Console.Primary>Ship command console</FFF.Transfer.Console.Primary>
+  <FFF.Transfer.Console.Backup>Backup console</FFF.Transfer.Console.Backup>
+  <FFF.Transfer.Console.ShipSummary>Ship: {0} piles, {1} working engines, TWR {2}, fuel {3}</FFF.Transfer.Console.ShipSummary>
+  <FFF.Transfer.Console.PlanSummary>Planned transfer to tile {0} ({1} tiles)</FFF.Transfer.Console.PlanSummary>
+  <FFF.Transfer.Console.Launch>Begin launch</FFF.Transfer.Console.Launch>
+  <FFF.Transfer.Console.LaunchDesc>Begin the launch sequence. Once a colonist operates this console, the ship counts down and departs.</FFF.Transfer.Console.LaunchDesc>
+  <FFF.Transfer.Console.AwaitingOperatorMsg>Launch sequence started. Waiting for an operator.</FFF.Transfer.Console.AwaitingOperatorMsg>
+  <FFF.Transfer.Console.StateAwaitingOperator>Waiting for an operator.</FFF.Transfer.Console.StateAwaitingOperator>
+  <FFF.Transfer.Console.StateCountdown>Departure in {0}.</FFF.Transfer.Console.StateCountdown>
+  <FFF.Transfer.Console.Rename>Name ship</FFF.Transfer.Console.Rename>
+  <FFF.Transfer.Console.RenameDesc>Give this ship a name. The name is saved on all of the ship's consoles and kept on every transfer flight.</FFF.Transfer.Console.RenameDesc>
+  <FFF.Transfer.Console.ShipName>Ship name: {0}</FFF.Transfer.Console.ShipName>
+  <FFF.Transfer.Console.Unnamed>Unnamed (named automatically at launch)</FFF.Transfer.Console.Unnamed>
+  <FFF.Transfer.Separating>Separating ship</FFF.Transfer.Separating>
+  <FFF.Transfer.Abort.NoPlan>There is no transfer plan.</FFF.Transfer.Abort.NoPlan>
+  <FFF.Transfer.Abort.NoFreeTile>No free tile to park on.</FFF.Transfer.Abort.NoFreeTile>
+  <FFF.Transfer.Abort.NetworkChanged>The ship's structure changed during the countdown.</FFF.Transfer.Abort.NetworkChanged>
+  <FFF.Transfer.Letter.AbortedLabel>Transfer aborted</FFF.Transfer.Letter.AbortedLabel>
+  <FFF.Transfer.Letter.AbortedText>The launch was aborted: {0}\n\nThe plan has been kept.</FFF.Transfer.Letter.AbortedText>
+  <FFF.Transfer.Letter.SeparatedLabel>Ship separated</FFF.Transfer.Letter.SeparatedLabel>
+  <FFF.Transfer.Letter.SeparatedText>{0} has separated and is now its own ship.</FFF.Transfer.Letter.SeparatedText>
+  <FFF.Transfer.Letter.Destroyed>Destroyed at the hull edge:</FFF.Transfer.Letter.Destroyed>
+  <FFF.Transfer.Letter.LeftBehind>Left behind:</FFF.Transfer.Letter.LeftBehind>
+  <FFF.Transfer.Letter.BrokenLinks>Beams broken: {0}. Beam orders cancelled: {1}.</FFF.Transfer.Letter.BrokenLinks>
+  <FFF.Transfer.Letter.LostThings>Lost: {0} things that could not be carried.</FFF.Transfer.Letter.LostThings>
+  <FFF.Transfer.Letter.OriginAbandoned>The old site was abandoned.</FFF.Transfer.Letter.OriginAbandoned>
+  <FFF.Transfer.Ship.DefaultName>Transfer ship {0}</FFF.Transfer.Ship.DefaultName>
+  <FFF.Transfer.Ship.Inspect>Structural piles: {0}, networks: {1}</FFF.Transfer.Ship.Inspect>
+  <FFF.Transfer.Ship.Abandon>Abandon ship</FFF.Transfer.Ship.Abandon>
+  <FFF.Transfer.Ship.AbandonDesc>Abandon this ship and everything on it.</FFF.Transfer.Ship.AbandonDesc>
+  <FFF.Transfer.Ship.AbandonConfirm>Abandon {0}? Everything aboard will be lost.</FFF.Transfer.Ship.AbandonConfirm>
+  <FFF.Transfer.Ship.AbandonHasColonists>There are still colonists on board.</FFF.Transfer.Ship.AbandonHasColonists>
+  <FFF.Transfer.Alert.PawnsOutside>People outside departing ship</FFF.Transfer.Alert.PawnsOutside>
+  <FFF.Transfer.Alert.PawnsOutsideDesc>These people are outside the departing ship and will be left behind.</FFF.Transfer.Alert.PawnsOutsideDesc>
+  <FFF.Transfer.Alert.ExhaustDanger>Standing in engine exhaust</FFF.Transfer.Alert.ExhaustDanger>
+  <FFF.Transfer.Alert.ExhaustDangerDesc>These people are in an engine exhaust zone and will be burned when the engines fire.</FFF.Transfer.Alert.ExhaustDangerDesc>
+  <FFF.Transfer.Dest.Invalid>Choose another tile.</FFF.Transfer.Dest.Invalid>
+  <FFF.Transfer.Dest.OtherLayer>Must be in the same orbit.</FFF.Transfer.Dest.OtherLayer>
+  <FFF.Transfer.Dest.OutOfRange>Out of range ({0} tiles).</FFF.Transfer.Dest.OutOfRange>
+  <FFF.Transfer.Dest.Occupied>Occupied, with no free tile nearby.</FFF.Transfer.Dest.Occupied>
+  <FFF.Transfer.Dialog.Title>Transfer plan</FFF.Transfer.Dialog.Title>
+  <FFF.Transfer.Dialog.Route>Tile {0} → tile {1}, {2} tiles</FFF.Transfer.Dialog.Route>
+  <FFF.Transfer.Dialog.Reselect>Choose again</FFF.Transfer.Dialog.Reselect>
+  <FFF.Transfer.Dialog.Confirm>Confirm plan</FFF.Transfer.Dialog.Confirm>
+  <FFF.Transfer.Dialog.ConfirmBlocked>Resolve the errors first.</FFF.Transfer.Dialog.ConfirmBlocked>
+  <FFF.Transfer.Dialog.PlanSet>Transfer plan set.</FFF.Transfer.Dialog.PlanSet>
+  <FFF.Transfer.UI.NetworkHeader>Structural network</FFF.Transfer.UI.NetworkHeader>
+  <FFF.Transfer.UI.Piles>Piles</FFF.Transfer.UI.Piles>
+  <FFF.Transfer.UI.Beams>Beams</FFF.Transfer.UI.Beams>
+  <FFF.Transfer.UI.Footprint>Hull cells</FFF.Transfer.UI.Footprint>
+  <FFF.Transfer.UI.TornApart>Buildings torn apart on departure</FFF.Transfer.UI.TornApart>
+  <FFF.Transfer.UI.Contested>Cells taken from other networks</FFF.Transfer.UI.Contested>
+  <FFF.Transfer.UI.UnlinkedPiles>Nearby unlinked piles</FFF.Transfer.UI.UnlinkedPiles>
+  <FFF.Transfer.UI.PendingOrders>Piles with beam orders</FFF.Transfer.UI.PendingOrders>
+  <FFF.Transfer.UI.PropulsionHeader>Propulsion</FFF.Transfer.UI.PropulsionHeader>
+  <FFF.Transfer.UI.NoEngines>No transfer engines on this ship.</FFF.Transfer.UI.NoEngines>
+  <FFF.Transfer.UI.ReactorSupport>Fusion reactor support (needed / available)</FFF.Transfer.UI.ReactorSupport>
+  <FFF.Transfer.UI.FuelHeader>Fuel</FFF.Transfer.UI.FuelHeader>
+  <FFF.Transfer.UI.NoFuelSources>No fuel tanks on this ship.</FFF.Transfer.UI.NoFuelSources>
+  <FFF.Transfer.UI.EstimateHeader>Transfer capability</FFF.Transfer.UI.EstimateHeader>
+  <FFF.Transfer.UI.PlanHeader>Plan: to tile {0}</FFF.Transfer.UI.PlanHeader>
+  <FFF.Transfer.UI.ParkedAtNeighbor>Tile occupied; the ship will park next to it.</FFF.Transfer.UI.ParkedAtNeighbor>
+  <FFF.Transfer.UI.MassWeight>Mass</FFF.Transfer.UI.MassWeight>
+  <FFF.Transfer.UI.MassWeightValue>{0} ({1} piles)</FFF.Transfer.UI.MassWeightValue>
+  <FFF.Transfer.UI.Thrust>Thrust</FFF.Transfer.UI.Thrust>
+  <FFF.Transfer.UI.ThrustWithBoosters>{0} (+{1} boosters, departure only)</FFF.Transfer.UI.ThrustWithBoosters>
+  <FFF.Transfer.UI.TWR>Thrust-to-weight (min {0})</FFF.Transfer.UI.TWR>
+  <FFF.Transfer.UI.Eta>Fuel consumption factor</FFF.Transfer.UI.Eta>
+  <FFF.Transfer.UI.FuelAvailable>Fuel on board</FFF.Transfer.UI.FuelAvailable>
+  <FFF.Transfer.UI.MaxDistance>Range (tiles)</FFF.Transfer.UI.MaxDistance>
+  <FFF.Transfer.UI.CannotDepart>Cannot depart</FFF.Transfer.UI.CannotDepart>
+  <FFF.Transfer.UI.BurnTime>Each burn</FFF.Transfer.UI.BurnTime>
+  <FFF.Transfer.UI.Distance>Distance (tiles)</FFF.Transfer.UI.Distance>
+  <FFF.Transfer.UI.FuelRequired>Fuel required</FFF.Transfer.UI.FuelRequired>
+  <FFF.Transfer.UI.CoastTime>Coast</FFF.Transfer.UI.CoastTime>
+  <FFF.Transfer.UI.TotalTime>Total travel time</FFF.Transfer.UI.TotalTime>
+  <FFF.Transfer.UI.IssuesHeader>Readiness</FFF.Transfer.UI.IssuesHeader>
+  <FFF.Transfer.UI.NoIssues>Ready.</FFF.Transfer.UI.NoIssues>
+  <FFF.Transfer.UI.ErrorPrefix>[Error]</FFF.Transfer.UI.ErrorPrefix>
+  <FFF.Transfer.UI.WarningPrefix>[Warning]</FFF.Transfer.UI.WarningPrefix>
+  <FFF.Transfer.Issue.NotInSpace>The ship must be in orbit.</FFF.Transfer.Issue.NotInSpace>
+  <FFF.Transfer.Issue.ConsoleNotOnShip>The console is not on a ship.</FFF.Transfer.Issue.ConsoleNotOnShip>
+  <FFF.Transfer.Issue.ConsoleUnavailable>The console is unpowered, off or broken.</FFF.Transfer.Issue.ConsoleUnavailable>
+  <FFF.Transfer.Issue.NoEngines>No working transfer engines.</FFF.Transfer.Issue.NoEngines>
+  <FFF.Transfer.Issue.LowTWR>Thrust-to-weight {0} is below {1}.</FFF.Transfer.Issue.LowTWR>
+  <FFF.Transfer.Issue.NotEnoughFuel>Not enough fuel ({0}/{1}).</FFF.Transfer.Issue.NotEnoughFuel>
+  <FFF.Transfer.Issue.OtherShipDeparting>Another ship here is already departing.</FFF.Transfer.Issue.OtherShipDeparting>
+  <FFF.Transfer.Issue.PawnsLeftBehind>{0} people outside the hull will be left behind.</FFF.Transfer.Issue.PawnsLeftBehind>
+  <FFF.Transfer.Issue.NotCarried>{0} things cannot be carried and will be lost.</FFF.Transfer.Issue.NotCarried>
+  <FFF.Transfer.Issue.PawnsInExhaust>{0} people are in an exhaust zone.</FFF.Transfer.Issue.PawnsInExhaust>
+  <FFF.Transfer.Issue.NearbyUnlinkedPiles>{0} nearby piles are not linked to this ship.</FFF.Transfer.Issue.NearbyUnlinkedPiles>
+  <FFF.Transfer.Issue.TornApart>{0} buildings cross the hull edge and will be destroyed.</FFF.Transfer.Issue.TornApart>
+  <FFF.Transfer.Issue.TornApartWithPawns>{0} of them have people inside.</FFF.Transfer.Issue.TornApartWithPawns>
+  <FFF.Transfer.Issue.Contested>Takes {0} cells from other ships ({1} buildings, {2} piles).</FFF.Transfer.Issue.Contested>
+  <FFF.Transfer.Issue.PendingBeamOrders>{0} piles have unfinished beams.</FFF.Transfer.Issue.PendingBeamOrders>
+  <FFF.Transfer.Engine.Stats>Transfer thrust {0}, fuel consumption {1}</FFF.Transfer.Engine.Stats>
+  <FFF.Transfer.Engine.BoosterStats>Departure thrust {0}: adds to the launch thrust-to-weight ratio, uses no ship fuel, and burns out when the departure burn ends</FFF.Transfer.Engine.BoosterStats>
+  <FFF.Transfer.Engine.RequiresReactor>Requires fusion reactor support.</FFF.Transfer.Engine.RequiresReactor>
+  <FFF.Transfer.Engine.Status.Operational>Ready</FFF.Transfer.Engine.Status.Operational>
+  <FFF.Transfer.Engine.Status.NotOnShip>Not on a ship</FFF.Transfer.Engine.Status.NotOnShip>
+  <FFF.Transfer.Engine.Status.BrokenDown>Broken down</FFF.Transfer.Engine.Status.BrokenDown>
+  <FFF.Transfer.Engine.Status.SwitchedOff>Switched off</FFF.Transfer.Engine.Status.SwitchedOff>
+  <FFF.Transfer.Engine.Status.NoPower>No power</FFF.Transfer.Engine.Status.NoPower>
+  <FFF.Transfer.Engine.Status.ExhaustBlocked>Exhaust blocked by {0}</FFF.Transfer.Engine.Status.ExhaustBlocked>
+  <FFF.Transfer.Engine.Status.NoReactorSupport>No fusion reactor support</FFF.Transfer.Engine.Status.NoReactorSupport>
+  <FFF.Transfer.Engine.PlacedBlocked>{0}: the exhaust zone is blocked by {1}.</FFF.Transfer.Engine.PlacedBlocked>
+  <FFF.Transfer.Reactor.Support>Supports {0} nuclear thermal thrusters (ship: {1} needed / {2} available).</FFF.Transfer.Reactor.Support>
+  <FFF.Transfer.Reactor.NotOnShip>Supports {0} nuclear thermal thrusters on a ship.</FFF.Transfer.Reactor.NotOnShip>
+  <FFF.Transfer.Alert.CountdownDesc>A ship is counting down to launch.</FFF.Transfer.Alert.CountdownDesc>
+  <FFF.Transfer.Phase.DepartureBurn>Departure burn</FFF.Transfer.Phase.DepartureBurn>
+  <FFF.Transfer.Phase.Coast>Coasting</FFF.Transfer.Phase.Coast>
+  <FFF.Transfer.Phase.ArrivalBurn>Arrival burn</FFF.Transfer.Phase.ArrivalBurn>
+  <FFF.Transfer.Phase.Arrived>Arrived</FFF.Transfer.Phase.Arrived>
+  <FFF.Transfer.Flight.Status>Transfer flight: {0}, {1} left in this phase</FFF.Transfer.Flight.Status>
+  <FFF.Transfer.Flight.Progress>Progress {0} to tile {1}, arrival in {2}</FFF.Transfer.Flight.Progress>
+  <FFF.Transfer.Flight.CoastBegin>{0} is coasting.</FFF.Transfer.Flight.CoastBegin>
+  <FFF.Transfer.Flight.BoostersBurnedOut>{0}: {1} rocket booster(s) burned out.</FFF.Transfer.Flight.BoostersBurnedOut>
+  <FFF.Transfer.Flight.ArrivalBurnBegin>{0} is firing its arrival burn.</FFF.Transfer.Flight.ArrivalBurnBegin>
+  <FFF.Transfer.Flight.Rerouted>{0}'s destination is occupied. It will park nearby.</FFF.Transfer.Flight.Rerouted>
+  <FFF.Transfer.Flight.NoThrustLabel>No thrust for arrival</FFF.Transfer.Flight.NoThrustLabel>
+  <FFF.Transfer.Flight.NoThrustText>{0} has no working engines and will brake on attitude thrusters ({1}).</FFF.Transfer.Flight.NoThrustText>
+  <FFF.Transfer.Flight.ArrivedLabel>Transfer complete</FFF.Transfer.Flight.ArrivedLabel>
+  <FFF.Transfer.Flight.ArrivedText>{0} has arrived.</FFF.Transfer.Flight.ArrivedText>
+  <FFF.Transfer.Issue.InFlight>The ship is in flight.</FFF.Transfer.Issue.InFlight>
+  <FFF.Transfer.UI.FlightHeader>In flight: {0}</FFF.Transfer.UI.FlightHeader>
+  <FFF.Transfer.Grace.Begin>{0} has arrived unnoticed: no events will occur on this map for {1} (hull: {2} cells).</FFF.Transfer.Grace.Begin>
+  <FFF.Transfer.UI.GracePeriod>Safe period after arrival</FFF.Transfer.UI.GracePeriod>
+  <FFF.Transfer.UI.Phase>Phase</FFF.Transfer.UI.Phase>
+  <FFF.Transfer.UI.PhaseLeft>Time left in phase</FFF.Transfer.UI.PhaseLeft>
+  <FFF.Transfer.UI.FlightProgress>Progress</FFF.Transfer.UI.FlightProgress>
+  <FFF.Transfer.UI.Destination>Destination tile</FFF.Transfer.UI.Destination>
+  <FFF.Transfer.UI.ArrivalIn>Arrival in</FFF.Transfer.UI.ArrivalIn>
+  <FFF.Transfer.ShuttleBlockedBurn>Cannot launch while the ship's engines are firing.</FFF.Transfer.ShuttleBlockedBurn>
+  <FFF.Transfer.Console.PlanImpact>Plan impact flight</FFF.Transfer.Console.PlanImpact>
+  <FFF.Transfer.Console.PlanImpactDesc>Crash this ship into the planet's surface. Everyone aboard will be lost and the game ends.\n\nRequires {0} working nuclear thermal thrusters; {1} or more will destroy the planet.</FFF.Transfer.Console.PlanImpactDesc>
+  <FFF.Transfer.Console.PlanSummaryImpact>Planned impact at tile {0} ({1} tiles)</FFF.Transfer.Console.PlanSummaryImpact>
+  <FFF.Transfer.Dest.NotSurface>Must be on the planet's surface.</FFF.Transfer.Dest.NotSurface>
+  <FFF.Transfer.Dest.ImpactHasMap>Cannot target a site with a map.</FFF.Transfer.Dest.ImpactHasMap>
+  <FFF.Transfer.Issue.ImpactEngines>Needs {1} working nuclear thermal thrusters ({0}).</FFF.Transfer.Issue.ImpactEngines>
+  <FFF.Transfer.Issue.ImpactResearch>Needs the sealed file "terminal cruise" to be researched.</FFF.Transfer.Issue.ImpactResearch>
+  <FFF.Transfer.Dialog.ImpactTitle>Impact flight</FFF.Transfer.Dialog.ImpactTitle>
+  <FFF.Transfer.Dialog.ImpactWarning>The ship will not brake. Everyone aboard will be lost and the game ends.</FFF.Transfer.Dialog.ImpactWarning>
+  <FFF.Transfer.Dialog.ImpactPlanetkiller>{0} nuclear thermal thrusters: the impact will destroy the planet.</FFF.Transfer.Dialog.ImpactPlanetkiller>
+  <FFF.Transfer.Dialog.ImpactRoute>Impact point: tile {0}, {1} tiles of flight</FFF.Transfer.Dialog.ImpactRoute>
+  <FFF.Transfer.Dialog.ConfirmImpact>Confirm impact</FFF.Transfer.Dialog.ConfirmImpact>
+  <FFF.Transfer.Phase.ImpactCourse>Impact course</FFF.Transfer.Phase.ImpactCourse>
+  <FFF.Transfer.Flight.ImpactCourseBegin>{0} is on an impact course. Impact in {1}.</FFF.Transfer.Flight.ImpactCourseBegin>
+  <FFF.Transfer.Flight.ImpactProgress>Progress {0} toward impact at tile {1}, impact in {2}</FFF.Transfer.Flight.ImpactProgress>
+  <FFF.Transfer.UI.ImpactIn>Impact in</FFF.Transfer.UI.ImpactIn>
+  <FFF.Transfer.UI.ImpactPlanHeader>Plan: impact at tile {0}</FFF.Transfer.UI.ImpactPlanHeader>
+  <FFF.Transfer.UI.LandOnSite>Will land at {0}.</FFF.Transfer.UI.LandOnSite>
+  <FFF.Transfer.Landing>Landing</FFF.Transfer.Landing>
+  <FFF.Transfer.Land.Designator>Choose landing site</FFF.Transfer.Land.Designator>
+  <FFF.Transfer.Land.DesignatorDesc>Choose where the ship lands on this map.</FFF.Transfer.Land.DesignatorDesc>
+  <FFF.Transfer.Land.WillMove>The ship will land at the nearest open spot.</FFF.Transfer.Land.WillMove>
+  <FFF.Transfer.Land.Gizmo>Land at {0}</FFF.Transfer.Land.Gizmo>
+  <FFF.Transfer.Land.GizmoDesc>Choose a landing site at {0}.</FFF.Transfer.Land.GizmoDesc>
+  <FFF.Transfer.Land.Auto>Land automatically</FFF.Transfer.Land.Auto>
+  <FFF.Transfer.Land.AutoDesc>Land at the open spot nearest the map center.</FFF.Transfer.Land.AutoDesc>
+  <FFF.Transfer.Land.Cancel>Cancel landing</FFF.Transfer.Land.Cancel>
+  <FFF.Transfer.Land.CancelDesc>Stay parked here.</FFF.Transfer.Land.CancelDesc>
+  <FFF.Transfer.Land.NoRoom>No room to land at {0}.</FFF.Transfer.Land.NoRoom>
+  <FFF.Transfer.Land.SiteGone>The landing site no longer exists.</FFF.Transfer.Land.SiteGone>
+  <FFF.Transfer.Land.ArrivedText>{0} is waiting to land at {1}.</FFF.Transfer.Land.ArrivedText>
+  <FFF.Transfer.Land.LandedLabel>Ship landed</FFF.Transfer.Land.LandedLabel>
+  <FFF.Transfer.Land.LandedText>{0} has landed at {1}.</FFF.Transfer.Land.LandedText>
+  <FFF.Transfer.Land.Moved>The chosen spot was blocked, so it landed at the nearest open spot.</FFF.Transfer.Land.Moved>
+</LanguageData>

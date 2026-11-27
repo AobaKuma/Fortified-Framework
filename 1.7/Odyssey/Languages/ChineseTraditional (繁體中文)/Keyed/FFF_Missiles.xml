@@ -1,0 +1,1367 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 飛彈、防空、電子戰、砲兵、導彈陣地、海上平台（2026-11 從 DMSE 移入，鍵名由 DMSE.* 改成 FFF.*） -->
+  <!-- EN: no detection -->
+  <FFF.AirAlert.Stage1>無探測</FFF.AirAlert.Stage1>
+  <!-- EN: early warning -->
+  <FFF.AirAlert.Stage2>預警</FFF.AirAlert.Stage2>
+  <!-- EN: passive intercept -->
+  <FFF.AirAlert.Stage3>被動攔截</FFF.AirAlert.Stage3>
+  <!-- EN: active intercept -->
+  <FFF.AirAlert.Stage4>主動攔截</FFF.AirAlert.Stage4>
+  <!-- EN: blockade -->
+  <FFF.AirAlert.Stage5>封鎖</FFF.AirAlert.Stage5>
+  <!-- EN: Air alert: {0} ({1}) -->
+  <FFF.AirAlert.InspectStage>防空警戒：{0}（{1}）</FFF.AirAlert.InspectStage>
+  <!-- EN: Disabled: {0} -->
+  <FFF.AirAlert.InspectUnavailable>失能：{0}</FFF.AirAlert.InspectUnavailable>
+  <!-- EN: Blockade in {0} -->
+  <FFF.AirAlert.InspectBlockadePending>封鎖將於 {0} 後生效</FFF.AirAlert.InspectBlockadePending>
+  <!-- EN: Blockade: {0} tiles -->
+  <FFF.AirAlert.InspectBlockadeActive>封鎖中：{0} 格</FFF.AirAlert.InspectBlockadeActive>
+  <!-- EN: no air defense -->
+  <FFF.AirAlert.Unavailable.NoEquipment>無防空設備</FFF.AirAlert.Unavailable.NoEquipment>
+  <!-- EN: no air-defense node -->
+  <FFF.AirAlert.Unavailable.NoNode>無防空節點</FFF.AirAlert.Unavailable.NoNode>
+  <!-- EN: radar starting -->
+  <FFF.AirAlert.Unavailable.WarmingUp>雷達啟動中</FFF.AirAlert.Unavailable.WarmingUp>
+  <!-- EN: radar suppressed -->
+  <FFF.AirAlert.Unavailable.RadarDown>雷達遭壓制</FFF.AirAlert.Unavailable.RadarDown>
+  <!-- EN: no interceptors -->
+  <FFF.AirAlert.Unavailable.NoAmmo>攔截彈耗盡</FFF.AirAlert.Unavailable.NoAmmo>
+  <!-- EN: no fire control -->
+  <FFF.AirAlert.Unavailable.NoFireControl>無火控</FFF.AirAlert.Unavailable.NoFireControl>
+  <!-- EN: no radar coverage -->
+  <FFF.AirAlert.Unavailable.NoTracking>無雷達覆蓋</FFF.AirAlert.Unavailable.NoTracking>
+  <!-- EN: Blockade announced -->
+  <FFF.AirAlert.BlockadeNoticeLabel>防空封鎖公告</FFF.AirAlert.BlockadeNoticeLabel>
+  <!-- EN: In {3}, {0} will close the airspace within {2} tiles of {1}. Its air defense will fire on any non-allied craft flying through. -->
+  <FFF.AirAlert.BlockadeNoticeText>{0}將於 {3} 後封鎖{1}周邊 {2} 格空域，防空火力會攻擊飛越的非盟友載具。</FFF.AirAlert.BlockadeNoticeText>
+  <!-- EN: Blockade in effect -->
+  <FFF.AirAlert.BlockadeActiveLabel>防空封鎖生效</FFF.AirAlert.BlockadeActiveLabel>
+  <!-- EN: {0} has closed the airspace within {2} tiles of {1}. Non-allied craft flying through will be fired on. -->
+  <FFF.AirAlert.BlockadeActiveText>{0}已封鎖{1}周邊 {2} 格空域，飛越的非盟友載具會遭到攻擊。</FFF.AirAlert.BlockadeActiveText>
+  <!-- EN: {0} called off the blockade at {1}. -->
+  <FFF.AirAlert.BlockadeCancelled>{0}取消了{1}的封鎖。</FFF.AirAlert.BlockadeCancelled>
+  <!-- EN: {0} lifted the blockade at {1}. -->
+  <FFF.AirAlert.BlockadeLifted>{0}解除了{1}的封鎖。</FFF.AirAlert.BlockadeLifted>
+  <!-- EN: {1} is intercepting your missile. -->
+  <FFF.AirAlert.EngagingPlayer>{1}正在攔截你的導彈。</FFF.AirAlert.EngagingPlayer>
+  <!-- EN: Neutral air defense -->
+  <FFF.AirAlert.NeutralInterceptLabel>中立防空攔截</FFF.AirAlert.NeutralInterceptLabel>
+  <!-- EN: {1} ({0}) will intercept non-allied missiles in its airspace, including yours. -->
+  <FFF.AirAlert.NeutralInterceptText>{0}的{1}會攔截飛越其空域的非盟友導彈，包括你的。</FFF.AirAlert.NeutralInterceptText>
+  <!-- EN: Interceptor disarmed: {0} is allied. -->
+  <FFF.AirAlert.InterceptorSafed>攔截彈已解除：{0}屬於盟友。</FFF.AirAlert.InterceptorSafed>
+  <!-- EN: Route crosses {0}'s blockade ({1}, {2} tiles); its air defense will fire on you. -->
+  <FFF.Airspace.Blocked>航線穿越{0}的封鎖區（{1}，{2} 格），會遭到防空火力攻擊。</FFF.Airspace.Blocked>
+  <!-- EN: {0} "{1}" -->
+  <FFF.Missile.DesignNameLabel>{0}「{1}」</FFF.Missile.DesignNameLabel>
+  <!-- EN: Configure assembly -->
+  <FFF.Bench.Open>裝配設定</FFF.Bench.Open>
+  <!-- EN: Choose a missile body and its parts, name the design and place an order. Colonists bring the materials and assemble the missiles here. -->
+  <FFF.Bench.OpenDesc>選擇彈體與部件、命名設計並下單。小人會把材料搬來，在這裡組裝導彈。</FFF.Bench.OpenDesc>
+  <!-- EN: Cancel order -->
+  <FFF.Bench.CancelOrder>取消訂單</FFF.Bench.CancelOrder>
+  <!-- EN: Cancel the current order. Materials already delivered are returned next to the bench. -->
+  <FFF.Bench.CancelOrderDesc>取消目前的訂單。已送達的材料會全數退回台旁。</FFF.Bench.CancelOrderDesc>
+  <!-- EN: Cancel this order? Materials already delivered will be returned next to the bench. -->
+  <FFF.Bench.CancelOrderConfirm>確定取消這張訂單？已送達的材料會全數退回台旁。</FFF.Bench.CancelOrderConfirm>
+  <!-- EN: Missile order finished: {0}. -->
+  <FFF.Bench.OrderDone>導彈訂單完成：{0}。</FFF.Bench.OrderDone>
+  <!-- EN: Output rack full: move finished missiles off the bench. -->
+  <FFF.Bench.OutputFull>出廠暫存已滿：請先搬走台上的成品。</FFF.Bench.OutputFull>
+  <!-- EN: Order: {0} ({1} left) -->
+  <FFF.Bench.InspectOrder>訂單：{0}（剩 {1} 枚）</FFF.Bench.InspectOrder>
+  <!-- EN: Assembly progress: {0} -->
+  <FFF.Bench.InspectProgress>施工進度：{0}</FFF.Bench.InspectProgress>
+  <!-- EN: This missile body cannot be built at an assembly bench. -->
+  <FFF.Bench.NotProducible>這種彈體無法在組裝台生產。</FFF.Bench.NotProducible>
+  <!-- EN: Requires research: {0} -->
+  <FFF.Bench.NeedsResearch>需要研究：{0}</FFF.Bench.NeedsResearch>
+  <!-- EN: Choose a missile body on the left to start a design. -->
+  <FFF.Bench.EmptyHint>從左側選擇彈體開始設計。</FFF.Bench.EmptyHint>
+  <!-- EN: Load design -->
+  <FFF.Bench.LoadDesign>載入方案</FFF.Bench.LoadDesign>
+  <!-- EN: Save design -->
+  <FFF.Bench.SaveDesign>保存方案</FFF.Bench.SaveDesign>
+  <!-- EN: Order in progress. Cancel the order to change the design. -->
+  <FFF.Bench.LockedWhileOrdered>訂單進行中，取消訂單後才能修改。</FFF.Bench.LockedWhileOrdered>
+  <!-- EN: If equipped: -->
+  <FFF.Bench.IfEquipped>換上後：</FFF.Bench.IfEquipped>
+  <!-- EN: Name suggestions -->
+  <FFF.Bench.NameCandidates>名稱候選</FFF.Bench.NameCandidates>
+  <!-- EN: Strike -->
+  <FFF.Bench.Group.Strike>打擊</FFF.Bench.Group.Strike>
+  <!-- EN: Guidance -->
+  <FFF.Bench.Group.Guidance>導引</FFF.Bench.Group.Guidance>
+  <!-- EN: Survivability -->
+  <FFF.Bench.Group.Survival>生存</FFF.Bench.Group.Survival>
+  <!-- EN: Blast radius -->
+  <FFF.Bench.Stat.Radius>爆炸半徑</FFF.Bench.Stat.Radius>
+  <!-- EN: Targeting -->
+  <FFF.Bench.Stat.Guidance>導引方式</FFF.Bench.Stat.Guidance>
+  <!-- EN: Scatter -->
+  <FFF.Bench.Stat.Scatter>散布</FFF.Bench.Stat.Scatter>
+  <!-- EN: Damage type -->
+  <FFF.Bench.Stat.DamageType>傷害類型</FFF.Bench.Stat.DamageType>
+  <!-- EN: Penetrates thick roof -->
+  <FFF.Bench.Stat.ThickRoof>穿透厚岩頂</FFF.Bench.Stat.ThickRoof>
+  <!-- EN: World speed -->
+  <FFF.Bench.Stat.Speed>世界航速</FFF.Bench.Stat.Speed>
+  <!-- EN: Terminal updates -->
+  <FFF.Bench.Stat.TerminalUpdates>終端更新次數</FFF.Bench.Stat.TerminalUpdates>
+  <!-- EN: Fire-control channels -->
+  <FFF.Bench.Stat.Channels>火控通道</FFF.Bench.Stat.Channels>
+  <!-- EN: Loiter time -->
+  <FFF.Bench.Stat.Loiter>盤旋時間</FFF.Bench.Stat.Loiter>
+  <!-- EN: Radar signature -->
+  <FFF.Bench.Stat.Signature>雷達截面</FFF.Bench.Stat.Signature>
+  <!-- EN: Chaff charges -->
+  <FFF.Bench.Stat.Chaff>干擾次數</FFF.Bench.Stat.Chaff>
+  <!-- EN: Jamming strength -->
+  <FFF.Bench.Stat.Jam>干擾強度</FFF.Bench.Stat.Jam>
+  <!-- EN: No materials needed -->
+  <FFF.Bench.NoMaterials>不需要材料</FFF.Bench.NoMaterials>
+  <!-- EN: short {0} -->
+  <FFF.Bench.Short>缺 {0}</FFF.Bench.Short>
+  <!-- EN: Keep on bench -->
+  <FFF.Bench.Output.KeepOnBench>留在台上</FFF.Bench.Output.KeepOnBench>
+  <!-- EN: Finished missiles wait on the bench. Launchers that accept them load straight from it. -->
+  <FFF.Bench.Output.KeepOnBenchDesc>成品留在台上，接受它的發射平台會直接從台上裝填。</FFF.Bench.Output.KeepOnBenchDesc>
+  <!-- EN: Finished missiles are taken off the bench and hauled to the best storage. -->
+  <FFF.Bench.Output.SendToStorageDesc>成品出廠後會被取下並搬到最合適的倉儲。</FFF.Bench.Output.SendToStorageDesc>
+  <!-- EN: Missile {0} of {1} · {2} -->
+  <FFF.Bench.Progress>第 {0} / {1} 枚 · {2}</FFF.Bench.Progress>
+  <!-- EN: gathering materials -->
+  <FFF.Bench.State.Collecting>正在蒐集材料</FFF.Bench.State.Collecting>
+  <!-- EN: ready to assemble -->
+  <FFF.Bench.State.Ready>待施工</FFF.Bench.State.Ready>
+  <!-- EN: assembling -->
+  <FFF.Bench.State.Working>施工中</FFF.Bench.State.Working>
+  <!-- EN: waiting for space on the bench -->
+  <FFF.Bench.State.OutputBlocked>等待台上騰出空位</FFF.Bench.State.OutputBlocked>
+  <!-- EN: Place order -->
+  <FFF.Bench.PlaceOrder>下單</FFF.Bench.PlaceOrder>
+  <!-- EN: Complete now -->
+  <FFF.Bench.InstantComplete>立即完成</FFF.Bench.InstantComplete>
+  <!-- EN: Choose a missile body. -->
+  <FFF.Bench.Block.NoBody>請選擇彈體。</FFF.Bench.Block.NoBody>
+  <!-- EN: The design name contains unsupported characters. -->
+  <FFF.Bench.Block.BadName>設計名稱含有不支援的字元。</FFF.Bench.Block.BadName>
+  <!-- EN: Not enough {0} yet (short {1}); colonists will wait for it. -->
+  <FFF.Bench.Warn.Short>{0} 目前不足（缺 {1}），小人會等到有料再做。</FFF.Bench.Warn.Short>
+  <!-- EN: No launcher on this map accepts this missile yet. -->
+  <FFF.Bench.Warn.NoLauncher>這張地圖上還沒有接受此導彈的發射平台。</FFF.Bench.Warn.NoLauncher>
+  <!-- EN: {0} missile(s), about {1} h of work -->
+  <FFF.Bench.Summary>共 {0} 枚，約 {1} 小時工時</FFF.Bench.Summary>
+  <!-- EN: Lock or unlock the design's name. When locked, the name will not regenerate when parts are changed. -->
+  <FFF.Bench.LockNameButtonDesc>鎖定或解鎖設計名稱。鎖定時，設計名稱不會因為更換部件而自動產生。</FFF.Bench.LockNameButtonDesc>
+  <!-- EN: Design name lock is on. The name will not regenerate when changing parts. -->
+  <FFF.Bench.LockNameOn>設計名稱鎖定。設計名稱不會因為更換部件而自動產生。</FFF.Bench.LockNameOn>
+  <!-- EN: Design name lock is off. The name will regenerate when changing parts. -->
+  <FFF.Bench.LockNameOff>設計名稱解鎖。設計名稱會因為更換部件而自動產生。</FFF.Bench.LockNameOff>
+  <!-- EN: Per missile: {0}\nThis order: {1}\nIn storage: {2} -->
+  <FFF.Bench.MaterialTip>每枚：{0}\n本次訂單：{1}\n倉庫現有：{2}</FFF.Bench.MaterialTip>
+  <!-- EN: About {0} h with your fastest available crafter (work speed {1}). -->
+  <FFF.Bench.WorkTimeTip>以目前最快可用的殖民者估算約 {0} 小時（工作速度 {1}）。</FFF.Bench.WorkTimeTip>
+  <!-- EN: Loitering munitions -->
+  <!-- EN: Light missiles -->
+  <!-- EN: Medium missiles -->
+  <!-- EN: Ballistic missiles -->
+  <!-- EN: Missile designs -->
+  <FFF.Blueprint.Title>裝配方案</FFF.Blueprint.Title>
+  <!-- EN: No saved designs yet. Use "Save design" at an assembly bench. -->
+  <FFF.Blueprint.Empty>還沒有方案。可在組裝台按「保存方案」。</FFF.Blueprint.Empty>
+  <!-- EN: Open folder -->
+  <FFF.Blueprint.OpenFolder>打開資料夾</FFF.Blueprint.OpenFolder>
+  <!-- EN: A design named "{0}" already exists. Overwrite it? -->
+  <FFF.Blueprint.OverwriteConfirm>已有名為「{0}」的方案，要覆蓋嗎？</FFF.Blueprint.OverwriteConfirm>
+  <!-- EN: Design saved: {0} -->
+  <FFF.Blueprint.Saved>方案已儲存：{0}</FFF.Blueprint.Saved>
+  <!-- EN: Could not save the design: {0} -->
+  <FFF.Blueprint.SaveFailed>無法儲存方案：{0}</FFF.Blueprint.SaveFailed>
+  <!-- EN: Missing definition: {0} -->
+  <FFF.Blueprint.MissingDef>缺少定義：{0}</FFF.Blueprint.MissingDef>
+  <!-- EN: Part does not fit this body: {0} -->
+  <FFF.Blueprint.Incompatible>部件不適用此彈體：{0}</FFF.Blueprint.Incompatible>
+  <!-- EN: Undetected -->
+  <FFF.BVR.World.Undetected>未偵測</FFF.BVR.World.Undetected>
+  <!-- EN: Detected -->
+  <FFF.BVR.World.Detected>已偵測</FFF.BVR.World.Detected>
+  <!-- EN: Fire-control lock -->
+  <FFF.BVR.World.Locking>火控鎖定中</FFF.BVR.World.Locking>
+  <!-- EN: Interceptor inbound -->
+  <FFF.BVR.World.InFlight>攔截彈接近中</FFF.BVR.World.InFlight>
+  <!-- EN: Destination: {0}\nETA: {1}\nStatus: {2}\nIntercept attempts: {3} -->
+  <FFF.BVR.World.TrackInspect>目的地：{0}\n預計抵達：{1}\n狀態：{2}\n已嘗試攔截：{3} 次</FFF.BVR.World.TrackInspect>
+  <!-- EN: World search radius: {0} tiles (before target modifiers) -->
+  <FFF.BVR.World.RadarRange>世界搜索半徑：{0} 格（目標修正前）</FFF.BVR.World.RadarRange>
+  <!-- EN: Effective radius: {0} tiles -->
+  <FFF.BVR.World.EffectiveRanges>有效半徑：{0} 格</FFF.BVR.World.EffectiveRanges>
+  <!-- EN: {0} {1} -->
+  <FFF.BVR.World.EffectiveRangeEntry>{0} {1}</FFF.BVR.World.EffectiveRangeEntry>
+  <!-- EN: Incoming missile detected -->
+  <FFF.BVR.World.DetectedLetter>偵測到來襲導彈</FFF.BVR.World.DetectedLetter>
+  <!-- EN: Radar has detected {0} approaching {1}.\n\nEstimated arrival: {2}. World air defense is attempting to engage; any surviving missile will face local terminal defenses. -->
+  <FFF.BVR.World.DetectedLetterText>雷達偵測到 {0} 正接近 {1}。\n\n預計於 {2} 後抵達。世界層防空正嘗試接戰，漏網導彈抵達後將交由當地末端防禦處理。</FFF.BVR.World.DetectedLetterText>
+  <!-- EN: {0} was intercepted by {1}. -->
+  <FFF.BVR.World.Intercepted>{0} 已被 {1} 攔截。</FFF.BVR.World.Intercepted>
+  <!-- EN: An interceptor missed {0}. -->
+  <FFF.BVR.World.Missed>攔截彈未能命中 {0}。</FFF.BVR.World.Missed>
+  <!-- EN: {0} changed course and evaded the interceptor. -->
+  <FFF.BVR.World.Evaded>{0} 改變航向，避開了攔截彈。</FFF.BVR.World.Evaded>
+  <!-- EN: {0} dispensed chaff and broke the fire-control lock. -->
+  <FFF.BVR.World.Chaff>{0} 施放箔條／干擾絲，打斷了火控鎖定。</FFF.BVR.World.Chaff>
+  <!-- EN: {0} hit the air-defense node at {1}: stocks damaged, radar suppressed. -->
+  <FFF.BVR.World.AbstractStrike>{0} 命中 {1} 的防空節點：庫存受損、雷達被壓制。</FFF.BVR.World.AbstractStrike>
+  <!-- EN: Target: {0}\nTime to intercept: {1} -->
+  <FFF.BVR.World.InterceptorInspect>目標：{0}\n預計會合：{1}</FFF.BVR.World.InterceptorInspect>
+  <!-- EN: Air defense: {0}/{1} interceptors\nSearch radius: {2} tiles; fire-control channels: {3} -->
+  <FFF.BVR.World.AbstractInspect>防空庫存：{0}/{1} 枚攔截彈\n搜索半徑：{2} 格；火控通道：{3}</FFF.BVR.World.AbstractInspect>
+  <!-- EN: Detected incoming missiles -->
+  <FFF.BVR.World.IncomingAlert>已偵測來襲導彈</FFF.BVR.World.IncomingAlert>
+  <!-- EN: Incoming missiles: {0} ({1}) -->
+  <FFF.BVR.World.IncomingLabel>來襲導彈：{0}（{1}）</FFF.BVR.World.IncomingLabel>
+  <!-- EN: Left/right click to cycle between world missile tracks. -->
+  <FFF.BVR.World.ClickHint>左／右鍵循環檢視世界導彈航跡。</FFF.BVR.World.ClickHint>
+  <!-- EN: Show air-defense coverage -->
+  <FFF.BVR.World.ShowCoverage>顯示防空覆蓋</FFF.BVR.World.ShowCoverage>
+  <!-- EN: Always display all player radar coverage circles on the world map. Selected sites always show their own coverage. Circles assume an unstealthed target of size 1. -->
+  <FFF.BVR.World.ShowCoverageDesc>在世界地圖常駐顯示所有玩家雷達覆蓋圈。選取據點時一律顯示該據點的覆蓋圈。圈線以隱身 0、尺寸 1 的目標為準。</FFF.BVR.World.ShowCoverageDesc>
+  <!-- EN: Channels: artillery {0}, local {1}, world {2}, strike {3}; free {4} -->
+  <FFF.BVR.World.ChannelBreakdown>通道：火砲 {0}、地圖內 {1}、世界層 {2}、打擊導引 {3}；空閒 {4}</FFF.BVR.World.ChannelBreakdown>
+  <!-- EN: Missile type: {0} -->
+  <FFF.BVR.World.MissileType>導彈類型：{0}</FFF.BVR.World.MissileType>
+  <!-- EN: Pod shot down: colonists missing -->
+  <FFF.BVR.PawnsMissingLabel>運輸艙被擊落：人員失蹤</FFF.BVR.PawnsMissingLabel>
+  <!-- EN: A transport carrying your people was shot down by air defense. No bodies were recovered; the following are missing:\n\n{0} -->
+  <FFF.BVR.PawnsMissingText>一艘載有你的人員的運輸艙被防空火力擊落。沒有找到遺體，以下人員失蹤：\n\n{0}</FFF.BVR.PawnsMissingText>
+  <!-- EN: The route crosses {0}'s blockade around {1} ({2} tiles). Its air defense fires on anything flying through. -->
+  <FFF.BVR.InterceptRiskRoute>航線穿越{0}在{1}周邊的封鎖區（{2} 格）。其防空火力會攻擊所有飛越的載具。</FFF.BVR.InterceptRiskRoute>
+  <!-- EN: {0} is covered by {1} air-defense radar. Drop pods and shuttles landing there may be shot down. -->
+  <FFF.BVR.InterceptRiskDestination>{0}處於{1}的防空雷達覆蓋之下。降落到那裡的運輸艙和穿梭機可能會被擊落。</FFF.BVR.InterceptRiskDestination>
+  <!-- EN: Anyone aboard a downed drop pod or shuttle goes missing. Gravships and transfer ships are damaged instead of destroyed.\n\nLaunch anyway? -->
+  <FFF.BVR.InterceptRiskFooter>被擊落的運輸艙或穿梭機上的人員將會失蹤。重力船和轉移艦被擊中只會受損，不會被摧毀。\n\n仍要發射嗎？</FFF.BVR.InterceptRiskFooter>
+  <!-- EN: {0}'s air defense at {1} fired on {2}. -->
+  <FFF.Blockade.Engaging>{0}在{1}的防空系統向{2}開火。</FFF.Blockade.Engaging>
+  <!-- EN: {0}: one transport was shot down by {1}. {2} remaining. -->
+  <FFF.Blockade.PodDown>{0}：一艘運輸工具被{1}擊落，剩餘 {2} 艘。</FFF.Blockade.PodDown>
+  <!-- EN: {0} was hit by {1}'s air defense. {2} structures aboard were damaged. -->
+  <FFF.Blockade.GravshipHit>{0}被{1}的防空火力擊中，船上 {2} 座建築受損。</FFF.Blockade.GravshipHit>
+  <!-- EN: Transfer ship hit -->
+  <FFF.Blockade.TransferHitLabel>轉移艦被擊中</FFF.Blockade.TransferHitLabel>
+  <!-- EN: {0} was hit by {1}'s air defense while flying through its blockade. Explosions tore through {2} spots aboard. -->
+  <FFF.Blockade.TransferHitText>{0}在飛越{1}的封鎖區時被防空火力擊中，船上有 {2} 處發生爆炸。</FFF.Blockade.TransferHitText>
+  <!-- EN: Flight altitude: {0} -->
+  <FFF.BVR.World.TrackAltitude>飛行高度：{0}</FFF.BVR.World.TrackAltitude>
+  <!-- EN: Outside intercept altitude -->
+  <FFF.BVR.World.AltitudeDenied>超出攔截高度</FFF.BVR.World.AltitudeDenied>
+  <!-- EN: Intercept altitude: {0} – {1} -->
+  <FFF.BVR.FireControlAltitude>攔截高度：{0} – {1}</FFF.BVR.FireControlAltitude>
+  <!-- EN: MIRV warhead (group #{0}) -->
+  <FFF.Mirv.Role.Warhead>分導彈頭（群組 #{0}）</FFF.Mirv.Role.Warhead>
+  <!-- EN: MIRV decoy (group #{0}) -->
+  <FFF.Mirv.Role.Decoy>分導誘餌（群組 #{0}）</FFF.Mirv.Role.Decoy>
+  <!-- EN: Releases {0} warheads and {1} decoys in {2} -->
+  <FFF.Mirv.WillRelease>將於 {2} 後釋放 {0} 枚彈頭、{1} 枚誘餌</FFF.Mirv.WillRelease>
+  <!-- EN: Releasing: {0}/{1} -->
+  <FFF.Mirv.Releasing>釋放中：{0}/{1}</FFF.Mirv.Releasing>
+  <!-- EN: Decoy identified: {0} is not a real warhead. Our air defense will ignore it. -->
+  <FFF.BVR.World.DecoyIdentified>識破誘餌：{0} 不是真彈頭，我方防空將不再理會它。</FFF.BVR.World.DecoyIdentified>
+  <!-- EN: Identified as a decoy -->
+  <FFF.BVR.World.Status.DecoyIdentified>已識破為誘餌</FFF.BVR.World.Status.DecoyIdentified>
+  <!-- EN: Decoy recognition: {0} -->
+  <FFF.BVR.FireControlDecoy>誘餌識別率：{0}</FFF.BVR.FireControlDecoy>
+  <!-- EN: {0} warheads -->
+  <FFF.Mirv.Short.Warheads>{0} 枚彈頭</FFF.Mirv.Short.Warheads>
+  <!-- EN: warhead flies on -->
+  <FFF.Mirv.Short.Continues>彈頭續飛</FFF.Mirv.Short.Continues>
+  <!-- EN: {0} + {1} decoys -->
+  <FFF.Mirv.Short.WithDecoys>{0}＋{1} 枚誘餌</FFF.Mirv.Short.WithDecoys>
+  <!-- EN: Releases {0} before arrival, one every {1} ticks in random order. -->
+  <FFF.Mirv.Detail.WhenTicks>抵達前 {0} 開始釋放，每 {1} tick 一枚，順序隨機。</FFF.Mirv.Detail.WhenTicks>
+  <!-- EN: Releases at {0} of the flight, one every {1} ticks in random order. -->
+  <FFF.Mirv.Detail.WhenProgress>飛到航程的 {0} 時開始釋放，每 {1} tick 一枚，順序隨機。</FFF.Mirv.Detail.WhenProgress>
+  <!-- EN: {0}× {1} -->
+  <FFF.Mirv.Detail.Group>{0}× {1}</FFF.Mirv.Detail.Group>
+  <!-- EN: (carries the missile's {0}) -->
+  <FFF.Mirv.Detail.Inherits>（帶著導彈的{0}）</FFF.Mirv.Detail.Inherits>
+  <!-- EN: (survives re-entry and falls on the target, inert) -->
+  <FFF.Mirv.Detail.DecoyReachesMap>（能撐過再入並落到目標，不爆炸）</FFF.Mirv.Detail.DecoyReachesMap>
+  <!-- EN: (burns up on re-entry) -->
+  <FFF.Mirv.Detail.DecoyBurnsUp>（再入時燒毀）</FFF.Mirv.Detail.DecoyBurnsUp>
+  <!-- EN: ({0} chance to survive re-entry) -->
+  <FFF.Mirv.Detail.DecoySurvives>（{0} 機率撐過再入）</FFF.Mirv.Detail.DecoySurvives>
+  <!-- EN: The bus is gone once everything is released; shooting it down earlier destroys all warheads at once. -->
+  <FFF.Mirv.Detail.BusRetires>全部放完後匯流排消失；在那之前被擊落，所有彈頭一次全毀。</FFF.Mirv.Detail.BusRetires>
+  <!-- EN: The missile itself keeps flying as the real warhead. -->
+  <FFF.Mirv.Detail.BusContinues>導彈本身繼續飛行，是真正的彈頭。</FFF.Mirv.Detail.BusContinues>
+  <!-- EN: All warheads strike the same target. Decoys look like the warhead on radar until a fire control radar recognises them. -->
+  <FFF.Mirv.Detail.SameTarget>所有彈頭打擊同一目標。在被火控雷達識破之前，誘餌在雷達上和彈頭一模一樣。</FFF.Mirv.Detail.SameTarget>
+  <!-- EN: MIRV group #{0}: {1} tracks ({2} warheads, {3} decoys), arriving in {4}–{5} -->
+  <FFF.Mirv.AlertLine>分導群組 #{0}：{1} 條航跡（彈頭 {2}、誘餌 {3}），{4}–{5} 後抵達</FFF.Mirv.AlertLine>
+  <!-- EN: War room -->
+  <FFF.EW.Tab>戰情</FFF.EW.Tab>
+  <!-- EN: Standby -->
+  <FFF.EW.Throttle.Standby>待機</FFF.EW.Throttle.Standby>
+  <!-- EN: Power level: {0} ({1} W) -->
+  <FFF.EW.Throttle.Inspect>功率段位：{0}（{1} 瓦）</FFF.EW.Throttle.Inspect>
+  <!-- EN: Power: {0} -->
+  <FFF.EW.Throttle.Gizmo>功率：{0}</FFF.EW.Throttle.Gizmo>
+  <!-- EN: Set the power level. Lower power shortens range and weakens the effect but draws less and is harder for anti-radiation missiles to pick. Standby stops the device completely and still draws idle power. -->
+  <FFF.EW.Throttle.GizmoDesc>設定功率段位。低功率會縮短距離、減弱效果，但耗電較少，也較不容易被反輻射導彈選中。待機時裝置完全停止運作，仍消耗待機電力。</FFF.EW.Throttle.GizmoDesc>
+  <!-- EN: Jamming radius {0} world tiles, strength {1}, covering {2} hostile tracks -->
+  <FFF.EW.Jammer.Inspect>干擾半徑 {0} 世界格，強度 {1}，覆蓋 {2} 條敵對航跡</FFF.EW.Jammer.Inspect>
+  <!-- EN: Comms consoles on this map are disabled while jamming. -->
+  <FFF.EW.Jammer.CommsBlocked>干擾中，本圖通訊台停用。</FFF.EW.Jammer.CommsBlocked>
+  <!-- EN: comms are being jammed -->
+  <FFF.EW.Jammer.CommsBlockedReason>通訊遭到干擾</FFF.EW.Jammer.CommsBlockedReason>
+  <!-- EN: A jammer is transmitting: comms consoles on this map are disabled. -->
+  <FFF.EW.Jammer.CommsBlockedMessage>干擾機發射中：本圖通訊台已停用。</FFF.EW.Jammer.CommsBlockedMessage>
+  <!-- EN: Show jamming ring -->
+  <FFF.EW.Jammer.ShowRing>顯示干擾圈</FFF.EW.Jammer.ShowRing>
+  <!-- EN: Jamming radius {0} tiles (red ring on the world map). Jump to this colony on the world map. -->
+  <FFF.EW.Jammer.ShowRingDesc>干擾半徑 {0} 格（世界地圖紅圈）。跳到世界地圖上的這個殖民地。</FFF.EW.Jammer.ShowRingDesc>
+  <!-- EN: {0} lost its seeker to jamming and will fall on inertial guidance. -->
+  <FFF.EW.Jammer.GuidanceDenied>{0} 的導引頭被干擾打掉，將只靠慣性落地。</FFF.EW.Jammer.GuidanceDenied>
+  <!-- EN: {0} lost guidance to {1}'s jamming and went down off-map. -->
+  <FFF.EW.Jammer.JammedOut>{0} 被 {1} 的干擾打掉導引，在地圖外墜毀。</FFF.EW.Jammer.JammedOut>
+  <!-- EN: Seeker jammed: the missile is falling on inertial guidance. -->
+  <FFF.EW.Jammer.ArrivedInertial>導引頭遭干擾：導彈只靠慣性落地。</FFF.EW.Jammer.ArrivedInertial>
+  <!-- EN: Comms jammed -->
+  <FFF.EW.Alert.CommsJammed>通訊遭干擾</FFF.EW.Alert.CommsJammed>
+  <!-- EN: A jammer is transmitting on this map, so its comms consoles cannot be used. Set the jammer to standby or switch it off to restore comms. -->
+  <FFF.EW.Alert.CommsJammedDesc>這張地圖上有干擾機正在發射，所以通訊台無法使用。把干擾機切到待機或關機即可恢復通訊。</FFF.EW.Alert.CommsJammedDesc>
+  <!-- EN: No operator: no skill bonus -->
+  <FFF.EW.Console.NoOperator>沒有操作員：無技能加成</FFF.EW.Console.NoOperator>
+  <!-- EN: Operator: {0} -->
+  <FFF.EW.Console.Operator>操作員：{0}</FFF.EW.Console.Operator>
+  <!-- EN: No power: remote control and rules cannot be changed. The current rules stay in effect. -->
+  <FFF.EW.Tab.NoPower>沒有電力：無法遙控或修改規則，目前的規則繼續生效。</FFF.EW.Tab.NoPower>
+  <!-- EN: Radars online -->
+  <FFF.EW.Tab.RadarsOnline>線上雷達</FFF.EW.Tab.RadarsOnline>
+  <!-- EN: strength {0}, covering {1} tracks -->
+  <FFF.EW.Tab.JammerRow>強度 {0}，覆蓋 {1} 條航跡</FFF.EW.Tab.JammerRow>
+  <!-- EN: Enemy jamming -->
+  <FFF.EW.Tab.LocalJam>敵方干擾</FFF.EW.Tab.LocalJam>
+  <!-- EN: base {0} × power {1} × operator {2} -->
+  <FFF.EW.Tab.RadarRow>基礎 {0} × 功率 {1} × 操作員 {2}</FFF.EW.Tab.RadarRow>
+  <!-- EN: Emissions silence is on: radars and jammers are off. -->
+  <FFF.EW.Tab.SilencedWarning>電磁靜默中：雷達與干擾機已關閉。</FFF.EW.Tab.SilencedWarning>
+  <!-- EN: Remote control -->
+  <FFF.EW.Tab.Remote>裝置遙控</FFF.EW.Tab.Remote>
+  <!-- EN: On -->
+  <FFF.EW.Tab.PowerOn>開機</FFF.EW.Tab.PowerOn>
+  <!-- EN: Off -->
+  <FFF.EW.Tab.PowerOff>關機</FFF.EW.Tab.PowerOff>
+  <!-- EN: Emissions silence -->
+  <FFF.EW.Tab.Silence>一鍵靜默</FFF.EW.Tab.Silence>
+  <!-- EN: End silence -->
+  <FFF.EW.Tab.Restore>結束靜默</FFF.EW.Tab.Restore>
+  <!-- EN: Rules of engagement -->
+  <FFF.EW.Tab.Roe>交戰限制</FFF.EW.Tab.Roe>
+  <!-- EN: Operator bonus -->
+  <FFF.EW.Tab.Operator>操作員加成</FFF.EW.Tab.Operator>
+  <!-- EN: Intellectual total {0}/{1}: radar range × {2} -->
+  <FFF.EW.Tab.OperatorRange>智識合計 {0}／{1}：雷達距離 × {2}</FFF.EW.Tab.OperatorRange>
+  <!-- EN: Shooting total {0}/{1}: launcher cooldown × {2} -->
+  <FFF.EW.Tab.OperatorCooldown>射擊合計 {0}／{1}：發射冷卻 × {2}</FFF.EW.Tab.OperatorCooldown>
+  <!-- EN: Jammers -->
+  <FFF.EW.Group.Jammers>干擾機</FFF.EW.Group.Jammers>
+  <!-- EN: Search radars -->
+  <FFF.EW.Group.SearchRadars>搜索雷達</FFF.EW.Group.SearchRadars>
+  <!-- EN: Fire-control radars -->
+  <FFF.EW.Group.FireControlRadars>火控雷達</FFF.EW.Group.FireControlRadars>
+  <!-- EN: All -->
+  <FFF.EW.Group.All>全部</FFF.EW.Group.All>
+  <!-- EN: Automatic engagement -->
+  <FFF.EW.Roe.AutoEngage>自動接戰</FFF.EW.Roe.AutoEngage>
+  <!-- EN: When off, targets are still detected and alerts still fire, but interceptors are not launched. Close-in weapons keep firing. -->
+  <FFF.EW.Roe.AutoEngageDesc>關閉時仍會偵測目標、警報照常，但不發射攔截彈。近防武器照常開火。</FFF.EW.Roe.AutoEngageDesc>
+  <!-- EN: All -->
+  <FFF.EW.Roe.PolicyAll>全面</FFF.EW.Roe.PolicyAll>
+  <!-- EN: Fire on neutral factions -->
+  <FFF.EW.Roe.Neutral>對中立陣營開火</FFF.EW.Roe.Neutral>
+  <!-- EN: Air-defense channel limit -->
+  <FFF.EW.Roe.ChannelCap>防空通道上限</FFF.EW.Roe.ChannelCap>
+  <!-- EN: No limit -->
+  <FFF.EW.Roe.CapUnlimited>不限</FFF.EW.Roe.CapUnlimited>
+  <!-- EN: Loitering munitions -->
+  <!-- EN: Drop pods -->
+  <!-- EN: Ballistic missiles -->
+  <!-- EN: Air defense -->
+  <FFF.EW.Tab.StateLabel>防空狀態</FFF.EW.Tab.StateLabel>
+  <!-- EN: Auto, self-defense -->
+  <FFF.EW.Tab.StateSelfDefense>自動接戰・僅自衛</FFF.EW.Tab.StateSelfDefense>
+  <!-- EN: Auto, all targets -->
+  <FFF.EW.Tab.StateAll>自動接戰・全面</FFF.EW.Tab.StateAll>
+  <!-- EN: Emissions silence -->
+  <FFF.EW.Tab.StateSilenced>電磁靜默</FFF.EW.Tab.StateSilenced>
+  <!-- EN: Holding interceptors -->
+  <FFF.EW.Tab.StateHold>不發射攔截彈</FFF.EW.Tab.StateHold>
+  <!-- EN: No radar online -->
+  <FFF.EW.Tab.StateNoRadar>無雷達運作</FFF.EW.Tab.StateNoRadar>
+  <!-- EN: AD channels -->
+  <FFF.EW.Tab.Channels>防空通道</FFF.EW.Tab.Channels>
+  <!-- EN: Channels air defense is using / channels it can use now. The second number excludes channels held by artillery and strike guidance and applies the channel limit. -->
+  <FFF.EW.Tab.ChannelsDesc>防空佔用的通道數／防空目前可用的通道數。可用數已扣除砲擊與打擊引導佔用的通道，並套用通道上限。</FFF.EW.Tab.ChannelsDesc>
+  <!-- EN: Device performance -->
+  <FFF.EW.Tab.Performance>裝置效能</FFF.EW.Tab.Performance>
+  <!-- EN: {0} tiles -->
+  <FFF.EW.Tab.RadarRange>{0} 格</FFF.EW.Tab.RadarRange>
+  <!-- EN: {0}/{1} on -->
+  <FFF.EW.Tab.GroupStatus>{0}/{1} 開機</FFF.EW.Tab.GroupStatus>
+  <!-- EN: Not deployed -->
+  <FFF.EW.Tab.NotDeployed>未部署</FFF.EW.Tab.NotDeployed>
+  <!-- EN: Mixed -->
+  <FFF.EW.Tab.ThrottleMixed>混合</FFF.EW.Tab.ThrottleMixed>
+  <!-- EN: Switch off every radar and jammer that is on. You can restore them in one click. -->
+  <FFF.EW.Tab.SilenceDesc>關閉所有開著的雷達與干擾機，之後可一鍵還原。</FFF.EW.Tab.SilenceDesc>
+  <!-- EN: Switch back on the devices that were on before silence. -->
+  <FFF.EW.Tab.RestoreDesc>重新開啟靜默前開著的裝置。</FFF.EW.Tab.RestoreDesc>
+  <!-- EN: bonus -->
+  <FFF.EW.Tab.OperatorBonus>加成</FFF.EW.Tab.OperatorBonus>
+  <!-- EN: penalty -->
+  <FFF.EW.Tab.OperatorPenalty>懲罰</FFF.EW.Tab.OperatorPenalty>
+  <!-- EN: Engagement scope -->
+  <FFF.EW.Roe.Policy>接戰範圍</FFF.EW.Roe.Policy>
+  <!-- EN: Self-defense -->
+  <FFF.EW.Roe.PolicySelfDefense>僅自衛</FFF.EW.Roe.PolicySelfDefense>
+  <!-- EN: Self-defense only engages missiles aimed at this colony or an ally and leaves passing missiles alone. All also intercepts passing missiles. -->
+  <FFF.EW.Roe.PolicyDesc>僅自衛時只打指向本殖民地或盟友的導彈，過境的導彈不接戰。全面時也攔截過境的導彈。</FFF.EW.Roe.PolicyDesc>
+  <!-- EN: Target priority -->
+  <FFF.EW.Roe.Priority>目標優先</FFF.EW.Roe.Priority>
+  <!-- EN: First come -->
+  <FFF.EW.Roe.PriorityFirstCome>先到先打</FFF.EW.Roe.PriorityFirstCome>
+  <!-- EN: Largest -->
+  <FFF.EW.Roe.PriorityLargest>最大目標</FFF.EW.Roe.PriorityLargest>
+  <!-- EN: When channels run short, engage the soonest arrival first, or the largest radar signature first. -->
+  <FFF.EW.Roe.PriorityDesc>通道不足時，先打最快抵達的目標，或先打雷達截面最大的目標。</FFF.EW.Roe.PriorityDesc>
+  <!-- EN: Limits how many fire-control channels air defense may hold, leaving the rest for artillery and strike guidance. At 0, no interceptors are launched. -->
+  <FFF.EW.Roe.ChannelCapDesc>限制防空最多佔用幾條火控通道，把其餘通道留給砲擊與打擊引導。設為 0 時不發射攔截彈。</FFF.EW.Roe.ChannelCapDesc>
+  <!-- EN: Intercept -->
+  <FFF.EW.Roe.Intercept>攔截目標</FFF.EW.Roe.Intercept>
+  <!-- EN: fire SAM -->
+  <FFF.ManPortableSAM.Fire>發射防空導彈</FFF.ManPortableSAM.Fire>
+  <!-- EN: Lock onto an incoming threat that your radar network is tracking on this map and fire a light surface-to-air missile at it. The wielder stands still while locking on; no fire-control channel is used.\n\nMissiles loaded: {0} -->
+  <FFF.ManPortableSAM.FireDesc>鎖定雷達網正在本地圖追蹤的來襲威脅，並對它發射一枚輕型防空導彈。鎖定期間裝備者會站在原地；不占用火控通道。\n\n已裝填導彈：{0}</FFF.ManPortableSAM.FireDesc>
+  <!-- EN: No radar-tracked incoming threat in range. -->
+  <FFF.ManPortableSAM.NoTargets>射程內沒有雷達正在追蹤的來襲威脅。</FFF.ManPortableSAM.NoTargets>
+  <!-- EN: The wielder cannot fire right now. -->
+  <FFF.ManPortableSAM.NotReady>裝備者目前無法發射。</FFF.ManPortableSAM.NotReady>
+  <!-- EN: The target is gone or already engaged by another interceptor. -->
+  <FFF.ManPortableSAM.TargetLost>目標已消失或已被其他攔截彈接戰。</FFF.ManPortableSAM.TargetLost>
+  <!-- EN: {0} (arrives in {1}, hit chance {2}) -->
+  <FFF.ManPortableSAM.TargetOption>{0}（{1}後抵達，命中率 {2}）</FFF.ManPortableSAM.TargetOption>
+  <!-- EN: The next round loaded is a {0}, which cannot intercept. Fire it at a ground target first. -->
+  <FFF.ManPortableSAM.CannotIntercept>下一發裝填的是{0}，無法用於攔截。請先對地面目標發射。</FFF.ManPortableSAM.CannotIntercept>
+  <!-- EN: Engaging: {0} -->
+  <FFF.TurretGun.Engaging>交戰中：{0}</FFF.TurretGun.Engaging>
+  <!-- EN: Target is too close: minimum range is {0} cells. -->
+  <FFF.TurretGun.TooClose>目標太近，最小射程為 {0} 格。</FFF.TurretGun.TooClose>
+  <!-- EN: Target is out of range: maximum range is {0} cells. -->
+  <FFF.TurretGun.OutOfRange>目標超出射程，最大射程為 {0} 格。</FFF.TurretGun.OutOfRange>
+  <!-- EN: Range: {0} to {1} cells. Targets inside the minimum range cannot be engaged. -->
+  <FFF.TurretGun.RangeBand>射程：{0} 至 {1} 格，最小射程內的目標無法攻擊。</FFF.TurretGun.RangeBand>
+  <!-- EN: The gun is busy shelling a world map target. -->
+  <FFF.TurretGun.BarrelBusy>火砲正在砲擊世界地圖目標。</FFF.TurretGun.BarrelBusy>
+  <!-- EN: Missile body -->
+  <FFF.Card.Body>彈體</FFF.Card.Body>
+  <!-- EN: Missile item -->
+  <FFF.Card.Item>導彈物品</FFF.Card.Item>
+  <!-- EN: Size class -->
+  <FFF.Card.SizeClass>量級</FFF.Card.SizeClass>
+  <!-- EN: Loitering munition: the earliest beyond-visual-range weapon. Tilt-launched and allowed on gravships. It is slow, but its small radar signature means it is detected later. -->
+  <!-- EN: Light missile: short- to medium-range air defense or ground attack, loaded into multi-round launchers. -->
+  <!-- EN: Medium missile: cruise or anti-ballistic missions. Parts can be customized on the item or on a storage rack. -->
+  <!-- EN: Ballistic missile: long-range strike. Vertical launch only and cannot be built on a gravship. It is built and configured directly on the launch silo. -->
+  <!-- EN: Launch mode -->
+  <FFF.Card.LaunchMode>發射方式</FFF.Card.LaunchMode>
+  <!-- EN: Tilt launch -->
+  <FFF.Card.LaunchMode.Tilt>傾斜發射</FFF.Card.LaunchMode.Tilt>
+  <!-- EN: Vertical launch -->
+  <FFF.Card.LaunchMode.Vertical>垂直發射</FFF.Card.LaunchMode.Vertical>
+  <!-- EN: Tilt or vertical -->
+  <FFF.Card.LaunchMode.Both>傾斜或垂直</FFF.Card.LaunchMode.Both>
+  <!-- EN: Determines which launch platforms can load this missile. Tilt launchers can rotate and can be built on gravships. Vertical launchers have one facing and cannot be built on gravships. Launch mode does not change flight stats. -->
+  <FFF.Card.LaunchModeDesc>決定可裝填此彈的發射平台。傾斜發射架可旋轉、可建於重力船上；垂直發射架只有單一朝向，不可建於重力船上。發射方式不影響彈道數值。</FFF.Card.LaunchModeDesc>
+  <!-- EN: Launch platforms -->
+  <FFF.Card.Platforms>可用發射平台</FFF.Card.Platforms>
+  <!-- EN: Launch platforms that can load this missile, based on each platform's fixed storage settings. Click the links below to view them. -->
+  <FFF.Card.PlatformsDesc>可裝填這種導彈的發射平台（依各平台的固定儲存設定）。點擊下方連結查看平台。</FFF.Card.PlatformsDesc>
+  <!-- EN: Configured on -->
+  <FFF.Card.Customize>裝配位置</FFF.Card.Customize>
+  <!-- EN: Not configurable -->
+  <FFF.Card.Customize.None>不可改裝</FFF.Card.Customize.None>
+  <!-- EN: Missile item -->
+  <FFF.Card.Customize.Item>導彈物品</FFF.Card.Customize.Item>
+  <!-- EN: Storage building -->
+  <FFF.Card.Customize.StorageBuilding>儲存建築</FFF.Card.Customize.StorageBuilding>
+  <!-- EN: Launch platform -->
+  <FFF.Card.Customize.Launcher>發射平台</FFF.Card.Customize.Launcher>
+  <!-- EN: Fixed configuration. Parts cannot be changed. -->
+  <FFF.Card.CustomizeDesc.None>構型固定，無法更換部件。</FFF.Card.CustomizeDesc.None>
+  <!-- EN: Select the missile item and change parts in its Assembly tab. After you confirm, colonists bring the materials and do the work. You can also order it built to spec at a missile assembly bench. -->
+  <FFF.Card.CustomizeDesc.Item>選取導彈物品，在「裝配」分頁更換部件；確認後小人會搬來材料並施工。也可在導彈組裝台直接訂製。</FFF.Card.CustomizeDesc.Item>
+  <!-- EN: Parts are changed on a dedicated storage building, consuming resources. -->
+  <FFF.Card.CustomizeDesc.StorageBuilding>在專屬儲存建築上消耗資源調整部件。</FFF.Card.CustomizeDesc.StorageBuilding>
+  <!-- EN: No item form: choose the body and configure parts directly on the launch platform. -->
+  <FFF.Card.CustomizeDesc.Launcher>沒有物品型態：直接在發射平台上選擇彈體並裝配部件。</FFF.Card.CustomizeDesc.Launcher>
+  <!-- EN: Part slots -->
+  <FFF.Card.Slots>裝配槽位</FFF.Card.Slots>
+  <!-- EN: The part slots this body offers. Each slot holds at most one part. Slots the body does not have cannot be used. -->
+  <FFF.Card.SlotsDesc>此彈體開放的部件槽位。每個槽位最多裝一個部件；沒有的槽位無法裝配。</FFF.Card.SlotsDesc>
+  <!-- EN: No part is installed in this slot. -->
+  <FFF.Card.EmptySlotDesc>此槽位目前沒有部件。</FFF.Card.EmptySlotDesc>
+  <!-- EN: Damage and damage type of the main blast at the impact point. Warhead parts can add or remove damage and override the damage type. -->
+  <FFF.Card.DamageDesc>主爆炸在落點造成的傷害量與傷害類型。彈頭部件可加減傷害並覆寫傷害類型。</FFF.Card.DamageDesc>
+  <!-- EN: Radius of the main blast, in cells. Warhead and payload effects use the payload capacity N for their own area and are not affected by this value. -->
+  <FFF.Card.RadiusDesc>主爆炸的半徑（格）。戰鬥部與酬載特效另以載荷容量 N 決定範圍，不受此值影響。</FFF.Card.RadiusDesc>
+  <!-- EN: Random offset radius of the impact point from the aim point, in cells. Guidance parts tighten it. Inertial guidance has the most scatter. -->
+  <FFF.Card.ScatterDesc>落點相對瞄準點的隨機偏移半徑（格）。導引部件可收緊散布；慣性制導最大。</FFF.Card.ScatterDesc>
+  <!-- EN: {0} tiles -->
+  <FFF.Card.RangeTiles>{0} 格</FFF.Card.RangeTiles>
+  <!-- EN: Unlimited -->
+  <FFF.Card.Unlimited>不限</FFF.Card.Unlimited>
+  <!-- EN: Maximum strike distance on the world map.\nRange = (fuel × specific impulse × conversion factor + flat bonus + warhead range) × payload factor\n\nFuel: {0}\nSpecific impulse: {1}\nConversion factor: {2}\nFlat bonus: {3}\nWarhead range: {4}\nPayload factor: {5}\n\nResult: {6} -->
+  <FFF.Card.RangeDesc>世界地圖上的最大打擊距離。\n射程 =（燃料 × 比衝 × 換算係數 + 固定加成 + 戰鬥部增程）× 酬載倍率\n\n燃料：{0}\n比衝：{1}\n換算係數：{2}\n固定加成：{3}\n戰鬥部增程：{4}\n酬載倍率：{5}\n\n結果：{6}</FFF.Card.RangeDesc>
+  <!-- EN: Flight speed multiplier on the world map. Faster missiles give enemy air defense less time to engage. -->
+  <FFF.Card.SpeedDesc>世界地圖上的飛行速度倍率。越快，敵方防空可接戰的時間越短。</FFF.Card.SpeedDesc>
+  <!-- EN: Payload capacity N -->
+  <FFF.Card.PayloadCapacity>載荷容量 N</FFF.Card.PayloadCapacity>
+  <!-- EN: Set by the body. The area, count and strength of every warhead and payload effect scale with N (for example, an incendiary warhead ignites everything within N cells), so the same part is stronger on a bigger body. -->
+  <FFF.Card.PayloadCapacityDesc>由彈體決定。所有戰鬥部與酬載特效的範圍、數量與強度都以 N 換算（例如燒夷彈頭的引燃半徑 = N 格），所以同一個部件裝在大彈體上效果更強。</FFF.Card.PayloadCapacityDesc>
+  <!-- EN: Missiles that penetrate thick roofs breach the rock before detonating, and their seekers also lock onto targets under thick roofs. Other missiles that hit a thick roof only explode on the rock surface. -->
+  <FFF.Card.ThickRoofDesc>能穿透厚岩頂者會先在岩層開孔再引爆，導引頭也會鎖定厚岩頂下的目標；不能穿透者打在厚岩頂上只在岩層表面爆炸。</FFF.Card.ThickRoofDesc>
+  <!-- EN: No guidance -->
+  <FFF.Card.NoGuidance>無導引</FFF.Card.NoGuidance>
+  <!-- EN: With terminal guidance, how many times the missile can correct its impact point to the target's new position in flight (body base count plus seeker bonus). When they run out, it flies to the last known position and misses if the target has left. -->
+  <FFF.Card.TerminalUpdatesDesc>具導引能力時，飛行中可依目標新位置修正落點的次數（彈體基礎次數加上導引頭加成）。次數用完後沿最後位置飛行，目標若已離開即落空。</FFF.Card.TerminalUpdatesDesc>
+  <!-- EN: Fire-control channels the missile occupies for the whole flight. Only radio command, fire-control radar and TV guidance need continuous ground support. Autonomous seekers and preset guidance use none. Ballistic missiles use 2 channels each, others use 1; TV guidance adds 1 more. -->
+  <FFF.Card.ChannelsDesc>導彈飛行期間持續占用的火控通道數。只有無線電指令、火控雷達與電視導引需要地面持續支援；自主尋標與預先裝定的導引不占通道。彈道導彈每枚占 2 條，其他占 1 條；電視導引再多占 1 條。</FFF.Card.ChannelsDesc>
+  <!-- EN: 1 per missile (2 ballistic, TV +1) -->
+  <FFF.Card.ChannelsPerMissile>每枚 1（彈道 2；電視導引 +1）</FFF.Card.ChannelsPerMissile>
+  <!-- EN: While loitering, the seeker searches again every {0}. Terminal defenses can still engage it during this time. -->
+  <FFF.Card.LoiterRetry>盤旋期間每 {0} 重新搜尋一次目標，期間仍會被末端防禦接戰。</FFF.Card.LoiterRetry>
+  <!-- EN: Only loitering munitions can loiter. Other bodies with this part do not. -->
+  <FFF.Card.LoiterOnlyLoitering>只有巡飛彈能使用盤旋能力；裝在其他彈體上不會盤旋。</FFF.Card.LoiterOnlyLoitering>
+  <!-- EN: No guidance part installed: uses the body's built-in targeting. -->
+  <FFF.Card.BuiltInGuidance>未裝導引部件，使用彈體內建的選目標方式。</FFF.Card.BuiltInGuidance>
+  <!-- EN: Built for moving targets on the world map: the flight path re-aims more often. -->
+  <FFF.Card.TracksMobile>針對世界地圖上的移動目標：航跡會更頻繁地重新瞄準。</FFF.Card.TracksMobile>
+  <!-- EN: Terminal guidance -->
+  <FFF.Card.TerminalGuidance>導引能力</FFF.Card.TerminalGuidance>
+  <!-- EN: Provides terminal guidance: can strike across map layers and track moving targets using the body's terminal updates. -->
+  <FFF.Card.TerminalGuidanceYes>具導引能力：可跨圖層打擊，並可依彈體的終端更新次數追蹤移動目標。</FFF.Card.TerminalGuidanceYes>
+  <!-- EN: No terminal guidance: cannot strike across map layers or track moving targets. -->
+  <FFF.Card.TerminalGuidanceNo>無導引能力：無法跨圖層打擊，也無法追蹤移動目標。</FFF.Card.TerminalGuidanceNo>
+  <!-- EN: Impact point -->
+  <FFF.Card.TargetSelection>選定落點</FFF.Card.TargetSelection>
+  <!-- EN: Chosen by player -->
+  <FFF.Card.TargetManual>由玩家選擇</FFF.Card.TargetManual>
+  <!-- EN: Automatic lock -->
+  <FFF.Card.TargetAuto>自動鎖定</FFF.Card.TargetAuto>
+  <!-- EN: A salvo of missiles with the same seeker type spreads its locks over different targets instead of all hitting the same one. -->
+  <FFF.Card.SpreadNote>同類導引頭的齊射會分散鎖定不同目標，不會全部打在同一處。</FFF.Card.SpreadNote>
+  <!-- EN: Intercept hit factor -->
+  <FFF.Card.Intercept>攔截命中係數</FFF.Card.Intercept>
+  <!-- EN: When fired as an interceptor, this multiplies the hit chance computed by the fire-control radar (on both the map and the world map). -->
+  <FFF.Card.InterceptDesc>作為攔截彈發射時，乘在火控雷達算出的命中率上（地圖層與世界層皆同）。</FFF.Card.InterceptDesc>
+  <!-- EN: Warhead bonus: hit chance +{0} -->
+  <FFF.Card.InterceptBonus>戰鬥部加成：命中率 +{0}</FFF.Card.InterceptBonus>
+  <!-- EN: Extra intercept rolls: {0} (can hit other targets in the same wave) -->
+  <FFF.Card.InterceptRolls>額外攔截判定：{0} 次（可波及同波次其他目標）</FFF.Card.InterceptRolls>
+  <!-- EN: Multiplies the detection range level of the world-map track. Above 1, the missile is detected earlier and draws air defenses that use threat assessment (a decoy). Below 1, it is detected later (penetration). -->
+  <FFF.Card.SignatureDesc>乘在世界航跡的偵測距離等級上。大於 1 會更早被發現，可吸引具威脅評估的防空優先接戰（誘餌）；小於 1 會更晚被發現（突防）。</FFF.Card.SignatureDesc>
+  <!-- EN: Chaff charges and jamming strength. On the world map, a charge is used whenever enemy fire control locks on, with a {0} chance to break the lock and delay the next one. Charges are not replenished in flight. When intercepted on a map, the enemy hit chance is reduced by {1}. -->
+  <FFF.Card.ChaffDesc>攜帶的箔條／干擾絲次數與干擾強度。世界地圖上被敵方火控鎖定時觸發，每次消耗一發，有 {0} 機率斷鎖並延後重新鎖定；飛行中不補充。在地圖上被攔截時，敵方命中率降低 {1}。</FFF.Card.ChaffDesc>
+  <!-- EN: Warhead effect -->
+  <FFF.Card.WarheadEffect>戰鬥部效果</FFF.Card.WarheadEffect>
+  <!-- EN: Payload effect -->
+  <FFF.Card.PayloadEffect>酬載效果</FFF.Card.PayloadEffect>
+  <!-- EN: Values above are for payload capacity N = {0}. -->
+  <FFF.Card.ScaledByN>以上數值依載荷容量 N = {0} 計算。</FFF.Card.ScaledByN>
+  <!-- EN: The effect scales with the body's payload capacity N: -->
+  <FFF.Card.ScaledByNGroups>效果依彈體的載荷容量 N 換算：</FFF.Card.ScaledByNGroups>
+  <!-- EN: N = {0} ({1}) -->
+  <FFF.Card.NGroup>N = {0}（{1}）</FFF.Card.NGroup>
+  <!-- EN: When used as an interceptor, hit chance +{0} (N × 5%). No extra effect against ground targets. -->
+  <FFF.Card.Warhead.ContinuousRod>作為攔截彈時命中率 +{0}（N × 5%）。對地沒有額外效果。</FFF.Card.Warhead.ContinuousRod>
+  <!-- EN: Range +{0} tiles (N × 2). No extra effect at the impact point. -->
+  <FFF.Card.Warhead.ExtendedFuel>射程 +{0} 格（N × 2）。落點沒有額外效果。</FFF.Card.Warhead.ExtendedFuel>
+  <!-- EN: Against ground targets: an extra blast with radius {0} and {1} damage at the impact point. As an interceptor: {2} extra independent intercept rolls (N ÷ 5, rounded down) that can hit other targets in the same wave. -->
+  <FFF.Card.Warhead.Airburst>對地：在落點追加半徑 {0}、{1} 點的爆炸。作為攔截彈：額外 {2} 次獨立攔截判定（N ÷ 5 取整），可波及同波次其他目標。</FFF.Card.Warhead.Airburst>
+  <!-- EN: Penetrates thick roofs and locks onto targets under them. After the main blast, an extra blast with radius 2 and {0} damage hits the impact point. -->
+  <FFF.Card.Warhead.TungstenPenetrator>可穿透厚岩頂，並鎖定厚岩頂下的目標；主爆炸後在落點追加半徑 2、{0} 點的爆炸。</FFF.Card.Warhead.TungstenPenetrator>
+  <!-- EN: Ignores line of sight and sets fires within {0} cells of the impact point. -->
+  <FFF.Card.Warhead.Incendiary>無視視線，引燃落點半徑 {0} 格內的地面。</FFF.Card.Warhead.Incendiary>
+  <!-- EN: Ignores line of sight. An EMP blast with radius {0} and {1} damage disables electronics and mechanoids. -->
+  <FFF.Card.Warhead.EMP>無視視線，在落點引發半徑 {0}、{1} 點的 EMP 爆炸：癱瘓電子設備與機械體。</FFF.Card.Warhead.EMP>
+  <!-- EN: Every animal on the target map immediately goes berserk. -->
+  <FFF.Card.Warhead.AnimalBerserk>目標地圖上所有動物立即陷入狂暴。</FFF.Card.Warhead.AnimalBerserk>
+  <!-- EN: Releases {0} physical bomblets ({1}) that land within {2} cells. The bomblets fly and can hit anyone in their path. -->
+  <FFF.Card.Warhead.ClusterBomblets>撒出 {0} 枚實體子彈（{1}），落在半徑 {2} 格內；子彈會飛行並命中沿途的單位。</FFF.Card.Warhead.ClusterBomblets>
+  <!-- EN: When fired by the player, each pawn of a non-hostile faction in the spread area costs {0} goodwill with that faction. -->
+  <FFF.Card.Warhead.ClusterGoodwill>玩家發射時，撒布範圍內每有一個非敵對勢力的單位，該勢力好感 -{0}。</FFF.Card.Warhead.ClusterGoodwill>
+  <!-- EN: Every creature within radius {0} takes {1} burn damage, and each cell has a {2} chance to catch fire. Most effective in enclosed rooms. -->
+  <FFF.Card.Warhead.Thermobaric>半徑 {0} 內每個生物受到 {1} 點燒傷，每格有 {2} 機率起火；在密閉房間內效果最明顯。</FFF.Card.Warhead.Thermobaric>
+  <!-- EN: Almost no blast: strikes the nearest creature within 3 cells of the impact point with {0} blades, each dealing {1} cut damage. -->
+  <FFF.Card.Warhead.KineticBlades>幾乎沒有爆炸：對落點 3 格內最近的一個生物揮出 {0} 片刀刃，每片 {1} 點切割傷害。</FFF.Card.Warhead.KineticBlades>
+  <!-- EN: An extra blast with radius {0} and {1} damage at the impact point. -->
+  <FFF.Card.Payload.HighExplosive>在落點追加半徑 {0}、{1} 點的爆炸。</FFF.Card.Payload.HighExplosive>
+  <!-- EN: Penetrates thick roofs and locks onto targets under them. Detonates inside with radius {0} and {1} damage ({2} armor penetration), and deals an extra {4} structural damage to buildings within {3} cells of the center. -->
+  <FFF.Card.Payload.BunkerBuster>可穿透厚岩頂，並鎖定厚岩頂下的目標。在內部以半徑 {0}、{1} 點（穿甲 {2}）引爆，並對爆心 {3} 格內的建築額外造成 {4} 點結構傷害。</FFF.Card.Payload.BunkerBuster>
+  <!-- EN: Scatters {1} sub-explosions within {0} cells, each with radius {2} and {3} damage. -->
+  <FFF.Card.Payload.Cluster>在半徑 {0} 格內散落 {1} 個子爆炸，每個半徑 {2}、{3} 點。</FFF.Card.Payload.Cluster>
+  <!-- EN: Each plant within {0} cells has a {1} chance to die. -->
+  <FFF.Card.Payload.Defoliant>半徑 {0} 格內的植物各有 {1} 機率枯死。</FFF.Card.Payload.Defoliant>
+  <!-- EN: Puts out fires within {0} cells and covers the area in firefoam. -->
+  <FFF.Card.Payload.FireFoam>撲滅半徑 {0} 格內的火焰，並鋪上消防泡沫。</FFF.Card.Payload.FireFoam>
+  <!-- EN: A vaporizing blast with radius {0} and {1} damage at the impact point. -->
+  <FFF.Card.Payload.Antiparticle>在落點引發半徑 {0}、{1} 點的汽化爆炸。</FFF.Card.Payload.Antiparticle>
+  <!-- EN: Floods every cell within {0} cells with toxic gas. -->
+  <FFF.Card.Payload.ToxicGas>在半徑 {0} 格內灌滿毒氣。</FFF.Card.Payload.ToxicGas>
+  <!-- EN: An EMP blast with radius {0} and {1} damage at the impact point: disables electronics and stuns mechanoids. -->
+  <FFF.Card.Payload.EMP>在落點引發半徑 {0}、{1} 點的 EMP 爆炸：癱瘓電子設備、震暈機械體。</FFF.Card.Payload.EMP>
+  <!-- EN: Range becomes {0}. Every creature within radius {1} takes (body size rounded up + 1) hits of {2} stab damage ({3} armor penetration). -->
+  <FFF.Card.Payload.AirburstTungsten>射程變為 {0}。半徑 {1} 內每個生物受到（體型取整 + 1）次 {2} 點穿刺傷害（穿甲 {3}）。</FFF.Card.Payload.AirburstTungsten>
+  <!-- EN: An extra blast with radius {0} and {1} damage ({2}). -->
+  <FFF.Card.Payload.Extra>追加半徑 {0}、{1} 點的爆炸（{2}）。</FFF.Card.Payload.Extra>
+  <!-- EN: Drops {0} × {1} ({2} chance). -->
+  <FFF.Card.Payload.Spawn>投放 {0} 份{1}（機率 {2}）。</FFF.Card.Payload.Spawn>
+  <!-- EN: Does not search for targets: impacts scatter randomly around the center of the target map and never lock onto buildings or creatures. -->
+  <FFF.Card.Guidance.Inertial>不搜尋目標：落點以地圖中心為準，依散布隨機偏移，不鎖定建築或生物。</FFF.Card.Guidance.Inertial>
+  <!-- EN: Locks onto the active enemy radar with the highest power level (ties go to the one drawing more power). Purely passive warning equipment is ignored. -->
+  <FFF.Card.Guidance.AntiRadiation>鎖定開機中功率等級最高的敵方雷達（同級時比耗電量）；純被動預警設備不受影響。</FFF.Card.Guidance.AntiRadiation>
+  <!-- EN: With no active radar, it targets the powered enemy building drawing the most electricity, then falls back to inertial guidance. -->
+  <FFF.Card.Guidance.AntiRadiationFallback>沒有開機雷達時改打耗電最大的運作中敵方建築，再找不到則退回慣性落點。</FFF.Card.Guidance.AntiRadiationFallback>
+  <!-- EN: With no active radar, it does not pick another target. With loitering flight control it can wait overhead until a radar switches on. -->
+  <FFF.Card.Guidance.AntiRadiationNoFallback>沒有開機雷達時不改打其他目標；搭配盤旋飛控可在上空等待雷達開機。</FFF.Card.Guidance.AntiRadiationNoFallback>
+  <!-- EN: Locks onto the hottest indoor room at least {0} warmer than outdoors. Otherwise it targets the largest creature (wild animals included, the attacker and its allies excluded). If there is neither, it falls back to inertial guidance. -->
+  <FFF.Card.Guidance.HeatSource>鎖定比室外熱 {0} 以上的最熱室內房間；沒有時改打體型最大的生物（包含野生動物，但不含攻擊方與其盟友）。都沒有則退回慣性落點。</FFF.Card.Guidance.HeatSource>
+  <!-- EN: Locks onto the powered enemy building drawing the most electricity. Falls back to inertial guidance if nothing is powered. -->
+  <FFF.Card.Guidance.ElectromagneticSignal>鎖定耗電最大的運作中敵方建築；沒有通電建築時退回慣性落點。</FFF.Card.Guidance.ElectromagneticSignal>
+  <!-- EN: When you launch it, the game pauses on arrival and you choose the impact point freely. Enemy launches have no operator and use inertial guidance instead. -->
+  <FFF.Card.Guidance.TV>玩家發射時，抵達目標地圖後暫停遊戲，由你自由選擇落點。敵方發射時無人操作，改用慣性落點。</FFF.Card.Guidance.TV>
+  <!-- EN: Locks onto the most recent laser designation your side placed on the target map. Falls back to inertial guidance if there is none. -->
+  <FFF.Card.Guidance.Laser>鎖定你在目標地圖上最近一次放置的雷射標定點；沒有標定點時退回慣性落點。</FFF.Card.Guidance.Laser>
+  <!-- EN: Mainly for air-defense interception, guided by fire-control radar illumination. Against ground targets it aims inertially. Occupies a fire-control channel for the whole flight. -->
+  <FFF.Card.Guidance.FireControl>主要供防空攔截使用，由火控雷達照射引導。對地打擊時以慣性選點。飛行期間持續占用火控通道。</FFF.Card.Guidance.FireControl>
+  <!-- EN: The ground station sends continuous corrections. Against ground targets it aims inertially. Occupies a fire-control channel for the whole flight. -->
+  <FFF.Card.Guidance.RadioCommand>由地面持續發送修正指令。對地打擊時以慣性選點。飛行期間持續占用火控通道。</FFF.Card.Guidance.RadioCommand>
+  <!-- EN: Locks only onto enemy creatures in the open (not under a roof), preferring higher combat power, then larger body size. Falls back to inertial guidance if none are found. -->
+  <FFF.Card.Guidance.Imaging>只鎖定露天（無屋頂）的敵方生物，先比戰力、再比體型；找不到時退回慣性落點。</FFF.Card.Guidance.Imaging>
+  <!-- EN: Fire-and-forget: locks onto the largest enemy building, then the largest enemy creature. Falls back to inertial guidance if there are neither. -->
+  <FFF.Card.Guidance.ActiveRadar>射後不理：鎖定占地最大的敵方建築，其次是體型最大的敵方生物；都沒有則退回慣性落點。</FFF.Card.Guidance.ActiveRadar>
+  <!-- EN: Built for moving targets on the world map (ships, mobile bases): the flight path corrects more often, with {0} extra terminal updates. On arrival it hits the toughest enemy building first, then the largest enemy creature. -->
+  <FFF.Card.Guidance.AntiShip>針對世界地圖上的移動目標（艦船、移動基地）：航跡更頻繁地修正，終端更新 +{0}。抵達後先打最耐打的敵方建築，其次是體型最大的敵方生物。</FFF.Card.Guidance.AntiShip>
+  <!-- EN: Part slot -->
+  <FFF.Card.PartSlot>裝配槽位</FFF.Card.PartSlot>
+  <!-- EN: The slot this part goes into. Each slot holds one part, and installing this replaces the current one. -->
+  <FFF.Card.PartSlotDesc>此部件裝在哪個槽位。同一槽位只能裝一個部件，換上會取代原有部件。</FFF.Card.PartSlotDesc>
+  <!-- EN: Compatible bodies -->
+  <FFF.Card.CompatibleBodies>適用彈體</FFF.Card.CompatibleBodies>
+  <!-- EN: Missile bodies that can take this part (they must have the matching slot). Click the links below to view them. -->
+  <FFF.Card.CompatibleBodiesDesc>可以裝配此部件的彈體（必須具有對應槽位）。點擊下方連結查看彈體。</FFF.Card.CompatibleBodiesDesc>
+  <!-- EN: Loitering munitions only. -->
+  <FFF.Card.RequiresLoitering>只能裝在巡飛彈上。</FFF.Card.RequiresLoitering>
+  <!-- EN: Research required -->
+  <FFF.Card.Research>需要研究</FFF.Card.Research>
+  <!-- EN: Can be selected once these research projects are finished. -->
+  <FFF.Card.ResearchDesc>完成這些研究後才能選用。</FFF.Card.ResearchDesc>
+  <!-- EN: Assembly materials -->
+  <FFF.Card.Cost>裝配材料</FFF.Card.Cost>
+  <!-- EN: Materials that must be hauled in and consumed to install this part during a refit. A body's default parts are already included in its build cost. When the part is removed or replaced, part of the materials is refunded according to the body's refund rate. -->
+  <FFF.Card.CostDesc>改裝時裝上此部件所需搬運並消耗的材料。彈體的預設部件已包含在建造成本中。移除或更換時，依彈體的退還比例退回部分材料。</FFF.Card.CostDesc>
+  <!-- EN: Added to the body's base value. -->
+  <FFF.Card.ModifierDesc>加算在彈體的基礎值上。</FFF.Card.ModifierDesc>
+  <!-- EN: Overrides the damage type of the main blast. -->
+  <FFF.Card.DamageTypeDesc>覆寫主爆炸的傷害類型。</FFF.Card.DamageTypeDesc>
+  <!-- EN: Fuel -->
+  <FFF.Card.Fuel>燃料</FFF.Card.Fuel>
+  <!-- EN: Specific impulse -->
+  <FFF.Card.Impulse>比衝</FFF.Card.Impulse>
+  <!-- EN: Range is roughly fuel × specific impulse × the body's conversion factor, so both increase range. -->
+  <FFF.Card.FuelImpulseDesc>射程約為 燃料 × 比衝 × 彈體換算係數，兩者都會放大射程。</FFF.Card.FuelImpulseDesc>
+  <!-- EN: Refit work -->
+  <FFF.Card.AssembleWork>改裝工作量</FFF.Card.AssembleWork>
+  <!-- EN: Work needed to apply one configuration change. Affected by the working colonist's work speed. -->
+  <FFF.Card.AssembleWorkDesc>套用一次裝配變更所需的工作量，受施工小人的工作速度影響。</FFF.Card.AssembleWorkDesc>
+  <!-- EN: Removal refund -->
+  <FFF.Card.Refund>拆除退還</FFF.Card.Refund>
+  <!-- EN: Share of a part's materials returned when it is removed or replaced. -->
+  <FFF.Card.RefundDesc>移除或更換部件時，退還該部件材料的比例。</FFF.Card.RefundDesc>
+  <!-- EN: Mid-flight release -->
+  <FFF.Card.Release>飛行中釋放</FFF.Card.Release>
+  <!-- EN: The missile carries a post-boost bus. Before arrival it releases separate tracks that enemy air defense must engage one by one. -->
+  <FFF.Card.ReleaseDesc>導彈帶有彈頭匯流排，抵達前會放出多條獨立航跡，敵方防空必須逐一接戰。</FFF.Card.ReleaseDesc>
+  <!-- EN: Every loaded missile is reserved for a strike mission -->
+  <FFF.Strike.AllRoundsReserved>在架導彈已全數保留給打擊任務</FFF.Strike.AllRoundsReserved>
+  <!-- EN: Reserved for strike missions: {0} -->
+  <FFF.Strike.ReservedInspect>已保留給打擊任務：{0} 枚</FFF.Strike.ReservedInspect>
+  <!-- EN: Reserved for a strike mission: this missile cannot be refitted until the mission ends. -->
+  <FFF.Strike.ReservedNoEdit>已保留給打擊任務：任務結束前無法改裝。</FFF.Strike.ReservedNoEdit>
+  <!-- EN: Plan wave strike -->
+  <FFF.Strike.Console.Plan>規劃波次打擊</FFF.Strike.Console.Plan>
+  <!-- EN: Pick a world target, then assign the strike missiles loaded on this map's launchers to waves. Each wave is limited by the free guidance channels of this map's fire-control radars. -->
+  <FFF.Strike.Console.PlanDesc>選定世界目標，再把本地圖發射架上的進攻導彈分配到各波次。每波上限為本地圖火控雷達的空閒導引通道數。</FFF.Strike.Console.PlanDesc>
+  <!-- EN: Open strike plan -->
+  <FFF.Strike.Console.Open>開啟打擊計畫</FFF.Strike.Console.Open>
+  <!-- EN: Show the waves of the current strike mission and fire them. -->
+  <FFF.Strike.Console.OpenDesc>顯示目前打擊任務的各波次並發射。</FFF.Strike.Console.OpenDesc>
+  <!-- EN: Fire wave {0} -->
+  <FFF.Strike.Console.FireWave>發射第 {0} 波</FFF.Strike.Console.FireWave>
+  <!-- EN: Launch the next wave now. Shift-click to launch only what the free channels and ready launchers allow; the rest stays in the wave. -->
+  <FFF.Strike.Console.FireWaveDesc>立即發射下一波。按住 Shift 點擊只發射空閒通道與就緒發射架允許的部分，其餘留在本波。</FFF.Strike.Console.FireWaveDesc>
+  <!-- EN: Cancel strike mission -->
+  <FFF.Strike.Console.Cancel>取消打擊任務</FFF.Strike.Console.Cancel>
+  <!-- EN: Cancel the current strike mission. Missiles already launched keep flying; the rest are released. -->
+  <FFF.Strike.Console.CancelDesc>取消目前的打擊任務。已升空的導彈照常飛行，其餘導彈釋放。</FFF.Strike.Console.CancelDesc>
+  <!-- EN: Cancel {0}? Missiles not yet launched are released. -->
+  <FFF.Strike.Console.CancelConfirm>要取消 {0} 嗎？尚未發射的導彈會被釋放。</FFF.Strike.Console.CancelConfirm>
+  <!-- EN: No working fire-control radar on this map can guide strike missiles -->
+  <FFF.Strike.NoFireControl>本地圖沒有能導引打擊導彈的運作中火控雷達</FFF.Strike.NoFireControl>
+  <!-- EN: No strike missile is loaded on this map -->
+  <FFF.Strike.NoStrikeRounds>本地圖沒有已裝填的進攻導彈</FFF.Strike.NoStrikeRounds>
+  <!-- EN: No loaded strike missile can reach this target -->
+  <FFF.Strike.NoRoundReaches>沒有任何在架進攻導彈打得到這個目標</FFF.Strike.NoRoundReaches>
+  <!-- EN: Distance: {0} tiles -->
+  <FFF.Strike.TargetLabel.Distance>距離：{0} 格</FFF.Strike.TargetLabel.Distance>
+  <!-- EN: In range: {0} of {1} loaded -->
+  <FFF.Strike.TargetLabel.Reach>射程內：{0}／在架 {1}</FFF.Strike.TargetLabel.Reach>
+  <!-- EN: Assign at least one missile to a wave -->
+  <FFF.Strike.NoRoundsAssigned>至少要把一枚導彈分配到波次</FFF.Strike.NoRoundsAssigned>
+  <!-- EN: At most {0} missiles per mission -->
+  <FFF.Strike.TooManyRounds>每個任務最多 {0} 枚導彈</FFF.Strike.TooManyRounds>
+  <!-- EN: At most {0} missiles per wave -->
+  <FFF.Strike.WaveRoundLimit>每波最多 {0} 枚導彈</FFF.Strike.WaveRoundLimit>
+  <!-- EN: At most {0} waves per mission -->
+  <FFF.Strike.TooManyWaves>每個任務最多 {0} 波</FFF.Strike.TooManyWaves>
+  <!-- EN: Wave {0} requires {1} guidance channels; capacity is {2} -->
+  <FFF.Strike.WaveOverCap>第 {0} 波需要 {1} 條導引通道；容量為 {2}</FFF.Strike.WaveOverCap>
+  <!-- EN: A missile is already reserved by another strike mission -->
+  <FFF.Strike.RoundTaken>有導彈已被其他打擊任務保留</FFF.Strike.RoundTaken>
+  <!-- EN: A missile is no longer loaded or can no longer reach the target -->
+  <FFF.Strike.RoundUnavailable>有導彈已不在架上，或已打不到目標</FFF.Strike.RoundUnavailable>
+  <!-- EN: Firing solutions are not ready -->
+  <FFF.Strike.NotReady>彈道解尚未完成</FFF.Strike.NotReady>
+  <!-- EN: Computing firing solutions ({0} left) -->
+  <FFF.Strike.Computing>彈道計算中（剩餘 {0}）</FFF.Strike.Computing>
+  <!-- EN: This wave has nothing left to launch -->
+  <FFF.Strike.WaveDone>本波已沒有待發射的導彈</FFF.Strike.WaveDone>
+  <!-- EN: Not enough guidance channels: {0} free, {1} needed -->
+  <FFF.Strike.NotEnoughChannels>導引通道不足：空閒 {0}，需要 {1}</FFF.Strike.NotEnoughChannels>
+  <!-- EN: Not enough guidance channels: {0} free, {1} needed; the next one frees in {2} -->
+  <FFF.Strike.NotEnoughChannelsRelease>導引通道不足：空閒 {0}，需要 {1}；下一條在 {2} 後釋放</FFF.Strike.NotEnoughChannelsRelease>
+  <!-- EN: {0} launcher(s) not ready (unpowered, switched off, unmanned or reloading) -->
+  <FFF.Strike.PlatformsNotReady>{0} 座發射架未就緒（斷電、關閉、無人操作或裝填中）</FFF.Strike.PlatformsNotReady>
+  <!-- EN: the missile is no longer in its launcher -->
+  <FFF.Strike.Skip.RoundGone>導彈已不在發射架上</FFF.Strike.Skip.RoundGone>
+  <!-- EN: the missile was refitted -->
+  <FFF.Strike.Skip.Refitted>導彈已被改裝</FFF.Strike.Skip.Refitted>
+  <!-- EN: computing firing solutions ({0} left) -->
+  <FFF.Strike.State.Computing>彈道計算中（剩餘 {0}）</FFF.Strike.State.Computing>
+  <!-- EN: ready to fire -->
+  <FFF.Strike.State.Ready>可發射</FFF.Strike.State.Ready>
+  <!-- EN: in progress -->
+  <FFF.Strike.State.Executing>執行中</FFF.Strike.State.Executing>
+  <!-- EN: Strike guidance channels: {0} free of {1} -->
+  <FFF.Strike.Inspect.Channels>打擊導引通道：空閒 {0}／{1}</FFF.Strike.Inspect.Channels>
+  <!-- EN: {0} on {1}: {2}, launched {3}/{4} -->
+  <FFF.Strike.Inspect.Mission>{0}（{1}）：{2}，已發射 {3}/{4}</FFF.Strike.Inspect.Mission>
+  <!-- EN: {0}: {1} missiles in {2} waves reserved; computing firing solutions. -->
+  <FFF.Strike.Msg.Confirmed>{0}：已保留 {1} 枚導彈、分 {2} 波，彈道計算中。</FFF.Strike.Msg.Confirmed>
+  <!-- EN: {0}: firing solutions ready. -->
+  <FFF.Strike.Msg.Ready>{0}：彈道解完成，可以發射。</FFF.Strike.Msg.Ready>
+  <!-- EN: {0}, wave {1}: {2} launching, {3} skipped. -->
+  <FFF.Strike.Msg.WaveFired>{0} 第 {1} 波：發射 {2} 枚，略過 {3} 枚。</FFF.Strike.Msg.WaveFired>
+  <!-- EN: {0}: {1} skipped ({2}). -->
+  <FFF.Strike.Msg.Skipped>{0}：{1} 已略過（{2}）。</FFF.Strike.Msg.Skipped>
+  <!-- EN: {0}: {1} could not launch yet and stays in wave {2}. -->
+  <FFF.Strike.Msg.Deferred>{0}：{1} 暫時無法發射，留在第 {2} 波。</FFF.Strike.Msg.Deferred>
+  <!-- EN: {0} complete: {1} launched, {2} skipped. -->
+  <FFF.Strike.Msg.Completed>{0} 結束：發射 {1} 枚，略過 {2} 枚。</FFF.Strike.Msg.Completed>
+  <!-- EN: {0} cancelled; missiles not yet launched are released. -->
+  <FFF.Strike.Msg.Cancelled>{0} 已取消，尚未發射的導彈已釋放。</FFF.Strike.Msg.Cancelled>
+  <!-- EN: {0} cancelled: the target is gone. -->
+  <FFF.Strike.Msg.TargetLost>{0} 已取消：目標已不存在。</FFF.Strike.Msg.TargetLost>
+  <!-- EN: {0} cancelled: its strike command center was removed. -->
+  <FFF.Strike.Msg.ConsoleLost>{0} 已取消：打擊指揮中心已被移除。</FFF.Strike.Msg.ConsoleLost>
+  <!-- EN: Wave strike plan: {0} -->
+  <FFF.Strike.Plan.Title>波次打擊規劃：{0}</FFF.Strike.Plan.Title>
+  <!-- EN: Target: {0} ({1} tiles) -->
+  <FFF.Strike.Plan.Target>目標：{0}（{1} 格）</FFF.Strike.Plan.Target>
+  <!-- EN: Guidance channels: {0} (free {1}) · guidance period {2} -->
+  <FFF.Strike.Plan.Channels>導引通道：{0}（空閒 {1}）· 導引期 {2}</FFF.Strike.Plan.Channels>
+  <!-- EN: Wave limit: {0} missiles -->
+  <FFF.Strike.Plan.WaveRoundLimit>單波枚數上限：{0}</FFF.Strike.Plan.WaveRoundLimit>
+  <!-- EN: This site has no map yet. The first missile to arrive generates it, and the site's own air defense, with fully loaded SAMs, then engages the missiles still in flight. -->
+  <FFF.Strike.Plan.SiteWarning>此據點尚未生成地圖。第一枚抵達的導彈會生成地圖，據點自己的防空（SAM 照常滿彈）隨即接手攔截還在飛的導彈。</FFF.Strike.Plan.SiteWarning>
+  <!-- EN: Available missiles: {0} -->
+  <FFF.Strike.Plan.Available>可用導彈：{0}</FFF.Strike.Plan.Available>
+  <!-- EN: Click a row to add one to the selected wave; shift-click to add as many as fit. Yellow rows are not ready right now and are checked again at launch. -->
+  <FFF.Strike.Plan.AddHint>點一列加一枚到選取中的波次；按住 Shift 點擊加到滿。黃色列目前無法立即發射，發射時會再檢查。</FFF.Strike.Plan.AddHint>
+  <!-- EN: Unavailable {0}: {1} -->
+  <FFF.Strike.Plan.Unavailable>不可用 {0}：{1}</FFF.Strike.Plan.Unavailable>
+  <!-- EN: {0} more reserved by other strike missions -->
+  <FFF.Strike.Plan.ReservedElsewhere>另有 {0} 枚已保留給其他打擊任務</FFF.Strike.Plan.ReservedElsewhere>
+  <!-- EN: Not ready now: -->
+  <FFF.Strike.Plan.NotReadyTag>目前無法發射：</FFF.Strike.Plan.NotReadyTag>
+  <!-- EN: flight {0} -->
+  <FFF.Strike.Plan.Flight>飛行 {0}</FFF.Strike.Plan.Flight>
+  <!-- EN: range +{0} -->
+  <FFF.Strike.Plan.Margin>射程 +{0}</FFF.Strike.Plan.Margin>
+  <!-- EN: Wave {0} -->
+  <FFF.Strike.Plan.WaveTitle>第 {0} 波</FFF.Strike.Plan.WaveTitle>
+  <!-- EN: Uses {0} of {1} strike guidance channels. Ordinary missiles cost 1; ballistic missiles cost 2; TV adds 1. A wave needs enough channels for all its pending missiles. -->
+  <FFF.Strike.Plan.WaveChannelsTip>占用 {0}／{1} 條打擊導引通道。一般導彈需 1 條、彈道導彈需 2 條；TV 導引額外加 1。整波發射需容納所有待發導彈。</FFF.Strike.Plan.WaveChannelsTip>
+  <!-- EN: + Add wave -->
+  <FFF.Strike.Plan.AddWave>＋新增波次</FFF.Strike.Plan.AddWave>
+  <!-- EN: Auto-assign -->
+  <FFF.Strike.Plan.AutoAssign>自動分波</FFF.Strike.Plan.AutoAssign>
+  <!-- EN: Fill waves starting with the cheapest missiles, so the most valuable ones end up in the last wave. -->
+  <FFF.Strike.Plan.AutoAssignDesc>從最便宜的導彈開始依序填滿各波，最高價值的導彈會落在最後一波。</FFF.Strike.Plan.AutoAssignDesc>
+  <!-- EN: Clear -->
+  <FFF.Strike.Plan.Clear>清空</FFF.Strike.Plan.Clear>
+  <!-- EN: Confirm plan -->
+  <FFF.Strike.Plan.Confirm>確認計畫</FFF.Strike.Plan.Confirm>
+  <!-- EN: Wave strike: {0} -->
+  <FFF.Strike.Exec.Title>波次打擊：{0}</FFF.Strike.Exec.Title>
+  <!-- EN: Status: {0} -->
+  <FFF.Strike.Exec.State>狀態：{0}</FFF.Strike.Exec.State>
+  <!-- EN: (next channel frees in {0}) -->
+  <FFF.Strike.Exec.NextRelease>（下一條通道在 {0} 後釋放）</FFF.Strike.Exec.NextRelease>
+  <!-- EN: Wave {0}: {1} -->
+  <FFF.Strike.Exec.Wave>第 {0} 波：{1}</FFF.Strike.Exec.Wave>
+  <!-- EN: waiting {0} -->
+  <FFF.Strike.Exec.WavePending>待發射 {0}</FFF.Strike.Exec.WavePending>
+  <!-- EN: launching {0} -->
+  <FFF.Strike.Exec.WaveQueued>發射中 {0}</FFF.Strike.Exec.WaveQueued>
+  <!-- EN: launched {0}/{1}, {2} in flight -->
+  <FFF.Strike.Exec.WaveLaunched>已發射 {0}/{1}，在飛 {2}</FFF.Strike.Exec.WaveLaunched>
+  <!-- EN: skipped {0} -->
+  <FFF.Strike.Exec.WaveSkipped>略過 {0}</FFF.Strike.Exec.WaveSkipped>
+  <!-- EN: Fire -->
+  <FFF.Strike.Exec.Fire>發射</FFF.Strike.Exec.Fire>
+  <!-- EN: Shift-click to launch only what the free channels and ready launchers allow; the rest stays in the wave. -->
+  <FFF.Strike.Exec.FireTip>按住 Shift 點擊只發射空閒通道與就緒發射架允許的部分，其餘留在本波。</FFF.Strike.Exec.FireTip>
+  <!-- EN: Cancel mission -->
+  <FFF.Strike.Exec.CancelMission>取消任務</FFF.Strike.Exec.CancelMission>
+  <!-- EN: Firing solutions {0} computed; a researcher must finish this wave at the planning table -->
+  <FFF.Strike.ComputingManual>彈道已算 {0}；本波需由研究者在規劃桌算完</FFF.Strike.ComputingManual>
+  <!-- EN: awaiting firing-solution computation ({0}) -->
+  <FFF.Strike.State.ComputingManual>等待彈道計算（{0}）</FFF.Strike.State.ComputingManual>
+  <!-- EN: in progress; firing solutions {0} -->
+  <FFF.Strike.State.ExecutingComputing>執行中；彈道已算 {0}</FFF.Strike.State.ExecutingComputing>
+  <!-- EN: {0}: {1} missiles in {2} waves reserved; a researcher must compute the firing solutions at the {3}. -->
+  <FFF.Strike.Msg.ConfirmedManual>{0}：已保留 {1} 枚導彈、分 {2} 波，需由研究者在{3}計算彈道。</FFF.Strike.Msg.ConfirmedManual>
+  <!-- EN: {0}: firing solutions for wave {1} are ready. -->
+  <FFF.Strike.Msg.WaveSolved>{0}：第 {1} 波彈道解完成。</FFF.Strike.Msg.WaveSolved>
+  <!-- EN: Computation work: {0} (about {1} for the fastest researcher here) -->
+  <FFF.Strike.Plan.ComputeWork>計算工作量：{0}（此處最快的研究者約需 {1}）</FFF.Strike.Plan.ComputeWork>
+  <!-- EN: no colonist here can do research -->
+  <FFF.Strike.Plan.NoResearcher>這裡沒有能做研究的殖民者</FFF.Strike.Plan.NoResearcher>
+  <!-- EN: Firing solutions waiting -->
+  <FFF.Strike.Alert.ComputationPending>彈道計算等待中</FFF.Strike.Alert.ComputationPending>
+  <FFF.Strike.Alert.ComputationPendingDesc>有打擊任務在等研究者到打擊規劃桌計算彈道，但該地圖沒有能做研究工作的殖民者。\n\n請為該地圖的殖民者啟用研究工作。</FFF.Strike.Alert.ComputationPendingDesc>
+  <!-- EN: Adjust waves: {0} -->
+  <FFF.Strike.Adjust.Title>調整波次：{0}</FFF.Strike.Adjust.Title>
+  <!-- EN: Adjust waves -->
+  <FFF.Strike.Adjust.Button>調整波次</FFF.Strike.Adjust.Button>
+  <!-- EN: Apply -->
+  <FFF.Strike.Adjust.Apply>套用</FFF.Strike.Adjust.Apply>
+  <!-- EN: Cancel adjustment -->
+  <FFF.Strike.Adjust.Cancel>取消調整</FFF.Strike.Adjust.Cancel>
+  <!-- EN: Clear unlaunched -->
+  <FFF.Strike.Adjust.ClearPending>清空待發射</FFF.Strike.Adjust.ClearPending>
+  <!-- EN: Missiles are launching; wait for the ripple to finish -->
+  <FFF.Strike.Adjust.Launching>導彈發射中，請等漣波發射結束</FFF.Strike.Adjust.Launching>
+  <!-- EN: Launched or skipped missiles cannot be removed -->
+  <FFF.Strike.Adjust.FixedRemoved>已發射或已略過的導彈不能移除</FFF.Strike.Adjust.FixedRemoved>
+  <!-- EN: {0} adjusted: {1} missiles in {2} waves ({3} added). -->
+  <FFF.Strike.Msg.Adjusted>{0} 已調整：{1} 枚、{2} 波（新增 {3} 枚）。</FFF.Strike.Msg.Adjusted>
+  <!-- EN: launched -->
+  <FFF.Strike.Slot.Launched>已發射</FFF.Strike.Slot.Launched>
+  <!-- EN: launching -->
+  <FFF.Strike.Slot.Queued>發射中</FFF.Strike.Slot.Queued>
+  <!-- EN: skipped -->
+  <FFF.Strike.Slot.Skipped>已略過</FFF.Strike.Slot.Skipped>
+  <!-- EN: now -->
+  <FFF.Strike.Plan.Now>立即</FFF.Strike.Plan.Now>
+  <!-- EN: launch {0} · arrive {1}–{2} -->
+  <FFF.Strike.Plan.Arrival>升空 {0} · 抵達 {1}–{2}</FFF.Strike.Plan.Arrival>
+  <!-- EN: in flight · arrive {0}–{1} -->
+  <FFF.Strike.Plan.ArrivalFlying>在飛 · 抵達 {0}–{1}</FFF.Strike.Plan.ArrivalFlying>
+  <!-- EN: Arrives before wave {0}; delay it by about {1} -->
+  <FFF.Strike.Plan.EarlyWarning>會早於第 {0} 波抵達；建議延後約 {1}</FFF.Strike.Plan.EarlyWarning>
+  <!-- EN: Estimated timeline if every wave fires as soon as guidance channels and launchers allow. Ticks mark launches, bars mark arrival windows. A yellow bar arrives before an earlier wave, so it would not be covered by that wave's decoys. -->
+  <FFF.Strike.Plan.TimelineTip>假設每一波在導引通道與發射架允許時立即發射的預估時間軸。短豎線是升空，色塊是抵達區間。黃色色塊表示會比前面的波次早到，得不到那一波誘餌的掩護。</FFF.Strike.Plan.TimelineTip>
+  <!-- EN: {0}, wave {1}: {2} in flight, arriving in {3}–{4}; detected {5}, engaged {6} -->
+  <FFF.Strike.Alert.WaveLine>{0} 第 {1} 波：在飛 {2} 枚，{3}–{4} 後抵達；被偵測 {5}，被接戰 {6}</FFF.Strike.Alert.WaveLine>
+  <!-- EN: Strike wave ready -->
+  <FFF.Strike.Alert.WaveReady>打擊波次可發射</FFF.Strike.Alert.WaveReady>
+  <!-- EN: These strike missions can fire their next wave now. This alert can be turned off in the mod settings. -->
+  <FFF.Strike.Alert.WaveReadyDesc>以下打擊任務現在就能發射下一波。可在模組設定中關閉此警報。</FFF.Strike.Alert.WaveReadyDesc>
+  <!-- EN: {0}: wave {1} on {2} -->
+  <FFF.Strike.Alert.WaveReadyLine>{0}：第 {1} 波（{2}）</FFF.Strike.Alert.WaveReadyLine>
+  <!-- EN: {0} results -->
+  <FFF.Strike.Report.Label>{0} 戰果</FFF.Strike.Report.Label>
+  <!-- EN: {0} on {1}, launched from {2}: -->
+  <FFF.Strike.Report.Header>{0}（目標 {1}，自 {2} 發射）：</FFF.Strike.Report.Header>
+  <!-- EN: Wave {0}: {1} launched: {2} intercepted in flight, {3} hit, {4} shot down at the target, {5} missed -->
+  <FFF.Strike.Report.Wave>第 {0} 波：發射 {1} 枚，飛行中被攔截 {2}、命中 {3}、在目標上空被擊落 {4}、落空 {5}</FFF.Strike.Report.Wave>
+  <!-- EN: , {0} stopped by shields -->
+  <FFF.Strike.Report.WaveShieldBlocked>、被護盾擋下 {0}</FFF.Strike.Report.WaveShieldBlocked>
+  <!-- EN: {0} arrived but their result is unknown. -->
+  <FFF.Strike.Report.Unknown>另有 {0} 枚已抵達，但結果不明。</FFF.Strike.Report.Unknown>
+  <!-- EN: Wave {0} MIRV: {1} warheads – {2} hit, {3} intercepted, {4} killed near the target, {5} missed. -->
+  <FFF.Strike.Report.Mirv>第 {0} 波分導：彈頭 {1} 枚，命中 {2}、被攔截 {3}、末端被毀 {4}、落空 {5}。</FFF.Strike.Report.Mirv>
+  <!-- EN: Decoys: {0} released, {1} drew interceptors and were shot down, {2} were identified by enemy radar. -->
+  <FFF.Strike.Report.MirvDecoys>誘餌：放出 {0} 枚，其中 {1} 枚吸引攔截彈擊落，{2} 枚被敵方雷達識破。</FFF.Strike.Report.MirvDecoys>
+  <!-- EN: Timed -->
+  <FFF.Strike.Plan.AutoFire>定時</FFF.Strike.Plan.AutoFire>
+  <!-- EN: Timed launch: fire this wave automatically when its turn comes, but only once it would arrive after the earlier waves (plus a short gap). -->
+  <FFF.Strike.Plan.AutoFireTip>定時發射：輪到本波時自動發射，但要等到它會在前面各波之後（再隔一小段）抵達。</FFF.Strike.Plan.AutoFireTip>
+  <!-- EN: {0}: timed launch of wave {1}. -->
+  <FFF.Strike.Msg.AutoFire>{0}：第 {1} 波定時發射。</FFF.Strike.Msg.AutoFire>
+  <!-- EN: {0}: the target moved {1} tiles; {2} unlaunched missiles need new firing solutions. -->
+  <FFF.Strike.Msg.TargetMoved>{0}：目標移動了 {1} 格，{2} 枚尚未發射的導彈需重新計算彈道。</FFF.Strike.Msg.TargetMoved>
+  <!-- EN: Radar signature: ×{0} -->
+  <FFF.Missile.Stat.Signature>雷達截面：×{0}</FFF.Missile.Stat.Signature>
+  <!-- EN: Chaff: {0} charges (jam strength {1}) -->
+  <FFF.Missile.Stat.Chaff>箔條：{0} 發（干擾強度 {1}）</FFF.Missile.Stat.Chaff>
+  <!-- EN: Strike mission #{0} -->
+  <FFF.Strike.MissionDefault>打擊任務 #{0}</FFF.Strike.MissionDefault>
+  <!-- EN: Rename this strike mission (you can roll a random name). -->
+  <FFF.Strike.RenameTip>重新命名這個打擊任務（可擲隨機名稱）。</FFF.Strike.RenameTip>
+  <!-- EN: Guidance channels per missile: {0} -->
+  <FFF.Strike.ChannelCost>每枚導彈需求：{0} 條導引通道</FFF.Strike.ChannelCost>
+  <!-- EN: Mid-flight release: {0} -->
+  <FFF.Missile.Stat.Release>飛行中釋放：{0}</FFF.Missile.Stat.Release>
+  <!-- EN: Mid-flight release: {0} ({1} tracks for enemy air defense) -->
+  <FFF.Strike.Plan.Release>飛行中釋放：{0}（對敵方防空是 {1} 條航跡）</FFF.Strike.Plan.Release>
+  <!-- 末端落點標記（docs/末端落點顯示與導引頭重新鎖定_實作計畫.md）。{0} = 導彈枚數，{1} = 剩餘時間。 -->
+  <FFF.BVR.Marker.Hostile>敵方 {0} 枚 · {1}</FFF.BVR.Marker.Hostile>
+  <FFF.BVR.Marker.Friendly>我方 {0} 枚 · {1}</FFF.BVR.Marker.Friendly>
+  <FFF.BVR.Marker.Loitering>盤旋中 {0} 枚 · {1}</FFF.BVR.Marker.Loitering>
+  <!-- EN: Currently active -->
+  <FFF.UI.ActiveConfig>目前生效</FFF.UI.ActiveConfig>
+  <!-- EN: Pending assembly: not yet active -->
+  <FFF.UI.PendingConfig>待裝配配置（尚未生效）</FFF.UI.PendingConfig>
+  <!-- EN: Damage -->
+  <FFF.UI.DamageChange>傷害</FFF.UI.DamageChange>
+  <!-- EN: Adding to wave {0} -->
+  <FFF.UI.AddToWave>加入第 {0} 波</FFF.UI.AddToWave>
+  <!-- EN: No missile candidates. Load compatible missiles into launchers to begin. -->
+  <FFF.UI.NoMissiles>沒有候選導彈。請先將相容的導彈裝入發射器。</FFF.UI.NoMissiles>
+  <!-- EN: All available missiles are assigned. Select a wave to review its contents, or remove missiles to reassign them. -->
+  <FFF.UI.AllAssigned>可用導彈均已分配。選擇波次檢視內容，或移除導彈後重新分配。</FFF.UI.AllAssigned>
+  <!-- EN: No missiles can be assigned. Review unavailable missiles below; some may be reserved by another mission. -->
+  <FFF.UI.NoAvailableMissiles>目前沒有可分配的導彈。請查看下方不可用原因；部分導彈可能被其他任務保留。</FFF.UI.NoAvailableMissiles>
+  <!-- EN: Allow partial launch: fire only missiles that are ready (also Shift-click) -->
+  <FFF.UI.AllowPartialFire>允許部分發射：僅發射目前就緒的導彈（亦可 Shift 點擊）</FFF.UI.AllowPartialFire>
+  <!-- EN: ▸ Full performance after assembly -->
+  <FFF.UI.ShowStats>▸ 展開裝配後完整性能</FFF.UI.ShowStats>
+  <!-- EN: ▾ Hide full performance -->
+  <FFF.UI.HideStats>▾ 收合完整性能</FFF.UI.HideStats>
+  <!-- EN: Range -->
+  <FFF.UI.RangeChange>射程</FFF.UI.RangeChange>
+  <!-- EN: Currently active → after assembly -->
+  <FFF.UI.Comparison>目前生效 → 裝配後</FFF.UI.Comparison>
+  <!-- EN: Next missile strike in: {0} -->
+  <FFF.MissileBase.NextFireIn>下次導彈打擊：{0}</FFF.MissileBase.NextFireIn>
+  <!-- EN: Position detected (local map under observation) -->
+  <FFF.MissileBase.LocalMonitoring>陣地已被偵測（本地地圖觀察中）</FFF.MissileBase.LocalMonitoring>
+  <!-- EN: Position relocating in: {0} -->
+  <FFF.MissileBase.RelocationIn>陣地轉移倒計時：{0}</FFF.MissileBase.RelocationIn>
+  <!-- EN: Missile position relocated -->
+  <FFF.MissileBase.Relocated>導彈陣地轉移</FFF.MissileBase.Relocated>
+  <!-- EN: An enemy missile launch position has completed its strike mission and relocated to avoid counteraction. -->
+  <FFF.MissileBase.RelocatedDesc>一處敵方導彈陣地在部署後完成射擊任務並轉移，防止殖民地反制。</FFF.MissileBase.RelocatedDesc>
+  <!-- EN: Missile position destroyed -->
+  <FFF.MissileBase.Destroyed>導彈陣地已摧毀</FFF.MissileBase.Destroyed>
+  <!-- EN: Your colonists have destroyed every fire-control radar at the enemy missile position. Without fire control it can no longer launch, and the missile threat from this position has been neutralized.\n\nThe position's map stays open until observation ends and no colonists remain there, so you can still send a shuttle to loot it. -->
+  <FFF.MissileBase.DestroyedDesc>殖民者已摧毀敵方導彈陣地的所有火控雷達。失去火控後陣地無法再發射，來自該陣地的導彈威脅已解除。\n\n陣地地圖會保留到觀察結束、且當地沒有殖民者為止，仍可派穿梭機前往搜刮。</FFF.MissileBase.DestroyedDesc>
+  <!-- EN: Ground access denied: enemy regrouping ({0}) -->
+  <FFF.MissileBase.ReentryBlockedIn>地面通道封鎖中，敵方整備防線（{0}）</FFF.MissileBase.ReentryBlockedIn>
+  <!-- EN: Access denied: enemy regrouping ({0}) -->
+  <FFF.MissileBase.ReentryBlocked>通道封鎖，敵方整備防線（{0}）</FFF.MissileBase.ReentryBlocked>
+  <!-- EN: {0}: its fire-control radars still stand and the enemy is regrouping. Ground access is blocked for {1}; the position will be fully rebuilt. -->
+  <FFF.MissileBase.ReentryBlockStarted>{0}：火控雷達仍在，敵方正重新整備防線。{1}內無法再次進入，陣地將完整重建。</FFF.MissileBase.ReentryBlockStarted>
+  <!-- EN: Missile position: {0} fire-control radars left -->
+  <FFF.MissileBase.ObjectivesAlert>導彈陣地：剩餘火控雷達 {0}</FFF.MissileBase.ObjectivesAlert>
+  <FFF.MissileBase.ObjectivesAlertDesc>摧毀所有火控雷達即可瓦解此陣地（剩餘 {0}），發射架與搜索雷達不必摧毀。\n\n若在火控雷達尚存時撤退，敵方將重新整備：陣地留在世界地圖上繼續發射，一段時間內無法再次進入，下次進入時陣地完整重建。\n\n點擊依序檢視剩餘目標。</FFF.MissileBase.ObjectivesAlertDesc>
+  <!-- EN: Your pawns have arrived at a missile launch position. The enemy has deployed fire control radars and launch vehicles here, continuously striking nearby colonies. Destroy every fire-control radar to neutralize the position; if you withdraw while a fire-control radar still stands, the enemy regroups and blocks your return for a while. -->
+  <FFF.MissileBase.ArrivedLetter>你們抵達了一處導彈陣地。敵方已在此部署火控雷達與導彈發射架，不斷向周圍殖民地發射打擊。摧毀所有火控雷達即可瓦解此陣地；若在火控雷達尚存時撤退，敵方將重新整備防線，一段時間內無法再次進入。</FFF.MissileBase.ArrivedLetter>
+  <!-- EN: Enemy supply drop: {0} ×{1} -->
+  <FFF.MissileBase.SupplyDrop>敵方補給空投：{0} ×{1}</FFF.MissileBase.SupplyDrop>
+  <!-- EN: Enemy missile airdrop: {1} missiles -->
+  <FFF.MissileBase.RackResupply>敵方空投導彈：{1} 枚</FFF.MissileBase.RackResupply>
+  <!-- EN: Enemy ammo airdrop: {1} ×{0} -->
+  <FFF.MissileBase.TurretAmmoDrop>敵方空投彈藥：{1} ×{0}</FFF.MissileBase.TurretAmmoDrop>
+  <!-- EN: Your pawns have arrived at an enemy field launch position. A search radar sits at its centre, with launch positions, ammunition carriers and crew shelters spread around it. Supply pods keep the garrison fed while any radar is operational. Destroy every fire-control radar to neutralize the position; if you withdraw while a fire-control radar still stands, the enemy regroups and blocks your return for a while. -->
+  <FFF.FieldLaunchSite.ArrivedLetter>你們抵達了一處敵方野戰發射陣地。陣地以搜索雷達為中心，四周散布發射陣位、彈藥車與人員休息區。只要仍有雷達運作，敵方就會定時空投生存食品包維持守軍。摧毀所有火控雷達即可瓦解此陣地；若在火控雷達尚存時撤退，敵方將重新整備防線，一段時間內無法再次進入。</FFF.FieldLaunchSite.ArrivedLetter>
+  <!-- EN: {0} has deployed a field missile launch position {3} tiles {2} of {1}. Its launchers can strike your colony; supply pods will keep its garrison fed while its radars run.\n\nDestroy every fire-control radar to neutralize it; knocking out all its radars also cuts off its supplies. -->
+  <FFF.FieldLaunchSite.SpawnedLetter>{0}在{1}的{2}方 {3} 格處部署了一處野戰導彈發射陣地。其發射架能打擊你的殖民地；只要雷達仍在運作，補給艙就會持續為守軍送來食物。\n\n摧毀所有火控雷達即可瓦解此陣地；癱瘓所有雷達也能切斷其補給。</FFF.FieldLaunchSite.SpawnedLetter>
+  <!-- EN: Your pawns have arrived at an enemy missile position. Acoustic mirrors listen for aircraft while a hand-aimed fire-control radar and launch rails send out slow pulsejet loitering munitions. Destroy its fire-control radar to neutralize it; the radar stops firing if its crew or its wood-fired generators are lost. If you retreat with a fire-control radar still standing, the enemy will rebuild its defenses and you cannot return for a while. -->
+  <FFF.EarlyLaunchSite.ArrivedLetter>你們抵達了一處敵方舊式導彈陣地。聲學反射鏡負責監聽，手動火控雷達與發射軌負責射出緩慢的脈衝噴射巡飛彈。摧毀火控雷達即可瓦解此陣地；守軍或燒木發電機沒了，火控雷達也會停擺。若在雷達尚存時撤退，敵方將重新整備防線，一段時間內無法再次進入。</FFF.EarlyLaunchSite.ArrivedLetter>
+  <!-- EN: {0} incoming threats, interception window: {1} left -->
+  <FFF.Alert.Pods>{0} 個來襲目標，攔截窗口剩餘 {1}</FFF.Alert.Pods>
+  <!-- EN: {0} missiles loitering overhead, {1} before they dive -->
+  <FFF.Alert.Pods.Loitering>{0} 枚飛彈在上空盤旋，剩餘盤旋 {1}</FFF.Alert.Pods.Loitering>
+  <!-- EN: Midcourse intercept window: {0} -->
+  <FFF.Alert.Pods.Window.Midcourse>中過程攔截窗口：{0}</FFF.Alert.Pods.Window.Midcourse>
+  <!-- EN: Terminal (CIWS) window: {0} -->
+  <FFF.Alert.Pods.Window.Terminal>末端攔截窗口（CIWS）：{0}</FFF.Alert.Pods.Window.Terminal>
+  <!-- EN: Loiter time left: {0} -->
+  <FFF.Alert.Pods.Window.Loitering>盤旋剩餘：{0}</FFF.Alert.Pods.Window.Loitering>
+  <!-- EN:   · {0}  [{1}] -->
+  <FFF.Alert.Pods.Target>  · {0}  【{1}】</FFF.Alert.Pods.Target>
+  <!-- EN: interceptor in flight -->
+  <FFF.Alert.Pods.Status.InFlight>攔截彈飛行中</FFF.Alert.Pods.Status.InFlight>
+  <!-- EN: fire control locking -->
+  <FFF.Alert.Pods.Status.Locking>火控鎖定中</FFF.Alert.Pods.Status.Locking>
+  <!-- EN: unengaged -->
+  <FFF.Alert.Pods.Status.Unengaged>未接戰</FFF.Alert.Pods.Status.Unengaged>
+  <!-- EN: loitering, waiting for a target -->
+  <FFF.Alert.Pods.Status.Loitering>盤旋等待目標</FFF.Alert.Pods.Status.Loitering>
+  <!-- EN: BVR System -->
+  <FFF.Alert.BVRStatus.Label>BVR 系統</FFF.Alert.BVRStatus.Label>
+  <!-- EN: Search radars: -->
+  <FFF.Alert.BVRStatus.SearchRadars>搜索雷達：</FFF.Alert.BVRStatus.SearchRadars>
+  <!-- EN:   · {0}  range {1}, anti-stealth {2}, power {3}  [{4}] -->
+  <FFF.Alert.BVRStatus.SearchRadar.Line>  · {0}  搜索距離 {1}，反隱身 {2}，功率 {3}  [{4}]</FFF.Alert.BVRStatus.SearchRadar.Line>
+  <!-- EN: Fire control radars: -->
+  <FFF.Alert.BVRStatus.FireControlRadars>火控雷達：</FFF.Alert.BVRStatus.FireControlRadars>
+  <!-- EN:   · {0}  {1} ch, power {2}  [{3}] -->
+  <FFF.Alert.BVRStatus.FireControl.Line>  · {0}  {1} 條通道，功率 {2}  [{3}]</FFF.Alert.BVRStatus.FireControl.Line>
+  <!-- EN:   Channels occupied: {0} / {1} -->
+  <FFF.Alert.BVRStatus.FireControl.Occupied>  已占用通道：{0} / {1}</FFF.Alert.BVRStatus.FireControl.Occupied>
+  <!-- EN:   (none installed) -->
+  <FFF.Alert.BVRStatus.None>  （未安裝）</FFF.Alert.BVRStatus.None>
+  <!-- EN: Observing: {0} -->
+  <FFF.Alert.Exist.Observing>觀察中：{0}</FFF.Alert.Exist.Observing>
+  <!-- EN: Observation ends in: {0} -->
+  <FFF.Alert.Exist.TimeLeft>觀察結束倒數：{0}</FFF.Alert.Exist.TimeLeft>
+  <!-- EN: Enemy combatants remaining: {0} -->
+  <FFF.Alert.Exist.EnemiesAlive>剩餘敵方戰鬥人員：{0}</FFF.Alert.Exist.EnemiesAlive>
+  <!-- EN: This is an active missile launch position. Ending observation early will allow the crew to regroup and reset their defenses. -->
+  <FFF.Alert.Exist.IsMissileBase>這是一處運作中的導彈陣地。提前結束觀察將讓敵方人員得以重整並重置其防禦。</FFF.Alert.Exist.IsMissileBase>
+  <!-- EN: This missile position's fire-control radars are destroyed. Its map stays open until observation ends and no colonists remain there; send a shuttle or transport pods before then to loot it. -->
+  <FFF.Alert.Exist.MissileBaseDestroyed>此導彈陣地的火控雷達已全數摧毀。地圖會保留到觀察結束、且當地沒有殖民者為止；在此之前可派穿梭機或運輸艙前往搜刮。</FFF.Alert.Exist.MissileBaseDestroyed>
+  <!-- EN: Click to end observation early. -->
+  <FFF.Alert.Exist.ClickHint>點擊以提前結束觀察。</FFF.Alert.Exist.ClickHint>
+  <!-- EN: End observation now? The map will no longer be held open and may be cleaned up by the game. -->
+  <FFF.Alert.Exist.EndEarly.Confirm>現在就結束觀察？地圖將不再被保留，可能會被遊戲清理。</FFF.Alert.Exist.EndEarly.Confirm>
+  <!-- EN: End observation early?\n\nThe enemy crew will have the opportunity to regroup. The launch position's defenses and timers will reset, as if the observation never happened.\n\nThis cannot be undone. -->
+  <FFF.Alert.Exist.EndEarly.Confirm.MissileBase>提前結束觀察？\n\n敵方人員將有機會重整，該導彈陣地的防禦與計時器都會重置，如同觀察從未發生。\n\n此操作無法復原。</FFF.Alert.Exist.EndEarly.Confirm.MissileBase>
+  <!-- EN: Observation ended early. Enemy forces may regroup. -->
+  <FFF.Alert.Exist.ObservationEnded>觀察已提前結束。敵軍可能會重整。</FFF.Alert.Exist.ObservationEnded>
+  <!-- EN: {0} missiles outbound: first impact in {1} -->
+  <FFF.Alert.PlayerMissiles.Label>{0} 枚導彈飛行中，首波落地倒數 {1}</FFF.Alert.PlayerMissiles.Label>
+  <!-- EN: Target: {0} -->
+  <FFF.Alert.PlayerMissiles.MapHeader>目標：{0}</FFF.Alert.PlayerMissiles.MapHeader>
+  <!-- EN:   Impact in {0}: -->
+  <FFF.Alert.PlayerMissiles.WaveImpact>  落地倒數 {0}：</FFF.Alert.PlayerMissiles.WaveImpact>
+  <!-- EN:     · {0}  ({1},{2})  [{3}] -->
+  <FFF.Alert.PlayerMissiles.Target>    · {0}  ({1},{2})  【{3}】</FFF.Alert.PlayerMissiles.Target>
+  <!-- EN: Left-click to cycle to next impact site. Right-click to cycle back. -->
+  <FFF.Alert.PlayerMissiles.ClickHint>左鍵切換至下一個落點，右鍵切換回上一個。</FFF.Alert.PlayerMissiles.ClickHint>
+  <!-- EN: online -->
+  <FFF.BVR.Online>運作中</FFF.BVR.Online>
+  <!-- EN: offline -->
+  <FFF.BVR.Offline>離線</FFF.BVR.Offline>
+  <!-- EN: Search radar: range {0}, anti-stealth {1} ({2}) -->
+  <FFF.BVR.SearchRadar>搜索雷達：搜索距離 {0}，反隱身 {1}（{2}）</FFF.BVR.SearchRadar>
+  <!-- EN: Fire control: {0} channel(s) ({1}) -->
+  <FFF.BVR.FireControl>火控雷達：{0} 條火力通道（{1}）</FFF.BVR.FireControl>
+  <!-- EN: Artillery guidance channels: {0} / {1} free -->
+  <FFF.BVR.ArtilleryChannels>火砲引導通道：{0} / {1} 空閒</FFF.BVR.ArtilleryChannels>
+  <!-- EN: Assembly -->
+  <FFF.Missile.Tab>裝配</FFF.Missile.Tab>
+  <!-- EN: Missile body -->
+  <FFF.Missile.Body>導彈彈體</FFF.Missile.Body>
+  <!-- EN: fixed by the launch platform -->
+  <FFF.Missile.BodyFixed>由發射平台固定</FFF.Missile.BodyFixed>
+  <!-- EN: None -->
+  <FFF.Missile.None>無</FFF.Missile.None>
+  <!-- EN: locked -->
+  <FFF.Missile.Locked>未解鎖</FFF.Missile.Locked>
+  <!-- EN: God mode: changes are assembled at once, free and without research. -->
+  <FFF.Missile.GodModeInstant>上帝模式：變更立即裝配完成，不耗資源、不需研究。</FFF.Missile.GodModeInstant>
+  <!-- EN: Pending stats (after assembly) -->
+  <FFF.Missile.Stats>待裝配數值（裝配後生效）</FFF.Missile.Stats>
+  <!-- EN: Blast radius: {0} -->
+  <FFF.Missile.Stat.Radius>爆炸半徑：{0}</FFF.Missile.Stat.Radius>
+  <!-- EN: Warhead: {0} ({1}) -->
+  <FFF.Missile.Stat.Damage>彈頭：{0}（{1}）</FFF.Missile.Stat.Damage>
+  <!-- EN: Impact dispersion: {0} -->
+  <FFF.Missile.Stat.Scatter>命中偏移：{0}</FFF.Missile.Stat.Scatter>
+  <!-- EN: Travel speed: x{0} -->
+  <FFF.Missile.Stat.Speed>飛行速度：x{0}</FFF.Missile.Stat.Speed>
+  <!-- EN: Fuel: {0} -->
+  <FFF.Missile.Stat.Fuel>燃料量：{0}</FFF.Missile.Stat.Fuel>
+  <!-- EN: Specific impulse: {0} -->
+  <FFF.Missile.Stat.Impulse>比衝（推進效率）：{0}</FFF.Missile.Stat.Impulse>
+  <!-- EN: Range: {0} tiles -->
+  <FFF.Missile.Stat.Range>射程：{0} 格</FFF.Missile.Stat.Range>
+  <!-- EN: Guided: can update its target position {0} time(s) in flight and strike across orbital layers -->
+  <FFF.Missile.Stat.TerminalGuidance>具導引能力：飛行中可更新目標位置 {0} 次，可跨圖層打擊</FFF.Missile.Stat.TerminalGuidance>
+  <!-- EN: Unguided: cannot track moving targets or strike across orbital layers -->
+  <FFF.Missile.Stat.NoTerminalGuidance>無導引能力：無法追蹤移動目標，也無法跨圖層打擊</FFF.Missile.Stat.NoTerminalGuidance>
+  <!-- EN: Loiter flight control: waits up to {0} before falling back -->
+  <FFF.Missile.Stat.Loiter>盤旋飛控：找不到目標時可盤旋等待 {0}，之後才回退慣性落點</FFF.Missile.Stat.Loiter>
+  <!-- EN: Target is beyond missile range ({0} tiles). -->
+  <FFF.MissileLauncher.OutOfRange>目標超出導彈射程（{0} 格）。</FFF.MissileLauncher.OutOfRange>
+  <!-- EN: {0} / {1} tiles -->
+  <FFF.MissileLauncher.RangeLabel>{0} / {1} 格</FFF.MissileLauncher.RangeLabel>
+  <!-- EN: No target at this location: the missile will be wasted -->
+  <FFF.MissileLauncher.NoTargetHere>此處沒有目標，導彈將會落空</FFF.MissileLauncher.NoTargetHere>
+  <!-- EN: Striking across orbital layers requires a guided missile. Inertial guidance and unguided munitions cannot. -->
+  <FFF.Missile.CrossLayerNeedsGuidance>跨圖層打擊需要具導引能力的導彈；慣性制導與無導引彈藥無法做到。</FFF.Missile.CrossLayerNeedsGuidance>
+  <!-- EN: Warhead -->
+  <!-- EN: Guidance -->
+  <!-- EN: Propulsion -->
+  <!-- EN: Payload -->
+  <!-- EN: Body: {0}\nWarhead: {1}\nBlast: {2} / {3} dmg -->
+  <FFF.Missile.Inspect>彈體：{0}\n彈頭：{1}\n爆炸：半徑 {2} / 傷害 {3}</FFF.Missile.Inspect>
+  <!-- EN: Needs (for assembly): {0} -->
+  <FFF.Missile.NeedResources>裝配所需：{0}</FFF.Missile.NeedResources>
+  <!-- EN: Resources ready: confirm to begin assembly -->
+  <FFF.Missile.ReadyToAssemble>資源已備齊，確認後開始裝配</FFF.Missile.ReadyToAssemble>
+  <!-- EN: No resources available to assemble -->
+  <FFF.Missile.NoResources>沒有可用於裝配的資源</FFF.Missile.NoResources>
+  <!-- EN: Editing missile 1 of {0} in rack -->
+  <FFF.Missile.EditingSlot>正在編輯架上第 {0} 枚（共 {1} 枚）</FFF.Missile.EditingSlot>
+  <!-- EN: Queue for assembly -->
+  <FFF.Missile.ConfirmAssembly>加入裝配佇列</FFF.Missile.ConfirmAssembly>
+  <!-- EN: Assembly queued: colonists will begin shortly -->
+  <FFF.Missile.AssemblyQueued>已加入佇列，殖民者即將開始裝配</FFF.Missile.AssemblyQueued>
+  <!-- EN: Reset to assembled config -->
+  <FFF.Missile.ResetToCurrent>還原為已裝配設定</FFF.Missile.ResetToCurrent>
+  <!-- EN: Reloading launch rail: {0} -->
+  <FFF.MissileLauncher.LaunchCooldown>發射軌重新裝填中：{0}</FFF.MissileLauncher.LaunchCooldown>
+  <!-- EN: No missile loaded -->
+  <FFF.MissileLauncher.Rail.NoMissileLoaded>未裝填導彈</FFF.MissileLauncher.Rail.NoMissileLoaded>
+  <!-- EN: No missile rack with compatible missiles found -->
+  <FFF.Missile.NoRackAvailable>找不到含相容導彈的儲存架</FFF.Missile.NoRackAvailable>
+  <!-- EN: Reloading: {0} -->
+  <FFF.MissileLauncher.Interceptor.Reloading>裝填中：{0}</FFF.MissileLauncher.Interceptor.Reloading>
+  <!-- EN: Ready to fire -->
+  <FFF.MissileLauncher.Interceptor.Ready>可發射</FFF.MissileLauncher.Interceptor.Ready>
+  <!-- EN: Incoming missile -->
+  <FFF.Missile.IncomingLetter>導彈來襲</FFF.Missile.IncomingLetter>
+  <!-- EN: A missile launched by {0} is inbound and will strike the colony shortly. -->
+  <FFF.Missile.IncomingLetterDesc>{0} 發射的導彈正在接近，即將打擊殖民地。</FFF.Missile.IncomingLetterDesc>
+  <!-- EN: Our missile found no target and was wasted. -->
+  <FFF.Missile.Missed>我方導彈找不到目標，已落空。</FFF.Missile.Missed>
+  <!-- EN: A missile launched by {0} lost its target and missed. -->
+  <FFF.Missile.IncomingMissed>{0} 發射的導彈失去目標，已落空。</FFF.Missile.IncomingMissed>
+  <!-- EN: {0} locked onto a target. The missile is coming down. -->
+  <FFF.Missile.SeekerLocked>{0}已鎖定目標，導彈正在落下。</FFF.Missile.SeekerLocked>
+  <!-- EN: The seeker found no target: the missile is loitering overhead and will wait {0} before falling back to inertial guidance. -->
+  <FFF.Missile.Loitering>導引頭沒有找到目標：飛彈在上空盤旋等待，最多 {0} 後才回退慣性導引。</FFF.Missile.Loitering>
+  <!-- EN: inertial guidance -->
+  <FFF.Guidance.Inertial>慣性導引</FFF.Guidance.Inertial>
+  <!-- EN: radio-command guidance -->
+  <FFF.Guidance.RadioCommand>無線電指令導引</FFF.Guidance.RadioCommand>
+  <!-- EN: {0}: you choose the impact point on arrival -->
+  <FFF.Guidance.ManualTarget>{0}：抵達後由你選擇落點</FFF.Guidance.ManualTarget>
+  <!-- EN: {0}: locks a target automatically on arrival -->
+  <FFF.Guidance.AutoTarget>{0}：抵達後自動鎖定目標</FFF.Guidance.AutoTarget>
+  <!-- EN: Designated by: {0}\nExpires in: {1} -->
+  <FFF.LaserMark.Inspect>標定方：{0}\n剩餘時間：{1}</FFF.LaserMark.Inspect>
+  <!-- EN: Designated by: {0} -->
+  <FFF.LaserMark.InspectPermanent>標定方：{0}</FFF.LaserMark.InspectPermanent>
+  <!-- EN: Laser designation placed. It expires in {0}. -->
+  <FFF.LaserMark.Placed>已標定雷射引導點，{0}後失效。</FFF.LaserMark.Placed>
+  <!-- EN: Laser designation placed. -->
+  <FFF.LaserMark.PlacedPermanent>已標定雷射引導點。</FFF.LaserMark.PlacedPermanent>
+  <!-- EN: Terminal updates remaining: {0} / {1} -->
+  <FFF.Missile.TerminalUpdatesRemaining>剩餘終端更新：{0} / {1}</FFF.Missile.TerminalUpdatesRemaining>
+  <!-- EN: Inventory -->
+  <FFF.Tab.MissileInventory>庫存</FFF.Tab.MissileInventory>
+  <!-- EN: Features -->
+  <FFF.MissileInventory.Features>特性</FFF.MissileInventory.Features>
+  <!-- EN: Blast -->
+  <FFF.MissileInventory.Stat.BlastRadius>爆炸半徑</FFF.MissileInventory.Stat.BlastRadius>
+  <!-- EN: Damage -->
+  <FFF.MissileInventory.Stat.Damage>傷害</FFF.MissileInventory.Stat.Damage>
+  <!-- EN: tiles -->
+  <FFF.MissileInventory.Unit.Tiles>格</FFF.MissileInventory.Unit.Tiles>
+  <!-- EN: Active mechanics for this missile -->
+  <FFF.MissileInventory.Feature.Mechanics>本枚導彈的生效機制</FFF.MissileInventory.Feature.Mechanics>
+  <!-- EN: Primary warhead damage type: {0}; damage: {1}; blast radius: {2} tiles. Payload capacity N = {3}. -->
+  <FFF.MissileInventory.Feature.Warhead>主要彈頭傷害類型：{0}；傷害值：{1}；爆炸半徑：{2} 格。載荷容量係數 N = {3}。</FFF.MissileInventory.Feature.Warhead>
+  <!-- EN: Intercept hit chance bonus: {0}% -->
+  <FFF.MissileInventory.Feature.InterceptBonus>攔截命中率加成：{0}%</FFF.MissileInventory.Feature.InterceptBonus>
+  <!-- EN: Additional intercept rolls per engagement: {0} -->
+  <FFF.MissileInventory.Feature.ExtraRolls>每次攔截額外擲骰：{0} 次</FFF.MissileInventory.Feature.ExtraRolls>
+  <!-- EN: Warhead range adjustment: {0} tiles -->
+  <FFF.MissileInventory.Feature.RangeOffset>戰鬥部射程修正：{0} 格</FFF.MissileInventory.Feature.RangeOffset>
+  <!-- EN: Can penetrate thick rock roofs and target objects beneath them. -->
+  <FFF.MissileInventory.Feature.PenetratesRoof>可穿透厚岩頂，命中岩頂下目標。</FFF.MissileInventory.Feature.PenetratesRoof>
+  <!-- EN: Scatter radius: {0} tiles; terminal position updates: {1}; {2} -->
+  <FFF.MissileInventory.Feature.Guidance>散布半徑：{0} 格；終端位置更新：{1} 次；{2}</FFF.MissileInventory.Feature.Guidance>
+  <!-- EN: Terminal guidance can update the target position in flight. -->
+  <FFF.MissileInventory.Feature.Guided>具終端導引，可追蹤目標位置。</FFF.MissileInventory.Feature.Guided>
+  <!-- EN: No terminal guidance; uses the default impact point dispersion. -->
+  <FFF.MissileInventory.Feature.Unguided>不具終端導引，依預設落點散布。</FFF.MissileInventory.Feature.Unguided>
+  <!-- EN: Effective range: {0} tiles; world speed factor: {1}; fuel: {2}; specific impulse: {3}. -->
+  <FFF.MissileInventory.Feature.Propulsion>有效射程：{0} 格；世界移動速度倍率：{1}；燃料：{2}；比衝：{3}。</FFF.MissileInventory.Feature.Propulsion>
+  <!-- EN: Payload effect scales with body capacity N = {0}; effective range: {1} tiles. -->
+  <FFF.MissileInventory.Feature.Payload>載荷效果依彈體容量 N = {0} 縮放；有效射程：{1} 格。</FFF.MissileInventory.Feature.Payload>
+  <!-- EN: Radar cross-section factor: {0}. -->
+  <FFF.MissileInventory.Feature.Signature>雷達截面倍率：{0}。</FFF.MissileInventory.Feature.Signature>
+  <!-- EN: Jamming strength: {0}%. -->
+  <FFF.MissileInventory.Feature.Jamming>干擾強度：{0}%。</FFF.MissileInventory.Feature.Jamming>
+  <!-- EN: Chaff / streamer charges: {0}. -->
+  <FFF.MissileInventory.Feature.Chaff>攜帶干擾箔／絲：{0} 次。</FFF.MissileInventory.Feature.Chaff>
+  <!-- EN: Loaded: {0} / {1} -->
+  <FFF.MissileInventory.Count>已裝填：{0} / {1}</FFF.MissileInventory.Count>
+  <!-- EN: No missiles loaded. -->
+  <FFF.MissileInventory.Empty>未裝填任何導彈。</FFF.MissileInventory.Empty>
+  <!-- EN: Blast {0}  ·  Dmg {1} -->
+  <FFF.MissileInventory.Stats>爆炸 {0}  ·  傷害 {1}</FFF.MissileInventory.Stats>
+  <!-- EN: Eject this missile as an item onto the ground next to the rack. It is dropped forbidden so haulers do not carry it straight back. -->
+  <FFF.MissileInventory.EjectDesc>將這枚導彈彈出為物品，放在儲存架旁的地上。彈出後為禁用狀態，避免搬運工立刻搬回原架。</FFF.MissileInventory.EjectDesc>
+  <!-- EN: No room next to the rack to eject the missile. -->
+  <FFF.MissileInventory.EjectFailed>儲存架旁沒有空位，無法彈出導彈。</FFF.MissileInventory.EjectFailed>
+  <!-- EN: Fire Ballistic Missile -->
+  <FFF.MissileLauncher.Ballistic.Fire>發射彈道導彈</FFF.MissileLauncher.Ballistic.Fire>
+  <!-- EN: Launch the assembled ballistic missile at a world-map target. The missile follows a lofted trajectory and is nearly impossible to intercept once launched. -->
+  <FFF.MissileLauncher.Ballistic.FireDesc>向世界地圖目標發射已裝配的彈道導彈。導彈以拋物線彈道飛行，一旦發射幾乎無法被攔截。</FFF.MissileLauncher.Ballistic.FireDesc>
+  <!-- EN: Missile not assembled. Set it up in the Assembly tab; colonists will deliver materials and assemble it. -->
+  <FFF.MissileLauncher.Ballistic.NotLoaded>導彈尚未裝配。請在「裝配」分頁設定，殖民者會搬運材料完成裝配。</FFF.MissileLauncher.Ballistic.NotLoaded>
+  <!-- EN: Ballistic missile: assembled and ready -->
+  <FFF.MissileLauncher.Ballistic.Loaded>彈道導彈：已裝配，可發射</FFF.MissileLauncher.Ballistic.Loaded>
+  <!-- EN: Ballistic missile loaded: {0} -->
+  <FFF.MissileLauncher.Ballistic.LoadedWith>彈道導彈已裝填：{0}</FFF.MissileLauncher.Ballistic.LoadedWith>
+  <!-- EN: Ballistic missile: awaiting assembly by colonists -->
+  <FFF.MissileLauncher.Ballistic.AwaitingAssembly>彈道導彈：等待殖民者完成裝配</FFF.MissileLauncher.Ballistic.AwaitingAssembly>
+  <!-- EN: Ballistic missile silo: unloaded, configure in Assembly tab -->
+  <FFF.MissileLauncher.Ballistic.Unloaded>彈道發射井：未裝配</FFF.MissileLauncher.Ballistic.Unloaded>
+  <!-- EN: Fire Artillery -->
+  <FFF.Artillery.Fire>火砲射擊</FFF.Artillery.Fire>
+  <!-- EN: Select a target on the world map. Keeps firing until stopped. -->
+  <FFF.Artillery.FireDesc>選擇世界地圖上的目標持續砲擊，直到下令停止。</FFF.Artillery.FireDesc>
+  <!-- EN: Stop Firing -->
+  <FFF.Artillery.Stop>停止射擊</FFF.Artillery.Stop>
+  <!-- EN: Halt sustained fire. Current status: {0} -->
+  <FFF.Artillery.StopDesc>停止持續射擊。目前狀態：{0}</FFF.Artillery.StopDesc>
+  <!-- EN: Fire mode: Ranging -->
+  <FFF.Artillery.ModeRanging>射擊模式：校射</FFF.Artillery.ModeRanging>
+  <!-- EN: Fire mode: Fire for effect -->
+  <FFF.Artillery.ModeEffect>射擊模式：效力射</FFF.Artillery.ModeEffect>
+  <!-- EN: Switch fire mode. Ranging: scatter around the centre of the target map; every impact is logged as that map's fire-for-effect point. Fire for effect: scatter around the last logged ranging impact on that map, shared by every gun of the same faction shelling it; each shot tightens the scatter by a quarter of the base scatter (per gun, minimum 1 cell) and radar guidance is not used. -->
+  <FFF.Artillery.ModeDesc>切換射擊模式。校射：以目標地圖中心為散佈中心，每個落點都會登錄成該地圖的效力射落點。效力射：以該地圖最後一次校射的落點為散佈中心，同陣營對同一地圖的砲共用這個落點；每發再收束基礎散佈的 25%（每門砲各自累計，最低 1 格），且不佔用雷達通道。</FFF.Artillery.ModeDesc>
+  <!-- EN: Impact point ({0}, {1}), next shot scatters {2} cells -->
+  <FFF.Artillery.EffectPoint>落點 ({0}, {1})，下一發散佈 {2} 格</FFF.Artillery.EffectPoint>
+  <!-- EN: No shell loaded: sustained fire halted. -->
+  <FFF.Artillery.NoAmmo>未裝填砲彈，持續射擊已停止。</FFF.Artillery.NoAmmo>
+  <!-- EN: Artillery shells are unguided and cannot strike across orbital layers. -->
+  <FFF.Artillery.CrossLayer>砲彈沒有導引能力，無法跨圖層打擊。</FFF.Artillery.CrossLayer>
+  <!-- EN: The artillery salvo found no target and was wasted. -->
+  <FFF.Artillery.Missed>砲擊找不到目標，已落空。</FFF.Artillery.Missed>
+  <!-- EN: Barrel worn out: sustained fire halted. Replace the reinforced barrel. -->
+  <FFF.Artillery.NoBarrel>砲管已耗損，持續射擊已停止，請更換強化砲管。</FFF.Artillery.NoBarrel>
+  <!-- EN: Cannot shell your own map tile. -->
+  <FFF.Artillery.TargetIsHome>不能砲擊自己所在的地塊。</FFF.Artillery.TargetIsHome>
+  <!-- EN: Target is beyond gun range ({0} tiles). -->
+  <FFF.Artillery.OutOfRange>目標超出射程（{0} 格）。</FFF.Artillery.OutOfRange>
+  <!-- EN: The target map is not loaded. Artillery can only shell a map that is currently active. -->
+  <FFF.Artillery.MapNotSpawned>目標地圖尚未載入，只能砲擊已生成的地圖。</FFF.Artillery.MapNotSpawned>
+  <!-- EN: Needs a gunner: right-click the mortar and order a pawn to man it; the gunner loads shells automatically. -->
+  <FFF.Artillery.NoCrew>需要砲手操作：右鍵選擇「操作」指派人員，砲手會自動裝填砲彈。</FFF.Artillery.NoCrew>
+  <!-- EN: No shell loaded: have a gunner load a mortar shell before firing. -->
+  <FFF.Artillery.NoLoadedShell>尚未裝填砲彈：先讓砲手裝填迫擊砲彈再開火。</FFF.Artillery.NoLoadedShell>
+  <!-- EN: Waiting for the gunner to reload: the mission is paused. -->
+  <FFF.Artillery.WaitingForShell>等待砲手補彈，射擊任務暫停中。</FFF.Artillery.WaitingForShell>
+  <FFF.Artillery.WaitingForAutoloader>等待自動裝填架補彈，射擊任務暫停中。</FFF.Artillery.WaitingForAutoloader>
+  <FFF.Artillery.NoLoadedShellAutoloader>尚未裝填砲彈：先在連結的自動裝填架上存放迫擊砲彈再開火。</FFF.Artillery.NoLoadedShellAutoloader>
+  <FFF.Artillery.WaitingForBarrel>砲管已耗損，等待更換強化砲管，射擊任務暫停中。</FFF.Artillery.WaitingForBarrel>
+  <FFF.Artillery.HoldFirePaused>停火中：世界砲擊任務暫停，解除停火後繼續。</FFF.Artillery.HoldFirePaused>
+  <!-- EN: No ranging impact has been logged on this map: fire a ranging shot first. -->
+  <FFF.Artillery.NoRegistration>這張地圖還沒有校射落點，無法效力射；請先以校射模式打一發。</FFF.Artillery.NoRegistration>
+  <FFF.Artillery.GroupPartial>選取的 {1} 門砲中，{0} 門可以射擊此目標；其餘：{2}</FFF.Artillery.GroupPartial>
+  <!-- EN: Device is inactive (no power, broken down, or switched off). -->
+  <FFF.BVR.DeviceInactive>裝置不可用（無電力、損壞或已關閉）。</FFF.BVR.DeviceInactive>
+  <!-- EN: reloading, {0} remaining -->
+  <FFF.Artillery.StateCooldown>裝填冷卻中，剩餘 {0}</FFF.Artillery.StateCooldown>
+  <!-- EN: aiming ({0}%) -->
+  <FFF.Artillery.StateAiming>瞄準中（{0}%）</FFF.Artillery.StateAiming>
+  <!-- EN: ready to fire -->
+  <FFF.Artillery.StateReady>可發射</FFF.Artillery.StateReady>
+  <!-- EN: Radar guidance: available (scatter {0} cells) -->
+  <FFF.Artillery.GuidanceOnline>雷達導引：可用（散佈 {0} 格）</FFF.Artillery.GuidanceOnline>
+  <!-- EN: Radar guidance: no free fire-control channel (unguided, scatter {0} cells) -->
+  <FFF.Artillery.GuidanceOffline>雷達導引：無導引（散佈 {0} 格）</FFF.Artillery.GuidanceOffline>
+  <!-- 裝配分頁：切換導彈、方案載入／保存；彈道發射井井蓋 -->
+  <FFF.Missile.PreviousMissile>架上上一枚</FFF.Missile.PreviousMissile>
+  <FFF.Missile.NextMissile>架上下一枚</FFF.Missile.NextMissile>
+  <FFF.Missile.SaveDesignTip>把正在編輯的構型存成裝配方案。方案與組裝台共用，跨存檔保留。</FFF.Missile.SaveDesignTip>
+  <FFF.Missile.LoadDesignTip>把已存的方案載入這枚導彈。只能載入相同彈體的方案；部件仍需小人裝配。</FFF.Missile.LoadDesignTip>
+  <FFF.Missile.DesignBodyMismatch>彈體不同：{0}</FFF.Missile.DesignBodyMismatch>
+  <FFF.Missile.ApplyDesignThis>套用到這一枚</FFF.Missile.ApplyDesignThis>
+  <FFF.Missile.ApplyDesignAll>套用到架上全部 {0} 枚同型導彈</FFF.Missile.ApplyDesignAll>
+  <FFF.Missile.DesignApplied>已將方案「{0}」載入{1}。</FFF.Missile.DesignApplied>
+  <FFF.SiloHatch.KeepClosed>保持井蓋關閉</FFF.SiloHatch.KeepClosed>
+  <FFF.SiloHatch.KeepClosedDesc>開啟時，除了發射期間，井蓋一律關閉。井蓋完全關閉時，發射井受到的傷害降為 {0}。\n\n發射時會先開蓋，井蓋全開後導彈才升空，幾秒後再關回。\n\n井蓋沒有完全打開時無法裝配導彈。</FFF.SiloHatch.KeepClosedDesc>
+  <FFF.SiloHatch.Closed>井蓋：關閉（受到傷害 {0}）</FFF.SiloHatch.Closed>
+  <FFF.SiloHatch.Open>井蓋：開啟</FFF.SiloHatch.Open>
+  <FFF.SiloHatch.Opening>井蓋：開啟中</FFF.SiloHatch.Opening>
+  <FFF.SiloHatch.Closing>井蓋：關閉中</FFF.SiloHatch.Closing>
+  <FFF.SiloHatch.StatLabel>井蓋關閉時受到的傷害</FFF.SiloHatch.StatLabel>
+  <FFF.SiloHatch.StatDesc>井蓋完全關閉時，發射井受到的傷害佔正常傷害的比例。井蓋開關途中或發射後開啟期間不生效。</FFF.SiloHatch.StatDesc>
+  <FFF.SiloHatch.OpeningForLaunch>井蓋：發射前開蓋中</FFF.SiloHatch.OpeningForLaunch>
+  <FFF.SiloHatch.AssemblyBlocked>井蓋關閉中：打開井蓋才能裝配導彈。</FFF.SiloHatch.AssemblyBlocked>
+  <!-- EN: Your pawns have arrived at an enemy ballistic launch site. Hardened strategic silos are spread around a search radar and its fire-control radars; the garrison reloads each silo a few days after it fires. Destroy every fire-control radar to neutralize the site; if you withdraw while a fire-control radar still stands, the enemy blocks your return for a while. -->
+  <FFF.BallisticLaunchSite.ArrivedLetter>你們抵達了一處敵方彈道發射場。強化的戰略發射井散布在搜索雷達與火控雷達周圍；每座發射井發射後，守軍會在幾天內重新裝填。摧毀所有火控雷達即可癱瘓發射場；若在火控雷達尚存時撤退，敵方會在一段時間內封鎖你們再次進入。</FFF.BallisticLaunchSite.ArrivedLetter>
+  <!-- Sea launch station (DMSE.SeaLaunchSite) -->
+  <FFF.SeaLaunchSite.ArrivedLetter>你們抵達了殖民艦隊的海上發射站。雷達、發射陣位、彈藥車與人員艙蓋在以甲板走道相連的海上平台上，由鋼鐵支柱撐在浪頭之上。摧毀所有火控雷達即可瓦解此站；打掉支柱，只靠它撐住的甲板會連同上面的一切塌進海裡。這裡沒有陸路可退，只能搭穿梭機或運輸艙離開。</FFF.SeaLaunchSite.ArrivedLetter>
+  <!-- 海上平台（DMSE.SeaPlatform） -->
+  <FFF.SeaPlatform.SupportRadius>支撐 {0} 格內的海上平台。</FFF.SeaPlatform.SupportRadius>
+  <FFF.SeaPlatform.NeedsSupport>必須在平台支柱的支撐範圍內。</FFF.SeaPlatform.NeedsSupport>
+  <FFF.SeaPlatform.OnlySeaPlatformMap>只能蓋在海上平台地圖上。</FFF.SeaPlatform.OnlySeaPlatformMap>
+  <FFF.SeaPlatform.PillarNeedsOpenAir>必須蓋在高空或海上平台上。</FFF.SeaPlatform.PillarNeedsOpenAir>
+  <FFF.SeaPlatform.PillarNeedsAccess>旁邊至少要有一格站得住的地方，才有人能蓋。</FFF.SeaPlatform.PillarNeedsAccess>
+  <FFF.SeaPlatform.Unsupported>{0} 格海上平台失去支撐（超出支柱範圍，或和支柱底下的平台斷開），{1} 秒後會崩塌，除非重新接上，或在範圍內蓋好平台支柱。</FFF.SeaPlatform.Unsupported>
+  <FFF.SeaPlatform.PillarDestroyed>平台支柱被摧毀了。{0} 格海上平台失去支撐，{1} 秒後會崩塌，除非接上別的支柱，或在範圍內蓋好新的平台支柱。</FFF.SeaPlatform.PillarDestroyed>
+  <FFF.SeaPlatform.Collapsed>{0} 格海上平台塌進海裡了。</FFF.SeaPlatform.Collapsed>
+  <FFF.SeaPlatform.PawnFell>{0} 隨著崩塌的平台掉下去，受傷爬了回來。</FFF.SeaPlatform.PawnFell>
+  <FFF.SeaPlatform.PawnLost>{0} 隨著崩塌的平台落海，失蹤了。</FFF.SeaPlatform.PawnLost>
+  <FFF.SeaPlatform.NeedWaterTile>請選地表的水域格。</FFF.SeaPlatform.NeedWaterTile>
+  <FFF.SeaPlatform.TileOccupied>那一格已經有地圖了。</FFF.SeaPlatform.TileOccupied>
+  <!-- 設定頁（FFF_AerospaceMod） -->
+  <!-- EN: Strike wave ready alert -->
+  <FFF.Strike.Settings.WaveReadyAlert>打擊波次可發射警報</FFF.Strike.Settings.WaveReadyAlert>
+  <!-- EN: Show an alert when a strike mission can fire its next wave. -->
+  <FFF.Strike.Settings.WaveReadyAlertDesc>打擊任務的下一波可以發射時顯示警報。</FFF.Strike.Settings.WaveReadyAlertDesc>
+  <FFF.BVR.Settings.TerminalImpactMarkers>末端落點標記</FFF.BVR.Settings.TerminalImpactMarkers>
+  <FFF.BVR.Settings.TerminalImpactMarkersDesc>在 BVR 末端（近迫防禦）窗口內，導彈本體看不見時，於敵我雙方導彈的預測落點畫標記。</FFF.BVR.Settings.TerminalImpactMarkersDesc>
+  <!-- EN: God mode: instant missile assembly -->
+  <FFF.Missile.Settings.GodModeInstantAssembly>上帝模式：導彈即時裝配</FFF.Missile.Settings.GodModeInstantAssembly>
+  <!-- EN: While god mode is on, missile and ballistic silo refits finish immediately: no confirmation, hauling or assembly work, and no resources are used. Parts are available without research. Removed parts are not refunded. -->
+  <FFF.Missile.Settings.GodModeInstantAssemblyDesc>開啟上帝模式時，導彈與彈道導彈發射井的裝配立即完成：不需確認、搬運或裝配工作，也不消耗資源；部件不需研究即可選用。移除的部件不退還資源。</FFF.Missile.Settings.GodModeInstantAssemblyDesc>
+  <!-- EN: Intercept debris causes damage -->
+  <FFF.BVR.Settings.InterceptDebrisDamage>攔截殘骸造成傷害</FFF.BVR.Settings.InterceptDebrisDamage>
+  <!-- EN: Large debris from intercepted missiles and drop pods deals light blunt damage where it lands. Roofs stop it. When off, debris only leaves dust, sparks and rubble. -->
+  <FFF.BVR.Settings.InterceptDebrisDamageDesc>被攔截的導彈與空投艙所掉落的大塊殘骸，落地時對該格造成輕微鈍傷，屋頂可以擋下。關閉時殘骸只留下揚塵、火花與碎屑。</FFF.BVR.Settings.InterceptDebrisDamageDesc>
+  <!-- EN: Intercept effect density -->
+  <FFF.BVR.Settings.InterceptFxDensity>攔截特效密度</FFF.BVR.Settings.InterceptFxDensity>
+  <!-- EN: How many fragments, smoke puffs and trail puffs an interception makes. Lower it if large salvos slow the game down. Large debris still lands at every setting. -->
+  <FFF.BVR.Settings.InterceptFxDensityDesc>攔截時產生的碎片、煙團與煙跡數量。大規模齊射造成卡頓時可調低；任何設定下大塊殘骸都仍會落地。</FFF.BVR.Settings.InterceptFxDensityDesc>
+  <!-- EN: CIWS intercept rate: {0} -->
+  <FFF.BVR.Settings.CiwsInterceptMultiplier>迫近防禦砲塔攔截率：{0}</FFF.BVR.Settings.CiwsInterceptMultiplier>
+  <!-- EN: Scales the hit chance of every close-in defense turret (CIWS). 100% keeps each turret's own rate; 0% means they never shoot anything down. Ballistic missiles stay very hard to hit whatever this is set to. -->
+  <FFF.BVR.Settings.CiwsInterceptMultiplierDesc>調整所有迫近防禦砲塔（CIWS）的命中率。100% 為各砲塔原本的數值；0% 則永遠無法擊落目標。不論設定為何，彈道導彈都極難被迫近防禦攔截。</FFF.BVR.Settings.CiwsInterceptMultiplierDesc>
+  <!-- EN: NPC MIRV and decoy warheads -->
+  <FFF.BVR.Settings.NpcMirv>NPC 分導彈頭與誘餌</FFF.BVR.Settings.NpcMirv>
+  <!-- EN: Let NPC sites fire strategic missiles with MIRV or decoy payloads at strong air defenses: ballistic launch sites of any faction, and missile bases of factions whose doctrine allows it (by default only ultra-tech factions). Each one splits into several tracks in flight. -->
+  <FFF.BVR.Settings.NpcMirvDesc>讓 NPC 站點面對強大防空時發射帶分導或誘餌載荷的戰略導彈：任何陣營的彈道發射場，以及準則允許的陣營（預設只有超凡科技陣營）的導彈陣地。每枚會在飛行途中分成數條航跡。</FFF.BVR.Settings.NpcMirvDesc>
+  <!-- EN: Fortified - missiles and air defense -->
+  <FFF.Aerospace.Settings.Category>Fortified - 飛彈與防空</FFF.Aerospace.Settings.Category>
+  <FFF.BVR.EngagementVetoed>這次接戰被其他模組的規則擋下。</FFF.BVR.EngagementVetoed>
+  <FFF.Aerospace.Settings.MultiplayerWarning>已啟用 Multiplayer。導彈、防空與轉移艦沒有做聯機同步，在聯機遊戲中使用會不同步；本頁影響戰鬥的設定，每位玩家都必須相同。</FFF.Aerospace.Settings.MultiplayerWarning>
+</LanguageData>

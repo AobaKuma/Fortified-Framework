@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- 拆除太空平台（Fortified.Designator_RemovePlatform）。建築分頁的按鈕由內容模組自己加（DMSE：Patches/Patch_OrbitalPlatform.xml） -->
+  <DesignationDef>
+    <defName>FFF_RemovePlatform</defName>
+    <targetType>Cell</targetType>
+    <texturePath>Designations/RemoveFloor</texturePath>
+  </DesignationDef>
+
+  <JobDef>
+    <defName>FFF_RemovePlatformJob</defName>
+    <driverClass>Fortified.JobDriver_RemovePlatform</driverClass>
+    <reportString>removing platform.</reportString>
+    <allowOpportunisticPrefix>true</allowOpportunisticPrefix>
+  </JobDef>
+
+  <WorkGiverDef>
+    <defName>FFF_ConstructRemovePlatform</defName>
+    <label>remove platforms</label>
+    <giverClass>Fortified.WorkGiver_RemovePlatform</giverClass>
+    <workType>Construction</workType>
+    <priorityInType>29</priorityInType>
+    <verb>remove platform</verb>
+    <gerund>removing platform</gerund>
+    <scanThings>false</scanThings>
+    <scanCells>true</scanCells>
+    <requiredCapacities>
+      <li>Manipulation</li>
+    </requiredCapacities>
+  </WorkGiverDef>
+
+</Defs>

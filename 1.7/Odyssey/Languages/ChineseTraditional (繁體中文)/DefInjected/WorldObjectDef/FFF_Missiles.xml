@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <FFF_Interceptor.label>攔截導彈</FFF_Interceptor.label>
+  <FFF_Interceptor.description>飛往預測會合點的防空攔截導彈。</FFF_Interceptor.description>
+  <FFF_BlockadeInterceptor.label>封鎖攔截導彈</FFF_BlockadeInterceptor.label>
+  <FFF_BlockadeInterceptor.description>向飛越封鎖空域的載具發射的防空攔截導彈。</FFF_BlockadeInterceptor.description>
+</LanguageData>

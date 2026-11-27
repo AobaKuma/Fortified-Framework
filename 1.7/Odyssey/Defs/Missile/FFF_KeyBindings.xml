@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- 導彈裝配分頁的快捷鍵：切換架上上一枚／下一枚導彈。
+       只在裝配分頁開著、選取的發射架上有 2 枚以上導彈時才生效（ITab_MissileAssembly.ExtraOnGUI）。
+       分類原本是 DMSE 的 DMSE_Missiles；2026-11 移進 FFF，沒有 DMSE 時也能載入。 -->
+  <KeyBindingCategoryDef>
+    <defName>FFF_Missiles</defName>
+    <label>missiles</label>
+    <description>Controls for missile racks and the missile assembly tab.</description>
+    <checkForConflicts>
+      <li>GameMapCamera</li>
+      <li>Game</li>
+      <li>SelectionMisc</li>
+      <li>MainTabs</li>
+    </checkForConflicts>
+  </KeyBindingCategoryDef>
+  <KeyBindingDef>
+    <defName>FFF_MissileAssemblyNext</defName>
+    <label>assembly tab: next missile</label>
+    <category>FFF_Missiles</category>
+    <defaultKeyCodeA>Equals</defaultKeyCodeA>
+  </KeyBindingDef>
+  <KeyBindingDef>
+    <defName>FFF_MissileAssemblyPrevious</defName>
+    <label>assembly tab: previous missile</label>
+    <category>FFF_Missiles</category>
+    <defaultKeyCodeA>Minus</defaultKeyCodeA>
+  </KeyBindingDef>
+</Defs>

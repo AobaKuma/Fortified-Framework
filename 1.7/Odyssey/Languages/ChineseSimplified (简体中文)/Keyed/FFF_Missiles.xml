@@ -1,0 +1,705 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 飛彈、防空、電子戰、砲兵、導彈陣地、海上平台（2026-11 從 DMSE 移入，鍵名由 DMSE.* 改成 FFF.*） -->
+  <FFF.AirAlert.Stage1>无探测</FFF.AirAlert.Stage1>
+  <FFF.AirAlert.Stage2>预警</FFF.AirAlert.Stage2>
+  <FFF.AirAlert.Stage3>被动拦截</FFF.AirAlert.Stage3>
+  <FFF.AirAlert.Stage4>主动拦截</FFF.AirAlert.Stage4>
+  <FFF.AirAlert.Stage5>封锁</FFF.AirAlert.Stage5>
+  <FFF.AirAlert.InspectStage>防空警戒：{0}（{1}）</FFF.AirAlert.InspectStage>
+  <FFF.AirAlert.InspectUnavailable>失能：{0}</FFF.AirAlert.InspectUnavailable>
+  <FFF.AirAlert.InspectBlockadePending>封锁将于 {0} 后生效</FFF.AirAlert.InspectBlockadePending>
+  <FFF.AirAlert.InspectBlockadeActive>封锁中：{0} 格</FFF.AirAlert.InspectBlockadeActive>
+  <FFF.AirAlert.Unavailable.NoEquipment>无防空设备</FFF.AirAlert.Unavailable.NoEquipment>
+  <FFF.AirAlert.Unavailable.NoNode>无防空节点</FFF.AirAlert.Unavailable.NoNode>
+  <FFF.AirAlert.Unavailable.WarmingUp>雷达启动中</FFF.AirAlert.Unavailable.WarmingUp>
+  <FFF.AirAlert.Unavailable.RadarDown>雷达遭压制</FFF.AirAlert.Unavailable.RadarDown>
+  <FFF.AirAlert.Unavailable.NoAmmo>拦截弹耗尽</FFF.AirAlert.Unavailable.NoAmmo>
+  <FFF.AirAlert.Unavailable.NoFireControl>无火控</FFF.AirAlert.Unavailable.NoFireControl>
+  <FFF.AirAlert.Unavailable.NoTracking>无雷达覆盖</FFF.AirAlert.Unavailable.NoTracking>
+  <FFF.AirAlert.BlockadeNoticeLabel>防空封锁公告</FFF.AirAlert.BlockadeNoticeLabel>
+  <FFF.AirAlert.BlockadeNoticeText>{0}将于 {3} 后封锁{1}周边 {2} 格空域，防空火力会攻击飞越的非盟友载具。</FFF.AirAlert.BlockadeNoticeText>
+  <FFF.AirAlert.BlockadeActiveLabel>防空封锁生效</FFF.AirAlert.BlockadeActiveLabel>
+  <FFF.AirAlert.BlockadeActiveText>{0}已封锁{1}周边 {2} 格空域，飞越的非盟友载具会遭到攻击。</FFF.AirAlert.BlockadeActiveText>
+  <FFF.AirAlert.BlockadeCancelled>{0}取消了{1}的封锁。</FFF.AirAlert.BlockadeCancelled>
+  <FFF.AirAlert.BlockadeLifted>{0}解除了{1}的封锁。</FFF.AirAlert.BlockadeLifted>
+  <FFF.AirAlert.EngagingPlayer>{1}正在拦截你的导弹。</FFF.AirAlert.EngagingPlayer>
+  <FFF.AirAlert.NeutralInterceptLabel>中立防空拦截</FFF.AirAlert.NeutralInterceptLabel>
+  <FFF.AirAlert.NeutralInterceptText>{0}的{1}会拦截飞越其空域的非盟友导弹，包括你的。</FFF.AirAlert.NeutralInterceptText>
+  <FFF.AirAlert.InterceptorSafed>拦截弹已解除：{0}属于盟友。</FFF.AirAlert.InterceptorSafed>
+  <FFF.Airspace.Blocked>航线穿越{0}的封锁区（{1}，{2} 格），会遭到防空火力攻击。</FFF.Airspace.Blocked>
+  <FFF.Missile.DesignNameLabel>{0}「{1}」</FFF.Missile.DesignNameLabel>
+  <FFF.Bench.Open>装配设置</FFF.Bench.Open>
+  <FFF.Bench.OpenDesc>选择弹体与部件、命名设计并下单。小人会把材料搬来，在这里组装导弹。</FFF.Bench.OpenDesc>
+  <FFF.Bench.CancelOrder>取消订单</FFF.Bench.CancelOrder>
+  <FFF.Bench.CancelOrderDesc>取消当前的订单。已送达的材料会全数退回台旁。</FFF.Bench.CancelOrderDesc>
+  <FFF.Bench.CancelOrderConfirm>确定取消这张订单？已送达的材料会全数退回台旁。</FFF.Bench.CancelOrderConfirm>
+  <FFF.Bench.OrderDone>导弹订单完成：{0}。</FFF.Bench.OrderDone>
+  <FFF.Bench.OutputFull>出厂暂存已满：请先搬走台上的成品。</FFF.Bench.OutputFull>
+  <FFF.Bench.InspectOrder>订单：{0}（剩 {1} 枚）</FFF.Bench.InspectOrder>
+  <FFF.Bench.InspectProgress>施工进度：{0}</FFF.Bench.InspectProgress>
+  <FFF.Bench.NotProducible>这种弹体无法在组装台生产。</FFF.Bench.NotProducible>
+  <FFF.Bench.NeedsResearch>需要研究：{0}</FFF.Bench.NeedsResearch>
+  <FFF.Bench.EmptyHint>从左侧选择弹体开始设计。</FFF.Bench.EmptyHint>
+  <FFF.Bench.LoadDesign>载入方案</FFF.Bench.LoadDesign>
+  <FFF.Bench.SaveDesign>保存方案</FFF.Bench.SaveDesign>
+  <FFF.Bench.LockedWhileOrdered>订单进行中，取消订单后才能修改。</FFF.Bench.LockedWhileOrdered>
+  <FFF.Bench.IfEquipped>换上后：</FFF.Bench.IfEquipped>
+  <FFF.Bench.NameCandidates>名称候选</FFF.Bench.NameCandidates>
+  <FFF.Bench.Group.Strike>打击</FFF.Bench.Group.Strike>
+  <FFF.Bench.Group.Guidance>导引</FFF.Bench.Group.Guidance>
+  <FFF.Bench.Group.Survival>生存</FFF.Bench.Group.Survival>
+  <FFF.Bench.Stat.Radius>爆炸半径</FFF.Bench.Stat.Radius>
+  <FFF.Bench.Stat.Guidance>导引方式</FFF.Bench.Stat.Guidance>
+  <FFF.Bench.Stat.Scatter>散布</FFF.Bench.Stat.Scatter>
+  <FFF.Bench.Stat.DamageType>伤害类型</FFF.Bench.Stat.DamageType>
+  <FFF.Bench.Stat.ThickRoof>穿透厚岩顶</FFF.Bench.Stat.ThickRoof>
+  <FFF.Bench.Stat.Speed>世界航速</FFF.Bench.Stat.Speed>
+  <FFF.Bench.Stat.TerminalUpdates>终端更新次数</FFF.Bench.Stat.TerminalUpdates>
+  <FFF.Bench.Stat.Channels>火控通道</FFF.Bench.Stat.Channels>
+  <FFF.Bench.Stat.Loiter>盘旋时间</FFF.Bench.Stat.Loiter>
+  <FFF.Bench.Stat.Signature>雷达截面</FFF.Bench.Stat.Signature>
+  <FFF.Bench.Stat.Chaff>干扰次数</FFF.Bench.Stat.Chaff>
+  <FFF.Bench.Stat.Jam>干扰强度</FFF.Bench.Stat.Jam>
+  <FFF.Bench.NoMaterials>不需要材料</FFF.Bench.NoMaterials>
+  <FFF.Bench.Short>缺 {0}</FFF.Bench.Short>
+  <FFF.Bench.Output.KeepOnBench>留在台上</FFF.Bench.Output.KeepOnBench>
+  <FFF.Bench.Output.KeepOnBenchDesc>成品留在台上，接受它的发射平台会直接从台上装填。</FFF.Bench.Output.KeepOnBenchDesc>
+  <FFF.Bench.Output.SendToStorageDesc>成品出厂后会被取下并搬到最合适的仓储。</FFF.Bench.Output.SendToStorageDesc>
+  <FFF.Bench.Progress>第 {0} / {1} 枚 · {2}</FFF.Bench.Progress>
+  <FFF.Bench.State.Collecting>收集材料</FFF.Bench.State.Collecting>
+  <FFF.Bench.State.Ready>待施工</FFF.Bench.State.Ready>
+  <FFF.Bench.State.Working>施工中</FFF.Bench.State.Working>
+  <FFF.Bench.State.OutputBlocked>等待台上腾出空位</FFF.Bench.State.OutputBlocked>
+  <FFF.Bench.PlaceOrder>下单</FFF.Bench.PlaceOrder>
+  <FFF.Bench.InstantComplete>立即完成</FFF.Bench.InstantComplete>
+  <FFF.Bench.Block.NoBody>请选择弹体。</FFF.Bench.Block.NoBody>
+  <FFF.Bench.Block.BadName>设计名称含有不支持的字符。</FFF.Bench.Block.BadName>
+  <FFF.Bench.Warn.Short>{0} 目前不足（缺 {1}），小人会等到有料再做。</FFF.Bench.Warn.Short>
+  <FFF.Bench.Warn.NoLauncher>这张地图上还没有接受此导弹的发射平台。</FFF.Bench.Warn.NoLauncher>
+  <FFF.Bench.Summary>共 {0} 枚，约 {1} 小时工时</FFF.Bench.Summary>
+  <FFF.Bench.LockNameButtonDesc>锁定或解锁设计名称。若锁定，更换部件时设计名称将不会自动生成。</FFF.Bench.LockNameButtonDesc>
+  <FFF.Bench.LockNameOn>设计名称锁定已开启。更换部件时设计名称将不会重新生成。</FFF.Bench.LockNameOn>
+  <FFF.Bench.LockNameOff>设计名称锁定已关闭。更换部件时设计名称将重新生成。</FFF.Bench.LockNameOff>
+  <FFF.Bench.MaterialTip>每枚：{0}\n本次订单：{1}\n仓库现有：{2}</FFF.Bench.MaterialTip>
+  <FFF.Bench.WorkTimeTip>以当前最快可用的殖民者估算约 {0} 小时（工作速度 {1}）。</FFF.Bench.WorkTimeTip>
+  <FFF.Blueprint.Title>装配方案</FFF.Blueprint.Title>
+  <FFF.Blueprint.Empty>还没有方案。可在组装台按「保存方案」。</FFF.Blueprint.Empty>
+  <FFF.Blueprint.OpenFolder>打开文件夹</FFF.Blueprint.OpenFolder>
+  <FFF.Blueprint.OverwriteConfirm>已有名为「{0}」的方案，要覆盖吗？</FFF.Blueprint.OverwriteConfirm>
+  <FFF.Blueprint.Saved>方案已保存：{0}</FFF.Blueprint.Saved>
+  <FFF.Blueprint.SaveFailed>无法保存方案：{0}</FFF.Blueprint.SaveFailed>
+  <FFF.Blueprint.MissingDef>缺少定义：{0}</FFF.Blueprint.MissingDef>
+  <FFF.Blueprint.Incompatible>部件不适用此弹体：{0}</FFF.Blueprint.Incompatible>
+  <FFF.BVR.World.Undetected>未侦测</FFF.BVR.World.Undetected>
+  <FFF.BVR.World.Detected>已侦测</FFF.BVR.World.Detected>
+  <FFF.BVR.World.Locking>火控锁定中</FFF.BVR.World.Locking>
+  <FFF.BVR.World.InFlight>拦截弹接近中</FFF.BVR.World.InFlight>
+  <FFF.BVR.World.TrackInspect>目的地：{0}\n预计抵达：{1}\n状态：{2}\n已尝试拦截：{3} 次</FFF.BVR.World.TrackInspect>
+  <FFF.BVR.World.RadarRange>世界搜索半径：{0} 格（目标修正前）</FFF.BVR.World.RadarRange>
+  <FFF.BVR.World.EffectiveRanges>有效半径：{0} 格</FFF.BVR.World.EffectiveRanges>
+  <FFF.BVR.World.EffectiveRangeEntry>{0} {1}</FFF.BVR.World.EffectiveRangeEntry>
+  <FFF.BVR.World.DetectedLetter>侦测到来袭导弹</FFF.BVR.World.DetectedLetter>
+  <FFF.BVR.World.DetectedLetterText>雷达侦测到 {0} 正接近 {1}。\n\n预计于 {2} 后抵达。世界层防空正尝试接战，漏网导弹抵达后将交由当地末端防御处理。</FFF.BVR.World.DetectedLetterText>
+  <FFF.BVR.World.Intercepted>{0} 已被 {1} 拦截。</FFF.BVR.World.Intercepted>
+  <FFF.BVR.World.Missed>拦截弹未能命中 {0}。</FFF.BVR.World.Missed>
+  <FFF.BVR.World.Evaded>{0} 改变航向，避开了拦截弹。</FFF.BVR.World.Evaded>
+  <FFF.BVR.World.Chaff>{0} 施放箔条／干扰丝，打断了火控锁定。</FFF.BVR.World.Chaff>
+  <FFF.BVR.World.AbstractStrike>{0} 命中 {1} 的防空节点：库存受损、雷达被压制。</FFF.BVR.World.AbstractStrike>
+  <FFF.BVR.World.InterceptorInspect>目标：{0}\n预计会合：{1}</FFF.BVR.World.InterceptorInspect>
+  <FFF.BVR.World.AbstractInspect>防空库存：{0}/{1} 枚拦截弹\n搜索半径：{2} 格；火控通道：{3}</FFF.BVR.World.AbstractInspect>
+  <FFF.BVR.World.IncomingAlert>已侦测来袭导弹</FFF.BVR.World.IncomingAlert>
+  <FFF.BVR.World.IncomingLabel>来袭导弹：{0}（{1}）</FFF.BVR.World.IncomingLabel>
+  <FFF.BVR.World.ClickHint>左／右键循环检视世界导弹航迹。</FFF.BVR.World.ClickHint>
+  <FFF.BVR.World.ShowCoverage>显示防空覆盖</FFF.BVR.World.ShowCoverage>
+  <FFF.BVR.World.ShowCoverageDesc>在世界地图常驻显示所有玩家雷达覆盖圈。选取据点时一律显示该据点的覆盖圈。圈线以隐身 0、尺寸 1 的目标为准。</FFF.BVR.World.ShowCoverageDesc>
+  <FFF.BVR.World.ChannelBreakdown>通道：火炮 {0}、地图内 {1}、世界层 {2}、打击引导 {3}；空闲 {4}</FFF.BVR.World.ChannelBreakdown>
+  <FFF.BVR.World.MissileType>导弹类型：{0}</FFF.BVR.World.MissileType>
+  <FFF.BVR.PawnsMissingLabel>运输舱被击落：人员失踪</FFF.BVR.PawnsMissingLabel>
+  <FFF.BVR.PawnsMissingText>一艘载有你的人员的运输舱被防空火力击落。没有找到遗体，以下人员失踪：\n\n{0}</FFF.BVR.PawnsMissingText>
+  <FFF.BVR.InterceptRiskRoute>航线穿越{0}在{1}周边的封锁区（{2} 格）。其防空火力会攻击所有飞越的载具。</FFF.BVR.InterceptRiskRoute>
+  <FFF.BVR.InterceptRiskDestination>{0}处于{1}的防空雷达覆盖之下。降落到那里的运输舱和穿梭机可能会被击落。</FFF.BVR.InterceptRiskDestination>
+  <FFF.BVR.InterceptRiskFooter>被击落的运输舱或穿梭机上的人员将会失踪。重力船和转移舰被击中只会受损，不会被摧毁。\n\n仍要发射吗？</FFF.BVR.InterceptRiskFooter>
+  <FFF.Blockade.Engaging>{0}在{1}的防空系统向{2}开火。</FFF.Blockade.Engaging>
+  <FFF.Blockade.PodDown>{0}：一艘运输工具被{1}击落，剩余 {2} 艘。</FFF.Blockade.PodDown>
+  <FFF.Blockade.GravshipHit>{0}被{1}的防空火力击中，船上 {2} 座建筑受损。</FFF.Blockade.GravshipHit>
+  <FFF.Blockade.TransferHitLabel>转移舰被击中</FFF.Blockade.TransferHitLabel>
+  <FFF.Blockade.TransferHitText>{0}在飞越{1}的封锁区时被防空火力击中，船上有 {2} 处发生爆炸。</FFF.Blockade.TransferHitText>
+  <FFF.BVR.World.TrackAltitude>飞行高度：{0}</FFF.BVR.World.TrackAltitude>
+  <FFF.BVR.World.AltitudeDenied>超出拦截高度</FFF.BVR.World.AltitudeDenied>
+  <FFF.BVR.FireControlAltitude>拦截高度：{0} – {1}</FFF.BVR.FireControlAltitude>
+  <FFF.Mirv.Role.Warhead>分导弹头（群组 #{0}）</FFF.Mirv.Role.Warhead>
+  <FFF.Mirv.Role.Decoy>分导诱饵（群组 #{0}）</FFF.Mirv.Role.Decoy>
+  <FFF.Mirv.WillRelease>将于 {2} 后释放 {0} 枚弹头、{1} 枚诱饵</FFF.Mirv.WillRelease>
+  <FFF.Mirv.Releasing>释放中：{0}/{1}</FFF.Mirv.Releasing>
+  <FFF.BVR.World.DecoyIdentified>识破诱饵：{0} 不是真弹头，我方防空将不再理会它。</FFF.BVR.World.DecoyIdentified>
+  <FFF.BVR.World.Status.DecoyIdentified>已识破为诱饵</FFF.BVR.World.Status.DecoyIdentified>
+  <FFF.BVR.FireControlDecoy>诱饵识别率：{0}</FFF.BVR.FireControlDecoy>
+  <FFF.Mirv.Short.Warheads>{0} 枚弹头</FFF.Mirv.Short.Warheads>
+  <FFF.Mirv.Short.Continues>弹头续飞</FFF.Mirv.Short.Continues>
+  <FFF.Mirv.Short.WithDecoys>{0}＋{1} 枚诱饵</FFF.Mirv.Short.WithDecoys>
+  <FFF.Mirv.Detail.WhenTicks>抵达前 {0} 开始释放，每 {1} tick 一枚，顺序随机。</FFF.Mirv.Detail.WhenTicks>
+  <FFF.Mirv.Detail.WhenProgress>飞到航程的 {0} 时开始释放，每 {1} tick 一枚，顺序随机。</FFF.Mirv.Detail.WhenProgress>
+  <FFF.Mirv.Detail.Group>{0}× {1}</FFF.Mirv.Detail.Group>
+  <FFF.Mirv.Detail.Inherits>（带着导弹的{0}）</FFF.Mirv.Detail.Inherits>
+  <FFF.Mirv.Detail.DecoyReachesMap>（能撑过再入并落到目标，不爆炸）</FFF.Mirv.Detail.DecoyReachesMap>
+  <FFF.Mirv.Detail.DecoyBurnsUp>（再入时烧毁）</FFF.Mirv.Detail.DecoyBurnsUp>
+  <FFF.Mirv.Detail.DecoySurvives>（{0} 几率撑过再入）</FFF.Mirv.Detail.DecoySurvives>
+  <FFF.Mirv.Detail.BusRetires>全部放完后母舱消失；在那之前被击落，所有弹头一次全毁。</FFF.Mirv.Detail.BusRetires>
+  <FFF.Mirv.Detail.BusContinues>导弹本身继续飞行，是真正的弹头。</FFF.Mirv.Detail.BusContinues>
+  <FFF.Mirv.Detail.SameTarget>所有弹头打击同一目标。在被火控雷达识破之前，诱饵在雷达上和弹头一模一样。</FFF.Mirv.Detail.SameTarget>
+  <FFF.Mirv.AlertLine>分导群组 #{0}：{1} 条航迹（弹头 {2}、诱饵 {3}），{4}–{5} 后抵达</FFF.Mirv.AlertLine>
+  <FFF.EW.Tab>战情</FFF.EW.Tab>
+  <FFF.EW.Throttle.Standby>待机</FFF.EW.Throttle.Standby>
+  <FFF.EW.Throttle.Inspect>功率段位：{0}（{1} 瓦）</FFF.EW.Throttle.Inspect>
+  <FFF.EW.Throttle.Gizmo>功率：{0}</FFF.EW.Throttle.Gizmo>
+  <FFF.EW.Throttle.GizmoDesc>设定功率段位。低功率会缩短距离、减弱效果，但耗电较少，也较不容易被反辐射导弹选中。待机时装置完全停止运作，仍消耗待机电力。</FFF.EW.Throttle.GizmoDesc>
+  <FFF.EW.Jammer.Inspect>干扰半径 {0} 世界格，强度 {1}，覆盖 {2} 条敌对航迹</FFF.EW.Jammer.Inspect>
+  <FFF.EW.Jammer.CommsBlocked>干扰中，本图通讯台停用。</FFF.EW.Jammer.CommsBlocked>
+  <FFF.EW.Jammer.CommsBlockedReason>通讯遭到干扰</FFF.EW.Jammer.CommsBlockedReason>
+  <FFF.EW.Jammer.CommsBlockedMessage>干扰机发射中：本图通讯台已停用。</FFF.EW.Jammer.CommsBlockedMessage>
+  <FFF.EW.Jammer.ShowRing>显示干扰圈</FFF.EW.Jammer.ShowRing>
+  <FFF.EW.Jammer.ShowRingDesc>干扰半径 {0} 格（世界地图红圈）。跳到世界地图上的这个殖民地。</FFF.EW.Jammer.ShowRingDesc>
+  <FFF.EW.Jammer.GuidanceDenied>{0} 的导引头被干扰打掉，将只靠惯性落地。</FFF.EW.Jammer.GuidanceDenied>
+  <FFF.EW.Jammer.JammedOut>{0} 被 {1} 的干扰打掉导引，在地图外坠毁。</FFF.EW.Jammer.JammedOut>
+  <FFF.EW.Jammer.ArrivedInertial>导引头遭干扰：导弹只靠惯性落地。</FFF.EW.Jammer.ArrivedInertial>
+  <FFF.EW.Alert.CommsJammed>通讯遭干扰</FFF.EW.Alert.CommsJammed>
+  <FFF.EW.Alert.CommsJammedDesc>这张地图上有干扰机正在发射，所以通讯台无法使用。把干扰机切到待机或关机即可恢复通讯。</FFF.EW.Alert.CommsJammedDesc>
+  <FFF.EW.Console.NoOperator>没有操作员：无技能加成</FFF.EW.Console.NoOperator>
+  <FFF.EW.Console.Operator>操作员：{0}</FFF.EW.Console.Operator>
+  <FFF.EW.Tab.NoPower>没有电力：无法遥控或修改规则，目前的规则继续生效。</FFF.EW.Tab.NoPower>
+  <FFF.EW.Tab.RadarsOnline>在线雷达</FFF.EW.Tab.RadarsOnline>
+  <FFF.EW.Tab.JammerRow>强度 {0}，覆盖 {1} 条航迹</FFF.EW.Tab.JammerRow>
+  <FFF.EW.Tab.LocalJam>敌方干扰</FFF.EW.Tab.LocalJam>
+  <FFF.EW.Tab.RadarRow>基础 {0} × 功率 {1} × 操作员 {2}</FFF.EW.Tab.RadarRow>
+  <FFF.EW.Tab.SilencedWarning>电磁静默中：雷达与干扰机已关闭。</FFF.EW.Tab.SilencedWarning>
+  <FFF.EW.Tab.Remote>装置遥控</FFF.EW.Tab.Remote>
+  <FFF.EW.Tab.PowerOn>开机</FFF.EW.Tab.PowerOn>
+  <FFF.EW.Tab.PowerOff>关机</FFF.EW.Tab.PowerOff>
+  <FFF.EW.Tab.Silence>一键静默</FFF.EW.Tab.Silence>
+  <FFF.EW.Tab.Restore>结束静默</FFF.EW.Tab.Restore>
+  <FFF.EW.Tab.Roe>交战限制</FFF.EW.Tab.Roe>
+  <FFF.EW.Tab.Operator>操作员加成</FFF.EW.Tab.Operator>
+  <FFF.EW.Tab.OperatorRange>智识合计 {0}／{1}：雷达距离 × {2}</FFF.EW.Tab.OperatorRange>
+  <FFF.EW.Tab.OperatorCooldown>射击合计 {0}／{1}：发射冷却 × {2}</FFF.EW.Tab.OperatorCooldown>
+  <FFF.EW.Group.Jammers>干扰机</FFF.EW.Group.Jammers>
+  <FFF.EW.Group.SearchRadars>搜索雷达</FFF.EW.Group.SearchRadars>
+  <FFF.EW.Group.FireControlRadars>火控雷达</FFF.EW.Group.FireControlRadars>
+  <FFF.EW.Group.All>全部</FFF.EW.Group.All>
+  <FFF.EW.Roe.AutoEngage>自动接战</FFF.EW.Roe.AutoEngage>
+  <FFF.EW.Roe.AutoEngageDesc>关闭时仍会侦测目标、警报照常，但不发射拦截弹。近防武器照常开火。</FFF.EW.Roe.AutoEngageDesc>
+  <FFF.EW.Roe.PolicyAll>全面</FFF.EW.Roe.PolicyAll>
+  <FFF.EW.Roe.Neutral>对中立阵营开火</FFF.EW.Roe.Neutral>
+  <FFF.EW.Roe.ChannelCap>防空通道上限</FFF.EW.Roe.ChannelCap>
+  <FFF.EW.Roe.CapUnlimited>不限</FFF.EW.Roe.CapUnlimited>
+  <FFF.EW.Tab.StateLabel>防空状态</FFF.EW.Tab.StateLabel>
+  <FFF.EW.Tab.StateSelfDefense>自动接战・仅自卫</FFF.EW.Tab.StateSelfDefense>
+  <FFF.EW.Tab.StateAll>自动接战・全面</FFF.EW.Tab.StateAll>
+  <FFF.EW.Tab.StateSilenced>电磁静默</FFF.EW.Tab.StateSilenced>
+  <FFF.EW.Tab.StateHold>不发射拦截弹</FFF.EW.Tab.StateHold>
+  <FFF.EW.Tab.StateNoRadar>无雷达运作</FFF.EW.Tab.StateNoRadar>
+  <FFF.EW.Tab.Channels>防空通道</FFF.EW.Tab.Channels>
+  <FFF.EW.Tab.ChannelsDesc>防空占用的通道数／防空目前可用的通道数。可用数已扣除炮击与打击引导占用的通道，并套用通道上限。</FFF.EW.Tab.ChannelsDesc>
+  <FFF.EW.Tab.Performance>装置效能</FFF.EW.Tab.Performance>
+  <FFF.EW.Tab.RadarRange>{0} 格</FFF.EW.Tab.RadarRange>
+  <FFF.EW.Tab.GroupStatus>{0}/{1} 开机</FFF.EW.Tab.GroupStatus>
+  <FFF.EW.Tab.NotDeployed>未部署</FFF.EW.Tab.NotDeployed>
+  <FFF.EW.Tab.ThrottleMixed>混合</FFF.EW.Tab.ThrottleMixed>
+  <FFF.EW.Tab.SilenceDesc>关闭所有开着的雷达与干扰机，之后可一键还原。</FFF.EW.Tab.SilenceDesc>
+  <FFF.EW.Tab.RestoreDesc>重新开启静默前开着的装置。</FFF.EW.Tab.RestoreDesc>
+  <FFF.EW.Tab.OperatorBonus>加成</FFF.EW.Tab.OperatorBonus>
+  <FFF.EW.Tab.OperatorPenalty>惩罚</FFF.EW.Tab.OperatorPenalty>
+  <FFF.EW.Roe.Policy>接战范围</FFF.EW.Roe.Policy>
+  <FFF.EW.Roe.PolicySelfDefense>仅自卫</FFF.EW.Roe.PolicySelfDefense>
+  <FFF.EW.Roe.PolicyDesc>仅自卫时只打指向本殖民地或盟友的导弹，过境的导弹不接战。全面时也拦截过境的导弹。</FFF.EW.Roe.PolicyDesc>
+  <FFF.EW.Roe.Priority>目标优先</FFF.EW.Roe.Priority>
+  <FFF.EW.Roe.PriorityFirstCome>先到先打</FFF.EW.Roe.PriorityFirstCome>
+  <FFF.EW.Roe.PriorityLargest>最大目标</FFF.EW.Roe.PriorityLargest>
+  <FFF.EW.Roe.PriorityDesc>通道不足时，先打最快抵达的目标，或先打雷达截面最大的目标。</FFF.EW.Roe.PriorityDesc>
+  <FFF.EW.Roe.ChannelCapDesc>限制防空最多占用几条火控通道，把其余通道留给炮击与打击引导。设为 0 时不发射拦截弹。</FFF.EW.Roe.ChannelCapDesc>
+  <FFF.EW.Roe.Intercept>拦截目标</FFF.EW.Roe.Intercept>
+  <FFF.ManPortableSAM.Fire>发射防空导弹</FFF.ManPortableSAM.Fire>
+  <FFF.ManPortableSAM.FireDesc>锁定雷达网正在本地图追踪的来袭威胁，并对它发射一枚轻型防空导弹。锁定期间装备者会站在原地；不占用火控通道。\n\n已装填导弹：{0}</FFF.ManPortableSAM.FireDesc>
+  <FFF.ManPortableSAM.NoTargets>射程内没有雷达正在追踪的来袭威胁。</FFF.ManPortableSAM.NoTargets>
+  <FFF.ManPortableSAM.NotReady>装备者目前无法发射。</FFF.ManPortableSAM.NotReady>
+  <FFF.ManPortableSAM.TargetLost>目标已消失或已被其他拦截弹接战。</FFF.ManPortableSAM.TargetLost>
+  <FFF.ManPortableSAM.TargetOption>{0}（{1}后抵达，命中率 {2}）</FFF.ManPortableSAM.TargetOption>
+  <FFF.ManPortableSAM.CannotIntercept>下一发装填的是{0}，无法用于拦截。请先对地面目标发射。</FFF.ManPortableSAM.CannotIntercept>
+  <FFF.TurretGun.Engaging>交战中：{0}</FFF.TurretGun.Engaging>
+  <FFF.TurretGun.TooClose>目标太近，最小射程为 {0} 格。</FFF.TurretGun.TooClose>
+  <FFF.TurretGun.OutOfRange>目标超出射程，最大射程为 {0} 格。</FFF.TurretGun.OutOfRange>
+  <FFF.TurretGun.RangeBand>射程：{0} 至 {1} 格，最小射程内的目标无法攻击。</FFF.TurretGun.RangeBand>
+  <FFF.TurretGun.BarrelBusy>火炮正在炮击世界地图目标。</FFF.TurretGun.BarrelBusy>
+  <FFF.Card.Body>弹体</FFF.Card.Body>
+  <FFF.Card.Item>导弹物品</FFF.Card.Item>
+  <FFF.Card.SizeClass>量级</FFF.Card.SizeClass>
+  <FFF.Card.LaunchMode>发射方式</FFF.Card.LaunchMode>
+  <FFF.Card.LaunchMode.Tilt>倾斜发射</FFF.Card.LaunchMode.Tilt>
+  <FFF.Card.LaunchMode.Vertical>垂直发射</FFF.Card.LaunchMode.Vertical>
+  <FFF.Card.LaunchMode.Both>倾斜或垂直</FFF.Card.LaunchMode.Both>
+  <FFF.Card.LaunchModeDesc>决定可装填此弹的发射平台。倾斜发射架可旋转、可建于重力船上；垂直发射架只有单一朝向，不可建于重力船上。发射方式不影响弹道数值。</FFF.Card.LaunchModeDesc>
+  <FFF.Card.Platforms>可用发射平台</FFF.Card.Platforms>
+  <FFF.Card.PlatformsDesc>可装填这种导弹的发射平台（依各平台的固定储存设定）。点击下方链接查看平台。</FFF.Card.PlatformsDesc>
+  <FFF.Card.Customize>装配位置</FFF.Card.Customize>
+  <FFF.Card.Customize.None>不可改装</FFF.Card.Customize.None>
+  <FFF.Card.Customize.Item>导弹物品</FFF.Card.Customize.Item>
+  <FFF.Card.Customize.StorageBuilding>储存建筑</FFF.Card.Customize.StorageBuilding>
+  <FFF.Card.Customize.Launcher>发射平台</FFF.Card.Customize.Launcher>
+  <FFF.Card.CustomizeDesc.None>构型固定，无法更换部件。</FFF.Card.CustomizeDesc.None>
+  <FFF.Card.CustomizeDesc.Item>选取导弹物品，在“装配”分页更换部件；确认后小人会搬来材料并施工。也可在导弹组装台直接订制。</FFF.Card.CustomizeDesc.Item>
+  <FFF.Card.CustomizeDesc.StorageBuilding>在专属储存建筑上消耗资源调整部件。</FFF.Card.CustomizeDesc.StorageBuilding>
+  <FFF.Card.CustomizeDesc.Launcher>没有物品形态：直接在发射平台上选择弹体并装配部件。</FFF.Card.CustomizeDesc.Launcher>
+  <FFF.Card.Slots>装配槽位</FFF.Card.Slots>
+  <FFF.Card.SlotsDesc>此弹体开放的部件槽位。每个槽位最多装一个部件；没有的槽位无法装配。</FFF.Card.SlotsDesc>
+  <FFF.Card.EmptySlotDesc>此槽位目前没有部件。</FFF.Card.EmptySlotDesc>
+  <FFF.Card.DamageDesc>主爆炸在落点造成的伤害量与伤害类型。弹头部件可加减伤害并覆写伤害类型。</FFF.Card.DamageDesc>
+  <FFF.Card.RadiusDesc>主爆炸的半径（格）。战斗部与酬载特效另以载荷容量 N 决定范围，不受此值影响。</FFF.Card.RadiusDesc>
+  <FFF.Card.ScatterDesc>落点相对瞄准点的随机偏移半径（格）。导引部件可收紧散布；惯性制导最大。</FFF.Card.ScatterDesc>
+  <FFF.Card.RangeTiles>{0} 格</FFF.Card.RangeTiles>
+  <FFF.Card.Unlimited>不限</FFF.Card.Unlimited>
+  <FFF.Card.RangeDesc>世界地图上的最大打击距离。\n射程 =（燃料 × 比冲 × 换算系数 + 固定加成 + 战斗部增程）× 酬载倍率\n\n燃料：{0}\n比冲：{1}\n换算系数：{2}\n固定加成：{3}\n战斗部增程：{4}\n酬载倍率：{5}\n\n结果：{6}</FFF.Card.RangeDesc>
+  <FFF.Card.SpeedDesc>世界地图上的飞行速度倍率。越快，敌方防空可接战的时间越短。</FFF.Card.SpeedDesc>
+  <FFF.Card.PayloadCapacity>载荷容量 N</FFF.Card.PayloadCapacity>
+  <FFF.Card.PayloadCapacityDesc>由弹体决定。所有战斗部与酬载特效的范围、数量与强度都以 N 换算（例如烧夷弹头的引燃半径 = N 格），所以同一个部件装在大弹体上效果更强。</FFF.Card.PayloadCapacityDesc>
+  <FFF.Card.ThickRoofDesc>能穿透厚岩顶者会先在岩层开孔再引爆，导引头也会锁定厚岩顶下的目标；不能穿透者打在厚岩顶上只在岩层表面爆炸。</FFF.Card.ThickRoofDesc>
+  <FFF.Card.NoGuidance>无导引</FFF.Card.NoGuidance>
+  <FFF.Card.TerminalUpdatesDesc>具导引能力时，飞行中可依目标新位置修正落点的次数（弹体基础次数加上导引头加成）。次数用完后沿最后位置飞行，目标若已离开即落空。</FFF.Card.TerminalUpdatesDesc>
+  <FFF.Card.ChannelsDesc>导弹飞行期间持续占用的火控通道数。只有无线电指令、火控雷达与电视制导需要地面持续支援；自主寻标与预先装定的导引不占通道。弹道导弹每枚占 2 条，其他占 1 条；电视制导再多占 1 条。</FFF.Card.ChannelsDesc>
+  <FFF.Card.ChannelsPerMissile>每枚 1（弹道 2；电视制导 +1）</FFF.Card.ChannelsPerMissile>
+  <FFF.Card.LoiterRetry>盘旋期间每 {0} 重新搜寻一次目标，期间仍会被末端防御接战。</FFF.Card.LoiterRetry>
+  <FFF.Card.LoiterOnlyLoitering>只有巡导弹能使用盘旋能力；装在其他弹体上不会盘旋。</FFF.Card.LoiterOnlyLoitering>
+  <FFF.Card.BuiltInGuidance>未装导引部件，使用弹体内建的选目标方式。</FFF.Card.BuiltInGuidance>
+  <FFF.Card.TracksMobile>针对世界地图上的移动目标：航迹会更频繁地重新瞄准。</FFF.Card.TracksMobile>
+  <FFF.Card.TerminalGuidance>导引能力</FFF.Card.TerminalGuidance>
+  <FFF.Card.TerminalGuidanceYes>具导引能力：可跨图层打击，并可依弹体的终端更新次数追踪移动目标。</FFF.Card.TerminalGuidanceYes>
+  <FFF.Card.TerminalGuidanceNo>无导引能力：无法跨图层打击，也无法追踪移动目标。</FFF.Card.TerminalGuidanceNo>
+  <FFF.Card.TargetSelection>选定落点</FFF.Card.TargetSelection>
+  <FFF.Card.TargetManual>由玩家选择</FFF.Card.TargetManual>
+  <FFF.Card.TargetAuto>自动锁定</FFF.Card.TargetAuto>
+  <FFF.Card.SpreadNote>同类导引头的齐射会分散锁定不同目标，不会全部打在同一处。</FFF.Card.SpreadNote>
+  <FFF.Card.Intercept>拦截命中系数</FFF.Card.Intercept>
+  <FFF.Card.InterceptDesc>作为拦截弹发射时，乘在火控雷达算出的命中率上（地图层与世界层皆同）。</FFF.Card.InterceptDesc>
+  <FFF.Card.InterceptBonus>战斗部加成：命中率 +{0}</FFF.Card.InterceptBonus>
+  <FFF.Card.InterceptRolls>额外拦截判定：{0} 次（可波及同波次其他目标）</FFF.Card.InterceptRolls>
+  <FFF.Card.SignatureDesc>乘在世界航迹的侦测距离等级上。大于 1 会更早被发现，可吸引具威胁评估的防空优先接战（诱饵）；小于 1 会更晚被发现（突防）。</FFF.Card.SignatureDesc>
+  <FFF.Card.ChaffDesc>携带的箔条／干扰丝次数与干扰强度。世界地图上被敌方火控锁定时触发，每次消耗一发，有 {0} 几率断锁并延后重新锁定；飞行中不补充。在地图上被拦截时，敌方命中率降低 {1}。</FFF.Card.ChaffDesc>
+  <FFF.Card.WarheadEffect>战斗部效果</FFF.Card.WarheadEffect>
+  <FFF.Card.PayloadEffect>酬载效果</FFF.Card.PayloadEffect>
+  <FFF.Card.ScaledByN>以上数值依载荷容量 N = {0} 计算。</FFF.Card.ScaledByN>
+  <FFF.Card.ScaledByNGroups>效果依弹体的载荷容量 N 换算：</FFF.Card.ScaledByNGroups>
+  <FFF.Card.NGroup>N = {0}（{1}）</FFF.Card.NGroup>
+  <FFF.Card.Warhead.ContinuousRod>作为拦截弹时命中率 +{0}（N × 5%）。对地没有额外效果。</FFF.Card.Warhead.ContinuousRod>
+  <FFF.Card.Warhead.ExtendedFuel>射程 +{0} 格（N × 2）。落点没有额外效果。</FFF.Card.Warhead.ExtendedFuel>
+  <FFF.Card.Warhead.Airburst>对地：在落点追加半径 {0}、{1} 点的爆炸。作为拦截弹：额外 {2} 次独立拦截判定（N ÷ 5 取整），可波及同波次其他目标。</FFF.Card.Warhead.Airburst>
+  <FFF.Card.Warhead.TungstenPenetrator>可穿透厚岩顶，并锁定厚岩顶下的目标；主爆炸后在落点追加半径 2、{0} 点的爆炸。</FFF.Card.Warhead.TungstenPenetrator>
+  <FFF.Card.Warhead.Incendiary>无视视线，引燃落点半径 {0} 格内的地面。</FFF.Card.Warhead.Incendiary>
+  <FFF.Card.Warhead.EMP>无视视线，在落点引发半径 {0}、{1} 点的 EMP 爆炸：瘫痪电子设备与机械体。</FFF.Card.Warhead.EMP>
+  <FFF.Card.Warhead.AnimalBerserk>目标地图上所有动物立即陷入狂暴。</FFF.Card.Warhead.AnimalBerserk>
+  <FFF.Card.Warhead.ClusterBomblets>撒出 {0} 枚实体子弹（{1}），落在半径 {2} 格内；子弹会飞行并命中沿途的单位。</FFF.Card.Warhead.ClusterBomblets>
+  <FFF.Card.Warhead.ClusterGoodwill>玩家发射时，撒布范围内每有一个非敌对势力的单位，该势力好感 -{0}。</FFF.Card.Warhead.ClusterGoodwill>
+  <FFF.Card.Warhead.Thermobaric>半径 {0} 内每个生物受到 {1} 点烧伤，每格有 {2} 几率起火；在密闭房间内效果最明显。</FFF.Card.Warhead.Thermobaric>
+  <FFF.Card.Warhead.KineticBlades>几乎没有爆炸：对落点 3 格内最近的一个生物挥出 {0} 片刀刃，每片 {1} 点切割伤害。</FFF.Card.Warhead.KineticBlades>
+  <FFF.Card.Payload.HighExplosive>在落点追加半径 {0}、{1} 点的爆炸。</FFF.Card.Payload.HighExplosive>
+  <FFF.Card.Payload.BunkerBuster>可穿透厚岩顶，并锁定厚岩顶下的目标。在内部以半径 {0}、{1} 点（穿甲 {2}）引爆，并对爆心 {3} 格内的建筑额外造成 {4} 点结构伤害。</FFF.Card.Payload.BunkerBuster>
+  <FFF.Card.Payload.Cluster>在半径 {0} 格内散落 {1} 个子爆炸，每个半径 {2}、{3} 点。</FFF.Card.Payload.Cluster>
+  <FFF.Card.Payload.Defoliant>半径 {0} 格内的植物各有 {1} 几率枯死。</FFF.Card.Payload.Defoliant>
+  <FFF.Card.Payload.FireFoam>扑灭半径 {0} 格内的火焰，并铺上消防泡沫。</FFF.Card.Payload.FireFoam>
+  <FFF.Card.Payload.Antiparticle>在落点引发半径 {0}、{1} 点的汽化爆炸。</FFF.Card.Payload.Antiparticle>
+  <FFF.Card.Payload.ToxicGas>在半径 {0} 格内灌满毒气。</FFF.Card.Payload.ToxicGas>
+  <FFF.Card.Payload.EMP>在落点引发半径 {0}、{1} 点的 EMP 爆炸：瘫痪电子设备、震晕机械体。</FFF.Card.Payload.EMP>
+  <FFF.Card.Payload.AirburstTungsten>射程变为 {0}。半径 {1} 内每个生物受到（体型取整 + 1）次 {2} 点穿刺伤害（穿甲 {3}）。</FFF.Card.Payload.AirburstTungsten>
+  <FFF.Card.Payload.Extra>追加半径 {0}、{1} 点的爆炸（{2}）。</FFF.Card.Payload.Extra>
+  <FFF.Card.Payload.Spawn>投放 {0} 份{1}（几率 {2}）。</FFF.Card.Payload.Spawn>
+  <FFF.Card.Guidance.Inertial>不搜寻目标：落点以地图中心为准，依散布随机偏移，不锁定建筑或生物。</FFF.Card.Guidance.Inertial>
+  <FFF.Card.Guidance.AntiRadiation>锁定开机中功率等级最高的敌方雷达（同级时比耗电量）；纯被动预警设备不受影响。</FFF.Card.Guidance.AntiRadiation>
+  <FFF.Card.Guidance.AntiRadiationFallback>没有开机雷达时改打耗电最大的运作中敌方建筑，再找不到则退回惯性落点。</FFF.Card.Guidance.AntiRadiationFallback>
+  <FFF.Card.Guidance.AntiRadiationNoFallback>没有开机雷达时不改打其他目标；搭配盘旋飞控可在上空等待雷达开机。</FFF.Card.Guidance.AntiRadiationNoFallback>
+  <FFF.Card.Guidance.HeatSource>锁定比室外热 {0} 以上的最热室内房间；没有时改打体型最大的生物（包含野生动物，但不含攻击方与其盟友）。都没有则退回惯性落点。</FFF.Card.Guidance.HeatSource>
+  <FFF.Card.Guidance.ElectromagneticSignal>锁定耗电最大的运作中敌方建筑；没有通电建筑时退回惯性落点。</FFF.Card.Guidance.ElectromagneticSignal>
+  <FFF.Card.Guidance.TV>玩家发射时，抵达目标地图后暂停游戏，由你自由选择落点。敌方发射时无人操作，改用惯性落点。</FFF.Card.Guidance.TV>
+  <FFF.Card.Guidance.Laser>锁定你在目标地图上最近一次放置的激光标定点；没有标定点时退回惯性落点。</FFF.Card.Guidance.Laser>
+  <FFF.Card.Guidance.FireControl>主要供防空拦截使用，由火控雷达照射引导。对地打击时以惯性选点。飞行期间持续占用火控通道。</FFF.Card.Guidance.FireControl>
+  <FFF.Card.Guidance.RadioCommand>由地面持续发送修正指令。对地打击时以惯性选点。飞行期间持续占用火控通道。</FFF.Card.Guidance.RadioCommand>
+  <FFF.Card.Guidance.Imaging>只锁定露天（无屋顶）的敌方生物，先比战力、再比体型；找不到时退回惯性落点。</FFF.Card.Guidance.Imaging>
+  <FFF.Card.Guidance.ActiveRadar>射后不理：锁定占地最大的敌方建筑，其次是体型最大的敌方生物；都没有则退回惯性落点。</FFF.Card.Guidance.ActiveRadar>
+  <FFF.Card.Guidance.AntiShip>针对世界地图上的移动目标（舰船、移动基地）：航迹更频繁地修正，终端更新 +{0}。抵达后先打最耐打的敌方建筑，其次是体型最大的敌方生物。</FFF.Card.Guidance.AntiShip>
+  <FFF.Card.PartSlot>装配槽位</FFF.Card.PartSlot>
+  <FFF.Card.PartSlotDesc>此部件装在哪个槽位。同一槽位只能装一个部件，换上会取代原有部件。</FFF.Card.PartSlotDesc>
+  <FFF.Card.CompatibleBodies>适用弹体</FFF.Card.CompatibleBodies>
+  <FFF.Card.CompatibleBodiesDesc>可以装配此部件的弹体（必须具有对应槽位）。点击下方链接查看弹体。</FFF.Card.CompatibleBodiesDesc>
+  <FFF.Card.RequiresLoitering>只能装在巡导弹上。</FFF.Card.RequiresLoitering>
+  <FFF.Card.Research>需要研究</FFF.Card.Research>
+  <FFF.Card.ResearchDesc>完成这些研究后才能选用。</FFF.Card.ResearchDesc>
+  <FFF.Card.Cost>装配材料</FFF.Card.Cost>
+  <FFF.Card.CostDesc>改装时装上此部件所需搬运并消耗的材料。弹体的预设部件已包含在建造成本中。移除或更换时，依弹体的退还比例退回部分材料。</FFF.Card.CostDesc>
+  <FFF.Card.ModifierDesc>加算在弹体的基础值上。</FFF.Card.ModifierDesc>
+  <FFF.Card.DamageTypeDesc>覆写主爆炸的伤害类型。</FFF.Card.DamageTypeDesc>
+  <FFF.Card.Fuel>燃料</FFF.Card.Fuel>
+  <FFF.Card.Impulse>比冲</FFF.Card.Impulse>
+  <FFF.Card.FuelImpulseDesc>射程约为 燃料 × 比冲 × 弹体换算系数，两者都会放大射程。</FFF.Card.FuelImpulseDesc>
+  <FFF.Card.AssembleWork>改装工作量</FFF.Card.AssembleWork>
+  <FFF.Card.AssembleWorkDesc>套用一次装配变更所需的工作量，受施工小人的工作速度影响。</FFF.Card.AssembleWorkDesc>
+  <FFF.Card.Refund>拆除退还</FFF.Card.Refund>
+  <FFF.Card.RefundDesc>移除或更换部件时，退还该部件材料的比例。</FFF.Card.RefundDesc>
+  <FFF.Card.Release>飞行中释放</FFF.Card.Release>
+  <FFF.Card.ReleaseDesc>导弹带有弹头母舱，抵达前会放出多条独立航迹，敌方防空必须逐一接战。</FFF.Card.ReleaseDesc>
+  <FFF.Strike.AllRoundsReserved>在架导弹已全部保留给打击任务</FFF.Strike.AllRoundsReserved>
+  <FFF.Strike.ReservedInspect>已保留给打击任务：{0} 枚</FFF.Strike.ReservedInspect>
+  <FFF.Strike.ReservedNoEdit>已保留给打击任务：任务结束前无法改装。</FFF.Strike.ReservedNoEdit>
+  <FFF.Strike.Console.Plan>规划波次打击</FFF.Strike.Console.Plan>
+  <FFF.Strike.Console.PlanDesc>选定世界目标，再把本地图发射架上的进攻导弹分配到各波次。每波上限为本地图火控雷达的空闲引导通道数。</FFF.Strike.Console.PlanDesc>
+  <FFF.Strike.Console.Open>打开打击计划</FFF.Strike.Console.Open>
+  <FFF.Strike.Console.OpenDesc>显示当前打击任务的各波次并发射。</FFF.Strike.Console.OpenDesc>
+  <FFF.Strike.Console.FireWave>发射第 {0} 波</FFF.Strike.Console.FireWave>
+  <FFF.Strike.Console.FireWaveDesc>立即发射下一波。按住 Shift 点击只发射空闲通道与就绪发射架允许的部分，其余留在本波。</FFF.Strike.Console.FireWaveDesc>
+  <FFF.Strike.Console.Cancel>取消打击任务</FFF.Strike.Console.Cancel>
+  <FFF.Strike.Console.CancelDesc>取消当前的打击任务。已升空的导弹照常飞行，其余导弹释放。</FFF.Strike.Console.CancelDesc>
+  <FFF.Strike.Console.CancelConfirm>要取消 {0} 吗？尚未发射的导弹会被释放。</FFF.Strike.Console.CancelConfirm>
+  <FFF.Strike.NoFireControl>本地图没有能引导打击导弹的运作中火控雷达</FFF.Strike.NoFireControl>
+  <FFF.Strike.NoStrikeRounds>本地图没有已装填的进攻导弹</FFF.Strike.NoStrikeRounds>
+  <FFF.Strike.NoRoundReaches>没有任何在架进攻导弹打得到这个目标</FFF.Strike.NoRoundReaches>
+  <FFF.Strike.TargetLabel.Distance>距离：{0} 格</FFF.Strike.TargetLabel.Distance>
+  <FFF.Strike.TargetLabel.Reach>射程内：{0}／在架 {1}</FFF.Strike.TargetLabel.Reach>
+  <FFF.Strike.NoRoundsAssigned>至少要把一枚导弹分配到波次</FFF.Strike.NoRoundsAssigned>
+  <FFF.Strike.TooManyRounds>每个任务最多 {0} 枚导弹</FFF.Strike.TooManyRounds>
+  <FFF.Strike.WaveRoundLimit>每波最多 {0} 枚导弹</FFF.Strike.WaveRoundLimit>
+  <FFF.Strike.TooManyWaves>每个任务最多 {0} 波</FFF.Strike.TooManyWaves>
+  <FFF.Strike.WaveOverCap>第 {0} 波需要 {1} 条导引通道；容量为 {2}</FFF.Strike.WaveOverCap>
+  <FFF.Strike.RoundTaken>有导弹已被其他打击任务保留</FFF.Strike.RoundTaken>
+  <FFF.Strike.RoundUnavailable>有导弹已不在架上，或已打不到目标</FFF.Strike.RoundUnavailable>
+  <FFF.Strike.NotReady>弹道解尚未完成</FFF.Strike.NotReady>
+  <FFF.Strike.Computing>弹道计算中（剩余 {0}）</FFF.Strike.Computing>
+  <FFF.Strike.WaveDone>本波已没有待发射的导弹</FFF.Strike.WaveDone>
+  <FFF.Strike.NotEnoughChannels>引导通道不足：空闲 {0}，需要 {1}</FFF.Strike.NotEnoughChannels>
+  <FFF.Strike.NotEnoughChannelsRelease>引导通道不足：空闲 {0}，需要 {1}；下一条在 {2} 后释放</FFF.Strike.NotEnoughChannelsRelease>
+  <FFF.Strike.PlatformsNotReady>{0} 座发射架未就绪（断电、关闭、无人操作或装填中）</FFF.Strike.PlatformsNotReady>
+  <FFF.Strike.Skip.RoundGone>导弹已不在发射架上</FFF.Strike.Skip.RoundGone>
+  <FFF.Strike.Skip.Refitted>导弹已被改装</FFF.Strike.Skip.Refitted>
+  <FFF.Strike.State.Computing>弹道计算中（剩余 {0}）</FFF.Strike.State.Computing>
+  <FFF.Strike.State.Ready>可发射</FFF.Strike.State.Ready>
+  <FFF.Strike.State.Executing>执行中</FFF.Strike.State.Executing>
+  <FFF.Strike.Inspect.Channels>打击引导通道：空闲 {0}／{1}</FFF.Strike.Inspect.Channels>
+  <FFF.Strike.Inspect.Mission>{0}（{1}）：{2}，已发射 {3}/{4}</FFF.Strike.Inspect.Mission>
+  <FFF.Strike.Msg.Confirmed>{0}：已保留 {1} 枚导弹、分 {2} 波，弹道计算中。</FFF.Strike.Msg.Confirmed>
+  <FFF.Strike.Msg.Ready>{0}：弹道解完成，可以发射。</FFF.Strike.Msg.Ready>
+  <FFF.Strike.Msg.WaveFired>{0} 第 {1} 波：发射 {2} 枚，略过 {3} 枚。</FFF.Strike.Msg.WaveFired>
+  <FFF.Strike.Msg.Skipped>{0}：{1} 已略过（{2}）。</FFF.Strike.Msg.Skipped>
+  <FFF.Strike.Msg.Deferred>{0}：{1} 暂时无法发射，留在第 {2} 波。</FFF.Strike.Msg.Deferred>
+  <FFF.Strike.Msg.Completed>{0} 结束：发射 {1} 枚，略过 {2} 枚。</FFF.Strike.Msg.Completed>
+  <FFF.Strike.Msg.Cancelled>{0} 已取消，尚未发射的导弹已释放。</FFF.Strike.Msg.Cancelled>
+  <FFF.Strike.Msg.TargetLost>{0} 已取消：目标已不存在。</FFF.Strike.Msg.TargetLost>
+  <FFF.Strike.Msg.ConsoleLost>{0} 已取消：打击指挥中心已被移除。</FFF.Strike.Msg.ConsoleLost>
+  <FFF.Strike.Plan.Title>波次打击规划：{0}</FFF.Strike.Plan.Title>
+  <FFF.Strike.Plan.Target>目标：{0}（{1} 格）</FFF.Strike.Plan.Target>
+  <FFF.Strike.Plan.Channels>引导通道：{0}（空闲 {1}）· 引导期 {2}</FFF.Strike.Plan.Channels>
+  <FFF.Strike.Plan.WaveRoundLimit>单波枚数上限：{0}</FFF.Strike.Plan.WaveRoundLimit>
+  <FFF.Strike.Plan.SiteWarning>此据点尚未生成地图。第一枚抵达的导弹会生成地图，据点自己的防空（SAM 照常满弹）随即接手拦截还在飞的导弹。</FFF.Strike.Plan.SiteWarning>
+  <FFF.Strike.Plan.Available>可用导弹：{0}</FFF.Strike.Plan.Available>
+  <FFF.Strike.Plan.AddHint>点一行加一枚到选中的波次；按住 Shift 点击加到满。黄色行目前无法立即发射，发射时会再检查。</FFF.Strike.Plan.AddHint>
+  <FFF.Strike.Plan.Unavailable>不可用 {0}：{1}</FFF.Strike.Plan.Unavailable>
+  <FFF.Strike.Plan.ReservedElsewhere>另有 {0} 枚已保留给其他打击任务</FFF.Strike.Plan.ReservedElsewhere>
+  <FFF.Strike.Plan.NotReadyTag>目前无法发射：</FFF.Strike.Plan.NotReadyTag>
+  <FFF.Strike.Plan.Flight>飞行 {0}</FFF.Strike.Plan.Flight>
+  <FFF.Strike.Plan.Margin>射程 +{0}</FFF.Strike.Plan.Margin>
+  <FFF.Strike.Plan.WaveTitle>第 {0} 波</FFF.Strike.Plan.WaveTitle>
+  <FFF.Strike.Plan.WaveChannelsTip>占用 {0}／{1} 条打击导引通道。普通导弹需 1 条、弹道导弹需 2 条；TV 导引额外加 1。整波发射需容纳所有待发导弹。</FFF.Strike.Plan.WaveChannelsTip>
+  <FFF.Strike.Plan.AddWave>＋新增波次</FFF.Strike.Plan.AddWave>
+  <FFF.Strike.Plan.AutoAssign>自动分波</FFF.Strike.Plan.AutoAssign>
+  <FFF.Strike.Plan.AutoAssignDesc>从最便宜的导弹开始依次填满各波，最高价值的导弹会落在最后一波。</FFF.Strike.Plan.AutoAssignDesc>
+  <FFF.Strike.Plan.Clear>清空</FFF.Strike.Plan.Clear>
+  <FFF.Strike.Plan.Confirm>确认计划</FFF.Strike.Plan.Confirm>
+  <FFF.Strike.Exec.Title>波次打击：{0}</FFF.Strike.Exec.Title>
+  <FFF.Strike.Exec.State>状态：{0}</FFF.Strike.Exec.State>
+  <FFF.Strike.Exec.NextRelease>（下一条通道在 {0} 后释放）</FFF.Strike.Exec.NextRelease>
+  <FFF.Strike.Exec.Wave>第 {0} 波：{1}</FFF.Strike.Exec.Wave>
+  <FFF.Strike.Exec.WavePending>待发射 {0}</FFF.Strike.Exec.WavePending>
+  <FFF.Strike.Exec.WaveQueued>发射中 {0}</FFF.Strike.Exec.WaveQueued>
+  <FFF.Strike.Exec.WaveLaunched>已发射 {0}/{1}，在飞 {2}</FFF.Strike.Exec.WaveLaunched>
+  <FFF.Strike.Exec.WaveSkipped>略过 {0}</FFF.Strike.Exec.WaveSkipped>
+  <FFF.Strike.Exec.Fire>发射</FFF.Strike.Exec.Fire>
+  <FFF.Strike.Exec.FireTip>按住 Shift 点击只发射空闲通道与就绪发射架允许的部分，其余留在本波。</FFF.Strike.Exec.FireTip>
+  <FFF.Strike.Exec.CancelMission>取消任务</FFF.Strike.Exec.CancelMission>
+  <FFF.Strike.ComputingManual>弹道已算 {0}；本波需由研究者在规划桌算完</FFF.Strike.ComputingManual>
+  <FFF.Strike.State.ComputingManual>等待弹道计算（{0}）</FFF.Strike.State.ComputingManual>
+  <FFF.Strike.State.ExecutingComputing>执行中；弹道已算 {0}</FFF.Strike.State.ExecutingComputing>
+  <FFF.Strike.Msg.ConfirmedManual>{0}：已保留 {1} 枚导弹、分 {2} 波，需由研究者在{3}计算弹道。</FFF.Strike.Msg.ConfirmedManual>
+  <FFF.Strike.Msg.WaveSolved>{0}：第 {1} 波弹道解完成。</FFF.Strike.Msg.WaveSolved>
+  <FFF.Strike.Plan.ComputeWork>计算工作量：{0}（此处最快的研究者约需 {1}）</FFF.Strike.Plan.ComputeWork>
+  <FFF.Strike.Plan.NoResearcher>这里没有能做研究的殖民者</FFF.Strike.Plan.NoResearcher>
+  <FFF.Strike.Alert.ComputationPending>弹道计算等待中</FFF.Strike.Alert.ComputationPending>
+  <FFF.Strike.Alert.ComputationPendingDesc>有打击任务在等研究者到打击规划桌计算弹道，但该地图没有能做研究工作的殖民者。
+
+请为该地图的殖民者启用研究工作。</FFF.Strike.Alert.ComputationPendingDesc>
+  <FFF.Strike.Adjust.Title>调整波次：{0}</FFF.Strike.Adjust.Title>
+  <FFF.Strike.Adjust.Button>调整波次</FFF.Strike.Adjust.Button>
+  <FFF.Strike.Adjust.Apply>应用</FFF.Strike.Adjust.Apply>
+  <FFF.Strike.Adjust.Cancel>取消调整</FFF.Strike.Adjust.Cancel>
+  <FFF.Strike.Adjust.ClearPending>清空待发射</FFF.Strike.Adjust.ClearPending>
+  <FFF.Strike.Adjust.Launching>导弹发射中，请等涟波发射结束</FFF.Strike.Adjust.Launching>
+  <FFF.Strike.Adjust.FixedRemoved>已发射或已略过的导弹不能移除</FFF.Strike.Adjust.FixedRemoved>
+  <FFF.Strike.Msg.Adjusted>{0} 已调整：{1} 枚、{2} 波（新增 {3} 枚）。</FFF.Strike.Msg.Adjusted>
+  <FFF.Strike.Slot.Launched>已发射</FFF.Strike.Slot.Launched>
+  <FFF.Strike.Slot.Queued>发射中</FFF.Strike.Slot.Queued>
+  <FFF.Strike.Slot.Skipped>已略过</FFF.Strike.Slot.Skipped>
+  <FFF.Strike.Plan.Now>立即</FFF.Strike.Plan.Now>
+  <FFF.Strike.Plan.Arrival>升空 {0} · 抵达 {1}–{2}</FFF.Strike.Plan.Arrival>
+  <FFF.Strike.Plan.ArrivalFlying>在飞 · 抵达 {0}–{1}</FFF.Strike.Plan.ArrivalFlying>
+  <FFF.Strike.Plan.EarlyWarning>会早于第 {0} 波抵达；建议延后约 {1}</FFF.Strike.Plan.EarlyWarning>
+  <FFF.Strike.Plan.TimelineTip>假设每一波在引导通道与发射架允许时立即发射的预估时间轴。短竖线是升空，色块是抵达区间。黄色色块表示会比前面的波次早到，得不到那一波诱饵的掩护。</FFF.Strike.Plan.TimelineTip>
+  <FFF.Strike.Alert.WaveLine>{0} 第 {1} 波：在飞 {2} 枚，{3}–{4} 后抵达；被侦测 {5}，被接战 {6}</FFF.Strike.Alert.WaveLine>
+  <FFF.Strike.Alert.WaveReady>打击波次可发射</FFF.Strike.Alert.WaveReady>
+  <FFF.Strike.Alert.WaveReadyDesc>以下打击任务现在就能发射下一波。可在模组设置中关闭此警报。</FFF.Strike.Alert.WaveReadyDesc>
+  <FFF.Strike.Alert.WaveReadyLine>{0}：第 {1} 波（{2}）</FFF.Strike.Alert.WaveReadyLine>
+  <FFF.Strike.Report.Label>{0} 战果</FFF.Strike.Report.Label>
+  <FFF.Strike.Report.Header>{0}（目标 {1}，自 {2} 发射）：</FFF.Strike.Report.Header>
+  <FFF.Strike.Report.Wave>第 {0} 波：发射 {1} 枚，飞行中被拦截 {2}、命中 {3}、在目标上空被击落 {4}、落空 {5}</FFF.Strike.Report.Wave>
+  <FFF.Strike.Report.WaveShieldBlocked>、被护盾挡下 {0}</FFF.Strike.Report.WaveShieldBlocked>
+  <FFF.Strike.Report.Unknown>另有 {0} 枚已抵达，但结果不明。</FFF.Strike.Report.Unknown>
+  <FFF.Strike.Report.Mirv>第 {0} 波分导：弹头 {1} 枚，命中 {2}、被拦截 {3}、末端被毁 {4}、落空 {5}。</FFF.Strike.Report.Mirv>
+  <FFF.Strike.Report.MirvDecoys>诱饵：放出 {0} 枚，其中 {1} 枚吸引拦截弹击落，{2} 枚被敌方雷达识破。</FFF.Strike.Report.MirvDecoys>
+  <FFF.Strike.Plan.AutoFire>定时</FFF.Strike.Plan.AutoFire>
+  <FFF.Strike.Plan.AutoFireTip>定时发射：轮到本波时自动发射，但要等到它会在前面各波之后（再隔一小段）抵达。</FFF.Strike.Plan.AutoFireTip>
+  <FFF.Strike.Msg.AutoFire>{0}：第 {1} 波定时发射。</FFF.Strike.Msg.AutoFire>
+  <FFF.Strike.Msg.TargetMoved>{0}：目标移动了 {1} 格，{2} 枚尚未发射的导弹需重新计算弹道。</FFF.Strike.Msg.TargetMoved>
+  <FFF.Missile.Stat.Signature>雷达截面：×{0}</FFF.Missile.Stat.Signature>
+  <FFF.Missile.Stat.Chaff>箔条：{0} 发（干扰强度 {1}）</FFF.Missile.Stat.Chaff>
+  <FFF.Strike.MissionDefault>打击任务 #{0}</FFF.Strike.MissionDefault>
+  <FFF.Strike.RenameTip>重新命名这个打击任务（可掷随机名称）。</FFF.Strike.RenameTip>
+  <FFF.Strike.ChannelCost>每枚导弹需求：{0} 条导引通道</FFF.Strike.ChannelCost>
+  <FFF.Missile.Stat.Release>飞行中释放：{0}</FFF.Missile.Stat.Release>
+  <FFF.Strike.Plan.Release>飞行中释放：{0}（对敌方防空是 {1} 条航迹）</FFF.Strike.Plan.Release>
+  <FFF.BVR.Marker.Hostile>敌方 {0} 枚 · {1}</FFF.BVR.Marker.Hostile>
+  <FFF.BVR.Marker.Friendly>我方 {0} 枚 · {1}</FFF.BVR.Marker.Friendly>
+  <FFF.BVR.Marker.Loitering>盘旋中 {0} 枚 · {1}</FFF.BVR.Marker.Loitering>
+  <FFF.UI.ActiveConfig>当前生效</FFF.UI.ActiveConfig>
+  <FFF.UI.PendingConfig>待装配配置（尚未生效）</FFF.UI.PendingConfig>
+  <FFF.UI.DamageChange>伤害</FFF.UI.DamageChange>
+  <FFF.UI.AddToWave>加入第 {0} 波</FFF.UI.AddToWave>
+  <FFF.UI.NoMissiles>没有候选导弹。请先将兼容的导弹装入发射器。</FFF.UI.NoMissiles>
+  <FFF.UI.AllAssigned>可用导弹均已分配。选择波次查看内容，或移除导弹后重新分配。</FFF.UI.AllAssigned>
+  <FFF.UI.NoAvailableMissiles>当前没有可分配的导弹。请查看下方不可用原因；部分导弹可能被其他任务保留。</FFF.UI.NoAvailableMissiles>
+  <FFF.UI.AllowPartialFire>允许部分发射：仅发射当前就绪的导弹（亦可 Shift 点击）</FFF.UI.AllowPartialFire>
+  <FFF.UI.ShowStats>▸ 展开装配后完整性能</FFF.UI.ShowStats>
+  <FFF.UI.HideStats>▾ 收起完整性能</FFF.UI.HideStats>
+  <FFF.UI.RangeChange>射程</FFF.UI.RangeChange>
+  <FFF.UI.Comparison>当前生效 → 装配后</FFF.UI.Comparison>
+  <FFF.MissileBase.NextFireIn>下次导弹打击：{0}</FFF.MissileBase.NextFireIn>
+  <FFF.MissileBase.LocalMonitoring>阵地已被侦测（本地地图观察中）</FFF.MissileBase.LocalMonitoring>
+  <FFF.MissileBase.RelocationIn>阵地转移倒计时：{0}</FFF.MissileBase.RelocationIn>
+  <FFF.MissileBase.Relocated>导弹阵地转移</FFF.MissileBase.Relocated>
+  <FFF.MissileBase.RelocatedDesc>一处敌方导弹阵地在部署后完成射击任务并转移，防止殖民地反制。</FFF.MissileBase.RelocatedDesc>
+  <FFF.MissileBase.Destroyed>导弹阵地已摧毁</FFF.MissileBase.Destroyed>
+  <FFF.MissileBase.DestroyedDesc>殖民者已摧毁敌方导弹阵地的所有火控雷达。失去火控后阵地无法再发射，来自该阵地的导弹威胁已解除。\n\n阵地地图会保留到观察结束、且当地没有殖民者为止，仍可派穿梭机前往搜刮。</FFF.MissileBase.DestroyedDesc>
+  <FFF.MissileBase.ReentryBlockedIn>地面通道封锁中，敌方整备防线（{0}）</FFF.MissileBase.ReentryBlockedIn>
+  <FFF.MissileBase.ReentryBlocked>通道封锁，敌方整备防线（{0}）</FFF.MissileBase.ReentryBlocked>
+  <FFF.MissileBase.ReentryBlockStarted>{0}：火控雷达仍在，敌方正重新整备防线。{1}内无法再次进入，阵地将完整重建。</FFF.MissileBase.ReentryBlockStarted>
+  <FFF.MissileBase.ObjectivesAlert>导弹阵地：剩余火控雷达 {0}</FFF.MissileBase.ObjectivesAlert>
+  <FFF.MissileBase.ObjectivesAlertDesc>摧毁所有火控雷达即可瓦解此阵地（剩余 {0}），发射架与搜索雷达不必摧毁。
+
+若在火控雷达尚存时撤退，敌方将重新整备：阵地留在世界地图上继续发射，一段时间内无法再次进入，下次进入时阵地完整重建。
+
+点击依序检视剩余目标。</FFF.MissileBase.ObjectivesAlertDesc>
+  <FFF.MissileBase.ArrivedLetter>你们抵达了一处导弹阵地。敌方已在此部署火控雷达与导弹发射架，不断向周围殖民地发射打击。摧毁所有火控雷达即可瓦解此阵地；若在火控雷达尚存时撤退，敌方将重新整备防线，一段时间内无法再次进入。</FFF.MissileBase.ArrivedLetter>
+  <FFF.MissileBase.SupplyDrop>敌方补给空投：{0} ×{1}</FFF.MissileBase.SupplyDrop>
+  <FFF.MissileBase.RackResupply>敌方空投导弹：{1} 枚</FFF.MissileBase.RackResupply>
+  <FFF.MissileBase.TurretAmmoDrop>敌方空投弹药：{1} ×{0}</FFF.MissileBase.TurretAmmoDrop>
+  <FFF.FieldLaunchSite.ArrivedLetter>你们抵达了一处敌方野战发射阵地。阵地以搜索雷达为中心，四周散布发射阵位、弹药车与人员休息区。只要仍有雷达运作，敌方就会定时空投生存食品包维持守军。摧毁所有火控雷达即可瓦解此阵地；若在火控雷达尚存时撤退，敌方将重新整备防线，一段时间内无法再次进入。</FFF.FieldLaunchSite.ArrivedLetter>
+  <FFF.FieldLaunchSite.SpawnedLetter>{0}在{1}的{2}方 {3} 格处部署了一处野战导弹发射阵地。其发射架能打击你的殖民地；只要雷达仍在运作，补给舱就会持续为守军送来食物。\n\n摧毁所有火控雷达即可瓦解此阵地；瘫痪所有雷达也能切断其补给。</FFF.FieldLaunchSite.SpawnedLetter>
+  <FFF.EarlyLaunchSite.ArrivedLetter>你们抵达了一处敌方旧式导弹阵地。声学反射镜负责监听，手动火控雷达与发射轨负责射出缓慢的脉冲喷射巡飞弹。摧毁火控雷达即可瓦解此阵地；守军或烧木发电机没了，火控雷达也会停摆。若在雷达尚存时撤退，敌方将重新整备防线，一段时间内无法再次进入。</FFF.EarlyLaunchSite.ArrivedLetter>
+  <FFF.Alert.Pods>{0} 个来袭目标，拦截窗口剩余 {1}</FFF.Alert.Pods>
+  <FFF.Alert.Pods.Loitering>{0} 枚导弹在上空盘旋，剩余盘旋 {1}</FFF.Alert.Pods.Loitering>
+  <FFF.Alert.Pods.Window.Midcourse>中过程拦截窗口：{0}</FFF.Alert.Pods.Window.Midcourse>
+  <FFF.Alert.Pods.Window.Terminal>末端拦截窗口（CIWS）：{0}</FFF.Alert.Pods.Window.Terminal>
+  <FFF.Alert.Pods.Window.Loitering>盘旋剩余：{0}</FFF.Alert.Pods.Window.Loitering>
+  <FFF.Alert.Pods.Target>  · {0}  【{1}】</FFF.Alert.Pods.Target>
+  <FFF.Alert.Pods.Status.InFlight>拦截弹飞行中</FFF.Alert.Pods.Status.InFlight>
+  <FFF.Alert.Pods.Status.Locking>火控锁定中</FFF.Alert.Pods.Status.Locking>
+  <FFF.Alert.Pods.Status.Unengaged>未接战</FFF.Alert.Pods.Status.Unengaged>
+  <FFF.Alert.Pods.Status.Loitering>盘旋等待目标</FFF.Alert.Pods.Status.Loitering>
+  <FFF.Alert.BVRStatus.Label>BVR 系统</FFF.Alert.BVRStatus.Label>
+  <FFF.Alert.BVRStatus.SearchRadars>搜索雷达：</FFF.Alert.BVRStatus.SearchRadars>
+  <FFF.Alert.BVRStatus.SearchRadar.Line>  · {0}  搜索距离 {1}，反隐身 {2}，功率 {3}  [{4}]</FFF.Alert.BVRStatus.SearchRadar.Line>
+  <FFF.Alert.BVRStatus.FireControlRadars>火控雷达：</FFF.Alert.BVRStatus.FireControlRadars>
+  <FFF.Alert.BVRStatus.FireControl.Line>  · {0}  {1} 条通道，功率 {2}  [{3}]</FFF.Alert.BVRStatus.FireControl.Line>
+  <FFF.Alert.BVRStatus.FireControl.Occupied>  已占用通道：{0} / {1}</FFF.Alert.BVRStatus.FireControl.Occupied>
+  <FFF.Alert.BVRStatus.None>  （未安装）</FFF.Alert.BVRStatus.None>
+  <FFF.Alert.Exist.Observing>观察中：{0}</FFF.Alert.Exist.Observing>
+  <FFF.Alert.Exist.TimeLeft>观察结束倒数：{0}</FFF.Alert.Exist.TimeLeft>
+  <FFF.Alert.Exist.EnemiesAlive>剩余敌方战斗人员：{0}</FFF.Alert.Exist.EnemiesAlive>
+  <FFF.Alert.Exist.IsMissileBase>这是一处运作中的导弹阵地。提前结束观察将让敌方人员得以重整并重置其防御。</FFF.Alert.Exist.IsMissileBase>
+  <FFF.Alert.Exist.MissileBaseDestroyed>此导弹阵地的火控雷达已全数摧毁。地图会保留到观察结束、且当地没有殖民者为止；在此之前可派穿梭机或运输舱前往搜刮。</FFF.Alert.Exist.MissileBaseDestroyed>
+  <FFF.Alert.Exist.ClickHint>点击以提前结束观察。</FFF.Alert.Exist.ClickHint>
+  <FFF.Alert.Exist.EndEarly.Confirm>现在就结束观察？地图将不再被保留，可能会被游戏清理。</FFF.Alert.Exist.EndEarly.Confirm>
+  <FFF.Alert.Exist.EndEarly.Confirm.MissileBase>提前结束观察？\n\n敌方人员将有机会重整，该导弹阵地的防御与计时器都会重置，如同观察从未发生。\n\n此操作无法复原。</FFF.Alert.Exist.EndEarly.Confirm.MissileBase>
+  <FFF.Alert.Exist.ObservationEnded>观察已提前结束。敌军可能会重整。</FFF.Alert.Exist.ObservationEnded>
+  <FFF.Alert.PlayerMissiles.Label>{0} 枚导弹飞行中，首波落地倒数 {1}</FFF.Alert.PlayerMissiles.Label>
+  <FFF.Alert.PlayerMissiles.MapHeader>目标：{0}</FFF.Alert.PlayerMissiles.MapHeader>
+  <FFF.Alert.PlayerMissiles.WaveImpact>  落地倒数 {0}：</FFF.Alert.PlayerMissiles.WaveImpact>
+  <FFF.Alert.PlayerMissiles.Target>    · {0}  ({1},{2})  【{3}】</FFF.Alert.PlayerMissiles.Target>
+  <FFF.Alert.PlayerMissiles.ClickHint>左键切换至下一个落点，右键切换回上一个。</FFF.Alert.PlayerMissiles.ClickHint>
+  <FFF.BVR.Online>运作中</FFF.BVR.Online>
+  <FFF.BVR.Offline>离线</FFF.BVR.Offline>
+  <FFF.BVR.SearchRadar>搜索雷达：搜索距离 {0}，反隐身 {1}（{2}）</FFF.BVR.SearchRadar>
+  <FFF.BVR.FireControl>火控雷达：{0} 条火力通道（{1}）</FFF.BVR.FireControl>
+  <FFF.BVR.ArtilleryChannels>火炮引导通道：{0} / {1} 空闲</FFF.BVR.ArtilleryChannels>
+  <FFF.Missile.Tab>装配</FFF.Missile.Tab>
+  <FFF.Missile.Body>导弹弹体</FFF.Missile.Body>
+  <FFF.Missile.BodyFixed>由发射平台固定</FFF.Missile.BodyFixed>
+  <FFF.Missile.None>无</FFF.Missile.None>
+  <FFF.Missile.Locked>未解锁</FFF.Missile.Locked>
+  <FFF.Missile.GodModeInstant>上帝模式：变更立即装配完成，不耗资源、不需研究。</FFF.Missile.GodModeInstant>
+  <FFF.Missile.Stats>待装配数值（装配后生效）</FFF.Missile.Stats>
+  <FFF.Missile.Stat.Radius>爆炸半径：{0}</FFF.Missile.Stat.Radius>
+  <FFF.Missile.Stat.Damage>弹头：{0}（{1}）</FFF.Missile.Stat.Damage>
+  <FFF.Missile.Stat.Scatter>命中偏移：{0}</FFF.Missile.Stat.Scatter>
+  <FFF.Missile.Stat.Speed>飞行速度：x{0}</FFF.Missile.Stat.Speed>
+  <FFF.Missile.Stat.Fuel>燃料量：{0}</FFF.Missile.Stat.Fuel>
+  <FFF.Missile.Stat.Impulse>比冲（推进效率）：{0}</FFF.Missile.Stat.Impulse>
+  <FFF.Missile.Stat.Range>射程：{0} 格</FFF.Missile.Stat.Range>
+  <FFF.Missile.Stat.TerminalGuidance>具备制导能力：飞行中可更新目标位置 {0} 次，可跨图层打击</FFF.Missile.Stat.TerminalGuidance>
+  <FFF.Missile.Stat.NoTerminalGuidance>无制导能力：无法追踪移动目标，也无法跨图层打击</FFF.Missile.Stat.NoTerminalGuidance>
+  <FFF.Missile.Stat.Loiter>盘旋飞控：找不到目标时可盘旋等待 {0}，之后才回退惯性落点</FFF.Missile.Stat.Loiter>
+  <FFF.MissileLauncher.OutOfRange>目标超出导弹射程（{0} 格）。</FFF.MissileLauncher.OutOfRange>
+  <FFF.MissileLauncher.RangeLabel>{0} / {1} 格</FFF.MissileLauncher.RangeLabel>
+  <FFF.MissileLauncher.NoTargetHere>此处没有目标，导弹将会落空</FFF.MissileLauncher.NoTargetHere>
+  <FFF.Missile.CrossLayerNeedsGuidance>跨图层打击需要具备制导能力的导弹；惯性制导与无制导弹药无法做到。</FFF.Missile.CrossLayerNeedsGuidance>
+  <FFF.Missile.Inspect>弹体：{0}\n弹头：{1}\n爆炸：半径 {2} / 伤害 {3}</FFF.Missile.Inspect>
+  <FFF.Missile.NeedResources>装配所需：{0}</FFF.Missile.NeedResources>
+  <FFF.Missile.ReadyToAssemble>资源已备齐，确认后开始装配</FFF.Missile.ReadyToAssemble>
+  <FFF.Missile.NoResources>没有可用于装配的资源</FFF.Missile.NoResources>
+  <FFF.Missile.EditingSlot>正在编辑架上第 {0} 枚（共 {1} 枚）</FFF.Missile.EditingSlot>
+  <FFF.Missile.ConfirmAssembly>加入装配队列</FFF.Missile.ConfirmAssembly>
+  <FFF.Missile.AssemblyQueued>已加入队列，殖民者即将开始装配</FFF.Missile.AssemblyQueued>
+  <FFF.Missile.ResetToCurrent>还原为已装配设定</FFF.Missile.ResetToCurrent>
+  <FFF.MissileLauncher.LaunchCooldown>发射轨重新装填中：{0}</FFF.MissileLauncher.LaunchCooldown>
+  <FFF.MissileLauncher.Rail.NoMissileLoaded>未装填导弹</FFF.MissileLauncher.Rail.NoMissileLoaded>
+  <FFF.Missile.NoRackAvailable>找不到含兼容导弹的储存架</FFF.Missile.NoRackAvailable>
+  <FFF.MissileLauncher.Interceptor.Reloading>装填中：{0}</FFF.MissileLauncher.Interceptor.Reloading>
+  <FFF.MissileLauncher.Interceptor.Ready>可发射</FFF.MissileLauncher.Interceptor.Ready>
+  <FFF.Missile.IncomingLetter>导弹来袭</FFF.Missile.IncomingLetter>
+  <FFF.Missile.IncomingLetterDesc>{0} 发射的导弹正在接近，即将打击殖民地。</FFF.Missile.IncomingLetterDesc>
+  <FFF.Missile.Missed>我方导弹找不到目标，已落空。</FFF.Missile.Missed>
+  <FFF.Missile.IncomingMissed>{0} 发射的导弹失去目标，已落空。</FFF.Missile.IncomingMissed>
+  <FFF.Missile.SeekerLocked>{0}已锁定目标，导弹正在落下。</FFF.Missile.SeekerLocked>
+  <FFF.Missile.Loitering>导引头没有找到目标：导弹在上空盘旋等待，最多 {0} 后才回退惯性制导。</FFF.Missile.Loitering>
+  <FFF.Guidance.Inertial>惯性导引</FFF.Guidance.Inertial>
+  <FFF.Guidance.RadioCommand>无线电指令制导</FFF.Guidance.RadioCommand>
+  <FFF.Guidance.ManualTarget>{0}：抵达后由你选择落点</FFF.Guidance.ManualTarget>
+  <FFF.Guidance.AutoTarget>{0}：抵达后自动锁定目标</FFF.Guidance.AutoTarget>
+  <FFF.LaserMark.Inspect>标定方：{0}\n剩余时间：{1}</FFF.LaserMark.Inspect>
+  <FFF.LaserMark.InspectPermanent>标定方：{0}</FFF.LaserMark.InspectPermanent>
+  <FFF.LaserMark.Placed>已标定激光引导点，{0}后失效。</FFF.LaserMark.Placed>
+  <FFF.LaserMark.PlacedPermanent>已标定激光引导点。</FFF.LaserMark.PlacedPermanent>
+  <FFF.Missile.TerminalUpdatesRemaining>剩余终端更新：{0} / {1}</FFF.Missile.TerminalUpdatesRemaining>
+  <FFF.Tab.MissileInventory>库存</FFF.Tab.MissileInventory>
+  <FFF.MissileInventory.Features>特性</FFF.MissileInventory.Features>
+  <FFF.MissileInventory.Stat.BlastRadius>爆炸半径</FFF.MissileInventory.Stat.BlastRadius>
+  <FFF.MissileInventory.Stat.Damage>伤害</FFF.MissileInventory.Stat.Damage>
+  <FFF.MissileInventory.Unit.Tiles>格</FFF.MissileInventory.Unit.Tiles>
+  <FFF.MissileInventory.Feature.Mechanics>本枚导弹的生效机制</FFF.MissileInventory.Feature.Mechanics>
+  <FFF.MissileInventory.Feature.Warhead>主弹头伤害类型：{0}；伤害值：{1}；爆炸半径：{2} 格。载荷容量系数 N = {3}。</FFF.MissileInventory.Feature.Warhead>
+  <FFF.MissileInventory.Feature.InterceptBonus>拦截命中率加成：{0}%</FFF.MissileInventory.Feature.InterceptBonus>
+  <FFF.MissileInventory.Feature.ExtraRolls>每次拦截额外掷骰：{0} 次</FFF.MissileInventory.Feature.ExtraRolls>
+  <FFF.MissileInventory.Feature.RangeOffset>战斗部射程修正：{0} 格</FFF.MissileInventory.Feature.RangeOffset>
+  <FFF.MissileInventory.Feature.PenetratesRoof>可穿透厚岩顶，命中岩顶下目标。</FFF.MissileInventory.Feature.PenetratesRoof>
+  <FFF.MissileInventory.Feature.Guidance>散布半径：{0} 格；终端位置更新：{1} 次；{2}</FFF.MissileInventory.Feature.Guidance>
+  <FFF.MissileInventory.Feature.Guided>具终端制导，可追踪目标位置。</FFF.MissileInventory.Feature.Guided>
+  <FFF.MissileInventory.Feature.Unguided>不具终端制导，依默认落点散布。</FFF.MissileInventory.Feature.Unguided>
+  <FFF.MissileInventory.Feature.Propulsion>有效射程：{0} 格；世界移动速度倍率：{1}；燃料：{2}；比冲：{3}。</FFF.MissileInventory.Feature.Propulsion>
+  <FFF.MissileInventory.Feature.Payload>载荷效果依弹体容量 N = {0} 缩放；有效射程：{1} 格。</FFF.MissileInventory.Feature.Payload>
+  <FFF.MissileInventory.Feature.Signature>雷达截面倍率：{0}。</FFF.MissileInventory.Feature.Signature>
+  <FFF.MissileInventory.Feature.Jamming>干扰强度：{0}%。</FFF.MissileInventory.Feature.Jamming>
+  <FFF.MissileInventory.Feature.Chaff>携带箔条／干扰丝：{0} 次。</FFF.MissileInventory.Feature.Chaff>
+  <FFF.MissileInventory.Count>已装填：{0} / {1}</FFF.MissileInventory.Count>
+  <FFF.MissileInventory.Empty>未装填任何导弹。</FFF.MissileInventory.Empty>
+  <FFF.MissileInventory.Stats>爆炸 {0}  ·  伤害 {1}</FFF.MissileInventory.Stats>
+  <FFF.MissileInventory.EjectDesc>将这枚导弹弹出为物品，放在储存架旁的地上。弹出后为禁用状态，避免搬运工立刻搬回原架。</FFF.MissileInventory.EjectDesc>
+  <FFF.MissileInventory.EjectFailed>储存架旁没有空位，无法弹出导弹。</FFF.MissileInventory.EjectFailed>
+  <FFF.MissileLauncher.Ballistic.Fire>发射弹道导弹</FFF.MissileLauncher.Ballistic.Fire>
+  <FFF.MissileLauncher.Ballistic.FireDesc>向世界地图目标发射已装配的弹道导弹。导弹以抛物线弹道飞行，一旦发射几乎无法被拦截。</FFF.MissileLauncher.Ballistic.FireDesc>
+  <FFF.MissileLauncher.Ballistic.NotLoaded>导弹尚未装配。请在「装配」分页设定，殖民者会搬运材料完成装配。</FFF.MissileLauncher.Ballistic.NotLoaded>
+  <FFF.MissileLauncher.Ballistic.Loaded>弹道导弹：已装配，可发射</FFF.MissileLauncher.Ballistic.Loaded>
+  <FFF.MissileLauncher.Ballistic.LoadedWith>弹道导弹已装填：{0}</FFF.MissileLauncher.Ballistic.LoadedWith>
+  <FFF.MissileLauncher.Ballistic.AwaitingAssembly>弹道导弹：等待殖民者完成装配</FFF.MissileLauncher.Ballistic.AwaitingAssembly>
+  <FFF.MissileLauncher.Ballistic.Unloaded>弹道发射井：未装填，请在装配分页设定</FFF.MissileLauncher.Ballistic.Unloaded>
+  <FFF.Artillery.Fire>火炮射击</FFF.Artillery.Fire>
+  <FFF.Artillery.FireDesc>选择世界地图上的目标持续炮击，直到下令停止。</FFF.Artillery.FireDesc>
+  <FFF.Artillery.Stop>停止射击</FFF.Artillery.Stop>
+  <FFF.Artillery.StopDesc>停止持续射击。当前状态：{0}</FFF.Artillery.StopDesc>
+  <FFF.Artillery.ModeRanging>射击模式：校射</FFF.Artillery.ModeRanging>
+  <FFF.Artillery.ModeEffect>射击模式：效力射</FFF.Artillery.ModeEffect>
+  <FFF.Artillery.ModeDesc>切换射击模式。校射：以目标地图中心为散布中心，每个落点都会登录成该地图的效力射落点。效力射：以该地图最后一次校射的落点为散布中心，同阵营对同一地图的火炮共用这个落点；每发再收束基础散布的 25%（每门炮各自累计，最低 1 格），且不使用雷达导引。</FFF.Artillery.ModeDesc>
+  <FFF.Artillery.EffectPoint>落点 ({0}, {1})，下一发散布 {2} 格</FFF.Artillery.EffectPoint>
+  <FFF.Artillery.NoAmmo>未装填炮弹，持续射击已停止。</FFF.Artillery.NoAmmo>
+  <FFF.Artillery.CrossLayer>炮弹没有制导能力，无法跨图层打击。</FFF.Artillery.CrossLayer>
+  <FFF.Artillery.Missed>炮击找不到目标，已落空。</FFF.Artillery.Missed>
+  <FFF.Artillery.NoBarrel>炮管已磨损，持续射击已停止，请更换强化炮管。</FFF.Artillery.NoBarrel>
+  <FFF.Artillery.TargetIsHome>不能炮击自己所在的地块。</FFF.Artillery.TargetIsHome>
+  <FFF.Artillery.OutOfRange>目标超出火炮射程（{0} 格）。</FFF.Artillery.OutOfRange>
+  <FFF.Artillery.MapNotSpawned>目标地图尚未加载，只能炮击已生成的地图。</FFF.Artillery.MapNotSpawned>
+  <FFF.Artillery.NoCrew>需要炮手操作：右键选择“操作”指派人员，炮手会自动装填炮弹。</FFF.Artillery.NoCrew>
+  <FFF.Artillery.NoLoadedShell>尚未装填炮弹：先让炮手装填迫击炮弹再开火。</FFF.Artillery.NoLoadedShell>
+  <FFF.Artillery.WaitingForShell>等待炮手补弹，射击任务暂停中。</FFF.Artillery.WaitingForShell>
+  <FFF.Artillery.WaitingForAutoloader>等待自动装填架补弹，射击任务暂停中。</FFF.Artillery.WaitingForAutoloader>
+  <FFF.Artillery.NoLoadedShellAutoloader>尚未装填炮弹：先在连接的自动装填架上存放迫击炮弹再开火。</FFF.Artillery.NoLoadedShellAutoloader>
+  <FFF.Artillery.WaitingForBarrel>炮管已耗损，等待更换强化炮管，射击任务暂停中。</FFF.Artillery.WaitingForBarrel>
+  <FFF.Artillery.HoldFirePaused>停火中：世界炮击任务暂停，解除停火后继续。</FFF.Artillery.HoldFirePaused>
+  <FFF.Artillery.NoRegistration>这张地图还没有校射落点，无法效力射；请先以校射模式打一发。</FFF.Artillery.NoRegistration>
+  <FFF.Artillery.GroupPartial>选中的 {1} 门炮中，{0} 门可以射击此目标；其余：{2}</FFF.Artillery.GroupPartial>
+  <FFF.BVR.DeviceInactive>装置不可用（无电、损坏或已关闭）。</FFF.BVR.DeviceInactive>
+  <FFF.Artillery.StateCooldown>装填冷却中，剩余 {0}</FFF.Artillery.StateCooldown>
+  <FFF.Artillery.StateAiming>瞄准中（{0}%）</FFF.Artillery.StateAiming>
+  <FFF.Artillery.StateReady>可发射</FFF.Artillery.StateReady>
+  <FFF.Artillery.GuidanceOnline>雷达制导：可用（散布 {0} 格）</FFF.Artillery.GuidanceOnline>
+  <FFF.Artillery.GuidanceOffline>雷达制导：没有空闲火控通道（无制导，散布 {0} 格）</FFF.Artillery.GuidanceOffline>
+  <FFF.Missile.PreviousMissile>架上上一枚</FFF.Missile.PreviousMissile>
+  <FFF.Missile.NextMissile>架上下一枚</FFF.Missile.NextMissile>
+  <FFF.Missile.SaveDesignTip>把正在编辑的构型存成装配方案。方案与组装台共用，跨存档保留。</FFF.Missile.SaveDesignTip>
+  <FFF.Missile.LoadDesignTip>把已存的方案载入这枚导弹。只能载入相同弹体的方案；部件仍需小人装配。</FFF.Missile.LoadDesignTip>
+  <FFF.Missile.DesignBodyMismatch>弹体不同：{0}</FFF.Missile.DesignBodyMismatch>
+  <FFF.Missile.ApplyDesignThis>应用到这一枚</FFF.Missile.ApplyDesignThis>
+  <FFF.Missile.ApplyDesignAll>应用到架上全部 {0} 枚同型导弹</FFF.Missile.ApplyDesignAll>
+  <FFF.Missile.DesignApplied>已将方案「{0}」载入{1}。</FFF.Missile.DesignApplied>
+  <FFF.SiloHatch.KeepClosed>保持井盖关闭</FFF.SiloHatch.KeepClosed>
+  <FFF.SiloHatch.KeepClosedDesc>开启时，除了发射期间，井盖一律关闭。井盖完全关闭时，发射井受到的伤害降为 {0}。\n\n发射时会先开盖，井盖全开后导弹才升空，几秒后再关回。\n\n井盖没有完全打开时无法装配导弹。</FFF.SiloHatch.KeepClosedDesc>
+  <FFF.SiloHatch.Closed>井盖：关闭（受到伤害 {0}）</FFF.SiloHatch.Closed>
+  <FFF.SiloHatch.Open>井盖：开启</FFF.SiloHatch.Open>
+  <FFF.SiloHatch.Opening>井盖：开启中</FFF.SiloHatch.Opening>
+  <FFF.SiloHatch.Closing>井盖：关闭中</FFF.SiloHatch.Closing>
+  <FFF.SiloHatch.StatLabel>井盖关闭时受到的伤害</FFF.SiloHatch.StatLabel>
+  <FFF.SiloHatch.StatDesc>井盖完全关闭时，发射井受到的伤害占正常伤害的比例。井盖开关途中或发射后开启期间不生效。</FFF.SiloHatch.StatDesc>
+  <FFF.SiloHatch.OpeningForLaunch>井盖：发射前开盖中</FFF.SiloHatch.OpeningForLaunch>
+  <FFF.SiloHatch.AssemblyBlocked>井盖关闭中：打开井盖才能装配导弹。</FFF.SiloHatch.AssemblyBlocked>
+  <FFF.BallisticLaunchSite.ArrivedLetter>你们抵达了一处敌方弹道发射场。加固的战略发射井散布在搜索雷达与火控雷达周围；每座发射井发射后，守军会在几天内重新装填。摧毁所有火控雷达即可瘫痪发射场；若在火控雷达尚存时撤退，敌方会在一段时间内封锁你们再次进入。</FFF.BallisticLaunchSite.ArrivedLetter>
+  <FFF.SeaLaunchSite.ArrivedLetter>你们抵达了殖民舰队的海上发射站。雷达、发射阵位、弹药车与人员舱盖在以甲板走道相连的海上平台上，由钢铁支柱撑在浪头之上。摧毁所有火控雷达即可瓦解此站；打掉支柱，只靠它撑住的甲板会连同上面的一切塌进海里。这里没有陆路可退，只能搭穿梭机或运输舱离开。</FFF.SeaLaunchSite.ArrivedLetter>
+  <FFF.SeaPlatform.SupportRadius>支撑 {0} 格内的海上平台。</FFF.SeaPlatform.SupportRadius>
+  <FFF.SeaPlatform.NeedsSupport>必须在平台支柱的支撑范围内。</FFF.SeaPlatform.NeedsSupport>
+  <FFF.SeaPlatform.OnlySeaPlatformMap>只能建在海上平台地图上。</FFF.SeaPlatform.OnlySeaPlatformMap>
+  <FFF.SeaPlatform.PillarNeedsOpenAir>必须建在高空或海上平台上。</FFF.SeaPlatform.PillarNeedsOpenAir>
+  <FFF.SeaPlatform.PillarNeedsAccess>旁边至少要有一格能站的地方，才有人能建造。</FFF.SeaPlatform.PillarNeedsAccess>
+  <FFF.SeaPlatform.Unsupported>{0} 格海上平台失去支撑（超出支柱范围，或和支柱底下的平台断开），{1} 秒后会坍塌，除非重新接上，或在范围内建好平台支柱。</FFF.SeaPlatform.Unsupported>
+  <FFF.SeaPlatform.PillarDestroyed>平台支柱被摧毁了。{0} 格海上平台失去支撑，{1} 秒后会坍塌，除非接上别的支柱，或在范围内建好新的平台支柱。</FFF.SeaPlatform.PillarDestroyed>
+  <FFF.SeaPlatform.Collapsed>{0} 格海上平台塌进海里了。</FFF.SeaPlatform.Collapsed>
+  <FFF.SeaPlatform.PawnFell>{0} 随着坍塌的平台掉下去，受伤爬了回来。</FFF.SeaPlatform.PawnFell>
+  <FFF.SeaPlatform.PawnLost>{0} 随着坍塌的平台落海，失踪了。</FFF.SeaPlatform.PawnLost>
+  <FFF.SeaPlatform.NeedWaterTile>请选择地表的水域格。</FFF.SeaPlatform.NeedWaterTile>
+  <FFF.SeaPlatform.TileOccupied>那一格已经有地图了。</FFF.SeaPlatform.TileOccupied>
+  <!-- 設定頁（FFF_AerospaceMod） -->
+  <FFF.Strike.Settings.WaveReadyAlert>打击波次可发射警报</FFF.Strike.Settings.WaveReadyAlert>
+  <FFF.Strike.Settings.WaveReadyAlertDesc>打击任务的下一波可以发射时显示警报。</FFF.Strike.Settings.WaveReadyAlertDesc>
+  <FFF.BVR.Settings.TerminalImpactMarkers>末端落点标记</FFF.BVR.Settings.TerminalImpactMarkers>
+  <FFF.BVR.Settings.TerminalImpactMarkersDesc>在 BVR 末端（近迫防御）窗口内，导弹本体看不见时，于敌我双方导弹的预测落点画标记。</FFF.BVR.Settings.TerminalImpactMarkersDesc>
+  <FFF.Missile.Settings.GodModeInstantAssembly>上帝模式：导弹即时装配</FFF.Missile.Settings.GodModeInstantAssembly>
+  <FFF.Missile.Settings.GodModeInstantAssemblyDesc>开启上帝模式时，导弹与弹道导弹发射井的装配立即完成：不需确认、搬运或装配工作，也不消耗资源；部件不需研究即可选用。移除的部件不退还资源。</FFF.Missile.Settings.GodModeInstantAssemblyDesc>
+  <FFF.BVR.Settings.InterceptDebrisDamage>拦截残骸造成伤害</FFF.BVR.Settings.InterceptDebrisDamage>
+  <FFF.BVR.Settings.InterceptDebrisDamageDesc>被拦截的导弹与空投舱所掉落的大块残骸，落地时对该格造成轻微钝伤，屋顶可以挡下。关闭时残骸只留下扬尘、火花与碎屑。</FFF.BVR.Settings.InterceptDebrisDamageDesc>
+  <FFF.BVR.Settings.InterceptFxDensity>拦截特效密度</FFF.BVR.Settings.InterceptFxDensity>
+  <FFF.BVR.Settings.InterceptFxDensityDesc>拦截时产生的碎片、烟团与烟迹数量。大规模齐射造成卡顿时可调低；任何设定下大块残骸都仍会落地。</FFF.BVR.Settings.InterceptFxDensityDesc>
+  <FFF.BVR.Settings.CiwsInterceptMultiplier>近防炮塔拦截率：{0}</FFF.BVR.Settings.CiwsInterceptMultiplier>
+  <FFF.BVR.Settings.CiwsInterceptMultiplierDesc>调整所有近防炮塔（CIWS）的命中率。100% 为各炮塔原本的数值；0% 则永远无法击落目标。不论设定为何，弹道导弹都极难被近防拦截。</FFF.BVR.Settings.CiwsInterceptMultiplierDesc>
+  <FFF.BVR.Settings.NpcMirv>NPC 分导弹头与诱饵</FFF.BVR.Settings.NpcMirv>
+  <FFF.BVR.Settings.NpcMirvDesc>让 NPC 站点面对强大防空时发射带分导或诱饵载荷的战略导弹：任何阵营的弹道发射场，以及准则允许的阵营（默认只有超凡科技阵营）的导弹阵地。每枚会在飞行途中分成数条航迹。</FFF.BVR.Settings.NpcMirvDesc>
+  <FFF.Aerospace.Settings.Category>Fortified - 导弹与防空</FFF.Aerospace.Settings.Category>
+  <FFF.BVR.EngagementVetoed>这次接战被其他模组的规则挡下。</FFF.BVR.EngagementVetoed>
+  <FFF.Aerospace.Settings.MultiplayerWarning>已启用 Multiplayer。导弹、防空与转移舰没有做联机同步，在联机游戏中使用会不同步；本页影响战斗的设置，每位玩家都必须相同。</FFF.Aerospace.Settings.MultiplayerWarning>
+</LanguageData>

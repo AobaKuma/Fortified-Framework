@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!--
+    被動紅外線感測器：Comp 實作 IAirSensor。蓋好後這張地圖就有本陣營的防空節點。
+    沒有研究需求，方便測試；正式內容應該加研究。貼圖借用原版。
+    Infrared sensor: the comp implements IAirSensor. Borrowed vanilla art; no research to keep testing simple.
+  -->
+  <ThingDef ParentName="BuildingBase">
+    <defName>AerospaceSample_InfraredSensor</defName>
+    <label>IR search sensor</label>
+    <description>A passive infrared sensor that watches the sky for the heat of aircraft and missiles. Stealth coatings do not help against it, but slow, low-flying targets are hard to see. Gives this map air-defence early warning without a radar.</description>
+    <graphicData>
+      <texPath>Things/Building/Misc/GroundPenetratingScanner</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(2, 2)</drawSize>
+    </graphicData>
+    <size>(2,2)</size>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <pathCost>50</pathCost>
+    <fillPercent>0.4</fillPercent>
+    <canBeUsedUnderRoof>false</canBeUsedUnderRoof>
+    <designationCategory>Security</designationCategory>
+    <costList>
+      <Steel>120</Steel>
+      <ComponentIndustrial>4</ComponentIndustrial>
+    </costList>
+    <statBases>
+      <MaxHitPoints>200</MaxHitPoints>
+      <WorkToBuild>6000</WorkToBuild>
+      <Flammability>0.5</Flammability>
+    </statBases>
+    <comps>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>250</basePowerConsumption>
+      </li>
+      <li Class="CompProperties_Breakdownable" />
+      <li Class="CompProperties_Flickable" />
+      <li Class="AerospaceSample.CompProperties_InfraredSensor">
+        <worldRange>5</worldRange>
+        <mapWarningTicks>600</mapWarningTicks>
+      </li>
+    </comps>
+    <placeWorkers>
+      <li>PlaceWorker_NotUnderRoof</li>
+    </placeWorkers>
+  </ThingDef>
+
+  <!--
+    雷射點防禦：Comp 實作 IAirEffector（UsesFireControl = false，瞬間命中）。
+    需要同陣營在這張地圖有感測器（上面的 IR 感測器或任何雷達）才看得到目標。
+    Laser point defence: IAirEffector without fire control. Needs a sensor on the same map to see targets.
+  -->
+  <ThingDef ParentName="BuildingBase">
+    <defName>AerospaceSample_LaserPointDefense</defName>
+    <label>laser point-defence emitter</label>
+    <description>A high-energy laser that burns down aircraft and missiles passing close overhead, and shoots at drop pods and missiles coming down on this map. It needs no fire-control radar and uses no fire channel, but it only reaches targets right above this site and needs a lot of power. It fires on anything this faction's sensors can see.</description>
+    <graphicData>
+      <texPath>Things/Building/Security/TurretMini_Base</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(2, 2)</drawSize>
+    </graphicData>
+    <size>(2,2)</size>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <pathCost>50</pathCost>
+    <fillPercent>0.4</fillPercent>
+    <canBeUsedUnderRoof>false</canBeUsedUnderRoof>
+    <designationCategory>Security</designationCategory>
+    <costList>
+      <Steel>150</Steel>
+      <Plasteel>40</Plasteel>
+      <ComponentSpacer>1</ComponentSpacer>
+    </costList>
+    <statBases>
+      <MaxHitPoints>250</MaxHitPoints>
+      <WorkToBuild>9000</WorkToBuild>
+      <Flammability>0.3</Flammability>
+    </statBases>
+    <comps>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>1200</basePowerConsumption>
+      </li>
+      <li Class="CompProperties_Breakdownable" />
+      <li Class="CompProperties_Flickable" />
+      <li Class="AerospaceSample.CompProperties_LaserPointDefense">
+        <rangeTiles>1.5</rangeTiles>
+        <maxAltitude>12000</maxAltitude>
+        <hitChance>0.35</hitChance>
+        <cooldownTicks>600</cooldownTicks>
+        <mapHitChance>0.5</mapHitChance>
+      </li>
+    </comps>
+    <placeWorkers>
+      <li>PlaceWorker_NotUnderRoof</li>
+    </placeWorkers>
+  </ThingDef>
+
+</Defs>

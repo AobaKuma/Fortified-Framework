@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+  <name>FFF Aerospace Sample</name>
+  <author>Fortified Features Framework</author>
+  <packageId>FFF.Example.AerospaceSample</packageId>
+  <supportedVersions>
+    <li>1.7</li>
+  </supportedVersions>
+  <modDependencies>
+    <li>
+      <packageId>AOBA.Framework</packageId>
+      <displayName>Fortified Features Framework</displayName>
+    </li>
+    <li>
+      <packageId>Ludeon.RimWorld.Odyssey</packageId>
+      <displayName>Odyssey</displayName>
+    </li>
+  </modDependencies>
+  <loadAfter>
+    <li>AOBA.Framework</li>
+    <li>Aoba.DeadManSwitch.Expedition</li>
+  </loadAfter>
+  <description>Example mod for FFF's aerospace framework (air defence, missiles). It extends the system without Harmony:
+- an infrared search sensor (IAirSensor)
+- a laser point-defence turret (IAirEffector, no fire control)
+- a scripted aircraft that air defence tracks and shoots at (IAirTrack)
+- a seeker that homes on power plants (GuidanceType; needs Dead Man's Switch: Expedition for missile bodies)
+- a faction doctrine written in XML (MissileDoctrineDef)
+- a weather modifier and an event listener (AirDefenseExtensionDef)
+
+Copy this folder into Mods/ to try it. Source is in Source/.</description>
+</ModMetaData>

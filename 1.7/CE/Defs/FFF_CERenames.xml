@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 飛彈與砲兵的 CE 實作從 DMSE 的 DMSE_CE.dll 移入 FortifiedCE.dll（2026-11）的改名對照。
+     放在 1.7/CE：只有 CE 啟用時載入，FortifiedCE 的型別才存在。 -->
+<Defs>
+  <Fortified.DefRenameDef>
+    <defName>FFF_CERenames</defName>
+    <typeRenames>
+      <li><oldTypeName>DMSE.CE.Building_HeavyMortarCE</oldTypeName><newType>FortifiedCE.Building_HeavyMortarCE</newType></li>
+      <li><oldTypeName>DMSE.CE.Building_LongRangeGunCE</oldTypeName><newType>FortifiedCE.Building_LongRangeGunCE</newType></li>
+      <li><oldTypeName>DMSE.CE.ModExtension_CEExplosion</oldTypeName><newType>FortifiedCE.ModExtension_CEExplosion</newType></li>
+    </typeRenames>
+  </Fortified.DefRenameDef>
+</Defs>

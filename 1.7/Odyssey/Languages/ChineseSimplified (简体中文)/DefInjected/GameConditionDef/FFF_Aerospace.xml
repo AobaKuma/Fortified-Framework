@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <FFF_TransferGrace.label>转移后安全期</FFF_TransferGrace.label>
+  <FFF_TransferGrace.description>飞船刚完成转移飞行，尚未被附近的势力察觉。在此期间，本地图不会发生任何事件（包括袭击）。船越小，越久不会被发现。
+
+任务强制触发的事件不受影响。</FFF_TransferGrace.description>
+  <FFF_TransferGrace.endMessage>转移后安全期已结束，本地图再次可能发生事件。</FFF_TransferGrace.endMessage>
+</LanguageData>

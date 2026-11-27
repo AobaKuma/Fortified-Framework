@@ -43,6 +43,11 @@
   </PropertyGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'net472'">
+    <!-- 飛彈、砲兵的 CE 實作（2026-11 從 DMSE_CE.dll 移入）只支援 1.7：依賴 Fortified 的 Aerospace（只編進 net10.0） -->
+    <Compile Remove="Aerospace\**" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net472'">
     <PackageReference Include="Krafs.Rimworld.Ref" Version="1.6.4759-beta" />
     <PackageReference Include="Lib.Harmony" Version="2.4.2" ExcludeAssets="runtime" />
     <Reference Include="Fortified">

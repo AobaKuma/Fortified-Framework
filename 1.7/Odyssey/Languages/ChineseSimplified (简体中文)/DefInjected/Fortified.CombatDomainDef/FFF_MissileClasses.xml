@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <Air.label>空中</Air.label>
+  <Air.description>飞机、导弹、空投舱与拦截弹。</Air.description>
+  <Underwater.label>水下</Underwater.label>
+  <Underwater.description>鱼雷与潜航器。</Underwater.description>
+</LanguageData>

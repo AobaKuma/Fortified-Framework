@@ -1,0 +1,485 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 轉移船、結構樁、平台拆除（2026-11 從 DMSE 移入，鍵名由 DMSE.* 改成 FFF.*） -->
+  <!-- EN: Departure blocked: {0} errors, {1} warnings -->
+  <FFF.UI.TransferBlocked>無法出發：{0} 項阻擋、{1} 項警告</FFF.UI.TransferBlocked>
+  <!-- EN: Readiness checks passed · {1} warnings -->
+  <FFF.UI.TransferReady>整備檢查通過 · {1} 項警告</FFF.UI.TransferReady>
+  <!-- EN: Fuel: required / available -->
+  <FFF.UI.FuelRequiredAvailable>燃料：需求／可用</FFF.UI.FuelRequiredAvailable>
+  <!-- EN: Locate -->
+  <FFF.UI.Locate>定位</FFF.UI.Locate>
+  <!-- EN: ▸ Engineering and equipment details -->
+  <FFF.UI.ShowDetails>▸ 展開工程與設備明細</FFF.UI.ShowDetails>
+  <!-- EN: ▾ Hide engineering and equipment details -->
+  <FFF.UI.HideDetails>▾ 收合工程與設備明細</FFF.UI.HideDetails>
+  <!-- EN: Engineering details -->
+  <FFF.UI.EngineeringDetails>工程明細</FFF.UI.EngineeringDetails>
+  <!-- EN: Select flight mode -->
+  <FFF.Flight.Select>選擇巡航模式</FFF.Flight.Select>
+  <!-- EN: Regular flight -->
+  <FFF.Flight.Regular>常規巡航</FFF.Flight.Regular>
+  <!-- EN: Transfer flight -->
+  <FFF.Flight.Transfer>轉移巡航</FFF.Flight.Transfer>
+  <!-- EN: Show advanced options -->
+  <FFF.Flight.ShowAdvanced>高級選項</FFF.Flight.ShowAdvanced>
+  <!-- EN: Impact flight -->
+  <FFF.Flight.Impact>終結巡航</FFF.Flight.Impact>
+  <!-- EN: Hard impact flight -->
+  <FFF.Flight.ImpactHard>終結巡航</FFF.Flight.ImpactHard>
+  <!-- EN: A valid flight module is installed on this ship. Please choose a flight mode: -->
+  <FFF.Flight.Select.Desc>由於艦船上存在有效裝置，因此請選擇此次巡航的模式:</FFF.Flight.Select.Desc>
+  <!-- EN: Your colonists know this is a real option, but not a wise one. -->
+  <FFF.Flight.Impact.Header>你的殖民者知道這是一個切實存在但不明智的選擇。</FFF.Flight.Impact.Header>
+  <!-- EN: Even while the navigation console flashes crimson warnings, it still shows a feasible acceleration profile.\n\nBy activating the hard impact protocol, the fusion core will output full power under overload conditions, allowing the nuclear-thermal engines to accelerate this ship toward the planet at maximum thrust and collide with the surface.\n\nThis will turn both the ship and its momentum into an effective high-yield kinetic weapon, causing irreversible damage to the planet.\n\n\n\nAre you sure you want to proceed? -->
+  <FFF.Flight.Impact.Confirm>即使航路主機顯示著鮮紅的警告，但它仍然顯示了一條可行的加速方案。\n\n透過啟動終結巡航協議，聚變核心將在超載功率下輸出完整的動力，使得核熱引擎能夠以最大功率推動向著這顆星球加速並撞擊地表。\n\n這將使得整艘船以及推動的天體成為有效且威力十足的質量武器，並對於星球造成無法復原的破壞。\n\n\n\n你確定要這麼做嗎?</FFF.Flight.Impact.Confirm>
+  <!-- EN: The gravship streaked across the sky with a blazing trail, carrying immense mass into the ground. The horizon turned to light, and violent shockwaves followed, becoming storms and earthquakes that swept across the planet's surface. In a short span, countless lives and landscapes were erased in this world-shattering impact. -->
+  <FFF.Impact.Ending.Intro>重力船拖著長長的軌跡劃過天際，攜帶著巨大的質量沒入大地，地平線上的一切都變成了光，隨之而來的是劇烈的衝擊波化作風暴與地震席捲了整顆星球的地表，在短時間內無數的生靈與景觀在這場驚天動地的碰撞之中煙飛灰滅。</FFF.Impact.Ending.Intro>
+  <!-- EN: Fortunately, this was not the maximum output the nuclear-thermal engines could produce. After the disaster subsided, most people on the surface survived. Whatever the purpose behind it, this impact will be remembered forever in the history of this world. -->
+  <FFF.Impact.Ending.Outro>所幸這並非核熱引擎所能發揮得最大功率，在災害平息後地表上的大部分人類都得以倖存。無論其背後的目的如何，這顆星球的歷史都將永遠記住這一場撞擊。</FFF.Impact.Ending.Outro>
+  <!-- EN: We may never know whether the crew aboard the gravship escaped at the last moment, or vanished entirely in the impact. -->
+  <FFF.Impact.Ending.Aboard>我們無法得知重力船上的船員們是否在最後一刻逃出生天，又或者徹底地隨著撞擊煙飛灰滅。</FFF.Impact.Ending.Aboard>
+  <!-- EN: The gravship cut across the sky, every thermonuclear engine roaring with overwhelming thrust, before driving its colossal mass into the ground. A wall of rising crust surged along the horizon, and the following superheated shockwave became a sea of fire that swept across the planet's surface. -->
+  <FFF.Impact.Planetkiller.Ending.Intro>重力船拖著長長的軌跡劃過天際，每一具熱核引擎都在噴湧著蓬勃的推力，攜帶著巨大的質量沒入大地，在地平線上升起了一面由地殼升起的牆，隨之而來的是劇烈的高溫衝擊波化作火海席捲了整顆星球的地表。</FFF.Impact.Planetkiller.Ending.Intro>
+  <!-- EN: This was heavenly fire, a supreme judgment said in sacred texts to belong only to gods.\n\nWhatever the purpose behind it, this world may not recover life for a hundred years. -->
+  <FFF.Impact.Planetkiller.Ending.Outro>這是天火，這是遠超神明的力量在這顆星球上降下的天災。\n\n無論其背後的目的如何，這顆星球或許在百年內都無法重現生機。</FFF.Impact.Planetkiller.Ending.Outro>
+  <!-- EN: No one could survive a cataclysm of this scale. -->
+  <FFF.Impact.Planetkiller.Ending.Aboard>沒有人能夠在這樣的天災下保全性命。</FFF.Impact.Planetkiller.Ending.Aboard>
+  <!-- EN: Remove platform -->
+  <FFF.Platform.Remove>拆除平台</FFF.Platform.Remove>
+  <!-- EN: Remove space platforms or vacstone ground, leaving open space and recovering some materials. -->
+  <FFF.Platform.RemoveDesc>拆除太空平台或真空岩地面，使其變回太空並回收部分材料。</FFF.Platform.RemoveDesc>
+  <!-- EN: Remove the floor first. -->
+  <FFF.Platform.FloorOnTop>請先拆除地板。</FFF.Platform.FloorOnTop>
+  <!-- EN: {0} is built here. -->
+  <FFF.Platform.Blocked>這裡有{0}。</FFF.Platform.Blocked>
+  <!-- EN: Allow walking on open space (restart required) -->
+  <FFF.Platform.Settings.SpaceTraversal>允許通行真空地板（需重新啟動）</FFF.Platform.Settings.SpaceTraversal>
+  <!-- EN: Enable the patch that makes vanilla open space passable. Disabled by default. Changes take effect after restarting the game. Other mods may also change space passability. -->
+  <FFF.Platform.Settings.SpaceTraversalDesc>啟用補丁，讓原版太空虛空可供行走。預設關閉，變更後需重新啟動遊戲。其他模組也可能修改太空通行性。</FFF.Platform.Settings.SpaceTraversalDesc>
+  <!-- EN: Build beam -->
+  <FFF.Pile.BuildBeam>架設鋼樑</FFF.Pile.BuildBeam>
+  <!-- EN: Order a steel beam to another structural pile in range. Only piles joined by finished beams move together as one ship.\n\nShift-click to keep building from the target pile. -->
+  <FFF.Pile.BuildBeamDesc>向範圍內另一根結構樁下達鋼樑施工。只有以完工鋼樑相連的樁才會成為同一艘船。\n\n按住 Shift 點擊可從目標樁繼續架設。</FFF.Pile.BuildBeamDesc>
+  <!-- EN: Dismantle beam -->
+  <FFF.Pile.DismantleBeam>拆除鋼樑</FFF.Pile.DismantleBeam>
+  <!-- EN: Dismantle a finished beam. Part of the materials is refunded. -->
+  <FFF.Pile.DismantleBeamDesc>拆除已完工的鋼樑，返還部分材料。</FFF.Pile.DismantleBeamDesc>
+  <!-- EN: Dismantle all -->
+  <FFF.Pile.DismantleAll>拆除全部</FFF.Pile.DismantleAll>
+  <!-- EN: Cancel beam order -->
+  <FFF.Pile.CancelBeam>取消鋼樑施工</FFF.Pile.CancelBeam>
+  <!-- EN: Cancel a beam order. Delivered materials are dropped next to the pile. -->
+  <FFF.Pile.CancelBeamDesc>取消鋼樑施工單，已送達的材料會放回樁旁。</FFF.Pile.CancelBeamDesc>
+  <!-- EN: Cancel all -->
+  <FFF.Pile.CancelAll>取消全部</FFF.Pile.CancelAll>
+  <!-- EN: Link selected piles -->
+  <FFF.Pile.LinkSelected>連結選取的結構樁</FFF.Pile.LinkSelected>
+  <!-- EN: Order a steel beam between the two selected structural piles. -->
+  <FFF.Pile.LinkSelectedDesc>在選取的兩根結構樁之間下達鋼樑施工單。</FFF.Pile.LinkSelectedDesc>
+  <!-- EN: Select network -->
+  <FFF.Pile.SelectNetwork>選取整個網路</FFF.Pile.SelectNetwork>
+  <!-- EN: Select every structural pile connected to this one by finished beams. -->
+  <FFF.Pile.SelectNetworkDesc>選取所有經已完工鋼樑與這根樁相連的結構樁。</FFF.Pile.SelectNetworkDesc>
+  <!-- EN: This pile has no finished beams. -->
+  <FFF.Pile.Disabled.NoLinks>這根樁沒有已完工的鋼樑。</FFF.Pile.Disabled.NoLinks>
+  <!-- EN: All beams are already being dismantled. -->
+  <FFF.Pile.Disabled.AllDismantling>所有鋼樑都已在拆除中。</FFF.Pile.Disabled.AllDismantling>
+  <!-- EN: This pile has no beam orders. -->
+  <FFF.Pile.Disabled.NoOrders>這根樁沒有鋼樑施工單。</FFF.Pile.Disabled.NoOrders>
+  <!-- EN: Must target one of your structural piles. -->
+  <FFF.Pile.Link.NotPile>必須選擇你的結構樁。</FFF.Pile.Link.NotPile>
+  <!-- EN: Out of range: {0} cells (max {1}). -->
+  <FFF.Pile.Link.OutOfRange>超出範圍：{0} 格（上限 {1}）。</FFF.Pile.Link.OutOfRange>
+  <!-- EN: Already linked or ordered. -->
+  <FFF.Pile.Link.AlreadyLinked>已經相連或已有施工單。</FFF.Pile.Link.AlreadyLinked>
+  <!-- EN: {0} has reached its beam limit ({1}, including orders). -->
+  <FFF.Pile.Link.MaxLinks>{0} 已達鋼樑上限（{1}，含施工單）。</FFF.Pile.Link.MaxLinks>
+  <!-- EN: Beam: {0} cells · {1} · work {2} -->
+  <FFF.Pile.Link.CostLabel>鋼樑：長 {0} 格・{1}・工作量 {2}</FFF.Pile.Link.CostLabel>
+  <!-- EN: Beams cannot be changed during the countdown. -->
+  <FFF.Pile.Link.Locked>倒數中無法變更鋼樑。</FFF.Pile.Link.Locked>
+  <!-- EN: Small structural piles cannot be linked to each other. -->
+  <FFF.Pile.Link.NoRange>小型結構樁之間無法相連。</FFF.Pile.Link.NoRange>
+  <!-- EN: → ({0}, {1}) · {2} cells -->
+  <FFF.Pile.LinkOption>→ ({0}, {1})・長 {2} 格</FFF.Pile.LinkOption>
+  <!-- EN: Build -->
+  <FFF.Pile.OrderKind.Build>架設</FFF.Pile.OrderKind.Build>
+  <!-- EN: Dismantle -->
+  <FFF.Pile.OrderKind.Dismantle>拆除</FFF.Pile.OrderKind.Dismantle>
+  <!-- EN: Structural network: {0} piles, {1} beams, hull {2} cells -->
+  <FFF.Pile.Inspect.Network>結構網路：{0} 根樁、{1} 條鋼樑，船體範圍 {2} 格</FFF.Pile.Inspect.Network>
+  <!-- EN: Beams: {0} finished, {1} / {2} including orders -->
+  <FFF.Pile.Inspect.Links>鋼樑：已完工 {0}，含施工單 {1} / {2}</FFF.Pile.Inspect.Links>
+  <!-- EN: Beams: {0} finished -->
+  <FFF.Pile.Inspect.LinksUnlimited>鋼樑：已完工 {0}</FFF.Pile.Inspect.LinksUnlimited>
+  <!-- EN: Beam construction: → ({0}, {1}) {2} cells | materials {3} | progress {4} -->
+  <FFF.Pile.Inspect.Building>鋼樑施工：→ ({0}, {1}) 長 {2} 格｜材料 {3}｜進度 {4}</FFF.Pile.Inspect.Building>
+  <!-- EN: Beam dismantling: → ({0}, {1}) {2} cells | progress {3} -->
+  <FFF.Pile.Inspect.Dismantling>鋼樑拆除：→ ({0}, {1}) 長 {2} 格｜進度 {3}</FFF.Pile.Inspect.Dismantling>
+  <!-- EN: {0} more beam orders queued -->
+  <FFF.Pile.Inspect.Queued>另有 {0} 張鋼樑施工單排隊中</FFF.Pile.Inspect.Queued>
+  <!-- EN: A structural network has split into separate ships. -->
+  <FFF.Pile.NetworkSplit>結構網路已分裂成數艘船。</FFF.Pile.NetworkSplit>
+  <!-- EN: Must be placed on solid ground. -->
+  <FFF.Pile.Place.OverVoid>必須建在實地上。</FFF.Pile.Place.OverVoid>
+  <!-- EN: Must be placed within the link range of a large structural pile or a structural anchor pile. -->
+  <FFF.Pile.Place.NeedProviderRange>必須建在大型結構樁或結構固定樁的連結範圍內。</FFF.Pile.Place.NeedProviderRange>
+  <!-- EN: Cannot be placed on {0}. -->
+  <FFF.Pile.Place.WrongTerrain>無法建在{0}上。</FFF.Pile.Place.WrongTerrain>
+  <!-- EN: Can only be built in space. -->
+  <FFF.Pile.Place.SpaceOnly>只能建在太空中。</FFF.Pile.Place.SpaceOnly>
+  <!-- EN: dismantling steel beam at {0}. -->
+  <FFF.Pile.Report.Dismantle>正在拆除 {0} 的鋼樑。</FFF.Pile.Report.Dismantle>
+  <!-- EN: Transfer -->
+  <FFF.Transfer.Tab>轉移</FFF.Transfer.Tab>
+  <!-- EN: Plan transfer -->
+  <FFF.Transfer.Console.Plan>制定轉移計畫</FFF.Transfer.Console.Plan>
+  <!-- EN: Choose a destination and review fuel, travel time and readiness. -->
+  <FFF.Transfer.Console.PlanDesc>選擇目的地，並檢視燃料、航行時間與整備狀態。</FFF.Transfer.Console.PlanDesc>
+  <!-- EN: Abort transfer -->
+  <FFF.Transfer.Console.Abort>中止轉移</FFF.Transfer.Console.Abort>
+  <!-- EN: Discard the current transfer plan. -->
+  <FFF.Transfer.Console.AbortDesc>放棄目前的轉移計畫。</FFF.Transfer.Console.AbortDesc>
+  <!-- EN: Show hull -->
+  <FFF.Transfer.Console.ShowFootprint>顯示船體範圍</FFF.Transfer.Console.ShowFootprint>
+  <!-- EN: Always show this ship's hull area and engine exhaust zones. -->
+  <FFF.Transfer.Console.ShowFootprintDesc>常駐顯示這艘船的船體範圍與引擎尾焰區。</FFF.Transfer.Console.ShowFootprintDesc>
+  <!-- EN: A transfer is already under way. -->
+  <FFF.Transfer.Console.AlreadyLaunching>轉移程序已在進行中。</FFF.Transfer.Console.AlreadyLaunching>
+  <!-- EN: Not on a ship. -->
+  <FFF.Transfer.Console.NotOnShip>不在船上。</FFF.Transfer.Console.NotOnShip>
+  <!-- EN: Ship command console -->
+  <FFF.Transfer.Console.Primary>船舶主控台</FFF.Transfer.Console.Primary>
+  <!-- EN: Backup console -->
+  <FFF.Transfer.Console.Backup>備援控制台</FFF.Transfer.Console.Backup>
+  <!-- EN: Ship: {0} piles, {1} working engines, TWR {2}, fuel {3} -->
+  <FFF.Transfer.Console.ShipSummary>船：{0} 根樁、可用引擎 {1} 具、推重比 {2}、燃料 {3}</FFF.Transfer.Console.ShipSummary>
+  <!-- EN: Planned transfer to tile {0} ({1} tiles) -->
+  <FFF.Transfer.Console.PlanSummary>已制定轉移計畫：前往格子 {0}（{1} 格）</FFF.Transfer.Console.PlanSummary>
+  <!-- EN: Begin launch -->
+  <FFF.Transfer.Console.Launch>啟動起飛程序</FFF.Transfer.Console.Launch>
+  <!-- EN: Begin the launch sequence. Once a colonist operates this console, the ship counts down and departs. -->
+  <FFF.Transfer.Console.LaunchDesc>開始起飛程序。殖民者操作此控制台後，船會倒數並起飛。</FFF.Transfer.Console.LaunchDesc>
+  <!-- EN: Launch sequence started. Waiting for an operator. -->
+  <FFF.Transfer.Console.AwaitingOperatorMsg>已開始起飛程序，等待操作員。</FFF.Transfer.Console.AwaitingOperatorMsg>
+  <!-- EN: Waiting for an operator. -->
+  <FFF.Transfer.Console.StateAwaitingOperator>等待操作員。</FFF.Transfer.Console.StateAwaitingOperator>
+  <!-- EN: Departure in {0}. -->
+  <FFF.Transfer.Console.StateCountdown>{0}後分離。</FFF.Transfer.Console.StateCountdown>
+  <!-- EN: Name ship -->
+  <FFF.Transfer.Console.Rename>命名飛船</FFF.Transfer.Console.Rename>
+  <!-- EN: Give this ship a name. The name is saved on all of the ship's consoles and kept on every transfer flight. -->
+  <FFF.Transfer.Console.RenameDesc>為這艘船命名。名稱會保存在船上所有控制台，之後每次轉移飛行都沿用。</FFF.Transfer.Console.RenameDesc>
+  <!-- EN: Ship name: {0} -->
+  <FFF.Transfer.Console.ShipName>船名：{0}</FFF.Transfer.Console.ShipName>
+  <!-- EN: Unnamed (named automatically at launch) -->
+  <FFF.Transfer.Console.Unnamed>未命名（起飛時自動命名）</FFF.Transfer.Console.Unnamed>
+  <!-- EN: Separating ship -->
+  <FFF.Transfer.Separating>船體分離中</FFF.Transfer.Separating>
+  <!-- EN: There is no transfer plan. -->
+  <FFF.Transfer.Abort.NoPlan>沒有轉移計畫。</FFF.Transfer.Abort.NoPlan>
+  <!-- EN: No free tile to park on. -->
+  <FFF.Transfer.Abort.NoFreeTile>沒有可停泊的空格。</FFF.Transfer.Abort.NoFreeTile>
+  <!-- EN: The ship's structure changed during the countdown. -->
+  <FFF.Transfer.Abort.NetworkChanged>船體結構在倒數中改變了。</FFF.Transfer.Abort.NetworkChanged>
+  <!-- EN: Transfer aborted -->
+  <FFF.Transfer.Letter.AbortedLabel>轉移中止</FFF.Transfer.Letter.AbortedLabel>
+  <!-- EN: The launch was aborted: {0}\n\nThe plan has been kept. -->
+  <FFF.Transfer.Letter.AbortedText>起飛已中止：{0}\n\n計畫已保留。</FFF.Transfer.Letter.AbortedText>
+  <!-- EN: Ship separated -->
+  <FFF.Transfer.Letter.SeparatedLabel>船體已分離</FFF.Transfer.Letter.SeparatedLabel>
+  <!-- EN: {0} has separated and is now its own ship. -->
+  <FFF.Transfer.Letter.SeparatedText>{0} 已分離，成為一艘獨立的船。</FFF.Transfer.Letter.SeparatedText>
+  <!-- EN: Destroyed at the hull edge: -->
+  <FFF.Transfer.Letter.Destroyed>在船體邊緣被摧毀：</FFF.Transfer.Letter.Destroyed>
+  <!-- EN: Left behind: -->
+  <FFF.Transfer.Letter.LeftBehind>被留下的：</FFF.Transfer.Letter.LeftBehind>
+  <!-- EN: Beams broken: {0}. Beam orders cancelled: {1}. -->
+  <FFF.Transfer.Letter.BrokenLinks>斷裂的鋼樑：{0}。取消的施工單：{1}。</FFF.Transfer.Letter.BrokenLinks>
+  <!-- EN: Lost: {0} things that could not be carried. -->
+  <FFF.Transfer.Letter.LostThings>遺失：{0} 件無法搬運的物件。</FFF.Transfer.Letter.LostThings>
+  <!-- EN: The old site was abandoned. -->
+  <FFF.Transfer.Letter.OriginAbandoned>原據點已棄置。</FFF.Transfer.Letter.OriginAbandoned>
+  <!-- EN: Transfer ship {0} -->
+  <FFF.Transfer.Ship.DefaultName>轉移艦 {0}</FFF.Transfer.Ship.DefaultName>
+  <!-- EN: Structural piles: {0}, networks: {1} -->
+  <FFF.Transfer.Ship.Inspect>結構樁：{0}，結構網路：{1}</FFF.Transfer.Ship.Inspect>
+  <!-- EN: Abandon ship -->
+  <FFF.Transfer.Ship.Abandon>放棄船隻</FFF.Transfer.Ship.Abandon>
+  <!-- EN: Abandon this ship and everything on it. -->
+  <FFF.Transfer.Ship.AbandonDesc>放棄這艘船與船上的一切。</FFF.Transfer.Ship.AbandonDesc>
+  <!-- EN: Abandon {0}? Everything aboard will be lost. -->
+  <FFF.Transfer.Ship.AbandonConfirm>要放棄 {0} 嗎？船上的一切都會失去。</FFF.Transfer.Ship.AbandonConfirm>
+  <!-- EN: There are still colonists on board. -->
+  <FFF.Transfer.Ship.AbandonHasColonists>船上還有殖民者。</FFF.Transfer.Ship.AbandonHasColonists>
+  <!-- EN: People outside departing ship -->
+  <FFF.Transfer.Alert.PawnsOutside>人員在起飛船隻外</FFF.Transfer.Alert.PawnsOutside>
+  <!-- EN: These people are outside the departing ship and will be left behind. -->
+  <FFF.Transfer.Alert.PawnsOutsideDesc>這些人在即將起飛的船外，將被留下。</FFF.Transfer.Alert.PawnsOutsideDesc>
+  <!-- EN: Standing in engine exhaust -->
+  <FFF.Transfer.Alert.ExhaustDanger>人員站在引擎尾焰區</FFF.Transfer.Alert.ExhaustDanger>
+  <!-- EN: These people are in an engine exhaust zone and will be burned when the engines fire. -->
+  <FFF.Transfer.Alert.ExhaustDangerDesc>這些人站在引擎尾焰區，點火時會被燒傷。</FFF.Transfer.Alert.ExhaustDangerDesc>
+  <!-- EN: Choose another tile. -->
+  <FFF.Transfer.Dest.Invalid>請選擇其他格子。</FFF.Transfer.Dest.Invalid>
+  <!-- EN: Must be in the same orbit. -->
+  <FFF.Transfer.Dest.OtherLayer>必須在同一軌道層。</FFF.Transfer.Dest.OtherLayer>
+  <!-- EN: Out of range ({0} tiles). -->
+  <FFF.Transfer.Dest.OutOfRange>超出航程（{0} 格）。</FFF.Transfer.Dest.OutOfRange>
+  <!-- EN: Occupied, with no free tile nearby. -->
+  <FFF.Transfer.Dest.Occupied>該格已被占用，附近也沒有空格。</FFF.Transfer.Dest.Occupied>
+  <!-- EN: Transfer plan -->
+  <FFF.Transfer.Dialog.Title>轉移計畫</FFF.Transfer.Dialog.Title>
+  <!-- EN: Tile {0} → tile {1}, {2} tiles -->
+  <FFF.Transfer.Dialog.Route>格子 {0} → 格子 {1}，{2} 格</FFF.Transfer.Dialog.Route>
+  <!-- EN: Choose again -->
+  <FFF.Transfer.Dialog.Reselect>重新選擇</FFF.Transfer.Dialog.Reselect>
+  <!-- EN: Confirm plan -->
+  <FFF.Transfer.Dialog.Confirm>確認計畫</FFF.Transfer.Dialog.Confirm>
+  <!-- EN: Resolve the errors first. -->
+  <FFF.Transfer.Dialog.ConfirmBlocked>請先排除錯誤。</FFF.Transfer.Dialog.ConfirmBlocked>
+  <!-- EN: Transfer plan set. -->
+  <FFF.Transfer.Dialog.PlanSet>已制定轉移計畫。</FFF.Transfer.Dialog.PlanSet>
+  <!-- EN: Structural network -->
+  <FFF.Transfer.UI.NetworkHeader>結構網路</FFF.Transfer.UI.NetworkHeader>
+  <!-- EN: Piles -->
+  <FFF.Transfer.UI.Piles>結構樁</FFF.Transfer.UI.Piles>
+  <!-- EN: Beams -->
+  <FFF.Transfer.UI.Beams>鋼樑</FFF.Transfer.UI.Beams>
+  <!-- EN: Hull cells -->
+  <FFF.Transfer.UI.Footprint>船體格數</FFF.Transfer.UI.Footprint>
+  <!-- EN: Buildings torn apart on departure -->
+  <FFF.Transfer.UI.TornApart>起飛時將被摧毀的跨界建築</FFF.Transfer.UI.TornApart>
+  <!-- EN: Cells taken from other networks -->
+  <FFF.Transfer.UI.Contested>將從其他網路帶走的格數</FFF.Transfer.UI.Contested>
+  <!-- EN: Nearby unlinked piles -->
+  <FFF.Transfer.UI.UnlinkedPiles>附近未連結的樁</FFF.Transfer.UI.UnlinkedPiles>
+  <!-- EN: Piles with beam orders -->
+  <FFF.Transfer.UI.PendingOrders>有鋼樑施工單的樁</FFF.Transfer.UI.PendingOrders>
+  <!-- EN: Propulsion -->
+  <FFF.Transfer.UI.PropulsionHeader>推進</FFF.Transfer.UI.PropulsionHeader>
+  <!-- EN: No transfer engines on this ship. -->
+  <FFF.Transfer.UI.NoEngines>這艘船上沒有轉移引擎。</FFF.Transfer.UI.NoEngines>
+  <!-- EN: Fusion reactor support (needed / available) -->
+  <FFF.Transfer.UI.ReactorSupport>聚變反應爐支援（需求 / 可用）</FFF.Transfer.UI.ReactorSupport>
+  <!-- EN: Fuel -->
+  <FFF.Transfer.UI.FuelHeader>燃料</FFF.Transfer.UI.FuelHeader>
+  <!-- EN: No fuel tanks on this ship. -->
+  <FFF.Transfer.UI.NoFuelSources>這艘船上沒有燃料槽。</FFF.Transfer.UI.NoFuelSources>
+  <!-- EN: Transfer capability -->
+  <FFF.Transfer.UI.EstimateHeader>轉移能力</FFF.Transfer.UI.EstimateHeader>
+  <!-- EN: Plan: to tile {0} -->
+  <FFF.Transfer.UI.PlanHeader>計畫：前往格子 {0}</FFF.Transfer.UI.PlanHeader>
+  <!-- EN: Tile occupied; the ship will park next to it. -->
+  <FFF.Transfer.UI.ParkedAtNeighbor>目標格已被占用，船會停在旁邊。</FFF.Transfer.UI.ParkedAtNeighbor>
+  <!-- EN: Mass -->
+  <FFF.Transfer.UI.MassWeight>質量</FFF.Transfer.UI.MassWeight>
+  <!-- EN: {0} ({1} piles) -->
+  <FFF.Transfer.UI.MassWeightValue>{0}（{1} 根樁）</FFF.Transfer.UI.MassWeightValue>
+  <!-- EN: Thrust -->
+  <FFF.Transfer.UI.Thrust>推力</FFF.Transfer.UI.Thrust>
+  <!-- EN: {0} (+{1} boosters, departure only) -->
+  <FFF.Transfer.UI.ThrustWithBoosters>{0}（+{1} 助推器，僅離軌點火）</FFF.Transfer.UI.ThrustWithBoosters>
+  <!-- EN: Thrust-to-weight (min {0}) -->
+  <FFF.Transfer.UI.TWR>推重比（最低 {0}）</FFF.Transfer.UI.TWR>
+  <!-- EN: Fuel consumption factor -->
+  <FFF.Transfer.UI.Eta>燃耗倍率</FFF.Transfer.UI.Eta>
+  <!-- EN: Fuel on board -->
+  <FFF.Transfer.UI.FuelAvailable>船上燃料</FFF.Transfer.UI.FuelAvailable>
+  <!-- EN: Range (tiles) -->
+  <FFF.Transfer.UI.MaxDistance>航程（格）</FFF.Transfer.UI.MaxDistance>
+  <!-- EN: Cannot depart -->
+  <FFF.Transfer.UI.CannotDepart>無法起飛</FFF.Transfer.UI.CannotDepart>
+  <!-- EN: Each burn -->
+  <FFF.Transfer.UI.BurnTime>單次點火</FFF.Transfer.UI.BurnTime>
+  <!-- EN: Distance (tiles) -->
+  <FFF.Transfer.UI.Distance>距離（格）</FFF.Transfer.UI.Distance>
+  <!-- EN: Fuel required -->
+  <FFF.Transfer.UI.FuelRequired>燃料需求</FFF.Transfer.UI.FuelRequired>
+  <!-- EN: Coast -->
+  <FFF.Transfer.UI.CoastTime>滑行</FFF.Transfer.UI.CoastTime>
+  <!-- EN: Total travel time -->
+  <FFF.Transfer.UI.TotalTime>總航行時間</FFF.Transfer.UI.TotalTime>
+  <!-- EN: Readiness -->
+  <FFF.Transfer.UI.IssuesHeader>整備檢查</FFF.Transfer.UI.IssuesHeader>
+  <!-- EN: Ready. -->
+  <FFF.Transfer.UI.NoIssues>整備完成。</FFF.Transfer.UI.NoIssues>
+  <!-- EN: [Error] -->
+  <FFF.Transfer.UI.ErrorPrefix>【錯誤】</FFF.Transfer.UI.ErrorPrefix>
+  <!-- EN: [Warning] -->
+  <FFF.Transfer.UI.WarningPrefix>【警告】</FFF.Transfer.UI.WarningPrefix>
+  <!-- EN: The ship must be in orbit. -->
+  <FFF.Transfer.Issue.NotInSpace>船必須位於軌道上。</FFF.Transfer.Issue.NotInSpace>
+  <!-- EN: The console is not on a ship. -->
+  <FFF.Transfer.Issue.ConsoleNotOnShip>控制台不在船上。</FFF.Transfer.Issue.ConsoleNotOnShip>
+  <!-- EN: The console is unpowered, off or broken. -->
+  <FFF.Transfer.Issue.ConsoleUnavailable>控制台斷電、關閉或損壞。</FFF.Transfer.Issue.ConsoleUnavailable>
+  <!-- EN: No working transfer engines. -->
+  <FFF.Transfer.Issue.NoEngines>沒有可用的轉移引擎。</FFF.Transfer.Issue.NoEngines>
+  <!-- EN: Thrust-to-weight {0} is below {1}. -->
+  <FFF.Transfer.Issue.LowTWR>推重比 {0} 低於 {1}。</FFF.Transfer.Issue.LowTWR>
+  <!-- EN: Not enough fuel ({0}/{1}). -->
+  <FFF.Transfer.Issue.NotEnoughFuel>燃料不足（{0}/{1}）。</FFF.Transfer.Issue.NotEnoughFuel>
+  <!-- EN: Another ship here is already departing. -->
+  <FFF.Transfer.Issue.OtherShipDeparting>此地圖已有其他船正在起飛。</FFF.Transfer.Issue.OtherShipDeparting>
+  <!-- EN: {0} people outside the hull will be left behind. -->
+  <FFF.Transfer.Issue.PawnsLeftBehind>{0} 人在船外，將被留下。</FFF.Transfer.Issue.PawnsLeftBehind>
+  <!-- EN: {0} things cannot be carried and will be lost. -->
+  <FFF.Transfer.Issue.NotCarried>{0} 件物件無法搬運，將會遺失。</FFF.Transfer.Issue.NotCarried>
+  <!-- EN: {0} people are in an exhaust zone. -->
+  <FFF.Transfer.Issue.PawnsInExhaust>{0} 人站在尾焰區。</FFF.Transfer.Issue.PawnsInExhaust>
+  <!-- EN: {0} nearby piles are not linked to this ship. -->
+  <FFF.Transfer.Issue.NearbyUnlinkedPiles>附近有 {0} 根結構樁未與這艘船相連。</FFF.Transfer.Issue.NearbyUnlinkedPiles>
+  <!-- EN: {0} buildings cross the hull edge and will be destroyed. -->
+  <FFF.Transfer.Issue.TornApart>{0} 座建築跨越船體邊緣，將被摧毀。</FFF.Transfer.Issue.TornApart>
+  <!-- EN: {0} of them have people inside. -->
+  <FFF.Transfer.Issue.TornApartWithPawns>其中 {0} 座內有人。</FFF.Transfer.Issue.TornApartWithPawns>
+  <!-- EN: Takes {0} cells from other ships ({1} buildings, {2} piles). -->
+  <FFF.Transfer.Issue.Contested>將從其他船帶走 {0} 格（{1} 座建築、{2} 根樁）。</FFF.Transfer.Issue.Contested>
+  <!-- EN: {0} piles have unfinished beams. -->
+  <FFF.Transfer.Issue.PendingBeamOrders>{0} 根樁有未完工的鋼樑。</FFF.Transfer.Issue.PendingBeamOrders>
+  <!-- EN: Transfer thrust {0}, fuel consumption {1} -->
+  <FFF.Transfer.Engine.Stats>轉移推力 {0}，燃耗倍率 {1}</FFF.Transfer.Engine.Stats>
+  <!-- EN: Departure thrust {0}: adds to the launch thrust-to-weight ratio, uses no ship fuel, and burns out when the departure burn ends -->
+  <FFF.Transfer.Engine.BoosterStats>離軌推力 {0}：提高起飛推重比，不消耗船上燃料，離軌點火結束後燒毀</FFF.Transfer.Engine.BoosterStats>
+  <!-- EN: Requires fusion reactor support. -->
+  <FFF.Transfer.Engine.RequiresReactor>需要聚變反應爐支援。</FFF.Transfer.Engine.RequiresReactor>
+  <!-- EN: Ready -->
+  <FFF.Transfer.Engine.Status.Operational>可用</FFF.Transfer.Engine.Status.Operational>
+  <!-- EN: Not on a ship -->
+  <FFF.Transfer.Engine.Status.NotOnShip>不在船上</FFF.Transfer.Engine.Status.NotOnShip>
+  <!-- EN: Broken down -->
+  <FFF.Transfer.Engine.Status.BrokenDown>故障</FFF.Transfer.Engine.Status.BrokenDown>
+  <!-- EN: Switched off -->
+  <FFF.Transfer.Engine.Status.SwitchedOff>已關閉</FFF.Transfer.Engine.Status.SwitchedOff>
+  <!-- EN: No power -->
+  <FFF.Transfer.Engine.Status.NoPower>沒有電力</FFF.Transfer.Engine.Status.NoPower>
+  <!-- EN: Exhaust blocked by {0} -->
+  <FFF.Transfer.Engine.Status.ExhaustBlocked>尾焰受 {0} 阻擋</FFF.Transfer.Engine.Status.ExhaustBlocked>
+  <!-- EN: No fusion reactor support -->
+  <FFF.Transfer.Engine.Status.NoReactorSupport>沒有聚變反應爐支援</FFF.Transfer.Engine.Status.NoReactorSupport>
+  <!-- EN: {0}: the exhaust zone is blocked by {1}. -->
+  <FFF.Transfer.Engine.PlacedBlocked>{0}：尾焰區被 {1} 擋住。</FFF.Transfer.Engine.PlacedBlocked>
+  <!-- EN: Supports {0} nuclear thermal thrusters (ship: {1} needed / {2} available). -->
+  <FFF.Transfer.Reactor.Support>可支援 {0} 具核熱推進器（本船：需要 {1}／可用 {2}）。</FFF.Transfer.Reactor.Support>
+  <!-- EN: Supports {0} nuclear thermal thrusters on a ship. -->
+  <FFF.Transfer.Reactor.NotOnShip>在船上可支援 {0} 具核熱推進器。</FFF.Transfer.Reactor.NotOnShip>
+  <!-- EN: A ship is counting down to launch. -->
+  <FFF.Transfer.Alert.CountdownDesc>有船正在倒數起飛。</FFF.Transfer.Alert.CountdownDesc>
+  <!-- EN: Departure burn -->
+  <FFF.Transfer.Phase.DepartureBurn>離軌點火</FFF.Transfer.Phase.DepartureBurn>
+  <!-- EN: Coasting -->
+  <FFF.Transfer.Phase.Coast>滑行</FFF.Transfer.Phase.Coast>
+  <!-- EN: Arrival burn -->
+  <FFF.Transfer.Phase.ArrivalBurn>入軌點火</FFF.Transfer.Phase.ArrivalBurn>
+  <!-- EN: Arrived -->
+  <FFF.Transfer.Phase.Arrived>已抵達</FFF.Transfer.Phase.Arrived>
+  <!-- EN: Transfer flight: {0}, {1} left in this phase -->
+  <FFF.Transfer.Flight.Status>轉移飛行：{0}，本階段剩餘 {1}</FFF.Transfer.Flight.Status>
+  <!-- EN: Progress {0} to tile {1}, arrival in {2} -->
+  <FFF.Transfer.Flight.Progress>進度 {0}，前往格子 {1}，{2}後抵達</FFF.Transfer.Flight.Progress>
+  <!-- EN: {0} is coasting. -->
+  <FFF.Transfer.Flight.CoastBegin>{0} 進入滑行。</FFF.Transfer.Flight.CoastBegin>
+  <!-- EN: {0}: {1} rocket booster(s) burned out. -->
+  <FFF.Transfer.Flight.BoostersBurnedOut>{0}：{1} 具火箭助推器已燃盡燒毀。</FFF.Transfer.Flight.BoostersBurnedOut>
+  <!-- EN: {0} is firing its arrival burn. -->
+  <FFF.Transfer.Flight.ArrivalBurnBegin>{0} 開始入軌點火。</FFF.Transfer.Flight.ArrivalBurnBegin>
+  <!-- EN: {0}'s destination is occupied. It will park nearby. -->
+  <FFF.Transfer.Flight.Rerouted>{0} 的目的地已被占用，將停在附近。</FFF.Transfer.Flight.Rerouted>
+  <!-- EN: No thrust for arrival -->
+  <FFF.Transfer.Flight.NoThrustLabel>入軌無推力</FFF.Transfer.Flight.NoThrustLabel>
+  <!-- EN: {0} has no working engines and will brake on attitude thrusters ({1}). -->
+  <FFF.Transfer.Flight.NoThrustText>{0} 沒有可用的引擎，將以姿態推進器減速（{1}）。</FFF.Transfer.Flight.NoThrustText>
+  <!-- EN: Transfer complete -->
+  <FFF.Transfer.Flight.ArrivedLabel>轉移完成</FFF.Transfer.Flight.ArrivedLabel>
+  <!-- EN: {0} has arrived. -->
+  <FFF.Transfer.Flight.ArrivedText>{0} 已抵達。</FFF.Transfer.Flight.ArrivedText>
+  <!-- EN: The ship is in flight. -->
+  <FFF.Transfer.Issue.InFlight>船正在飛行中。</FFF.Transfer.Issue.InFlight>
+  <!-- EN: In flight: {0} -->
+  <FFF.Transfer.UI.FlightHeader>飛行中：{0}</FFF.Transfer.UI.FlightHeader>
+  <!-- EN: {0} has arrived unnoticed: no events will occur on this map for {1} (hull: {2} cells). -->
+  <FFF.Transfer.Grace.Begin>{0}抵達後尚未被察覺：{1}內本地圖不會發生任何事件（船體 {2} 格）。</FFF.Transfer.Grace.Begin>
+  <!-- EN: Safe period after arrival -->
+  <FFF.Transfer.UI.GracePeriod>抵達後安全期</FFF.Transfer.UI.GracePeriod>
+  <!-- EN: Phase -->
+  <FFF.Transfer.UI.Phase>階段</FFF.Transfer.UI.Phase>
+  <!-- EN: Time left in phase -->
+  <FFF.Transfer.UI.PhaseLeft>本階段剩餘</FFF.Transfer.UI.PhaseLeft>
+  <!-- EN: Progress -->
+  <FFF.Transfer.UI.FlightProgress>航程進度</FFF.Transfer.UI.FlightProgress>
+  <!-- EN: Destination tile -->
+  <FFF.Transfer.UI.Destination>目的地格子</FFF.Transfer.UI.Destination>
+  <!-- EN: Arrival in -->
+  <FFF.Transfer.UI.ArrivalIn>距離抵達</FFF.Transfer.UI.ArrivalIn>
+  <!-- EN: Cannot launch while the ship's engines are firing. -->
+  <FFF.Transfer.ShuttleBlockedBurn>船的引擎正在點火，無法起飛。</FFF.Transfer.ShuttleBlockedBurn>
+  <!-- EN: Plan impact flight -->
+  <FFF.Transfer.Console.PlanImpact>規劃終結巡航</FFF.Transfer.Console.PlanImpact>
+  <!-- EN: Crash this ship into the planet's surface. Everyone aboard will be lost and the game ends.\n\nRequires {0} working nuclear thermal thrusters; {1} or more will destroy the planet. -->
+  <FFF.Transfer.Console.PlanImpactDesc>讓這艘船撞向行星地表。船上所有人都會失去，遊戲隨之結束。\n\n需要 {0} 具運作中的核熱推進器；{1} 具以上將毀滅行星。</FFF.Transfer.Console.PlanImpactDesc>
+  <!-- EN: Planned impact at tile {0} ({1} tiles) -->
+  <FFF.Transfer.Console.PlanSummaryImpact>已規劃終結巡航：撞擊格子 {0}（{1} 格）</FFF.Transfer.Console.PlanSummaryImpact>
+  <!-- EN: Must be on the planet's surface. -->
+  <FFF.Transfer.Dest.NotSurface>必須位於行星地表。</FFF.Transfer.Dest.NotSurface>
+  <!-- EN: Cannot target a site with a map. -->
+  <FFF.Transfer.Dest.ImpactHasMap>無法以已有地圖的地點為目標。</FFF.Transfer.Dest.ImpactHasMap>
+  <!-- EN: Needs {1} working nuclear thermal thrusters ({0}). -->
+  <FFF.Transfer.Issue.ImpactEngines>需要 {1} 具運作中的核熱推進器（目前 {0}）。</FFF.Transfer.Issue.ImpactEngines>
+  <FFF.Transfer.Issue.ImpactResearch>需要先完成封存檔案「終結巡航」的研究。</FFF.Transfer.Issue.ImpactResearch>
+  <!-- EN: Impact flight -->
+  <FFF.Transfer.Dialog.ImpactTitle>終結巡航</FFF.Transfer.Dialog.ImpactTitle>
+  <!-- EN: The ship will not brake. Everyone aboard will be lost and the game ends. -->
+  <FFF.Transfer.Dialog.ImpactWarning>船不會減速。船上所有人都會失去，遊戲隨之結束。</FFF.Transfer.Dialog.ImpactWarning>
+  <!-- EN: {0} nuclear thermal thrusters: the impact will destroy the planet. -->
+  <FFF.Transfer.Dialog.ImpactPlanetkiller>{0} 具核熱推進器：撞擊將毀滅行星。</FFF.Transfer.Dialog.ImpactPlanetkiller>
+  <!-- EN: Impact point: tile {0}, {1} tiles of flight -->
+  <FFF.Transfer.Dialog.ImpactRoute>撞擊點：格子 {0}，航程 {1} 格</FFF.Transfer.Dialog.ImpactRoute>
+  <!-- EN: Confirm impact -->
+  <FFF.Transfer.Dialog.ConfirmImpact>確認撞擊</FFF.Transfer.Dialog.ConfirmImpact>
+  <!-- EN: Impact course -->
+  <FFF.Transfer.Phase.ImpactCourse>撞擊航程</FFF.Transfer.Phase.ImpactCourse>
+  <!-- EN: {0} is on an impact course. Impact in {1}. -->
+  <FFF.Transfer.Flight.ImpactCourseBegin>{0} 進入撞擊航程，{1}後撞擊。</FFF.Transfer.Flight.ImpactCourseBegin>
+  <!-- EN: Progress {0} toward impact at tile {1}, impact in {2} -->
+  <FFF.Transfer.Flight.ImpactProgress>進度 {0}，撞擊格子 {1}，{2}後撞擊</FFF.Transfer.Flight.ImpactProgress>
+  <!-- EN: Impact in -->
+  <FFF.Transfer.UI.ImpactIn>距離撞擊</FFF.Transfer.UI.ImpactIn>
+  <!-- EN: Plan: impact at tile {0} -->
+  <FFF.Transfer.UI.ImpactPlanHeader>計畫：撞擊格子 {0}</FFF.Transfer.UI.ImpactPlanHeader>
+  <!-- EN: Will land at {0}. -->
+  <FFF.Transfer.UI.LandOnSite>將降落在{0}。</FFF.Transfer.UI.LandOnSite>
+  <!-- EN: Landing -->
+  <FFF.Transfer.Landing>降落中</FFF.Transfer.Landing>
+  <!-- EN: Choose landing site -->
+  <FFF.Transfer.Land.Designator>選擇降落位置</FFF.Transfer.Land.Designator>
+  <!-- EN: Choose where the ship lands on this map. -->
+  <FFF.Transfer.Land.DesignatorDesc>選擇船在這張地圖上的降落位置。</FFF.Transfer.Land.DesignatorDesc>
+  <!-- EN: The ship will land at the nearest open spot. -->
+  <FFF.Transfer.Land.WillMove>船會降落在最近的空位。</FFF.Transfer.Land.WillMove>
+  <!-- EN: Land at {0} -->
+  <FFF.Transfer.Land.Gizmo>降落到{0}</FFF.Transfer.Land.Gizmo>
+  <!-- EN: Choose a landing site at {0}. -->
+  <FFF.Transfer.Land.GizmoDesc>在{0}選擇降落位置。</FFF.Transfer.Land.GizmoDesc>
+  <!-- EN: Land automatically -->
+  <FFF.Transfer.Land.Auto>自動降落</FFF.Transfer.Land.Auto>
+  <!-- EN: Land at the open spot nearest the map center. -->
+  <FFF.Transfer.Land.AutoDesc>降落在最接近地圖中央的空位。</FFF.Transfer.Land.AutoDesc>
+  <!-- EN: Cancel landing -->
+  <FFF.Transfer.Land.Cancel>取消降落</FFF.Transfer.Land.Cancel>
+  <!-- EN: Stay parked here. -->
+  <FFF.Transfer.Land.CancelDesc>停留在原處。</FFF.Transfer.Land.CancelDesc>
+  <!-- EN: No room to land at {0}. -->
+  <FFF.Transfer.Land.NoRoom>{0}沒有足夠空間降落。</FFF.Transfer.Land.NoRoom>
+  <!-- EN: The landing site no longer exists. -->
+  <FFF.Transfer.Land.SiteGone>降落地點已不存在。</FFF.Transfer.Land.SiteGone>
+  <!-- EN: {0} is waiting to land at {1}. -->
+  <FFF.Transfer.Land.ArrivedText>{0} 正等待降落到{1}。</FFF.Transfer.Land.ArrivedText>
+  <!-- EN: Ship landed -->
+  <FFF.Transfer.Land.LandedLabel>船已降落</FFF.Transfer.Land.LandedLabel>
+  <!-- EN: {0} has landed at {1}. -->
+  <FFF.Transfer.Land.LandedText>{0} 已降落在{1}。</FFF.Transfer.Land.LandedText>
+  <!-- EN: The chosen spot was blocked, so it landed at the nearest open spot. -->
+  <FFF.Transfer.Land.Moved>選定位置受阻，已改降落在最近的空位。</FFF.Transfer.Land.Moved>
+</LanguageData>

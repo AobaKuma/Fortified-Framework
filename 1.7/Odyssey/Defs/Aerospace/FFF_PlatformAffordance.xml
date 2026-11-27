@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- 平台承重類型：內容模組的平台地形具備它，平台上才能蓋的建築（例：DMSE 的平台船體）以此限定 -->
+  <TerrainAffordanceDef>
+    <defName>FFF_Platform</defName>
+    <label>platform</label>
+    <order>2410</order>
+  </TerrainAffordanceDef>
+</Defs>

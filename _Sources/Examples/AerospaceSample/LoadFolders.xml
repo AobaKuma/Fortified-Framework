@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<loadFolders>
+  <!-- 1.7/Mods/DMSE 只有 DMSE 啟用時載入：導引頭零件要掛在 DMSE 的彈體上。 -->
+  <v1.7>
+    <li>1.7</li>
+    <li IfModActive="Aoba.DeadManSwitch.Expedition">1.7/Mods/DMSE</li>
+  </v1.7>
+</loadFolders>

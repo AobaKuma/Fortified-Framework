@@ -1,0 +1,44 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    FFF 航太範例 mod（只支援 RimWorld 1.7）。只參考遊戲本體與 Fortified.dll，不需要 Harmony。
+    預設假設這個資料夾位於 <RimWorld>/Mods/_Fortified-Framework/_Sources/Examples/AerospaceSample/Source/；
+    複製到別處時以 -p:RimWorldDir=<遊戲目錄>\ -p:FortifiedDll=<Fortified.dll 路徑> 覆寫。
+    Sample mod for FFF's aerospace framework (RimWorld 1.7 only). References only the game and Fortified.dll; no Harmony.
+  -->
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <OutputType>Library</OutputType>
+    <RootNamespace>AerospaceSample</RootNamespace>
+    <AssemblyName>AerospaceSample</AssemblyName>
+    <LangVersion>latest</LangVersion>
+    <Nullable>disable</Nullable>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+    <GenerateDependencyFile>false</GenerateDependencyFile>
+    <DebugType>none</DebugType>
+    <OutputPath>$(MSBuildThisFileDirectory)../1.7/Assemblies</OutputPath>
+    <RimWorldDir Condition="'$(RimWorldDir)' == ''">$(MSBuildThisFileDirectory)..\..\..\..\..\..\</RimWorldDir>
+    <FortifiedDll Condition="'$(FortifiedDll)' == ''">$(MSBuildThisFileDirectory)..\..\..\..\1.7\Assemblies\Fortified.dll</FortifiedDll>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>$(RimWorldDir)Assembly-CSharp.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityStubs">
+      <HintPath>$(RimWorldDir)UnityStubs.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Waylith">
+      <HintPath>$(RimWorldDir)Waylith.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Fortified">
+      <HintPath>$(FortifiedDll)</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+
+</Project>

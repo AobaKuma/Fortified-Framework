@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- ==================== Job Defs ====================
+       DMSE_AssembleBallisticSilo：在彈道發射井執行裝配施工。
+       搬運資源仍複用現有 DMSE_DeliverMissileResource（JobDriver 直接讀 CompMissileConfig）。 -->
+  <JobDef>
+    <defName>FFF_AssembleBallisticSilo</defName>
+    <driverClass>Fortified.JobDriver_AssembleBallisticSilo</driverClass>
+    <reportString>assembling ballistic missile in TargetA.</reportString>
+  </JobDef>
+  <WorkGiverDef>
+    <defName>FFF_AssembleBallisticSilo</defName>
+    <label>assemble ballistic missiles</label>
+    <giverClass>Fortified.WorkGiver_AssembleBallisticSilo</giverClass>
+    <workType>Crafting</workType>
+    <verb>assemble</verb>
+    <gerund>assembling</gerund>
+    <scanThings>true</scanThings>
+    <scanCells>false</scanCells>
+    <priorityInType>48</priorityInType>
+    <requiredCapacities>
+      <li>Manipulation</li>
+    </requiredCapacities>
+  </WorkGiverDef>
+</Defs>

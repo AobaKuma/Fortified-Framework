@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <FFF_Interceptor.label>拦截导弹</FFF_Interceptor.label>
+  <FFF_Interceptor.description>飞往预测会合点的防空拦截导弹。</FFF_Interceptor.description>
+  <FFF_BlockadeInterceptor.label>封锁拦截导弹</FFF_BlockadeInterceptor.label>
+  <FFF_BlockadeInterceptor.description>向飞越封锁空域的载具发射的防空拦截导弹。</FFF_BlockadeInterceptor.description>
+</LanguageData>

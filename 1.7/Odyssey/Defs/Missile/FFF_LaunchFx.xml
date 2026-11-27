@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <FleckDef Name="FFF_LaunchSmokeBase" Abstract="True">
+    <fleckSystemClass>FleckSystemStatic</fleckSystemClass>
+    <altitudeLayer>MetaOverlays</altitudeLayer>
+    <altitudeLayerIncOffset>1.2</altitudeLayerIncOffset>
+    <solidTime>1000</solidTime>
+    <modExtensions>
+      <li Class="Fortified.InterceptFxMaterialExtension"><renderQueueOffset>1</renderQueueOffset></li>
+    </modExtensions>
+  </FleckDef>
+  <!-- 地面雲：扁平、底面較暗的塵煙團（熱射點火時沿地面放射）。在煙柱之下。 -->
+  <FleckDef ParentName="FFF_LaunchSmokeBase">
+    <defName>FFF_LaunchGroundCloud</defName>
+    <altitudeLayerIncOffset>0.8</altitudeLayerIncOffset>
+    <graphicData>
+      <texPath>Things/Effects/MissileFx/GroundCloud/GroundCloud_a</texPath>
+      <graphicClass>Graphic_Fleck</graphicClass>
+      <shaderType>Mote</shaderType>
+      <renderInstanced>true</renderInstanced>
+    </graphicData>
+  </FleckDef>
+  <FleckDef ParentName="FFF_LaunchSmokeBase">
+    <defName>FFF_LaunchSmokeDark</defName>
+    <graphicData>
+      <texPath>Things/Effects/InterceptDebris/SmokeDark/SmokeDark_a</texPath>
+      <graphicClass>Graphic_Fleck</graphicClass>
+      <shaderType>Mote</shaderType>
+      <renderInstanced>true</renderInstanced>
+    </graphicData>
+  </FleckDef>
+  <FleckDef ParentName="FFF_LaunchSmokeBase">
+    <defName>FFF_LaunchSmokeLight</defName>
+    <graphicData>
+      <texPath>Things/Effects/InterceptDebris/SmokeLight/SmokeLight_a</texPath>
+      <graphicClass>Graphic_Fleck</graphicClass>
+      <shaderType>Mote</shaderType>
+      <renderInstanced>true</renderInstanced>
+    </graphicData>
+  </FleckDef>
+  <FleckDef ParentName="FFF_LaunchSmokeBase">
+    <defName>FFF_LaunchSmokeMid</defName>
+    <graphicData>
+      <texPath>Things/Effects/InterceptDebris/SmokeMid/SmokeMid_a</texPath>
+      <graphicClass>Graphic_Fleck</graphicClass>
+      <shaderType>Mote</shaderType>
+      <renderInstanced>true</renderInstanced>
+    </graphicData>
+  </FleckDef>
+</Defs>

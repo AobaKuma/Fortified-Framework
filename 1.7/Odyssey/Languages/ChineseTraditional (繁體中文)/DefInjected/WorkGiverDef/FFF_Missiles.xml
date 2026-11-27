@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <FFF_AssembleMissile.label>裝配導彈</FFF_AssembleMissile.label>
+  <FFF_AssembleMissile.verb>裝配</FFF_AssembleMissile.verb>
+  <FFF_AssembleMissile.gerund>裝配</FFF_AssembleMissile.gerund>
+  <FFF_LoadMissileLauncher.label>裝填導彈發射器</FFF_LoadMissileLauncher.label>
+  <FFF_LoadMissileLauncher.verb>裝填</FFF_LoadMissileLauncher.verb>
+  <FFF_LoadMissileLauncher.gerund>裝填</FFF_LoadMissileLauncher.gerund>
+  <FFF_UnloadMissileRack.label>取下不符設定的導彈</FFF_UnloadMissileRack.label>
+  <FFF_UnloadMissileRack.verb>取下</FFF_UnloadMissileRack.verb>
+  <FFF_UnloadMissileRack.gerund>取下</FFF_UnloadMissileRack.gerund>
+  <FFF_AssembleBallisticSilo.label>裝配彈道導彈</FFF_AssembleBallisticSilo.label>
+  <FFF_AssembleBallisticSilo.verb>裝配</FFF_AssembleBallisticSilo.verb>
+  <FFF_AssembleBallisticSilo.gerund>裝配</FFF_AssembleBallisticSilo.gerund>
+  <!-- EN: compute firing solutions -->
+  <FFF_ComputeFiringSolution.label>計算彈道</FFF_ComputeFiringSolution.label>
+  <!-- EN: compute firing solutions at -->
+  <FFF_ComputeFiringSolution.verb>計算彈道於</FFF_ComputeFiringSolution.verb>
+  <!-- EN: computing firing solutions at -->
+  <FFF_ComputeFiringSolution.gerund>計算彈道於</FFF_ComputeFiringSolution.gerund>
+</LanguageData>

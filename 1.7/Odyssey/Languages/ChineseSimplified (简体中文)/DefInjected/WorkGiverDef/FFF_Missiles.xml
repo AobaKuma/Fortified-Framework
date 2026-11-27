@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <FFF_AssembleMissile.label>装配导弹</FFF_AssembleMissile.label>
+  <FFF_AssembleMissile.verb>装配</FFF_AssembleMissile.verb>
+  <FFF_AssembleMissile.gerund>装配</FFF_AssembleMissile.gerund>
+  <FFF_LoadMissileLauncher.label>装填导弹发射器</FFF_LoadMissileLauncher.label>
+  <FFF_LoadMissileLauncher.verb>装填</FFF_LoadMissileLauncher.verb>
+  <FFF_LoadMissileLauncher.gerund>装填</FFF_LoadMissileLauncher.gerund>
+  <FFF_UnloadMissileRack.label>取下不符设定的导弹</FFF_UnloadMissileRack.label>
+  <FFF_UnloadMissileRack.verb>取下</FFF_UnloadMissileRack.verb>
+  <FFF_UnloadMissileRack.gerund>取下</FFF_UnloadMissileRack.gerund>
+  <FFF_AssembleBallisticSilo.label>装配弹道导弹</FFF_AssembleBallisticSilo.label>
+  <FFF_AssembleBallisticSilo.verb>装配</FFF_AssembleBallisticSilo.verb>
+  <FFF_AssembleBallisticSilo.gerund>装配</FFF_AssembleBallisticSilo.gerund>
+  <FFF_ComputeFiringSolution.label>计算弹道</FFF_ComputeFiringSolution.label>
+  <FFF_ComputeFiringSolution.verb>计算弹道于</FFF_ComputeFiringSolution.verb>
+  <FFF_ComputeFiringSolution.gerund>计算弹道于</FFF_ComputeFiringSolution.gerund>
+</LanguageData>

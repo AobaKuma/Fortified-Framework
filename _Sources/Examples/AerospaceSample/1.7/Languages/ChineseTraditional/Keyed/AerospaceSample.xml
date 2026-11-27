@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <AerospaceSample.IRSensorInspect>紅外線搜索距離：{0} 格（{1}）</AerospaceSample.IRSensorInspect>
+  <AerospaceSample.LaserInspect>雷射點防禦：{0} 格，每發命中率 {1}，{2}</AerospaceSample.LaserInspect>
+  <AerospaceSample.Online>運作中</AerospaceSample.Online>
+  <AerospaceSample.Offline>離線</AerospaceSample.Offline>
+  <AerospaceSample.Ready>就緒</AerospaceSample.Ready>
+  <AerospaceSample.AircraftArrived>{0}抵達{1}。</AerospaceSample.AircraftArrived>
+  <AerospaceSample.AircraftShotDown>{0}被{1}擊落。</AerospaceSample.AircraftShotDown>
+  <AerospaceSample.Guidance.PowerPlant>鎖定目標地圖上輸出最大、正在運轉的發電設施（至少 {0} W）。</AerospaceSample.Guidance.PowerPlant>
+</LanguageData>

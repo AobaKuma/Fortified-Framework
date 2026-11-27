@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- 轉移船、結構樁、平台拆除（2026-11 從 DMSE 移入，鍵名由 DMSE.* 改成 FFF.*） -->
+  <FFF.UI.TransferBlocked>无法出发：{0} 项阻挡、{1} 项警告</FFF.UI.TransferBlocked>
+  <FFF.UI.TransferReady>整备检查通过 · {1} 项警告</FFF.UI.TransferReady>
+  <FFF.UI.FuelRequiredAvailable>燃料：需求／可用</FFF.UI.FuelRequiredAvailable>
+  <FFF.UI.Locate>定位</FFF.UI.Locate>
+  <FFF.UI.ShowDetails>▸ 展开工程与设备明细</FFF.UI.ShowDetails>
+  <FFF.UI.HideDetails>▾ 收起工程与设备明细</FFF.UI.HideDetails>
+  <FFF.UI.EngineeringDetails>工程明细</FFF.UI.EngineeringDetails>
+  <FFF.Flight.Select>选择巡航模式</FFF.Flight.Select>
+  <FFF.Flight.Regular>常规巡航</FFF.Flight.Regular>
+  <FFF.Flight.Transfer>转移巡航</FFF.Flight.Transfer>
+  <FFF.Flight.ShowAdvanced>高级选项</FFF.Flight.ShowAdvanced>
+  <FFF.Flight.Impact>终结巡航</FFF.Flight.Impact>
+  <FFF.Flight.ImpactHard>终结巡航</FFF.Flight.ImpactHard>
+  <FFF.Flight.Select.Desc>由于舰船上存在有效装置，因此请选择此次巡航的模式:</FFF.Flight.Select.Desc>
+  <FFF.Flight.Impact.Header>你的殖民者知道这是一个切实存在但不明智的选择。</FFF.Flight.Impact.Header>
+  <FFF.Flight.Impact.Confirm>即使航路主机显示着鲜红的警告，但它仍然显示了一条可行的加速方案。\n\n透过启动终结巡航协议，聚变核心将在超载功率下输出完整的动力，使得核热引擎能够以最大功率推动向着这颗星球加速并撞击地表。\n\n这将使得整艘船以及推动的天体成为有效且威力十足的质量武器，并对于星球造成无法复原的破坏。\n\n\n\n你确定要这么做吗?</FFF.Flight.Impact.Confirm>
+  <FFF.Impact.Ending.Intro>重力船拖着长长的轨迹划过天际，携带着巨大的质量没入大地，地平线上的一切都变成了光，随之而来的是剧烈的冲击波化作风暴与地震席卷了整颗星球的地表，在短时间内无数的生灵与景观在这场惊天动地的碰撞之中烟飞灰灭。</FFF.Impact.Ending.Intro>
+  <FFF.Impact.Ending.Outro>所幸这并非核热引擎所能发挥得最大功率，在灾害平息后地表上的大部分人类都得以幸存。无论其背后的目的如何，这颗星球的历史都将永远记住这一场撞击。</FFF.Impact.Ending.Outro>
+  <FFF.Impact.Ending.Aboard>我们无法得知重力船上的船员们是否在最后一刻逃出生天，又或者彻底地随着撞击烟飞灰灭。</FFF.Impact.Ending.Aboard>
+  <FFF.Impact.Planetkiller.Ending.Intro>重力船拖着长长的轨迹划过天际，每一具热核引擎都在喷涌着蓬勃的推力，携带着巨大的质量没入大地，在地平线上升起了一面由地壳升起的墙，随之而来的是剧烈的高温冲击波化作火海席卷了整颗星球的地表。</FFF.Impact.Planetkiller.Ending.Intro>
+  <FFF.Impact.Planetkiller.Ending.Outro>这是天火，这是远超神明的力量，在这颗星球上降下的天灾。\n\n无论其背后的目的如何，这颗星球或许在百年内都无法重现生机。</FFF.Impact.Planetkiller.Ending.Outro>
+  <FFF.Impact.Planetkiller.Ending.Aboard>没有人能够在这样的天灾下保全性命。</FFF.Impact.Planetkiller.Ending.Aboard>
+  <FFF.Platform.Remove>拆除平台</FFF.Platform.Remove>
+  <FFF.Platform.RemoveDesc>拆除太空平台或真空岩地面，使其变回太空并回收部分材料。</FFF.Platform.RemoveDesc>
+  <FFF.Platform.FloorOnTop>请先拆除地板。</FFF.Platform.FloorOnTop>
+  <FFF.Platform.Blocked>这里有{0}。</FFF.Platform.Blocked>
+  <FFF.Platform.Settings.SpaceTraversal>允许通行真空地板（需重新启动）</FFF.Platform.Settings.SpaceTraversal>
+  <FFF.Platform.Settings.SpaceTraversalDesc>启用补丁，让原版太空虚空可供行走。默认关闭，变更后需重新启动游戏。其他模组也可能修改太空通行性。</FFF.Platform.Settings.SpaceTraversalDesc>
+  <FFF.Pile.BuildBeam>架设钢梁</FFF.Pile.BuildBeam>
+  <FFF.Pile.BuildBeamDesc>向范围内另一根结构桩下达钢梁施工。只有以完工钢梁相连的桩才会成为同一艘船。\n\n按住 Shift 点击可从目标桩继续架设。</FFF.Pile.BuildBeamDesc>
+  <FFF.Pile.DismantleBeam>拆除钢梁</FFF.Pile.DismantleBeam>
+  <FFF.Pile.DismantleBeamDesc>拆除已完工的钢梁，返还部分材料。</FFF.Pile.DismantleBeamDesc>
+  <FFF.Pile.DismantleAll>拆除全部</FFF.Pile.DismantleAll>
+  <FFF.Pile.CancelBeam>取消钢梁施工</FFF.Pile.CancelBeam>
+  <FFF.Pile.CancelBeamDesc>取消钢梁施工单，已送达的材料会放回桩旁。</FFF.Pile.CancelBeamDesc>
+  <FFF.Pile.CancelAll>取消全部</FFF.Pile.CancelAll>
+  <FFF.Pile.LinkSelected>连接选中的结构桩</FFF.Pile.LinkSelected>
+  <FFF.Pile.LinkSelectedDesc>在选中的两根结构桩之间下达钢梁施工单。</FFF.Pile.LinkSelectedDesc>
+  <FFF.Pile.SelectNetwork>选中整个网络</FFF.Pile.SelectNetwork>
+  <FFF.Pile.SelectNetworkDesc>选中所有经已完工钢梁与这根桩相连的结构桩。</FFF.Pile.SelectNetworkDesc>
+  <FFF.Pile.Disabled.NoLinks>这根桩没有已完工的钢梁。</FFF.Pile.Disabled.NoLinks>
+  <FFF.Pile.Disabled.AllDismantling>所有钢梁都已在拆除中。</FFF.Pile.Disabled.AllDismantling>
+  <FFF.Pile.Disabled.NoOrders>这根桩没有钢梁施工单。</FFF.Pile.Disabled.NoOrders>
+  <FFF.Pile.Link.NotPile>必须选择你的结构桩。</FFF.Pile.Link.NotPile>
+  <FFF.Pile.Link.OutOfRange>超出范围：{0} 格（上限 {1}）。</FFF.Pile.Link.OutOfRange>
+  <FFF.Pile.Link.AlreadyLinked>已经相连或已有施工单。</FFF.Pile.Link.AlreadyLinked>
+  <FFF.Pile.Link.MaxLinks>{0} 已达钢梁上限（{1}，含施工单）。</FFF.Pile.Link.MaxLinks>
+  <FFF.Pile.Link.CostLabel>钢梁：长 {0} 格・{1}・工作量 {2}</FFF.Pile.Link.CostLabel>
+  <FFF.Pile.Link.Locked>倒数中无法变更钢梁。</FFF.Pile.Link.Locked>
+  <FFF.Pile.Link.NoRange>小型结构桩之间无法相连。</FFF.Pile.Link.NoRange>
+  <FFF.Pile.LinkOption>→ ({0}, {1})・长 {2} 格</FFF.Pile.LinkOption>
+  <FFF.Pile.OrderKind.Build>架设</FFF.Pile.OrderKind.Build>
+  <FFF.Pile.OrderKind.Dismantle>拆除</FFF.Pile.OrderKind.Dismantle>
+  <FFF.Pile.Inspect.Network>结构网络：{0} 根桩、{1} 条钢梁，船体范围 {2} 格</FFF.Pile.Inspect.Network>
+  <FFF.Pile.Inspect.Links>钢梁：已完工 {0}，含施工单 {1} / {2}</FFF.Pile.Inspect.Links>
+  <FFF.Pile.Inspect.LinksUnlimited>钢梁：已完工 {0}</FFF.Pile.Inspect.LinksUnlimited>
+  <FFF.Pile.Inspect.Building>钢梁施工：→ ({0}, {1}) 长 {2} 格｜材料 {3}｜进度 {4}</FFF.Pile.Inspect.Building>
+  <FFF.Pile.Inspect.Dismantling>钢梁拆除：→ ({0}, {1}) 长 {2} 格｜进度 {3}</FFF.Pile.Inspect.Dismantling>
+  <FFF.Pile.Inspect.Queued>另有 {0} 张钢梁施工单排队中</FFF.Pile.Inspect.Queued>
+  <FFF.Pile.NetworkSplit>结构网络已分裂成数艘船。</FFF.Pile.NetworkSplit>
+  <FFF.Pile.Place.OverVoid>必须建在实地上。</FFF.Pile.Place.OverVoid>
+  <FFF.Pile.Place.NeedProviderRange>必须建在大型结构桩或结构固定桩的连结范围内。</FFF.Pile.Place.NeedProviderRange>
+  <FFF.Pile.Place.WrongTerrain>无法建在{0}上。</FFF.Pile.Place.WrongTerrain>
+  <FFF.Pile.Place.SpaceOnly>只能建在太空中。</FFF.Pile.Place.SpaceOnly>
+  <FFF.Pile.Report.Dismantle>正在拆除 {0} 的钢梁。</FFF.Pile.Report.Dismantle>
+  <FFF.Transfer.Tab>转移</FFF.Transfer.Tab>
+  <FFF.Transfer.Console.Plan>制定转移计划</FFF.Transfer.Console.Plan>
+  <FFF.Transfer.Console.PlanDesc>选择目的地，并查看燃料、航行时间与整备状态。</FFF.Transfer.Console.PlanDesc>
+  <FFF.Transfer.Console.Abort>中止转移</FFF.Transfer.Console.Abort>
+  <FFF.Transfer.Console.AbortDesc>放弃当前的转移计划。</FFF.Transfer.Console.AbortDesc>
+  <FFF.Transfer.Console.ShowFootprint>显示船体范围</FFF.Transfer.Console.ShowFootprint>
+  <FFF.Transfer.Console.ShowFootprintDesc>常驻显示这艘船的船体范围与引擎尾焰区。</FFF.Transfer.Console.ShowFootprintDesc>
+  <FFF.Transfer.Console.AlreadyLaunching>转移程序已在进行中。</FFF.Transfer.Console.AlreadyLaunching>
+  <FFF.Transfer.Console.NotOnShip>不在船上。</FFF.Transfer.Console.NotOnShip>
+  <FFF.Transfer.Console.Primary>船舶主控台</FFF.Transfer.Console.Primary>
+  <FFF.Transfer.Console.Backup>备用控制台</FFF.Transfer.Console.Backup>
+  <FFF.Transfer.Console.ShipSummary>船：{0} 根桩、可用引擎 {1} 具、推重比 {2}、燃料 {3}</FFF.Transfer.Console.ShipSummary>
+  <FFF.Transfer.Console.PlanSummary>已制定转移计划：前往格子 {0}（{1} 格）</FFF.Transfer.Console.PlanSummary>
+  <FFF.Transfer.Console.Launch>启动起飞程序</FFF.Transfer.Console.Launch>
+  <FFF.Transfer.Console.LaunchDesc>开始起飞程序。殖民者操作此控制台后，船会倒数并起飞。</FFF.Transfer.Console.LaunchDesc>
+  <FFF.Transfer.Console.AwaitingOperatorMsg>已开始起飞程序，等待操作员。</FFF.Transfer.Console.AwaitingOperatorMsg>
+  <FFF.Transfer.Console.StateAwaitingOperator>等待操作员。</FFF.Transfer.Console.StateAwaitingOperator>
+  <FFF.Transfer.Console.StateCountdown>{0}后分离。</FFF.Transfer.Console.StateCountdown>
+  <FFF.Transfer.Console.Rename>命名飞船</FFF.Transfer.Console.Rename>
+  <FFF.Transfer.Console.RenameDesc>为这艘船命名。名称会保存在船上所有控制台，之后每次转移飞行都沿用。</FFF.Transfer.Console.RenameDesc>
+  <FFF.Transfer.Console.ShipName>船名：{0}</FFF.Transfer.Console.ShipName>
+  <FFF.Transfer.Console.Unnamed>未命名（起飞时自动命名）</FFF.Transfer.Console.Unnamed>
+  <FFF.Transfer.Separating>船体分离中</FFF.Transfer.Separating>
+  <FFF.Transfer.Abort.NoPlan>没有转移计划。</FFF.Transfer.Abort.NoPlan>
+  <FFF.Transfer.Abort.NoFreeTile>没有可停泊的空格。</FFF.Transfer.Abort.NoFreeTile>
+  <FFF.Transfer.Abort.NetworkChanged>船体结构在倒数中改变了。</FFF.Transfer.Abort.NetworkChanged>
+  <FFF.Transfer.Letter.AbortedLabel>转移中止</FFF.Transfer.Letter.AbortedLabel>
+  <FFF.Transfer.Letter.AbortedText>起飞已中止：{0}\n\n计划已保留。</FFF.Transfer.Letter.AbortedText>
+  <FFF.Transfer.Letter.SeparatedLabel>船体已分离</FFF.Transfer.Letter.SeparatedLabel>
+  <FFF.Transfer.Letter.SeparatedText>{0} 已分离，成为一艘独立的船。</FFF.Transfer.Letter.SeparatedText>
+  <FFF.Transfer.Letter.Destroyed>在船体边缘被摧毁：</FFF.Transfer.Letter.Destroyed>
+  <FFF.Transfer.Letter.LeftBehind>被留下的：</FFF.Transfer.Letter.LeftBehind>
+  <FFF.Transfer.Letter.BrokenLinks>断裂的钢梁：{0}。取消的施工单：{1}。</FFF.Transfer.Letter.BrokenLinks>
+  <FFF.Transfer.Letter.LostThings>遗失：{0} 件无法搬运的物件。</FFF.Transfer.Letter.LostThings>
+  <FFF.Transfer.Letter.OriginAbandoned>原据点已弃置。</FFF.Transfer.Letter.OriginAbandoned>
+  <FFF.Transfer.Ship.DefaultName>转移舰 {0}</FFF.Transfer.Ship.DefaultName>
+  <FFF.Transfer.Ship.Inspect>结构桩：{0}，结构网络：{1}</FFF.Transfer.Ship.Inspect>
+  <FFF.Transfer.Ship.Abandon>放弃船只</FFF.Transfer.Ship.Abandon>
+  <FFF.Transfer.Ship.AbandonDesc>放弃这艘船与船上的一切。</FFF.Transfer.Ship.AbandonDesc>
+  <FFF.Transfer.Ship.AbandonConfirm>要放弃 {0} 吗？船上的一切都会失去。</FFF.Transfer.Ship.AbandonConfirm>
+  <FFF.Transfer.Ship.AbandonHasColonists>船上还有殖民者。</FFF.Transfer.Ship.AbandonHasColonists>
+  <FFF.Transfer.Alert.PawnsOutside>人员在起飞船只外</FFF.Transfer.Alert.PawnsOutside>
+  <FFF.Transfer.Alert.PawnsOutsideDesc>这些人在即将起飞的船外，将被留下。</FFF.Transfer.Alert.PawnsOutsideDesc>
+  <FFF.Transfer.Alert.ExhaustDanger>人员站在引擎尾焰区</FFF.Transfer.Alert.ExhaustDanger>
+  <FFF.Transfer.Alert.ExhaustDangerDesc>这些人站在引擎尾焰区，点火时会被烧伤。</FFF.Transfer.Alert.ExhaustDangerDesc>
+  <FFF.Transfer.Dest.Invalid>请选择其他格子。</FFF.Transfer.Dest.Invalid>
+  <FFF.Transfer.Dest.OtherLayer>必须在同一轨道层。</FFF.Transfer.Dest.OtherLayer>
+  <FFF.Transfer.Dest.OutOfRange>超出航程（{0} 格）。</FFF.Transfer.Dest.OutOfRange>
+  <FFF.Transfer.Dest.Occupied>该格已被占用，附近也没有空格。</FFF.Transfer.Dest.Occupied>
+  <FFF.Transfer.Dialog.Title>转移计划</FFF.Transfer.Dialog.Title>
+  <FFF.Transfer.Dialog.Route>格子 {0} → 格子 {1}，{2} 格</FFF.Transfer.Dialog.Route>
+  <FFF.Transfer.Dialog.Reselect>重新选择</FFF.Transfer.Dialog.Reselect>
+  <FFF.Transfer.Dialog.Confirm>确认计划</FFF.Transfer.Dialog.Confirm>
+  <FFF.Transfer.Dialog.ConfirmBlocked>请先排除错误。</FFF.Transfer.Dialog.ConfirmBlocked>
+  <FFF.Transfer.Dialog.PlanSet>已制定转移计划。</FFF.Transfer.Dialog.PlanSet>
+  <FFF.Transfer.UI.NetworkHeader>结构网络</FFF.Transfer.UI.NetworkHeader>
+  <FFF.Transfer.UI.Piles>结构桩</FFF.Transfer.UI.Piles>
+  <FFF.Transfer.UI.Beams>钢梁</FFF.Transfer.UI.Beams>
+  <FFF.Transfer.UI.Footprint>船体格数</FFF.Transfer.UI.Footprint>
+  <FFF.Transfer.UI.TornApart>起飞时将被摧毁的跨界建筑</FFF.Transfer.UI.TornApart>
+  <FFF.Transfer.UI.Contested>将从其他网络带走的格数</FFF.Transfer.UI.Contested>
+  <FFF.Transfer.UI.UnlinkedPiles>附近未连接的桩</FFF.Transfer.UI.UnlinkedPiles>
+  <FFF.Transfer.UI.PendingOrders>有钢梁施工单的桩</FFF.Transfer.UI.PendingOrders>
+  <FFF.Transfer.UI.PropulsionHeader>推进</FFF.Transfer.UI.PropulsionHeader>
+  <FFF.Transfer.UI.NoEngines>这艘船上没有转移引擎。</FFF.Transfer.UI.NoEngines>
+  <FFF.Transfer.UI.ReactorSupport>聚变反应炉支持（需求 / 可用）</FFF.Transfer.UI.ReactorSupport>
+  <FFF.Transfer.UI.FuelHeader>燃料</FFF.Transfer.UI.FuelHeader>
+  <FFF.Transfer.UI.NoFuelSources>这艘船上没有燃料罐。</FFF.Transfer.UI.NoFuelSources>
+  <FFF.Transfer.UI.EstimateHeader>转移能力</FFF.Transfer.UI.EstimateHeader>
+  <FFF.Transfer.UI.PlanHeader>计划：前往格子 {0}</FFF.Transfer.UI.PlanHeader>
+  <FFF.Transfer.UI.ParkedAtNeighbor>目标格已被占用，船会停在旁边。</FFF.Transfer.UI.ParkedAtNeighbor>
+  <FFF.Transfer.UI.MassWeight>质量</FFF.Transfer.UI.MassWeight>
+  <FFF.Transfer.UI.MassWeightValue>{0}（{1} 根桩）</FFF.Transfer.UI.MassWeightValue>
+  <FFF.Transfer.UI.Thrust>推力</FFF.Transfer.UI.Thrust>
+  <FFF.Transfer.UI.ThrustWithBoosters>{0}（+{1} 助推器，仅离轨点火）</FFF.Transfer.UI.ThrustWithBoosters>
+  <FFF.Transfer.UI.TWR>推重比（最低 {0}）</FFF.Transfer.UI.TWR>
+  <FFF.Transfer.UI.Eta>燃耗倍率</FFF.Transfer.UI.Eta>
+  <FFF.Transfer.UI.FuelAvailable>船上燃料</FFF.Transfer.UI.FuelAvailable>
+  <FFF.Transfer.UI.MaxDistance>航程（格）</FFF.Transfer.UI.MaxDistance>
+  <FFF.Transfer.UI.CannotDepart>无法起飞</FFF.Transfer.UI.CannotDepart>
+  <FFF.Transfer.UI.BurnTime>单次点火</FFF.Transfer.UI.BurnTime>
+  <FFF.Transfer.UI.Distance>距离（格）</FFF.Transfer.UI.Distance>
+  <FFF.Transfer.UI.FuelRequired>燃料需求</FFF.Transfer.UI.FuelRequired>
+  <FFF.Transfer.UI.CoastTime>滑行</FFF.Transfer.UI.CoastTime>
+  <FFF.Transfer.UI.TotalTime>总航行时间</FFF.Transfer.UI.TotalTime>
+  <FFF.Transfer.UI.IssuesHeader>整备检查</FFF.Transfer.UI.IssuesHeader>
+  <FFF.Transfer.UI.NoIssues>整备完成。</FFF.Transfer.UI.NoIssues>
+  <FFF.Transfer.UI.ErrorPrefix>【错误】</FFF.Transfer.UI.ErrorPrefix>
+  <FFF.Transfer.UI.WarningPrefix>【警告】</FFF.Transfer.UI.WarningPrefix>
+  <FFF.Transfer.Issue.NotInSpace>船必须位于轨道上。</FFF.Transfer.Issue.NotInSpace>
+  <FFF.Transfer.Issue.ConsoleNotOnShip>控制台不在船上。</FFF.Transfer.Issue.ConsoleNotOnShip>
+  <FFF.Transfer.Issue.ConsoleUnavailable>控制台断电、关闭或损坏。</FFF.Transfer.Issue.ConsoleUnavailable>
+  <FFF.Transfer.Issue.NoEngines>没有可用的转移引擎。</FFF.Transfer.Issue.NoEngines>
+  <FFF.Transfer.Issue.LowTWR>推重比 {0} 低于 {1}。</FFF.Transfer.Issue.LowTWR>
+  <FFF.Transfer.Issue.NotEnoughFuel>燃料不足（{0}/{1}）。</FFF.Transfer.Issue.NotEnoughFuel>
+  <FFF.Transfer.Issue.OtherShipDeparting>此地图已有其他船正在起飞。</FFF.Transfer.Issue.OtherShipDeparting>
+  <FFF.Transfer.Issue.PawnsLeftBehind>{0} 人在船外，将被留下。</FFF.Transfer.Issue.PawnsLeftBehind>
+  <FFF.Transfer.Issue.NotCarried>{0} 件物件无法搬运，将会遗失。</FFF.Transfer.Issue.NotCarried>
+  <FFF.Transfer.Issue.PawnsInExhaust>{0} 人站在尾焰区。</FFF.Transfer.Issue.PawnsInExhaust>
+  <FFF.Transfer.Issue.NearbyUnlinkedPiles>附近有 {0} 根结构桩未与这艘船相连。</FFF.Transfer.Issue.NearbyUnlinkedPiles>
+  <FFF.Transfer.Issue.TornApart>{0} 座建筑跨越船体边缘，将被摧毁。</FFF.Transfer.Issue.TornApart>
+  <FFF.Transfer.Issue.TornApartWithPawns>其中 {0} 座内有人。</FFF.Transfer.Issue.TornApartWithPawns>
+  <FFF.Transfer.Issue.Contested>将从其他船带走 {0} 格（{1} 座建筑、{2} 根桩）。</FFF.Transfer.Issue.Contested>
+  <FFF.Transfer.Issue.PendingBeamOrders>{0} 根桩有未完工的钢梁。</FFF.Transfer.Issue.PendingBeamOrders>
+  <FFF.Transfer.Engine.Stats>转移推力 {0}，燃耗倍率 {1}</FFF.Transfer.Engine.Stats>
+  <FFF.Transfer.Engine.BoosterStats>离轨推力 {0}：提高起飞推重比，不消耗船上燃料，离轨点火结束后烧毁</FFF.Transfer.Engine.BoosterStats>
+  <FFF.Transfer.Engine.RequiresReactor>需要聚变反应炉支持。</FFF.Transfer.Engine.RequiresReactor>
+  <FFF.Transfer.Engine.Status.Operational>可用</FFF.Transfer.Engine.Status.Operational>
+  <FFF.Transfer.Engine.Status.NotOnShip>不在船上</FFF.Transfer.Engine.Status.NotOnShip>
+  <FFF.Transfer.Engine.Status.BrokenDown>故障</FFF.Transfer.Engine.Status.BrokenDown>
+  <FFF.Transfer.Engine.Status.SwitchedOff>已关闭</FFF.Transfer.Engine.Status.SwitchedOff>
+  <FFF.Transfer.Engine.Status.NoPower>没有电力</FFF.Transfer.Engine.Status.NoPower>
+  <FFF.Transfer.Engine.Status.ExhaustBlocked>尾焰受 {0} 阻挡</FFF.Transfer.Engine.Status.ExhaustBlocked>
+  <FFF.Transfer.Engine.Status.NoReactorSupport>没有聚变反应炉支持</FFF.Transfer.Engine.Status.NoReactorSupport>
+  <FFF.Transfer.Engine.PlacedBlocked>{0}：尾焰区被 {1} 挡住。</FFF.Transfer.Engine.PlacedBlocked>
+  <FFF.Transfer.Reactor.Support>可支持 {0} 具核热推进器（本船：需要 {1}／可用 {2}）。</FFF.Transfer.Reactor.Support>
+  <FFF.Transfer.Reactor.NotOnShip>在船上可支持 {0} 具核热推进器。</FFF.Transfer.Reactor.NotOnShip>
+  <FFF.Transfer.Alert.CountdownDesc>有船正在倒数起飞。</FFF.Transfer.Alert.CountdownDesc>
+  <FFF.Transfer.Phase.DepartureBurn>离轨点火</FFF.Transfer.Phase.DepartureBurn>
+  <FFF.Transfer.Phase.Coast>滑行</FFF.Transfer.Phase.Coast>
+  <FFF.Transfer.Phase.ArrivalBurn>入轨点火</FFF.Transfer.Phase.ArrivalBurn>
+  <FFF.Transfer.Phase.Arrived>已抵达</FFF.Transfer.Phase.Arrived>
+  <FFF.Transfer.Flight.Status>转移飞行：{0}，本阶段剩余 {1}</FFF.Transfer.Flight.Status>
+  <FFF.Transfer.Flight.Progress>进度 {0}，前往格子 {1}，{2}后抵达</FFF.Transfer.Flight.Progress>
+  <FFF.Transfer.Flight.CoastBegin>{0} 进入滑行。</FFF.Transfer.Flight.CoastBegin>
+  <FFF.Transfer.Flight.BoostersBurnedOut>{0}：{1} 具火箭助推器已燃尽烧毁。</FFF.Transfer.Flight.BoostersBurnedOut>
+  <FFF.Transfer.Flight.ArrivalBurnBegin>{0} 开始入轨点火。</FFF.Transfer.Flight.ArrivalBurnBegin>
+  <FFF.Transfer.Flight.Rerouted>{0} 的目的地已被占用，将停在附近。</FFF.Transfer.Flight.Rerouted>
+  <FFF.Transfer.Flight.NoThrustLabel>入轨无推力</FFF.Transfer.Flight.NoThrustLabel>
+  <FFF.Transfer.Flight.NoThrustText>{0} 没有可用的引擎，将以姿态推进器减速（{1}）。</FFF.Transfer.Flight.NoThrustText>
+  <FFF.Transfer.Flight.ArrivedLabel>转移完成</FFF.Transfer.Flight.ArrivedLabel>
+  <FFF.Transfer.Flight.ArrivedText>{0} 已抵达。</FFF.Transfer.Flight.ArrivedText>
+  <FFF.Transfer.Issue.InFlight>船正在飞行中。</FFF.Transfer.Issue.InFlight>
+  <FFF.Transfer.UI.FlightHeader>飞行中：{0}</FFF.Transfer.UI.FlightHeader>
+  <FFF.Transfer.Grace.Begin>{0}抵达后尚未被察觉：{1}内本地图不会发生任何事件（船体 {2} 格）。</FFF.Transfer.Grace.Begin>
+  <FFF.Transfer.UI.GracePeriod>抵达后安全期</FFF.Transfer.UI.GracePeriod>
+  <FFF.Transfer.UI.Phase>阶段</FFF.Transfer.UI.Phase>
+  <FFF.Transfer.UI.PhaseLeft>本阶段剩余</FFF.Transfer.UI.PhaseLeft>
+  <FFF.Transfer.UI.FlightProgress>航程进度</FFF.Transfer.UI.FlightProgress>
+  <FFF.Transfer.UI.Destination>目的地格子</FFF.Transfer.UI.Destination>
+  <FFF.Transfer.UI.ArrivalIn>距离抵达</FFF.Transfer.UI.ArrivalIn>
+  <FFF.Transfer.ShuttleBlockedBurn>船的引擎正在点火，无法起飞。</FFF.Transfer.ShuttleBlockedBurn>
+  <FFF.Transfer.Console.PlanImpact>规划终结巡航</FFF.Transfer.Console.PlanImpact>
+  <FFF.Transfer.Console.PlanImpactDesc>让这艘船撞向行星地表。船上所有人都会失去，游戏随之结束。\n\n需要 {0} 具运作中的核热推进器；{1} 具以上将毁灭行星。</FFF.Transfer.Console.PlanImpactDesc>
+  <FFF.Transfer.Console.PlanSummaryImpact>已规划终结巡航：撞击格子 {0}（{1} 格）</FFF.Transfer.Console.PlanSummaryImpact>
+  <FFF.Transfer.Dest.NotSurface>必须位于行星地表。</FFF.Transfer.Dest.NotSurface>
+  <FFF.Transfer.Dest.ImpactHasMap>无法以已有地图的地点为目标。</FFF.Transfer.Dest.ImpactHasMap>
+  <FFF.Transfer.Issue.ImpactEngines>需要 {1} 具运作中的核热推进器（当前 {0}）。</FFF.Transfer.Issue.ImpactEngines>
+  <FFF.Transfer.Issue.ImpactResearch>需要先完成封存档案「终结巡航」的研究。</FFF.Transfer.Issue.ImpactResearch>
+  <FFF.Transfer.Dialog.ImpactTitle>终结巡航</FFF.Transfer.Dialog.ImpactTitle>
+  <FFF.Transfer.Dialog.ImpactWarning>船不会减速。船上所有人都会失去，游戏随之结束。</FFF.Transfer.Dialog.ImpactWarning>
+  <FFF.Transfer.Dialog.ImpactPlanetkiller>{0} 具核热推进器：撞击将毁灭行星。</FFF.Transfer.Dialog.ImpactPlanetkiller>
+  <FFF.Transfer.Dialog.ImpactRoute>撞击点：格子 {0}，航程 {1} 格</FFF.Transfer.Dialog.ImpactRoute>
+  <FFF.Transfer.Dialog.ConfirmImpact>确认撞击</FFF.Transfer.Dialog.ConfirmImpact>
+  <FFF.Transfer.Phase.ImpactCourse>撞击航程</FFF.Transfer.Phase.ImpactCourse>
+  <FFF.Transfer.Flight.ImpactCourseBegin>{0} 进入撞击航程，{1}后撞击。</FFF.Transfer.Flight.ImpactCourseBegin>
+  <FFF.Transfer.Flight.ImpactProgress>进度 {0}，撞击格子 {1}，{2}后撞击</FFF.Transfer.Flight.ImpactProgress>
+  <FFF.Transfer.UI.ImpactIn>距离撞击</FFF.Transfer.UI.ImpactIn>
+  <FFF.Transfer.UI.ImpactPlanHeader>计划：撞击格子 {0}</FFF.Transfer.UI.ImpactPlanHeader>
+  <FFF.Transfer.UI.LandOnSite>将降落在{0}。</FFF.Transfer.UI.LandOnSite>
+  <FFF.Transfer.Landing>降落中</FFF.Transfer.Landing>
+  <FFF.Transfer.Land.Designator>选择降落位置</FFF.Transfer.Land.Designator>
+  <FFF.Transfer.Land.DesignatorDesc>选择船在这张地图上的降落位置。</FFF.Transfer.Land.DesignatorDesc>
+  <FFF.Transfer.Land.WillMove>船会降落在最近的空位。</FFF.Transfer.Land.WillMove>
+  <FFF.Transfer.Land.Gizmo>降落到{0}</FFF.Transfer.Land.Gizmo>
+  <FFF.Transfer.Land.GizmoDesc>在{0}选择降落位置。</FFF.Transfer.Land.GizmoDesc>
+  <FFF.Transfer.Land.Auto>自动降落</FFF.Transfer.Land.Auto>
+  <FFF.Transfer.Land.AutoDesc>降落在最接近地图中央的空位。</FFF.Transfer.Land.AutoDesc>
+  <FFF.Transfer.Land.Cancel>取消降落</FFF.Transfer.Land.Cancel>
+  <FFF.Transfer.Land.CancelDesc>停留在原处。</FFF.Transfer.Land.CancelDesc>
+  <FFF.Transfer.Land.NoRoom>{0}没有足够空间降落。</FFF.Transfer.Land.NoRoom>
+  <FFF.Transfer.Land.SiteGone>降落地点已不存在。</FFF.Transfer.Land.SiteGone>
+  <FFF.Transfer.Land.ArrivedText>{0} 正等待降落到{1}。</FFF.Transfer.Land.ArrivedText>
+  <FFF.Transfer.Land.LandedLabel>船已降落</FFF.Transfer.Land.LandedLabel>
+  <FFF.Transfer.Land.LandedText>{0} 已降落在{1}。</FFF.Transfer.Land.LandedText>
+  <FFF.Transfer.Land.Moved>选定位置受阻，已改降落在最近的空位。</FFF.Transfer.Land.Moved>
+</LanguageData>

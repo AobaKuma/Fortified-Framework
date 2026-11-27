@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!--
+    開啟 FFF 的飛彈與防空功能。FFF 也會因為下面的 Def 用到框架型別而自動開啟，
+    但明確宣告比較清楚：設定頁的功能清單會把這個 mod 列為啟用者。
+    Turns on FFF's missile / air-defence feature. FFF would also detect it from the Defs below,
+    but declaring it makes this mod show up as an enabler in FFF's settings page.
+  -->
+  <Fortified.FFF_FeatureRequestDef>
+    <defName>AerospaceSample_Features</defName>
+    <features>
+      <li>FFF_Feature_Missiles</li>
+    </features>
+  </Fortified.FFF_FeatureRequestDef>
+
+</Defs>
