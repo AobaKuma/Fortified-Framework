@@ -32,19 +32,6 @@ namespace Fortified
         }
     }
 
-    /// <summary>
-    /// 在「無物品型態、直接於建築上裝配」的彈道發射平台（<see cref="CompMissileLauncher_Ballistic"/>）上，
-    /// 繪製已裝配彈體的直立彈體貼圖。
-    ///
-    /// 與 <see cref="CompMissileRackRenderer"/> 的差異：
-    ///   - 彈藥不是容器裡的實體導彈，而是同一建築上 <see cref="CompMissileConfig"/> 的彈體設定，
-    ///     因此沒有 Thing 可畫，改為讀 <see cref="MissileBodyDef.incomingSkyfaller"/> 的貼圖
-    ///     （彈體的落點 skyfaller 就是該型號的彈體圖，且會隨發射井換彈體而變）。
-    ///   - 只在「已裝配完成」（<see cref="CompMissileLauncher_Ballistic.IsLoaded"/>）時繪製：
-    ///     未建造彈體、資源搬運中、施工中、發射後冷卻中，都只看到空架子。
-    ///
-    /// 由 ThingWithComps.Draw → Comps_PostDraw 每幀呼叫（建築需 drawerType 含 realtime）。
-    /// </summary>
     public class CompMissileBodyRenderer : ThingComp
     {
         public CompProperties_MissileBodyRenderer Props => (CompProperties_MissileBodyRenderer)props;

@@ -302,12 +302,6 @@ namespace Fortified
 
         // ---- 盤旋飛控（Payload 槽專用；與戰鬥部／載荷效果無關，屬於飛行行為）----
 
-        /// <summary>
-        /// 盤旋時間（ticks；0 = 沒有盤旋能力）。導引頭在目標地圖上找不到符合的目標時，
-        /// 導彈不直接回退慣性制導，而是在目標上空盤旋等待：每 <see cref="loiterRetryTicks"/>
-        /// 重新執行一次導引頭，找到目標就俯衝；時間用盡才以慣性落點俯衝。
-        /// 盤旋期間導彈仍留在攔截波次中，末端防禦（CIWS）照常接戰。
-        /// </summary>
         public int loiterTicks = 0;
 
         /// <summary>盤旋期間重新執行導引頭的間隔（ticks）。</summary>

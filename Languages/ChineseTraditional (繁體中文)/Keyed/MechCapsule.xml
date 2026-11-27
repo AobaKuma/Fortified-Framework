@@ -44,7 +44,7 @@
   <!-- EN: Not deployed -->
   <FFF.Mothball.Reason.NotSpawned>未展開</FFF.Mothball.Reason.NotSpawned>
   <!-- EN: Not a mechanoid -->
-  <FFF.Mothball.Reason.NotMech>並非機械體</FFF.Mothball.Reason.NotMech>
+  <FFF.Mothball.Reason.NotMech>非機械體</FFF.Mothball.Reason.NotMech>
   <!-- EN: Not under your control -->
   <FFF.Mothball.Reason.NotPlayer>不受你控制</FFF.Mothball.Reason.NotPlayer>
   <!-- EN: Cannot mothball while drafted -->

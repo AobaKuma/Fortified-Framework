@@ -7,12 +7,6 @@ using Verse;
 
 namespace Fortified
 {
-    /// <summary>
-    /// 通用「來襲導彈」世界地圖物件。飛行、存檔與終端更新見 <see cref="WorldObject_Missile"/>；
-    /// 抵達時依導引頭自動選擇落點（<see cref="GuidanceType.ArrivalCell"/>，找不到目標且裝有盤旋飛控時改為盤旋等待）並生成 <see cref="MissileIncoming"/>（不開啟玩家選靶）。
-    /// 任何陣營皆可發射；攜帶攻擊方陣營與裝配設定，作為 BVR 攔截的航跡/識別來源。
-    /// 目標已離開（且終端更新追不上）或不存在時落空，不生成地圖。
-    /// </summary>
     public class WorldObject_IncomingMissile : WorldObject_Missile
     {
         public ThingDef incomingSkyfaller;
@@ -45,7 +39,6 @@ namespace Fortified
 
             if (def != null)
             {
-                // 盤旋飛控：導引頭找不到目標時不直接回退慣性落點，而是在目標上空盤旋等待。
                 IntVec3 cell = ArrivalCellFor(map, out bool loiter);
                 // 從世界航跡最後一段的方向飛入地圖。
                 Thing thing = MissileProjectileMaker.SpawnIncoming(def, cell, map, ArrivalHeading);
