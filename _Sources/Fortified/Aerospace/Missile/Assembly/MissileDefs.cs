@@ -333,6 +333,14 @@ namespace Fortified
 
         public string uiIconPath;
 
+        /// <summary>
+        /// 共用文字來源：自身沒寫的 label／description／designWord 從這個部件複製（數值不複製）。
+        /// 給「同一種部件、不同彈體各一份數值」的情況用，文字與翻譯只需寫在來源部件上。
+        /// 複製在 <see cref="ResolveReferences"/>，此時 DefInjected 早段注入已完成，拿到的是譯文；
+        /// 自身若有 DefInjected 譯文則仍以自身為準。來源本身不可再指向別的部件（不支援鏈結）。
+        /// </summary>
+        public MissilePartDef sharedTextFrom;
+
         private Texture2D iconInt;
         public Texture2D Icon
         {
@@ -365,9 +373,26 @@ namespace Fortified
             foreach (StatDrawEntry e in MissileInfoCardUtility.PartStats(this)) { yield return e; }
         }
 
+        public override void ResolveReferences()
+        {
+            base.ResolveReferences();
+            if (sharedTextFrom != null && sharedTextFrom != this)
+            {
+                if (label.NullOrEmpty()) { label = sharedTextFrom.label; }
+                if (description.NullOrEmpty()) { description = sharedTextFrom.description; }
+                if (designWord.NullOrEmpty()) { designWord = sharedTextFrom.designWord; }
+            }
+        }
+
         public override IEnumerable<string> ConfigErrors()
         {
             foreach (string error in base.ConfigErrors()) { yield return error; }
+            if (sharedTextFrom != null)
+            {
+                if (sharedTextFrom == this) { yield return $"{defName}: sharedTextFrom points at itself"; }
+                else if (sharedTextFrom.sharedTextFrom != null) { yield return $"{defName}: sharedTextFrom {sharedTextFrom.defName} itself uses sharedTextFrom; chains are not supported"; }
+                if (sharedTextFrom.category != category) { yield return $"{defName}: sharedTextFrom {sharedTextFrom.defName} is in a different category"; }
+            }
             // 列舉時代沒寫 category 會默默變成 Warhead（列舉的第一個值）；改成 Def 後要明確指定。
             if (category == null) { yield return $"{defName}: category is required (a MissilePartCategoryDef such as Warhead, Guidance, Propulsion, Payload)"; }
             if (behaviors == null) { yield break; }
