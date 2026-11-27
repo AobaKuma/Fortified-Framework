@@ -77,8 +77,9 @@ public class FFF_FeatureRequestDef : Def
 }
 
 /// <summary>
-/// 標在 MapComponent／WorldComponent／GameComponent 上: 功能未啟用時不建立這個元件
-/// (由 Patch_FFF_FeatureComponents 在 FillComponents 之後移除)。
+/// 標在遊戲會自動為每個子類別建立實例的型別上: MapComponent／WorldComponent／GameComponent、Alert、SectionLayer 與
+/// 全圖的 MapDrawLayer。功能未啟用時不建立 (由 Patch_FFF_FeatureComponents 在建立之後移除)。
+/// 沒標的話, 功能關閉時它們照樣被建立, 而它們依賴的元件已被移除, 會在每次更新時丟例外。
 /// 讀到含有這種元件資料的存檔時, 資料會被丟掉; 功能未啟用通常代表相依模組已移除, 這是預期行為。
 /// </summary>
 [AttributeUsage(AttributeTargets.Class, Inherited = true, AllowMultiple = false)]

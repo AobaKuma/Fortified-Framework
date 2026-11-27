@@ -8,6 +8,7 @@ namespace Fortified
     /// 目前地圖是未摧毀的導彈陣地時，列出剩餘的必要目標（火控雷達，見 <see cref="MapComponent_MissileBase.IsObjectiveRadar"/>）；
     /// 點擊依序跳到各目標。
     /// </summary>
+    [FFF_Feature(FFF_AerospaceFeatures.Missiles)]
     public class Alert_MissileBaseObjectives : Alert
     {
         private readonly List<Thing> culprits = new List<Thing>();

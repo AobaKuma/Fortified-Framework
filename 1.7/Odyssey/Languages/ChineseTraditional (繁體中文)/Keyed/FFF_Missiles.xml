@@ -1364,4 +1364,5 @@
   <FFF.Aerospace.Settings.Category>Fortified - 飛彈與防空</FFF.Aerospace.Settings.Category>
   <FFF.BVR.EngagementVetoed>這次接戰被其他模組的規則擋下。</FFF.BVR.EngagementVetoed>
   <FFF.Aerospace.Settings.MultiplayerWarning>已啟用 Multiplayer。導彈、防空與轉移艦沒有做聯機同步，在聯機遊戲中使用會不同步；本頁影響戰鬥的設定，每位玩家都必須相同。</FFF.Aerospace.Settings.MultiplayerWarning>
+  <FFF.Alert.Exist.Label>地圖可見計時：{0}</FFF.Alert.Exist.Label>
 </LanguageData>

@@ -6,14 +6,15 @@ using Verse;
 
 namespace Fortified
 {
+    [FFF_Feature(FFF_AerospaceFeatures.Missiles)]
     public class Alert_StrikeMapExpiry : Alert
     {
         public override string GetLabel()
         {
             Map map = Find.CurrentMap;
-            if (map != null && GameComponent_StrikeMapTimers.Comp.times.TryGetValue(map, out int time))
+            if (map != null && GameComponent_StrikeMapTimers.Comp?.times != null && GameComponent_StrikeMapTimers.Comp.times.TryGetValue(map, out int time))
             {
-                return "DMS_Exist".Translate((time - Find.TickManager.TicksGame)
+                return "FFF.Alert.Exist.Label".Translate((time - Find.TickManager.TicksGame)
                     .ToStringTicksToPeriod(true));
             }
             return base.GetLabel();
@@ -22,7 +23,7 @@ namespace Fortified
         public override AlertReport GetReport()
         {
             Map map = Find.CurrentMap;
-            if (map != null && GameComponent_StrikeMapTimers.Comp.times.ContainsKey(map))
+            if (GameComponent_StrikeMapTimers.Observing(map))
             {
                 return AlertReport.Active;
             }
@@ -32,7 +33,7 @@ namespace Fortified
         public override TaggedString GetExplanation()
         {
             Map map = Find.CurrentMap;
-            if (map == null || !GameComponent_StrikeMapTimers.Comp.times.TryGetValue(map, out int endTick))
+            if (map == null || GameComponent_StrikeMapTimers.Comp?.times == null || !GameComponent_StrikeMapTimers.Comp.times.TryGetValue(map, out int endTick))
                 return base.GetExplanation();
 
             var sb = new StringBuilder();
@@ -70,7 +71,7 @@ namespace Fortified
         protected override void OnClick()
         {
             Map map = Find.CurrentMap;
-            if (map == null || !GameComponent_StrikeMapTimers.Comp.times.ContainsKey(map)) return;
+            if (!GameComponent_StrikeMapTimers.Observing(map)) return;
 
             string confirmText = IsMissileBase(map) && !IsDestroyedMissileBase(map)
                 ? "FFF.Alert.Exist.EndEarly.Confirm.MissileBase".Translate()
@@ -91,7 +92,7 @@ namespace Fortified
 
         private static void EndObservationEarly(Map map)
         {
-            GameComponent_StrikeMapTimers.Comp.times.Remove(map);
+            GameComponent_StrikeMapTimers.Comp?.times?.Remove(map);
 
             Messages.Message(
                 "FFF.Alert.Exist.ObservationEnded".Translate(),

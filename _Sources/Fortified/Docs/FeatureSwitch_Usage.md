@@ -6,7 +6,7 @@ FFF 是很多模組的共同前置。比較重的系統（有 Harmony 熱路徑�
 |---|---|
 | `FFF_FeatureDef` | 一項功能：補丁分類、依賴、自動偵測的型別、需要的模組 |
 | `FFF_FeatureRequestDef` | 使用者模組宣告要用哪些功能 |
-| `FFF_FeatureAttribute` | 標在 `MapComponent`／`WorldComponent`／`GameComponent` 上，功能未啟用時不建立 |
+| `FFF_FeatureAttribute` | 標在遊戲會自動建立的型別上：`MapComponent`／`WorldComponent`／`GameComponent`、`Alert`、`SectionLayer`、全圖 `MapDrawLayer`。功能未啟用時不建立 |
 | `FFF_FeatureRegistry` | 啟動時決定啟用哪些功能；`IsEnabled(...)` 查詢 |
 | `DefRenameDef` | defName 對照（`renames`）與型別對照（`typeRenames`） |
 
@@ -59,6 +59,8 @@ public class MapComponent_SeaPlatformSupport : MapComponent { ... }
 ```
 
 功能未啟用時，`Map`／`World`／`Game` 的 `FillComponents` 之後會把它移除。讀到含有這個元件資料的存檔時，資料會被丟掉；功能未啟用通常代表相依模組已移除，這是預期行為。
+
+**警示與繪圖層也要標**：原版會為 `Alert`、`SectionLayer`、全圖 `MapDrawLayer` 的每個子類別自動建立實例，不經過任何 Def。它們通常會讀功能的元件；功能關閉時元件已被移除，沒標的話每次更新都會丟例外（2026-11-27 實際遇到：`Alert_StrikeMapExpiry` 讀不到被移除的 `GameComponent_StrikeMapTimers`）。標了 `[FFF_Feature]` 後，FFF 在 `AlertsReadout`、`Section` 建構與 `MapDrawer.EnsureGlobalLayersInitialized` 之後把它們移除。經由 Def 建立的東西（Comp、WorkGiver、ITab）不需要標：有 Def 用到功能型別時功能就會自動啟用。
 
 只在特定地圖需要的元件，也可以用 1.7 原版的 `CustomMapComponent`：元件繼承它，再列在 `MapGeneratorDef.customMapComponents`，只有那種地圖才會建立。
 

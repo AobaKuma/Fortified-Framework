@@ -179,7 +179,7 @@ namespace Fortified
             {
                 f.TryAffectGoodwillWith(attackerFaction, f.GoodwillToMakeHostile(attackerFaction), true);
             }
-            GameComponent_StrikeMapTimers.Comp.times.SetOrAdd(map, Find.TickManager.TicksGame + GenDate.TicksPerDay * 2);
+            GameComponent_StrikeMapTimers.Comp?.times?.SetOrAdd(map, Find.TickManager.TicksGame + GenDate.TicksPerDay * 2);
 
             // 排程所有齊射
             ArtilleryStrikeUtility.QueueSalvo(map, this);

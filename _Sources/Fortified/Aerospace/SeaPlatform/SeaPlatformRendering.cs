@@ -412,6 +412,7 @@ namespace Fortified
     /// 海面背景層：只在高空格輸出四邊形（地形本身 dontRender）。著色器排在 1900，比地形（2000）早；
     /// 柱身（1950）蓋在它上面，平台與平台側面再蓋在柱身上面。平台影子在同一個著色器裡算。
     /// </summary>
+    [FFF_Feature(FFF_AerospaceFeatures.SeaPlatform)]
     public class SectionLayer_SeaPlatformSea : SectionLayer
     {
         public SectionLayer_SeaPlatformSea(Section section) : base(section)
@@ -475,6 +476,7 @@ namespace Fortified
     /// 柱身層：每個區塊只畫柱身落在自己範圍內的那一段（貼圖座標跟著裁），排在 1950：海面之上、甲板（2000）與平台側面之下。
     /// 支柱生成或移除時，柱身蓋到的區塊都會標記重建。
     /// </summary>
+    [FFF_Feature(FFF_AerospaceFeatures.SeaPlatform)]
     public class SectionLayer_SeaPlatformPillars : SectionLayer
     {
         public SectionLayer_SeaPlatformPillars(Section section) : base(section)

@@ -14,6 +14,7 @@ namespace Fortified
     /// ‧ 左鍵循環：依次把相機跳到各枚導彈的落點（支援跨地圖切換）。<br/>
     /// ‧ 右鍵反向循環。
     /// </summary>
+    [FFF_Feature(FFF_AerospaceFeatures.Missiles)]
     public class Alert_PlayerMissilesInFlight : Alert
     {
         // 相機循環索引（跨幀持久）。

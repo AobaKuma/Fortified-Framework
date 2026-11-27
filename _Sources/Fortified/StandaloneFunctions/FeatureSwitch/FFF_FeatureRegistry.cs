@@ -354,7 +354,9 @@ public static class FFF_FeatureRegistry
     private static void BuildGatedComponents()
     {
         gatedComponents = new Dictionary<Type, string>();
-        foreach (Type baseType in new[] { typeof(MapComponent), typeof(WorldComponent), typeof(GameComponent) })
+        // 遊戲會為每個非抽象子類別自動建立實例的基底型別；標了 FFF_Feature 的子類別在功能關閉時要移除。
+        foreach (Type baseType in new[] { typeof(MapComponent), typeof(WorldComponent), typeof(GameComponent),
+                     typeof(Alert), typeof(MapDrawLayer) })
         {
             foreach (Type type in baseType.AllSubclassesNonAbstract())
             {
@@ -389,7 +391,97 @@ public static class FFF_FeatureRegistry
     internal static bool AnyGatedComponents => gatedComponents != null;
 }
 
-/// <summary>FillComponents 之後移除未啟用功能的元件。沒有任何標記的元件時只多一次判斷。</summary>
+/// <summary>
+/// 建立之後移除未啟用功能的元件、警示與繪圖層。沒有任何標記的型別時只多一次判斷。
+/// 警示與繪圖層的補丁各自檢查目標存在（本檔也編進 1.6），找不到時不掛。
+/// </summary>
+[HarmonyPatch]
+public static class Patch_FFF_FeatureAlerts
+{
+    private static MethodBase target;
+
+    public static bool Prepare()
+    {
+        target = AccessTools.Constructor(typeof(AlertsReadout), Type.EmptyTypes);
+        return target != null && AccessTools.Field(typeof(AlertsReadout), "AllAlerts") != null;
+    }
+
+    public static MethodBase TargetMethod() => target;
+
+    public static void Postfix(List<Alert> ___AllAlerts)
+    {
+        if (FFF_FeatureRegistry.AnyGatedComponents)
+        {
+            ___AllAlerts?.RemoveAll(a => a != null && !FFF_FeatureRegistry.ComponentAllowed(a.GetType()));
+        }
+    }
+}
+
+/// <summary>每個地圖區塊的 SectionLayer（含動態層清單）。</summary>
+[HarmonyPatch]
+public static class Patch_FFF_FeatureSectionLayers
+{
+    private static MethodBase target;
+
+    public static bool Prepare()
+    {
+        target = AccessTools.Constructor(typeof(Section), new[] { typeof(IntVec3), typeof(Map) });
+        return target != null && AccessTools.Field(typeof(Section), "layers") != null;
+    }
+
+    public static MethodBase TargetMethod() => target;
+
+    public static void Postfix(Section __instance)
+    {
+        if (!FFF_FeatureRegistry.AnyGatedComponents)
+        {
+            return;
+        }
+        RemoveGated(Traverse.Create(__instance).Field("layers").GetValue() as System.Collections.IList);
+        RemoveGated(Traverse.Create(__instance).Field("dynamic").GetValue() as System.Collections.IList);
+    }
+
+    internal static void RemoveGated(System.Collections.IList list)
+    {
+        if (list == null)
+        {
+            return;
+        }
+        for (int i = list.Count - 1; i >= 0; i--)
+        {
+            object item = list[i];
+            if (item != null && !FFF_FeatureRegistry.ComponentAllowed(item.GetType()))
+            {
+                list.RemoveAt(i);
+            }
+        }
+    }
+}
+
+/// <summary>1.7 的全圖繪圖層（MapDrawer.EnsureGlobalLayersInitialized）。</summary>
+[HarmonyPatch]
+public static class Patch_FFF_FeatureGlobalLayers
+{
+    private static MethodBase target;
+
+    public static bool Prepare()
+    {
+        target = AccessTools.Method(typeof(MapDrawer), "EnsureGlobalLayersInitialized");
+        return target != null && AccessTools.Field(typeof(MapDrawer), "global") != null;
+    }
+
+    public static MethodBase TargetMethod() => target;
+
+    public static void Postfix(MapDrawer __instance)
+    {
+        if (FFF_FeatureRegistry.AnyGatedComponents)
+        {
+            Patch_FFF_FeatureSectionLayers.RemoveGated(Traverse.Create(__instance).Field("global").GetValue() as System.Collections.IList);
+        }
+    }
+}
+
+/// <summary>FillComponents 之後移除未啟用功能的元件。</summary>
 [HarmonyPatch]
 public static class Patch_FFF_FeatureComponents
 {

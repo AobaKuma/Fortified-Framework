@@ -4,6 +4,7 @@ using Verse;
 
 namespace Fortified
 {
+    [FFF_Feature(FFF_AerospaceFeatures.Transfer)]
     public class Alert_TransferCountdown : Alert
     {
         private readonly List<Thing> culprits = new List<Thing>();
@@ -67,6 +68,7 @@ namespace Fortified
     }
 
     /// <summary>倒數期間：在原地圖、不在船體範圍內的殖民者/囚犯/奴隸/動物（左鍵輪流跳轉）。</summary>
+    [FFF_Feature(FFF_AerospaceFeatures.Transfer)]
     public class Alert_TransferPawnsOutside : Alert
     {
         private readonly List<Pawn> culprits = new List<Pawn>();
@@ -113,6 +115,7 @@ namespace Fortified
     }
 
     /// <summary>倒數期間：站在船上可用引擎尾焰區的 pawn。</summary>
+    [FFF_Feature(FFF_AerospaceFeatures.Transfer)]
     public class Alert_TransferExhaustDanger : Alert_Critical
     {
         private readonly List<Pawn> culprits = new List<Pawn>();

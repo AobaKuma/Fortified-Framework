@@ -38,6 +38,7 @@ namespace Fortified
         }
     }
 
+    [FFF_Feature(FFF_AerospaceFeatures.Missiles)]
     public class Alert_CommsJammed : Alert
     {
         public Alert_CommsJammed()

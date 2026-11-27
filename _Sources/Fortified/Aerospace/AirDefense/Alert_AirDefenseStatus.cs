@@ -9,6 +9,7 @@ namespace Fortified
     /// 只要玩家在當前地圖持有任一 BVR 裝置即啟動；與 <see cref="Alert_IncomingAirThreat"/> 完全獨立，
     /// 無論是否有來襲目標，系統狀態始終可見。
     /// </summary>
+    [FFF_Feature(FFF_AerospaceFeatures.Missiles)]
     public class Alert_AirDefenseStatus : Alert
     {
         private static MapComponent_AirDefense PlayerComp()

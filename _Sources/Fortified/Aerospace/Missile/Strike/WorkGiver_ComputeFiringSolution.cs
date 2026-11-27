@@ -89,6 +89,7 @@ namespace Fortified
     }
 
     /// <summary>有打擊任務的下一波現在就能整波發射（docs/BVR_波次打擊規劃.md §10-4）。</summary>
+    [FFF_Feature(FFF_AerospaceFeatures.Missiles)]
     public class Alert_StrikeWaveReady : Alert
     {
         private readonly List<Thing> culprits = new List<Thing>();
@@ -128,6 +129,7 @@ namespace Fortified
     }
 
     /// <summary>有人工版任務在等彈道計算，但該地圖沒有能做研究工作的殖民者。</summary>
+    [FFF_Feature(FFF_AerospaceFeatures.Missiles)]
     public class Alert_StrikeComputationPending : Alert
     {
         private readonly List<Thing> culprits = new List<Thing>();

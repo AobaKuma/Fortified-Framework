@@ -17,6 +17,7 @@ namespace Fortified
     /// 只影響繪製：房間與氣密以正交相鄰判定，斜角相接的船體本來就是封閉的。
     /// </summary>
     [StaticConstructorOnStartup]
+    [FFF_Feature(FFF_AerospaceFeatures.Transfer)]
     public class SectionLayer_PlatformHull : SectionLayer
     {
         private enum CornerType

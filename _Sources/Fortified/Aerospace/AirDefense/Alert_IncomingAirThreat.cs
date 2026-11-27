@@ -6,6 +6,7 @@ using Verse;
 
 namespace Fortified
 {
+    [FFF_Feature(FFF_AerospaceFeatures.Missiles)]
     public class Alert_IncomingAirThreat : Alert
     {
         // 只提示由玩家防禦的波次（玩家自家基地防空）；玩家進攻敵方基地時，敵方防空不在此提示。

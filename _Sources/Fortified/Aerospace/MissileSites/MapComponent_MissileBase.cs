@@ -719,7 +719,7 @@ namespace Fortified
         }
 
         /// <summary>此圖仍在導彈／砲擊命中後的觀察時長內（<see cref="GameComponent_StrikeMapTimers.times"/>，由 <see cref="Patch_ShouldBeRemoved"/> 保留地圖）。</summary>
-        private bool UnderObservation => GameComponent_StrikeMapTimers.Comp.times.ContainsKey(map);
+        private bool UnderObservation => GameComponent_StrikeMapTimers.Observing(map);
 
         /// <summary>地圖（含子口袋地圖）上是否還有關圖時會失蹤的玩家單位，或正飛往此圖的玩家運輸艙。</summary>
         private bool AnyPlayerUnitAtMap()

@@ -702,4 +702,5 @@
   <FFF.Aerospace.Settings.Category>Fortified - 导弹与防空</FFF.Aerospace.Settings.Category>
   <FFF.BVR.EngagementVetoed>这次接战被其他模组的规则挡下。</FFF.BVR.EngagementVetoed>
   <FFF.Aerospace.Settings.MultiplayerWarning>已启用 Multiplayer。导弹、防空与转移舰没有做联机同步，在联机游戏中使用会不同步；本页影响战斗的设置，每位玩家都必须相同。</FFF.Aerospace.Settings.MultiplayerWarning>
+  <FFF.Alert.Exist.Label>地图可见计时：{0}</FFF.Alert.Exist.Label>
 </LanguageData>

@@ -702,4 +702,5 @@ Click to cycle through the remaining targets.</FFF.MissileBase.ObjectivesAlertDe
   <FFF.Aerospace.Settings.Category>Fortified - missiles and air defense</FFF.Aerospace.Settings.Category>
   <FFF.BVR.EngagementVetoed>Engagement blocked by another mod's rule.</FFF.BVR.EngagementVetoed>
   <FFF.Aerospace.Settings.MultiplayerWarning>Multiplayer is active. Missiles, air defense and the transfer ship are not synchronized for multiplayer: using them in a multiplayer game will desync. Combat settings on this page must be the same for every player.</FFF.Aerospace.Settings.MultiplayerWarning>
+  <FFF.Alert.Exist.Label>Map visible countdown: {0}</FFF.Alert.Exist.Label>
 </LanguageData>

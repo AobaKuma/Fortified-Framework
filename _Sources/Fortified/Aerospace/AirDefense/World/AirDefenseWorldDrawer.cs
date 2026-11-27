@@ -9,6 +9,7 @@ using Verse;
 namespace Fortified
 {
     /// <summary>Cached small circles; no world-grid flood fills or shared radius-ring cache.</summary>
+    [StaticConstructorOnStartup]
     public class AirDefenseWorldDrawer
     {
         // Lines exactly on the sphere are hidden by the terrain mesh; vanilla world paths and radius rings

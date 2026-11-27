@@ -7,6 +7,7 @@ using Verse;
 
 namespace Fortified
 {
+    [FFF_Feature(FFF_AerospaceFeatures.Missiles)]
     public class Alert_WorldIncoming : Alert
     {
         private int jumpIndex = -1;

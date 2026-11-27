@@ -68,6 +68,7 @@ namespace Fortified
     /// 邊框只畫在平台格上，側面只畫進高空格（第二格不是高空時只畫上半），材質用原版 Transparent。
     /// 掛了 <see cref="SeaPlatformPropsExtension"/> 的地形在任何地圖都會畫，但側面只畫進不畫的地形（dontRender）。
     /// </summary>
+    [FFF_Feature(FFF_AerospaceFeatures.SeaPlatform)]
     public class SectionLayer_SeaPlatformProps : SectionLayer
     {
         [Flags]

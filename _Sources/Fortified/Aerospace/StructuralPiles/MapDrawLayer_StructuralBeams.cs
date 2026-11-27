@@ -14,6 +14,7 @@ namespace Fortified
     /// ——原版 MapDrawer 不會清除 globalDirtyFlags，掛旗標會導致每幀重建——改由
     /// <see cref="SetDirty"/> 直接標記，<see cref="MapDrawer.DrawMapMesh"/> 會在下一幀重建。
     /// </summary>
+    [FFF_Feature(FFF_AerospaceFeatures.StructuralPiles)]
     public class MapDrawLayer_StructuralBeams : MapDrawLayer
     {
         /// <summary>樑段長度上限（格）；長樑切成數段以免貼圖被過度拉伸。</summary>

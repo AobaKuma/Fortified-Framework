@@ -11,7 +11,7 @@ namespace Fortified
         public static void postfix(Map ___map, ref bool __result)
         {
             if(__result) return;
-            if (GameComponent_StrikeMapTimers.Comp.times.ContainsKey(___map))
+            if (GameComponent_StrikeMapTimers.Observing(___map))
             { 
                 __result = true;
             } 
