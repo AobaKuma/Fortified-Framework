@@ -11,10 +11,6 @@
       <packageId>AOBA.Framework</packageId>
       <displayName>Fortified Features Framework</displayName>
     </li>
-    <li>
-      <packageId>Ludeon.RimWorld.Odyssey</packageId>
-      <displayName>Odyssey</displayName>
-    </li>
   </modDependencies>
   <loadAfter>
     <li>AOBA.Framework</li>

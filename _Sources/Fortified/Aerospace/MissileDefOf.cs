@@ -6,42 +6,42 @@ namespace Fortified
 {
     /// <summary>
     /// 飛彈、防空、電子戰、砲兵、導彈陣地用到的 Def（2026-11 從 DMSE 移入，合併原本散在各檔的 DMSE_*DefOf）。
-    /// 這些 Def 在 1.7/Odyssey 載入資料夾，所以不併進 FFF_DefOf（它也編進 1.6）。舊名稱由 FFF_MissileRenames 對照。
+    /// 這些 Def 在 1.7/Missiles 載入資料夾（不需要 Odyssey），1.6 沒有，所以不併進 FFF_DefOf（它也編進 1.6）。舊名稱由 FFF_MissileRenames 對照。
     /// </summary>
     [DefOf]
     public static class FFF_MissileDefOf
     {
-        [MayRequireOdyssey] public static FleckDef FFF_InterceptFlash;
-        [MayRequireOdyssey] public static FleckDef FFF_InterceptFireball;
-        [MayRequireOdyssey] public static FleckDef FFF_InterceptFireGlow;
-        [MayRequireOdyssey] public static FleckDef FFF_InterceptSparkStar;
-        [MayRequireOdyssey] public static FleckDef FFF_InterceptSmokeBall;
-        [MayRequireOdyssey] public static FleckDef FFF_InterceptDebrisMinor;
-        [MayRequireOdyssey] public static FleckDef FFF_DebrisTrailPuff;
-        [MayRequireOdyssey] public static ThingDef FFF_InterceptDebrisChunk;
-        [MayRequireOdyssey] public static ThingDef FFF_Filth_MetalScrap;
-        [MayRequireOdyssey] public static FleckDef FFF_LaunchSmokeLight;
-        [MayRequireOdyssey] public static FleckDef FFF_LaunchSmokeMid;
-        [MayRequireOdyssey] public static FleckDef FFF_LaunchSmokeDark;
-        [MayRequireOdyssey] public static FleckDef FFF_LaunchGroundCloud;
-        [MayRequireOdyssey] public static JobDef FFF_OperateWarRoom;
-        [MayRequireOdyssey] public static DutyDef FFF_ManMissileStations;
-        [MayRequireOdyssey] public static DutyDef FFF_MissileCrewDefend;
-        [MayRequireOdyssey] public static KeyBindingDef FFF_MissileAssemblyPrevious;
-        [MayRequireOdyssey] public static KeyBindingDef FFF_MissileAssemblyNext;
-        [MayRequireOdyssey] public static JobDef FFF_DeliverMissileResource;
-        [MayRequireOdyssey] public static JobDef FFF_AssembleMissile;
-        [MayRequireOdyssey] public static JobDef FFF_LoadMissileLauncher;
-        [MayRequireOdyssey] public static JobDef FFF_HaulMissileToRack;
-        [MayRequireOdyssey] public static JobDef FFF_UnloadMissileRack;
-        [MayRequireOdyssey] public static JobDef FFF_ManMissileLauncher;
-        [MayRequireOdyssey] public static StatCategoryDef FFF_MissileProfile;
-        [MayRequireOdyssey] public static StatCategoryDef FFF_MissileMechanics;
-        [MayRequireOdyssey] public static StatCategoryDef FFF_MissilePart;
-        [MayRequireOdyssey] public static JobDef FFF_AssembleBallisticSilo;
-        [MayRequireOdyssey] public static JobDef FFF_ComputeFiringSolution;
-        [MayRequireOdyssey] public static RulePackDef FFF_NamerStrikeMission;
-        [MayRequireOdyssey] public static JobDef FFF_FireManPortableSAM;
+        public static FleckDef FFF_InterceptFlash;
+        public static FleckDef FFF_InterceptFireball;
+        public static FleckDef FFF_InterceptFireGlow;
+        public static FleckDef FFF_InterceptSparkStar;
+        public static FleckDef FFF_InterceptSmokeBall;
+        public static FleckDef FFF_InterceptDebrisMinor;
+        public static FleckDef FFF_DebrisTrailPuff;
+        public static ThingDef FFF_InterceptDebrisChunk;
+        public static ThingDef FFF_Filth_MetalScrap;
+        public static FleckDef FFF_LaunchSmokeLight;
+        public static FleckDef FFF_LaunchSmokeMid;
+        public static FleckDef FFF_LaunchSmokeDark;
+        public static FleckDef FFF_LaunchGroundCloud;
+        public static JobDef FFF_OperateWarRoom;
+        public static DutyDef FFF_ManMissileStations;
+        public static DutyDef FFF_MissileCrewDefend;
+        public static KeyBindingDef FFF_MissileAssemblyPrevious;
+        public static KeyBindingDef FFF_MissileAssemblyNext;
+        public static JobDef FFF_DeliverMissileResource;
+        public static JobDef FFF_AssembleMissile;
+        public static JobDef FFF_LoadMissileLauncher;
+        public static JobDef FFF_HaulMissileToRack;
+        public static JobDef FFF_UnloadMissileRack;
+        public static JobDef FFF_ManMissileLauncher;
+        public static StatCategoryDef FFF_MissileProfile;
+        public static StatCategoryDef FFF_MissileMechanics;
+        public static StatCategoryDef FFF_MissilePart;
+        public static JobDef FFF_AssembleBallisticSilo;
+        public static JobDef FFF_ComputeFiringSolution;
+        public static RulePackDef FFF_NamerStrikeMission;
+        public static JobDef FFF_FireManPortableSAM;
 
         static FFF_MissileDefOf()
         {

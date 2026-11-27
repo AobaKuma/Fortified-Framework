@@ -74,7 +74,8 @@ namespace Fortified
         public float altitudeOffset = 0f;
 
         /// <summary>
-        /// 已裝填單元的井蓋疊圖，依容器順序顯示；每張皆以建築中心及 drawSize 繪製。
+        /// 已裝填單元的井蓋疊圖，依容器順序顯示；每張皆以建築中心及 drawSize 繪製，
+        /// 並跟建築貼圖做相同的旋轉／鏡像（方向貼圖的建築旋轉時井蓋不轉）。
         /// 設定後改畫井蓋，不受 renderStoredBody=false 影響，也不繪製導彈彈體。
         /// </summary>
         public List<string> loadedHatchTexPaths;
@@ -123,15 +124,24 @@ namespace Fortified
             if (cachedHatches == null)
                 cachedHatches = new Graphic[Props.loadedHatchTexPaths.Count];
 
-            Vector3 pos = parent.DrawPos;
+            // 井蓋與建築貼圖畫在同一張畫布上，因此跟建築貼圖做完全相同的變換：
+            //   單張貼圖（或缺方向貼圖而退化的 Multi）→ 依朝向旋轉；
+            //   方向貼圖（Graphic_Multi）→ 不旋轉，貼圖本身已是該朝向；東西向由鏡像合成時井蓋一併鏡像。
+            Rot4 rot = parent.Rotation;
+            Graphic building = parent.Graphic;
+            bool rotate = building == null || building.ShouldDrawRotated;
+            bool flip = building != null && ((rot == Rot4.East && building.EastFlipped) || (rot == Rot4.West && building.WestFlipped));
+            // 建築貼圖的 graphicData.drawOffset（含 drawOffsetNorth/East/...）也要套上，否則井蓋與貼圖錯位。
+            Vector3 pos = parent.DrawPos + (building?.DrawOffset(rot) ?? Vector3.zero);
             pos.y = AltitudeLayer.BuildingOnTop.AltitudeFor() + Props.altitudeOffset;
-            Matrix4x4 matrix = Matrix4x4.TRS(pos, Quaternion.Euler(0f, parent.Rotation.AsAngle, 0f),
+            Matrix4x4 matrix = Matrix4x4.TRS(pos, Quaternion.Euler(0f, rotate ? rot.AsAngle : 0f, 0f),
                 new Vector3(drawSize.x, 1f, drawSize.y));
+            Mesh mesh = MeshPool.GridPlane(Vector2.one, flip);
             for (int i = 0; i < count; i++)
             {
                 Graphic hatch = cachedHatches[i] ?? (cachedHatches[i] = GraphicDatabase.Get<Graphic_Single>(
                     Props.loadedHatchTexPaths[i], ShaderDatabase.Cutout, drawSize, Color.white));
-                Graphics.DrawMesh(MeshPool.GridPlane(Vector2.one, false), matrix, hatch.MatAt(parent.Rotation, parent), 0);
+                Graphics.DrawMesh(mesh, matrix, hatch.MatAt(rot, parent), 0);
             }
         }
 

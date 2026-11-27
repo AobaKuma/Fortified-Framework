@@ -83,10 +83,10 @@ namespace Fortified
     [DefOf]
     public static class MissilePartCategoryDefOf
     {
-        [MayRequireOdyssey] public static MissilePartCategoryDef Warhead;
-        [MayRequireOdyssey] public static MissilePartCategoryDef Guidance;
-        [MayRequireOdyssey] public static MissilePartCategoryDef Propulsion;
-        [MayRequireOdyssey] public static MissilePartCategoryDef Payload;
+        public static MissilePartCategoryDef Warhead;
+        public static MissilePartCategoryDef Guidance;
+        public static MissilePartCategoryDef Propulsion;
+        public static MissilePartCategoryDef Payload;
 
         static MissilePartCategoryDefOf() => DefOfHelper.EnsureInitializedInCtor(typeof(MissilePartCategoryDefOf));
     }
@@ -94,10 +94,10 @@ namespace Fortified
     [DefOf]
     public static class MissileSizeClassDefOf
     {
-        [MayRequireOdyssey] public static MissileSizeClassDef Loitering;
-        [MayRequireOdyssey] public static MissileSizeClassDef Light;
-        [MayRequireOdyssey] public static MissileSizeClassDef Medium;
-        [MayRequireOdyssey] public static MissileSizeClassDef Ballistic;
+        public static MissileSizeClassDef Loitering;
+        public static MissileSizeClassDef Light;
+        public static MissileSizeClassDef Medium;
+        public static MissileSizeClassDef Ballistic;
 
         static MissileSizeClassDefOf() => DefOfHelper.EnsureInitializedInCtor(typeof(MissileSizeClassDefOf));
     }
@@ -105,9 +105,9 @@ namespace Fortified
     [DefOf]
     public static class HoldFireClassDefOf
     {
-        [MayRequireOdyssey] public static HoldFireClassDef Loitering;
-        [MayRequireOdyssey] public static HoldFireClassDef DropPod;
-        [MayRequireOdyssey] public static HoldFireClassDef Ballistic;
+        public static HoldFireClassDef Loitering;
+        public static HoldFireClassDef DropPod;
+        public static HoldFireClassDef Ballistic;
 
         static HoldFireClassDefOf() => DefOfHelper.EnsureInitializedInCtor(typeof(HoldFireClassDefOf));
     }
@@ -115,8 +115,8 @@ namespace Fortified
     [DefOf]
     public static class CombatDomainDefOf
     {
-        [MayRequireOdyssey] public static CombatDomainDef Air;
-        [MayRequireOdyssey] public static CombatDomainDef Underwater;
+        public static CombatDomainDef Air;
+        public static CombatDomainDef Underwater;
 
         static CombatDomainDefOf() => DefOfHelper.EnsureInitializedInCtor(typeof(CombatDomainDefOf));
     }

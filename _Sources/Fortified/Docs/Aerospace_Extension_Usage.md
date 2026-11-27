@@ -1,6 +1,6 @@
 # 航太框架擴充指南（防空、飛彈）
 
-適用：RimWorld 1.7＋Odyssey。程式在 `Fortified.dll`（namespace `Fortified`，只編進 1.7），Def 在 `1.7/Odyssey/`。
+適用：RimWorld 1.7，不需要 Odyssey。程式在 `Fortified.dll`（namespace `Fortified`，只編進 1.7），Def 在 `1.7/Missiles/`。
 
 範例 mod：`_Sources/Examples/AerospaceSample/`（不隨 FFF 發布；複製到 `Mods/` 就能載入，原始碼在 `Source/`）。
 
@@ -96,7 +96,7 @@
 
 ## 分類 Def
 
-原本是列舉的四種分類改成 Def，出貨的 defName 與舊列舉名稱相同，既有 XML（`<category>Guidance</category>`、`<sizeClass>Ballistic</sizeClass>`、`<domains><li>Underwater</li></domains>`）不必改。定義在 FFF `1.7/Odyssey/Defs/Missile/FFF_MissileClasses.xml`。
+原本是列舉的四種分類改成 Def，出貨的 defName 與舊列舉名稱相同，既有 XML（`<category>Guidance</category>`、`<sizeClass>Ballistic</sizeClass>`、`<domains><li>Underwater</li></domains>`）不必改。定義在 FFF `1.7/Missiles/Defs/Missile/FFF_MissileClasses.xml`。
 
 | Def | 出貨的值 | 新增後的效果 |
 |---|---|---|
@@ -109,7 +109,7 @@ C# 用 `MissilePartCategoryDefOf`、`MissileSizeClassDefOf`、`HoldFireClassDefO
 
 ## 存檔相容
 
-改類別名稱或 defName 時，在自己的 mod 加一份 `Fortified.DefRenameDef`：`renames` 對照 defName，`typeRenames` 對照類別（舊名寫完整名稱，新名寫型別）。範例見 FFF `1.7/Odyssey/Defs/Aerospace/FFF_MissileRenames.xml`。
+改類別名稱或 defName 時，在自己的 mod 加一份 `Fortified.DefRenameDef`：`renames` 對照 defName，`typeRenames` 對照類別（舊名寫完整名稱，新名寫型別）。範例見 FFF `1.7/Missiles/Defs/Missile/FFF_MissileRenames.xml`。
 
 ## 還不支援
 

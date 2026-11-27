@@ -59,5 +59,16 @@ namespace Fortified
         /// <summary>發射時消耗一枚；整疊直接 Remove＋Destroy 會把整疊當一發用掉。</summary>
         public static void ConsumeOne(Thing missile)
             => missile.SplitOff(1).Destroy(DestroyMode.Vanish);
+
+        /// <summary>
+        /// 升空用的朝向：垂直發射（<see cref="MissileLaunchMode.Vertical"/>）一律朝北（畫面上的「向上」），
+        /// 不隨建築旋轉；其餘沿用建築朝向。讓可旋轉的垂直發射架（例如地面豎立發射架）不會把導彈橫著射出去。
+        /// </summary>
+        public static Rot4 LaunchRotationOf(Thing launcher)
+        {
+            if (launcher == null) { return Rot4.North; }
+            MissileRackExtension ext = launcher.def.GetModExtension<MissileRackExtension>();
+            return ext != null && ext.launchMode == MissileLaunchMode.Vertical ? Rot4.North : launcher.Rotation;
+        }
     }
 }

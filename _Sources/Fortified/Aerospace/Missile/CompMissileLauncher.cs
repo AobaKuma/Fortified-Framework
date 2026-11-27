@@ -142,7 +142,7 @@ namespace Fortified
         public ThingDef LaunchDefFor(MissileConfig config) => config?.body?.launchProjectile ?? LaunchSkyfallerDef;
 
         /// <summary>離場彈的生成格（建築中心沿朝向偏移 <see cref="LaunchForwardCells"/>）。</summary>
-        private IntVec3 LaunchCell => parent.Position + (parent.Rotation.AsIntVec3 * LaunchForwardCells);
+        private IntVec3 LaunchCell => parent.Position + (MissileRackUtility.LaunchRotationOf(parent).AsIntVec3 * LaunchForwardCells);
 
         /// <summary>
         /// 以此設定朝 <paramref name="target"/> 發射時，升空到世界航跡出現的 tick 數：
@@ -151,12 +151,12 @@ namespace Fortified
         public int DepartureTicksFor(MissileConfig config, PlanetTile target)
         {
             if (parent.Map == null) { return MissileProjectileMaker.DepartureTicksOf(LaunchDefFor(config)); }
-            return MissileProjectileMaker.DepartureTicksOf(LaunchDefFor(config), LaunchCell, parent.Map.Size, parent.Rotation,
+            return MissileProjectileMaker.DepartureTicksOf(LaunchDefFor(config), LaunchCell, parent.Map.Size, MissileRackUtility.LaunchRotationOf(parent),
                 MissileProjectileMaker.DepartureHeading(parent.Map.Tile, target), LauncherFacingAngle);
         }
 
         /// <summary>有旋轉砲頭時採用砲頭實際角度；一般發射架沿用建築朝向。</summary>
-        protected float LauncherFacingAngle => parent.TryGetComp<CompTurretFacingRenderer>()?.CurRotation ?? parent.Rotation.AsAngle;
+        protected float LauncherFacingAngle => parent.TryGetComp<CompTurretFacingRenderer>()?.CurRotation ?? MissileRackUtility.LaunchRotationOf(parent).AsAngle;
 
         /// <summary>
         /// 可供世界打擊的在架彈藥（含被打擊任務保留者）：Rail 為容器中可進攻的導彈；
@@ -468,7 +468,7 @@ namespace Fortified
             {
                 def = launchDef,
                 cell = LaunchCell,
-                rotation = parent.Rotation,
+                rotation = MissileRackUtility.LaunchRotationOf(parent),
                 hasLaunchAngle = parent.TryGetComp<CompTurretFacingRenderer>() != null,
                 launchAngle = LauncherFacingAngle,
                 hasLaunchOffset = hasLaunchOffset,

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
   <!-- 飛彈與海上平台的功能開關（Fortified/Docs/FeatureSwitch_Usage.md）。2026-11 從 DMSE 移入。
+       放在 1.7/Missiles，不需要 Odyssey（LoadFolders.xml）。
        飛彈本體、裝配、打擊、BVR 防空、雷達、電子戰、砲兵、導彈陣地、封鎖空域目前互相取用元件，先合成一項功能。 -->
   <Fortified.FFF_FeatureDef>
     <defName>FFF_Feature_Missiles</defName>

@@ -129,7 +129,7 @@ namespace Fortified
 
             // 初始升空角沿用建築朝向；具旋轉砲頭的發射架採用砲頭角度。heading 留給升空後的攔截航線。
             heading ??= MissileProjectileMaker.IncomingBearing(target, parent.Position);
-            float launchAngle = parent.TryGetComp<CompTurretFacingRenderer>()?.CurRotation ?? parent.Rotation.AsAngle;
+            float launchAngle = parent.TryGetComp<CompTurretFacingRenderer>()?.CurRotation ?? MissileRackUtility.LaunchRotationOf(parent).AsAngle;
             CompTurretFacingRenderer facing = parent.TryGetComp<CompTurretFacingRenderer>();
             MapComponent_StrikePlanner planner = StrikeReservation.PlannerFor(parent);
             ThingOwner owner = HeldContainer;
@@ -166,7 +166,7 @@ namespace Fortified
                 {
                     def = round.launchDef,
                     cell = parent.Position,
-                    rotation = parent.Rotation,
+                    rotation = MissileRackUtility.LaunchRotationOf(parent),
                     hasLaunchAngle = facing != null,
                     launchAngle = launchAngle,
                     hasLaunchOffset = round.hasLaunchOffset,

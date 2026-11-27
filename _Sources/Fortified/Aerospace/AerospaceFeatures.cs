@@ -1,7 +1,8 @@
 namespace Fortified
 {
     /// <summary>
-    /// 轉移船、結構樁、飛彈、防空等功能開關名稱（<see cref="FFF_FeatureDef"/> 在 1.7/Odyssey/Defs/FFF_AerospaceFeatures.xml）。
+    /// 轉移船、結構樁、飛彈、防空等功能開關名稱（<see cref="FFF_FeatureDef"/>：轉移船、結構樁在 1.7/Odyssey/Defs/Aerospace/FFF_AerospaceFeatures.xml，只在 Odyssey 啟用時載入；
+    /// 飛彈、海上平台在 1.7/Missiles/Defs/Aerospace/FFF_MissileFeatures.xml，一律載入）。
     /// 沒有模組用到時，轉移船的補丁不掛、元件不建立（docs: FeatureSwitch_Usage.md）。
     /// </summary>
     public static class FFF_AerospaceFeatures
