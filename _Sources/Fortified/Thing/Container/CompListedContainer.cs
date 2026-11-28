@@ -16,6 +16,8 @@ namespace Fortified
 
 		public FactionDef lootFaction;
 
+		public bool externalUnlock = false;
+
 		public CompProperties_ListedContainer()
 		{
 			compClass = typeof(CompListedContainer);
@@ -44,7 +46,7 @@ namespace Fortified
 
 		public override AcceptanceReport CanInteract(Pawn activateBy = null, bool checkOptionalItems = true)
 		{
-			if (!Container.locked)
+			if (!Container.locked || Props.externalUnlock)
 			{
 				return false;
 			}
@@ -53,8 +55,8 @@ namespace Fortified
 
 		public override IEnumerable<FloatMenuOption> CompFloatMenuOptions(Pawn selPawn)
 		{
-			if (!Container.locked)
-			{
+			if (!Container.locked || Props.externalUnlock)
+            {
 				yield break;
 			}
 			foreach (FloatMenuOption item in base.CompFloatMenuOptions(selPawn))
@@ -65,8 +67,8 @@ namespace Fortified
 
 		public override IEnumerable<Gizmo> CompGetGizmosExtra()
 		{
-			if (!Container.locked)
-			{
+			if (!Container.locked || Props.externalUnlock)
+            {
 				yield break;
 			}
 			foreach (Gizmo item in base.CompGetGizmosExtra())
@@ -84,5 +86,14 @@ namespace Fortified
 		{
 			Container.locked = false;
 		}
+
+        public override void ReceiveCompSignal(string signal)
+        {
+            base.ReceiveCompSignal(signal);
+			if(signal == "FFF_ActivatedByAccessKey")
+			{
+                Container.locked = false;
+            }
+        }
 	}
 }
