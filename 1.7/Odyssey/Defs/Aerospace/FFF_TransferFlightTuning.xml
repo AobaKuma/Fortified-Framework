@@ -15,6 +15,7 @@
     <exhaustDamageIntervalTicks>60</exhaustDamageIntervalTicks>
     <carryNaturalRock>true</carryNaturalRock>
     <footprintCacheTicks>250</footprintCacheTicks>
+    <dockedSubstructureMassPerCell>0.02</dockedSubstructureMassPerCell>   <!-- 停泊夾具帶走的逆重船：每格底板的質量權重（大型結構樁為 4） -->
     <impactMinEngines>3</impactMinEngines>             <!-- §9 撞擊飛行 -->
     <planetkillerMinEngines>4</planetkillerMinEngines>
     <impactFadeSeconds>5</impactFadeSeconds>

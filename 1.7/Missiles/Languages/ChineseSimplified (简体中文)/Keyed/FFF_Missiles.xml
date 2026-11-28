@@ -119,7 +119,7 @@
   <FFF.BVR.PawnsMissingText>一艘载有你的人员的运输舱被防空火力击落。没有找到遗体，以下人员失踪：\n\n{0}</FFF.BVR.PawnsMissingText>
   <FFF.BVR.InterceptRiskRoute>航线穿越{0}在{1}周边的封锁区（{2} 格）。其防空火力会攻击所有飞越的载具。</FFF.BVR.InterceptRiskRoute>
   <FFF.BVR.InterceptRiskDestination>{0}处于{1}的防空雷达覆盖之下。降落到那里的运输舱和穿梭机可能会被击落。</FFF.BVR.InterceptRiskDestination>
-  <FFF.BVR.InterceptRiskFooter>被击落的运输舱或穿梭机上的人员将会失踪。重力船和转移舰被击中只会受损，不会被摧毁。\n\n仍要发射吗？</FFF.BVR.InterceptRiskFooter>
+  <FFF.BVR.InterceptRiskFooter>被击落的运输舱或穿梭机上的人员将会失踪。逆重船和转移舰被击中只会受损，不会被摧毁。\n\n仍要发射吗？</FFF.BVR.InterceptRiskFooter>
   <FFF.Blockade.Engaging>{0}在{1}的防空系统向{2}开火。</FFF.Blockade.Engaging>
   <FFF.Blockade.PodDown>{0}：一艘运输工具被{1}击落，剩余 {2} 艘。</FFF.Blockade.PodDown>
   <FFF.Blockade.GravshipHit>{0}被{1}的防空火力击中，船上 {2} 座建筑受损。</FFF.Blockade.GravshipHit>
@@ -237,7 +237,7 @@
   <FFF.Card.LaunchMode.Tilt>倾斜发射</FFF.Card.LaunchMode.Tilt>
   <FFF.Card.LaunchMode.Vertical>垂直发射</FFF.Card.LaunchMode.Vertical>
   <FFF.Card.LaunchMode.Both>倾斜或垂直</FFF.Card.LaunchMode.Both>
-  <FFF.Card.LaunchModeDesc>决定可装填此弹的发射平台。倾斜发射架可旋转、可建于重力船上；垂直发射架只有单一朝向，不可建于重力船上。发射方式不影响弹道数值。</FFF.Card.LaunchModeDesc>
+  <FFF.Card.LaunchModeDesc>决定可装填此弹的发射平台。倾斜发射架可旋转、可建于逆重船上；垂直发射架只有单一朝向，不可建于逆重船上。发射方式不影响弹道数值。</FFF.Card.LaunchModeDesc>
   <FFF.Card.Platforms>可用发射平台</FFF.Card.Platforms>
   <FFF.Card.PlatformsDesc>可装填这种导弹的发射平台（依各平台的固定储存设定）。点击下方链接查看平台。</FFF.Card.PlatformsDesc>
   <FFF.Card.Customize>装配位置</FFF.Card.Customize>

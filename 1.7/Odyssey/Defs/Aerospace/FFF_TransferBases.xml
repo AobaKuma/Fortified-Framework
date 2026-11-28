@@ -4,7 +4,7 @@
   <!-- 轉移引擎與可拆平台地形的抽象母 Def（2026-11-27 自 DMSE 移入；DMSE 保留 DMSE_* 別名指向這裡）。
        Abstract parents for transfer engines and removable platform terrain. Moved from DMSE on 2026-11-27. -->
 
-  <!-- 轉移引擎：Heavy 地形即可（不需重力船底板），可旋轉，尾焰朝背面；放置規則 PlaceWorker_TransferEngine。 -->
+  <!-- 轉移引擎：Heavy 地形即可（不需逆重船底板），可旋轉，尾焰朝背面；放置規則 PlaceWorker_TransferEngine。 -->
   <ThingDef ParentName="BuildingBase" Name="FFF_TransferEngineBase" Abstract="True">
     <rotatable>true</rotatable>
     <passability>Impassable</passability>

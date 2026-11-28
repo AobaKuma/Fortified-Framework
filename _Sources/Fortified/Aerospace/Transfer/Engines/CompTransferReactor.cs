@@ -52,6 +52,11 @@ namespace Fortified
             PileNetwork net = MapComponent_PileNetwork.For(parent.Map)?.NetworkContaining(parent);
             if (net == null)
             {
+                // 建在逆重船上（作為逆重船設施）時不顯示「不在船上」
+                if (CompTransferEngine.IsOnGravshipSubstructure(parent))
+                {
+                    return null;
+                }
                 return TransferText.Key("FFF.Transfer.Reactor.NotOnShip", parent).Translate(Props.supportedEngines);
             }
             TransferShipSurvey survey = net.Survey;

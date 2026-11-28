@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
-  <Loitering.description>巡飞弹：最前期的超视距武器，倾斜发射、可上重力船。速度慢，但雷达截面小、较晚被发现。</Loitering.description>
+  <Loitering.description>巡飞弹：最前期的超视距武器，倾斜发射、可上逆重船。速度慢，但雷达截面小、较晚被发现。</Loitering.description>
   <Loitering.label>巡飞弹</Loitering.label>
   <Light.description>轻型导弹：中短程防空或对地打击，由多联装发射架装填。</Light.description>
   <Light.label>轻型导弹</Light.label>
   <Medium.description>中型导弹：巡航或反弹道任务，可在物品或储存架上自定义部件。</Medium.description>
   <Medium.label>中型导弹</Medium.label>
-  <Ballistic.description>弹道导弹：长程打击，只能垂直发射、不可建于重力船上，直接在发射井上建造与装配。</Ballistic.description>
+  <Ballistic.description>弹道导弹：长程打击，只能垂直发射、不可建于逆重船上，直接在发射井上建造与装配。</Ballistic.description>
   <Ballistic.label>弹道导弹</Ballistic.label>
 </LanguageData>

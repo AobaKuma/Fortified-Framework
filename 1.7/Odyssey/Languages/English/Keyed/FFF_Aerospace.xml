@@ -168,6 +168,16 @@
   <FFF.Transfer.Issue.NearbyUnlinkedPiles>{0} nearby piles are not linked to this ship.</FFF.Transfer.Issue.NearbyUnlinkedPiles>
   <FFF.Transfer.Issue.TornApart>{0} buildings cross the hull edge and will be destroyed.</FFF.Transfer.Issue.TornApart>
   <FFF.Transfer.Issue.TornApartWithPawns>{0} of them have people inside.</FFF.Transfer.Issue.TornApartWithPawns>
+  <FFF.Transfer.Issue.DockedGravships>{0} gravships are clamped and will transfer with the ship ({1} substructure cells, +{2} mass weight).</FFF.Transfer.Issue.DockedGravships>
+  <FFF.Transfer.Issue.IdleClamps>{0} docking clamps are engaged but not holding a gravship (no power, or no gravship substructure next to them).</FFF.Transfer.Issue.IdleClamps>
+  <FFF.Transfer.Clamp.Toggle>Clamp gravship</FFF.Transfer.Clamp.Toggle>
+  <FFF.Transfer.Clamp.ToggleDesc>While engaged and powered, the clamp holds the gravship whose substructure it stands on or touches. The whole gravship transfers with this ship and adds mass. Release it to let the gravship fly on its own.</FFF.Transfer.Clamp.ToggleDesc>
+  <FFF.Transfer.Clamp.LockedDuringLaunch>Cannot change the clamp during the launch countdown.</FFF.Transfer.Clamp.LockedDuringLaunch>
+  <FFF.Transfer.Clamp.Status.Docked>Holding {0} ({1} substructure cells).</FFF.Transfer.Clamp.Status.Docked>
+  <FFF.Transfer.Clamp.Status.Released>Released.</FFF.Transfer.Clamp.Status.Released>
+  <FFF.Transfer.Clamp.Status.Unpowered>No power: not holding.</FFF.Transfer.Clamp.Status.Unpowered>
+  <FFF.Transfer.Clamp.Status.NoGravship>No gravship substructure on or next to the clamp.</FFF.Transfer.Clamp.Status.NoGravship>
+  <FFF.Transfer.Clamp.Status.NotOnShip>Not on a transfer ship hull: must stand fully inside the structural pile hull.</FFF.Transfer.Clamp.Status.NotOnShip>
   <FFF.Transfer.Issue.Contested>Takes {0} cells from other ships ({1} buildings, {2} piles).</FFF.Transfer.Issue.Contested>
   <FFF.Transfer.Issue.PendingBeamOrders>{0} piles have unfinished beams.</FFF.Transfer.Issue.PendingBeamOrders>
   <FFF.Transfer.Engine.Stats>Transfer thrust {0}, fuel consumption {1}</FFF.Transfer.Engine.Stats>

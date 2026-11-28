@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
-  <Loitering.description>巡飛彈：最前期的超視距武器，傾斜發射、可上重力船。速度慢，但雷達截面小、較晚被發現。</Loitering.description>
   <Loitering.label>巡飛彈</Loitering.label>
-  <Light.description>輕型導彈：中短程防空或對地打擊，由多聯裝發射架裝填。</Light.description>
+  <Loitering.description>一種速度慢但雷達截面積小而更難被發現的超視距武器。</Loitering.description>
+
   <Light.label>輕型導彈</Light.label>
-  <Medium.description>中型導彈：巡航或反彈道任務，可在物品或儲存架上自定義部件。</Medium.description>
+  <Light.description>一種長度在4公尺內，多用於中短程防空或對地打擊的制導飛彈彈體，能透過多種類型的發射平台發射。</Light.description>
+
   <Medium.label>中型導彈</Medium.label>
-  <Ballistic.description>彈道導彈：長程打擊，只能垂直發射、不可建於重力船上，直接在發射井上建造與裝配。</Ballistic.description>
+  <Medium.description>一種長度在10公尺內，承擔超音速巡航或反彈道任務的大尺寸飛彈彈體，能夠裝配載荷來承擔多樣的打擊任務。</Medium.description>
+
   <Ballistic.label>彈道導彈</Ballistic.label>
+  <Ballistic.description>一種用於長程打擊並在飛行過程中會穿過大氣層邊緣的重型導彈，只能夠透過垂直發射井或塔架來發射、建造與裝配。</Ballistic.description>
 </LanguageData>

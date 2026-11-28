@@ -37,6 +37,9 @@ namespace Fortified
         /// <summary>結構網路 footprint 快取的有效期（tick）；超過後被查詢時重算。</summary>
         public int footprintCacheTicks = 250;
 
+        /// <summary>停泊夾具帶著走的逆重飛船：每格底板（不在結構樁船體內的部分）增加的質量權重。</summary>
+        public float dockedSubstructureMassPerCell = 0.02f;
+
         /// <summary>撞擊飛行（設計稿 §9）所需的運作中撞擊用引擎（熱核推進器）數。</summary>
         public int impactMinEngines = 3;
 

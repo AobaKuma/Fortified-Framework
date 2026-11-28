@@ -258,6 +258,33 @@ namespace Fortified
                 issues.Add(new TransferIssue(TransferIssueSeverity.Warning, TransferText.Key("FFF.Transfer.Issue.NearbyUnlinkedPiles", console).Translate(piles.Count)).With(piles));
             }
 
+            // ── 停泊夾具：連接中的逆重飛船、夾持中卻沒有連上的夾具 ──
+            List<Building_GravEngine> docked = net.DockedGravships;
+            if (docked.Count > 0)
+            {
+                issues.Add(new TransferIssue(TransferIssueSeverity.Warning, TransferText.Key("FFF.Transfer.Issue.DockedGravships", console)
+                    .Translate(docked.Count, net.DockedCells.Count, net.DockedMassWeight.ToString("0.##"))).With(docked));
+            }
+            List<Thing> idleClamps = new List<Thing>();
+            List<CompDockingClamp> clamps = MapComponent_PileNetwork.For(map).Clamps;
+            for (int i = 0; i < clamps.Count; i++)
+            {
+                CompDockingClamp clamp = clamps[i];
+                if (!clamp.Engaged || !net.covered.Contains(clamp.parent.Position))
+                {
+                    continue;
+                }
+                DockingClampStatus status = clamp.StatusFor(net.HullFootprint, out _);
+                if (status == DockingClampStatus.Unpowered || status == DockingClampStatus.NoGravship)
+                {
+                    idleClamps.Add(clamp.parent);
+                }
+            }
+            if (idleClamps.Count > 0)
+            {
+                issues.Add(new TransferIssue(TransferIssueSeverity.Warning, TransferText.Key("FFF.Transfer.Issue.IdleClamps", console).Translate(idleClamps.Count)).With(idleClamps));
+            }
+
             List<Thing> tornApart = net.TornApartThings;
             if (tornApart.Count > 0)
             {

@@ -65,8 +65,8 @@ namespace Fortified
             this.network = network;
         }
 
-        /// <summary>W：網路內所有樁的 Σ massWeight。</summary>
-        public float MassWeight => network.massWeight;
+        /// <summary>W：網路內所有樁的 Σ massWeight，加上停泊逆重飛船的底板質量（<see cref="PileNetwork.DockedMassWeight"/>）。</summary>
+        public float MassWeight => network.massWeight + network.DockedMassWeight;
 
         /// <summary>起飛（離軌點火）推重比：含一次性助推器。起飛門檻與離軌點火時間用這個。</summary>
         public float TWR => MassWeight > 0f ? (totalThrust + boosterThrust) / MassWeight : 0f;
@@ -121,7 +121,8 @@ namespace Fortified
                     s.consoles.Add(console);
                 }
                 ITransferFuelSource fuel = TransferFuelSources.TryGetSource(b);
-                if (fuel != null)
+                // 停泊的逆重飛船上的燃料槽留給它自己：抵達後放開夾具還要能自行起飛
+                if (fuel != null && !network.DockedCells.Contains(b.Position))
                 {
                     s.fuelSources.Add(fuel);
                 }

@@ -121,7 +121,7 @@
     <selectable>true</selectable>
   </WorldObjectDef>
 
-  <!-- 防空封鎖的主動攔截：追向穿越封鎖圈的載具（運輸艙、穿梭機、重力船、轉移艦）。 -->
+  <!-- 防空封鎖的主動攔截：追向穿越封鎖圈的載具（運輸艙、穿梭機、逆重船、轉移艦）。 -->
   <WorldObjectDef>
     <defName>FFF_BlockadeInterceptor</defName>
     <label>blockade interceptor</label>

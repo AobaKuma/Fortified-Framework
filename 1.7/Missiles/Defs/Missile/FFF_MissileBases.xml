@@ -44,7 +44,7 @@
     </projectile>
   </ThingDef>
 
-  <!-- 傾斜發射平台（可旋轉、可上重力船；同層建築不得貼靠）。建造分頁由子 Def 指定。
+  <!-- 傾斜發射平台（可旋轉、可上逆重船；同層建築不得貼靠）。建造分頁由子 Def 指定。
        Tilt launcher: rotatable, allowed on gravships, keeps a 1-cell gap from same-layer buildings. Set designationCategory in the child. -->
   <ThingDef Name="FFF_TiltLauncherBase" ParentName="BuildingBase" Abstract="True">
     <category>Building</category>
@@ -62,7 +62,7 @@
     </placeWorkers>
   </ThingDef>
 
-  <!-- 垂直發射平台（單一朝向、禁止建於重力船 substructure）。建造分頁由子 Def 指定。
+  <!-- 垂直發射平台（單一朝向、禁止建於逆重船 substructure）。建造分頁由子 Def 指定。
        Vertical launcher: single facing, not allowed on gravship substructure. Set designationCategory in the child. -->
   <ThingDef Name="FFF_VerticalLauncherBase" ParentName="BuildingBase" Abstract="True">
     <category>Building</category>
@@ -75,7 +75,7 @@
     <leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
     <drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
     <placeWorkers>
-      <!-- 原版：落在 substructure（重力船地板）時禁止放置。 -->
+      <!-- 原版：落在 substructure（逆重船地板）時禁止放置。 -->
       <li>PlaceWorker_InvalidOverSubstructure</li>
     </placeWorkers>
   </ThingDef>

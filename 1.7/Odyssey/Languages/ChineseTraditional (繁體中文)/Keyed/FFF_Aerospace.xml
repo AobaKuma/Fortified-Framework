@@ -34,13 +34,13 @@
   <!-- EN: Even while the navigation console flashes crimson warnings, it still shows a feasible acceleration profile.\n\nBy activating the hard impact protocol, the fusion core will output full power under overload conditions, allowing the nuclear-thermal engines to accelerate this ship toward the planet at maximum thrust and collide with the surface.\n\nThis will turn both the ship and its momentum into an effective high-yield kinetic weapon, causing irreversible damage to the planet.\n\n\n\nAre you sure you want to proceed? -->
   <FFF.Flight.Impact.Confirm>即使航路主機顯示著鮮紅的警告，但它仍然顯示了一條可行的加速方案。\n\n透過啟動終結巡航協議，聚變核心將在超載功率下輸出完整的動力，使得核熱引擎能夠以最大功率推動向著這顆星球加速並撞擊地表。\n\n這將使得整艘船以及推動的天體成為有效且威力十足的質量武器，並對於星球造成無法復原的破壞。\n\n\n\n你確定要這麼做嗎?</FFF.Flight.Impact.Confirm>
   <!-- EN: The gravship streaked across the sky with a blazing trail, carrying immense mass into the ground. The horizon turned to light, and violent shockwaves followed, becoming storms and earthquakes that swept across the planet's surface. In a short span, countless lives and landscapes were erased in this world-shattering impact. -->
-  <FFF.Impact.Ending.Intro>重力船拖著長長的軌跡劃過天際，攜帶著巨大的質量沒入大地，地平線上的一切都變成了光，隨之而來的是劇烈的衝擊波化作風暴與地震席捲了整顆星球的地表，在短時間內無數的生靈與景觀在這場驚天動地的碰撞之中煙飛灰滅。</FFF.Impact.Ending.Intro>
+  <FFF.Impact.Ending.Intro>逆重船拖著長長的軌跡劃過天際，攜帶著巨大的質量沒入大地，地平線上的一切都變成了光，隨之而來的是劇烈的衝擊波化作風暴與地震席捲了整顆星球的地表，在短時間內無數的生靈與景觀在這場驚天動地的碰撞之中煙飛灰滅。</FFF.Impact.Ending.Intro>
   <!-- EN: Fortunately, this was not the maximum output the nuclear-thermal engines could produce. After the disaster subsided, most people on the surface survived. Whatever the purpose behind it, this impact will be remembered forever in the history of this world. -->
   <FFF.Impact.Ending.Outro>所幸這並不是核熱引擎所能發揮得最大功率，在災害平息後地表上的大部分人類都得以倖存。無論其背後的目的如何，這顆星球的歷史都將永遠記住這一場撞擊。</FFF.Impact.Ending.Outro>
   <!-- EN: We may never know whether the crew aboard the gravship escaped at the last moment, or vanished entirely in the impact. -->
-  <FFF.Impact.Ending.Aboard>我們無法得知重力船上的船員們是否在最後一刻逃出生天，又或者徹底地隨著撞擊煙飛灰滅。</FFF.Impact.Ending.Aboard>
+  <FFF.Impact.Ending.Aboard>我們無法得知逆重船上的船員們是否在最後一刻逃出生天，又或者徹底地隨著撞擊煙飛灰滅。</FFF.Impact.Ending.Aboard>
   <!-- EN: The gravship cut across the sky, every thermonuclear engine roaring with overwhelming thrust, before driving its colossal mass into the ground. A wall of rising crust surged along the horizon, and the following superheated shockwave became a sea of fire that swept across the planet's surface. -->
-  <FFF.Impact.Planetkiller.Ending.Intro>重力船拖著長長的軌跡劃過天際，每一具熱核引擎都在噴湧著蓬勃的推力，攜帶著巨大的質量沒入大地，在地平線上升起了一面由地殼升起的牆，隨之而來的是劇烈的高溫衝擊波化作火海席捲了整顆星球的地表。</FFF.Impact.Planetkiller.Ending.Intro>
+  <FFF.Impact.Planetkiller.Ending.Intro>逆重船拖著長長的軌跡劃過天際，每一具熱核引擎都在噴湧著蓬勃的推力，攜帶著巨大的質量沒入大地，在地平線上升起了一面由地殼升起的牆，隨之而來的是劇烈的高溫衝擊波化作火海席捲了整顆星球的地表。</FFF.Impact.Planetkiller.Ending.Intro>
   <!-- EN: This was heavenly fire, a supreme judgment said in sacred texts to belong only to gods.\n\nWhatever the purpose behind it, this world may not recover life for a hundred years. -->
   <FFF.Impact.Planetkiller.Ending.Outro>這是天火，這是遠超神明的力量在這顆星球上降下的天災。\n\n無論其背後的目的如何，這顆星球或許在百年內都無法重現生機。</FFF.Impact.Planetkiller.Ending.Outro>
   <!-- EN: No one could survive a cataclysm of this scale. -->
@@ -335,6 +335,16 @@
   <FFF.Transfer.Issue.TornApart>{0} 座建築跨越船體邊緣，將被摧毀。</FFF.Transfer.Issue.TornApart>
   <!-- EN: {0} of them have people inside. -->
   <FFF.Transfer.Issue.TornApartWithPawns>其中 {0} 座內有人。</FFF.Transfer.Issue.TornApartWithPawns>
+  <FFF.Transfer.Issue.DockedGravships>{0} 艘逆重船已被夾持，將隨船轉移（{1} 格底板，質量權重 +{2}）。</FFF.Transfer.Issue.DockedGravships>
+  <FFF.Transfer.Issue.IdleClamps>{0} 座停泊夾具處於夾持狀態，但沒有夾住逆重船（沒有電力，或旁邊沒有逆重船底板）。</FFF.Transfer.Issue.IdleClamps>
+  <FFF.Transfer.Clamp.Toggle>夾持逆重船</FFF.Transfer.Clamp.Toggle>
+  <FFF.Transfer.Clamp.ToggleDesc>夾持且通電時，夾住夾具所在或相鄰底板所屬的逆重船。整艘逆重船會隨本船轉移並增加質量。放開後逆重船可自行起降。</FFF.Transfer.Clamp.ToggleDesc>
+  <FFF.Transfer.Clamp.LockedDuringLaunch>起飛倒數中不能變更夾具。</FFF.Transfer.Clamp.LockedDuringLaunch>
+  <FFF.Transfer.Clamp.Status.Docked>夾持中：{0}（{1} 格底板）。</FFF.Transfer.Clamp.Status.Docked>
+  <FFF.Transfer.Clamp.Status.Released>已放開。</FFF.Transfer.Clamp.Status.Released>
+  <FFF.Transfer.Clamp.Status.Unpowered>沒有電力，未夾持。</FFF.Transfer.Clamp.Status.Unpowered>
+  <FFF.Transfer.Clamp.Status.NoGravship>夾具所在與相鄰格沒有逆重船底板。</FFF.Transfer.Clamp.Status.NoGravship>
+  <FFF.Transfer.Clamp.Status.NotOnShip>不在轉移船船體上：必須整個位於結構樁船體範圍內。</FFF.Transfer.Clamp.Status.NotOnShip>
   <!-- EN: Takes {0} cells from other ships ({1} buildings, {2} piles). -->
   <FFF.Transfer.Issue.Contested>將從其他船帶走 {0} 格（{1} 座建築、{2} 根樁）。</FFF.Transfer.Issue.Contested>
   <!-- EN: {0} piles have unfinished beams. -->

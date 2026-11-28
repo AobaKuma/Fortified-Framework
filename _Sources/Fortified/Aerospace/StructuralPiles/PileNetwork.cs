@@ -57,6 +57,16 @@ namespace Fortified
 
         private readonly List<IntVec3> footprintCells = new List<IntVec3>();
 
+        // 只由結構樁決定的船體（不含停泊的逆重飛船底板）；停泊夾具的「是否在船上」以此判斷，避免循環
+        private HashSet<IntVec3> hull;
+
+        private readonly List<IntVec3> hullCells = new List<IntVec3>();
+
+        // 停泊夾具併入的逆重飛船底板（不在 hull 內的部分）
+        private readonly HashSet<IntVec3> dockedCells = new HashSet<IntVec3>();
+
+        private readonly List<Building_GravEngine> dockedGravships = new List<Building_GravEngine>();
+
         private readonly List<IntVec3> contestedFootprintCells = new List<IntVec3>();
 
         private readonly List<Thing> tornApartThings = new List<Thing>();
@@ -94,7 +104,7 @@ namespace Fortified
 
         /// <summary>
         /// 船體範圍：覆蓋聯集 ∩ 非虛空格 ∩ 至少一根覆蓋它的樁接受其地形，
-        /// 且以共邊相連的方式與某根樁的佔地格地形連通。
+        /// 且以共邊相連的方式與某根樁的佔地格地形連通；再加上停泊夾具連接的逆重飛船整片有效底板（<see cref="DockedCells"/>）。
         /// </summary>
         public HashSet<IntVec3> Footprint
         {
@@ -113,6 +123,39 @@ namespace Fortified
                 return footprintCells;
             }
         }
+
+        /// <summary>只由結構樁決定的船體範圍（不含停泊的逆重飛船底板）。</summary>
+        public HashSet<IntVec3> HullFootprint
+        {
+            get
+            {
+                EnsureFootprint();
+                return hull;
+            }
+        }
+
+        /// <summary>經停泊夾具併入船體、原本不在 <see cref="HullFootprint"/> 內的逆重飛船底板格。</summary>
+        public HashSet<IntVec3> DockedCells
+        {
+            get
+            {
+                EnsureFootprint();
+                return dockedCells;
+            }
+        }
+
+        /// <summary>經停泊夾具連接、會隨船轉移的逆重飛船（重力引擎）。</summary>
+        public List<Building_GravEngine> DockedGravships
+        {
+            get
+            {
+                EnsureFootprint();
+                return dockedGravships;
+            }
+        }
+
+        /// <summary>停泊的逆重飛船增加的質量權重：<see cref="DockedCells"/> 格數 × 每格質量。</summary>
+        public float DockedMassWeight => DockedCells.Count * (FFF_AerospaceDefOf.FFF_TransferFlightTuning?.dockedSubstructureMassPerCell ?? 0f);
 
         /// <summary>爭議格中實際會被帶走的部分（非虛空）。</summary>
         public List<IntVec3> ContestedFootprintCells
@@ -146,6 +189,14 @@ namespace Fortified
         public void InvalidateFootprint()
         {
             footprint = null;
+            hull = null;
+            survey = null;
+        }
+
+        /// <summary>停泊狀態改變（夾具夾持/放開、通電、建造/拆除）：下次查詢時重算 footprint，樁的連通拓撲沿用。</summary>
+        public void InvalidateDocking()
+        {
+            footprintTick = -1;
             survey = null;
         }
 
@@ -190,7 +241,7 @@ namespace Fortified
         {
             int cacheTicks = FFF_AerospaceDefOf.FFF_TransferFlightTuning?.footprintCacheTicks ?? 250;
             int now = Find.TickManager.TicksGame;
-            if (footprint != null && now - footprintTick <= cacheTicks)
+            if (footprint != null && footprintTick >= 0 && now - footprintTick <= cacheTicks)
             {
                 return;
             }
@@ -200,16 +251,21 @@ namespace Fortified
 
         public void RecalculateFootprint()
         {
-            bool rebuild = footprint == null;
+            bool rebuild = hull == null;
             if (rebuild)
+            {
+                hull = new HashSet<IntVec3>();
+            }
+            if (footprint == null)
             {
                 footprint = new HashSet<IntVec3>();
             }
-            // 地形沒變時連通分量也不會變，footprint 原樣保留；只有多格建築可能增減，割裂判定照常重算
+            // 地形沒變時連通分量也不會變，hull 原樣保留；停泊（夾具、電力、逆重飛船底板）與多格建築可能增減，照常重算
             if (SyncTopology() || rebuild)
             {
                 RebuildFootprintFromTopology();
             }
+            ApplyDocking();
             RecalculateTornApart();
         }
 
@@ -277,8 +333,8 @@ namespace Fortified
         /// <summary>船體 = 與任一根樁的佔地格同屬一個連通塊的候選格（樁腳下斷開的碎塊不算）。</summary>
         private void RebuildFootprintFromTopology()
         {
-            footprint.Clear();
-            footprintCells.Clear();
+            hull.Clear();
+            hullCells.Clear();
             contestedFootprintCells.Clear();
             if (topology == null)
             {
@@ -317,11 +373,47 @@ namespace Fortified
                 {
                     continue;
                 }
-                footprint.Add(c);
-                footprintCells.Add(c);
+                hull.Add(c);
+                hullCells.Add(c);
                 if (contestedCells.Contains(c))
                 {
                     contestedFootprintCells.Add(c);
+                }
+            }
+        }
+
+        /// <summary>footprint = hull ∪ 停泊夾具連接的逆重飛船有效底板。</summary>
+        private void ApplyDocking()
+        {
+            footprint.Clear();
+            footprint.UnionWith(hull);
+            footprintCells.Clear();
+            footprintCells.AddRange(hullCells);
+            dockedCells.Clear();
+            dockedGravships.Clear();
+            MapComponent_PileNetwork comp = MapComponent_PileNetwork.For(map);
+            if (comp == null || hull.Count == 0)
+            {
+                return;
+            }
+            List<CompDockingClamp> clamps = comp.Clamps;
+            for (int i = 0; i < clamps.Count; i++)
+            {
+                CompDockingClamp clamp = clamps[i];
+                if (!covered.Contains(clamp.parent.Position)
+                    || clamp.StatusFor(hull, out Building_GravEngine gravship) != DockingClampStatus.Docked
+                    || dockedGravships.Contains(gravship))
+                {
+                    continue;
+                }
+                dockedGravships.Add(gravship);
+                foreach (IntVec3 c in gravship.ValidSubstructure)
+                {
+                    if (footprint.Add(c))
+                    {
+                        footprintCells.Add(c);
+                        dockedCells.Add(c);
+                    }
                 }
             }
         }

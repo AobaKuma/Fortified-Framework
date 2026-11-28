@@ -23,6 +23,8 @@ namespace Fortified
 
         private readonly List<CompTransferConsole> consoles = new List<CompTransferConsole>();
 
+        private readonly List<CompDockingClamp> clamps = new List<CompDockingClamp>();
+
         private bool dirty = true;
 
         public MapComponent_PileNetwork(Map map) : base(map)
@@ -93,7 +95,8 @@ namespace Fortified
             List<PileNetwork> nets = Networks;
             for (int i = 0; i < nets.Count; i++)
             {
-                if (nets[i].covered.Contains(thing.Position) && PileNetwork.FullyInside(thing, nets[i].Footprint))
+                // 停泊的逆重飛船底板不在樁的覆蓋範圍內，但上面的建築一樣隨船移動
+                if ((nets[i].covered.Contains(thing.Position) || nets[i].DockedCells.Contains(thing.Position)) && PileNetwork.FullyInside(thing, nets[i].Footprint))
                 {
                     return nets[i];
                 }
@@ -116,6 +119,40 @@ namespace Fortified
         public void DeregisterConsole(CompTransferConsole console)
         {
             consoles.Remove(console);
+        }
+
+        // ── 停泊夾具 ─────────────────────────────────────────────────────────
+
+        public List<CompDockingClamp> Clamps => clamps;
+
+        public void RegisterClamp(CompDockingClamp clamp)
+        {
+            if (!clamps.Contains(clamp))
+            {
+                clamps.Add(clamp);
+                // 依 thingIDNumber 排序：同一艘逆重飛船被兩座夾具夾住時，結果在每次重算間一致
+                clamps.SortBy(c => c.parent.thingIDNumber);
+            }
+            NotifyDockingChanged();
+        }
+
+        public void DeregisterClamp(CompDockingClamp clamp)
+        {
+            clamps.Remove(clamp);
+            NotifyDockingChanged();
+        }
+
+        /// <summary>夾具狀態改變：各網路的 footprint 下次查詢時重算。</summary>
+        public void NotifyDockingChanged()
+        {
+            if (dirty)
+            {
+                return;
+            }
+            for (int i = 0; i < networks.Count; i++)
+            {
+                networks[i].InvalidateDocking();
+            }
         }
 
         // ── 施工單查詢 ───────────────────────────────────────────────────────

@@ -17,10 +17,10 @@
   <FFF.Flight.Select.Desc>由于舰船上存在有效装置，因此请选择此次巡航的模式:</FFF.Flight.Select.Desc>
   <FFF.Flight.Impact.Header>你的殖民者知道这是一个切实存在但不明智的选择。</FFF.Flight.Impact.Header>
   <FFF.Flight.Impact.Confirm>即使航路主机显示着鲜红的警告，但它仍然显示了一条可行的加速方案。\n\n透过启动终结巡航协议，聚变核心将在超载功率下输出完整的动力，使得核热引擎能够以最大功率推动向着这颗星球加速并撞击地表。\n\n这将使得整艘船以及推动的天体成为有效且威力十足的质量武器，并对于星球造成无法复原的破坏。\n\n\n\n你确定要这么做吗?</FFF.Flight.Impact.Confirm>
-  <FFF.Impact.Ending.Intro>重力船拖着长长的轨迹划过天际，携带着巨大的质量没入大地，地平线上的一切都变成了光，随之而来的是剧烈的冲击波化作风暴与地震席卷了整颗星球的地表，在短时间内无数的生灵与景观在这场惊天动地的碰撞之中烟飞灰灭。</FFF.Impact.Ending.Intro>
+  <FFF.Impact.Ending.Intro>逆重船拖着长长的轨迹划过天际，携带着巨大的质量没入大地，地平线上的一切都变成了光，随之而来的是剧烈的冲击波化作风暴与地震席卷了整颗星球的地表，在短时间内无数的生灵与景观在这场惊天动地的碰撞之中烟飞灰灭。</FFF.Impact.Ending.Intro>
   <FFF.Impact.Ending.Outro>所幸这并非核热引擎所能发挥得最大功率，在灾害平息后地表上的大部分人类都得以幸存。无论其背后的目的如何，这颗星球的历史都将永远记住这一场撞击。</FFF.Impact.Ending.Outro>
-  <FFF.Impact.Ending.Aboard>我们无法得知重力船上的船员们是否在最后一刻逃出生天，又或者彻底地随着撞击烟飞灰灭。</FFF.Impact.Ending.Aboard>
-  <FFF.Impact.Planetkiller.Ending.Intro>重力船拖着长长的轨迹划过天际，每一具热核引擎都在喷涌着蓬勃的推力，携带着巨大的质量没入大地，在地平线上升起了一面由地壳升起的墙，随之而来的是剧烈的高温冲击波化作火海席卷了整颗星球的地表。</FFF.Impact.Planetkiller.Ending.Intro>
+  <FFF.Impact.Ending.Aboard>我们无法得知逆重船上的船员们是否在最后一刻逃出生天，又或者彻底地随着撞击烟飞灰灭。</FFF.Impact.Ending.Aboard>
+  <FFF.Impact.Planetkiller.Ending.Intro>逆重船拖着长长的轨迹划过天际，每一具热核引擎都在喷涌着蓬勃的推力，携带着巨大的质量没入大地，在地平线上升起了一面由地壳升起的墙，随之而来的是剧烈的高温冲击波化作火海席卷了整颗星球的地表。</FFF.Impact.Planetkiller.Ending.Intro>
   <FFF.Impact.Planetkiller.Ending.Outro>这是天火，这是远超神明的力量，在这颗星球上降下的天灾。\n\n无论其背后的目的如何，这颗星球或许在百年内都无法重现生机。</FFF.Impact.Planetkiller.Ending.Outro>
   <FFF.Impact.Planetkiller.Ending.Aboard>没有人能够在这样的天灾下保全性命。</FFF.Impact.Planetkiller.Ending.Aboard>
   <FFF.Platform.Remove>拆除平台</FFF.Platform.Remove>
@@ -168,6 +168,16 @@
   <FFF.Transfer.Issue.NearbyUnlinkedPiles>附近有 {0} 根结构桩未与这艘船相连。</FFF.Transfer.Issue.NearbyUnlinkedPiles>
   <FFF.Transfer.Issue.TornApart>{0} 座建筑跨越船体边缘，将被摧毁。</FFF.Transfer.Issue.TornApart>
   <FFF.Transfer.Issue.TornApartWithPawns>其中 {0} 座内有人。</FFF.Transfer.Issue.TornApartWithPawns>
+  <FFF.Transfer.Issue.DockedGravships>{0} 艘逆重船已被夹持，将随船转移（{1} 格底板，质量权重 +{2}）。</FFF.Transfer.Issue.DockedGravships>
+  <FFF.Transfer.Issue.IdleClamps>{0} 座停泊夹具处于夹持状态，但没有夹住逆重船（没有电力，或旁边没有逆重船底板）。</FFF.Transfer.Issue.IdleClamps>
+  <FFF.Transfer.Clamp.Toggle>夹持逆重船</FFF.Transfer.Clamp.Toggle>
+  <FFF.Transfer.Clamp.ToggleDesc>夹持且通电时，夹住夹具所在或相邻底板所属的逆重船。整艘逆重船会随本船转移并增加质量。松开后逆重船可自行起降。</FFF.Transfer.Clamp.ToggleDesc>
+  <FFF.Transfer.Clamp.LockedDuringLaunch>起飞倒计时中不能变更夹具。</FFF.Transfer.Clamp.LockedDuringLaunch>
+  <FFF.Transfer.Clamp.Status.Docked>夹持中：{0}（{1} 格底板）。</FFF.Transfer.Clamp.Status.Docked>
+  <FFF.Transfer.Clamp.Status.Released>已松开。</FFF.Transfer.Clamp.Status.Released>
+  <FFF.Transfer.Clamp.Status.Unpowered>没有电力，未夹持。</FFF.Transfer.Clamp.Status.Unpowered>
+  <FFF.Transfer.Clamp.Status.NoGravship>夹具所在与相邻格没有逆重船底板。</FFF.Transfer.Clamp.Status.NoGravship>
+  <FFF.Transfer.Clamp.Status.NotOnShip>不在转移船船体上：必须整个位于结构桩船体范围内。</FFF.Transfer.Clamp.Status.NotOnShip>
   <FFF.Transfer.Issue.Contested>将从其他船带走 {0} 格（{1} 座建筑、{2} 根桩）。</FFF.Transfer.Issue.Contested>
   <FFF.Transfer.Issue.PendingBeamOrders>{0} 根桩有未完工的钢梁。</FFF.Transfer.Issue.PendingBeamOrders>
   <FFF.Transfer.Engine.Stats>转移推力 {0}，燃耗倍率 {1}</FFF.Transfer.Engine.Stats>

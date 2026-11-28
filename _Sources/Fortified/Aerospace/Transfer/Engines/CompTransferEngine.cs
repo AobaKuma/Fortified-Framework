@@ -253,6 +253,11 @@ namespace Fortified
             {
                 Thing blocker;
                 TransferEngineStatus status = CurrentStatus(out blocker);
+                // 兼作逆重船推進器、蓋在逆重船底板上時，不屬於結構樁船是正常的，不顯示「不在船上」
+                if (status == TransferEngineStatus.NotOnShip && IsOnGravshipSubstructure(parent))
+                {
+                    return sb.ToString();
+                }
                 sb.AppendLine();
                 string label;
                 using (TransferText.Using(parent.Map))
@@ -262,6 +267,25 @@ namespace Fortified
                 sb.Append(status == TransferEngineStatus.Operational ? label : label.Colorize(ColorLibrary.RedReadable));
             }
             return sb.ToString();
+        }
+
+        /// <summary>任一佔地格的地基是逆重船底板（即建在逆重船上）。</summary>
+        public static bool IsOnGravshipSubstructure(Thing thing)
+        {
+            if (thing == null || !thing.Spawned)
+            {
+                return false;
+            }
+            TerrainGrid grid = thing.Map.terrainGrid;
+            foreach (IntVec3 c in thing.OccupiedRect())
+            {
+                TerrainDef foundation = grid.FoundationAt(c);
+                if (foundation != null && foundation.IsSubstructure)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         public static string StatusLabel(TransferEngineStatus status, Thing blocker)

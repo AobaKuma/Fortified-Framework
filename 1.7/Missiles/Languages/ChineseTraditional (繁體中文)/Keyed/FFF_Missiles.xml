@@ -242,7 +242,7 @@
   <!-- EN: {0} is covered by {1} air-defense radar. Drop pods and shuttles landing there may be shot down. -->
   <FFF.BVR.InterceptRiskDestination>{0}處於{1}的防空雷達覆蓋之下。降落到那裡的運輸艙和穿梭機可能會被擊落。</FFF.BVR.InterceptRiskDestination>
   <!-- EN: Anyone aboard a downed drop pod or shuttle goes missing. Gravships and transfer ships are damaged instead of destroyed.\n\nLaunch anyway? -->
-  <FFF.BVR.InterceptRiskFooter>被擊落的運輸艙或穿梭機上的人員將會失蹤。重力船和轉移艦被擊中只會受損，不會被摧毀。\n\n仍要發射嗎？</FFF.BVR.InterceptRiskFooter>
+  <FFF.BVR.InterceptRiskFooter>被擊落的運輸艙或穿梭機上的人員將會失蹤。逆重船和轉移艦被擊中只會受損，不會被摧毀。\n\n仍要發射嗎？</FFF.BVR.InterceptRiskFooter>
   <!-- EN: {0}'s air defense at {1} fired on {2}. -->
   <FFF.Blockade.Engaging>{0}在{1}的防空系統向{2}開火。</FFF.Blockade.Engaging>
   <!-- EN: {0}: one transport was shot down by {1}. {2} remaining. -->
@@ -485,7 +485,7 @@
   <!-- EN: Tilt or vertical -->
   <FFF.Card.LaunchMode.Both>傾斜或垂直</FFF.Card.LaunchMode.Both>
   <!-- EN: Determines which launch platforms can load this missile. Tilt launchers can rotate and can be built on gravships. Vertical launchers have one facing and cannot be built on gravships. Launch mode does not change flight stats. -->
-  <FFF.Card.LaunchModeDesc>決定可裝填此彈的發射平台。傾斜發射架可旋轉、可建於重力船上；垂直發射架只有單一朝向，不可建於重力船上。發射方式不影響彈道數值。</FFF.Card.LaunchModeDesc>
+  <FFF.Card.LaunchModeDesc>決定可裝填此彈的發射平台。傾斜發射架可旋轉、可建於逆重船上；垂直發射架只有單一朝向，不可建於逆重船上。發射方式不影響彈道數值。</FFF.Card.LaunchModeDesc>
   <!-- EN: Launch platforms -->
   <FFF.Card.Platforms>可用發射平台</FFF.Card.Platforms>
   <!-- EN: Launch platforms that can load this missile, based on each platform's fixed storage settings. Click the links below to view them. -->
